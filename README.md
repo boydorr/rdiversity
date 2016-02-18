@@ -1,1 +1,1 @@
-# RDiversity
+# Diversity package for R
