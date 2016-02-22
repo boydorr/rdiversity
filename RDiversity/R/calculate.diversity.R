@@ -24,7 +24,7 @@ function(measure, pmatrix, qs,
       return(ans)
     }else if(any(grep('supercommunity',tag))){
       ans <- x(pmatrix, qs, zmatrix)
-      ans <- cbind.data.frame('ecosystem', row.names(ans), ans, tag)
+      ans <- cbind.data.frame('all', row.names(ans), ans, tag)
       colnames(ans) <- c('subcommunity','q','diversity','measure')
       ans$q <- as.numeric(gsub('q', '', ans$q))
       row.names(ans) <- NULL
