@@ -1,6 +1,19 @@
-#' calculate.diversity
-#' -------------------
-#' 
+## calculate.diversity
+## -------------------
+## Calculates the diversity of a series of columns representing
+## independent subcommunity counts relative to the total supercommunity
+## (by default the sum of the subcommunities), for a series of
+## orders, repesented as a vector of qs
+##
+## Arguments:
+## - measure - object of class 'diversity'
+## - pmatrix - population counts or proportions - single vector or matrix
+## - qs - vector of values of parameter q
+## - Z - (optional) similarity matrix
+##
+## Returns:
+## - data frame of diversities, columns representing populations, and
+##   rows representing values of q
 
 library(data.table) # rbindlist()
 
