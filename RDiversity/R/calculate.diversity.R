@@ -33,4 +33,5 @@ function(measure, pmatrix, qs,
   })
   # Put everything in a nice data table
   output <- do.call(rbind,output)
+  return(output)
 }
