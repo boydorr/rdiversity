@@ -1,5 +1,3 @@
-require(reshape2)
-
 calculate.diversity <-
 function(measure, pmatrix, qs, 
                                 zmatrix = diag(nrow(pmatrix))) 
