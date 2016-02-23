@@ -1,1 +1,1 @@
-export(calculate.diversity)
+exportPattern("^[[:alpha:]]+")
