@@ -16,7 +16,7 @@ function(measure, pmatrix, qs,
     tag <- attr(x,'name')
     if(any(grep('subcommunity',tag))){
       ans <- x(pmatrix, qs, zmatrix)
-      ans <- melt(as.matrix(ans))
+      ans <- reshape2::melt(as.matrix(ans))
       ans <- cbind(ans, tag)
       colnames(ans) <- c('subcommunity','q','diversity','measure')
       ans$q <- as.numeric(gsub('q', '', ans$q))
