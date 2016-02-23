@@ -1,88 +1,44 @@
-\name{qD}
-\alias{qD}
+\name{qD.R}
+\alias{qD.R}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+qD - Näive-type diversity with no similarity \(Hill Number\)
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Calculates the diversity of a series of columns \(each representing independent subcommunity counts\), for a series of orders repesented as a vector of \emph{q}s. 
 }
 \usage{
 qD(populations, qs)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{populations}{
-%%     ~~Describe \code{populations} here~~
+A \eqn{T \times N} matrix of population counts or proportions. \emph{T} is the number of distinct \emph{types} in the supercommunity and \emph{N} is the number of distinct subcommunities. If population counts are input they will be converted to proportions such that each column \(subcommunity\) sums to 1.
 }
   \item{qs}{
-%%     ~~Describe \code{qs} here~~
+A vector containing values of the parameter \emph{q}. May also be a single integer.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+% ~~~~ insert text here
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+An \eqn{N \times q} matrix of diversity values.
 }
 \references{
-%% ~put references to the literature/web site here ~
+\href{http://dx.doi.org/10.2307/1934352}{Hill, M. O. (1973) Diversity and Evenness: A Unifying Notation and Its Consequences. Ecology 54:427–432.}  
+\href{http://arxiv.org/abs/1404.6520}{Reeve, R. et al. (2014) How to Partition Diversity, arXiv:1404.6520 \[q-bio.QM\]}
 }
 \author{
-%%  ~~who you are~~
+Sonia Mitchell<soniamitchell@gmail.com>
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{qDZ}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+# Create example population
+pop <- data.frame(A=1:3,B=2:4)
+pop <- as.matrix(pop)
 
-## The function is currently defined as
-function (populations, qs) 
-{
-    if (is.vector(populations)) 
-        populations <- array(populations, dim = c(length(populations), 
-            1))
-    isdf <- is.data.frame(populations)
-    if (isdf) 
-        populations <- as.matrix(populations)
-    if (any(populations > 0 & populations < 1)) {
-        if (!isTRUE(all.equal(apply(populations, 2, sum), rep(1, 
-            ncol(populations))))) {
-            stop("populations (argument) must be entered as either: a set of integers or a set of proportions which sum to 1.")
-        }
-    }
-    props <- lapply(as.list(as.data.frame(populations)), function(x) x/sum(x))
-    res <- mapply(qD.single, proportions = props, q = rep(qs, 
-        rep(length(props), length(qs))))
-    d.n <- dimnames(populations)
-    if (is.null(d.n[[2]])) {
-        d.n <- list()
-        d.n[[1]] <- paste("sc", 1:dim(populations)[2], sep = "")
-        d.n[[2]] <- paste("q", qs, sep = "")
-    }
-    else d.n[[1]] <- d.n[[2]]
-    d.n[[2]] <- paste("q", qs, sep = "")
-    res <- array(res, dim = c(dim(populations)[-1], length(qs)), 
-        dimnames = d.n)
-    if (isdf) 
-        res <- as.data.frame(res)
-    res
-  }
+# Calculate diversity over a range of \emph{q} values
+qD(pop,0:2)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
