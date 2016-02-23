@@ -21,7 +21,7 @@ A \eqn{T \times T} similarity matrix, where all diagonal terms are equal to 1. \
 }
   \item{normalise}{
 If \code{FALSE} \(default\), calculate raw supercommunity beta diversity. 
-If \code{TRUE}, call \code{supercommunity.B.bar}, normalise probability distribution to sum to 1 to calculate normalised supercommunity beta diversity.}}
+If \code{TRUE}, call \code{supercommunity.B.bar}, normalise probability distribution to sum to 1 to calculate normalised supercommunity beta diversity.}
 }
 \details{
 Supercommunity beta is the average distinctiveness of subcommunities.

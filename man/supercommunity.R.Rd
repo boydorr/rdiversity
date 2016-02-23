@@ -24,7 +24,6 @@ A \eqn{T \times T} similarity matrix, where all diagonal terms are equal to 1. \
 If \code{FALSE} \(default\), calculate raw supercommunity rho diversity. 
 If \code{TRUE}, call \code{subcommunity.R.bar}, normalise probability distribution to sum to 1 to calculate normalised supercommunity rho diversity.}
 }
-}
 \details{
 Supercommunity rho is the average redundancy of subcommunities.
 
