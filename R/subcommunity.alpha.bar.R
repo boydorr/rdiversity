@@ -12,7 +12,6 @@
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of q
 #' 
-subcommunity.alpha.bar <-
-structure(function(populations, qs, Z = diag(nrow(populations)))
-  subcommunity.alpha(populations, qs, Z, normalise = T), 
-  class = "diversity", name = "subcommunity.alpha.bar")
+subcommunity.alpha.bar <- 
+function(populations, qs, Z = diag(nrow(populations)))
+  subcommunity.alpha(populations, qs, Z, normalise = T)

@@ -12,7 +12,7 @@
 #' @return An array of diversities, last representing values of q
 #' 
 supercommunity.A <-
-structure(function(populations, qs, Z = diag(nrow(populations)),
+function(populations, qs, Z = diag(nrow(populations)),
                         normalise = F)
 {
   # If we just have a single vector, then turn it into single column matrix
@@ -34,4 +34,4 @@ structure(function(populations, qs, Z = diag(nrow(populations)),
   
   d.n <- list(paste("q", qs, sep=""), "supercommunity")
   array(res, dim = c(length(qs), 1), dimnames = d.n)
-}, class = "diversity", name = "supercommunity.A")
+}

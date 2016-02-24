@@ -14,7 +14,7 @@
 #' rows representing values of q
 #' 
 subcommunity.gamma <-
-structure(function(populations, qs, Z = diag(nrow(populations)), normalise = F)
+function(populations, qs, Z = diag(nrow(populations)), normalise = F)
 {
   # If we just have a single vector, then turn it into single column matrix
   if (is.vector(populations))
@@ -57,4 +57,4 @@ structure(function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   if (isdf)
     res <- as.data.frame(res)
   res
-}, class = "diversity", name = "subcommunity.gamma")
+}
