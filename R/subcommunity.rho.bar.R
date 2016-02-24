@@ -9,7 +9,6 @@
 #' @param populations Population counts or proportions - single vector or matrix
 #' @param qs Vector of values of parameter q
 #' @param Z Similarity matrix
-#' @param normalise Normalise probability distribution to sum to 1
 #'
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of q

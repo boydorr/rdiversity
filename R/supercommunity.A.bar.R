@@ -7,7 +7,6 @@
 #' @param populations Population counts or proportions
 #' @param qs Vector of values of parameter q
 #' @param Z Similarity matrix
-#' @param normalise Normalise probability distribution to sum to 1
 #'
 #' @return An array of diversities, last representing values of q
 #' 
