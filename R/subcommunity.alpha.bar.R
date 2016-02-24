@@ -1,3 +1,18 @@
+#' Similarity-sensitive Normalised subcommunity.alpha
+#' 
+#' Calculates the diversity of a series of columns representing
+#' independent subcommunity counts, for a series of orders, repesented as
+#' a vector of qs
+#'
+#' @param populations Population counts or proportions
+#' @param qs Vector of values of parameter q
+#' @param Z Similarity matrix
+#' @param normalise Normalise probability distribution to sum to 1
+#'
+#' @return An array of diversities, first dimension representing 
+#' sub-communities, and last representing values of q
+#' 
 subcommunity.alpha.bar <-
 structure(function(populations, qs, Z = diag(nrow(populations)))
-  subcommunity.alpha(populations, qs, Z, normalise = T), class = "diversity", name = "subcommunity.alpha.bar")
+  subcommunity.alpha(populations, qs, Z, normalise = T), 
+  class = "diversity", name = "subcommunity.alpha.bar")

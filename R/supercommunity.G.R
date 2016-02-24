@@ -1,19 +1,31 @@
+#' Similarity-sensitive Raw supercommunity.G diversity
+#' 
+#' Calculates the total supercommunity gamma diversity of a series of columns
+#' representing subcommunity counts, for a series of orders, repesented as a 
+#' vector of qs.
+#'
+#' @param populations Population counts or proportions
+#' @param qs Vector of values of parameter q
+#' @param Z Similarity matrix
+#' @param normalise Normalise probability distribution to sum to 1
+#'
+#' @return array of diversities, last representing values of q
+#' 
 supercommunity.G <-
-structure(function(populations, qs, Z = diag(nrow(populations)),
-                        normalise = F)
+structure(function(populations, qs, Z = diag(nrow(populations)),  normalise = F)
 {
-  ## If we just have a single vector, then turn it into single column matrix
+  # If we just have a single vector, then turn it into single column matrix
   if (is.vector(populations))
     populations <- array(populations, dim=c(length(populations), 1))
   
-  ## If it's a dataframe make it a matrix
+  # If it's a dataframe make it a matrix
   if (is.data.frame(populations))
     populations <- as.matrix(populations)
   
-  ## Turn all columns into proportions if needed
+  # Turn all columns into proportions if needed
   data <- summarise(populations, normalise)
   
-  ## Turn all columns into proportions if needed
+  # Turn all columns into proportions if needed
   ds <- subcommunity.gamma(populations, qs, Z, normalise)
   
   res <- mapply(power.mean,

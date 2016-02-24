@@ -1,3 +1,15 @@
+#' diversity.to.additive 
+#' 
+#' Converts diversity values (for any q) to 'additive diversities'.
+#' 
+#' @param diversities Dataframe comprising diversity values, whereby each row 
+#' and column corresponds to a particular subcommunity and q value, 
+#' respectively; q values should be input in column names as character 
+#' strings, e.g. "q1"
+#' 
+#' @return Dataframe comprising 'additive diversity' values, whereby each row
+#' and column corresponds to a particular subcommunity and q value, respectively
+#' 
 diversity.to.additive <-
 function(diversities) {
     if (!is.data.frame(diversities)) diversities <- as.data.frame(diversities)

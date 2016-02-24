@@ -1,3 +1,13 @@
+#' Summary function
+#' 
+#' This function converts columns of an array (each representing population 
+#' counts) into proportions, so that each column sums to 1.
+#'
+#' @param populations An S x N array whose columns are counts of individuals
+#' @param normalise Normalise probability distribution to sum to 1 for each 
+#' column rather than just along each set
+#' @return An array whose columns are proportions
+#' 
 summarise <-
 function(populations, normalise = T)
 {
