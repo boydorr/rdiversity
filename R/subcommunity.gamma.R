@@ -59,5 +59,6 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   
   attr(res, 'name') <- 'Subcommunity gamma'
   attr(res, 'tag') <- bquote('Subcommunity' ~ gamma)
+  attr(res, 'type') <- 'subcommunity'
   return(res) 
 }

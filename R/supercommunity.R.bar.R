@@ -17,5 +17,6 @@ function(populations, qs, Z = diag(nrow(populations)))
   
   attr(res, 'name') <- 'Supercommunity rho bar'
   attr(res, 'tag') <- bquote('Supercommunity' ~ bar(italic(R)))
+  attr(res, 'type') <- 'supercommunity'
   return(res) 
 }

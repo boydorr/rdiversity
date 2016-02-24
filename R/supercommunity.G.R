@@ -38,5 +38,6 @@ function(populations, qs, Z = diag(nrow(populations)),  normalise = F)
   
   attr(res, 'name') <- 'Supercommunity gamma'
   attr(res, 'tag') <- bquote('Supercommunity' ~ italic(G))
+  attr(res, 'type') <- 'supercommunity'
   return(res) 
 }
