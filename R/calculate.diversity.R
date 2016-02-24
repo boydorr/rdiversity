@@ -1,6 +1,5 @@
 calculate.diversity <-
-function(measure, pmatrix, qs, 
-                                zmatrix = diag(nrow(pmatrix))) 
+function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) 
 { 
   # If a single measure was entered, put it in a list
   if(!is.list(measure)&length(measure)==1) measure <- list(measure)
