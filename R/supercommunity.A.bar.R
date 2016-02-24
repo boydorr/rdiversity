@@ -15,7 +15,7 @@ function(populations, qs, Z = diag(nrow(populations)))
 {
   res <- supercommunity.A(populations, qs, Z, normalise = T)
   
-  attr(res, 'name') <- 'Supercommunity alpha bar'
+  attr(res, 'measure') <- 'Supercommunity alpha bar'
   attr(res, 'tag') <- bquote('Supercommunity' ~ bar(italic(A)))
   attr(res, 'type') <- 'supercommunity'
   return(res) 

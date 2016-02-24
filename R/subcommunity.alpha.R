@@ -57,7 +57,7 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   if (isdf)
     res <- as.data.frame(res)
   
-  attr(res, 'name') <- 'Subcommunity alpha'
+  attr(res, 'measure') <- 'Subcommunity alpha'
   attr(res, 'tag') <- bquote('Subcommunity' ~ alpha)
   attr(res, 'type') <- 'subcommunity'
   return(res)

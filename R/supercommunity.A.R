@@ -35,7 +35,7 @@ function(populations, qs, Z = diag(nrow(populations)),
   d.n <- list(paste("q", qs, sep=""), "supercommunity")
   array(res, dim = c(length(qs), 1), dimnames = d.n)
   
-  attr(res, 'name') <- 'Supercommunity alpha'
+  attr(res, 'measure') <- 'Supercommunity alpha'
   attr(res, 'tag') <- bquote('Supercommunity' ~ italic(A))
   attr(res, 'type') <- 'supercommunity'
   return(res) 
