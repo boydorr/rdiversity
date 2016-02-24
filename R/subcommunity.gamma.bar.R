@@ -15,4 +15,10 @@
 #' 
 subcommunity.gamma.bar <-
 function(populations, qs, Z = diag(nrow(populations)), ...)
-  subcommunity.gamma(populations, qs, Z, ..., normalise = T)
+{
+  res <- subcommunity.gamma(populations, qs, Z, ..., normalise = T)
+  
+  attr(res, 'name') <- 'Subcommunity gamma bar'
+  attr(res, 'tag') <- bquote('Subcommunity' ~ bar(gamma))
+  return(res) 
+}

@@ -16,4 +16,10 @@
 #' 
 subcommunity.rho <-
 function(populations, qs, Z = diag(nrow(populations)), ...)
+{
     1 / subcommunity.beta(populations, qs, Z, ...)
+  
+  attr(res, 'name') <- 'Subcommunity rho'
+  attr(res, 'tag') <- bquote('Subcommunity' ~ rho)
+  return(res) 
+}

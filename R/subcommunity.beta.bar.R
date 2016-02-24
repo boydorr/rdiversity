@@ -15,4 +15,10 @@
 #' 
 subcommunity.beta.bar <-
 function(populations, qs, Z = diag(nrow(populations)), ...)
-  subcommunity.beta(populations, qs, Z, ..., normalise = T)
+{
+  res <- subcommunity.beta(populations, qs, Z, ..., normalise = T)
+
+  attr(res, 'name') <- 'Subcommunity beta bar'
+  attr(res, 'tag') <- bquote('Subcommunity' ~ bar(beta))
+  return(res) 
+  }

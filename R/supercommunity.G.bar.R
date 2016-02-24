@@ -12,4 +12,10 @@
 #' 
 supercommunity.G.bar <-
 function(populations, qs, Z = diag(nrow(populations)))
-  supercommunity.G(populations, qs, Z, normalise = T)
+{
+  res <- supercommunity.G(populations, qs, Z, normalise = T)
+  
+  attr(res, 'name') <- 'Supercommunity gamma bar'
+  attr(res, 'tag') <- bquote('Supercommunity' ~ bar(italic(G)))
+  return(res) 
+}

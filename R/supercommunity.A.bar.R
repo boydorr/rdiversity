@@ -12,4 +12,10 @@
 #' 
 supercommunity.A.bar <-
 function(populations, qs, Z = diag(nrow(populations)))
-  supercommunity.A(populations, qs, Z, normalise = T)
+{
+  res <- supercommunity.A(populations, qs, Z, normalise = T)
+  
+  attr(res, 'name') <- 'Supercommunity alpha bar'
+  attr(res, 'tag') <- bquote('Supercommunity' ~ bar(italic(A)))
+  return(res) 
+}

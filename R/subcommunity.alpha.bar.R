@@ -12,5 +12,11 @@
 #' sub-communities, and last representing values of q
 #' 
 subcommunity.alpha.bar <- 
-function(populations, qs, Z = diag(nrow(populations)))
-  subcommunity.alpha(populations, qs, Z, normalise = T)
+function(populations, qs, Z = diag(nrow(populations))) 
+{
+  res <- subcommunity.alpha(populations, qs, Z, normalise = T)
+
+  attr(res, 'name') <- 'Subcommunity alpha bar'
+  attr(res, 'tag') <- bquote('Subcommunity' ~ bar(alpha))
+  return(res) 
+}
