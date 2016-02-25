@@ -13,7 +13,7 @@
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of q
-#' @seealso \code{\link{subcommunity.alpha.rho, supercommunity.R, supercommunity.R.bar}}
+#' @seealso \code{\link{subcommunity.rho.bar}}, \code{\link{supercommunity.R}}, \code{\link{supercommunity.R.bar}}
 #' @export
 #' 
 subcommunity.rho <-

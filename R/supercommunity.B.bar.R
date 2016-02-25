@@ -9,7 +9,7 @@
 #' @param Z Similarity matrix
 #'
 #' @return An array of diversities, last representing values of q
-#' @seealso \code{\link{supercommunity.B, subcommunity.beta, subcommunity.beta.bar}}
+#' @seealso \code{\link{supercommunity.B}}, \code{\link{subcommunity.beta}}, \code{\link{subcommunity.beta.bar}}
 #' @export
 #' 
 supercommunity.B.bar <-

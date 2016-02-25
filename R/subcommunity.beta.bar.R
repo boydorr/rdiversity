@@ -12,7 +12,7 @@
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of q
-#' @seealso \code{\link{subcommunity.beta, supercommunity.B, supercommunity.B.bar}}
+#' @seealso \code{\link{subcommunity.beta}}, \code{\link{supercommunity.B}}, \code{\link{supercommunity.B.bar}}
 #' @export
 #' 
 subcommunity.beta.bar <-
