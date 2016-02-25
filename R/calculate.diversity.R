@@ -1,3 +1,18 @@
+#' Calculate Diversity
+#' 
+#' Calculates the diversity, subcommunity or supercommunity, of a series of 
+#' columns representing independent subcommunity counts, for a series of 
+#' orders, repesented as a vector of qs.
+#'
+#' @param measure Diversity measure
+#' @param pmatrix Population counts or proportions
+#' @param qs Vector of values of parameter q
+#' @param Z Similarity matrix
+#'
+#' @return A list of length = length(measure), where each list item contains 
+#' the diversity output for the corresponding measure
+#' @export
+#' 
 diversity <-
   function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) 
   {
