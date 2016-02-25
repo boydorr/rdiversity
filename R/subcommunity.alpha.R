@@ -11,7 +11,7 @@
 #'
 #' @return An array of diversities, first dimension representing 
 #' subcommunities, and last representing values of q
-#' @seealso \code{\link{subcommunity.alpha.bar, subcommunity.A, supercommunity.A.bar}}
+#' @seealso \code{\link{subcommunity.alpha.bar, supercommunity.A, supercommunity.A.bar}}
 #' @export
 #' 
 subcommunity.alpha <-
