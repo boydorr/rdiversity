@@ -1,7 +1,7 @@
 #' Similarity-sensitive Normalised subcommunity.beta diversity
 #' 
 #' Calculates the diversity of a series of columns representing independent
-#' sub-communities counts relative to a total supercommunity (by default the 
+#' subcommunities counts relative to a total supercommunity (by default the 
 #' sum of the sub-communities), for a series of orders, repesented as a 
 #' vector of qs.
 #'
@@ -12,6 +12,7 @@
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of q
+#' @seealso \code{\link{subcommunity.beta}}
 #' @export
 #' 
 subcommunity.beta.bar <-

@@ -10,7 +10,8 @@
 #' @param normalise Normalise probability distribution to sum to 1
 #'
 #' @return An array of diversities, first dimension representing 
-#' sub-communities, and last representing values of q
+#' subcommunities, and last representing values of q
+#' @seealso \code{\link{subcommunity.alpha.bar, subcommunity.A, supercommunity.A.bar}}
 #' @export
 #' 
 subcommunity.alpha <-

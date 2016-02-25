@@ -9,6 +9,7 @@
 #' @param Z Similarity matrix
 #'
 #' @return array of diversities, last representing values of q
+#' @seealso \code{\link{supercommunity.G}}
 #' @export
 #' 
 supercommunity.G.bar <-

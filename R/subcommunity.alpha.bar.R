@@ -10,6 +10,7 @@
 #'
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of q
+#' @seealso \code{\link{subcommunity.alpha}}
 #' @export
 #' 
 subcommunity.alpha.bar <- 
