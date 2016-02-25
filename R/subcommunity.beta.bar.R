@@ -20,6 +20,6 @@ function(populations, qs, Z = diag(nrow(populations)), ...)
 
   attr(res, 'measure') <- 'Subcommunity beta bar'
   attr(res, 'tag') <- bquote('Subcommunity' ~ bar(beta))
-  attr(res, 'type') <- 'subcommunity'
+  attr(res, 'level') <- 'subcommunity'
   return(res) 
   }

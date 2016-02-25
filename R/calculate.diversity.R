@@ -26,7 +26,7 @@ diversity <-
       row.names(tmp) <- NULL
       attr(tmp,'measure') <- attr(ans,'measure')
       attr(tmp,'tag') <- attr(ans,'tag')
-      attr(tmp,'type') <- attr(ans,'type')
+      attr(tmp,'level') <- attr(ans,'level')
       return(tmp)
     }}
   )

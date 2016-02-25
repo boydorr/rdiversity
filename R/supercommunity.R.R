@@ -36,6 +36,6 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
     
     attr(res, 'measure') <- 'Supercommunity rho'
     attr(res, 'tag') <- bquote('Supercommunity' ~ italic(R))
-    attr(res, 'type') <- 'supercommunity'
+    attr(res, 'level') <- 'supercommunity'
     return(res) 
 }
