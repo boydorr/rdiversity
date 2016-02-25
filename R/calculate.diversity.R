@@ -5,7 +5,7 @@
 #' orders, repesented as a vector of qs.
 #'
 #' @param measure Diversity measure
-#' @param pmatrix Population counts or proportions
+#' @param populations Population counts or proportions
 #' @param qs Vector of values of parameter q
 #' @param Z Similarity matrix
 #'
@@ -14,7 +14,7 @@
 #' @export
 #' 
 diversity <-
-  function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) 
+  function(measure, populations, qs, zmatrix = diag(nrow(pmatrix))) 
   {
     output <- lapply(measure, function(x) {
       
