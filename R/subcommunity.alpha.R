@@ -11,6 +11,7 @@
 #'
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of q
+#' @export
 #' 
 subcommunity.alpha <-
 function(populations, qs, Z = diag(nrow(populations)), normalise = F)

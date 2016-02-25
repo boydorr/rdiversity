@@ -10,6 +10,7 @@
 #' @param normalise Normalise probability distribution to sum to 1
 #'
 #' @return array of diversities, last representing values of q
+#' @export
 #' 
 supercommunity.G <-
 function(populations, qs, Z = diag(nrow(populations)),  normalise = F)

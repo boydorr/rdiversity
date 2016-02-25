@@ -12,6 +12,7 @@
 #'
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of q
+#' @export
 #' 
 subcommunity.rho.bar <-
 function(populations, qs, Z = diag(nrow(populations)), ...)

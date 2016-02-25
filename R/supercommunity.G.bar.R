@@ -9,6 +9,7 @@
 #' @param Z Similarity matrix
 #'
 #' @return array of diversities, last representing values of q
+#' @export
 #' 
 supercommunity.G.bar <-
 function(populations, qs, Z = diag(nrow(populations)))
