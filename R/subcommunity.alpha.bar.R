@@ -17,7 +17,7 @@ subcommunity.alpha.bar <-
 function(populations, qs, Z = diag(nrow(populations))) 
 {
   res <- subcommunity.alpha(populations, qs, Z, normalise = T)
-  structure(res, class = 'RDiversity',
+  res <- structure(res
             measure = 'Subcommunity alpha bar',
             tag = bquote('Subcommunity' ~ bar(alpha)),
             level = 'subcommunity')

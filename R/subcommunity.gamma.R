@@ -59,7 +59,7 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   if (isdf)
     res <- as.data.frame(res)
   
-  structure(res, class = 'RDiversity',
+  structure(res, 
             measure = 'Subcommunity gamma',
             tag = bquote('Subcommunity' ~ gamma),
             level = 'subcommunity')

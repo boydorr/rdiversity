@@ -38,7 +38,7 @@ function(populations, qs, Z = diag(nrow(populations)),  normalise = F)
   d.n <- list(paste("q", qs, sep=""), "supercommunity")
   array(res, dim = c(length(qs), 1), dimnames = d.n)
   
-  structure(res, class = 'RDiversity',
+  structure(res, 
             measure = 'Supercommunity G',
             tag = bquote('Supercommunity' ~ italic('G')),
             level = 'supercommunity')

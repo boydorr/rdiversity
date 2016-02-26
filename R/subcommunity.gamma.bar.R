@@ -20,7 +20,7 @@ function(populations, qs, Z = diag(nrow(populations)), ...)
 {
   res <- subcommunity.gamma(populations, qs, Z, ..., normalise = T)
   
-  structure(res, class = 'RDiversity',
+  structure(res, 
             measure = 'Subcommunity gamma bar',
             tag = bquote('Subcommunity' ~ bar(gamma)),
             level = 'subcommunity')
