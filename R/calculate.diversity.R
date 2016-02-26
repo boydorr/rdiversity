@@ -51,17 +51,17 @@ diversity <-
         attr(tmp,'level') <- attr(ans,'level')
         return(tmp)
         
-    }else if(attr(ans,'type')=='supercommunity') {
-      tmp <- reshape2::melt(as.matrix(ans)) 
-      tmp <- cbind(tmp, tag)
-      tmp <- tmp[,-2]
-      colnames(tmp) <- c('q','diversity','measure')
-      tmp$q <- as.numeric(gsub('q', '', tmp$q))
-      row.names(tmp) <- NULL
-      attr(tmp,'measure') <- attr(ans,'measure')
-      attr(tmp,'tag') <- attr(ans,'tag')
-      attr(tmp,'level') <- attr(ans,'level')
-      return(tmp)
-    }}
-  )
-}
+      }else if(attr(ans,'level')=='supercommunity') {
+        tmp <- reshape2::melt(as.matrix(ans)) 
+        tmp <- cbind(tmp, tag)
+        tmp <- tmp[,-2]
+        colnames(tmp) <- c('q','diversity','measure')
+        tmp$q <- as.numeric(gsub('q', '', tmp$q))
+        row.names(tmp) <- NULL
+        attr(tmp,'measure') <- attr(ans,'measure')
+        attr(tmp,'tag') <- attr(ans,'tag')
+        attr(tmp,'level') <- attr(ans,'level')
+        return(tmp)
+      }}
+    )
+  }
