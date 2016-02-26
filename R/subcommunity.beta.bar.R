@@ -20,8 +20,9 @@ function(populations, qs, Z = diag(nrow(populations)), ...)
 {
   res <- subcommunity.beta(populations, qs, Z, ..., normalise = T)
 
-  attr(res, 'measure') <- 'Subcommunity beta bar'
-  attr(res, 'tag') <- bquote('Subcommunity' ~ bar(beta))
-  attr(res, 'level') <- 'subcommunity'
+  structure(res, class = 'RDiversity',
+            measure = 'Subcommunity beta bar',
+            tag = bquote('Subcommunity' ~ bar(beta)),
+            level = 'subcommunity')
   return(res) 
   }

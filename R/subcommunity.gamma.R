@@ -59,8 +59,9 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   if (isdf)
     res <- as.data.frame(res)
   
-  attr(res, 'measure') <- 'Subcommunity gamma'
-  attr(res, 'tag') <- bquote('Subcommunity' ~ gamma)
-  attr(res, 'level') <- 'subcommunity'
+  structure(res, class = 'RDiversity',
+            measure = 'Subcommunity gamma',
+            tag = bquote('Subcommunity' ~ gamma),
+            level = 'subcommunity')
   return(res) 
 }

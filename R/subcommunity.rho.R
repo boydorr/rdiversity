@@ -21,8 +21,9 @@ function(populations, qs, Z = diag(nrow(populations)), ...)
 {
   res <- 1 / subcommunity.beta(populations, qs, Z, ...)
   
-  attr(res, 'measure') <- 'Subcommunity rho'
-  attr(res, 'tag') <- bquote('Subcommunity' ~ rho)
-  attr(res, 'level') <- 'subcommunity'
+  structure(res, class = 'RDiversity',
+            measure = 'Subcommunity rho',
+            tag = bquote('Subcommunity' ~ rho),
+            level = 'subcommunity')
   return(res) 
 }
