@@ -40,7 +40,7 @@ diversity <-
       ans <- x(pmatrix, qs, zmatrix)
       tag <- attr(ans, 'measure') 
       
-      if(attr(ans,'type')=='subcommunity') {
+      if(attr(ans,'level')=='subcommunity') {
         tmp <- reshape2::melt(as.matrix(ans)) 
         tmp <- cbind(tmp, tag)
         colnames(tmp) <- c('subcommunity','q','diversity','measure')
@@ -48,7 +48,7 @@ diversity <-
         row.names(tmp) <- NULL
         attr(tmp,'measure') <- attr(ans,'measure')
         attr(tmp,'tag') <- attr(ans,'tag')
-        attr(tmp,'type') <- attr(ans,'type')
+        attr(tmp,'level') <- attr(ans,'level')
         return(tmp)
         
     }else if(attr(ans,'type')=='supercommunity') {
