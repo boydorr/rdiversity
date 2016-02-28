@@ -1,8 +1,8 @@
 context('Testing the power.mean() function')
 
-numbers <- c(1, 2, 4, 8, 16)
-
-test_that("The power.mean() function gives the correct answers for a set of positive integers", { 
+test_that("power.mean returns the correct answers for a set of positive integers", { 
+  numbers <- c(1, 2, 4, 8, 16)
+  
   expect_equal(power.mean(numbers, 0), 4)
   expect_equal(power.mean(numbers, 1), 6.2)
   expect_equal(power.mean(numbers, -Inf), 1)
