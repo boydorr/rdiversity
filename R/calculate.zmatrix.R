@@ -53,6 +53,7 @@ calculate.zmatrix <- function(type, data, lookup = NA)
     }
     row.names(zmatrix) <- row.names(data)
     colnames(zmatrix) <- row.names(data)
+    attr(zmatrix, 'type') <- type
     return(zmatrix)
   }
 }
