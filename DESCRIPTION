@@ -3,8 +3,9 @@ Type: Package
 Title: What the package does (short line)
 Version: 0.1
 Date: 2016-02-22
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Sonia Mitchell, Richard Reeve
+Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
+Description: Calculates the similarity-sensitive diversity of a population and it's partitions.
 License: Simplified "2-clause" BSD License
 Imports: reshape2
+RoxygenNote: 5.0.1
