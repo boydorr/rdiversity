@@ -18,14 +18,14 @@
 #' 
 calculate.zmatrix <- function(type, data, lookup = NA) 
 {
-  if(type='unique') {
+  if(type=='unique') {
     N <- nrow(data)
     zmatrix <- diag(N)
     row.names <- row.names(data)
     colnames <- row.names(data)
     return(zmatrix)
     
-  }else if('taxonomic') {
+  }else if(type=='taxonomic') {
     if(nrow(data)!=nrow(lookup)) stop('data and lookup do not match up')
     N <- nrow(data)
     
@@ -51,8 +51,8 @@ calculate.zmatrix <- function(type, data, lookup = NA)
         } else zmatrix[i,j] <- other.similarity
       }
     }
-    row.names <- row.names(data)
-    colnames <- row.names(data)
+    row.names(zmatrix) <- row.names(data)
+    colnames(zmatrix) <- row.names(data)
     return(zmatrix)
   }
 }
