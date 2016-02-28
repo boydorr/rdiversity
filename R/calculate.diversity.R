@@ -35,8 +35,9 @@
 diversity <-
   function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) 
   {
+    if(length(measure)==1) measure <- list(measure)
+    
     output <- lapply(measure, function(x) {
-      
       ans <- x(pmatrix, qs, zmatrix)
       tag <- attr(ans, 'measure') 
       
@@ -62,6 +63,7 @@ diversity <-
         attr(tmp,'tag') <- attr(ans,'tag')
         attr(tmp,'level') <- attr(ans,'level')
         return(tmp)
-      }}
+      }
+      }
     )
   }
