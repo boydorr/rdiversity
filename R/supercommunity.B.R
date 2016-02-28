@@ -2,14 +2,12 @@
 #' 
 #' Calculates the total supercommunity beta diversity of a series of columns
 #' representing subcommunity counts, for a series of orders, repesented as a 
-#' vector of qs.
+#' vector of \code{qs}.
 #'
-#' @param populations Population counts or proportions
-#' @param qs Vector of values of parameter q
-#' @param Z Similarity matrix
+#' @inheritParams inherit_params
 #' @param normalise Normalise probability distribution to sum to 1
-#'
-#' @return An array of diversities, last representing values of q
+#' @return An array of diversities, last representing values of \emph{q}
+#' 
 #' @seealso \code{\link{supercommunity.B.bar}}, \code{\link{subcommunity.beta}}, \code{\link{subcommunity.beta.bar}}
 #' @export
 #' 

@@ -2,15 +2,13 @@
 #' 
 #' Calculates the diversity of a series of columns representing
 #' independent subcommunity counts, for a series of orders, repesented as
-#' a vector of qs
+#' a vector of \code{qs}.
 #'
-#' @param populations Population counts or proportions
-#' @param qs Vector of values of parameter q
-#' @param Z Similarity matrix
+#' @inheritParams inherit_params
 #' @param normalise Normalise probability distribution to sum to 1
-#'
 #' @return An array of diversities, first dimension representing 
-#' subcommunities, and last representing values of q
+#' subcommunities, and last representing values of \emph{q}
+#' 
 #' @seealso \code{\link{subcommunity.alpha.bar}}, \code{\link{supercommunity.A}}, \code{\link{supercommunity.A.bar}}
 #' @export
 #' 

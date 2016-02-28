@@ -2,14 +2,12 @@
 #' 
 #' Calculates the total supercommunity.R diversity of a series of 
 #' columns representing subcommunity counts, for a series of orders, 
-#' repesented as a vector of qs.
+#' repesented as a vector of \code{qs}.
 #'
-#' @param populations Population counts or proportions
-#' @param qs Vector of values of parameter q
-#' @param Z Similarity matrix
+#' @inheritParams inherit_params
 #' @param normalise Normalise probability distribution to sum to 1
-#'
-#' @return An array of diversities, last representing values of q
+#' @return An array of diversities, last representing values of \emph{q}
+#' 
 #' @seealso \code{\link{supercommunity.R.bar}}, \code{\link{subcommunity.rho}}, \code{\link{subcommunity.rho.bar}}
 #' @export
 #' 

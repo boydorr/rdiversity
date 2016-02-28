@@ -2,13 +2,11 @@
 #' 
 #' Calculates the total supercommunity gamma diversity of a series of columns
 #' representing subcommunity counts, for a series of orders, repesented as a 
-#' vector of qs.
+#' vector of \code{qs}.
 #'
-#' @param populations Population counts or proportions
-#' @param qs Vector of values of parameter q
-#' @param Z Similarity matrix
-#'
-#' @return array of diversities, last representing values of q
+#' @inheritParams inherit_params
+#' @return array of diversities, last representing values of \emph{q}
+#' 
 #' @seealso \code{\link{supercommunity.G}}, \code{\link{subcommunity.gamma}}, \code{\link{subcommunity.gamma.bar}}
 #' @export
 #' 
