@@ -16,7 +16,14 @@
 #' four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'
 #' @return matrix of pair-wise similarity indices
 #' 
-calculate.zmatrix <- function(similarity, data) 
+calculate.zmatrix <- function(type, data) 
 {
-  
+  if(type='unique') {
+    N <- nrow(data)
+    zmatrix <- diag(N)
+    row.names <- row.names(data)
+    colnames <- row.names(data)
+    return(zmatrix)
+    
+  }
 }
