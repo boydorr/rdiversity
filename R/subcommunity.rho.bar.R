@@ -18,7 +18,7 @@ function(populations, qs, Z = diag(nrow(populations)), ...)
 {
   res <- 1 / subcommunity.beta.bar(populations, qs, Z, ...)
   
-  structure(res,
+  res <- structure(res,
             measure = 'Subcommunity rho bar',
             tag = bquote('Subcommunity' ~ bar(rho)),
             level = 'subcommunity')

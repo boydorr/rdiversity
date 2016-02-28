@@ -18,7 +18,7 @@ function(populations, qs, Z = diag(nrow(populations)), ...)
 {
   res <- subcommunity.beta(populations, qs, Z, ..., normalise = T)
 
-  structure(res, 
+  re <- structure(res, 
             measure = 'Subcommunity beta bar',
             tag = bquote('Subcommunity' ~ bar(beta)),
             level = 'subcommunity')
