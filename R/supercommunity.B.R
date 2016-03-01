@@ -33,10 +33,10 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   
   d.n <- list(paste("q", qs, sep=""), "supercommunity")
   array(res, dim = c(length(qs), 1), dimnames = d.n)
+  res <- data.frame(res)
   
-  res <- structure(res,
-            measure = 'Supercommunity B',
+  output <- new('rdiv', res, measure = 'Supercommunity B',
             tag = bquote('Supercommunity' ~ italic('B')),
             level = 'supercommunity')
-  return(res) 
+  return(output) 
 }

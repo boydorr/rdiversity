@@ -18,10 +18,9 @@ subcommunity.rho <-
 function(populations, qs, Z = diag(nrow(populations)), ...)
 {
   res <- 1 / subcommunity.beta(populations, qs, Z, ...)
-  
-  res <- structure(res, 
-            measure = 'Subcommunity rho',
+
+  output <- new('rdiv', res, measure = 'Subcommunity rho',
             tag = bquote('Subcommunity' ~ rho),
             level = 'subcommunity')
-  return(res) 
+  return(output) 
 }

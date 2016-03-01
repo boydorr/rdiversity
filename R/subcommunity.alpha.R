@@ -36,9 +36,9 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   
   # Calculate diversities
   res <- mapply(qDZ.single,
-                proportions = as.list(as.data.frame(data$proportions)), # Will repeat length(qs) times
+                proportions = as.list(as.data.frame(data$proportions)), 
                 q = as.list(rep(qs, rep(data$num, length(qs)))),
-                Zp = as.list(as.data.frame(Zp.j)), # Will repeat length(qs) times
+                Zp = as.list(as.data.frame(Zp.j)), 
                 MoreArgs = list(Z = Z))
   
   # Restore dimensions and names of original population array,
@@ -52,14 +52,13 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   } else
       d.n[[1]] <- d.n[[2]]
   d.n[[2]] <- paste("q", qs, sep="")
-  
+
   res <- array(res, dim = c(data$num, length(qs)), dimnames = d.n)
-  if (isdf)
+  # if (isdf)
     res <- as.data.frame(res)
   
-  res <- structure(res, 
-            measure = 'Subcommunity alpha',
+  output <- new('rdiv', res, measure = 'Subcommunity alpha',
             tag = bquote('Subcommunity' ~ alpha),
             level = 'subcommunity')
-  return(res)
+  return(output)
 }

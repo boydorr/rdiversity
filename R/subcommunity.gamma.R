@@ -54,12 +54,11 @@ function(populations, qs, Z = diag(nrow(populations)), normalise = F)
   d.n[[2]] <- paste("q", qs, sep="")
   
   res <- array(res, dim = c(dim(populations)[-1], length(qs)), dimnames = d.n)
-  if (isdf)
+  # if (isdf)
     res <- as.data.frame(res)
   
-  res <- structure(res, 
-            measure = 'Subcommunity gamma',
+  output <- new('rdiv', res, measure = 'Subcommunity gamma',
             tag = bquote('Subcommunity' ~ gamma),
             level = 'subcommunity')
-  return(res) 
+  return(output) 
 }

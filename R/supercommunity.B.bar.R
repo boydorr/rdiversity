@@ -14,10 +14,9 @@ supercommunity.B.bar <-
 function(populations, qs, Z = diag(nrow(populations)))
 {
   res <- supercommunity.B(populations, qs, Z, normalise = T)
-  
-  res <- structure(res, 
-            measure = 'Supercommunity B bar',
+
+  output <- new('rdiv', res, measure = 'Supercommunity B bar',
             tag = bquote('Supercommunity' ~ bar(italic('B'))),
             level = 'supercommunity')
-  return(res) 
+  return(output) 
 }

@@ -14,13 +14,12 @@
 #' @export
 #' 
 subcommunity.rho.bar <-
-function(populations, qs, Z = diag(nrow(populations)), ...)
+function(populations, qs, Z = diag(nrow(populations)))
 {
-  res <- 1 / subcommunity.beta.bar(populations, qs, Z, ...)
-  
-  res <- structure(res,
-            measure = 'Subcommunity rho bar',
+  res <- 1 / subcommunity.beta.bar(populations, qs, Z)
+
+  output <- new('rdiv', res, measure = 'Subcommunity rho bar',
             tag = bquote('Subcommunity' ~ bar(rho)),
             level = 'subcommunity')
-  return(res) 
+  return(output) 
 }
