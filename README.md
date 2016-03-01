@@ -10,20 +10,30 @@ install.packages("devtools")
 devtools::install_github("boydorr/RDiversity")
 ```
 
-## Package tools
+## Getting started
 
-Calculate diversity:
+Diversity framework
 * `subcommunity.alpha()` : estimate of naive-community supercommunity diversity 
-* `subcommunity.alpha.bar` : similarity-sensitive diversity of subcommunity *j* in isolation
-* `subcommunity.rho` : redundancy of subcommunity *j*
-* `subcommunity.rho.bar` : representativeness of subcommunity *j*
-* `subcommunity.beta` : distinctiveness of subcommunity *j*
-* `subcommunity.beta.bar` : estimate of effective number of distinct subcommunities
-* `subcommunity.gamma` : contribution per individual toward supercommunity diversity 
-* `supercommunity.A` : naive-community supercommunity diversity 
-* `supercommunity.A.bar` : average similarity-sensitive diversity of subcommunities 
-* `supercommunity.R` : average redundancy of subcommunities
-* `supercommunity.R.bar` : average representativeness of subcommunities
-* `supercommunity.B` : average distinctiveness of subcommunities
-* `supercommunity.B.bar` : effective number of distinct subcommunities 
-* `supercommunity.G` : supercommunity similarity-sensitive diversity 
+* `subcommunity.alpha.bar()` : similarity-sensitive diversity of subcommunity *j* in isolation
+* `subcommunity.rho()` : redundancy of subcommunity *j*
+* `subcommunity.rho.bar()` : representativeness of subcommunity *j*
+* `subcommunity.beta()` : distinctiveness of subcommunity *j*
+* `subcommunity.beta.bar()` : estimate of effective number of distinct subcommunities
+* `subcommunity.gamma()` : contribution per individual toward supercommunity diversity 
+* `supercommunity.A()` : naive-community supercommunity diversity 
+* `supercommunity.A.bar()` : average similarity-sensitive diversity of subcommunities 
+* `supercommunity.R()` : average redundancy of subcommunities
+* `supercommunity.R.bar()` : average representativeness of subcommunities
+* `supercommunity.B()` : average distinctiveness of subcommunities
+* `supercommunity.B.bar()` : effective number of distinct subcommunities 
+* `supercommunity.G()` : supercommunity similarity-sensitive diversity 
+
+Other diversity measures
+* `qD.single()` : the Hill number / naive diversity of order *q* of a population
+* `qD()` : the diversity of a series of independent populations for a series of orders
+* `qDZ.single()` : the similarity-sensitive diversity of order *q* of a population
+* `qDZ()` : the similarity-sensitive diversity of a series of independent populations for a series of orders
+
+General tools
+* `diversity()` : general function to call any of the measures above
+* `calculate.zmatric()` : generates pair-wise similarity matrix based on categorical type of data
