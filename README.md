@@ -30,7 +30,7 @@ devtools::install_github("boydorr/RDiversity")
 
 **General tools**
 * `diversity()` : general function to call any of the measures above
-* `calculate.zmatric()` : generates pair-wise similarity matrix based on categorical type of data
+* `calculate.zmatrix()` : generates pair-wise similarity matrix based on categorical type of data
 
 **Other diversity measures**
 * `qD.single()` : the Hill number / naive diversity of order *q* of a population
