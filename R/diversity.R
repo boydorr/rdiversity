@@ -35,35 +35,59 @@
 diversity <-
   function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) 
   {
-    if(length(measure)==1) measure <- list(measure)
-    
-    output <- lapply(measure, function(x) {
-      ans <- x(pmatrix, qs, zmatrix)
-      tag <- attr(ans, 'measure') 
-      
-      if(attr(ans,'level')=='subcommunity') {
-        tmp <- reshape2::melt(as.matrix(ans)) 
-        tmp <- cbind(tmp, tag)
-        colnames(tmp) <- c('subcommunity','q','diversity','measure')
-        tmp$q <- as.numeric(gsub('q', '', tmp$q))
-        row.names(tmp) <- NULL
-        attr(tmp,'measure') <- attr(ans,'measure')
-        attr(tmp,'tag') <- attr(ans,'tag')
-        attr(tmp,'level') <- attr(ans,'level')
-        return(tmp)
-        
-      }else if(attr(ans,'level')=='supercommunity') {
-        tmp <- reshape2::melt(as.matrix(ans)) 
-        tmp <- cbind(tmp, tag)
-        tmp <- tmp[,-2]
-        colnames(tmp) <- c('q','diversity','measure')
-        tmp$q <- as.numeric(gsub('q', '', tmp$q))
-        row.names(tmp) <- NULL
-        attr(tmp,'measure') <- attr(ans,'measure')
-        attr(tmp,'tag') <- attr(ans,'tag')
-        attr(tmp,'level') <- attr(ans,'level')
-        return(tmp)
-      }
-      }
-    )
+    if(deparse(substitute(measure))=='all') {
+      div.all(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+    }else if(deparse(substitute(measure))=='subcommunity') {
+      div.sub(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+    }else if(deparse(substitute(measure))=='supercommunity') {
+      div.super(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+    }else if(length(measure)==1 & class(measure)=='function') {
+      output <- measure(pmatrix, qs, zmatrix)
+    }else 
+      output <- calculate.diversity(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
   }
+
+
+div.all <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+{
+  measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
+                     subcommunity.beta, subcommunity.beta.bar, 
+                     subcommunity.rho, subcommunity.rho.bar,
+                     subcommunity.gamma, subcommunity.gamma.bar, 
+                     supercommunity.A, supercommunity.A.bar,
+                     supercommunity.B, supercommunity.B.bar,
+                     supercommunity.R, supercommunity.R.bar,
+                     supercommunity.G, supercommunity.G.bar)
+  
+  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+}
+
+
+div.sub <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+{
+  measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
+                     subcommunity.beta, subcommunity.beta.bar, 
+                     subcommunity.rho, subcommunity.rho.bar,
+                     subcommunity.gamma, subcommunity.gamma.bar)
+  
+  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+}
+
+
+div.super <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+{
+  measure <- list(supercommunity.A, supercommunity.A.bar,
+                     supercommunity.B, supercommunity.B.bar,
+                     supercommunity.R, supercommunity.R.bar,
+                     supercommunity.G, supercommunity.G.bar)
+  
+  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+}
+
+
+calculate.diversity <- function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) {
+  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+}
+
+
+
