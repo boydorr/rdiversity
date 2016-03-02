@@ -10,7 +10,6 @@
 #' 
 #' @name RDiversity
 #' @docType package
-#' @import reshape2
 #' 
 #' @author 
 #' Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve 
