@@ -1,9 +1,9 @@
 # Define S4 Class
 rdiv <- setClass("rdiv",
-                       contains = 'data.frame',
-                       slots = c(measure = "character",
-                                 tag = "formula",
-                                 level = "character"))
+                 contains = 'data.frame',
+                 slots = c(measure = "character",
+                           tag = "formula",
+                           level = "character"))
 
 
 # Constructor function
@@ -53,15 +53,3 @@ setMethod("plot.diversity", "rdiv", function(results)
   
 })
 
-# #show() is the S4 analogy of print() in S3
-# setMethod("show", "rdiv",
-#           function(object) {
-#             print(object)
-#           }
-# )
-
-
-# 
-# b<-RDiversity(res,'alpha')
-# show(b)
-# b
