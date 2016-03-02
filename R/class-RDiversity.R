@@ -21,12 +21,15 @@ is.RDiversity <-
     inherits(x, "RDiversity")
   }
 
-#show() is the S4 analogy of print() in S3
 
 setGeneric("plot.diversity", 
            # valueClass = "gg", 
            function(results) {
              standardGeneric("plot.diversity")
+setMethod(f = "show", signature(object = "rdiv"), 
+          definition = function(object){
+            cat(object@measure, '\n\n')
+            print(object)} )
            })
 
 setMethod("plot.diversity", "rdiv", function(results) 
