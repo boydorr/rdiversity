@@ -14,11 +14,12 @@ rdiv <- setClass("rdiv",
 #       tag = tag,
 #       level = level)
 
+  
 # 
-is.RDiversity <-
+is.rdiv <-
   function (x) 
   {
-    inherits(x, "RDiversity")
+    inherits(x, "rdiv")
   }
 
 
