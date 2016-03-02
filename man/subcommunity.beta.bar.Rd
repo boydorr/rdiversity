@@ -4,28 +4,28 @@
 \alias{subcommunity.beta.bar}
 \title{Similarity-sensitive Normalised subcommunity.beta diversity}
 \usage{
-subcommunity.beta.bar(populations, qs, Z = diag(nrow(populations)), ...)
+subcommunity.beta.bar(populations, qs, Z = diag(nrow(populations)))
 }
 \arguments{
-\item{populations}{Population counts or proportions - single vector or matrix}
+\item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
-\item{qs}{Vector of values of parameter q}
+\item{qs}{\code{vector} of \emph{q} values}
 
-\item{Z}{Similarity matrix}
+\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 
 \item{...}{}
 }
 \value{
 Data frame of diversities, columns representing populations, and
-rows representing values of q
+rows representing values of \emph{q}
 }
 \description{
 Calculates the diversity of a series of columns representing independent
 subcommunities counts relative to a total supercommunity (by default the 
 sum of the sub-communities), for a series of orders, repesented as a 
-vector of qs.
+vector of \code{qs}.
 }
 \seealso{
-\code{\link{subcommunity.beta}}
+\code{\link{subcommunity.beta}}, \code{\link{supercommunity.B}}, \code{\link{supercommunity.B.bar}}
 }
 

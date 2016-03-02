@@ -8,25 +8,26 @@ subcommunity.gamma(populations, qs, Z = diag(nrow(populations)),
   normalise = F)
 }
 \arguments{
-\item{populations}{Population counts or proportions; single vector or matrix}
+\item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
-\item{qs}{Vector of values of parameter q}
+\item{qs}{\code{vector} of \emph{q} values}
 
-\item{Z}{Similarity matrix}
+\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 
-\item{normalise}{Normalise probability distribution to sum to 1}
+\item{normalise}{logical operator; T returns normalised probability 
+distribution summed to 1}
 }
 \value{
 Data frame of diversities, columns representing populations, and
-rows representing values of q
+rows representing values of \emph{q}
 }
 \description{
 Calculates the diversity of a series of columns representing independent 
 subcommunities counts relative to a total supercommunity (by default the 
 sum of the subcommunities), for a series of orders, repesented as a  
-vector of qs.
+vector of \code{qs}.
 }
 \seealso{
-\code{\link{subcommunity.gamma.bar}}
+\code{\link{subcommunity.gamma.bar}}, \code{\link{supercommunity.G}}, \code{\link{supercommunity.G.bar}}
 }
 

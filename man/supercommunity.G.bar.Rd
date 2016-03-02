@@ -7,21 +7,21 @@
 supercommunity.G.bar(populations, qs, Z = diag(nrow(populations)))
 }
 \arguments{
-\item{populations}{Population counts or proportions}
+\item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
-\item{qs}{Vector of values of parameter q}
+\item{qs}{\code{vector} of \emph{q} values}
 
-\item{Z}{Similarity matrix}
+\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 }
 \value{
-array of diversities, last representing values of q
+array of diversities, last representing values of \emph{q}
 }
 \description{
 Calculates the total supercommunity gamma diversity of a series of columns
 representing subcommunity counts, for a series of orders, repesented as a 
-vector of qs.
+vector of \code{qs}.
 }
 \seealso{
-\code{\link{supercommunity.G}}
+\code{\link{supercommunity.G}}, \code{\link{subcommunity.gamma}}, \code{\link{subcommunity.gamma.bar}}
 }
 

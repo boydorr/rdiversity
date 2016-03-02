@@ -7,21 +7,21 @@
 supercommunity.B.bar(populations, qs, Z = diag(nrow(populations)))
 }
 \arguments{
-\item{populations}{Population counts or proportions}
+\item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
-\item{qs}{Vector of values of parameter q}
+\item{qs}{\code{vector} of \emph{q} values}
 
-\item{Z}{Similarity matrix}
+\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 }
 \value{
-An array of diversities, last representing values of q
+An array of diversities, last representing values of \emph{q}
 }
 \description{
 Calculates the total supercommunity beta diversity of a series of columns
 representing subcommunity counts, for a series of orders, repesented as a 
-vector of qs.
+vector of \code{qs}.
 }
 \seealso{
-\code{\link{supercommunity.B}}
+\code{\link{supercommunity.B}}, \code{\link{subcommunity.beta}}, \code{\link{subcommunity.beta.bar}}
 }
 

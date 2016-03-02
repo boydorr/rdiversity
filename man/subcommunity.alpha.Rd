@@ -8,24 +8,25 @@ subcommunity.alpha(populations, qs, Z = diag(nrow(populations)),
   normalise = F)
 }
 \arguments{
-\item{populations}{Population counts or proportions}
+\item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
-\item{qs}{Vector of values of parameter q}
+\item{qs}{\code{vector} of \emph{q} values}
 
-\item{Z}{Similarity matrix}
+\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 
-\item{normalise}{Normalise probability distribution to sum to 1}
+\item{normalise}{logical operator; T returns normalised probability 
+distribution summed to 1}
 }
 \value{
-An array of diversities, first dimension representing 
-subcommunities, and last representing values of q
+Returns an array of diversities, first dimension representing 
+subcommunities, and last representing values of \emph{q}
 }
 \description{
 Calculates the diversity of a series of columns representing
 independent subcommunity counts, for a series of orders, repesented as
-a vector of qs
+a vector of \code{qs}.
 }
 \seealso{
-\code{\link{subcommunity.alpha.bar, subcommunity.A, supercommunity.A.bar}}
+\code{\link{subcommunity.alpha.bar}}, \code{\link{supercommunity.A}}, \code{\link{supercommunity.A.bar}}
 }
 
