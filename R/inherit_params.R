@@ -3,8 +3,8 @@
 #' @aliases inherit_params
 #' @name inherit_params
 #'
-#' @param populations Matrix of population counts or proportions
-#' @param qs Vector of values of parameter \emph{q}
-#' @param Z Similarity matrix
+#' @param populations \eqn{n x m} \code{matrix} of population counts or proportions
+#' @param qs \code{vector} of \emph{q} values
+#' @param Z \eqn{n x n} \code{matrix} of pair-wise similarity values
 #' 
 NULL
