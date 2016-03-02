@@ -6,13 +6,13 @@ rdiv <- setClass("rdiv",
                            level = "character"))
 
 
-# Constructor function
-rdiv <- function(measure, tag, level) 
-  new("RDiversity", 
-      measure = measure,
-      tag = tag,
-      level = level)
-
+# # Constructor function
+# rdiv <- function(data, measure, tag, level) 
+#   new("rdiv", 
+#       data, 
+#       measure = measure,
+#       tag = tag,
+#       level = level)
 
 # 
 is.RDiversity <-
