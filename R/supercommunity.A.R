@@ -5,7 +5,8 @@
 #' vector of \code{qs}.
 #'
 #' @inheritParams inherit_params
-#' @param normalise Normalise probability distribution to sum to 1
+#' @param normalise logical operator; T returns normalised probability 
+#' distribution summed to 1
 #' @return An array of diversities, last representing values of \emph{q}
 #' 
 #' @seealso \code{\link{supercommunity.A.bar}}, \code{\link{subcommunity.alpha}}, \code{\link{subcommunity.alpha.bar}}

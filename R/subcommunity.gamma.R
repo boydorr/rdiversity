@@ -6,7 +6,8 @@
 #' vector of \code{qs}.
 #'
 #' @inheritParams inherit_params
-#' @param normalise Normalise probability distribution to sum to 1
+#' @param normalise logical operator; T returns normalised probability 
+#' distribution summed to 1
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
 #' 
