@@ -2,30 +2,28 @@
 #' 
 #' The function \code{calculate.zmatrix} calculates the similarity matrix.
 #' 
-#' The argument \code{type} takes the following inputs: \cr
+#' The argument \code{similarity} takes the following inputs: \cr
 #' \tabular{ll}{
 #' \code{unique} \tab - assumes all \emph{types} are unique \cr
 #' \code{taxonomic} \tab - assumes all \emph{types} are species; calculates a 
 #' similarity matrix based on Shimatani's taxonomic similarity \cr
 #' }
 #' 
-#' @param type character string; defining which similarity measure is being 
+#' @param similarity character string; defining which similarity measure is being 
 #' called for. 
 #' @param data matrix of count data
 #' @param lookup required for calculating \code{taxonomic} similarity; contains 
 #' four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'
 #' @return matrix of pair-wise similarity indices
 #' 
-calculate.zmatrix <- function(type, data, lookup = NA) 
+calculate.zmatrix <- function(similarity, data, lookup = NA) 
 {
-  if(type=='unique') {
     N <- nrow(data)
     zmatrix <- diag(N)
     row.names <- row.names(data)
     colnames <- row.names(data)
     return(zmatrix)
     
-  }else if(type=='taxonomic') {
     if(nrow(data)!=nrow(lookup)) stop('data and lookup do not match up')
     N <- nrow(data)
     
@@ -50,6 +48,8 @@ calculate.zmatrix <- function(type, data, lookup = NA)
           zmatrix[i,j] <- subclass.similarity
         } else zmatrix[i,j] <- other.similarity
       }
+  if(similarity=='unique') {
+  }else if(similarity=='taxonomic') {
     }
     row.names(zmatrix) <- row.names(data)
     colnames(zmatrix) <- row.names(data)
