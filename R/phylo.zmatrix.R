@@ -77,20 +77,16 @@ phylo.zmatrix <- function(tree,
   for (row.index in 1:Ntype) {
     cat("\r", "Calculating Z matrix: row", row.index, "of", Ntype) 
     flush.console()
-    # Ancestral species ID
+    # Historic species 
     ib <- hs[row.index]
-    # Present day species index
-    # pds.ib <- strsplit(ib)
-    # Historic species tip 
-    hs.tip <- as.numeric(strsplit(ib,"-")[[1]][2])
-    # Descendants (pds) of hs.tip
-    ib.descendants <- phangorn::Descendants(tree, hs.tip)[[1]]
+    # Present day species descendant
+    ib.pds <- as.numeric(strsplit(ib,'-')[[1]][2])
     
     zmatrix.row <- vector()
     for (col.index in 1:Ntype) {
-      # Ancestral species ID
+      # Historic species (to compare)
       jc <- hs[col.index]
-      # Present day species index
+      # Present day species descendant
       jc.pds <- as.numeric(strsplit(jc,",")[[1]][1])
       # Length of evolutionary history of present day species j
       j.length <- Lj[jc.pds]
@@ -98,7 +94,8 @@ phylo.zmatrix <- function(tree,
       # Similarity between historic species (i,b) and species (j,c)  
       # is non-zero when species j is found within the set of species  
       # descended from branch b
-      if (any(ib.descendants %in% jc.pds)) {
+      if ((ib.pds==jc.pds)) {
+        
         zmatrix.row[jc] <- Tbar/j.length
       } else {
         zmatrix.row[jc] <- 0
