@@ -48,7 +48,7 @@ hs.names <- function(tree, node)
 #' @param tree object of class \code{phylo}
 #' @param pds.abundance vector of length {S}; relative abundance of present-day 
 #' species
-#' @return \eqn{hS x hS} matrix of pair-wise similarity of historic species
+#' @return \eqn{hS x hS} matrix; pair-wise similarity of historic species
 #' 
 phylo.zmatrix <- function(tree, 
                           pds.abundance = rep(1/length(tree$tip.label),
