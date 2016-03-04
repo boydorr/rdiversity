@@ -22,7 +22,7 @@ calculate.zmatrix <- function(similarity, data, lookup = NA)
     unique.zmatrix(data)
   }else if(similarity=='taxonomic') {
     tax.zmatrix(data, lookup)
-  }else if(similarity=='phylogenetic') {
+  }else if(similarity=='phylogenetic' | class(data)=='phylo') {
     phylo.zmatrix(data)
   }else stop('Similarity not recognised')
 }
