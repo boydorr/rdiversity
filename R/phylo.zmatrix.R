@@ -93,6 +93,7 @@ phylo.zmatrix <- function(tree,
     }
     zmatrix[ib,] <- zmatrix.row
   }
+  return(zmatrix)
 }
 
 
