@@ -38,7 +38,7 @@ calculate.zmatrix <- function(similarity, data, lookup = NA)
 #' @return Returns an \eqn{S x S} \code{matrix}; identity matrix where each \emph{type} 
 #' is completely distinct
 #' 
-unique.zmatrix <- function() {
+unique.zmatrix <- function(data) {
   S <- nrow(data)
   zmatrix <- diag(S)
   row.names <- row.names(data)
