@@ -43,6 +43,8 @@ phylo.zmatrix <- function(tree,
                           time.interval = NA, 
                           year.last.sample = NA) 
 {
+  if(class(tree)!='phylo') stop('tree should be object of class phylo.')
+  
   # Extract data
   pds.nodes <- 1:length(tree$tip.label)
   
