@@ -95,7 +95,7 @@ tax.zmatrix <- function(data, lookup)
   }
   row.names(zmatrix) <- row.names(data)
   colnames(zmatrix) <- row.names(data)
-  attr(zmatrix, 'similarity') <- similarity
+  # attr(zmatrix, 'similarity') <- similarity
   return(zmatrix)
 }
 
