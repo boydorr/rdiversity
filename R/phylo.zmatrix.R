@@ -1,6 +1,11 @@
+#' Total evolutionary change
 #' 
+#' Calculate the total length of evolutionary change of species \emph{j}; may 
+#' be in internal or external node corresponding to present-day and historic 
+#' species, respectively.
 #' 
-#' 
+#' @inheritParams hs.names
+#' @return object of class \code{numeric}
 #' 
 calc.Lj <- function(tree, node) 
 {
@@ -21,6 +26,10 @@ calc.Lj <- function(tree, node)
 #' with the present day species descendant, and node-tip corresponds to the 
 #' node index and tip index associated with the historic species itself.   
 #' 
+#' @param tree object of class \code{phylo}
+#' @param node integer corresponding to the node of interest
+#' @return object of class \code{character}
+#' 
 hs.names <- function(tree, node)
 {
   mothers <- phangorn::Ancestors(tree, node, 'all')
@@ -34,8 +43,12 @@ hs.names <- function(tree, node)
 
 #' Phylogenetic Similarity Matrix
 #' 
+#' Function to calculate phylogenetic similarity matrix from a phylogeny.
 #' 
-#' 
+#' @param tree object of class \code{phylo}
+#' @param pds.abundance vector of length {S}; relative abundance of present-day 
+#' species
+#' @return \eqn{hS x hS} matrix of pair-wise similarity of historic species
 #' 
 phylo.zmatrix <- function(tree, 
                           pds.abundance = rep(1/length(tree$tip.label),
