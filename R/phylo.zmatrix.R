@@ -52,9 +52,7 @@ hs.names <- function(tree, node)
 #' 
 phylo.zmatrix <- function(tree, 
                           pds.abundance = rep(1/length(tree$tip.label),
-                                              length(tree$tip.label)), 
-                          time.interval = NA, 
-                          year.last.sample = NA) 
+                                              length(tree$tip.label))) 
 {
   if(class(tree)!='phylo') stop('tree should be object of class phylo.')
   
