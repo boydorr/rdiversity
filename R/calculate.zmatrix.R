@@ -11,10 +11,10 @@
 #' 
 #' @param similarity character string; defining which similarity measure is being 
 #' called for. 
-#' @param data matrix of count data
+#' @param data \code{matrix} of count data
 #' @param lookup required for calculating \code{taxonomic} similarity; contains 
 #' four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'
-#' @return matrix of pair-wise similarity indices
+#' @return Returns an \eqn{S x S} matrix; pair-wise similarity of \emph{types}
 #' 
 calculate.zmatrix <- function(similarity, data, lookup = NA) 
 {
@@ -28,10 +28,15 @@ calculate.zmatrix <- function(similarity, data, lookup = NA)
 }
 
 
+#' Naive-type similarity matrix
 #' 
+#' This function returns a naive-type similarity matrix, whereby \emph{types} 
+#' are considered to be completely similar to themselves, but completely 
+#' distinct from each other.
 #' 
-#' 
-#' 
+#' @param data \eqn{S x N} \code{matrix}; population counts
+#' @return Returns an \eqn{S x S} \code{matrix}; identity matrix where each \emph{type} 
+#' is completely distinct
 #' 
 unique.zmatrix <- function() {
   S <- nrow(data)
@@ -42,10 +47,23 @@ unique.zmatrix <- function() {
 }
 
 
+#' Taxonomic similarity matrix
 #' 
+#' This function calculates taxonomic similarity based on Shimatani's 
+#' index of taxonomic similarity (See Details).
 #' 
+#' Shimatani's taxonomic similarity index is defined:
+#' \tabular{ll}{
+#' \code{species.similarity} \tab 1 \cr
+#' \code{genus.similarity} \tab 0.75 \cr
+#' \code{family.similarity} \tab 0.5 \cr
+#' \code{subclass.similarity} \tab 0.25 \cr
+#' \code{other.similarity} \tab 0 \cr
+#' }
 #' 
-#' 
+#' @param data \eqn{S x N} \code{matrix}; population counts
+#' @param lookup 
+#' @return Returns an \eqn{S x S} \code{matrix}; pair-wise taxonomic similarity
 #' 
 tax.zmatrix <- function(data, lookup) 
 {
