@@ -34,7 +34,7 @@ phylo.dat <- function(tree,
   hs.abundance <- (hs.length/Tbar) * pds.abundance[hs.pds]
   
   output <- new('rdphylo', tree, 
-                hs.name = hs,
+                hs.name = hs.name,
                 hs.pds = hs.pds,
                 hs.edge = hs.edge,
                 hs.abundance = hs.abundance)
