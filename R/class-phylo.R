@@ -1,10 +1,4 @@
-#' Class 'rdphylo'
-#' 
-#' Define S4 class \code{rdphylo}.
-#' 
-#' 
-#' 
-#' 
+
 rdphylo <- setClass("rdphylo",
                     contains = 'phylo',
                     slots = c(hs.name = "vector",
@@ -14,12 +8,6 @@ rdphylo <- setClass("rdphylo",
 )
 
 
-#' 
-#' 
-#' 
-#' 
-#' 
-#' 
 is.rdphylo <-
   function (x) 
   {
@@ -27,13 +15,6 @@ is.rdphylo <-
   }
 
 
-#' 
-#' 
-#' 
-#' 
-#' 
-#' 
-#' 
 setMethod(f = "show", signature(object = "rdphylo"), 
           definition = function(object){
             cat('Phylogenetic tree with', length(object$tip.label), 
@@ -48,21 +29,6 @@ setMethod(f = "show", signature(object = "rdphylo"),
             
             cat(rooted, '.')
           } )
-
-
-#' 
-#' 
-#' 
-#' 
-#' 
-#' 
-setMethod(f = "rdplot", signature = "rdphylo", 
-          definition = function(data){
-            ape::plot.phylo(data) 
-          } )
-
-
-
 
 
 
