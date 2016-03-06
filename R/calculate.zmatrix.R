@@ -62,7 +62,7 @@ unique.zmatrix <- function(data) {
 #' }
 #' 
 #' @param data \eqn{S x N} \code{matrix}; population counts
-#' @param lookup 
+#' @param lookup \code{data.frame} with colnames = c('Species', 'Genus', 'Family', 'Subclass')
 #' @return Returns an \eqn{S x S} \code{matrix}; pair-wise taxonomic similarity
 #' 
 tax.zmatrix <- function(data, lookup) 
