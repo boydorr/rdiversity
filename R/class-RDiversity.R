@@ -2,9 +2,10 @@
 #' 
 #' Define S4 class \linkS4class{rdiv}.
 #' 
-#' @slot measure \object of class \code{character}; e.g. 'subcommunity.alpha.bar'
+#' @slot measure object of class \code{character}; e.g. 'subcommunity.alpha.bar'
 #' @slot tag object of class \code{formula}; e.g. bquote('Subcommunity' ~ bar(alpha))
 #' @slot level object of class \code{character}; e.g. 'subcommunity'
+#' @param object object of class \linkS4class{rdiv}
 #' 
 rdiv <- setClass("rdiv",
                  contains = 'data.frame',
@@ -13,6 +14,7 @@ rdiv <- setClass("rdiv",
                            level = "character"))
 
 
+#' @rdname rdiv check object is of type rdiv
 is.rdiv <-
   function (x) 
   {
@@ -20,7 +22,7 @@ is.rdiv <-
   }
 
 
-#' @describeIn rdiv print class \linkS4class{rdiv}
+#' @describeIn rdiv 
 setMethod(f = "show", signature= "rdiv", 
           definition = function(object) {
             cat(object@measure, '\n\n')
