@@ -4,9 +4,15 @@ Title: What the package does (short line)
 Version: 0.1
 Date: 2016-02-22
 Author: Sonia Mitchell, Richard Reeve
-Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
-Description: Calculates the similarity-sensitive diversity of a population and it's partitions.
+Maintainer: Sonia Mitchell \email{soniamitchell@@gmail.com}
+Description: Calculates the similarity-sensitive diversity of a population and
+    it's partitions.
 License: Simplified "2-clause" BSD License
-Imports: methods, ggplot2, ape, phangorn
-Suggests: testthat
+Imports:
+    methods,
+    ggplot2,
+    ape,
+    phangorn
+Suggests:
+    testthat
 RoxygenNote: 5.0.1
