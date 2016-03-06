@@ -49,7 +49,6 @@ setGeneric(name = "rdplot",
              standardGeneric("rdplot")
            })
 
-setMethod(f = "plot", signature = "rdiv", definition = function(results, style='normal') 
 
 #' 
 #' 
@@ -58,8 +57,9 @@ setMethod(f = "plot", signature = "rdiv", definition = function(results, style='
 #' 
 #' 
 #' 
+setMethod(f = "rdplot", signature = "rdiv", definition = function(data) 
 {
-    plot.this <- cbind(stack(results), row.names(results), stringsAsFactors=F)
+    plot.this <- cbind(stack(data), row.names(data), stringsAsFactors=F)
     colnames(plot.this) <- c('diversity', 'q', 'subcommunity')
     plot.this$q <- as.numeric(gsub('q', '', plot.this$q))
     
@@ -68,11 +68,11 @@ setMethod(f = "plot", signature = "rdiv", definition = function(results, style='
                            y = 'diversity', 
                            group = 'subcommunity',
                            colour = 'subcommunity'), data = plot.this) 
-    g <- g + ggplot2::labs(x = bquote(italic('q')), y = results@tag)
+    g <- g + ggplot2::labs(x = bquote(italic('q')), y = data@tag)
     
     if(style=='big') {
       g <- g + ggplot2::theme(text = ggplot2::element_text(size=20))
     }
-    g
+    return(g)
 })
 
