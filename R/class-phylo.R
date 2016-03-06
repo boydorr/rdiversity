@@ -1,3 +1,9 @@
+#' 
+#' 
+#' 
+setOldClass("phylo")
+
+
 #' Class 'rdphylo'
 #'
 #' @slot hs.name \code{vector} of length hS; historic species names
