@@ -6,7 +6,7 @@
 #' vector of \code{qs}.
 #'
 #' @inheritParams inherit_params
-#' @param ...
+#' @param ... additional arguments
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
 #' 
