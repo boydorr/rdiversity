@@ -36,10 +36,6 @@ setMethod(f = "show", signature(object = "rdiv"),
             cat(object@measure, '\n\n')
             print(object)} )
 
-setGeneric(name = "plot", 
-           valueClass = "gg",
-           def = function(results, ...) {
-             standardGeneric("plot")
 
 #' 
 #' 
@@ -48,6 +44,9 @@ setGeneric(name = "plot",
 #' 
 #' 
 #' 
+setGeneric(name = "rdplot", 
+           def = function(data, ...) {
+             standardGeneric("rdplot")
            })
 
 setMethod(f = "plot", signature = "rdiv", definition = function(results, style='normal') 
