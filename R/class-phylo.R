@@ -1,8 +1,4 @@
-#' 
-#' 
-#' 
 setOldClass("phylo")
-
 
 #' Class 'rdphylo'
 #'
@@ -17,7 +13,8 @@ setClass("rdphylo",
          slots = c(hs.name = "vector",
                    hs.pds = "vector",
                    hs.edge = "matrix",
-                   hs.abundance = "vector"))
+                   hs.abundance = "vector"
+                   ))
 
 
 is.rdphylo <-
