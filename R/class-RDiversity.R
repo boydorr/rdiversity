@@ -6,6 +6,9 @@
 #' @slot tag object of class \code{formula}; e.g. bquote('Subcommunity' ~ bar(alpha))
 #' @slot level object of class \code{character}; e.g. 'subcommunity'
 #' @param object object of class \linkS4class{rdiv}
+#' @import methods
+#' @import ggplot2
+#' @export
 #' 
 rdiv <- setClass("rdiv",
                  contains = 'data.frame',
@@ -14,7 +17,6 @@ rdiv <- setClass("rdiv",
                            level = "character"))
 
 
-#' @rdname rdiv check object is of type rdiv
 is.rdiv <-
   function (x) 
   {
