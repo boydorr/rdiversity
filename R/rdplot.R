@@ -16,8 +16,8 @@ setGeneric(name = "rdplot",
            } )
 
 
-#' @describeIn rdplot
 setMethod(f = "rdplot", signature = "rdiv", definition = function(data)
+#' @describeIn RDplot plot object of class rdiv
 {
   plot.this <- cbind(stack(data), row.names(data), stringsAsFactors=F)
   colnames(plot.this) <- c('diversity', 'q', 'subcommunity')
