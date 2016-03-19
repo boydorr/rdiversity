@@ -9,6 +9,7 @@
 #' @return Object of class \code{initDiv}
 #' 
 #' @include calculate.zmatrix.R class-initDiv.R
+#' @export
 #' 
 set.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   
