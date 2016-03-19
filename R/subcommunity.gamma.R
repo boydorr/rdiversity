@@ -14,6 +14,21 @@
 #' @seealso \code{\link{subcommunity.gamma.bar}}, \code{\link{supercommunity.G}}, \code{\link{supercommunity.G.bar}}
 #' @export
 #' 
+#' @examples
+#' # Species counts
+#' population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+#'                         subcommunityB = sample(1:50, 5, replace=T))
+#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+#' 
+#' # q-parameter 
+#' qs <- 0:2
+#' 
+#' # Create object of class initDiv
+#' data <- set.collection(population)
+#' 
+#' # Calculate diversity
+#' subcommunity.gamma(data, qs)
+#' 
 subcommunity.gamma <-
 function(populations, qs, normalise = F)
 {

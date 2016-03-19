@@ -13,6 +13,21 @@
 #' @seealso \code{\link{subcommunity.rho}}, \code{\link{supercommunity.R}}, \code{\link{supercommunity.R.bar}}
 #' @export
 #' 
+#' @examples
+#' # Species counts
+#' population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+#'                         subcommunityB = sample(1:50, 5, replace=T))
+#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+#' 
+#' # q-parameter 
+#' qs <- 0:2
+#' 
+#' # Create object of class initDiv
+#' data <- set.collection(population)
+#' 
+#' # Calculate diversity
+#' subcommunity.rho.bar(data, qs)
+#' 
 subcommunity.rho.bar <-
 function(populations, qs)
 {

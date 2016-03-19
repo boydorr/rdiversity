@@ -10,6 +10,21 @@
 #' @seealso \code{\link{supercommunity.A}}, \code{\link{subcommunity.alpha}}, \code{\link{subcommunity.alpha.bar}}
 #' @export
 #' 
+#' @examples
+#' # Species counts
+#' population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+#'                         subcommunityB = sample(1:50, 5, replace=T))
+#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+#' 
+#' # q-parameter 
+#' qs <- 0:2
+#' 
+#' # Create object of class initDiv
+#' data <- set.collection(population)
+#' 
+#' # Calculate diversity
+#' supercommunity.A.bar(data, qs)
+#' 
 supercommunity.A.bar <-
 function(populations, qs)
 {
