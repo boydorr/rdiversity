@@ -16,8 +16,10 @@
 #' four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'
 #' @return Returns an \eqn{S x S} matrix; pair-wise similarity of \emph{types}
 #' 
-calculate.zmatrix <- function(similarity, data, lookup = NA) 
+calculate.zmatrix <- function(data, similarity = NA, lookup = NA) 
 {
+  if(is.na(similarity)) similarity <- 'unique' 
+    
   if(similarity=='unique') {
     unique.zmatrix(data)
   }else if(similarity=='taxonomic') {
