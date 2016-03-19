@@ -15,8 +15,9 @@
 #' @export
 #' 
 subcommunity.rho <-
-function(populations, qs, Z = diag(nrow(populations)), ...)
+function(populations, qs, ...)
 {
+  Z = populations@zmatrix
   res <- 1 / subcommunity.beta(populations, qs, Z, ...)
 
   output <- new('rdiv', res, measure = 'Subcommunity rho',

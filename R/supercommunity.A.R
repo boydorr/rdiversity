@@ -13,9 +13,9 @@
 #' @export
 #' 
 supercommunity.A <-
-function(populations, qs, Z = diag(nrow(populations)),
-                        normalise = F)
+function(populations, qs, normalise = F)
 {
+  Z = populations@zmatrix
   # If we just have a single vector, then turn it into single column matrix
   if (is.vector(populations))
     populations <- array(populations, dim=c(length(populations), 1))

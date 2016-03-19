@@ -12,8 +12,9 @@
 #' @export
 #' 
 subcommunity.alpha.bar <- 
-function(populations, qs, Z = diag(nrow(populations))) 
+function(populations, qs) 
 {
+  Z = populations@zmatrix
   res <- subcommunity.alpha(populations, qs, Z, normalise = T)
   res <- data.frame(res)
   

@@ -11,8 +11,9 @@
 #' @export
 #' 
 supercommunity.A.bar <-
-function(populations, qs, Z = diag(nrow(populations)))
+function(populations, qs)
 {
+  Z = populations@zmatrix
   res <- supercommunity.A(populations, qs, Z, normalise = T)
 
   output <- new('rdiv', res, measure = 'Supercommunity A bar',
