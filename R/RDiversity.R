@@ -11,6 +11,9 @@
 #' @name RDiversity
 #' @docType package
 #' 
+#' @import ggplot2
+#' @import methods
+#' 
 #' @author 
 #' Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve 
 #' \cr
