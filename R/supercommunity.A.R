@@ -26,7 +26,7 @@ function(populations, qs, normalise = F)
   data <- summarise(populations, normalise)
   
   # Turn all columns into proportions if needed
-  ds <- subcommunity.alpha(populations, qs, Z, normalise)
+  ds <- subcommunity.alpha(populations, qs, normalise)
   
   res <- mapply(power.mean,
                 values = as.list(as.data.frame(ds)),

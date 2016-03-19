@@ -17,7 +17,7 @@ subcommunity.beta.bar <-
 function(populations, qs)
 {
   Z = populations@zmatrix
-  res <- subcommunity.beta(populations, qs, Z, normalise = T)
+  res <- subcommunity.beta(populations, qs, normalise = T)
 
   output <- new('rdiv', res, measure = 'Subcommunity beta bar',
             tag = bquote('Subcommunity' ~ bar(beta)),

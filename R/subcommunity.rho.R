@@ -18,7 +18,7 @@ subcommunity.rho <-
 function(populations, qs, ...)
 {
   Z = populations@zmatrix
-  res <- 1 / subcommunity.beta(populations, qs, Z, ...)
+  res <- 1 / subcommunity.beta(populations, qs, ...)
 
   output <- new('rdiv', res, measure = 'Subcommunity rho',
             tag = bquote('Subcommunity' ~ rho),

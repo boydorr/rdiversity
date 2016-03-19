@@ -17,7 +17,7 @@ subcommunity.rho.bar <-
 function(populations, qs)
 {
   Z = populations@zmatrix
-  res <- 1 / subcommunity.beta.bar(populations, qs, Z)
+  res <- 1 / subcommunity.beta.bar(populations, qs)
 
   output <- new('rdiv', res, measure = 'Subcommunity rho bar',
             tag = bquote('Subcommunity' ~ bar(rho)),

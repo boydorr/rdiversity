@@ -14,7 +14,7 @@ supercommunity.G.bar <-
 function(populations, qs)
 {
   Z = populations@zmatrix
-  res <- supercommunity.G(populations, qs, Z, normalise = T)
+  res <- supercommunity.G(populations, qs, normalise = T)
 
   output <- new('rdiv', res, measure = 'Supercommunity G bar',
             tag = bquote('Supercommunity' ~ bar(italic('G'))),

@@ -15,7 +15,7 @@ subcommunity.alpha.bar <-
 function(populations, qs) 
 {
   Z = populations@zmatrix
-  res <- subcommunity.alpha(populations, qs, Z, normalise = T)
+  res <- subcommunity.alpha(populations, qs, normalise = T)
   res <- data.frame(res)
   
   output <- new('rdiv', res, measure = 'Subcommunity alpha bar',

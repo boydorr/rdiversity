@@ -17,7 +17,7 @@ subcommunity.gamma.bar <-
 function(populations, qs, ...)
 {
   Z = populations@zmatrix
-  res <- subcommunity.gamma(populations, qs, Z, ..., normalise = T)
+  res <- subcommunity.gamma(populations, qs, ..., normalise = T)
   
   output <- new('rdiv', res, measure = 'Subcommunity gamma bar',
             tag = bquote('Subcommunity' ~ bar(gamma)),
