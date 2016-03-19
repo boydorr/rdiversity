@@ -10,7 +10,8 @@
 #' 
 rdiv <- setClass("rdiv",
                  contains = 'data.frame',
-                 slots = c(measure = "character",
+                 slots = c(.Data ='data.frame',
+                           measure = "character",
                            tag = "formula",
                            level = "character"))
 
