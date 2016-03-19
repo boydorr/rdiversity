@@ -3,9 +3,9 @@
 #' This object contains 
 #' 
 #' @param data Object of class \code{matrix}
-#' @param similarity
-#' @param zmatrix
-#' @param lookup
+#' @param similarity Object of class \code{character}
+#' @param zmatrix Object of class \code{matrix}
+#' @param lookup Object of class \code{data.frame}
 #' @return Object of class \code{initDiv}
 #' 
 #' @include calculate.zmatrix.R class-initDiv.R
