@@ -22,9 +22,8 @@ is.rdiv <-
     inherits(x, "rdiv")
   }
 
-
-#' @describeIn rdiv 
-setMethod(f = "show", signature= "rdiv", 
+#' @describeIn rdiv Prints diversity results
+setMethod(f = "show", signature = "rdiv", 
           definition = function(object) {
             cat(object@measure, '\n\n')
             print(object) 
