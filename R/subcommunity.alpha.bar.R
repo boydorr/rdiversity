@@ -8,7 +8,7 @@
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of \emph{q}
 #' 
-#' @seealso \code{\link{subcommunity.alpha}}, \code{\link{supercommunity.A}}, \code{\link{supercommunity.A.bar}}
+#' @seealso \code{\link{diversity}}
 #' @export
 #' 
 #' @examples

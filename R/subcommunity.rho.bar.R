@@ -10,7 +10,7 @@
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
 #' 
-#' @seealso \code{\link{subcommunity.rho}}, \code{\link{supercommunity.R}}, \code{\link{supercommunity.R.bar}}
+#' @seealso \code{\link{diversity}}
 #' @export
 #' 
 #' @examples

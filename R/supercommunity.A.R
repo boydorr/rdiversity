@@ -9,7 +9,7 @@
 #' distribution summed to 1
 #' @return An array of diversities, last representing values of \emph{q}
 #' 
-#' @seealso \code{\link{supercommunity.A.bar}}, \code{\link{subcommunity.alpha}}, \code{\link{subcommunity.alpha.bar}}
+#' @seealso \code{\link{diversity}}
 #' @export
 #' 
 #' @examples

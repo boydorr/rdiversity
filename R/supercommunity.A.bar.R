@@ -7,7 +7,7 @@
 #' @inheritParams inherit_params
 #' @return An array of diversities, last representing values of \emph{q}
 #' 
-#' @seealso \code{\link{supercommunity.A}}, \code{\link{subcommunity.alpha}}, \code{\link{subcommunity.alpha.bar}}
+#' @seealso \code{\link{diversity}}
 #' @export
 #' 
 #' @examples

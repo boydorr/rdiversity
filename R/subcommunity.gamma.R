@@ -11,7 +11,7 @@
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
 #' 
-#' @seealso \code{\link{subcommunity.gamma.bar}}, \code{\link{supercommunity.G}}, \code{\link{supercommunity.G.bar}}
+#' @seealso \code{\link{diversity}}
 #' @export
 #' 
 #' @examples

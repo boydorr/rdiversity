@@ -10,7 +10,7 @@
 #' @return Returns an array of diversities, first dimension representing 
 #' subcommunities, and last representing values of \emph{q}
 #' 
-#' @seealso \code{\link{subcommunity.alpha.bar}}, \code{\link{supercommunity.A}}, \code{\link{supercommunity.A.bar}}
+#' @seealso \code{\link{diversity}}
 #' @export
 #' 
 #' @examples
