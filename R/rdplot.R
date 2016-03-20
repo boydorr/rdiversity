@@ -29,7 +29,6 @@ setGeneric(name = "rdplot",
            } )
 
 
-#' @describeIn RDplot plot object of class rdiv
 setMethod(f = "rdplot", signature = "rdiv", definition = function(data, style='normal')
 {
   plot.this <- cbind(stack(data), row.names(data), stringsAsFactors=F)
@@ -53,12 +52,11 @@ setMethod(f = "rdplot", signature = "rdiv", definition = function(data, style='n
   return(g)
 } )
 
-
-#' @describeIn rdplot
-setMethod(f = "rdplot", signature = "rdphylo",
-          definition = function(data){
-            ape::plot.phylo(data)
-          } )
+# 
+# setMethod(f = "rdplot", signature = "rdphylo",
+#           definition = function(data){
+#             ape::plot.phylo(data)
+#           } )
 
 
 
