@@ -3,9 +3,8 @@
 #' Calculates the diversity of a series of columns representing independent
 #' populations, for a series of orders, repesented as a vector of qs.
 #'
-#' @param populations Population counts or proportions
+#' @param populations object of class \code{initDiv}
 #' @param qs Vector of values of parameter q
-#' @param Z Similarity matrix
 #'
 #' @return Data frame of diversities, columns representing populations, and 
 #' rows representing values of q
