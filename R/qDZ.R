@@ -20,13 +20,13 @@ function(populations, qs) {
     if (isdf)
         populations <- as.matrix(populations)
     
-    # If populations are input as proportions, check that they sum to 1
-    if (any(populations > 0 & populations < 1)) {
-        if (!isTRUE(all.equal(apply(populations, 2, sum), rep(1, ncol(populations))))) {
-            stop('populations (argument) must be entered as either: a set of integers or a set of proportions which sum to 1.')
-        }}
+    # # If populations are input as proportions, check that they sum to 1
+    # if (any(populations > 0 & populations < 1)) {
+    #     if (!isTRUE(all.equal(apply(populations, 2, sum), rep(1, ncol(populations))))) {
+    #         stop('populations (argument) must be entered as either: a set of integers or a set of proportions which sum to 1.')
+    #     }}
     
-    if (is.vector(populations) & dim(Z)[1] == 0) Z = diag(nrow(matrix((populations))))
+    # if (is.vector(populations) & dim(Z)[1] == 0) Z = diag(nrow(matrix((populations))))
     
     subcommunity.alpha.bar(populations = populations, qs = qs, Z = Z)
 }
