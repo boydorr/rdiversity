@@ -130,8 +130,10 @@ div.super <- function(data, qs)
 }
 
 
-calculate.diversity <- function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) {
-  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+#' @describeIn diversity Calculates multiple measures of diversity, 
+#' returning results in a list 
+calculate.diversity <- function(measure, data, qs) {
+  lapply(measure, function(x) ans <- x(data, qs))
 }
 
 
