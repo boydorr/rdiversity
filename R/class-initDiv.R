@@ -2,7 +2,10 @@
 #' 
 #' Define S4 class \linkS4class{initDiv}.
 #' 
-#' @slot measure object of class \code{matrix}; 
+#' @slot .Data object of class \code{matrix}; proportional abundance 
+#' of \emph{types}
+#' @slot zmatrix object of class \code{matrix}; pairwise similarity 
+#' between \emph{types}
 #' @param object object of class \linkS4class{initDiv}
 #' @export
 #' 
