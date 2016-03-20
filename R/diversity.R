@@ -103,7 +103,12 @@ div.sub <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
                      subcommunity.rho, subcommunity.rho.bar,
                      subcommunity.gamma, subcommunity.gamma.bar)
   
-  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+  output <- lapply(measure, function(x) ans <- x(data, qs))
+  names(output) <- c("subcommunity.alpha", "subcommunity.alpha.bar", 
+                     "subcommunity.beta", "subcommunity.beta.bar", 
+                     "subcommunity.rho", "subcommunity.rho.bar",
+                     "subcommunity.gamma", "subcommunity.gamma.bar")
+  return(output)
 }
 
 
