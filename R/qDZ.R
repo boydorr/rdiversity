@@ -28,5 +28,5 @@ function(populations, qs) {
     
     # if (is.vector(populations) & dim(Z)[1] == 0) Z = diag(nrow(matrix((populations))))
     
-    subcommunity.alpha.bar(populations = populations, qs = qs, Z = Z)
+    subcommunity.alpha.bar(populations = populations, qs = qs)
 }
