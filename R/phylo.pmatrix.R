@@ -10,14 +10,14 @@ phylo.pmatrix <- function(tree, lookup) {
 
   new.tree <- phylo.dat(tree)
 
-  # Calculate proportional abundance of hs
-  hs.abundance <- sapply(1:Ntype, function(x) {
-    tree$edge
-    tree$edge.length
-
+  N.hs <- length(new.tree@hs.name)
+  subcommunities <- unique(lookup$subcommunity)
+  N.subcommunities <- length(subcommunities)
+    
     # Define pmatrix (type = historic species)
-    zmatrix <- matrix(NA, nrow = length(subcommunities), ncol = Ntype)
-    colnames(zmatrix) <- subcommunities; row.names(zmatrix) <- hs
+    pmatrix <- matrix(NA, nrow = N.hs, ncol = N.subcommunities)
+    colnames(pmatrix) <- subcommunities
+    row.names(pmatrix) <- new.tree$hs.name
 
 
     # Calculate p-matrix
@@ -27,7 +27,6 @@ phylo.pmatrix <- function(tree, lookup) {
     pmatrix$human[human.index] <- data$branch.abundance[human.index]
     animal.index <- grep("^V",data$species)
     pmatrix$animal[animal.index] <- data$branch.abundance[animal.index]
-  })
 
 }
 
