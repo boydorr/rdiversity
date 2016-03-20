@@ -119,7 +119,12 @@ div.super <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
                      supercommunity.R, supercommunity.R.bar,
                      supercommunity.G, supercommunity.G.bar)
   
-  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+  output <- lapply(measure, function(x) ans <- x(pmatrix, qs))
+  names(output) <- c("supercommunity.A", "supercommunity.A.bar",
+                     "supercommunity.B", "supercommunity.B.bar",
+                     "supercommunity.R", "supercommunity.R.bar",
+                     "supercommunity.G", "supercommunity.G.bar")
+  return(output)
 }
 
 
