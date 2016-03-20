@@ -4,7 +4,7 @@
 #' 
 #' @title rdplot()
 #'
-#' S4 generic function \code{rdplot()}.
+#' @description S4 generic function \code{rdplot()}.
 #'
 #' @param data object of class \code{rdiv} returns a diversity profile; object
 #' of class \linkS4class{rdphylo} returns phylogenetic tree
