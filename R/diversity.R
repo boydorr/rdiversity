@@ -94,9 +94,9 @@ div.all <- function(data, qs)
 }
 
 
-div.sub <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
 #' @describeIn diversity Calculates all subcommunity measures of diversity, 
 #' returning results in a list 
+div.sub <- function(data, qs)
 {
   measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
                      subcommunity.beta, subcommunity.beta.bar, 
