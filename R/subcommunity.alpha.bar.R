@@ -26,7 +26,6 @@
 subcommunity.alpha.bar <- 
 function(populations, qs) 
 {
-  Z = populations@zmatrix
   res <- subcommunity.alpha(populations, qs, normalise = T)
   res <- data.frame(res)
   
