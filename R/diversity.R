@@ -53,22 +53,22 @@
 #' output[[1]]
 #' 
 diversity <-
-  function(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix))) 
+  function(measure, data, qs) 
   {
     if(deparse(substitute(measure))=='all') {
-      div.all(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+      div.all(data, qs)
     }else if(deparse(substitute(measure))=='subcommunity') {
-      div.sub(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+      div.sub(data, qs)
     }else if(deparse(substitute(measure))=='supercommunity') {
-      div.super(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+      div.super(data, qs)
     }else if(length(measure)==1 & class(measure)=='function') {
-      output <- measure(pmatrix, qs, zmatrix)
+      measure(data, qs)
     }else 
-      output <- calculate.diversity(measure, pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+      calculate.diversity(measure, data, qs)
   }
 
 
-div.all <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+div.all <- function(data, qs)
 {
   measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
                      subcommunity.beta, subcommunity.beta.bar, 
