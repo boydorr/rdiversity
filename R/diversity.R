@@ -68,6 +68,8 @@ diversity <-
   }
 
 
+#' @describeIn diversity Calculates all subcommunity and supercommunity 
+#' measures of diversity, returning results in a list 
 div.all <- function(data, qs)
 {
   measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
