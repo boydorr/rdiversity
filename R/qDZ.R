@@ -10,7 +10,7 @@
 #' rows representing values of q
 #' 
 qDZ <-
-function(populations, qs, Z = diag(nrow(populations))) {
+function(populations, qs) {
     # If we just have a single vector, then turn it into single column matrix
     if (is.vector(populations))
         populations <- array(populations, dim=c(length(populations), 1))
