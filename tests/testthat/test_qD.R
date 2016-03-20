@@ -2,9 +2,9 @@ context('Testing the qD() function')
 require(gtools)
 
 numspecies <- 100
-weights <- t(rdirichlet(1, rep(1, numspecies)))
+weights <- t(gtools::rdirichlet(1, rep(1, numspecies)))
 numcommunities <- 8
-manyweights <- t(rdirichlet(numcommunities, rep(1, numspecies)))
+manyweights <- t(gtools::rdirichlet(numcommunities, rep(1, numspecies)))
 
 test_that("The basic qD diversity calculations", {
   expect_equal(c(qD(weights, 0)), 
