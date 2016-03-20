@@ -69,8 +69,8 @@ diversity <-
 
 
 #' @rdname diversity 
-#' @usage div.all(data, qs) - Calculates all subcommunity and supercommunity 
-#' measures of diversity, returning results in a list 
+#' @usage div.all(data, qs) # Calculates all subcommunity and supercommunity 
+#' # measures of diversity, returning results in a list 
 #' 
 div.all <- function(data, qs)
 {
@@ -97,8 +97,8 @@ div.all <- function(data, qs)
 
 
 #' @rdname diversity 
-#' @usage div.sub(data, qs) - Calculates all subcommunity measures of 
-#' diversity, returning results in a list 
+#' @usage div.sub(data, qs) # Calculates all subcommunity measures of 
+#' # diversity, returning results in a list 
 #' 
 div.sub <- function(data, qs)
 {
@@ -117,8 +117,8 @@ div.sub <- function(data, qs)
 
 
 #' @rdname diversity 
-#' @usage div.super(data, qs) - Calculates all supercommunity measures of 
-#' diversity, returning results in a list 
+#' @usage div.super(data, qs) # Calculates all supercommunity measures of 
+#' # diversity, returning results in a list 
 #' 
 div.super <- function(data, qs)
 {
@@ -137,11 +137,12 @@ div.super <- function(data, qs)
 
 
 #' @rdname diversity 
-#' @usage calculate.diversity(measure, data, qs) - Calculates multiple measures 
-#' of diversity, returning results in a list 
+#' @usage calculate.diversity(measure, data, qs) # Calculates multiple measures 
+#' # of diversity, returning results in a list 
 #' @examples 
 #' output <- calculate.diversity(c(subcommunity.alpha.bar, supercommunity.A.bar), data, 0:2)
 #' output[[1]]
+#' @export
 #' 
 calculate.diversity <- function(measure, data, qs) {
   lapply(measure, function(x) ans <- x(data, qs))
