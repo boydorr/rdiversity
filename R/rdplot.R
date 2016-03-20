@@ -1,4 +1,3 @@
-
 #' rdplot()
 #'
 #' S4 generic function \code{rdplot()}.
@@ -8,8 +7,22 @@
 #' @param ... additional parameters
 #' @return object of class \linkS4class{rdiv} returns a diversity profile; object
 #' of class \linkS4class{rdphylo} returns phylogenetic tree
-#' @rdname rdplot
-#'
+#' @include class-RDiversity.R
+#' 
+#' @examples 
+#' # Species counts
+#' population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+#'                         subcommunityB = sample(1:50, 5, replace=T))
+#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+#' 
+#' # Create object of class initDiv
+#' data <- set.collection(population)
+#' 
+#' # Calculate diversity
+#' output <- diversity(subcommunity.alpha.bar, data, 0:2)
+#' 
+#' rdplot(output)
+#' 
 setGeneric(name = "rdplot",
            def = function(data, ...) {
              standardGeneric("rdplot")
