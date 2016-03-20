@@ -4,14 +4,12 @@
 \alias{qDZ}
 \title{Similarity-sensitive diversity}
 \usage{
-qDZ(populations, qs, Z = diag(nrow(populations)))
+qDZ(populations, qs)
 }
 \arguments{
-\item{populations}{Population counts or proportions}
+\item{populations}{object of class \code{initDiv}}
 
 \item{qs}{Vector of values of parameter q}
-
-\item{Z}{Similarity matrix}
 }
 \value{
 Data frame of diversities, columns representing populations, and 

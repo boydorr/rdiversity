@@ -22,6 +22,10 @@ Define S4 class \linkS4class{initDiv}.
 \section{Slots}{
 
 \describe{
-\item{\code{measure}}{object of class \code{matrix};}
+\item{\code{.Data}}{object of class \code{matrix}; proportional abundance 
+of \emph{types}}
+
+\item{\code{zmatrix}}{object of class \code{matrix}; pairwise similarity 
+between \emph{types}}
 }}
 

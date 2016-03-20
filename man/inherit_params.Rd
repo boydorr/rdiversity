@@ -4,7 +4,7 @@
 \alias{inherit_params}
 \title{Function arguments}
 \arguments{
-\item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
+\item{populations}{object of class \code{initDiv}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 

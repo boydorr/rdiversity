@@ -7,7 +7,7 @@
 subcommunity.rho(populations, qs, ...)
 }
 \arguments{
-\item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
+\item{populations}{object of class \code{initDiv}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 
@@ -26,8 +26,8 @@ as a vector of \code{qs}.
 }
 \examples{
 # Species counts
-population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
-                        subcommunityB = sample(1:50, 5, replace=T))
+population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
+                        subcommunityB = sample(1:50, 5, replace = TRUE))
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
 # Create object of class initDiv
