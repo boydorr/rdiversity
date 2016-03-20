@@ -11,6 +11,21 @@
 #' @include calculate.zmatrix.R class-initDiv.R
 #' @export
 #' 
+#' @examples 
+#' # Species counts
+#' population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+#'                         subcommunityB = sample(1:50, 5, replace=T))
+#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+#' 
+#' # Create object of class initDiv
+#' data <- set.collection(population)
+#' 
+#' class(data)
+#' 
+#' data
+#' 
+#' data@zmatrix
+#' 
 set.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   
   # Check pmatrix
