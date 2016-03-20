@@ -112,7 +112,9 @@ div.sub <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
 }
 
 
-div.super <- function(pmatrix, qs, zmatrix = diag(nrow(pmatrix)))
+#' @describeIn diversity Calculates all supercommunity measures of diversity, 
+#' returning results in a list 
+div.super <- function(data, qs)
 {
   measure <- list(supercommunity.A, supercommunity.A.bar,
                      supercommunity.B, supercommunity.B.bar,
