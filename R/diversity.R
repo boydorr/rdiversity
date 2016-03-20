@@ -81,7 +81,16 @@ div.all <- function(data, qs)
                      supercommunity.R, supercommunity.R.bar,
                      supercommunity.G, supercommunity.G.bar)
   
-  output <- lapply(measure, function(x) ans <- x(pmatrix, qs, zmatrix))
+  output <- lapply(measure, function(x) ans <- x(data, qs))
+  colnames(output) <- c("subcommunity.alpha", "subcommunity.alpha.bar", 
+                        "subcommunity.beta", "subcommunity.beta.bar", 
+                        "subcommunity.rho", "subcommunity.rho.bar",
+                        "subcommunity.gamma", "subcommunity.gamma.bar", 
+                        "supercommunity.A", "supercommunity.A.bar",
+                        "supercommunity.B", "supercommunity.B.bar",
+                        "supercommunity.R", "supercommunity.R.bar",
+                        "supercommunity.G", "supercommunity.G.bar")
+  return(output)
 }
 
 
