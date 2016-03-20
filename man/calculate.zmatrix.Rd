@@ -4,25 +4,25 @@
 \alias{calculate.zmatrix}
 \title{Calculate Similarity Matrix (Z)}
 \usage{
-calculate.zmatrix(type, data, lookup = NA)
+calculate.zmatrix(data, similarity = NA, lookup = NA)
 }
 \arguments{
-\item{type}{character string; defining which similarity measure is being 
-called for.}
+\item{data}{\code{matrix} of count data}
 
-\item{data}{matrix of count data}
+\item{similarity}{character string; defining which similarity measure is being 
+called for.}
 
 \item{lookup}{required for calculating \code{taxonomic} similarity; contains 
 four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'}
 }
 \value{
-matrix of pair-wise similarity indices
+Returns an \eqn{S x S} matrix; pair-wise similarity of \emph{types}
 }
 \description{
 The function \code{calculate.zmatrix} calculates the similarity matrix.
 }
 \details{
-The argument \code{type} takes the following inputs: \cr
+The argument \code{similarity} takes the following inputs: \cr
 \tabular{ll}{
 \code{unique} \tab - assumes all \emph{types} are unique \cr
 \code{taxonomic} \tab - assumes all \emph{types} are species; calculates a 

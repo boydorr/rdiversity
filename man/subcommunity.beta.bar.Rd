@@ -4,16 +4,14 @@
 \alias{subcommunity.beta.bar}
 \title{Similarity-sensitive Normalised subcommunity.beta diversity}
 \usage{
-subcommunity.beta.bar(populations, qs, Z = diag(nrow(populations)))
+subcommunity.beta.bar(populations, qs)
 }
 \arguments{
 \item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
 \item{qs}{\code{vector} of \emph{q} values}
 
-\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
-
-\item{...}{}
+\item{...}{additional arguments}
 }
 \value{
 Data frame of diversities, columns representing populations, and
@@ -25,7 +23,20 @@ subcommunities counts relative to a total supercommunity (by default the
 sum of the sub-communities), for a series of orders, repesented as a 
 vector of \code{qs}.
 }
+\examples{
+# Species counts
+population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+                        subcommunityB = sample(1:50, 5, replace=T))
+row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+
+# Create object of class initDiv
+data <- set.collection(population)
+
+# Calculate diversity
+subcommunity.beta.bar(data, 0:2)
+
+}
 \seealso{
-\code{\link{subcommunity.beta}}, \code{\link{supercommunity.B}}, \code{\link{supercommunity.B.bar}}
+\code{\link{diversity}}
 }
 

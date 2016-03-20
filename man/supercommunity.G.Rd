@@ -4,15 +4,12 @@
 \alias{supercommunity.G}
 \title{Similarity-sensitive Raw supercommunity.G diversity}
 \usage{
-supercommunity.G(populations, qs, Z = diag(nrow(populations)),
-  normalise = F)
+supercommunity.G(populations, qs, normalise = F)
 }
 \arguments{
 \item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
 \item{qs}{\code{vector} of \emph{q} values}
-
-\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 
 \item{normalise}{logical operator; T returns normalised probability 
 distribution summed to 1}
@@ -25,7 +22,20 @@ Calculates the total supercommunity gamma diversity of a series of columns
 representing subcommunity counts, for a series of orders, repesented as a 
 vector of \code{qs}.
 }
+\examples{
+# Species counts
+population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+                        subcommunityB = sample(1:50, 5, replace=T))
+row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+
+# Create object of class initDiv
+data <- set.collection(population)
+
+# Calculate diversity
+supercommunity.G(data, 0:2)
+
+}
 \seealso{
-\code{\link{supercommunity.G.bar}}, \code{\link{subcommunity.gamma}}, \code{\link{subcommunity.gamma.bar}}
+\code{\link{diversity}}
 }
 

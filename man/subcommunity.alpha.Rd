@@ -4,15 +4,12 @@
 \alias{subcommunity.alpha}
 \title{Similarity-sensitive Raw subcommunity.alpha}
 \usage{
-subcommunity.alpha(populations, qs, Z = diag(nrow(populations)),
-  normalise = F)
+subcommunity.alpha(populations, qs, normalise = F)
 }
 \arguments{
 \item{populations}{\eqn{n x m} \code{matrix} of population counts or proportions}
 
 \item{qs}{\code{vector} of \emph{q} values}
-
-\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 
 \item{normalise}{logical operator; T returns normalised probability 
 distribution summed to 1}
@@ -26,7 +23,20 @@ Calculates the diversity of a series of columns representing
 independent subcommunity counts, for a series of orders, repesented as
 a vector of \code{qs}.
 }
+\examples{
+# Species counts
+population <- data.frame(subcommunityA = sample(1:50, 5, replace=T),
+                        subcommunityB = sample(1:50, 5, replace=T))
+row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+
+# Create object of class initDiv
+data <- set.collection(population)
+
+# Calculate diversity
+subcommunity.alpha(data, 0:2)
+
+}
 \seealso{
-\code{\link{subcommunity.alpha.bar}}, \code{\link{supercommunity.A}}, \code{\link{supercommunity.A.bar}}
+\code{\link{diversity}}
 }
 
