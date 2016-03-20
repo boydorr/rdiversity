@@ -18,14 +18,11 @@
 #'                         subcommunityB = sample(1:50, 5, replace=T))
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
-#' # q-parameter 
-#' qs <- 0:2
-#' 
 #' # Create object of class initDiv
 #' data <- set.collection(population)
 #' 
 #' # Calculate diversity
-#' supercommunity.B(data, qs)
+#' supercommunity.B(data, 0:2)
 #' 
 supercommunity.B <-
 function(populations, qs, normalise = F)
