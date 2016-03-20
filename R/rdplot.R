@@ -1,4 +1,8 @@
-#' rdplot()
+#' @name plot.diversity
+#' 
+#' @aliases rdplot
+#' 
+#' @title rdplot()
 #'
 #' S4 generic function \code{rdplot()}.
 #'
@@ -8,6 +12,17 @@
 #' @return object of class \linkS4class{rdiv} returns a diversity profile; object
 #' of class \linkS4class{rdphylo} returns phylogenetic tree
 #' @include class-RDiversity.R
+#' 
+setGeneric(name = "rdplot",
+           def = function(data, ...) {
+             standardGeneric("rdplot")
+           } )
+
+
+#' @rdname plot.diversity
+#' 
+#' @param style optional argument; takes \code{'normal'} as default, generating 
+#' a standard plot; and \code{'big'} increases font size and line thickness
 #' 
 #' @examples 
 #' # Species counts
@@ -23,12 +38,8 @@
 #' 
 #' rdplot(output)
 #' 
-setGeneric(name = "rdplot",
-           def = function(data, ...) {
-             standardGeneric("rdplot")
-           } )
-
-
+#' @export
+#' 
 setMethod(f = "rdplot", signature = "rdiv", definition = function(data, style='normal')
 {
   plot.this <- cbind(stack(data), row.names(data), stringsAsFactors=F)
