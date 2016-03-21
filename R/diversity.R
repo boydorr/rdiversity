@@ -1,55 +1,75 @@
-#' @name diversity
-#' 
 #' @title Calculate Diversity
 #' 
-#' @description The function \code{diversity} calculates the diversity of a supercommunity 
-#' or series of subcommunities inclusive of similarity. 
+#' @description \code{diversity()} calculates the diversity of a  
+#' supercommunity or series of subcommunities, inclusive of pair-wise 
+#' similarity (whether naive, taxonomic, phenotypic, genetic, phylogenetic, 
+#' functional, \emph{etc.}) between individuals. 
 #' 
-#' @param measure diversity measure (see Details)
-#' @param data object of class \code{initDiv}
-#' These are defined as a series of columns representing independent subcommunity counts
-#' @param qs vector of \emph{q} values. These are defined as the order of 
-#' diversity / parameter of conservativeness.
+#' @param measure function or list of functions; see Details, below
+#' @param data object of class \code{initDiv} 
+#' @param qs object of class \code{numeric}; vector of \emph{q} values
 #' 
-#' @details The argument \code{measure} takes the following inputs: \cr
+#' @details There are three common ways to use \code{diversity()}:
+#' \itemize{
+#' \item \code{diversity(subcommunity.alpha.bar, 0:2)} 
+#' \item \code{diversity(all.subcommunity, 0:2)} 
+#' \item \code{diversity(c(subcommunity.alpha.bar, supercommunity.R), 0:2)} 
+#' } 
+#' The first method will calculate a single diversity measure from the list 
+#' below; the second method will calculate all subcommunity measures of  
+#' diversity (alternatively we can calculate \code{all.supercommunity} measures
+#' of diversity or \code{all.measures}); and the last method will calculate a 
+#' number of specific measures of diversity. \cr
+#' 
+#' The argument \code{measure} takes the following inputs:
 #' \tabular{ll}{
-#' \code{subcommunity.alpha} \tab - estimate of naive-community supercommunity diversity\cr
-#' \code{subcommunity.alpha.bar} \tab - similarity-sensitive diversity of subcommunity \emph{j} in isolation \cr
+#' \code{subcommunity.alpha} \tab - estimate of naive-community supercommunity 
+#' diversity \cr
+#' \code{subcommunity.alpha.bar} \tab - similarity-sensitive diversity of 
+#' subcommunity \emph{j} in isolation \cr
 #' \code{subcommunity.rho} \tab - redundancy of subcommunity \emph{j} \cr
-#' \code{subcommunity.rho.bar} \tab - representativeness of subcommunity \emph{j} \cr
+#' \code{subcommunity.rho.bar} \tab - representativeness of subcommunity 
+#' \emph{j} \cr
 #' \code{subcommunity.beta} \tab - distinctiveness of subcommunity \emph{j} \cr
-#' \code{subcommunity.beta.bar} \tab - estimate of effective number of distinct subcommunities \cr
-#' \code{subcommunity.gamma} \tab - contribution per individual toward supercommunity diversity \cr
+#' \code{subcommunity.beta.bar} \tab - estimate of effective number of distinct 
+#' subcommunities \cr
+#' \code{subcommunity.gamma} \tab - contribution per individual toward 
+#' supercommunity diversity \cr
 #' \code{supercommunity.A} \tab - naive-community supercommunity diversity \cr
-#' \code{supercommunity.A.bar} \tab - average similarity-sensitive diversity of subcommunities \cr
+#' \code{supercommunity.A.bar} \tab - average similarity-sensitive diversity of 
+#' subcommunities \cr
 #' \code{supercommunity.R} for \tab - average redundancy of subcommunities \cr
-#' \code{supercommunity.R.bar} \tab - average representativeness of subcommunities \cr
+#' \code{supercommunity.R.bar} \tab - average representativeness of 
+#' subcommunities \cr
 #' \code{supercommunity.B} \tab - average distinctiveness of subcommunities \cr
-#' \code{supercommunity.B.bar} \tab - effective number of distinct subcommunities \cr
-#' \code{supercommunity.G} \tab - supercommunity similarity-sensitive diversity \cr
+#' \code{supercommunity.B.bar} \tab - effective number of distinct 
+#' subcommunities \cr
+#' \code{supercommunity.G} \tab - supercommunity similarity-sensitive 
+#' diversity \cr
 #' }
 #'
-#' @return A list of length = length(measure), where each list item contains 
-#' the diversity output for the corresponding measure
+#' @return A list is returned; where each element contains an array of 
+#' diversities, with the first dimension representing subcommunities and the 
+#' last representing values of \emph{q}. 
 #' 
 #' @examples 
-#' # Species counts
-#' population <- data.frame(subcommunityA = sample(1:50, 5, replace=TRUE),
-#'                         subcommunityB = sample(1:50, 5, replace=TRUE))
-#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+#' # Create population
+#' population <- data.frame(A = sample(1:50, 5, replace = TRUE),
+#'                          B = sample(1:50, 5, replace = TRUE))
 #' 
-#' # Create object of class initDiv
+#' # Create object of class initDiv, an S4 class with two slots: 
+#' # .Data - proportional abundances; and zmatrix - pairwise similarities
 #' data <- set.collection(population)
 #' 
 #' # Calculate diversity
-#' output <- diversity(subcommunity.alpha.bar, data, 0:2)
-#' output
+#' output <- diversity(c(subcommunity.alpha.bar, supercommunity.R), data, 0:2)
+#' output[[1]]
 #' 
-#' output <- diversity(subcommunity, data, 0:2)
+#' # Calculate diversity
+#' output <- diversity(all.subcommunity, data, 0:2)
 #' names(output)
 #' output[[2]]
 #' 
-#' @rdname diversity
 #' @export
 #' 
 diversity <-
