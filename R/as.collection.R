@@ -25,7 +25,7 @@
 #' print(data)
 #' print(data@zmatrix)
 #' 
-as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
+as.collection <- function(data, phylo_abundance = NA, similarity = NA, zmatrix = NA, lookup = NA) {
   
   # Check pmatrix
   if(is.data.frame(data)) data <- as.matrix(data)
@@ -33,25 +33,26 @@ as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   if(is.null(row.names(data))) row.names(data) <- paste('type', 1:nrow(data))
   if(is.null(colnames(data))) colnames(data) <- paste('subcommunity', 1:ncol(data))
   
-  if(is.matrix(zmatrix)) {
-    # If the zmatrix is provided, then the similarity argument is ignored
-    new('collection', data, zmatrix = zmatrix)
-    
-  }else if(is.na(zmatrix) & !is.na(similarity)) {
-    # If the similarity is provided, then calculate the zmatrix
+  # If both similarity and zmatrix arguments are provided, return an error
+  if(!is.na(similarity) & all(!is.na(zmatrix))) 
+    stop('Check arguments. Cannot set both similarity and zmatrix.')
+  
+  # If neither similarity nor zmatrix arguments are provided assume a 
+  # naive-type case; or if data is a phylogeny, calculate phylogenetic 
+  # similarity
+  zmatrix <- calculate.zmatrix(data)
+  
+  # If similarity is provided, then calculate the zmatrix
+  if(!is.na(similarity)) {
     zmatrix <- calculate.zmatrix(similarity, data, lookup)
-    new('collection', data, zmatrix = zmatrix)
-    
-  }else if(is.na(zmatrix) & is.na(similarity)) {
-    # If neither similarity nor zmatrix arguments are provided, assume a 
-    # naive-type case
-    zmatrix <- calculate.zmatrix(data)
-    new('collection', data, zmatrix = zmatrix)
-  }else {
-    stop('Something is wrong')
   }
-}
 
+  # If the zmatrix is provided, use it
+  
+  # Coerse object into a collection
+  new('collection', data, zmatrix = zmatrix)
+}
+  
 
 #' @rdname as.collection
 #' @param x any R object 

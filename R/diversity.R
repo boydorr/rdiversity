@@ -57,18 +57,15 @@
 #' population <- data.frame(A = sample(1:50, 5, replace = TRUE),
 #'                          B = sample(1:50, 5, replace = TRUE))
 #' 
-#' # Create object of class initDiv, an S4 class with two slots: 
-#' # .Data - proportional abundances; and zmatrix - pairwise similarities
+#' # Coerse object into a collection
 #' data <- as.collection(population)
 #' 
 #' # Calculate diversity
+#' output <- diversity(subcommunity.alpha.bar, data, 0:2)
+#' 
 #' output <- diversity(c(subcommunity.alpha.bar, supercommunity.R), data, 0:2)
 #' output[[1]]
 #' 
-#' # Calculate diversity
-#' output <- diversity(all.subcommunity, data, 0:2)
-#' names(output)
-#' output[[2]]
 #' 
 #' @export
 #' 
@@ -105,7 +102,12 @@ all.measures <- function(data, qs)
   return(output)
 }
 
-
+#' @rdname diversity
+#' @examples 
+#' # Calculate diversity
+#' output <- diversity(all.subcommunity, data, 0:2)
+#' names(output)
+#' output[[2]]
 all.subcommunity <- function(data, qs)
 {
   measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
