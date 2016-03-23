@@ -22,7 +22,7 @@ function(values, order = 1, weights = rep(1, length(values)))
     stop('The number of values does not equal the number of weights, please check arguments')
   
   # Check that 'values' are non-negative
-  if (any(values[!is.nan(values)] < 0))
+  if (any(values < 0, na.rm=TRUE))
       stop('Check that values (argument) are non-negative.')
   
   # Check whether all proportions are NaN - happens when nothing in group
