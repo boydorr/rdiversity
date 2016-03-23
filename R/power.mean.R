@@ -36,7 +36,7 @@ function(values, order = 1, weights = rep(1, length(values)))
   values <- values[non.zero]
   proportions <- proportions[non.zero]
   
-  if (abs(order < .Machine$double.eps ^ 0.5)) {  # Avoid rounding errors for order 0
+  if (abs(order) < .Machine$double.eps ^ 0.5) {  # Avoid rounding errors for order 0
       prod(values ^ proportions)
     } else if (is.infinite(order)) {
       if (order > 0)
