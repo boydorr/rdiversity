@@ -59,7 +59,7 @@
 #' 
 #' # Create object of class initDiv, an S4 class with two slots: 
 #' # .Data - proportional abundances; and zmatrix - pairwise similarities
-#' data <- set.collection(population)
+#' data <- as.collection(population)
 #' 
 #' # Calculate diversity
 #' output <- diversity(c(subcommunity.alpha.bar, supercommunity.R), data, 0:2)
