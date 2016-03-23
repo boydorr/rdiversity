@@ -16,8 +16,12 @@
 #' four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'
 #' @return Returns an \eqn{S x S} matrix; pair-wise similarity of \emph{types}
 #' 
+#' @include class-collection.R
+#' 
 calculate.zmatrix <- function(data, similarity = NA, lookup = NA) 
 {
+  if(!is.collection) stop('data argument must be object of class collection')
+    
   if(is.na(similarity)) similarity <- 'unique' 
     
   if(similarity=='unique') {

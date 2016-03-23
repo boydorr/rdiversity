@@ -1,6 +1,7 @@
-#' Set Collection
+#' Define Collection
 #' 
-#' This object contains 
+#' Creates object of class \code{collection}. An S4 object containing two 
+#' slots, pmatrix and zmatrix.
 #' 
 #' @param data Object of class \code{matrix}
 #' @param similarity Object of class \code{character}
@@ -8,7 +9,7 @@
 #' @param lookup Object of class \code{data.frame}
 #' @return Object of class \code{initDiv}
 #' 
-#' @include calculate.zmatrix.R class-initDiv.R
+#' @include calculate.zmatrix.R class-collection.R
 #' @export
 #' 
 #' @examples 
@@ -26,7 +27,7 @@
 #' 
 #' data@zmatrix
 #' 
-set.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
+as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   
   # Check pmatrix
   if(is.data.frame(data)) data <- as.matrix(data)
