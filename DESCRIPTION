@@ -7,7 +7,7 @@ Author: Sonia Mitchell, Richard Reeve
 Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
 Description: Calculates the similarity-sensitive diversity of a population and
     it's partitions.
-License: Simplified "2-clause" BSD License
+License: BSD 2-clause License + file LICENSE
 Imports:
     methods,
     ggplot2,
