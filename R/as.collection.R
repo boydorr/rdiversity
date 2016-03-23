@@ -37,18 +37,18 @@ as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   
   if(is.matrix(zmatrix)) {
     # If the zmatrix is provided, then the similarity argument is ignored
-    new('initDiv', data, zmatrix = zmatrix)
+    new('collection', data, zmatrix = zmatrix)
     
   }else if(is.na(zmatrix) & !is.na(similarity)) {
     # If the similarity is provided, then calculate the zmatrix
     zmatrix <- calculate.zmatrix(similarity, data, lookup)
-    new('initDiv', data, zmatrix = zmatrix)
+    new('collection', data, zmatrix = zmatrix)
     
   }else if(is.na(zmatrix) & is.na(similarity)) {
     # If neither similarity nor zmatrix arguments are provided, assume a 
     # naive-type case
     zmatrix <- calculate.zmatrix(data)
-    new('initDiv', data, zmatrix = zmatrix)
+    new('collection', data, zmatrix = zmatrix)
   }else {
     stop('Something is wrong')
   }
