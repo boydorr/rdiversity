@@ -16,6 +16,13 @@ collection <- setClass("collection",
                            zmatrix = "matrix"))
 
 
+is.collection <-
+  function (x) 
+  {
+    inherits(x, "collection")
+  }
+
+
 #' @describeIn collection Prints pmatrix
 setMethod(f = "show", signature= "collection", 
           definition = function(object) {
