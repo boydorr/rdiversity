@@ -16,7 +16,7 @@
 #'                         subcommunityB = sample(1:50, 5, replace = TRUE))
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
-#' # Create object of class collection
+#' # Coerse object into a collection
 #' data <- as.collection(population)
 #' 
 #' # Calculate diversity
