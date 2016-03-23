@@ -54,3 +54,12 @@ as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   }
 }
 
+
+#' @rdname as.collection
+#' @param x any R object 
+is.collection <-
+  function (x) 
+  {
+    inherits(x, "collection")
+  }
+
