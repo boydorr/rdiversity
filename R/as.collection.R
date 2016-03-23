@@ -9,7 +9,7 @@
 #' @param lookup Object of class \code{data.frame}
 #' @return Object of class \code{initDiv}
 #' 
-#' @include calculate.zmatrix.R class-initDiv.R
+#' @include calculate.zmatrix.R class-collection.R
 #' @export
 #' 
 #' @examples 
