@@ -19,8 +19,8 @@
 #'                         subcommunityB = sample(1:50, 5, replace = TRUE))
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
-#' # Create object of class initDiv
-#' data <- set.collection(population)
+#' # Create object of class collection
+#' data <- as.collection(population)
 #' 
 #' # Calculate diversity
 #' subcommunity.rho.bar(data, 0:2)
