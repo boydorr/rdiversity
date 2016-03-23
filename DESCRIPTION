@@ -1,6 +1,6 @@
 Package: RDiversity
 Type: Package
-Title: What the package does (short line)
+Title: Measures similarity-sensitive diversity
 Version: 0.1
 Date: 2016-02-22
 Author: Sonia Mitchell, Richard Reeve
