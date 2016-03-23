@@ -7,7 +7,7 @@
 #' @param similarity Object of class \code{character}
 #' @param zmatrix Object of class \code{matrix}
 #' @param lookup Object of class \code{data.frame}
-#' @return Object of class \code{initDiv}
+#' @return Object of class \code{collection}
 #' 
 #' @include calculate.zmatrix.R class-collection.R
 #' @export
@@ -18,8 +18,8 @@
 #'                         subcommunityB = sample(1:50, 5, replace = TRUE))
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
-#' # Create object of class initDiv
-#' data <- set.collection(population)
+#' # Create object of class collection
+#' data <- as.collection(population)
 #' 
 #' class(data)
 #' 
