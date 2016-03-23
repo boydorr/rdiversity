@@ -1,13 +1,14 @@
-#' Define Collection
+#' Coerse to a Collection
 #' 
-#' Creates object of class \code{collection}. An S4 object containing two 
-#' slots, pmatrix and zmatrix.
+#' Functions to check if an object is a \code{collection} or coerce an object 
+#' into a collection; an S4 object containing two slots, pmatrix and zmatrix.
 #' 
 #' @param data Object of class \code{matrix}
 #' @param similarity Object of class \code{character}
 #' @param zmatrix Object of class \code{matrix}
 #' @param lookup Object of class \code{data.frame}
-#' @return Object of class \code{collection}
+#' @return \code{as.collection()} returns an object of class \code{collection}; an S4 object containing two slots, pmatrix and zmatrix. \cr\cr
+#' \code{is.collection()} returns TRUE if its argument is a collection, FALSE otherwise.
 #' 
 #' @include calculate.zmatrix.R class-collection.R
 #' @export
@@ -21,11 +22,8 @@
 #' # Create object of class collection
 #' data <- as.collection(population)
 #' 
-#' class(data)
-#' 
-#' data
-#' 
-#' data@zmatrix
+#' print(data)
+#' print(data@zmatrix)
 #' 
 as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   
