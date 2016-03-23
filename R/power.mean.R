@@ -30,23 +30,20 @@ function(values, order = 1, weights = rep(1, length(values)))
   if (all(is.nan(proportions)))
     return(NaN)
   
-  # Otherwise NaNs should only occur when weight is 0
-  # and so will be ignored
-  if (order > 0) {
-    if (is.infinite(order)) {
-      max(values[weights > 0])
-    } else if (isTRUE(all.equal(order, 0))) {  # Avoid rounding errors for order 0
-      prod(values[weights > 0] ^ proportions[weights > 0])
+  # Otherwise NaNs should only occur (in values) when weight is 0 and so will be
+  # stripped out here as we have to eliminate non-zero weights
+  non.zero <- weights > 0
+  values <- values[non.zero]
+  proportions <- proportions[non.zero]
+  
+  if (abs(order < .Machine$double.eps ^ 0.5)) {  # Avoid rounding errors for order 0
+      prod(values ^ proportions)
+    } else if (is.infinite(order)) {
+      if (order > 0)
+        max(values)
+      else
+        min(values)
     } else {
-      sum(proportions[weights > 0] * values[weights > 0] ^ order) ^ (1 / order)
+      sum(proportions * values ^ order) ^ (1 / order)
     }
-  } else { # Negative orders, need to remove zeros
-    if (is.infinite(order)) {
-      min(values[weights > 0])
-    } else if (isTRUE(all.equal(order, 0))) {  # Avoid rounding errors for order 0
-      prod(values[weights > 0] ^ proportions[weights > 0])
-    } else {
-      sum(proportions[weights > 0] * values[weights > 0] ^ order) ^ (1 / order)
-    }
-  }
 }
