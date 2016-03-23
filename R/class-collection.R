@@ -1,6 +1,6 @@
-#' Class 'collection'
+#' Class to contain proportional abundance and similarity matrices
 #' 
-#' Define S4 class \linkS4class{collection}.
+#' Container for proportional abundance and similarity matrices. 
 #' 
 #' @slot .Data object of class \code{matrix}; proportional abundance 
 #' of \emph{types}
