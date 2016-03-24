@@ -15,8 +15,8 @@ as.rdphylo <- function(tree,
   pds.nodes <- 1:length(tree$tip.label)
   
   hs.name <- unlist(sapply(pds.nodes, function(x) hs.names(tree, x)))
-  Ntype <- length(hs.name)
-  cat(Ntype, 'historic species in phylogeny\n')
+  N.types <- length(hs.name)
+  cat(N.types, 'historic species in phylogeny\n')
   
   hs.pds <- sapply(hs.name, function(x) as.numeric(strsplit(x,",")[[1]][1]))
   hs.edge <- t(sapply(hs.name, function(x) as.numeric(strsplit(strsplit(x,",")[[1]][2],'-')[[1]])))
@@ -27,8 +27,8 @@ as.rdphylo <- function(tree,
   # Calculate the mean total evolutionary change over all pds
   Tbar <- sum(pds.abundance*Lj)
   
-  hs.length <- sapply(1:Ntype, function(x) {
-    cat('\rCalculating abundance of historic species..', round((x/Ntype)*100), "%")
+  hs.length <- sapply(1:N.types, function(x) {
+    cat('\rCalculating abundance of historic species..', round((x/N.types)*100), "%")
     which.edge <- which(apply(tree$edge, 1, function(y) all.equal(y, hs.edge[x,]))==T)
     tree$edge[which.edge]
   })
