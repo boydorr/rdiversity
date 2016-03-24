@@ -34,6 +34,7 @@ as.rdphylo <- function(tree,
   # Calculate the mean total evolutionary change over all pds
   Tbar <- sum(pds.abundance*Lj)
   
+  # Calculate the length of each historic species
   hs.length <- sapply(1:N.hs, function(x) {
     which.edge <- which(apply(tree$edge, 1, function(y) all.equal(y, hs.edge[x,]))==T)
     tree$edge[which.edge]
