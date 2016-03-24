@@ -26,33 +26,59 @@
 #' print(data@zmatrix)
 #' 
 as.collection <- function(data, phylo_abundance = NA, similarity = NA, zmatrix = NA, lookup = NA) {
-  
-  # Check pmatrix
-  if(is.data.frame(data)) data <- as.matrix(data)
-  if(sum(data)!=1) data <- data / sum(data)
-  if(is.null(row.names(data))) row.names(data) <- paste('type', 1:nrow(data))
-  if(is.null(colnames(data))) colnames(data) <- paste('subcommunity', 1:ncol(data))
-  
   # If both similarity and zmatrix arguments are provided, return an error
   if(!is.na(similarity) & all(!is.na(zmatrix))) 
     stop('Check arguments. Cannot set both similarity and zmatrix.')
   
-  # If neither similarity nor zmatrix arguments are provided assume a 
-  # naive-type case; or if data is a phylogeny, calculate phylogenetic 
-  # similarity
-  zmatrix <- calculate.zmatrix(data)
+  # 
+  if(is.data.frame(data)) data <- as.matrix(data)
   
-  # If similarity is provided, then calculate the zmatrix
-  if(!is.na(similarity)) {
-    zmatrix <- calculate.zmatrix(similarity, data, lookup)
-  }
-
-  # If the zmatrix is provided, use it
+  # If data is a phylogeny: if zmatrix is provided check it is valid, 
+  # otherwise calculate phylogenetic similarity and abundance of historic 
+  # species
+  if(class(data)=='phylo') {
+    if(all(is.na(zmatrix))) {
+      new.tree <- as.rdphylo(tree)
+      pmatrix <- new.tree@hs.abundance
+      zmatrix <- calculate.zmatrix(new.tree)
+      
+    }else if(is.matrix(zmatrix)) {
+      check.phylo.pmatrix(data, zmatrix)
+    }
+    # If data is class rdphylo
+  }else if(is.rdphylo(data)) {
+    pmatrix <- data@hs.abundance
+    zmatrix <- calculate.zmatrix(data)
+    
+    # If data is a pmatrix, check it
+  }else if(is.matrix(data)) {
+    pmatrix <- data
+    if(sum(pmatrix) != 1) 
+      pmatrix <- pmatrix / sum(pmatrix)
+    if(is.null(row.names(pmatrix))) 
+      row.names(pmatrix) <- paste('type', 1:nrow(pmatrix))
+    if(is.null(colnames(pmatrix))) 
+      colnames(pmatrix) <- paste('subcommunity', 1:ncol(pmatrix))
+    
+    # If the zmatrix is provided, use it
+    if(is.matrix(zmatrix)) {
+      zmatrix <- zmatrix
+      
+      # If similarity is provided, then calculate the zmatrix
+    }else if(!is.na(similarity)) {
+      zmatrix <- calculate.zmatrix(similarity, data, lookup)
+      
+      # If neither similarity nor zmatrix arguments are provided assume a 
+      # naive-type case
+    }else if(is.na(similarity) & all(is.na(zmatrix))) 
+      zmatrix <- calculate.zmatrix(data)
+    
+  }else stop('object data is of unknown format.')
   
   # Coerse object into a collection
-  new('collection', data, zmatrix = zmatrix)
+  new('collection', pmatrix, zmatrix = zmatrix)
 }
-  
+
 
 #' @rdname as.collection
 #' @param x any R object 
