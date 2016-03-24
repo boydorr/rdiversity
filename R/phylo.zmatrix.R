@@ -24,11 +24,11 @@ phylo.zmatrix <- function(tree,
   
   # How many historic species?
   hs <- unlist(sapply(pds.nodes, function(x) hs.names(tree, x)))
-  Ntype <- length(hs)
+  Nhistoric <- length(hs)
   
   # Define Z-matrix (type = historic species)
-  zmatrix <- matrix(NA, nrow = Ntype, ncol = Ntype)
   colnames(zmatrix) <- hs; row.names(zmatrix) <- hs
+  zmatrix <- matrix(NA, nrow = Nhistoric, ncol = Nhistoric)
   
   # Similarity between historic species (i,b) and (j,c)  
   for (row.index in 1:Ntype) {
@@ -40,7 +40,7 @@ phylo.zmatrix <- function(tree,
     ib.pds <- as.numeric(strsplit(ib,'-')[[1]][2])
     
     zmatrix.row <- vector()
-    for (col.index in 1:Ntype) {
+    for (col.index in 1:Nhistoric) {
       # Historic species (to compare)
       jc <- hs[col.index]
       # Present day species descendant
