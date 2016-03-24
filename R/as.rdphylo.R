@@ -10,8 +10,8 @@
 #' @return S4 generic of class \linkS4class{rdphylo}
 #'
 as.rdphylo <- function(tree,
-                      pds.abundance = rep(1/length(tree$tip.label),
-                                          length(tree$tip.label))) {
+                      pds.abundance = matrix(rep(1/length(tree$tip.label),
+                                          length(tree$tip.label)))) {
   # Label historic species
   pds.nodes <- 1:length(tree$tip.label)
   hs.names <- unlist(sapply(pds.nodes, function(x) label.hs(tree, x)))
