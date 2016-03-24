@@ -20,15 +20,20 @@
 #' 
 calculate.zmatrix <- function(data, similarity = NA, lookup = NA) 
 {
-  if(is.na(similarity)) similarity <- 'unique' 
-    
-  if(similarity=='unique') {
-    unique.zmatrix(data)
-  }else if(similarity=='taxonomic') {
-    tax.zmatrix(data, lookup)
-  }else if(similarity=='phylogenetic' | class(data)=='phylo') {
+  # If object data is class phylo or class rdphylo, calculate phylogenetic 
+  # similarity
+  if(class(data)=='phylo' | is.rdphylo(data)) {
     phylo.zmatrix(data)
-  }else stop('Similarity not recognised')
+    
+  }else if(is.matrix(data)) {
+    if(similarity=='unique' | is.na(similarity)) {
+      unique.zmatrix(data)
+    }else if(similarity=='taxonomic') {
+      tax.zmatrix(data, lookup)
+    }else {
+      stop('Similarity not recognised')
+      }
+  }else stop('unknown object data format.')
 }
 
 
