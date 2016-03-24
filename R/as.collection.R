@@ -25,7 +25,7 @@
 #' print(data)
 #' print(data@zmatrix)
 #' 
-as.collection <- function(data, phylo_abundance = NA, similarity = NA, zmatrix = NA, lookup = NA) {
+as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   # If both similarity and zmatrix arguments are provided, return an error
   if(!is.na(similarity) & all(!is.na(zmatrix))) 
     stop('Check arguments. Cannot set both similarity and zmatrix.')
