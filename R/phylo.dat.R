@@ -37,7 +37,10 @@ as.rdphylo <- function(tree,
                 hs.name = hs.names,
                 hs.pds = hs.pds,
                 hs.edge = hs.edge,
-                hs.abundance = hs.abundance)
+                hs.length = hs.length,
+                hs.abundance = hs.abundance,
+                Lj = Lj,
+                Tbar = Tbar)
   return(output)
 }
 
