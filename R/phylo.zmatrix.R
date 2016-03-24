@@ -24,8 +24,8 @@ phylo.zmatrix <- function(tree,
   Nhistoric <- length(hs)
   
   # Define Z-matrix (type = historic species)
-  colnames(zmatrix) <- hs; row.names(zmatrix) <- hs
   zmatrix <- matrix(NA, nrow = Nhistoric, ncol = Nhistoric)
+  colnames(zmatrix) <- new.tree@hs.name; row.names(zmatrix) <- new.tree@hs.name
   
   # Similarity between historic species (i,b) and (j,c)  
   for (row.index in 1:Ntype) {
