@@ -9,7 +9,7 @@
 #'
 #' @return S4 generic of class \linkS4class{rdphylo}
 #'
-phylo.dat <- function(tree,
+as.rdphylo <- function(tree,
                       pds.abundance = rep(1/length(tree$tip.label),
                                           length(tree$tip.label))) {
   pds.nodes <- 1:length(tree$tip.label)
