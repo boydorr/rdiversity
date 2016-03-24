@@ -26,7 +26,8 @@ as.rdphylo <- function(tree,
   # Extract present day species, ancestral and desendant nodes associated with
   # each historic species
   hs.pds <- sapply(hs.names, function(x) as.numeric(strsplit(x,",")[[1]][1]))
-  hs.edge <- t(sapply(hs.names, function(x) as.numeric(strsplit(strsplit(x,",")[[1]][2],'-')[[1]])))
+  hs.edge <- t(sapply(hs.names, function(x) 
+    as.numeric(strsplit(strsplit(x,",")[[1]][2],'-')[[1]])))
   
   # Calculate Lj for each pds; total length of evolutionary change
   Lj <- sapply(pds.nodes, function(x) calc.Lj(tree, x))
@@ -36,12 +37,14 @@ as.rdphylo <- function(tree,
   
   # Calculate the length of each historic species
   hs.length <- sapply(1:N.hs, function(x) {
-    which.edge <- which(apply(tree$edge, 1, function(y) all.equal(y, hs.edge[x,]))==T)
+    which.edge <- which(apply(tree$edge, 1, 
+                              function(y) all.equal(y, hs.edge[x,]))==T)
     tree$edge[which.edge]
   })
   
   # Calculate the relative abundance of each historic species
-  hs.abundance <- apply(pds.abundance, 2, function(x) (hs.length/Tbar) * x[hs.pds])
+  hs.abundance <- apply(pds.abundance, 2, 
+                        function(x) (hs.length/Tbar) * x[hs.pds])
 
   output <- new('rdphylo', tree,
                 hs.name = hs.names,
