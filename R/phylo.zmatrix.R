@@ -28,8 +28,8 @@ phylo.zmatrix <- function(tree,
   colnames(zmatrix) <- new.tree@hs.name; row.names(zmatrix) <- new.tree@hs.name
   
   # Similarity between historic species (i,b) and (j,c)  
-  for (row.index in 1:Ntype) {
-    cat("\r", "Calculating Z matrix: row", row.index, "of", Ntype) 
+  for (row.index in 1:Nhistoric) {
+    cat("\r", "Calculating Z matrix: row", row.index, "of", Nhistoric) 
     flush.console()
     # Historic species 
     ib <- hs[row.index]
