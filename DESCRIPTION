@@ -14,7 +14,9 @@ Imports:
     ape,
     phangorn
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 5.0.1
 Collate:
     'RDiversity-internal.R'
@@ -23,13 +25,12 @@ Collate:
     'class-collection.R'
     'calculate.zmatrix.R'
     'as.collection.R'
+    'as.rdphylo.R'
     'class-RDiversity.R'
     'class-phylo.R'
     'diversity.R'
     'diversity.to.additive.R'
     'inherit_params.R'
-    'phylo.dat.R'
-    'phylo.pmatrix.R'
     'phylo.zmatrix.R'
     'power.mean.R'
     'qD.R'
@@ -54,3 +55,4 @@ Collate:
     'supercommunity.G.bar.R'
     'supercommunity.R.R'
     'supercommunity.R.bar.R'
+VignetteBuilder: knitr
