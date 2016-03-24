@@ -19,6 +19,6 @@ collection <- setClass("collection",
 #' @describeIn collection Prints pmatrix
 setMethod(f = "show", signature= "collection", 
           definition = function(object) {
-            print(object@.Data)
+            print(head(object@.Data))
           } )
 
