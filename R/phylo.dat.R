@@ -15,7 +15,6 @@ as.rdphylo <- function(tree,
   pds.nodes <- 1:length(tree$tip.label)
   hs.names <- unlist(sapply(pds.nodes, function(x) label.hs(tree, x)))
   
-  cat(N.types, 'historic species in phylogeny\n')
   N.hs <- length(hs.names)
   cat(N.hs, 'historic species in phylogeny\n')
   hs.pds <- sapply(hs.names, function(x) as.numeric(strsplit(x,",")[[1]][1]))
