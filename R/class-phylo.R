@@ -10,10 +10,13 @@ setOldClass("phylo")
 #' 
 setClass("rdphylo",
          contains = "phylo",
-         slots = c(hs.name = "vector",
-                   hs.pds = "vector",
+         slots = c(hs.name = "character",
+                   hs.pds = "numeric",
                    hs.edge = "matrix",
-                   hs.abundance = "vector"
+                   hs.length = "integer",
+                   hs.abundance = "matrix",
+                   Lj = "numeric",
+                   Tbar = "numeric"
                    ))
 
 
