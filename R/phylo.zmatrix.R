@@ -18,17 +18,9 @@ phylo.zmatrix <- function(tree,
   }else 
     stop('Tree should be an object of class phylo or rdphylo.')
   
-  # Extract data
-  pds.nodes <- 1:length(tree$tip.label)
-  
-  # Calculate Lj for each pds; total length of evolutionary change
-  Lj <- sapply(pds.nodes, function(x) calc.Lj(tree, x))
-  
-  # Calculate the mean total evolutionary change over all pds
-  Tbar <- sum(pds.abundance*Lj)
-  
-  # How many historic species?
-  hs <- unlist(sapply(pds.nodes, function(x) hs.names(tree, x)))
+  Lj <- new.tree@Lj
+  Tbar <- new.tree@Tbar
+  hs <- new.tree@hs.name
   Nhistoric <- length(hs)
   
   # Define Z-matrix (type = historic species)
