@@ -11,7 +11,12 @@ phylo.zmatrix <- function(tree,
                           pds.abundance = rep(1/length(tree$tip.label),
                                               length(tree$tip.label))) 
 {
-  if(class(tree)!='phylo') stop('tree should be object of class phylo.')
+  if(class(tree)=='phylo') {
+    new.tree <- as.rdphylo(tree)
+  }else if(is.rdphylo(tree)){
+    new.tree <- tree
+  }else 
+    stop('Tree should be an object of class phylo or rdphylo.')
   
   # Extract data
   pds.nodes <- 1:length(tree$tip.label)
