@@ -1,5 +1,5 @@
 check.zmatrix <- function(data, zmatrix) {
-  if(class(data) == 'rdphylo') {
+  if(class(data) == 'RDphylo') {
     if (length(data@hs.name) != nrow(zmatrix))
       stop('Number of historic species in phylogeny must equal number of 
            rows in zmatrix.')
