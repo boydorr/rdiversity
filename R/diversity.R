@@ -59,6 +59,8 @@
 #' Each row corresponds to a different subcommunity and each column represents 
 #' a particular value of \emph{q}. 
 #' 
+#' @export
+#'  
 #' @examples 
 #' # Create population
 #' population <- data.frame(A = sample(1:50, 5, replace = TRUE),
@@ -71,21 +73,22 @@
 #' # Single measure
 #' output <- diversity(subcommunity.alpha.bar, data, 0:2)
 #' 
-#' @export
-#' 
 diversity <-
   function(measure, data, qs) 
   {
     if(is.function(measure)) {
       measure(data, qs)
-    }else if(measure=="subcommunity") {
-      all.subcommunity(data, qs)
-    }else if(measure=="supercommunity") {
-      all.supercommunity(data, qs)
-    }else if(measure=="allMeasures") {
-      allMeasures(data, qs)
-    }else
+    }else if(is.character(measure)) {
+      if(measure=="subcommunity") {
+        subMeasures(data, qs)
+      }else if(measure=="supercommunity") {
+        superMeasures(data, qs)
+      }else if(measure=="allMeasures") {
+        allMeasures(data, qs)
+      }
+    }else if(is.list(measure)){
       selectMeasures(measure, data, qs)
+    }else stop('Argument measure is unknown.')
   }
 
 
