@@ -12,11 +12,11 @@ phylo.zmatrix <- function(tree,
                                               length(tree$tip.label))) 
 {
   if(class(tree)=='phylo') {
-    new.tree <- as.rdphylo(tree)
-  }else if(is.rdphylo(tree)){
+    new.tree <- as.RDphylo(tree)
+  }else if(is.RDphylo(tree)){
     new.tree <- tree
   }else 
-    stop('Tree should be an object of class phylo or rdphylo.')
+    stop('Tree should be an object of class phylo or RDphylo.')
   
   Lj <- new.tree@Lj
   Tbar <- new.tree@Tbar
