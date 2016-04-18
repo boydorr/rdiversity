@@ -1,15 +1,17 @@
 #' Coerse to a Collection
 #' 
 #' Functions to check if an object is a \code{collection} or coerce an object 
-#' into a collection; an S4 object containing two slots, pmatrix and zmatrix.
+#' into a \code{collection}.
 #' 
 #' @param data Object of class \code{matrix}
 #' @param similarity Object of class \code{character}
 #' @param zmatrix Object of class \code{matrix}
 #' @param lookup Object of class \code{data.frame}
-#' @return \code{as.collection()} returns an object of class \code{collection}; 
+#' @return 
+#' \code{as.collection()} returns an object of class \code{collection}; 
 #' an S4 object containing two slots, pmatrix and zmatrix. \cr\cr
-#' \code{is.collection()} returns TRUE if its argument is a collection, FALSE otherwise.
+#' \code{is.collection()} returns TRUE if its argument is a collection, 
+#' FALSE otherwise.
 #' 
 #' @include calculate.zmatrix.R class-collection.R check.pmatrix.R check.zmatrix.R
 #' @export
@@ -32,12 +34,12 @@ as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
     stop('Check arguments. Cannot set both similarity and zmatrix.')
   
   if(is.data.frame(data)) data <- as.matrix(data)
-  if(class(data)=='phylo') new.tree <- as.rdphylo(data)
+  if(class(data)=='phylo') new.tree <- as.RDphylo(data)
     
-  # If data is class 'rdphylo': if zmatrix is provided check it is valid, 
+  # If data is class 'RDphylo': if zmatrix is provided check it is valid, 
   # otherwise calculate phylogenetic similarity and abundance of historic 
   # species
-  if(class(data)=='rdphylo') {
+  if(class(data)=='RDphylo') {
     pmatrix <- new.tree@hs.abundance
     if(all(is.na(zmatrix))) {
       zmatrix <- calculate.zmatrix(new.tree)
