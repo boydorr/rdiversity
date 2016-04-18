@@ -2,15 +2,15 @@ setOldClass("phylo")
 
 #' Class 'rdphylo'
 #'
-#' @slot hs.name \code{vector} of length \emph{hS}; historic species names
-#' @slot hs.pds \code{vector} of length \emph{hS}; descendant present day 
+#' @field hs.name \code{vector} of length \emph{hS}; historic species names
+#' @field hs.pds \code{vector} of length \emph{hS}; descendant present day 
 #' species
-#' @slot hs.edge \code{matrix}; ancestral and descendant nodes
-#' @slot hs.abundance \code{vector} of length \emph{hS}; historic species 
+#' @field hs.edge \code{matrix}; ancestral and descendant nodes
+#' @field hs.abundance \code{vector} of length \emph{hS}; historic species 
 #' abundance
-#' @slot Lj \code{vector} of length \emph{S}; total evolutionary change of 
+#' @field Lj \code{vector} of length \emph{S}; total evolutionary change of 
 #' present day species
-#' @slot Tbar \code{numeric} element; mean total evolutionary change over 
+#' @field Tbar \code{numeric} element; mean total evolutionary change over 
 #' present day species
 #' @export
 #' 

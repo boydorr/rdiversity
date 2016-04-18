@@ -2,9 +2,9 @@
 #' 
 #' Define S4 class \linkS4class{rdiv}.
 #' 
-#' @slot measure object of class \code{character}; e.g. 'subcommunity.alpha.bar'
-#' @slot tag object of class \code{formula}; e.g. bquote('Subcommunity' ~ bar(alpha))
-#' @slot level object of class \code{character}; e.g. 'subcommunity'
+#' @field measure object of class \code{character}; e.g. 'subcommunity.alpha.bar'
+#' @field tag object of class \code{formula}; e.g. bquote('Subcommunity' ~ bar(alpha))
+#' @field level object of class \code{character}; e.g. 'subcommunity'
 #' @param object object of class \linkS4class{rdiv}
 #' @export
 #' 
