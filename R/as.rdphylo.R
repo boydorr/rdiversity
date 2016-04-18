@@ -1,16 +1,18 @@
 #' Phylogenetic data
 #'
-#' Extract historic species names, ancestral and descendant nodes, descendant
-#' present-day species, and proportional abundance. Output as object
+#' Functions to check if an object is of class \code{RDphylo} or coerce an 
+#' object into class \code{RDphylo}.
 #'
 #' @param tree object of class \code{phylo}
 #' @param pds.abundance \code{vector} of length \eqn{S}; proportional
 #' abundance of present-day species
 #'
-#' @return S4 generic of class \linkS4class{rdphylo}
+#' @return S4 generic of class \linkS4class{RDphylo} containing historic 
+#' species: names, ancestral and descendant nodes, descendant present day 
+#' species, and proportional abundance. 
 #' @export
 #' 
-as.rdphylo <- function(tree,
+as.RDphylo <- function(tree,
                       pds.abundance = matrix(rep(1/length(tree$tip.label),
                                           length(tree$tip.label)))) {
   # Label historic species
@@ -47,7 +49,7 @@ as.rdphylo <- function(tree,
   hs.abundance <- apply(pds.abundance, 2, 
                         function(x) (hs.length/Tbar) * x[hs.pds])
 
-  output <- new('rdphylo', tree,
+  output <- new('RDphylo', tree,
                 hs.name = hs.names,
                 hs.pds = hs.pds,
                 hs.edge = hs.edge,
@@ -57,7 +59,6 @@ as.rdphylo <- function(tree,
                 Tbar = Tbar)
   return(output)
 }
-
 
 
 #' Historic Species
