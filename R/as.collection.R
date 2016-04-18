@@ -30,46 +30,31 @@ as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   if(!is.na(similarity) & all(!is.na(zmatrix))) 
     stop('Check arguments. Cannot set both similarity and zmatrix.')
   
-  # 
   if(is.data.frame(data)) data <- as.matrix(data)
-  
-  # If data is a phylogeny: if zmatrix is provided check it is valid, 
+  if(class(data)=='phylo') new.tree <- as.rdphylo(data)
+    
+  # If data is class 'rdphylo': if zmatrix is provided check it is valid, 
   # otherwise calculate phylogenetic similarity and abundance of historic 
   # species
-  if(class(data)=='phylo') {
+  if(class(data)=='rdphylo') {
+    pmatrix <- new.tree@hs.abundance
     if(all(is.na(zmatrix))) {
-      new.tree <- as.rdphylo(tree)
-      pmatrix <- new.tree@hs.abundance
       zmatrix <- calculate.zmatrix(new.tree)
-      
     }else if(is.matrix(zmatrix)) {
-      check.phylo.pmatrix(data, zmatrix)
+      check.zmatrix(data, zmatrix)
     }
-    # If data is class rdphylo
-  }else if(is.rdphylo(data)) {
-    pmatrix <- data@hs.abundance
-    zmatrix <- calculate.zmatrix(data)
     
-    # If data is a pmatrix, check it
+    # If data is class 'matrix': if zmatrix is provided check it is valid, 
+    # if similarity is provided calculate similarity and abundance of types 
+    # (naive, taxonomic, phenotypic, etc.), otherwise assume a naive-type
+    # case
   }else if(is.matrix(data)) {
     pmatrix <- data
-    if(sum(pmatrix) != 1) 
-      pmatrix <- pmatrix / sum(pmatrix)
-    if(is.null(row.names(pmatrix))) 
-      row.names(pmatrix) <- paste('type', 1:nrow(pmatrix))
-    if(is.null(colnames(pmatrix))) 
-      colnames(pmatrix) <- paste('subcommunity', 1:ncol(pmatrix))
-    
-    # If the zmatrix is provided, use it
+    pmatrix <- check.pmatrix(data)
     if(is.matrix(zmatrix)) {
-      zmatrix <- zmatrix
-      
-      # If similarity is provided, then calculate the zmatrix
+      check.zmatrix(data, zmatrix)
     }else if(!is.na(similarity)) {
       zmatrix <- calculate.zmatrix(similarity, data, lookup)
-      
-      # If neither similarity nor zmatrix arguments are provided assume a 
-      # naive-type case
     }else if(is.na(similarity) & all(is.na(zmatrix))) 
       zmatrix <- calculate.zmatrix(data)
     
