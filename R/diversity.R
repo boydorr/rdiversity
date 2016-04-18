@@ -74,7 +74,9 @@ diversity <-
   {
     if(is.function(measure)) {
       measure(data, qs)
-    } else 
+    }else if(measure=="all.subcommunity") {
+      all.subcommunity(data, qs)
+    }else
       multi.diversity(measure, data, qs)
   }
 
@@ -105,7 +107,7 @@ all.measures <- function(data, qs)
 #' @rdname diversity
 #' @examples 
 #' # Calculate diversity
-#' output <- diversity(all.subcommunity, data, 0:2)
+#' output <- diversity("all.subcommunity", data, 0:2)
 #' names(output)
 #' output[[2]]
 all.subcommunity <- function(data, qs)
