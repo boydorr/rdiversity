@@ -23,11 +23,12 @@ is.collection(x)
 \value{
 \code{as.collection()} returns an object of class \code{collection}; 
 an S4 object containing two slots, pmatrix and zmatrix. \cr\cr
-\code{is.collection()} returns TRUE if its argument is a collection, FALSE otherwise.
+\code{is.collection()} returns TRUE if its argument is a collection, 
+FALSE otherwise.
 }
 \description{
 Functions to check if an object is a \code{collection} or coerce an object 
-into a collection; an S4 object containing two slots, pmatrix and zmatrix.
+into a \code{collection}.
 }
 \examples{
 # Species counts

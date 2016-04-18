@@ -5,7 +5,7 @@
 \alias{collection}
 \alias{collection-class}
 \alias{show,collection-method}
-\title{Class to contain proportional abundance and similarity matrices}
+\title{Class 'collection'}
 \usage{
 \S4method{show}{collection}(object)
 }
@@ -17,15 +17,15 @@ Container for proportional abundance and similarity matrices.
 }
 \section{Methods (by generic)}{
 \itemize{
-\item \code{show}: Prints pmatrix
+\item \code{show}: prints pmatrix
 }}
 \section{Fields}{
 
 \describe{
-\item{\code{.Data}}{object of class \code{matrix}; proportional abundance 
+\item{\code{.Data}}{\code{matrix} of mode \code{numeric}; proportional abundance 
 of \emph{types}}
 
-\item{\code{zmatrix}}{object of class \code{matrix}; pairwise similarity 
+\item{\code{zmatrix}}{\code{matrix} of mode \code{numeric}; pairwise similarity 
 between \emph{types}}
 }}
 

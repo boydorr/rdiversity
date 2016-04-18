@@ -13,7 +13,7 @@ rdplot(data, ...)
 }
 \arguments{
 \item{data}{object of class \code{rdiv} returns a diversity profile; object
-of class \linkS4class{rdphylo} returns phylogenetic tree}
+of class \linkS4class{RDphylo} returns phylogenetic tree}
 
 \item{...}{additional parameters}
 
@@ -22,7 +22,7 @@ a standard plot; and \code{'big'} increases font size and line thickness}
 }
 \value{
 object of class \linkS4class{rdiv} returns a diversity profile; object
-of class \linkS4class{rdphylo} returns phylogenetic tree
+of class \linkS4class{RDphylo} returns phylogenetic tree
 }
 \description{
 S4 generic function \code{rdplot()}.
