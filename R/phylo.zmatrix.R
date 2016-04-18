@@ -60,9 +60,3 @@ phylo.zmatrix <- function(tree,
   return(zmatrix)
 }
 
-
-check.phylo.z <- function(tree, test.zmatrix) {
-  if(length(tree@hs.name)!=nrow(zmatrix)) 
-    stop('Number of historic species in phylogeny does not correspond to zmatrix.')
-}
-
