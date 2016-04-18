@@ -105,11 +105,6 @@ selectMeasures <- function(measure, data, qs) {
 
 
 #' @rdname diversity
-#' @examples 
-#' # All subcommunity measures
-#' output <- diversity("subMeasures", data, 0:2)
-#' names(output)
-#' output[[2]]
 #' 
 subMeasures <- function(data, qs)
 {
@@ -128,11 +123,6 @@ subMeasures <- function(data, qs)
 
 
 #' @rdname diversity 
-#' @examples 
-#' # All supercommunity measures 
-#' output <- diversity("superMeasures", data, 0:2)
-#' names(output)
-#' output[[2]]
 #' 
 superMeasures <- function(data, qs)
 {
@@ -151,11 +141,6 @@ superMeasures <- function(data, qs)
 
 
 #' @rdname diversity
-#' @examples 
-#' # All subcommunity and supercommunity measures 
-#' output <- diversity("allMeasures", data, 0:2)
-#' names(output)
-#' output[[2]]
 #' 
 allMeasures <- function(data, qs)
 {
@@ -180,3 +165,20 @@ allMeasures <- function(data, qs)
   return(output)
 }
 
+
+#' diversity
+#' @examples 
+#' # All subcommunity measures
+#' output <- subMeasures(data, 0:2)
+#' names(output)
+#' output[[2]]
+#' 
+#' # All supercommunity measures 
+#' output <- superMeasures(data, 0:2)
+#' names(output)
+#' output[[2]]
+#' 
+#' # All subcommunity and supercommunity measures 
+#' output <- allMeasures(data, 0:2)
+#' names(output)
+#' output[[2]]
