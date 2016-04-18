@@ -76,6 +76,8 @@ diversity <-
       measure(data, qs)
     }else if(measure=="all.subcommunity") {
       all.subcommunity(data, qs)
+    }else if(measure=="all.supercommunity") {
+      all.subcommunity(data, qs)
     }else
       multi.diversity(measure, data, qs)
   }
@@ -106,7 +108,7 @@ all.measures <- function(data, qs)
 
 #' @rdname diversity
 #' @examples 
-#' # Calculate diversity
+#' # Calculate all subcommunity measures of diversity
 #' output <- diversity("all.subcommunity", data, 0:2)
 #' names(output)
 #' output[[2]]
@@ -126,6 +128,12 @@ all.subcommunity <- function(data, qs)
 }
 
 
+#' @rdname diversity
+#' @examples 
+#' # Calculate all supercommunity measures of diversity
+#' output <- diversity("all.supercommunity", data, 0:2)
+#' names(output)
+#' output[[2]]
 all.supercommunity <- function(data, qs)
 {
   measure <- list(supercommunity.A, supercommunity.A.bar,
@@ -142,17 +150,13 @@ all.supercommunity <- function(data, qs)
 }
 
 
-#' multi.diversity
-#' 
+#' @rdname diversity
 #' Calculates multiple diversity measures expressed as a list. 
-#' 
-#' @param measure list of functions; see \code{\link{diversity}}
-#' @param data object of class \code{initDiv} 
-#' @param qs object of class \code{numeric}; vector of \emph{q} values
-#' 
-#' @return A list is returned; where each element contains an array of 
-#' diversities, with the first dimension representing subcommunities and the 
-#' last representing values of \emph{q}. 
+#' @examples 
+#' # Calculate all supercommunity measures of diversity
+#' output <- diversity(c(subcommunity.alpha.bar, supercommunity.G), data, 0:2)
+#' names(output)
+#' output
 #' 
 multi.diversity <- function(measure, data, qs) {
   lapply(measure, function(x) ans <- x(data, qs))
