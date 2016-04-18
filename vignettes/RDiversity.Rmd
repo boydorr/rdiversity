@@ -23,12 +23,12 @@ str(tree)
 Calculate aslkdjas
 
 ```{r, results='hide'} 
-# # 
-# new.tree <- as.rdphylo(tree)
-# str(new.tree)
-# # pds.abundance <- data.frame(A = sample(1:50, 10, replace = TRUE), 
-# #                       B = sample(1:50, 10, replace = TRUE))
-# 
+#
+new.tree <- RDiversity::as.rdphylo(tree)
+str(new.tree)
+# pds.abundance <- data.frame(A = sample(1:50, 10, replace = TRUE),
+#                       B = sample(1:50, 10, replace = TRUE))
+
 # data <- as.collection(new.tree)
 # 
 # subcommunity.alpha.bar(data, 0:2)
