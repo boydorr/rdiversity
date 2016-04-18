@@ -14,6 +14,12 @@ vignette: >
 This is a minimal example of the `RDiversity` package. 
 
 ```{r set_parameters, results='hide'} 
+library(RDiversity)
+```
+
+sdf
+
+```{r set_parameters, results='hide'} 
 # Simulate and plot phylogeny
 tree <- ape::rtree(n = 10)
 plot(tree, edge.width = 2)
@@ -24,7 +30,7 @@ Calculate aslkdjas
 
 ```{r, results='hide'} 
 #
-new.tree <- RDiversity::as.rdphylo(tree)
+new.tree <- as.rdphylo(tree)
 str(new.tree)
 # pds.abundance <- data.frame(A = sample(1:50, 10, replace = TRUE),
 #                       B = sample(1:50, 10, replace = TRUE))
