@@ -8,7 +8,8 @@
 #' abundance of present-day species
 #'
 #' @return S4 generic of class \linkS4class{rdphylo}
-#'
+#' @export
+#' 
 as.rdphylo <- function(tree,
                       pds.abundance = matrix(rep(1/length(tree$tip.label),
                                           length(tree$tip.label)))) {
