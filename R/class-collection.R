@@ -1,10 +1,10 @@
-#' Class to contain proportional abundance and similarity matrices
+#' Class 'collection'
 #' 
 #' Container for proportional abundance and similarity matrices. 
 #' 
-#' @field .Data object of class \code{matrix}; proportional abundance 
+#' @field .Data \code{matrix} of mode \code{numeric}; proportional abundance 
 #' of \emph{types}
-#' @field zmatrix object of class \code{matrix}; pairwise similarity 
+#' @field zmatrix \code{matrix} of mode \code{numeric}; pairwise similarity 
 #' between \emph{types}
 #' @param object object of class \linkS4class{collection}
 #' 
@@ -16,7 +16,7 @@ collection <- setClass("collection",
                            zmatrix = "matrix"))
 
 
-#' @describeIn collection Prints pmatrix
+#' @describeIn collection prints pmatrix
 setMethod(f = "show", signature= "collection", 
           definition = function(object) {
             print(head(object@.Data))
