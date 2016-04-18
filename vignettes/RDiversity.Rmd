@@ -13,7 +13,7 @@ vignette: >
 
 This is a minimal example of the `RDiversity` package. 
 
-```{r set_parameters, results='hide'} 
+```{r load_package, results='hide'} 
 library(RDiversity)
 ```
 
