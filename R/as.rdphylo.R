@@ -101,3 +101,13 @@ calc.Lj <- function(tree, node)
   hs.length <- sum(hs.length)
   return(hs.length)
 }
+
+
+#' @rdname as.RDphylo
+#' @param x any R object 
+#' 
+is.RDphylo <-
+  function (x)
+  {
+    inherits(x, "RDphylo")
+  }

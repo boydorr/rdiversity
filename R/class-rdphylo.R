@@ -26,12 +26,6 @@ setClass("rdphylo",
                    ))
 
 
-is.rdphylo <-
-  function (x)
-  {
-    inherits(x, "rdphylo")
-  }
-
 
 setMethod(f = "show", signature(object = "rdphylo"),
           definition = function(object){
