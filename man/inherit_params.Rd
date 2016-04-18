@@ -4,11 +4,9 @@
 \alias{inherit_params}
 \title{Function arguments}
 \arguments{
-\item{populations}{object of class \code{initDiv}}
+\item{populations}{object of class \code{collection}}
 
 \item{qs}{\code{vector} of \emph{q} values}
-
-\item{Z}{\eqn{n x n} \code{matrix} of pair-wise similarity values}
 }
 \description{
 Function arguments

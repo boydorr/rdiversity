@@ -7,7 +7,7 @@
 supercommunity.R.bar(populations, qs)
 }
 \arguments{
-\item{populations}{object of class \code{initDiv}}
+\item{populations}{object of class \code{collection}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 }
@@ -25,8 +25,8 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
                         subcommunityB = sample(1:50, 5, replace = TRUE))
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
-# Create object of class initDiv
-data <- set.collection(population)
+# Coerse object into a collection
+data <- as.collection(population)
 
 # Calculate diversity
 supercommunity.R.bar(data, 0:2)

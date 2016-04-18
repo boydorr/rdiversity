@@ -19,7 +19,7 @@ Define S4 class \linkS4class{rdiv}.
 \itemize{
 \item \code{show}: Prints diversity results
 }}
-\section{Slots}{
+\section{Fields}{
 
 \describe{
 \item{\code{measure}}{object of class \code{character}; e.g. 'subcommunity.alpha.bar'}

@@ -11,12 +11,12 @@ of a population and it's partitions.
 }
 \details{
 This package calculates, or takes as input, the similarity between 
-types; which may be unique, taxonimic, phenotypic, genetic, 
+types; which may be unique, taxonomic, phenotypic, genetic, 
 phylogenetic, functional, and so on. A type is defined as the categorical 
-variable in which the similarity of individuals is assessed.
+variable that describes how the similarity of individuals is assessed.
 }
 \author{
-Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve 
+Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve <richard.reeve@glasgow.ac.uk>
 \cr
 Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
 }

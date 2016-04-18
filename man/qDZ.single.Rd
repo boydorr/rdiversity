@@ -18,7 +18,7 @@ in population}
 \item{Zp}{- ordinariness of individuals / types in population}
 }
 \value{
-
+Similarity-sensitive diversity of order q
 }
 \description{
 Calculates the similarity-sensitive diversity of order q of a population 

@@ -10,7 +10,7 @@
 \item{data}{\eqn{S x N} \code{matrix}; population counts}
 }
 \value{
-Returns an \eqn{S x S} \code{matrix}; identity matrix where each \emph{type} 
+Returns an \eqn{S * S} \code{matrix}; identity matrix where each \emph{type} 
 is completely distinct
 }
 \description{

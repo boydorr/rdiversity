@@ -16,7 +16,7 @@ called for.}
 four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'}
 }
 \value{
-Returns an \eqn{S x S} matrix; pair-wise similarity of \emph{types}
+Returns an \eqn{S * S} matrix; pair-wise similarity of \emph{types}
 }
 \description{
 The function \code{calculate.zmatrix} calculates the similarity matrix.

@@ -7,12 +7,12 @@
 tax.zmatrix(data, lookup)
 }
 \arguments{
-\item{data}{\eqn{S x N} \code{matrix}; population counts}
+\item{data}{\eqn{S * N} \code{matrix}; population counts}
 
 \item{lookup}{\code{data.frame} with colnames = c('Species', 'Genus', 'Family', 'Subclass')}
 }
 \value{
-Returns an \eqn{S x S} \code{matrix}; pair-wise taxonomic similarity
+Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity
 }
 \description{
 This function calculates taxonomic similarity based on Shimatani's 
@@ -20,6 +20,7 @@ index of taxonomic similarity (See Details).
 }
 \details{
 Shimatani's taxonomic similarity index is defined:
+
 \tabular{ll}{
 \code{species.similarity} \tab 1 \cr
 \code{genus.similarity} \tab 0.75 \cr
