@@ -7,10 +7,11 @@
 #' @param similarity Object of class \code{character}
 #' @param zmatrix Object of class \code{matrix}
 #' @param lookup Object of class \code{data.frame}
-#' @return \code{as.collection()} returns an object of class \code{collection}; an S4 object containing two slots, pmatrix and zmatrix. \cr\cr
+#' @return \code{as.collection()} returns an object of class \code{collection}; 
+#' an S4 object containing two slots, pmatrix and zmatrix. \cr\cr
 #' \code{is.collection()} returns TRUE if its argument is a collection, FALSE otherwise.
 #' 
-#' @include calculate.zmatrix.R class-collection.R
+#' @include calculate.zmatrix.R class-collection.R check.pmatrix.R check.zmatrix.R
 #' @export
 #' 
 #' @examples 
@@ -73,27 +74,3 @@ is.collection <-
     inherits(x, "collection")
   }
 
-
-check.pmatrix <- function(data, zmatrix = NA) {
-  if(sum(pmatrix) != 1) {
-    pmatrix <- pmatrix / sum(pmatrix)
-    print('Population matrix was normalised to sum to 1.')
-    if(is.null(row.names(pmatrix))) 
-      row.names(pmatrix) <- paste('type', 1:nrow(pmatrix))
-    if(is.null(colnames(pmatrix))) 
-      colnames(pmatrix) <- paste('subcommunity', 1:ncol(pmatrix))
-  }
-}
-
-
-check.zmatrix <- function(data, zmatrix) {
-  if(class(data) == 'rdphylo') {
-    if (length(data@hs.name) != nrow(zmatrix))
-      stop('Number of historic species in phylogeny must equal number of 
-           rows in zmatrix.')
-    
-  }else if(is.matrix(data)) {
-    if(any(zmatrix>1) | any(zmatrix<0)) 
-      stop('zmatrix elements must take a value between 0 and 1.')
-  }
-}
