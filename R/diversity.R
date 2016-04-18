@@ -6,11 +6,15 @@
 #' functional, \emph{etc.}) between individuals. 
 #' 
 #' @param measure function or list of functions; see Details, below
-#' @param data object of class \code{initDiv} 
-#' @param qs object of class \code{numeric}; vector of \emph{q} values
+#' @param data object of class \code{supercommunity}; containing pmatrix and 
+#' zmatrix
+#' @param qs \code{vector} of mode \code{numeric}; giving \emph{q} values
 #' 
 #' @details 
-#' The argument \code{measure} takes the following inputs:
+#' There are three common ways to input the \code{measure} argument:
+#' 
+#' \enumerate{
+#' \item As a single function, \emph{e.g.} \code{diversity(subcommunity.alpha.bar, 0:2)}
 #' \tabular{ll}{
 #' \code{subcommunity.alpha} \tab - estimate of naive-community supercommunity 
 #' diversity \cr
@@ -35,27 +39,25 @@
 #' subcommunities \cr
 #' \code{supercommunity.G} \tab - supercommunity similarity-sensitive 
 #' diversity \cr
-#' \code{"subcommunity"} \tab - all subcommunity measures of similarity-sensitive 
+#' }
+#' \item As a list of functions, \emph{e.g.} 
+#' \code{diversity(c(subcommunity.alpha.bar, supercommunity.R), 0:2)} 
+#' \item As a string, \emph{e.g.} \code{diversity("subcommunity", 0:2)}
+#' \tabular{ll}{
+#' \code{"subMeasures"} \tab - all subcommunity measures of similarity-sensitive 
 #' diversity \cr
-#' \code{"supercommunity"} \tab - all supercommunity measures of similarity-sensitive 
+#' \code{"superMeasures"} \tab - all supercommunity measures of 
+#' similarity-sensitive 
 #' diversity \cr
-#' \code{"all.measures"} \tab - all subcommunity and supercommunity measures of 
+#' \code{"allMeasures"} \tab - all subcommunity and supercommunity measures of 
 #' similarity-sensitive diversity \cr
 #' }
+#' }
 #' 
-#' There are three common ways to use \code{diversity()}:
-#' \itemize{
-#' \item Calculate a single diversity measure, \emph{e.g.} \code{diversity(subcommunity.alpha.bar, 0:2)}
-#' \item Calculate all subcommunity and/or supercommunity measures of diversity, 
-#' \emph{e.g.} \code{diversity("subcommunity", 0:2)}
-#' \item Select a selection of specific measures of diversity, \emph{e.g.} 
-#' \code{diversity(c(subcommunity.alpha.bar, supercommunity.R), 0:2)} 
-#' } 
-#' 
-#'
-#' @return A list is returned; where each element contains an array of 
-#' diversities, with the first dimension representing subcommunities and the 
-#' last representing values of \emph{q}. 
+#' @return A list is returned of length equal to the number of diversity 
+#' measures calculated. Each list item contains an array of diversities. 
+#' Each row corresponds to a different subcommunity and each column represents 
+#' a particular value of \emph{q}. 
 #' 
 #' @examples 
 #' # Create population
@@ -79,20 +81,34 @@ diversity <-
     }else if(measure=="subcommunity") {
       all.subcommunity(data, qs)
     }else if(measure=="supercommunity") {
-      all.subcommunity(data, qs)
+      all.supercommunity(data, qs)
+    }else if(measure=="allMeasures") {
+      allMeasures(data, qs)
     }else
-      select.diversity(measure, data, qs)
+      selectMeasures(measure, data, qs)
   }
 
 
 #' @rdname diversity
 #' @examples 
+#' # A number of specific measures 
+#' output <- diversity(c(subcommunity.alpha.bar, supercommunity.G), data, 0:2)
+#' names(output)
+#' output
+#' 
+selectMeasures <- function(measure, data, qs) {
+  lapply(measure, function(x) ans <- x(data, qs))
+}
+
+
+#' @rdname diversity
+#' @examples 
 #' # All subcommunity measures
-#' output <- diversity("subcommunity", data, 0:2)
+#' output <- diversity("subMeasures", data, 0:2)
 #' names(output)
 #' output[[2]]
 #' 
-subcommunity <- function(data, qs)
+subMeasures <- function(data, qs)
 {
   measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
                      subcommunity.beta, subcommunity.beta.bar, 
@@ -111,11 +127,11 @@ subcommunity <- function(data, qs)
 #' @rdname diversity 
 #' @examples 
 #' # All supercommunity measures 
-#' output <- diversity("supercommunity", data, 0:2)
+#' output <- diversity("superMeasures", data, 0:2)
 #' names(output)
 #' output[[2]]
 #' 
-supercommunity <- function(data, qs)
+superMeasures <- function(data, qs)
 {
   measure <- list(supercommunity.A, supercommunity.A.bar,
                      supercommunity.B, supercommunity.B.bar,
@@ -134,11 +150,11 @@ supercommunity <- function(data, qs)
 #' @rdname diversity
 #' @examples 
 #' # All subcommunity and supercommunity measures 
-#' output <- diversity("all.measures", data, 0:2)
+#' output <- diversity("allMeasures", data, 0:2)
 #' names(output)
 #' output[[2]]
 #' 
-all.measures <- function(data, qs)
+allMeasures <- function(data, qs)
 {
   measure <- list(subcommunity.alpha, subcommunity.alpha.bar, 
                   subcommunity.beta, subcommunity.beta.bar, 
@@ -160,18 +176,4 @@ all.measures <- function(data, qs)
                         "supercommunity.G", "supercommunity.G.bar")
   return(output)
 }
-
-
-#' @rdname diversity
-#' @examples 
-#' # A selection of specific measures 
-#' output <- diversity(c(subcommunity.alpha.bar, supercommunity.G), data, 0:2)
-#' names(output)
-#' output
-#' 
-select.diversity <- function(measure, data, qs) {
-  lapply(measure, function(x) ans <- x(data, qs))
-}
-
-
 
