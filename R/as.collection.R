@@ -34,12 +34,12 @@ as.supercommunity <- function(data, similarity = NA, zmatrix = NA, lookup = NA) 
     stop('Check arguments. Cannot set both similarity and zmatrix.')
   
   if(is.data.frame(data)) data <- as.matrix(data)
-  if(class(data)=='phylo') new.tree <- as.RDphylo(data)
+  if(class(data)=='phylo') new.tree <- as.rdphylo(data)
     
-  # If data is class 'RDphylo': if zmatrix is provided check it is valid, 
+  # If data is class 'rdphylo': if zmatrix is provided check it is valid, 
   # otherwise calculate phylogenetic similarity and abundance of historic 
   # species
-  if(class(data)=='RDphylo') {
+  if(class(data)=='rdphylo') {
     pmatrix <- new.tree@hs.abundance
     if(all(is.na(zmatrix))) {
       zmatrix <- calculate.zmatrix(new.tree)

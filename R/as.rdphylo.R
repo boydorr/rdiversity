@@ -1,18 +1,18 @@
 #' Phylogenetic data
 #'
-#' Functions to check if an object is of class \code{RDphylo} or coerce an 
-#' object into class \code{RDphylo}.
+#' Functions to check if an object is of class \code{rdphylo} or coerce an 
+#' object into class \code{rdphylo}.
 #'
 #' @param tree object of class \code{phylo}
 #' @param pds.abundance \code{vector} of length \eqn{S}; proportional
 #' abundance of present-day species
 #'
-#' @return S4 generic of class \linkS4class{RDphylo} containing historic 
+#' @return S4 generic of class \linkS4class{rdphylo} containing historic 
 #' species: names, ancestral and descendant nodes, descendant present day 
 #' species, and proportional abundance. 
 #' @export
 #' 
-as.RDphylo <- function(tree,
+as.rdphylo <- function(tree,
                       pds.abundance = matrix(rep(1/length(tree$tip.label),
                                           length(tree$tip.label)))) {
   # Label historic species
@@ -49,7 +49,7 @@ as.RDphylo <- function(tree,
   hs.abundance <- apply(pds.abundance, 2, 
                         function(x) (hs.length/Tbar) * x[hs.pds])
 
-  output <- new('RDphylo', tree,
+  output <- new('rdphylo', tree,
                 hs.name = hs.names,
                 hs.pds = hs.pds,
                 hs.edge = hs.edge,
@@ -104,11 +104,11 @@ calc.Lj <- function(tree, node)
 }
 
 
-#' @rdname as.RDphylo
+#' @rdname as.rdphylo
 #' @param x any R object 
 #' 
-is.RDphylo <-
+is.rdphylo <-
   function (x)
   {
-    inherits(x, "RDphylo")
+    inherits(x, "rdphylo")
   }

@@ -20,9 +20,9 @@
 #' 
 calculate.zmatrix <- function(data, similarity = NA, lookup = NA) 
 {
-  # If object data is class phylo or class RDphylo, calculate phylogenetic 
+  # If object data is class phylo or class rdphylo, calculate phylogenetic 
   # similarity
-  if(class(data)=='phylo' | is.RDphylo(data)) {
+  if(class(data)=='phylo' | is.rdphylo(data)) {
     phylo.zmatrix(data)
     
   }else if(is.matrix(data)) {
