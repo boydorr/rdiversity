@@ -1,4 +1,4 @@
-Package: RDiversity
+Package: rdiversity
 Type: Package
 Title: Measures similarity-sensitive diversity
 Version: 0.1
@@ -19,16 +19,14 @@ Suggests:
     rmarkdown
 RoxygenNote: 5.0.1
 Collate:
-    'RDiversity-internal.R'
-    'RDiversity.R'
     'additive.to.diversity.R'
+    'as.rdphylo.R'
     'check.zmatrix.R'
     'check.pmatrix.R'
-    'class-collection.R'
+    'class-supercommunity.R'
     'calculate.zmatrix.R'
-    'as.collection.R'
-    'as.rdphylo.R'
-    'class-RDiversity.R'
+    'as.supercommunity.R'
+    'class-rdiversity.R'
     'class-rdphylo.R'
     'diversity.R'
     'diversity.to.additive.R'
@@ -39,6 +37,8 @@ Collate:
     'qD.single.R'
     'qDZ.R'
     'qDZ.single.R'
+    'rdiversity-internal.R'
+    'rdiversity.R'
     'rdplot.R'
     'subcommunity.alpha.R'
     'subcommunity.alpha.bar.R'
