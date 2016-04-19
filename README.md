@@ -1,13 +1,13 @@
-# RDiversity
+# rdiversity
 
-`RDiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals; taxonomic, phenotypic, genetic, phylogenetic, etc. 
+`rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals; taxonomic, phenotypic, genetic, phylogenetic, etc. 
 
 ## Installation
 
-To install the newest version of RDiversity from github, simply run the following from an R console:
+To install the newest version of rdiversity from github, simply run the following from an R console:
 ```r
 install.packages("devtools")
-devtools::install_github("boydorr/RDiversity")
+devtools::install_github("boydorr/rdiversity")
 ```
 
 ## Getting started
