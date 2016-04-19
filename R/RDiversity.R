@@ -1,6 +1,6 @@
-#' RDiversity
+#' rdiversity
 #' 
-#' The \code{RDiversity} package calculates the similarity-sensitive diversity 
+#' The \code{rdiversity} package calculates the similarity-sensitive diversity 
 #' of a population and it's partitions.
 #' 
 #' @details This package calculates, or takes as input, the similarity between 
@@ -8,7 +8,7 @@
 #' phylogenetic, functional, and so on. A type is defined as the categorical 
 #' variable that describes how the similarity of individuals is assessed. 
 #' 
-#' @name RDiversity
+#' @name rdiversity
 #' @docType package
 #' 
 #' @import ggplot2
