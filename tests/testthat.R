@@ -1,4 +1,4 @@
 library(testthat)
-library(RDiversity)
+library(rdiversity)
 
-test_check("RDiversity")
+test_check("rdiversity")

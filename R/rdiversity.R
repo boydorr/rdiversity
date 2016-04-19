@@ -13,6 +13,8 @@
 #' 
 #' @import ggplot2
 #' @import methods
+#' @import ape
+#' @import phangorn
 #' 
 #' @author 
 #' Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve <richard.reeve@glasgow.ac.uk>

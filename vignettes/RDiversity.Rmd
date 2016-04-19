@@ -4,18 +4,18 @@ author: "Sonia Mitchell"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{RDiversity}
+  %\VignetteIndexEntry{rdiversity}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  \usepackage{RDiversity}
+  \usepackage{rdiversity}
 ---
 
-# Introduction to RDiversity package
+# Introduction to rdiversity package
 
-This is a minimal example of the `RDiversity` package. 
+This is a minimal example of the `rdiversity` package. 
 
 ```{r load_package, results='hide'} 
-library(RDiversity)
+library(rdiversity)
 ```
 
 
@@ -28,8 +28,8 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 population
 
-# Coerse object into a collection
-data <- as.collection(population)
+# Coerse object into a supercommunity
+data <- as.supercommunity(population)
 data
 
 # Calculate diversity
@@ -66,12 +66,12 @@ like this:
 tree$tip.label
 ```
 
-The package `RDiversity`, requires that a phylogeny is input as an object of 
-class `RDphylo`. We can convert objects of class `phylo` into those of class 
-`RDphylo`:
+The package `rdiversity`, requires that a phylogeny is input as an object of 
+class `rdphylo`. We can convert objects of class `phylo` into those of class 
+`rdphylo`:
 
 ```{r set_parameters, results='hide'} 
-new.tree <- RDiversity:::as.RDphylo(tree)
+new.tree <- as.rdphylo(tree)
 ```
 
 This object has an extended structure:
@@ -89,11 +89,11 @@ new.tree@hs.name
 
 as
 
-```{r define_collection, results='hide'}
+```{r define_supercommunity, results='hide'}
 pds.abundance <- data.frame(A = sample(1:50, 10, replace = TRUE),
                        B = sample(1:50, 10, replace = TRUE))
 
-data <- as.collection(new.tree)
+data <- as.supercommunity(new.tree)
 ```
 
 asd
