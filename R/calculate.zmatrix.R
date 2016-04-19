@@ -16,7 +16,7 @@
 #' four columns, listing 'Species', 'Genus', 'Family', and 'Subclass'
 #' @return Returns an \eqn{S * S} matrix; pair-wise similarity of \emph{types}
 #' 
-#' @include class-collection.R
+#' @include class-supercommunity.R
 #' 
 calculate.zmatrix <- function(data, similarity = NA, lookup = NA) 
 {

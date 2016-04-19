@@ -1,19 +1,19 @@
-#' Coerse to a Collection
+#' Coerse to a Supercommunity
 #' 
-#' Functions to check if an object is a \code{collection} or coerce an object 
-#' into a \code{collection}.
+#' Functions to check if an object is a \code{supercommunity} or coerce an object 
+#' into a \code{supercommunity}.
 #' 
 #' @param data Object of class \code{matrix}
 #' @param similarity Object of class \code{character}
 #' @param zmatrix Object of class \code{matrix}
 #' @param lookup Object of class \code{data.frame}
 #' @return 
-#' \code{as.collection()} returns an object of class \code{collection}; 
+#' \code{as.supercommunity()} returns an object of class \code{supercommunity}; 
 #' an S4 object containing two slots, pmatrix and zmatrix. \cr\cr
-#' \code{is.collection()} returns TRUE if its argument is a collection, 
+#' \code{is.supercommunity()} returns TRUE if its argument is a supercommunity, 
 #' FALSE otherwise.
 #' 
-#' @include calculate.zmatrix.R class-collection.R check.pmatrix.R check.zmatrix.R
+#' @include calculate.zmatrix.R class-supercommunity.R check.pmatrix.R check.zmatrix.R
 #' @export
 #' 
 #' @examples 
@@ -22,13 +22,13 @@
 #'                         subcommunityB = sample(1:50, 5, replace = TRUE))
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
-#' # Create object of class collection
-#' data <- as.collection(population)
+#' # Create object of class supercommunity
+#' data <- as.supercommunity(population)
 #' 
 #' print(data)
 #' print(data@zmatrix)
 #' 
-as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
+as.supercommunity <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
   # If both similarity and zmatrix arguments are provided, return an error
   if(!is.na(similarity) & all(!is.na(zmatrix))) 
     stop('Check arguments. Cannot set both similarity and zmatrix.')
@@ -63,16 +63,16 @@ as.collection <- function(data, similarity = NA, zmatrix = NA, lookup = NA) {
     
   }else stop('object data is of unknown format.')
   
-  # Coerse object into a collection
-  new('collection', pmatrix, zmatrix = zmatrix)
+  # Coerse object into a supercommunity
+  new('supercommunity', pmatrix, zmatrix = zmatrix)
 }
 
 
-#' @rdname as.collection
+#' @rdname as.supercommunity
 #' @param x any R object 
-is.collection <-
+is.supercommunity <-
   function (x) 
   {
-    inherits(x, "collection")
+    inherits(x, "supercommunity")
   }
 

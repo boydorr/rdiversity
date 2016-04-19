@@ -66,8 +66,8 @@
 #' population <- data.frame(A = sample(1:50, 5, replace = TRUE),
 #'                          B = sample(1:50, 5, replace = TRUE))
 #' 
-#' # Coerse object into a collection
-#' data <- as.collection(population)
+#' # Coerse object into a supercommunity
+#' data <- as.supercommunity(population)
 #' 
 #' # Calculate diversity
 #' # Single measure

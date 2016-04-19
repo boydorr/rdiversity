@@ -1,4 +1,4 @@
-#' Class 'collection'
+#' Class 'supercommunity'
 #' 
 #' Container for proportional abundance and similarity matrices. 
 #' 
@@ -6,18 +6,18 @@
 #' of \emph{types}
 #' @field zmatrix \code{matrix} of mode \code{numeric}; pairwise similarity 
 #' between \emph{types}
-#' @param object object of class \linkS4class{collection}
+#' @param object object of class \linkS4class{supercommunity}
 #' 
 #' @export
 #' 
-collection <- setClass("collection",
+supercommunity <- setClass("supercommunity",
                  contains = "matrix",
                  slots = c(.Data = "matrix",
                            zmatrix = "matrix"))
 
 
-#' @describeIn collection prints pmatrix
-setMethod(f = "show", signature= "collection", 
+#' @describeIn supercommunity prints pmatrix
+setMethod(f = "show", signature= "supercommunity", 
           definition = function(object) {
             print(head(object@.Data))
           } )

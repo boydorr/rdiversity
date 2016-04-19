@@ -16,8 +16,8 @@
 #'                         subcommunityB = sample(1:50, 5, replace = TRUE))
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
-#' # Coerse object into a collection
-#' data <- as.collection(population)
+#' # Coerse object into a supercommunity
+#' data <- as.supercommunity(population)
 #' 
 #' # Calculate diversity
 #' supercommunity.G.bar(data, 0:2)
