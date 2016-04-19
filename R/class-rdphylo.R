@@ -1,6 +1,6 @@
 setOldClass("phylo")
 
-#' Class 'RDphylo'
+#' Class 'rdphylo'
 #' 
 #' Container for various parameters associated with calculating phylogenetic 
 #' diversity. 
@@ -20,10 +20,10 @@ setOldClass("phylo")
 #' change of present day species, ordered by the number in edge.
 #' @field Tbar \code{numeric} element; giving the mean total evolutionary 
 #' change over present day species.
-#' @param object object of class \linkS4class{RDphylo}
+#' @param object object of class \linkS4class{rdphylo}
 #' 
 #' @return 
-#' An object of class \code{RDphylo}. Builds on class \code{phylo} and 
+#' An object of class \code{rdphylo}. Builds on class \code{phylo} and 
 #' therefore contains the following components:
 #' \tabular{ll}{
 #' \code{edge} \tab two-column \code{matrix} of mode numeric; each row  
@@ -39,7 +39,7 @@ setOldClass("phylo")
 #' 
 #' @export
 #' 
-RDphylo <- setClass("RDphylo",
+rdphylo <- setClass("rdphylo",
          contains = "phylo",
          slots = c(hs.name = "character",
                    hs.pds = "numeric",
@@ -51,8 +51,8 @@ RDphylo <- setClass("RDphylo",
                    ))
 
 
-#' @describeIn RDphylo prints various parameters associated with the phylogeny
-setMethod(f = "show", signature(object = "RDphylo"),
+#' @describeIn rdphylo prints various parameters associated with the phylogeny
+setMethod(f = "show", signature(object = "rdphylo"),
           definition = function(object){
             cat('Phylogenetic tree with', length(object$tip.label),
                 'tips and', object$Nnode,
