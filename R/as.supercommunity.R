@@ -10,7 +10,7 @@
 #' @return returns an object of class \code{supercommunity}; 
 #' an S4 object containing two slots, pmatrix and zmatrix. 
 #' 
-#' @include class-supercommunity.R check.pmatrix.R check.zmatrix.R
+#' @include class-supercommunity.R check_pmatrix.R check_zmatrix.R
 #' @export
 #' 
 #' @examples 
