@@ -4,7 +4,7 @@
 #' representing subcommunity counts, for a series of orders, repesented as a 
 #' vector of \code{qs}.
 #'
-#' @inheritParams inherit_params
+#' @inheritParams subcommunity.alpha.bar
 #' @return An array of diversities, last representing values of \emph{q}
 #' 
 #' @seealso \code{\link{diversity}}

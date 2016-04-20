@@ -4,7 +4,9 @@
 #' representing independent subcommunity counts, for a series of orders 
 #' repesented as a vector of \code{qs}.
 #' 
-#' @inheritParams inherit_params
+#' @param populations object of class \code{collection}
+#' @param qs \code{vector} of \emph{q} values
+#' 
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of \emph{q}
 #' 

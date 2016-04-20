@@ -4,7 +4,7 @@
 #' independent subcommunity counts, for a series of orders, repesented as
 #' a vector of \code{qs}.
 #'
-#' @inheritParams inherit_params
+#' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
 #' @return Returns an array of diversities, first dimension representing 

@@ -5,7 +5,7 @@
 #' sum of the subcommunities), for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #'
-#' @inheritParams inherit_params
+#' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
 #' @return Data frame of diversities, columns representing populations, and

@@ -5,7 +5,7 @@
 #' sum of the subcommunities), for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #'
-#' @inheritParams inherit_params
+#' @inheritParams subcommunity.alpha.bar
 #' @param ... additional arguments
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
