@@ -26,9 +26,6 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
   if(is.data.frame(pmatrix)) pmatrix <- as.matrix(pmatrix)
   if(is.data.frame(zmatrix)) zmatix <- as.matrix(zmatrix)
   
-  # if (is.vector(object)) object <- array(object, dim=c(length(object), 1))
-  # if (is.data.frame(object)) object <- as.matrix(object)
-  
   pmatrix <- check_pmatrix(pmatrix)
   zmatrix <- check_zmatrix(pmatrix, zmatrix)
   
@@ -55,9 +52,5 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
 #' @return 
 #' returns TRUE if its argument is a supercommunity, FALSE otherwise.
 #' 
-is.supercommunity <-
-  function (x) 
-  {
-    inherits(x, "supercommunity")
-  }
-
+is.supercommunity <- function (x) 
+  inherits(x, "supercommunity")
