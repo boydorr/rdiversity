@@ -62,3 +62,12 @@ rhobar <- function(super) {
   new('powermean', results, 
       measure = "rho bar")
 }
+
+#' @rdname alpha
+gamma <- function(super) {
+  1 / rowSums(super@ordinariness, na.rm = T)
+  
+  new('powermean', results, 
+      measure = "gamma")
+}
+
