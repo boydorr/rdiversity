@@ -31,3 +31,13 @@ alpha <- function(super) {
 }
 
   
+#' @rdname alpha
+alphabar <- function(super) {
+  ordinariness.bar <- sapply(1:length(super@subcommunity_weight), 
+                             function(x) super@ordinariness[,x] /
+                               super@subcommunity_weight[x])
+  results <- 1 / ordinariness.bar
+  
+  new('powermean', results, 
+      measure = "alpha bar")
+}
