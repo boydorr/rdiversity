@@ -37,6 +37,10 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
   weight <- colSums(data) / sum(data)
 
   Zp.j <- data@similarity %*% data@type_abundance
+  
+  # Now mark all of the species that have nothing similar as NaNs
+  # because diversity of an empty group is undefined
+  Zp.j[Zp.j==0] <- NaN
 }
 
 
