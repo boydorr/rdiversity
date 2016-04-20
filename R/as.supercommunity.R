@@ -20,7 +20,9 @@
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
 #' 
-as.supercommunity <- function(pmatrix, zmatrix = NA) {
+supercommunity <- function(pmatrix, zmatrix = NA) {
+  if(any(is.na(zmatrix))) zmatrix <- diag(1, nrow(pmatrix))
+  
   if(is.data.frame(pmatrix)) pmatrix <- as.matrix(pmatrix)
   if(is.data.frame(zmatrix)) zmatix <- as.matrix(zmatrix)
   if(any(is.na(zmatrix))) zmatrix <- diag(1, nrow(pmatrix))
