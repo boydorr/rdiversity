@@ -25,9 +25,9 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
   
   if(is.data.frame(pmatrix)) pmatrix <- as.matrix(pmatrix)
   if(is.data.frame(zmatrix)) zmatix <- as.matrix(zmatrix)
-  if(any(is.na(zmatrix))) zmatrix <- diag(1, nrow(pmatrix))
   
-  new('supercommunity', pmatrix, zmatrix = zmatrix)
+  # if (is.vector(object)) object <- array(object, dim=c(length(object), 1))
+  # if (is.data.frame(object)) object <- as.matrix(object)
 }
 
 
