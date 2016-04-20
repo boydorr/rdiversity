@@ -45,7 +45,7 @@ alphabar <- function(super) {
 
 #' @rdname alpha
 rho <- function(super) {
-  rowSums(super@ordinariness, na.rm = T) / super@ordinariness
+  results <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
   
   new('powermean', results, 
       measure = "rho")
@@ -57,7 +57,7 @@ rhobar <- function(super) {
   ordinariness.bar <- sapply(1:length(super@subcommunity_weight), 
                              function(x) super@ordinariness[,x] /
                                super@subcommunity_weight[x])
-  rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
+  results <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
   
   new('powermean', results, 
       measure = "rho bar")
@@ -76,7 +76,7 @@ rhobar <- function(super) {
 
 #' @rdname alpha
 gamma <- function(super) {
-  1 / rowSums(super@ordinariness, na.rm = T)
+  results <- 1 / rowSums(super@ordinariness, na.rm = T)
   
   new('powermean', results, 
       measure = "gamma")
