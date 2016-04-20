@@ -33,6 +33,8 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
   zmatrix <- check_zmatrix(pmatrix, zmatrix)
   
   type_abundance <- abundance(pmatrix)
+  
+  weight <- colSums(data) / sum(data)
 }
 
 
