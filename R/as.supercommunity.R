@@ -35,6 +35,8 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
   type_abundance <- abundance(pmatrix)
   
   weight <- colSums(data) / sum(data)
+
+  Zp.j <- data@similarity %*% data@type_abundance
 }
 
 
