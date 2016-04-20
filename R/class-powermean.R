@@ -5,7 +5,6 @@
 #' @name powermean
 #' @field .Data 
 #' @field measure 
-#' @param object object of class \linkS4class{powermean}
 #' @export
 #' 
 setClass("powermean", contains = "matrix",
@@ -13,7 +12,6 @@ setClass("powermean", contains = "matrix",
                    measure = "character"))
 
 
-#' @describeIn powermean Prints power mean
 #' @rdname powermean
 #' @param x any R object 
 #' @return \code{is.powermean(x)} returns TRUE if its argument is a supercommunity, FALSE otherwise.
@@ -22,9 +20,11 @@ setClass("powermean", contains = "matrix",
 is.powermean <- function (x) inherits(x, "powermean")
 
 
+#' @rdname powermean
+#' @param object object of class \linkS4class{powermean}
+#' @usage show(object) - prints \code{powermean} object
+#' 
 setMethod(f = "show", signature = "powermean", 
           definition = function(object) {
             cat(object@measure, '\n\n')
             print(object) } )
-
-
