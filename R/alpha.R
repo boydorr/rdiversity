@@ -50,3 +50,15 @@ rho <- function(super) {
   new('powermean', results, 
       measure = "rho")
 }
+
+
+#' @rdname alpha
+rhobar <- function(super) {
+  ordinariness.bar <- sapply(1:length(super@subcommunity_weight), 
+                             function(x) super@ordinariness[,x] /
+                               super@subcommunity_weight[x])
+  rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
+  
+  new('powermean', results, 
+      measure = "rho bar")
+}
