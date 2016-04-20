@@ -49,7 +49,7 @@ supercommunity <- function(partition, similarity = NA) {
 }
 
 
-#' @rdname as.supercommunity
+#' @rdname supercommunity
 #' @param x any R object 
 #' @return 
 #' returns TRUE if its argument is a supercommunity, FALSE otherwise.
