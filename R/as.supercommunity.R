@@ -32,6 +32,7 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
   pmatrix <- check_pmatrix(pmatrix)
   zmatrix <- check_zmatrix(pmatrix, zmatrix)
   
+  type_abundance <- abundance(pmatrix)
 }
 
 
