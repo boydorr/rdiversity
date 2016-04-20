@@ -1,14 +1,16 @@
-#' Coerse to a Supercommunity
+#' Coerse to Supercommunity
 #' 
-#' Functions to check if an object is a \code{supercommunity} or coerce an object 
-#' into a \code{supercommunity}.
+#' Functions to check if an object is a \code{supercommunity} or coerce an  
+#' object into a \code{supercommunity}.
 #' 
-#' @param pmatrix two-dimensional \code{matrix} of mode numeric; relative 
+#' @param partition \code{matrix} (usually two-dimensional) of mode numeric; relative 
 #' abundance of types
-#' @param zmatrix (optional) two-dimensional \code{matrix} of mode numeric; pair-wise 
-#' similarity of types
+#' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
+#' pair-wise similarity of types. Default sets similarity to the naive-type 
+#' case, where types are completely distinct. 
 #' @return returns an object of class \code{supercommunity}; 
-#' an S4 object containing two slots, pmatrix and zmatrix. 
+#' an S4 object containing five slots, .Data (partition), similarity, 
+#' subcommunity_weights, type_abundance, and ordinariness. 
 #' 
 #' @include class-supercommunity.R check_pmatrix.R check_zmatrix.R
 #' @export
