@@ -28,6 +28,10 @@ supercommunity <- function(pmatrix, zmatrix = NA) {
   
   # if (is.vector(object)) object <- array(object, dim=c(length(object), 1))
   # if (is.data.frame(object)) object <- as.matrix(object)
+  
+  pmatrix <- check_pmatrix(pmatrix)
+  zmatrix <- check_zmatrix(pmatrix, zmatrix)
+  
 }
 
 
