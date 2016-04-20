@@ -21,6 +21,4 @@ setClass("supercommunity", contains = "matrix",
 #' @describeIn supercommunity prints pmatrix
 setMethod(f = "show", signature= "supercommunity", 
           definition = function(object) {
-            print(head(object@.Data))
-          } )
-
+            print(head(object@.Data)) } )
