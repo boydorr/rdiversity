@@ -19,17 +19,19 @@ Suggests:
     rmarkdown
 RoxygenNote: 5.0.1
 Collate:
+    'abundance.R'
     'additive.to.diversity.R'
-    'check.zmatrix.R'
-    'check.pmatrix.R'
+    'as.powermean.R'
+    'as.relativeentropy.R'
+    'check_zmatrix.R'
+    'check_pmatrix.R'
     'class-supercommunity.R'
     'as.supercommunity.R'
+    'check_match.R'
     'class-powermean.R'
     'class-rdiversity.R'
     'class-relativeentropy.R'
     'diversity.to.additive.R'
-    'get_abundances.R'
-    'get_ordinariness.R'
     'matrix_distance.R'
     'matrix_similarity.R'
     'phylogenetic_similarity.R'
@@ -58,5 +60,6 @@ Collate:
     'supercommunity.G.bar.R'
     'supercommunity.R.R'
     'supercommunity.R.bar.R'
+    't_ij.R'
     'taxonomic_similarity.R'
 VignetteBuilder: knitr
