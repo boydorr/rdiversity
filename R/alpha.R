@@ -30,7 +30,7 @@ alpha <- function(super) {
       measure = "alpha")
 }
 
-  
+
 #' @rdname alpha
 alphabar <- function(super) {
   ordinariness.bar <- sapply(1:length(super@subcommunity_weight), 
@@ -62,6 +62,17 @@ rhobar <- function(super) {
   new('powermean', results, 
       measure = "rho bar")
 }
+#' 
+#' 
+#' #' @rdname alpha
+#' beta <- function(super)
+#'   1 / rho(super)
+#' 
+#' 
+#' #' @rdname alpha
+#' betabar <- function(super)
+#'   1 / rhobar(super)
+
 
 #' @rdname alpha
 gamma <- function(super) {
