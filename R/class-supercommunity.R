@@ -10,10 +10,12 @@
 #' 
 #' @export
 #' 
-supercommunity <- setClass("supercommunity",
-                 contains = "matrix",
-                 slots = c(.Data = "matrix",
-                           zmatrix = "matrix"))
+setClass("supercommunity", contains = "matrix",
+         slots = c(.Data = "matrix", 
+                   similarity = "matrix",
+                   subcommunity_weight = "vector",
+                   type_abundance = "matrix",
+                   ordinariness = "matrix"))
 
 
 #' @describeIn supercommunity prints pmatrix
