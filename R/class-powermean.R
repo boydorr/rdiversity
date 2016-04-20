@@ -2,6 +2,7 @@
 #' 
 #' Container for 
 #' 
+#' @name powermean
 #' @field .Data 
 #' @field measure 
 #' @param object object of class \linkS4class{powermean}
