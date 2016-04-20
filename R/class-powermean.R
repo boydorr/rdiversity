@@ -14,6 +14,14 @@ setClass("powermean", contains = "matrix",
 
 
 #' @describeIn powermean Prints power mean
+#' @rdname powermean
+#' @param x any R object 
+#' @return \code{is.powermean(x)} returns TRUE if its argument is a supercommunity, FALSE otherwise.
+#' @export 
+#' 
+is.powermean <- function (x) inherits(x, "powermean")
+
+
 setMethod(f = "show", signature = "powermean", 
           definition = function(object) {
             cat(object@measure, '\n\n')
