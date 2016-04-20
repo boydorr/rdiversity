@@ -22,27 +22,27 @@
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
 #' 
-supercommunity <- function(pmatrix, zmatrix = NA) {
-  if(any(is.na(zmatrix))) zmatrix <- diag(1, nrow(pmatrix))
+supercommunity <- function(partition, similarity = NA) {
+  if(any(is.na(similarity))) similarity <- diag(1, nrow(partition))
   
-  if(is.data.frame(pmatrix)) pmatrix <- as.matrix(pmatrix)
-  if(is.data.frame(zmatrix)) zmatix <- as.matrix(zmatrix)
+  if(is.data.frame(partition)) partition <- as.matrix(partition)
+  if(is.data.frame(similarity)) zmatix <- as.matrix(similarity)
   
-  pmatrix <- check_pmatrix(pmatrix)
-  zmatrix <- check_zmatrix(pmatrix, zmatrix)
+  partition <- check_pmatrix(partition)
+  similarity <- check_zmatrix(partition, similarity)
   
-  type_abundance <- abundance(pmatrix)
+  type_abundance <- abundance(partition)
   
   weight <- colSums(data) / sum(data)
-
+  
   Zp.j <- data@similarity %*% data@type_abundance
   
   # Now mark all of the species that have nothing similar as NaNs
   # because diversity of an empty group is undefined
   Zp.j[Zp.j==0] <- NaN
-
-  new('supercommunity', pmatrix, 
-      similarity = zmatrix, 
+  
+  new('supercommunity', partition, 
+      similarity = similarity, 
       subcommunity_weight = weight, 
       type_abundance = type_abundance, 
       ordinariness = Zp.j)
