@@ -41,3 +41,12 @@ alphabar <- function(super) {
   new('powermean', results, 
       measure = "alpha bar")
 }
+
+
+#' @rdname alpha
+rho <- function(super) {
+  rowSums(super@ordinariness, na.rm = T) / super@ordinariness
+  
+  new('powermean', results, 
+      measure = "rho")
+}
