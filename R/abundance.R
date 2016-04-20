@@ -4,8 +4,7 @@
 #'
 #' @description S4 generic function \code{abundance()}.
 #'
-#' @param pop two-dimensional \code{matrix} of mode \code{numeric}
-#' @param ... additional parameters
+#' @param data 
 #' 
 #' @return two-dimensional \code{matrix} of mode \code{numeric}; 
 #' 
