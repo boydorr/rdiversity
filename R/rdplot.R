@@ -1,18 +1,16 @@
 #' @name plot.diversity
-#' 
+#'
 #' @aliases rdplot
-#' 
+#'
 #' @title rdplot()
 #'
 #' @description S4 generic function \code{rdplot()}.
 #'
-#' @param data object of class \code{rdiv} returns a diversity profile; object
-#' of class \linkS4class{rdphylo} returns phylogenetic tree
+#' @param data object of class \code{rdiv} returns a diversity profile; 
 #' @param ... additional parameters
-#' @return object of class \linkS4class{rdiv} returns a diversity profile; object
-#' of class \linkS4class{rdphylo} returns phylogenetic tree
+#' @return object of class \linkS4class{rdiv} returns a diversity profile;
 #' @include class-rdiversity.R
-#' 
+#'
 setGeneric(name = "rdplot",
            def = function(data, ...) {
              standardGeneric("rdplot")
@@ -20,33 +18,21 @@ setGeneric(name = "rdplot",
 
 
 #' @rdname plot.diversity
-#' 
-#' @param style optional argument; takes \code{'normal'} as default, generating 
+#'
+#' @param style optional argument; takes \code{'normal'} as default, generating
 #' a standard plot; and \code{'big'} increases font size and line thickness
-#' 
-#' @examples 
+#'
+#' @examples
 #' # Species counts
-#' population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
-#'                         subcommunityB = sample(1:50, 5, replace = TRUE))
-#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
-#' 
-#' # Create object of class supercommunity
-#' data <- as.supercommunity(population)
-#' 
-#' # Calculate diversity
-#' output <- diversity(subcommunity.alpha.bar, data, 0:2)
-#' 
-#' rdplot(output)
-#' 
 #' @export
-#' 
+#'
 setMethod(f = "rdplot", signature = "rdiv", definition = function(data, style='normal')
 {
   plot.this <- cbind(stack(data), row.names(data), stringsAsFactors=F)
   colnames(plot.this) <- c('diversity', 'q', 'subcommunity')
   plot.this$q <- as.numeric(gsub('q', '', plot.this$q))
 
-  g <- ggplot2::ggplot(data = plot.this, 
+  g <- ggplot2::ggplot(data = plot.this,
                        ggplot2::aes_string(x = 'q',
                                            y = 'diversity',
                                            group = 'subcommunity',
