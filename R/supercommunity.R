@@ -10,7 +10,7 @@
 #' case, where types are completely distinct. 
 #' @return returns an object of class \code{supercommunity}; 
 #' an S4 object containing five slots, .Data (partition), similarity, 
-#' subcommunity_weights, type_abundance, and ordinariness. 
+#' type_abundance, ordinariness, and subcommunity_weights. 
 #' 
 #' @include class-supercommunity.R check_pmatrix.R check_zmatrix.R
 #' @export
@@ -37,7 +37,10 @@ supercommunity <- function(partition, similarity = NA) {
   
   type_abundance <- abundance(partition)
   
-  subcommunity_weight <- colSums(type_abundance) / sum(type_abundance)
+  subcommunity_weights <- colSums(type_abundance) / sum(type_abundance)
+  
+  type_weights <- sapply(1:ncol(type_abundance), function(x)
+    (type_abundance[,x]/colSums(type_abundance)[x]))
   
   Zp.j <- similarity %*% type_abundance
   
@@ -47,9 +50,10 @@ supercommunity <- function(partition, similarity = NA) {
   
   new('supercommunity', partition, 
       similarity = similarity, 
-      subcommunity_weight = subcommunity_weight, 
       type_abundance = type_abundance, 
-      ordinariness = Zp.j)
+      ordinariness = Zp.j,
+      subcommunity_weights = subcommunity_weights,
+      type_weights = type_weights)
 }
 
 
