@@ -1,8 +1,7 @@
-#' Class 'powermean'
+#' powermean-class
 #' 
-#' Container for 
+#' @description Container for 
 #' 
-#' @name powermean
 #' @field .Data 
 #' @field measure 
 #' @field type_abundance

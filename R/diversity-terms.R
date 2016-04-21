@@ -5,7 +5,7 @@
 #' a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
-#' @param super 
+#' @param super d
 #' @return Returns 
 #' 
 #' @seealso \code{\link{diversity}}

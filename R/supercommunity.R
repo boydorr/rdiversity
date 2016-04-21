@@ -12,7 +12,7 @@
 #' an S4 object containing five slots, .Data (partition), similarity, 
 #' type_abundance, ordinariness, and subcommunity_weights. 
 #' 
-#' @include class-supercommunity.R check_pmatrix.R check_zmatrix.R
+#' @include class-supercommunity.R check_partition.R check_similarity.R
 #' @export
 #' 
 #' @examples 
@@ -61,6 +61,7 @@ supercommunity <- function(partition, similarity = NA) {
 #' @param x any R object 
 #' @return 
 #' returns TRUE if its argument is a supercommunity, FALSE otherwise.
+#' @export
 #' 
 is.supercommunity <- function (x) 
   inherits(x, "supercommunity")

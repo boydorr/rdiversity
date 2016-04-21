@@ -1,6 +1,15 @@
+#' @title Calculate subcommunity diversity
 #' 
+#' @description Calculates the subcommunity diversity of 
 #' 
+#' @param data sd
+#' @param qs ds
 #' 
+#' @details as ds
+#' 
+#' @return asd
+#' @export 
+#' @examples as
 #' 
 subdiv <- function(data, qs) {
   
