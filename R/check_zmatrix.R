@@ -1,5 +1,6 @@
-check_zmatrix <- function(data, zmatrix) {
-  if(any(zmatrix>1) | any(zmatrix<0)) 
-    stop('zmatrix elements must take a value between 0 and 1.')
-  return(zmatrix)
+check_similarity <- function(partition, similarity) {
+  if(any(similarity>1) | any(similarity<0)) 
+    stop('similarity matrix elements must take a value between 0 and 1.')
+  
+  return(similarity)
 }
