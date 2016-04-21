@@ -33,9 +33,9 @@ supercommunity <- function(partition, similarity = NA) {
   
   type_abundance <- abundance(partition)
   
-  weight <- colSums(data) / sum(data)
+  subcommunity_weight <- colSums(type_abundance) / sum(type_abundance)
   
-  Zp.j <- data@similarity %*% data@type_abundance
+  Zp.j <- similarity %*% type_abundance
   
   # Now mark all of the species that have nothing similar as NaNs
   # because diversity of an empty group is undefined
@@ -43,7 +43,7 @@ supercommunity <- function(partition, similarity = NA) {
   
   new('supercommunity', partition, 
       similarity = similarity, 
-      subcommunity_weight = weight, 
+      subcommunity_weight = subcommunity_weight, 
       type_abundance = type_abundance, 
       ordinariness = Zp.j)
 }
