@@ -1,12 +1,11 @@
-check_pmatrix <- function(data, zmatrix = NA) {
-  pmatrix <- data
-  if(sum(pmatrix) != 1) {
-    pmatrix <- pmatrix / sum(pmatrix)
+check_partition <- function(partition, zmatrix = NA) {
+  if(sum(partition) != 1) {
+    partition <- partition / sum(partition)
     warning('Population matrix was normalised to sum to 1.')
-    if(is.null(row.names(pmatrix))) 
-      row.names(pmatrix) <- paste('type', 1:nrow(pmatrix))
-    if(is.null(colnames(pmatrix))) 
-      colnames(pmatrix) <- paste('subcommunity', 1:ncol(pmatrix))
+    if(is.null(row.names(partition))) 
+      row.names(partition) <- paste('type', 1:nrow(partition))
+    if(is.null(colnames(partition))) 
+      colnames(partition) <- paste('subcommunity', 1:ncol(partition))
   }
-  return(pmatrix)
+  return(partition)
 }
