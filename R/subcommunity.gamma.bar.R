@@ -30,7 +30,9 @@
 subcommunity.gamma.bar <-
 function(populations, qs, ...)
 {
-  Z = populations@zmatrix
+  if(!is.supercommunity(populations))
+    stop('populations must be object of class supercommunity.')
+  
   res <- subcommunity.gamma(populations, qs, ..., normalise = T)
   
   output <- new('rdiv', res, measure = 'Subcommunity gamma bar',

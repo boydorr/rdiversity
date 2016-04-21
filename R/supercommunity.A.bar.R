@@ -27,7 +27,9 @@
 supercommunity.A.bar <-
 function(populations, qs)
 {
-  Z = populations@zmatrix
+  if(!is.supercommunity(populations))
+    stop('populations must be object of class supercommunity.')
+  
   res <- supercommunity.A(populations, qs, normalise = T)
 
   output <- new('rdiv', res, measure = 'Supercommunity A bar',

@@ -30,7 +30,9 @@
 subcommunity.rho.bar <-
 function(populations, qs)
 {
-  Z = populations@zmatrix
+  if(!is.supercommunity(populations))
+    stop('populations must be object of class supercommunity.')
+  
   res <- 1 / subcommunity.beta.bar(populations, qs)
 
   output <- new('rdiv', res, measure = 'Subcommunity rho bar',
