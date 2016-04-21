@@ -7,7 +7,7 @@
 #' @field measure 
 #' @field type_abundance
 #' @field ordinariness
-#' @field subcommunity_weight
+#' @field type_weights
 #' @export
 #' 
 setClass("powermean", contains = "matrix",
