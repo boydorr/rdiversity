@@ -23,7 +23,11 @@
 #' 
 #' 
 supercommunity <- function(partition, similarity = NA) {
-  if(any(is.na(similarity))) similarity <- diag(1, nrow(partition))
+  if(any(is.na(similarity))) {
+    similarity <- diag(1, nrow(partition))
+    row.names(similarity) <- row.names(partition)
+    colnames(similarity) <- row.names(partition)
+  }
   
   if(is.data.frame(partition)) partition <- as.matrix(partition)
   if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
