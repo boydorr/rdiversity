@@ -25,7 +25,7 @@
 #' 
 alpha <- function(super) {
   results <- 1 / super@ordinariness
-  create_powermean(results, super, "alpha")
+  powermean(results, super, "alpha")
 }
 
 
@@ -36,14 +36,14 @@ alphabar <- function(super) {
                                super@subcommunity_weights[x])
   colnames(ordinariness.bar) <- colnames(super)
   results <- 1 / ordinariness.bar
-  create_powermean(results, super, "alpha bar")
+  powermean(results, super, "alpha bar")
 }
 
 
 #' @rdname alpha
 rho <- function(super) {
   results <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
-  create_powermean(results, super, "rho")
+  powermean(results, super, "rho")
 }
 
 
@@ -54,7 +54,7 @@ rhobar <- function(super) {
                                super@subcommunity_weights[x])
   colnames(ordinariness.bar) <- colnames(super)
   results <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
-  create_powermean(results, super, "rho bar")
+  powermean(results, super, "rho bar")
 }
 #' 
 #' 
@@ -71,7 +71,7 @@ rhobar <- function(super) {
 #' @rdname alpha
 gamma <- function(super) {
   results <- 1 / rowSums(super@ordinariness, na.rm = T)
-  create_powermean(results, super, "gamma")
+  powermean(results, super, "gamma")
 }
 
 
