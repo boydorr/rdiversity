@@ -60,16 +60,22 @@ rhobar <- function(super) {
   results <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
   powermean(results, super, "rho bar")
 }
+
+
+#' @rdname alpha
 #' 
+beta <- function(super) {
+  results <- 1 / rho(super)
+  relativeentropy(results, super, "beta")
+}
+
+
+#' @rdname alpha
 #' 
-#' #' @rdname alpha
-#' beta <- function(super)
-#'   1 / rho(super)
-#' 
-#' 
-#' #' @rdname alpha
-#' betabar <- function(super)
-#'   1 / rhobar(super)
+betabar <- function(super) {
+  results <- 1 / rhobar(super)
+  relativeentropy(results, super, "beta bar")
+}
 
 
 #' @rdname alpha
