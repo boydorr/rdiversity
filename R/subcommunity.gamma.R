@@ -8,9 +8,11 @@
 #' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
+#' 
+#' @details 
+#' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
-#' 
 #' @seealso \code{\link{diversity}}
 #' @export
 #' 

@@ -1,12 +1,14 @@
 #' powermean-class
 #' 
-#' @description Container for 
+#' Container for 
 #' 
 #' @field .Data 
 #' @field measure 
 #' @field type_abundance
 #' @field ordinariness
 #' @field type_weights
+#' 
+#' 
 #' @export
 #' 
 setClass("powermean", contains = "matrix",
@@ -14,14 +16,15 @@ setClass("powermean", contains = "matrix",
                    measure = "character",
                    type_abundance = "matrix",
                    ordinariness = "matrix",
+                   subcommunity_weights = "vector",
                    type_weights = "matrix"))
 
 
-#' @rdname powermean
+#' @describeIn supercommunity prints powermean
 #' @param object object of class \linkS4class{powermean}
-#' @usage show(object) - prints \code{powermean} object
 #' 
 setMethod(f = "show", signature = "powermean", 
           definition = function(object) {
              print(object@.Data)
             } )
+

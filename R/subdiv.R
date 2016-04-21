@@ -1,6 +1,6 @@
-#' @title Calculate subcommunity diversity
+#' Calculate subcommunity diversity
 #' 
-#' @description Calculates the subcommunity diversity of 
+#' Calculates the subcommunity diversity of 
 #' 
 #' @param data sd
 #' @param qs ds

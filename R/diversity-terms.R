@@ -6,8 +6,10 @@
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' @param super d
-#' @return Returns 
 #' 
+#' @details 
+#' 
+#' @return Returns 
 #' @seealso \code{\link{diversity}}
 #' @export
 #' 
@@ -30,6 +32,7 @@ alpha <- function(super) {
 
 
 #' @rdname alpha
+#' 
 alphabar <- function(super) {
   ordinariness.bar <- sapply(1:length(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
@@ -41,6 +44,7 @@ alphabar <- function(super) {
 
 
 #' @rdname alpha
+#' 
 rho <- function(super) {
   results <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
   powermean(results, super, "rho")
@@ -48,6 +52,7 @@ rho <- function(super) {
 
 
 #' @rdname alpha
+#' 
 rhobar <- function(super) {
   ordinariness.bar <- sapply(1:length(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
@@ -69,6 +74,7 @@ rhobar <- function(super) {
 
 
 #' @rdname alpha
+#' 
 gamma <- function(super) {
   results <- 1 / rowSums(super@ordinariness, na.rm = T)
   powermean(results, super, "gamma")

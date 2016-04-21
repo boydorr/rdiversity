@@ -6,7 +6,13 @@
 #' @param populations An S x N array whose columns are counts of individuals
 #' @param normalise Normalise probability distribution to sum to 1 for each 
 #' column rather than just along each set
+#' 
+#' @details 
+#' 
 #' @return An array whose columns are proportions
+#' @export
+#' 
+#' @examples 
 #' 
 summarise <-
 function(populations, normalise = T)

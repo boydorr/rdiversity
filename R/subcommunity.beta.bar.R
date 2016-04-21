@@ -7,9 +7,11 @@
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' @param ... additional arguments
+#' 
+#' @details 
+#' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
-#' 
 #' @seealso \code{\link{diversity}}
 #' @export
 #' 

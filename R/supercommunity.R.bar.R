@@ -5,8 +5,10 @@
 #' repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
-#' @return An array of diversities, last representing values of \emph{q}
 #' 
+#' @details 
+#' 
+#' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}
 #' @export
 #' 

@@ -1,12 +1,15 @@
-#' @name abundance
+#' Get abundances
 #'
-#' @title Get abundance
+#' S4 generic function \code{abundance()}.
 #'
-#' @description S4 generic function \code{abundance()}.
-#'
-#' @param data 
+#' @param data d
+#' 
+#' @details 
 #' 
 #' @return two-dimensional \code{matrix} of mode \code{numeric}; 
+#' @export
+#' 
+#' @examples 
 #' 
 abundance <- function(data) {
 

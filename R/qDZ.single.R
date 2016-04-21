@@ -8,7 +8,13 @@
 #' @param q - order of diversity measurement
 #' @param Z - similarity matrix
 #' @param Zp - ordinariness of individuals / types in population
+#' 
+#' @details 
+#' 
 #' @return Similarity-sensitive diversity of order q
+#' @export
+#' 
+#' @examples 
 #' 
 qDZ.single <-
   function(proportions, q,

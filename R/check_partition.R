@@ -1,3 +1,16 @@
+#' Check partition
+#' 
+#' sdf
+#' 
+#' @param 
+#' 
+#' @details 
+#' 
+#' @return 
+#' @export
+#' 
+#' @examples 
+#' 
 check_partition <- function(partition, zmatrix = NA) {
   if(sum(partition) != 1) {
     partition <- partition / sum(partition)

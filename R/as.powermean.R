@@ -5,8 +5,10 @@
 #' @param results a
 #' @param super s
 #' @param tag s 
-#' @return 
 #' 
+#' @details 
+#' 
+#' @return 
 #' @include class-powermean.R 
 #' @export
 #' 

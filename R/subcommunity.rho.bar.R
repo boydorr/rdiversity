@@ -7,9 +7,11 @@
 #' vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
+#' 
+#' @details 
+#' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
-#' 
 #' @seealso \code{\link{diversity}}
 #' @export
 #' 

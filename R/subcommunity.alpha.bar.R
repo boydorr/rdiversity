@@ -7,9 +7,10 @@
 #' @param populations object of class \code{collection}
 #' @param qs \code{vector} of \emph{q} values
 #' 
+#' @details 
+#' 
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of \emph{q}
-#' 
 #' @seealso \code{\link{diversity}}
 #' @export
 #' 

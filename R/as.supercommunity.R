@@ -8,10 +8,12 @@
 #' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
 #' pair-wise similarity of types. Default sets similarity to the naive-type 
 #' case, where types are completely distinct. 
+#' 
+#' @details 
+#' 
 #' @return returns an object of class \code{supercommunity}; 
 #' an S4 object containing five slots, .Data (partition), similarity, 
 #' type_abundance, ordinariness, and subcommunity_weights. 
-#' 
 #' @include class-supercommunity.R check_partition.R check_similarity.R
 #' @export
 #' 

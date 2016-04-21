@@ -5,7 +5,13 @@
 #' @param tree object of class \code{phylo}
 #' @param pds.abundance vector of length {S}; relative abundance of present-day 
 #' species
+#' 
+#' @details 
+#' 
 #' @return \eqn{hS x hS} matrix; pair-wise similarity of historic species
+#' @export
+#' 
+#' @examples 
 #' 
 phylogenetic_similarity <- 
   function(tree, pds.abundance = rep(1/length(tree$tip.label), 
@@ -86,6 +92,8 @@ phylogenetic_similarity <-
 
 
 #' @rdname phylogenetic_similarity
+#' @param node integer corresponding to the node of interest
+#' 
 #' @details
 #' This function constructs unique identifiers for all historic species 
 #' ancestral to a given node. Unique identifiers take the form 
@@ -93,7 +101,6 @@ phylogenetic_similarity <-
 #' with the present day species descendant, and node-tip corresponds to the 
 #' node index and tip index associated with the historic species itself.   
 #' 
-#' @param node integer corresponding to the node of interest
 #' @return object of class \code{character}
 #' 
 label.hs <- function(tree, node)
@@ -108,6 +115,7 @@ label.hs <- function(tree, node)
 
 
 #' @rdname phylogenetic_similarity
+#' 
 #' @details
 #' Calculate the total length of evolutionary change of species \emph{j}; may 
 #' be in internal or external node corresponding to present-day and historic 

@@ -9,7 +9,12 @@
 #' @param order Order of power mean
 #' @param weights Weights of elements, normalised to 1 inside function
 #'
+#' @details 
+#' 
 #' @return Weighted power mean
+#' @export
+#' 
+#' @examples 
 #' 
 power.mean <-
 function(values, order = 1, weights = rep(1, length(values)))

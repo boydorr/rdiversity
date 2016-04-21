@@ -5,9 +5,14 @@
 #'
 #' @param populations object of class \code{initDiv}
 #' @param qs Vector of values of parameter q
-#'
+#' 
+#' @details 
+#' 
 #' @return Data frame of diversities, columns representing populations, and 
 #' rows representing values of q
+#' @export
+#' 
+#' @examples 
 #' 
 qDZ <-
 function(populations, qs) {

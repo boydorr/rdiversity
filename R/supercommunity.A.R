@@ -7,8 +7,10 @@
 #' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
-#' @return An array of diversities, last representing values of \emph{q}
 #' 
+#' @details 
+#' 
+#' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}
 #' @export
 #' 
