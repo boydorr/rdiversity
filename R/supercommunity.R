@@ -26,10 +26,10 @@ supercommunity <- function(partition, similarity = NA) {
   if(any(is.na(similarity))) similarity <- diag(1, nrow(partition))
   
   if(is.data.frame(partition)) partition <- as.matrix(partition)
-  if(is.data.frame(similarity)) zmatix <- as.matrix(similarity)
+  if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
   
-  partition <- check_pmatrix(partition)
-  similarity <- check_zmatrix(partition, similarity)
+  partition <- check_partition(partition)
+  similarity <- check_similarity(partition, similarity)
   
   type_abundance <- abundance(partition)
   
