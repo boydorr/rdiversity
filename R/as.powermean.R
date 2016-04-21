@@ -20,6 +20,7 @@ powermean <- function(results, super, tag) {
       measure = "alpha",
       type_abundance = super@type_abundance,
       ordinariness = super@ordinariness,
+      subcommunity_weights = super@subcommunity_weights,
       type_weights = super@type_weights)
 }
 
