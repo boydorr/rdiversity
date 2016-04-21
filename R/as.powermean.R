@@ -1,15 +1,15 @@
-#' powermean
+#' Coerse to powermean
 #' 
 #' Functions to check if an object is a \code{powermean} or coerce an  
 #' object into a \code{powermean}.
 #' 
 #' @param results two-dimensional \code{matrix} of mode \code{numeric}; 
-#' @param super object of class \S4class{supercommunity}; 
+#' @param super object of class \code{supercommunity}; 
 #' @param tag object of class \code{character}; 
 #' 
 #' @details 
 #' 
-#' @return object of class \S4class{powermean}
+#' @return object of class \code{powermean}
 #' @include class-powermean.R 
 #' @export
 #' 

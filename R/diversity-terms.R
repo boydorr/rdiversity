@@ -4,12 +4,11 @@
 #' independent subcommunity counts, for a series of orders, repesented as
 #' a vector of \code{qs}.
 #'
-#' @param super object of class \S4class{supercommunity}.
+#' @param super object of class \code{supercommunity}.
 #' 
 #' @details 
 #' 
 #' @return Returns 
-#' @seealso \code{\link{diversity}}
 #' @export
 #' 
 #' @examples
