@@ -23,6 +23,10 @@ powermean <- function(results, super, tag) {
 
 
 #' @rdname powermean
+#'
+as.powermean <- powermean
+
+#' @rdname powermean
 #' @param x any R object 
 #' @return \code{is.powermean(x)} returns TRUE if its argument is a 
 #' supercommunity, FALSE otherwise.

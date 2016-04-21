@@ -56,6 +56,9 @@ supercommunity <- function(partition, similarity = NA) {
       type_weights = type_weights)
 }
 
+#' @rdname supercommunity
+#' 
+as.supercommunity <- supercommunity
 
 #' @rdname supercommunity
 #' @param x any R object 
