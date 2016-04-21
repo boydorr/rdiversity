@@ -1,15 +1,7 @@
 #' Check matrices
 #' 
 #' sadj
-#' 
-#' @param data s
-#' 
-#' @details 
-#' 
-#' @return 
-#' @export
-#' 
-#' @examples 
+#' s 
 #' 
 check_matrices <- function(data) {
   partition <- check_partition(data)

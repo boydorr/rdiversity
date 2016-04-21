@@ -4,8 +4,7 @@
 #' independent subcommunity counts, for a series of orders, repesented as
 #' a vector of \code{qs}.
 #'
-#' @inheritParams subcommunity.alpha.bar
-#' @param super d
+#' @param super object of class \S4class{supercommunity}.
 #' 
 #' @details 
 #' 

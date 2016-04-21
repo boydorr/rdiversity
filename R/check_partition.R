@@ -2,11 +2,14 @@
 #' 
 #' sdf
 #' 
-#' @param 
+#' @param partition two-dimensional \code{matrix} of mode \code{numeric}; 
+#' contains relative abundance of types
 #' 
 #' @details 
 #' 
-#' @return 
+#' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If 
+#' the partition matrix was valid, this should be identical to that which was
+#' input as an argument.
 #' @export
 #' 
 #' @examples 

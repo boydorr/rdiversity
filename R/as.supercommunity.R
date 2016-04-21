@@ -3,17 +3,31 @@
 #' Functions to check if an object is a \code{supercommunity} or coerce an  
 #' object into a \code{supercommunity}.
 #' 
-#' @param partition \code{matrix} (usually two-dimensional) of mode numeric; relative 
-#' abundance of types
+#' @param partition \code{matrix} (usually two-dimensional) of mode numeric;  
+#' relative abundance of types
 #' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
 #' pair-wise similarity of types. Default sets similarity to the naive-type 
 #' case, where types are completely distinct. 
 #' 
 #' @details 
+#' \enumerate{
+#' \item .Data (partition) - proportional abundance of samples (usually types, 
+#' except in the phylogenetic case where samples correspond to the present day 
+#' species)
+#' \item similarity - pairwise similarity between \emph{types}
+#' \item type_abundance - proportional abundance of \emph{types} in the  
+#' subcommunity as a fraction of the supercommunity as a whole (in the  
+#' phylogenetic case, this corresponds to the proportional abundance of 
+#' historic species, which is calculated from the proportional abundance of 
+#' present day species)
+#' \item ordinariness - ordinariness of types 
+#' \item subcommunity_weights - subcommunity weights
+#' \item type_weights - weight of types within a subcommunity
+#' }
 #' 
-#' @return returns an object of class \code{supercommunity}; 
-#' an S4 object containing five slots, .Data (partition), similarity, 
-#' type_abundance, ordinariness, and subcommunity_weights. 
+#' @return Returns an object of class \code{supercommunity}; an S4 object 
+#' containing five slots (see Details). 
+#' 
 #' @include class-supercommunity.R check_partition.R check_similarity.R
 #' @export
 #' 

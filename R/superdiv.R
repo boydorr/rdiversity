@@ -1,13 +1,13 @@
-#' asd
+#' Calculate supercommunity diversity
 #' 
-#' asd
+#' Calculates supercommunity diversity by taking the powermean of diversity 
+#' terms.
 #' 
-#' @param data a
-#' @param qs a
+#' @inheritParams subdiv 
 #' 
 #' @details 
 #' 
-#' @return sd
+#' @return Returns a two-dimensional \code{matrix} of mode \code{numeric}.
 #' @export
 #' 
 #' @examples 

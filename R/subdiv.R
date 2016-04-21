@@ -1,13 +1,15 @@
 #' Calculate subcommunity diversity
 #' 
-#' Calculates the subcommunity diversity of 
+#' Calculates subcommunity diversity by taking the powermean of diversity 
+#' terms.
 #' 
-#' @param data sd
-#' @param qs ds
+#' @param data two-dimensional \code{matrix} of mode \code{numeric}; diversity 
+#' terms.
+#' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
 #' 
 #' @details as ds
 #' 
-#' @return asd
+#' @return Returns a two-dimensional \code{matrix} of mode \code{numeric}.
 #' @export 
 #' @examples as
 #' 
