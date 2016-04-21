@@ -36,3 +36,22 @@ setMethod(f = "subdiv", signature= "powermean",
             row.names(results) <- paste0("q", qs) 
             return(results)
             } )
+
+
+#' @rdname subdiv
+#' 
+setMethod(f = "subdiv", signature= "relativeentropy", 
+          definition = function(data, qs) {
+            results <- list()
+            for(i in 1:length(qs))
+              results[[i]] <- sapply(1:ncol(data), function(y) 
+                power.mean(data[,y], qs[i]-1, data@type_weights[,y]))
+            
+            results <- data.frame(matrix(unlist(results), 
+                                         nrow = length(results), 
+                                         byrow=T), 
+                                  stringsAsFactors=FALSE)
+            colnames(results) <- colnames(data)
+            row.names(results) <- paste0("q", qs) 
+            return(results)
+          } )
