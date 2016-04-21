@@ -15,6 +15,7 @@
 #' @examples 
 #' 
 check_partition <- function(partition) {
+  if(is.data.frame(partition)) partition <- as.matrix(partition)
   if(sum(partition) != 1) {
     partition <- partition / sum(partition)
     warning('Population matrix was normalised to sum to 1.')

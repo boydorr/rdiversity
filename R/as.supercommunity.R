@@ -45,19 +45,13 @@ supercommunity <- function(partition, similarity = NA) {
     colnames(similarity) <- row.names(partition)
   }
   
-  if(is.data.frame(partition)) partition <- as.matrix(partition)
-  if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
-  
   partition <- check_partition(partition)
   similarity <- check_similarity(partition, similarity)
   
   type_abundance <- abundance(partition)
-  
   subcommunity_weights <- colSums(type_abundance) / sum(type_abundance)
-  
   type_weights <- sapply(1:ncol(type_abundance), function(x)
     (type_abundance[,x]/colSums(type_abundance)[x]))
-  
   Zp.j <- similarity %*% type_abundance
   
   # Now mark all of the species that have nothing similar as NaNs
