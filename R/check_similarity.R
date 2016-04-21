@@ -1,13 +1,11 @@
 #' Check similarity
 #' 
-#' as
+#' \code{check_similarity()} is used to validate similarity matrices.
 #' 
 #' @param partition two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains relative abundance of types
 #' @param similarity two-dimensinal \code{matrix} of mode \code{numeric}; 
 #' contains pair-wise similarity between types
-#' 
-#' @details 
 #' 
 #' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If 
 #' the similarity matrix was valid, this should be identical to that which was
@@ -15,11 +13,14 @@
 #' @export
 #' 
 #' @examples 
+#' population <- data.frame(a = 1:2, b = 3:4)
+#' zmatrix <- matrix(rep(-1,4), 2)
+#' check_similarity(population, zmatrix)
 #' 
 check_similarity <- function(partition, similarity) {
-  if(any(similarity>1) | any(similarity<0)) 
-    stop('similarity matrix elements must take a value between 0 and 1.')
   if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
+  if(any(similarity<0)) 
+    stop('similarity matrix elements must have a positive value.')
   
   return(similarity)
 }
