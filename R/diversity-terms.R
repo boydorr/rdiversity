@@ -75,14 +75,7 @@ gamma <- function(super) {
 }
 
 
-create_powermean <- function(results, super, tag) {
-  new('powermean', 
-      results, 
-      measure = "alpha",
-      type_abundance = super@type_abundance,
-      ordinariness = super@ordinariness,
-      type_weights = super@type_weights)
-}
+
 
 
 
