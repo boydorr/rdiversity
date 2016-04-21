@@ -3,6 +3,7 @@
 #' Calculates subcommunity diversity by taking the powermean of diversity 
 #' terms.
 #' 
+#' @name subdiv
 #' @param data two-dimensional \code{matrix} of mode \code{numeric}; diversity 
 #' terms.
 #' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
