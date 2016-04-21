@@ -5,11 +5,17 @@
 #' @name powermean
 #' @field .Data 
 #' @field measure 
+#' @field type_abundance
+#' @field ordinariness
+#' @field subcommunity_weight
 #' @export
 #' 
 setClass("powermean", contains = "matrix",
          slots = c(.Data = "matrix", 
-                   measure = "character"))
+                   measure = "character",
+                   type_abundance = "matrix",
+                   ordinariness = "matrix",
+                   type_weights = "matrix"))
 
 
 #' @rdname powermean
