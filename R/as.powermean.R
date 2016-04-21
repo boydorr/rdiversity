@@ -30,10 +30,11 @@ powermean <- function(results, super, tag) {
 #'
 as.powermean <- powermean
 
+
 #' @rdname powermean
 #' @param x any R object 
 #' @return \code{is.powermean(x)} returns TRUE if its argument is a 
-#' supercommunity, FALSE otherwise.
+#' powermean, FALSE otherwise.
 #' @export 
 #' 
 is.powermean <- function (x) inherits(x, "powermean")
