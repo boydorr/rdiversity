@@ -8,7 +8,8 @@
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
 #' 
-#' @details 
+#' @details \code{subcommunity.G()} is used to calculate the 
+#' supercommunity similarity-sensitive diversity.
 #' 
 #' @return array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

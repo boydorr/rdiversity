@@ -8,7 +8,8 @@
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' 
-#' @details 
+#' @details \code{subcommunity.rho.bar()} is used to calculate the 
+#' representativeness of subcommunity \emph{j}.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}

@@ -6,7 +6,8 @@
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' 
-#' @details 
+#' @details \code{subcommunity.G()} is used to calculate the 
+#' supercommunity similarity-sensitive diversity.
 #' 
 #' @return array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

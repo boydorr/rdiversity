@@ -9,7 +9,8 @@
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
 #' 
-#' @details 
+#' @details \code{subcommunity.beta()} is used to calculate the 
+#' distinctiveness of subcommunity \emph{j}.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}

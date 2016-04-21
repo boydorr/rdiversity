@@ -8,7 +8,8 @@
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
 #' 
-#' @details 
+#' @details \code{subcommunity.alpha()} is used to calculate an estimate of 
+#' naive-community supercommunity diversity.
 #' 
 #' @return Returns an array of diversities, first dimension representing 
 #' subcommunities, and last representing values of \emph{q}

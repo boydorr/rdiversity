@@ -9,7 +9,8 @@
 #' @inheritParams subcommunity.alpha.bar
 #' @param ... additional arguments
 #' 
-#' @details 
+#' @details \code{subcommunity.rho()} is used to calculate the redundancy of 
+#' subcommunity \emph{j}.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}

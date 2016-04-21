@@ -8,7 +8,8 @@
 #' @inheritParams subcommunity.alpha.bar
 #' @param ... additional arguments
 #' 
-#' @details 
+#' @details \code{subcommunity.beta.bar()} is used to calculate an 
+#' estimate of the effective number of distinct subcommunities.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}

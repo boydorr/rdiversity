@@ -6,7 +6,8 @@
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' 
-#' @details 
+#' @details \code{subcommunity.A.bar()} is used to calculate the 
+#' average similarity-sensitive diversity of subcommunities.
 #' 
 #' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

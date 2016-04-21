@@ -6,7 +6,8 @@
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' 
-#' @details 
+#' @details \code{subcommunity.R.bar()} is used to calculate the 
+#' average representativeness of subcommunities.
 #' 
 #' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

@@ -8,7 +8,8 @@
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
 #' 
-#' @details 
+#' @details \code{subcommunity.B()} is used to calculate the 
+#' average distinctiveness of subcommunities.
 #' 
 #' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

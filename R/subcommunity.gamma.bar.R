@@ -8,7 +8,8 @@
 #' @inheritParams subcommunity.alpha.bar
 #' @param ... additional arguments
 #' 
-#' @details 
+#' @details \code{subcommunity.gamma()} is used to calculate the 
+#' contribution per individual toward supercommunity diversity.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}

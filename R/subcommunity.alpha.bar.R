@@ -7,7 +7,8 @@
 #' @param populations object of class \code{collection}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @details 
+#' @details \code{subcommunity.alpha.bar()} is used to calculate the 
+#' similarity-sensitive diversity of subcommunity \emph{j} in isolation.
 #' 
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of \emph{q}
