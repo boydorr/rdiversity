@@ -109,6 +109,21 @@ setMethod(f = "supercommunity",
                 type_weights = type_weights)
           } )
 
+
+#' @rdname supercommunity
+#' @param pds.abundance 
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "phylo", similarity = "missing"), 
+          definition = function(partition, similarity = NA, pds.abundance = NA) {  
+            # Calculate pair-wise similarity of historic species
+            new.tree <- as.rdphylo(tree)
+            similarity <- phylogenetic_similarity(new.tree, pds.abundance)
+            
+            supercommunity(new.tree, similarity)
+          } )
+
+
 #' @rdname supercommunity
 #' @param pds.abundance 
 #' 
