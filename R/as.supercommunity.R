@@ -32,10 +32,10 @@
 #' @export
 #' 
 #' @examples 
-#' # Species counts
-#' population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
-#'                         subcommunityB = sample(1:50, 5, replace = TRUE))
-#' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
+#' 
+#' tree <- ape::rtree(n = 5)
+#' a <- supercommunity(tree)
+#' b <- phylogenetic_similarity(tree)
 #' 
 setGeneric(name = "supercommunity",
            def = function(partition, similarity, ...) {
