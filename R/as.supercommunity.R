@@ -37,8 +37,17 @@
 #'                         subcommunityB = sample(1:50, 5, replace = TRUE))
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
+setGeneric(name = "supercommunity",
+           def = function(partition, similarity) {
+             standardGeneric("supercommunity")
+           } )
+
+
+#' @rdname superdiv
 #' 
-supercommunity <- function(partition, similarity = NA) {
+setMethod(f = "supercommunity", signature= c("matrix","vector"), 
+          definition = function(partition, similarity = NA) {  
+            # If similarity is not input, create identity matrix 
   if(any(is.na(similarity))) {
     similarity <- diag(1, nrow(partition))
     row.names(similarity) <- row.names(partition)
@@ -64,7 +73,7 @@ supercommunity <- function(partition, similarity = NA) {
       ordinariness = Zp.j,
       subcommunity_weights = subcommunity_weights,
       type_weights = type_weights)
-}
+} )
 
 #' @rdname supercommunity
 #' 
