@@ -30,9 +30,3 @@ setClass("supercommunity", contains = "matrix",
                    type_weights = "matrix"))
 
 
-#' @describeIn supercommunity prints pmatrix
-#' @param object object of class \linkS4class{supercommunity}
-#' 
-setMethod(f = "show", signature= "supercommunity", 
-          definition = function(object) {
-            print(head(object@.Data)) } )

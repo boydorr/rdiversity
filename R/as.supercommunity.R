@@ -170,3 +170,12 @@ as.supercommunity <- supercommunity
 #' 
 is.supercommunity <- function (x) 
   inherits(x, "supercommunity")
+
+
+#' @rdname supercommunity-methods
+#' @param object object of class \code{supercommunity}
+#' 
+setMethod(f = "show", signature= "supercommunity", 
+          definition = function(object) {
+            print(head(object@.Data)) } )
+
