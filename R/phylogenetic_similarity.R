@@ -13,6 +13,10 @@
 #' 
 #' @examples 
 #' 
+#' tree <- ape::rtree(n = 5)
+#' Z <- phylogenetic_similarity(tree)
+#' 
+#' 
 phylogenetic_similarity <- 
   function(tree, pds.abundance = rep(1/length(tree$tip.label), 
                                      length(tree$tip.label))) 
