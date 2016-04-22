@@ -55,17 +55,21 @@ setMethod(f = "supercommunity",
             supercommunity(partition, similarity)
           } )
 
+
+#' @rdname supercommunity
 #' 
-setMethod(f = "supercommunity", signature= c("matrix","vector"), 
+setMethod(f = "supercommunity", 
+          signature(partition = "matrix", similarity = "missing"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is not input, create identity matrix 
-            if(any(is.na(similarity))) {
               similarity <- diag(1, nrow(partition))
               row.names(similarity) <- row.names(partition)
               colnames(similarity) <- row.names(partition)
-            }
             
-            partition <- check_partition(partition)
+            supercommunity(partition, similarity)
+          } )
+
+
 #' @rdname supercommunity
 #' 
 setMethod(f = "supercommunity", 
@@ -75,8 +79,6 @@ setMethod(f = "supercommunity",
             type_abundance <- check_partition(partition)
             similarity <- check_similarity(partition, similarity)
             
-            type_abundance <- abundance(partition)
-            subcommunity_weights <- colSums(type_abundance) / sum(type_abundance)
             # Calculate parameters
             subcommunity_weights <- colSums(type_abundance) / 
               sum(type_abundance)
