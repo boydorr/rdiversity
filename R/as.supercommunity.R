@@ -38,7 +38,7 @@
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
 setGeneric(name = "supercommunity",
-           def = function(partition, similarity) {
+           def = function(partition, similarity, ...) {
              standardGeneric("supercommunity")
            } )
 
