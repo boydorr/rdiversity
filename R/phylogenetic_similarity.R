@@ -19,12 +19,6 @@ phylogenetic_similarity <-
   {
     if(is.vector(pds.abundance)) pds.abundance <- matrix(pds.abundance)
       
-      # Label historic species
-      pds.nodes <- 1:length(tree$tip.label)
-    hs.names <- unlist(sapply(pds.nodes, function(x) label.hs(tree, x)))
-    
-    # Check pds.pmatrix
-    if(sum(pds.abundance) != 1) pds.abundance <- pds.abundance/sum(pds.abundance)
     if(class(tree)=='phylo') {
       new.tree <- as.rdphylo(tree)
     } else if(is.rdphylo(tree)) {
@@ -33,30 +27,7 @@ phylogenetic_similarity <-
       stop('tree should be object of class phylo (or rdphylo).')  
     
     # Count historic species
-    N.hs <- length(hs.names)
-    
-    # Extract present day species, ancestral and desendant nodes associated with
-    # each historic species
-    hs.pds <- sapply(hs.names, function(x) as.numeric(strsplit(x,",")[[1]][1]))
-    hs.edge <- t(sapply(hs.names, function(x) 
-      as.numeric(strsplit(strsplit(x,",")[[1]][2],'-')[[1]])))
-    
-    # Calculate Lj for each pds; total length of evolutionary change
-    Lj <- sapply(pds.nodes, function(x) calc.Lj(tree, x))
-    
-    # Calculate the mean total evolutionary change over all pds
-    Tbar <- apply(pds.abundance, 2, function(x) sum(x*Lj))
-    
-    # Calculate the length of each historic species
-    hs.length <- sapply(1:N.hs, function(x) {
-      which.edge <- which(apply(tree$edge, 1, 
-                                function(y) all.equal(y, hs.edge[x,]))==T)
-      tree$edge[which.edge]
-    })
-    
-    # Calculate the relative abundance of each historic species
-    hs.abundance <- apply(pds.abundance, 2, 
-                          function(x) (hs.length/Tbar) * x[hs.pds])
+    N.hs <- length(new.tree@hs.name)
     
     # Define Z-matrix (type = historic species)
     zmatrix <- matrix(NA, nrow = N.hs, ncol = N.hs)
