@@ -18,11 +18,13 @@
 #' 
 check_partition <- function(partition) {
   if(is.data.frame(partition)) partition <- as.matrix(partition)
+  
   # normalise partition if it does not sum to 1
   if(sum(partition) != 1) {
     partition <- partition / sum(partition)
-    warning('Population matrix was normalised to sum to 1.')
+    print('Population matrix was normalised to sum to 1.')
   }
+  
   # add labels if rows and columns have none
   if(is.null(row.names(partition))) 
     row.names(partition) <- paste('type', 1:nrow(partition))
