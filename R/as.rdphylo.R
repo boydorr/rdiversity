@@ -1,16 +1,20 @@
-#' Phylogenetic data
-#'
-#' Functions to check if an object is of class \code{rdphylo} or coerce an 
-#' object into class \code{rdphylo}.
-#'
+#' Coerse to rdphylo
+#' 
+#' Functions to check if an object is a \code{rdphylo} or coerce an  
+#' object into a \code{rdphylo}.
+#' 
 #' @param tree object of class \code{phylo}
 #' @param pds.abundance \code{vector} of length \eqn{S}; proportional
 #' abundance of present-day species
-#'
-#' @return S4 generic of class \linkS4class{rdphylo} containing historic 
+#' 
+#' @details
+#' 
+#' @return S4 generic of class \code{rdphylo} containing historic 
 #' species: names, ancestral and descendant nodes, descendant present day 
 #' species, and proportional abundance. 
-#' @export
+#' @include class-rdphylo.R 
+#' 
+#' @exportClass rdphylo
 #' 
 rdphylo <- function(tree,
                     pds.abundance = matrix(rep(1/length(tree$tip.label),
@@ -108,7 +112,7 @@ calc.Lj <- function(tree, node)
 }
 
 
-#' @rdname as.rdphylo
+#' @rdname rdphylo
 #' @param x any R object 
 #' 
 is.rdphylo <-

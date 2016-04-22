@@ -7,9 +7,9 @@
 #' in population
 #' @param q Order of diversity measurement
 #' 
-#' @details 
+#' @details asd
 #' 
-#' @return 
+#' @return as
 #' @export
 #' 
 #' @examples 

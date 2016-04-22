@@ -2,6 +2,8 @@
 #' 
 #' Container for 
 #' 
+#' @name relativeentropy-class
+#' 
 #' @field .Data two-dimensional \code{matrix} of mode \code{numeric}; contains 
 #' diversity term values 
 #' @field measure object of class \code{character}; contains an identifier 
@@ -17,8 +19,6 @@
 #' subcommunity weights
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains weight of types within a subcommunity
-#' 
-#' @export
 #' 
 setClass("relativeentropy", contains = "matrix",
          slots = c(.Data = "matrix", 

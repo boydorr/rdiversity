@@ -24,7 +24,6 @@ setGeneric(name = "rdplot",
 #'
 #' @examples
 #' # Species counts
-#' @export
 #'
 setMethod(f = "rdplot", signature = "rdiv", definition = function(data, style='normal')
 {

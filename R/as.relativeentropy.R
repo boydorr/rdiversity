@@ -39,6 +39,8 @@ as.relativeentropy <- relativeentropy
 #' 
 is.relativeentropy <- function (x) 
   inherits(x, "relativeentropy")
+
+
 #' @rdname relativeentropy
 #' @param object object of class \code{relativeentropy}
 #' 

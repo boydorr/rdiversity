@@ -13,6 +13,8 @@
 #' 
 #' @examples 
 #' 
+#' 
+#' 
 setGeneric(name = "superdiv",
            def = function(data, qs) {
              standardGeneric("superdiv")

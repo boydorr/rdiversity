@@ -2,6 +2,10 @@
 #' 
 #' Container for proportional abundance and similarity matrices. 
 #' 
+#' @name supercommunity-class
+#' @rdname supercommunity-class
+#' @exportClass supercommunity
+#' 
 #' @field .Data two-dimensional \code{matrix} of mode \code{numeric}; contains 
 #' proportional abundance of samples (usually types, except in the phylogenetic
 #' case where samples correspond to the present day species)
@@ -18,8 +22,6 @@
 #' subcommunity weights
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains weight of types within a subcommunity
-#' 
-#' @export
 #' 
 setClass("supercommunity", contains = "matrix",
          slots = c(.Data = "matrix", 

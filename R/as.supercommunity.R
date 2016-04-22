@@ -8,6 +8,7 @@
 #' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
 #' pair-wise similarity of types. Default sets similarity to the naive-type 
 #' case, where types are completely distinct. 
+#' @param ...
 #' 
 #' @details 
 #' \enumerate{
@@ -28,8 +29,9 @@
 #' @return Returns an object of class \code{supercommunity}; an S4 object 
 #' containing five slots (see Details). 
 #' 
+#' @exportMethod supercommunity
+#' @name supercommunity-methods
 #' @include class-supercommunity.R check_partition.R check_similarity.R
-#' @export
 #' 
 #' @examples 
 #' 
@@ -43,7 +45,7 @@ setGeneric(name = "supercommunity",
            } )
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "data.frame", similarity = "missing"), 
@@ -55,7 +57,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "data.frame", similarity = "matrix"), 
@@ -67,7 +69,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "matrix", similarity = "missing"), 
@@ -81,7 +83,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "matrix", similarity = "matrix"), 
@@ -110,7 +112,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' @param pds.abundance 
 #' 
 setMethod(f = "supercommunity", 
@@ -124,7 +126,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' @param pds.abundance 
 #' 
 setMethod(f = "supercommunity", 
@@ -157,12 +159,12 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' 
 as.supercommunity <- supercommunity
 
 
-#' @rdname supercommunity
+#' @rdname supercommunity-methods
 #' @param x any R object 
 #' @return 
 #' returns TRUE if its argument is a supercommunity, FALSE otherwise.

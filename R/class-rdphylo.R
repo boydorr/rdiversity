@@ -1,9 +1,13 @@
 setOldClass("phylo")
 
-#' Class 'rdphylo'
+#' rdphylo-class
 #' 
 #' Container for various parameters associated with calculating phylogenetic 
 #' diversity. 
+#' 
+#' @name rdphylo-class
+#' @rdname rdphylo-class
+#' @exportClass rdphylo
 #' 
 #' @field hs.edge two-column \code{matrix} of mode numeric; each row represents
 #' a historic species. Nodes and tips are symbolized with numbers. Tips are 
@@ -20,7 +24,6 @@ setOldClass("phylo")
 #' change of present day species, ordered by the number in edge.
 #' @field Tbar \code{numeric} element; giving the mean total evolutionary 
 #' change over present day species.
-#' @param object object of class \linkS4class{rdphylo}
 #' 
 #' @return 
 #' An object of class \code{rdphylo}. Builds on class \code{phylo} and 
@@ -37,9 +40,7 @@ setOldClass("phylo")
 #' \code{Nnode} \tab \code{integer}; number of internal nodes. \cr
 #' }
 #' 
-#' @export
-#' 
-rdphylo <- setClass("rdphylo",
+setClass("rdphylo",
                     contains = "phylo",
                     slots = c(hs.name = "character",
                               hs.pds = "numeric",
