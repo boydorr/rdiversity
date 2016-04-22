@@ -73,9 +73,9 @@ setMethod(f = "supercommunity",
           signature(partition = "matrix", similarity = "missing"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is not input, create identity matrix 
-              similarity <- diag(1, nrow(partition))
-              row.names(similarity) <- row.names(partition)
-              colnames(similarity) <- row.names(partition)
+            similarity <- diag(1, nrow(partition))
+            row.names(similarity) <- row.names(partition)
+            colnames(similarity) <- row.names(partition)
             
             supercommunity(partition, similarity)
           } )
@@ -156,9 +156,11 @@ setMethod(f = "supercommunity",
                 type_weights = type_weights)
           } )
 
+
 #' @rdname supercommunity
 #' 
 as.supercommunity <- supercommunity
+
 
 #' @rdname supercommunity
 #' @param x any R object 
