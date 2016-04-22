@@ -20,6 +20,10 @@ sub-communities, and last representing values of \emph{q}
 representing independent subcommunity counts, for a series of orders 
 repesented as a vector of \code{qs}.
 }
+\details{
+\code{subcommunity.alpha.bar()} is used to calculate the 
+similarity-sensitive diversity of subcommunity \emph{j} in isolation.
+}
 \examples{
 # Species counts
 population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),

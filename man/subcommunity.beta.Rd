@@ -24,6 +24,10 @@ subcommunities counts relative to a total supercommunity (by default the
 sum of the subcommunities), for a series of orders, repesented as a 
 vector of \code{qs}.
 }
+\details{
+\code{subcommunity.beta()} is used to calculate the 
+distinctiveness of subcommunity \emph{j}.
+}
 \examples{
 # Species counts
 population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),

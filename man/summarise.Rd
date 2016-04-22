@@ -19,4 +19,10 @@ An array whose columns are proportions
 This function converts columns of an array (each representing population 
 counts) into proportions, so that each column sums to 1.
 }
+\details{
+
+}
+\examples{
+
+}
 

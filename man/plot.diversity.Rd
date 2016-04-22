@@ -12,34 +12,21 @@ rdplot(data, ...)
 \S4method{rdplot}{rdiv}(data, style = "normal")
 }
 \arguments{
-\item{data}{object of class \code{rdiv} returns a diversity profile; object
-of class \linkS4class{rdphylo} returns phylogenetic tree}
+\item{data}{object of class \code{rdiv} returns a diversity profile;}
 
 \item{...}{additional parameters}
 
-\item{style}{optional argument; takes \code{'normal'} as default, generating 
+\item{style}{optional argument; takes \code{'normal'} as default, generating
 a standard plot; and \code{'big'} increases font size and line thickness}
 }
 \value{
-object of class \linkS4class{rdiv} returns a diversity profile; object
-of class \linkS4class{rdphylo} returns phylogenetic tree
+object of class \linkS4class{rdiv} returns a diversity profile;
 }
 \description{
 S4 generic function \code{rdplot()}.
 }
 \examples{
 # Species counts
-population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
-                        subcommunityB = sample(1:50, 5, replace = TRUE))
-row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
-
-# Create object of class supercommunity
-data <- as.supercommunity(population)
-
-# Calculate diversity
-output <- diversity(subcommunity.alpha.bar, data, 0:2)
-
-rdplot(output)
 
 }
 

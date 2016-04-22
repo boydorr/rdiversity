@@ -23,6 +23,10 @@ Calculates the diversity of a series of columns representing
 independent subcommunity counts, for a series of orders, repesented as
 a vector of \code{qs}.
 }
+\details{
+\code{subcommunity.alpha()} is used to calculate an estimate of 
+naive-community supercommunity diversity.
+}
 \examples{
 # Species counts
 population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),

@@ -24,4 +24,10 @@ Similarity-sensitive diversity of order q
 Calculates the similarity-sensitive diversity of order q of a population 
 with given relative proportions.
 }
+\details{
+
+}
+\examples{
+
+}
 

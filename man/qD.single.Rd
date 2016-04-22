@@ -12,8 +12,17 @@ in population}
 
 \item{q}{Order of diversity measurement}
 }
+\value{
+as
+}
 \description{
 Calculates the Hill number / naive diversity of order q of a population
 with given relative proportions
+}
+\details{
+asd
+}
+\examples{
+
 }
 

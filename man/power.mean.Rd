@@ -22,4 +22,10 @@ weighted by weights; by default, weights are equal and order is 1, so this is
 just the arithmetic mean. Equal weights and a order of 0 gives the geometric
 mean, and an order of -1 gives the harmonic mean.
 }
+\details{
+
+}
+\examples{
+
+}
 

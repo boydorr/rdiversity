@@ -2,16 +2,8 @@
 % Please edit documentation in R/class-rdphylo.R
 \docType{class}
 \name{rdphylo-class}
-\alias{rdphylo}
 \alias{rdphylo-class}
-\alias{show,rdphylo-method}
-\title{Class 'rdphylo'}
-\usage{
-\S4method{show}{rdphylo}(object)
-}
-\arguments{
-\item{object}{object of class \linkS4class{rdphylo}}
-}
+\title{rdphylo-class}
 \value{
 An object of class \code{rdphylo}. Builds on class \code{phylo} and 
 therefore contains the following components:
@@ -31,10 +23,6 @@ lengths of the branches given by edge. \cr
 Container for various parameters associated with calculating phylogenetic 
 diversity.
 }
-\section{Methods (by generic)}{
-\itemize{
-\item \code{show}: prints various parameters associated with the phylogeny
-}}
 \section{Fields}{
 
 \describe{

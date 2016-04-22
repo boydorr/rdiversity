@@ -22,6 +22,10 @@ Calculates the total supercommunity beta diversity of a series of columns
 representing subcommunity counts, for a series of orders, repesented as a 
 vector of \code{qs}.
 }
+\details{
+\code{subcommunity.B()} is used to calculate the 
+average distinctiveness of subcommunities.
+}
 \examples{
 # Species counts
 population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),

@@ -10,10 +10,10 @@
 \S4method{show}{rdiv}(object)
 }
 \arguments{
-\item{object}{object of class \linkS4class{rdiv}}
+\item{object}{object of class \code{rdiv}}
 }
 \description{
-Define S4 class \linkS4class{rdiv}.
+Define S4 class \code{rdiv}.
 }
 \section{Methods (by generic)}{
 \itemize{

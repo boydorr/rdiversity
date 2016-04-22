@@ -19,6 +19,10 @@ Calculates the total supercommunity.R.bar diversity of a series of
 columns representing subcommunity counts, for a series of orders, 
 repesented as a vector of \code{qs}.
 }
+\details{
+\code{subcommunity.R.bar()} is used to calculate the 
+average representativeness of subcommunities.
+}
 \examples{
 # Species counts
 population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),

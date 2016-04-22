@@ -19,4 +19,10 @@ rows representing values of q
 Calculates the diversity of a series of columns representing independent
 populations, for a series of orders, repesented as a vector of qs.
 }
+\details{
+
+}
+\examples{
+
+}
 
