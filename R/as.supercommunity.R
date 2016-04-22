@@ -44,6 +44,17 @@ setGeneric(name = "supercommunity",
 
 
 #' @rdname superdiv
+#' @rdname supercommunity
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "data.frame", similarity = "matrix"), 
+          definition = function(partition, similarity = NA) {  
+            # If similarity is data.frame, convert to matrix
+            partition <- as.matrix(partition)
+            
+            supercommunity(partition, similarity)
+          } )
+
 #' 
 setMethod(f = "supercommunity", signature= c("matrix","vector"), 
           definition = function(partition, similarity = NA) {  
