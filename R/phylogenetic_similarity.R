@@ -31,7 +31,8 @@ phylogenetic_similarity <-
     
     # Define Z-matrix (type = historic species)
     zmatrix <- matrix(NA, nrow = N.hs, ncol = N.hs)
-    colnames(zmatrix) <- hs.names; row.names(zmatrix) <- hs.names
+    colnames(zmatrix) <- new.tree@hs.name 
+    row.names(zmatrix) <- new.tree@hs.name
     
     # Calculate pairwise similarity between historic species
     for (row.index in 1:N.hs) {
