@@ -38,25 +38,25 @@ phylogenetic_similarity <-
       # cat("\r", "Calculating Z matrix: row", row.index, "of", N.hs) 
       # flush.console()
       # Historic species 
-      ib <- hs.names[row.index]
+      ib <- new.tree@hs.name[row.index]
       # Present day species descendant
       ib.pds <- as.numeric(strsplit(ib,'-')[[1]][2])
       
       zmatrix.row <- vector()
       for (col.index in 1:N.hs) {
         # Historic species (to compare)
-        jc <- hs.names[col.index]
+        jc <- new.tree@hs.name[col.index]
         # Present day species descendant
         jc.pds <- as.numeric(strsplit(jc,",")[[1]][1])
         # Length of evolutionary history of present day species j
-        j.length <- Lj[jc.pds]
+        j.length <- new.tree@Lj[jc.pds]
         
         # Similarity between historic species (i,b) and species (j,c)  
         # is non-zero when species j is found within the set of species  
         # descended from branch b
         if ((ib.pds==jc.pds)) {
           
-          zmatrix.row[jc] <- Tbar/j.length
+          zmatrix.row[jc] <- new.tree@Tbar/j.length
         } else {
           zmatrix.row[jc] <- 0
         }
