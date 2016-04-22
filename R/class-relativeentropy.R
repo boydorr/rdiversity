@@ -29,11 +29,3 @@ setClass("relativeentropy", contains = "matrix",
                    type_weights = "matrix"))
 
 
-#' @describeIn relativeentropy Prints relative entropy
-#' @param object object of class \linkS4class{relativeentropy}
-#' 
-setMethod(f = "show", signature = "relativeentropy", 
-          definition = function(object) {
-            print(object@.Data)
-          } )
-
