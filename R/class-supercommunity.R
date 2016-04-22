@@ -26,7 +26,7 @@ setClass("supercommunity", contains = "matrix",
                    similarity = "matrix",
                    type_abundance = "matrix",
                    ordinariness = "matrix",
-                   subcommunity_weights = "vector", 
+                   subcommunity_weights = "numeric", 
                    type_weights = "matrix"))
 
 
