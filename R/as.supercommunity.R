@@ -108,6 +108,23 @@ setMethod(f = "supercommunity",
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights)
           } )
+
+#' @rdname supercommunity
+#' @param pds.abundance 
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "phylo", similarity = "matrix"), 
+          definition = function(partition, similarity = NA, pds.abundance = NA) {  
+            new.tree <- as.rdphylo(tree)
+            # Calculate relative abundance of historic species
+            type_abundance <- new.tree@hs.abundance
+            row.names(type_abundance) <- new.tree@hs.name
+            
+            partition <- check_partition(type_abundance)
+            similarity <- check_similarity(type_abundance, similarity)
+            
+            subcommunity_weights <- colSums(type_abundance) / 
+              sum(type_abundance)
             type_weights <- sapply(1:ncol(type_abundance), function(x)
               (type_abundance[,x]/colSums(type_abundance)[x]))
             Zp.j <- similarity %*% type_abundance
