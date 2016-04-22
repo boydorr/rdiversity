@@ -38,3 +38,12 @@ as.powermean <- powermean
 #' @export 
 #' 
 is.powermean <- function (x) inherits(x, "powermean")
+
+
+#' @rdname powermean
+#' @param object object of class \code{powermean}
+#' 
+setMethod(f = "show", signature = "powermean", 
+          definition = function(object) {
+            print(object@.Data)
+          } )

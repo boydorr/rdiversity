@@ -29,11 +29,3 @@ setClass("powermean", contains = "matrix",
                    type_weights = "matrix"))
 
 
-#' @describeIn supercommunity prints powermean
-#' @param object object of class \linkS4class{powermean}
-#' 
-setMethod(f = "show", signature = "powermean", 
-          definition = function(object) {
-             print(object@.Data)
-            } )
-
