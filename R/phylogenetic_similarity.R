@@ -17,7 +17,6 @@ phylogenetic_similarity <-
   function(tree, pds.abundance = rep(1/length(tree$tip.label), 
                                      length(tree$tip.label))) 
   {
-    if(class(tree)!='phylo') stop('Tree must be class phylo.')
     if(is.vector(pds.abundance)) pds.abundance <- matrix(pds.abundance)
       
       # Label historic species
@@ -26,6 +25,12 @@ phylogenetic_similarity <-
     
     # Check pds.pmatrix
     if(sum(pds.abundance) != 1) pds.abundance <- pds.abundance/sum(pds.abundance)
+    if(class(tree)=='phylo') {
+      new.tree <- as.rdphylo(tree)
+    } else if(is.rdphylo(tree)) {
+      new.tree <- tree
+    } else
+      stop('tree should be object of class phylo (or rdphylo).')  
     
     # Count historic species
     N.hs <- length(hs.names)
