@@ -48,32 +48,32 @@ setGeneric(name = "supercommunity",
 setMethod(f = "supercommunity", signature= c("matrix","vector"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is not input, create identity matrix 
-  if(any(is.na(similarity))) {
-    similarity <- diag(1, nrow(partition))
-    row.names(similarity) <- row.names(partition)
-    colnames(similarity) <- row.names(partition)
-  }
-  
-  partition <- check_partition(partition)
-  similarity <- check_similarity(partition, similarity)
-  
-  type_abundance <- abundance(partition)
-  subcommunity_weights <- colSums(type_abundance) / sum(type_abundance)
-  type_weights <- sapply(1:ncol(type_abundance), function(x)
-    (type_abundance[,x]/colSums(type_abundance)[x]))
-  Zp.j <- similarity %*% type_abundance
-  
-  # Now mark all of the species that have nothing similar as NaNs
-  # because diversity of an empty group is undefined
-  Zp.j[Zp.j==0] <- NaN
-  
-  new('supercommunity', partition, 
-      similarity = similarity, 
-      type_abundance = type_abundance, 
-      ordinariness = Zp.j,
-      subcommunity_weights = subcommunity_weights,
-      type_weights = type_weights)
-} )
+            if(any(is.na(similarity))) {
+              similarity <- diag(1, nrow(partition))
+              row.names(similarity) <- row.names(partition)
+              colnames(similarity) <- row.names(partition)
+            }
+            
+            partition <- check_partition(partition)
+            similarity <- check_similarity(partition, similarity)
+            
+            type_abundance <- abundance(partition)
+            subcommunity_weights <- colSums(type_abundance) / sum(type_abundance)
+            type_weights <- sapply(1:ncol(type_abundance), function(x)
+              (type_abundance[,x]/colSums(type_abundance)[x]))
+            Zp.j <- similarity %*% type_abundance
+            
+            # Now mark all of the species that have nothing similar as NaNs
+            # because diversity of an empty group is undefined
+            Zp.j[Zp.j==0] <- NaN
+            
+            new('supercommunity', partition, 
+                similarity = similarity, 
+                type_abundance = type_abundance, 
+                ordinariness = Zp.j,
+                subcommunity_weights = subcommunity_weights,
+                type_weights = type_weights)
+          } )
 
 #' @rdname supercommunity
 #' 
