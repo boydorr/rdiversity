@@ -19,8 +19,15 @@
 #' 
 check_similarity <- function(partition, similarity) {
   if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
+  
   if(any(similarity<0)) 
     stop('similarity matrix elements must have a positive value.')
+  
+  if(ncol(similarity)!=nrow(similarity))
+    stop('similarity matrix must be square.')
+  
+  if(nrow(similarity)!=nrow(partition))
+    stop('similarity and partition must have equal types.')
   
   return(similarity)
 }
