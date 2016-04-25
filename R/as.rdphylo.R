@@ -39,7 +39,7 @@ rdphylo <- function(tree,
   Lj <- sapply(pds.nodes, function(x) calc.Lj(tree, x))
   
   # Calculate the mean total evolutionary change over all pds
-  Tbar <- apply(pds.abundance, 2, function(x) sum(x*Lj))
+  Tbar <- sum(pds.abundance*Lj)
   
   # Calculate the length of each historic species
   hs.length <- sapply(1:N.hs, function(x) {
