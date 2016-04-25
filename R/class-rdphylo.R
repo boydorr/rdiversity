@@ -45,7 +45,7 @@ setClass("rdphylo",
                     slots = c(hs.name = "character",
                               hs.pds = "numeric",
                               hs.edge = "matrix",
-                              hs.length = "integer",
+                              hs.length = "numeric",
                               hs.abundance = "matrix",
                               Lj = "numeric",
                               Tbar = "numeric"
