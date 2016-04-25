@@ -80,7 +80,12 @@ betabar <- function(super) {
 #' @rdname alpha
 #' 
 gamma <- function(super) {
-  results <- 1 / rowSums(super@ordinariness, na.rm = T)
+  results <- rowSums(super@ordinariness, na.rm=T)
+  results[results==0] <- NaN
+  results <- 1 / results
+  results <- matrix(rep((results), ncol(super)), ncol=ncol(super))
+  colnames(results) <- colnames(super)
+  row.names(results) <- row.names(super)
   powermean(results, super, "gamma")
 }
 
