@@ -95,7 +95,7 @@ label.hs <- function(tree, node)
 #' Total evolutionary change
 #' 
 #' Calculate the total length of evolutionary change of species \emph{j}; may 
-#' be in internal or external node corresponding to present-day and historic 
+#' be an internal or external node corresponding to present-day and historic 
 #' species, respectively.
 #' 
 #' @inheritParams label.hs
