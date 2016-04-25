@@ -42,13 +42,13 @@ function(values, order = 1, weights = rep(1, length(values)))
   proportions <- proportions[non.zero]
   
   if (abs(order) < .Machine$double.eps ^ 0.5) {  # Avoid rounding errors for order 0
-      prod(values ^ proportions)
+      prod(values ^ proportions, na.rm = T)
     } else if (is.infinite(order)) {
       if (order > 0)
-        max(values)
+        max(values, na.rm = T)
       else
-        min(values)
+        min(values, na.rm = T)
     } else {
-      sum(proportions * values ^ order) ^ (1 / order)
+      sum(proportions * values ^ order, na.rm = T) ^ (1 / order)
     }
 }
