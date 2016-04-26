@@ -9,7 +9,7 @@
 #' 
 #' @details 
 #' 
-#' @return object of class \code{powermean}
+#' @return \code{powermean(x)} returns an object of class \code{powermean}.
 #' @include class-powermean.R 
 #' @export
 #' 
@@ -27,6 +27,7 @@ powermean <- function(results, super, tag) {
 
 
 #' @rdname powermean
+#' @return \code{as.powermean(x)} returns an object of class \code{powermean}.
 #'
 as.powermean <- powermean
 
@@ -41,7 +42,7 @@ is.powermean <- function (x) inherits(x, "powermean")
 
 
 #' @rdname powermean
-#' @param object object of class \code{powermean}
+#' @param \code{print(x)} prints an object object of class \code{powermean}
 #' 
 setMethod(f = "show", signature = "powermean", 
           definition = function(object) {
