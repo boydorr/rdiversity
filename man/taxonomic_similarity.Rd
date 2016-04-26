@@ -9,7 +9,8 @@ taxonomic_similarity(data, lookup)
 \arguments{
 \item{data}{\eqn{S * N} \code{matrix}; population counts}
 
-\item{lookup}{\code{data.frame} with colnames = c('Species', 'Genus', 'Family', 'Subclass')}
+\item{lookup}{\code{data.frame} with colnames = c('Species', 'Genus', 
+'Family', 'Subclass')}
 }
 \value{
 Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity

@@ -2,7 +2,7 @@
 % Please edit documentation in R/power.mean.R
 \name{power.mean}
 \alias{power.mean}
-\title{Power mean}
+\title{Power mean of vector elements}
 \usage{
 power.mean(values, order = 1, weights = rep(1, length(values)))
 }
@@ -17,15 +17,18 @@ power.mean(values, order = 1, weights = rep(1, length(values)))
 Weighted power mean
 }
 \description{
-Calculates the order-th power mean of a single set of non-negative values,
-weighted by weights; by default, weights are equal and order is 1, so this is
-just the arithmetic mean. Equal weights and a order of 0 gives the geometric
-mean, and an order of -1 gives the harmonic mean.
+\code{power.mean()} calculates the power mean of a set of values.
 }
 \details{
-
+\code{power.mean()} calculates the order-th power mean of a single 
+set of non-negative values, weighted by weights; by default, weights are 
+equal and order is 1, so this is just the arithmetic mean. Equal weights 
+and a order of 0 gives the geometric mean, and an order of -1 gives the 
+harmonic mean.
 }
 \examples{
+values <- rnorm(5)
+power.mean(values)
 
 }
 

@@ -16,13 +16,14 @@ An array of diversities, first dimension representing
 sub-communities, and last representing values of \emph{q}
 }
 \description{
-\code{subcommunity.alpha} calculates the diversity of a series of columns 
-representing independent subcommunity counts, for a series of orders 
-repesented as a vector of \code{qs}.
-}
-\details{
 \code{subcommunity.alpha.bar()} is used to calculate the 
 similarity-sensitive diversity of subcommunity \emph{j} in isolation.
+}
+\details{
+\code{subcommunity.alpha.bar()} calculates the normalised subcommunity 
+alpha diversity of a series of columns representing independent 
+subcommunity counts, for a series of orders repesented as a vector of 
+\code{qs}.
 }
 \examples{
 # Species counts
@@ -31,7 +32,7 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
 # Coerse object into a supercommunity
-data <- as.supercommunity(population)
+data <- supercommunity(population)
 
 # Calculate diversity
 subcommunity.alpha.bar(data, 0:2)

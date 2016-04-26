@@ -25,10 +25,12 @@ is.powermean(x)
 
 \item{x}{any R object}
 
-\item{object}{object of class \code{powermean}}
+\item{\code{print(x)}}{prints an object object of class \code{powermean}}
 }
 \value{
-object of class \code{powermean}
+\code{powermean(x)} returns an object of class \code{powermean}.
+
+\code{as.powermean(x)} returns an object of class \code{powermean}.
 
 \code{is.powermean(x)} returns TRUE if its argument is a 
 powermean, FALSE otherwise.

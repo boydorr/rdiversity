@@ -15,13 +15,13 @@ supercommunity.A.bar(populations, qs)
 An array of diversities, last representing values of \emph{q}
 }
 \description{
-Calculates the total supercommunity alpha diversity of a series of columns
-representing subcommunity counts, for a series of orders, repesented as a 
-vector of \code{qs}.
+\code{supercommunity.A.bar()} is used to calculate the 
+average similarity-sensitive diversity of subcommunities.
 }
 \details{
-\code{subcommunity.A.bar()} is used to calculate the 
-average similarity-sensitive diversity of subcommunities.
+\code{supercommunity.A.bar()} calculates the total normalised supercommunity  
+alpha diversity of a series of columns representing subcommunity counts, 
+for a series of orders, repesented as a vector of \code{qs}.
 }
 \examples{
 # Species counts
@@ -30,7 +30,7 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
 # Coerse object into a supercommunity
-data <- as.supercommunity(population)
+data <- supercommunity(population)
 
 # Calculate diversity
 supercommunity.A.bar(data, 0:2)

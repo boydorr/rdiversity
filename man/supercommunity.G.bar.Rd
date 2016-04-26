@@ -15,13 +15,13 @@ supercommunity.G.bar(populations, qs)
 array of diversities, last representing values of \emph{q}
 }
 \description{
-Calculates the total supercommunity gamma diversity of a series of columns
-representing subcommunity counts, for a series of orders, repesented as a 
-vector of \code{qs}.
+\code{supercommunity.G()} is used to calculate the 
+supercommunity similarity-sensitive diversity.
 }
 \details{
-\code{subcommunity.G()} is used to calculate the 
-supercommunity similarity-sensitive diversity.
+\code{supercommunity.G()} calculates the total supercommunity gamma diversity 
+of a series of columns representing subcommunity counts, for a series of 
+orders, repesented as a vector of \code{qs}.
 }
 \examples{
 # Species counts
@@ -30,7 +30,7 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
 # Coerse object into a supercommunity
-data <- as.supercommunity(population)
+data <- supercommunity(population)
 
 # Calculate diversity
 supercommunity.G.bar(data, 0:2)

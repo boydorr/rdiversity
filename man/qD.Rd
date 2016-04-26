@@ -20,9 +20,11 @@ Calculates the diversity of a series of columns representing independent
 populations, for a series of orders, repesented as a vector of qs.
 }
 \details{
-
+\code{qD} is used to calculate the diversity of a population
+(in the naive-type case).
 }
 \examples{
+#
 
 }
 

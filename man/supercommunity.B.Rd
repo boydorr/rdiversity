@@ -18,13 +18,13 @@ distribution summed to 1}
 An array of diversities, last representing values of \emph{q}
 }
 \description{
-Calculates the total supercommunity beta diversity of a series of columns
-representing subcommunity counts, for a series of orders, repesented as a 
-vector of \code{qs}.
+\code{supercommunity.B()} is used to calculate the 
+average distinctiveness of subcommunities.
 }
 \details{
-\code{subcommunity.B()} is used to calculate the 
-average distinctiveness of subcommunities.
+\code{supercommunity.B()} calculates the total supercommunity beta diversity 
+of a series of columns representing subcommunity counts, for a series of 
+orders, repesented as a vector of \code{qs}.
 }
 \examples{
 # Species counts
@@ -33,7 +33,7 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
 # Coerse object into a supercommunity
-data <- as.supercommunity(population)
+data <- supercommunity(population)
 
 # Calculate diversity
 supercommunity.B(data, 0:2)

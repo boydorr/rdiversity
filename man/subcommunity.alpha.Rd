@@ -19,13 +19,13 @@ Returns an array of diversities, first dimension representing
 subcommunities, and last representing values of \emph{q}
 }
 \description{
-Calculates the diversity of a series of columns representing
-independent subcommunity counts, for a series of orders, repesented as
-a vector of \code{qs}.
-}
-\details{
 \code{subcommunity.alpha()} is used to calculate an estimate of 
 naive-community supercommunity diversity.
+}
+\details{
+\code{subcommunity.alpha()} calculates the subcommunity alpha diversity of 
+a series of columns representing independent subcommunity counts, for a 
+series of orders, repesented as a vector of \code{qs}.
 }
 \examples{
 # Species counts
@@ -34,7 +34,7 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
 # Coerse object into a supercommunity
-data <- as.supercommunity(population)
+data <- supercommunity(population)
 
 # Calculate diversity
 subcommunity.alpha(data, 0:2)

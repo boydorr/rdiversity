@@ -19,14 +19,14 @@ Data frame of diversities, columns representing populations, and
 rows representing values of \emph{q}
 }
 \description{
-Calculates the diversity of a series of columns representing independent
-subcommunities counts relative to a total supercommunity (by default the 
-sum of the subcommunities), for a series of orders, repesented as a 
-vector of \code{qs}.
-}
-\details{
 \code{subcommunity.beta()} is used to calculate the 
 distinctiveness of subcommunity \emph{j}.
+}
+\details{
+\code{subcommunity.beta()} calculates the subcommunity beta diversity of a 
+series of columns representing independent subcommunities counts relative 
+to a total supercommunity (by default the sum of the subcommunities), for 
+a series of orders, repesented as a vector of \code{qs}.
 }
 \examples{
 # Species counts
@@ -35,7 +35,7 @@ population <- data.frame(subcommunityA = sample(1:50, 5, replace = TRUE),
 row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 
 # Coerse object into a supercommunity
-data <- as.supercommunity(population)
+data <- supercommunity(population)
 
 # Calculate diversity
 subcommunity.beta(data, 0:2)

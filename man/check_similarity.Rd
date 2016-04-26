@@ -24,7 +24,7 @@ input as an argument.
 \examples{
 population <- data.frame(a = 1:2, b = 3:4)
 zmatrix <- matrix(rep(-1,4), 2)
-check_similarity(population, zmatrix)
+\dontrun{check_similarity(population, zmatrix)}
 
 }
 
