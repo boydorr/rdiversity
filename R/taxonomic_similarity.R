@@ -17,7 +17,7 @@
 #' @param lookup \code{data.frame} with colnames = c('Species', 'Genus', 'Family', 'Subclass')
 #' @return Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity
 #' 
-taxonomic_similarity <- function(data, lookup) 
+similarity_shimatani <- function(data, lookup) 
 {
   # Test
   if(nrow(data)!=nrow(lookup)) stop('data and lookup do not match up')
