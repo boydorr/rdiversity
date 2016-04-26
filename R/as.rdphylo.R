@@ -20,7 +20,7 @@ rdphylo <- function(tree,
                     pds.abundance = matrix(rep(1/length(tree$tip.label),
                                                length(tree$tip.label)))) {
   # Label historic species
-  pds.nodes <- 1:length(tree$tip.label)
+  pds.nodes <- seq_along(tree$tip.label)
   hs.names <- unlist(sapply(pds.nodes, function(x) label.hs(tree, x)))
   
   # Check pds.pmatrix
