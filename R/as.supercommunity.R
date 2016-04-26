@@ -3,6 +3,7 @@
 #' Functions to check if an object is a \code{supercommunity} or coerce an  
 #' object into a \code{supercommunity}.
 #' 
+#' @rdname supercommunity-class
 #' @param partition \code{matrix} (usually two-dimensional) of mode numeric;  
 #' relative abundance of types
 #' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
@@ -30,11 +31,9 @@
 #' containing five slots (see Details). 
 #' 
 #' @exportMethod supercommunity
-#' @name supercommunity-methods
 #' @include class-supercommunity.R check_partition.R check_similarity.R
 #' 
 #' @examples 
-#' 
 #' tree <- ape::rtree(n = 5)
 #' a <- supercommunity(tree)
 #' b <- phylogenetic_similarity(tree)
@@ -45,7 +44,7 @@ setGeneric(name = "supercommunity",
            } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "data.frame", similarity = "missing"), 
@@ -57,7 +56,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "data.frame", similarity = "matrix"), 
@@ -69,7 +68,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "matrix", similarity = "missing"), 
@@ -83,7 +82,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "matrix", similarity = "matrix"), 
@@ -112,7 +111,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' @param pds.abundance \code{vector} of mode \code{numeric}; containing the 
 #' proportional abundance of present day species (leaves)
 #' 
@@ -127,7 +126,7 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "matrix"), 
@@ -159,12 +158,12 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' 
 as.supercommunity <- supercommunity
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' @param x any R object 
 #' @return 
 #' returns TRUE if its argument is a supercommunity, FALSE otherwise.
@@ -174,7 +173,7 @@ is.supercommunity <- function (x)
   inherits(x, "supercommunity")
 
 
-#' @rdname supercommunity-methods
+#' @rdname supercommunity-class
 #' @param object object of class \code{supercommunity}
 #' 
 setMethod(f = "show", signature= "supercommunity", 
