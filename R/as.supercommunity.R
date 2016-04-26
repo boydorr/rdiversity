@@ -137,8 +137,8 @@ setMethod(f = "supercommunity",
             type_abundance <- new.tree@hs.abundance
             row.names(type_abundance) <- new.tree@hs.name
             
-            partition <- check_partition(type_abundance)
-            similarity <- check_similarity(type_abundance, similarity)
+            type_abundance <- check_partition(type_abundance)
+            # similarity <- check_similarity(type_abundance, similarity)
             
             subcommunity_weights <- colSums(type_abundance) / 
               sum(type_abundance)
