@@ -131,7 +131,7 @@ setMethod(f = "supercommunity",
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "matrix"), 
-          definition = function(partition, similarity = NA, pds.abundance = NA) {  
+          definition = function(partition, similarity, pds.abundance = NA) {  
             new.tree <- as.rdphylo(partition)
             # Calculate relative abundance of historic species
             type_abundance <- new.tree@hs.abundance
