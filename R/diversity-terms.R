@@ -9,6 +9,7 @@
 #' @details 
 #' 
 #' @return Returns 
+#' @include as.supercommunity.R
 #' @export
 #' 
 #' @examples
