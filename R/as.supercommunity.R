@@ -127,7 +127,6 @@ setMethod(f = "supercommunity",
 
 
 #' @rdname supercommunity-methods
-#' @param pds.abundance 
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "matrix"), 
