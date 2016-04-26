@@ -17,7 +17,7 @@
 #' Z <- phylogenetic_similarity(tree)
 #' 
 #' 
-phylogenetic_similarity <- 
+similarity_phylo <- 
   function(tree, pds.abundance = rep(1/length(tree$tip.label), 
                                      length(tree$tip.label))) 
   {
