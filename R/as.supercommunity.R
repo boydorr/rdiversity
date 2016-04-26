@@ -8,7 +8,7 @@
 #' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
 #' pair-wise similarity of types. Default sets similarity to the naive-type 
 #' case, where types are completely distinct. 
-#' @param ...
+#' @param ... additional arguments.
 #' 
 #' @details 
 #' \enumerate{
@@ -113,7 +113,8 @@ setMethod(f = "supercommunity",
 
 
 #' @rdname supercommunity-methods
-#' @param pds.abundance 
+#' @param pds.abundance \code{vector} of mode \code{numeric}; containing the 
+#' proportional abundance of present day species (leaves)
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "missing"), 
