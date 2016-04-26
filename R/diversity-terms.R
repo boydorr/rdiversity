@@ -52,7 +52,7 @@ rho <- function(super) {
 #' @rdname alpha
 #' 
 rhobar <- function(super) {
-  ordinariness.bar <- sapply(1:length(super@subcommunity_weights), 
+  ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
                                super@subcommunity_weights[x])
   colnames(ordinariness.bar) <- colnames(super)
