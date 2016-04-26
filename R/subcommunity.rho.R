@@ -35,7 +35,6 @@ function(populations, qs, ...)
   if(!is.supercommunity(populations))
     stop('populations must be object of class supercommunity.')
   
-  Z = populations@similarity
   res <- 1 / subcommunity.beta(populations, qs, ...)
 
   output <- new('rdiv', res, measure = 'Subcommunity rho',

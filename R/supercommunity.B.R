@@ -33,7 +33,6 @@ function(populations, qs, normalise = F)
   if(!is.supercommunity(populations))
     stop('populations must be object of class supercommunity.')
   
-  Z = populations@similarity
   # If we just have a single vector, then turn it into single column matrix
   if (is.vector(populations))
     populations <- array(populations, dim=c(length(populations), 1))
