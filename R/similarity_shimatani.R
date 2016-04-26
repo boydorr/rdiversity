@@ -14,13 +14,17 @@
 #' }
 #' 
 #' @param data \eqn{S * N} \code{matrix}; population counts
-#' @param lookup \code{data.frame} with colnames = c('Species', 'Genus', 'Family', 'Subclass')
+#' @param lookup \code{data.frame} with colnames = c('Species', 'Genus', 
+#' 'Family', 'Subclass')
 #' @return Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity
+#' 
+#' @examples 
+#' 
 #' 
 similarity_shimatani <- function(data, lookup) 
 {
-  # Test
-  if(nrow(data)!=nrow(lookup)) stop('data and lookup do not match up')
+  # Data and lookup table must have the same number of entries
+  stopifnot(nrow(data)==nrow(lookup))
   
   # Based on Shimatani's taxonomic similarity indices
   species.similarity <- 1
