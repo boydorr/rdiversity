@@ -23,7 +23,7 @@
 #' row.names(population) <- c('cows', 'sheep', 'ducks', 'foxes', 'bears')
 #' 
 #' # Coerse object into a supercommunity
-#' data <- as.supercommunity(population)
+#' data <- supercommunity(population)
 #' 
 #' # Calculate diversity
 #' subcommunity.gamma.bar(data, 0:2)
