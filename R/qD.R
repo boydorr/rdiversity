@@ -6,13 +6,15 @@
 #' @param populations - population counts or proportions
 #' @param  qs - vector of values of parameter q
 #' 
-#' @details 
+#' @details \code{qD} is used to calculate the diversity of a population
+#' (in the naive-type case). 
 #' 
 #' @return data frame of diversities, columns representing populations, and 
 #' rows representing values of q
 #' @export
 #' 
 #' @examples 
+#' #
 #' 
 qD <-
 function(populations, qs)
