@@ -1,14 +1,15 @@
 #' Similarity-sensitive Normalised subcommunity.alpha
 #' 
-#' \code{subcommunity.alpha} calculates the diversity of a series of columns 
-#' representing independent subcommunity counts, for a series of orders 
-#' repesented as a vector of \code{qs}.
+#' \code{subcommunity.alpha.bar()} is used to calculate the 
+#' similarity-sensitive diversity of subcommunity \emph{j} in isolation.
+#' 
+#' \code{subcommunity.alpha.bar()} calculates the normalised subcommunity 
+#' alpha diversity of a series of columns representing independent 
+#' subcommunity counts, for a series of orders repesented as a vector of 
+#' \code{qs}.
 #' 
 #' @param populations object of class \code{collection}
 #' @param qs \code{vector} of \emph{q} values
-#' 
-#' @details \code{subcommunity.alpha.bar()} is used to calculate the 
-#' similarity-sensitive diversity of subcommunity \emph{j} in isolation.
 #' 
 #' @return An array of diversities, first dimension representing 
 #' sub-communities, and last representing values of \emph{q}

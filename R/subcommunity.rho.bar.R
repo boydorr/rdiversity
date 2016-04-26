@@ -1,15 +1,15 @@
 #' Similarity-sensitive Raw subcommunity.rho diversity
 #' 
-#' The inverse of the similarity-sensitive Raw subcommunity.beta diversity;
-#' Calculates the diversity of a series of columns representing independent
-#' subcommunities counts relative to a total supercommunity (by default the
-#' sum of the subcommunities), for a series of orders, repesented as a 
-#' vector of \code{qs}.
+#' \code{subcommunity.rho.bar()} is used to calculate the 
+#' representativeness of subcommunity \emph{j}.
+#' 
+#' \code{subcommunity.rho.bar()} (the inverse of \code{subcommunity.beta}) 
+#' calculates the normalised subcommunity rho diversity of a series of columns 
+#' representing independent subcommunities counts relative to a total 
+#' supercommunity (by default the sum of the subcommunities), for a series of 
+#' orders, repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
-#' 
-#' @details \code{subcommunity.rho.bar()} is used to calculate the 
-#' representativeness of subcommunity \emph{j}.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}

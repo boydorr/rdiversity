@@ -1,13 +1,13 @@
 #' Similarity-sensitive Normalised supercommunity.B diversity
 #' 
-#' Calculates the total supercommunity beta diversity of a series of columns
-#' representing subcommunity counts, for a series of orders, repesented as a 
-#' vector of \code{qs}.
+#' \code{supercommunity.B.bar()} is used to calculate the 
+#' effective number of distinct subcommunities.
+#' 
+#' \code{supercommunity.B.bar()} calculates the total normalised supercommunity 
+#' beta diversity of a series of columns representing subcommunity counts, for 
+#' a series of orders, repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
-#' 
-#' @details \code{subcommunity.B.bar()} is used to calculate the 
-#' effective number of distinct subcommunities.
 #' 
 #' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

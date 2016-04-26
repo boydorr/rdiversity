@@ -1,15 +1,15 @@
 #' Similarity-sensitive Raw subcommunity.alpha
 #' 
-#' Calculates the diversity of a series of columns representing
-#' independent subcommunity counts, for a series of orders, repesented as
-#' a vector of \code{qs}.
+#' \code{subcommunity.alpha()} is used to calculate an estimate of 
+#' naive-community supercommunity diversity.
+#' 
+#' \code{subcommunity.alpha()} calculates the subcommunity alpha diversity of 
+#' a series of columns representing independent subcommunity counts, for a 
+#' series of orders, repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
-#' 
-#' @details \code{subcommunity.alpha()} is used to calculate an estimate of 
-#' naive-community supercommunity diversity.
 #' 
 #' @return Returns an array of diversities, first dimension representing 
 #' subcommunities, and last representing values of \emph{q}

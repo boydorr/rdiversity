@@ -1,15 +1,15 @@
 #' Similarity-sensitive Raw supercommunity.R diversity
 #' 
-#' Calculates the total supercommunity.R diversity of a series of 
-#' columns representing subcommunity counts, for a series of orders, 
-#' repesented as a vector of \code{qs}.
+#' \code{supercommunity.R()} is used to calculate the 
+#' average redundancy of subcommunities.
+#' 
+#' \code{supercommunity.R()} calculates the total supercommunity rho diversity 
+#' of a series of columns representing subcommunity counts, for a series of 
+#' orders, repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
-#' 
-#' @details  \code{subcommunity.R()} is used to calculate the 
-#' average redundancy of subcommunities.
 #' 
 #' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

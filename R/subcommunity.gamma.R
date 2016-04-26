@@ -1,16 +1,16 @@
 #' Similarity-sensitive Raw subcommunity.gamma diversity
 #' 
-#' Calculates the diversity of a series of columns representing independent 
-#' subcommunities counts relative to a total supercommunity (by default the 
-#' sum of the subcommunities), for a series of orders, repesented as a  
-#' vector of \code{qs}.
+#' \code{subcommunity.gamma()} is used to calculate the 
+#' contribution per individual toward supercommunity diversity.
+#' 
+#' \code{subcommunity.gamma()} calculates the subcommunity gamma diversity of 
+#' a series of columns representing independent subcommunities counts relative 
+#' to a total supercommunity (by default the sum of the subcommunities), for 
+#' a series of orders, repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
-#' 
-#' @details \code{subcommunity.gamma()} is used to calculate the 
-#' contribution per individual toward supercommunity diversity.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}

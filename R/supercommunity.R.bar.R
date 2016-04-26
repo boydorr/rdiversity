@@ -1,13 +1,16 @@
 #' Similarity-sensitive Normalised supercommunity.R diversity
 #' 
-#' Calculates the total supercommunity.R.bar diversity of a series of 
-#' columns representing subcommunity counts, for a series of orders, 
-#' repesented as a vector of \code{qs}.
+#' \code{supercommunity.R.bar()} is used to calculate the 
+#' average representativeness of subcommunities.
+#' 
+#' \code{supercommunity.R.bar()} calculates the total noramlised 
+#' supercommunity rho diversity of a series of columns representing 
+#' subcommunity counts, for a series of orders, repesented as a vector of 
+#' \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' 
-#' @details \code{subcommunity.R.bar()} is used to calculate the 
-#' average representativeness of subcommunities.
+#' @details 
 #' 
 #' @return An array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

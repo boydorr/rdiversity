@@ -1,15 +1,15 @@
 #' Similarity-sensitive Raw supercommunity.G diversity
 #' 
-#' Calculates the total supercommunity gamma diversity of a series of columns
-#' representing subcommunity counts, for a series of orders, repesented as a 
-#' vector of \code{qs}.
+#' \code{supercommunity.G()} is used to calculate the 
+#' supercommunity similarity-sensitive diversity.
+#' 
+#' \code{supercommunity.G()} calculates the total supercommunity gamma diversity 
+#' of a series of columns representing subcommunity counts, for a series of 
+#' orders, repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
-#' 
-#' @details \code{subcommunity.G()} is used to calculate the 
-#' supercommunity similarity-sensitive diversity.
 #' 
 #' @return array of diversities, last representing values of \emph{q}
 #' @seealso \code{\link{diversity}}

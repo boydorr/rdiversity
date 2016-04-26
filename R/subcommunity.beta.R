@@ -1,16 +1,16 @@
 #' Similarity-sensitive Raw subcommunity.beta diversity
 #' 
-#' Calculates the diversity of a series of columns representing independent
-#' subcommunities counts relative to a total supercommunity (by default the 
-#' sum of the subcommunities), for a series of orders, repesented as a 
-#' vector of \code{qs}.
+#' \code{subcommunity.beta()} is used to calculate the 
+#' distinctiveness of subcommunity \emph{j}.
+#' 
+#' \code{subcommunity.beta()} calculates the subcommunity beta diversity of a 
+#' series of columns representing independent subcommunities counts relative 
+#' to a total supercommunity (by default the sum of the subcommunities), for 
+#' a series of orders, repesented as a vector of \code{qs}.
 #'
 #' @inheritParams subcommunity.alpha.bar
 #' @param normalise logical operator; T returns normalised probability 
 #' distribution summed to 1
-#' 
-#' @details \code{subcommunity.beta()} is used to calculate the 
-#' distinctiveness of subcommunity \emph{j}.
 #' 
 #' @return Data frame of diversities, columns representing populations, and
 #' rows representing values of \emph{q}
