@@ -22,13 +22,12 @@
 power.mean <-
 function(values, order = 1, weights = rep(1, length(values)))
 {
-  # Check that the number of 'values' is equal to the number of 'weights'
-  if (length(values) != length(weights))
-    stop('The number of values does not equal the number of weights, please check arguments')
+  # Number of values must equal the number of weights
+  stopifnot(length(values) == length(weights))
   
-  # Check that 'values' and 'weights' are non-negative
-  if (any(values < 0, na.rm=TRUE) || any(weights < 0, na.rm=TRUE))
-      stop('Check that values and weights (arguments) are non-negative.')
+  # Values and weights must be greater than zero
+  stopifnot(any(values > 0, na.rm=TRUE))
+  stopifnot(any(weights > 0, na.rm=TRUE))
   
   # Normalise weights to sum to 1 (as per Rényi)
   proportions <- weights / sum(weights)
