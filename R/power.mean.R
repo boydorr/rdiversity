@@ -26,8 +26,10 @@ function(values, order = 1, weights = rep(1, length(values)))
   stopifnot(length(values) == length(weights))
   
   # Values and weights must be greater than zero
-  stopifnot(any(values > 0, na.rm=TRUE))
-  stopifnot(any(weights > 0, na.rm=TRUE))
+  if(any(values < 0, na.rm = TRUE))
+    stop('values must be greater than 0')
+  if(any(weights < 0, na.rm = TRUE))
+    stop('weights must be greater than 0')
   
   # Normalise weights to sum to 1 (as per Rényi)
   proportions <- weights / sum(weights)
