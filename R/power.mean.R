@@ -16,7 +16,7 @@
 #' @export
 #' 
 #' @examples 
-#' values <- rnorm(5)
+#' values <- sample(1:50, 5)
 #' power.mean(values)
 #' 
 power.mean <-
