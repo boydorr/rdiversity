@@ -53,3 +53,18 @@ setMethod(f = "subdiv", signature= "relativeentropy",
             row.names(results) <- paste0("q", qs) 
             results
           } )
+
+
+#' @rdname superdiv
+#' 
+setMethod(f = "subdiv", signature= "supercommunity", 
+          definition = function(data, qs) {  
+            # Calculate terms
+            div.terms <- list(alpha(data), alphabar(data), 
+                              beta(data), betabar(data),
+                              rho(data), rhobar(data),
+                              gamma(data))
+            # Calculate subcommunity diversity
+            results <- lapply(div.terms, subdiv, qs)
+            results
+          } )
