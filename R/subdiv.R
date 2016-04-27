@@ -24,7 +24,7 @@ setGeneric(name = "subdiv",
 setMethod(f = "subdiv", signature= "powermean", 
           definition = function(data, qs) {
             results <- list()
-            for(i in 1:length(qs))
+            for(i in seq_along(qs))
               results[[i]] <- sapply(1:ncol(data), function(y) 
                 power.mean(data[,y], 1-qs[i], data@type_weights[,y]))
             
@@ -43,7 +43,7 @@ setMethod(f = "subdiv", signature= "powermean",
 setMethod(f = "subdiv", signature= "relativeentropy", 
           definition = function(data, qs) {
             results <- list()
-            for(i in 1:length(qs))
+            for(i in seq_along(qs))
               results[[i]] <- sapply(1:ncol(data), function(y) 
                 power.mean(data[,y], qs[i]-1, data@type_weights[,y]))
             
