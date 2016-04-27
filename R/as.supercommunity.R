@@ -120,7 +120,7 @@ setMethod(f = "supercommunity",
           definition = function(partition, similarity = NA, pds.abundance = NA) {  
             # Calculate pair-wise similarity of historic species
             new.tree <- as.rdphylo(partition)
-            similarity <- phylogenetic_similarity(new.tree, pds.abundance)
+            similarity <- similarity_phylo(new.tree, pds.abundance)
             
             supercommunity(new.tree, similarity)
           } )
