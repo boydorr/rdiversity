@@ -14,7 +14,7 @@
 #' @examples 
 #' 
 #' tree <- ape::rtree(n = 5)
-#' Z <- phylogenetic_similarity(tree)
+#' Z <- similarity_phylo(tree)
 #' 
 #' 
 similarity_phylo <- 
