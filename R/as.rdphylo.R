@@ -60,7 +60,7 @@ rdphylo <- function(tree,
                 hs.abundance = hs.abundance,
                 Lj = Lj,
                 Tbar = Tbar)
-  return(output)
+output
 }
 
 
@@ -88,7 +88,7 @@ label.hs <- function(tree, node)
   hs.name <- sapply(daughters, function(x) {
     branch.name <- paste(tree$edge[which(tree$edge[,2]==x),], collapse='-')
     paste(node,branch.name,sep=',')})
-  return(hs.name)
+hs.name
 }
 
 
@@ -108,7 +108,7 @@ calc.Lj <- function(tree, node)
   hs.length <- sapply(daughters, function(x) 
     tree$edge.length[which(tree$edge[,2]==x)])
   hs.length <- sum(hs.length)
-  return(hs.length)
+hs.length
 }
 
 

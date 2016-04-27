@@ -30,15 +30,15 @@
 #' subcommunity.beta.bar(data, 0:2)
 #' 
 subcommunity.beta.bar <-
-function(populations, qs)
-{
-  if(!is.supercommunity(populations))
-    stop('populations must be object of class supercommunity.')
-  
-  res <- subcommunity.beta(populations, qs, normalise = T)
-
-  output <- new('rdiv', res, measure = 'Subcommunity beta bar',
-            tag = bquote('Subcommunity' ~ bar(beta)),
-            level = 'subcommunity')
-  return(output) 
+  function(populations, qs)
+  {
+    if(!is.supercommunity(populations))
+      stop('populations must be object of class supercommunity.')
+    
+    res <- subcommunity.beta(populations, qs, normalise = T)
+    
+    output <- new('rdiv', res, measure = 'Subcommunity beta bar',
+                  tag = bquote('Subcommunity' ~ bar(beta)),
+                  level = 'subcommunity')
+    output
   }

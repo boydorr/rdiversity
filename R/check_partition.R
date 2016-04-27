@@ -31,5 +31,5 @@ check_partition <- function(partition) {
   if(is.null(colnames(partition))) 
     colnames(partition) <- paste('subcommunity', 1:ncol(partition))
   
-  return(partition)
+partition
 }

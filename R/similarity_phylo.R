@@ -22,7 +22,7 @@ similarity_phylo <-
                                      length(tree$tip.label))) 
   {
     if(is.vector(pds.abundance)) pds.abundance <- matrix(pds.abundance)
-      
+    
     if(class(tree)=='phylo') {
       new.tree <- as.rdphylo(tree)
     } else if(is.rdphylo(tree)) {
@@ -68,6 +68,6 @@ similarity_phylo <-
       }
       zmatrix[ib,] <- zmatrix.row
     }
-    return(zmatrix)
+    zmatrix
   }
 

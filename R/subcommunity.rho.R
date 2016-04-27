@@ -30,15 +30,15 @@
 #' subcommunity.rho(data, 0:2)
 #' 
 subcommunity.rho <-
-function(populations, qs, ...)
-{
-  if(!is.supercommunity(populations))
-    stop('populations must be object of class supercommunity.')
-  
-  res <- 1 / subcommunity.beta(populations, qs, ...)
-
-  output <- new('rdiv', res, measure = 'Subcommunity rho',
-            tag = bquote('Subcommunity' ~ rho),
-            level = 'subcommunity')
-  return(output) 
-}
+  function(populations, qs, ...)
+  {
+    if(!is.supercommunity(populations))
+      stop('populations must be object of class supercommunity.')
+    
+    res <- 1 / subcommunity.beta(populations, qs, ...)
+    
+    output <- new('rdiv', res, measure = 'Subcommunity rho',
+                  tag = bquote('Subcommunity' ~ rho),
+                  level = 'subcommunity')
+    output
+  }

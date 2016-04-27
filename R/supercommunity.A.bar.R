@@ -28,15 +28,15 @@
 #' supercommunity.A.bar(data, 0:2)
 #' 
 supercommunity.A.bar <-
-function(populations, qs)
-{
-  if(!is.supercommunity(populations))
-    stop('populations must be object of class supercommunity.')
-  
-  res <- supercommunity.A(populations, qs, normalise = T)
-
-  output <- new('rdiv', res, measure = 'Supercommunity A bar',
-            tag = bquote('Supercommunity' ~ bar(italic('A'))),
-            level = 'supercommunity')
-  return(output) 
-}
+  function(populations, qs)
+  {
+    if(!is.supercommunity(populations))
+      stop('populations must be object of class supercommunity.')
+    
+    res <- supercommunity.A(populations, qs, normalise = T)
+    
+    output <- new('rdiv', res, measure = 'Supercommunity A bar',
+                  tag = bquote('Supercommunity' ~ bar(italic('A'))),
+                  level = 'supercommunity')
+    output
+  }

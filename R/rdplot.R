@@ -30,7 +30,7 @@ setMethod(f = "rdplot", signature = "rdiv", definition = function(data, style='n
   plot.this <- cbind(stack(data), row.names(data), stringsAsFactors=F)
   colnames(plot.this) <- c('diversity', 'q', 'subcommunity')
   plot.this$q <- as.numeric(gsub('q', '', plot.this$q))
-
+  
   g <- ggplot2::ggplot(data = plot.this,
                        ggplot2::aes_string(x = 'q',
                                            y = 'diversity',
@@ -38,13 +38,13 @@ setMethod(f = "rdplot", signature = "rdiv", definition = function(data, style='n
                                            colour = 'subcommunity'))
   g <- g + ggplot2::theme_classic()
   g <- g + ggplot2::labs(x = bquote(italic('q')), y = data@tag)
-
+  
   if(style=='big') {
     g <- g + ggplot2::theme(text = ggplot2::element_text(size=20))
     g <- g + ggplot2::geom_line(size=2)
   } else {
     g <- g + ggplot2::geom_line()
   }
-  return(g)
+  g
 } )
 

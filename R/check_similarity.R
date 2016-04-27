@@ -29,5 +29,5 @@ check_similarity <- function(partition, similarity) {
   if(nrow(similarity)!=nrow(partition))
     stop('similarity and partition matrices must have equal types.')
   
-  return(similarity)
+  similarity
 }

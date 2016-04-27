@@ -29,15 +29,15 @@
 #' subcommunity.gamma.bar(data, 0:2)
 #' 
 subcommunity.gamma.bar <-
-function(populations, qs, ...)
-{
-  if(!is.supercommunity(populations))
-    stop('populations must be object of class supercommunity.')
-  
-  res <- subcommunity.gamma(populations, qs, ..., normalise = T)
-  
-  output <- new('rdiv', res, measure = 'Subcommunity gamma bar',
-            tag = bquote('Subcommunity' ~ bar(gamma)),
-            level = 'subcommunity')
-  return(output) 
-}
+  function(populations, qs, ...)
+  {
+    if(!is.supercommunity(populations))
+      stop('populations must be object of class supercommunity.')
+    
+    res <- subcommunity.gamma(populations, qs, ..., normalise = T)
+    
+    output <- new('rdiv', res, measure = 'Subcommunity gamma bar',
+                  tag = bquote('Subcommunity' ~ bar(gamma)),
+                  level = 'subcommunity')
+    output
+  }

@@ -34,8 +34,8 @@ setMethod(f = "subdiv", signature= "powermean",
                                   stringsAsFactors=FALSE)
             colnames(results) <- colnames(data)
             row.names(results) <- paste0("q", qs) 
-            return(results)
-            } )
+            results
+          } )
 
 
 #' @rdname subdiv
@@ -53,5 +53,5 @@ setMethod(f = "subdiv", signature= "relativeentropy",
                                   stringsAsFactors=FALSE)
             colnames(results) <- colnames(data)
             row.names(results) <- paste0("q", qs) 
-            return(results)
+            results
           } )

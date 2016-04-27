@@ -28,16 +28,16 @@
 #' supercommunity.R(data, 0:2)
 #' 
 supercommunity.R <-
-function(populations, qs, normalise = F)
-{
-  if(!is.supercommunity(populations))
-    stop('populations must be object of class supercommunity.')
-  
-  # If we just have a single vector, then turn it into single column matrix
+  function(populations, qs, normalise = F)
+  {
+    if(!is.supercommunity(populations))
+      stop('populations must be object of class supercommunity.')
+    
+    # If we just have a single vector, then turn it into single column matrix
     if (is.vector(populations))
-        populations <- array(populations, dim=c(length(populations), 1))
+      populations <- array(populations, dim=c(length(populations), 1))
     if (is.data.frame(populations))
-        populations <- as.matrix(populations)
+      populations <- as.matrix(populations)
     
     # Turn all columns into proportions if needed
     data <- summarise(populations, normalise)
@@ -56,7 +56,7 @@ function(populations, qs, normalise = F)
     res <- data.frame(res)
     
     output <- new('rdiv', res, measure = 'Supercommunity R',
-              tag = bquote('Supercommunity' ~ italic('R')),
-              level = 'supercommunity')
-    return(output) 
-}
+                  tag = bquote('Supercommunity' ~ italic('R')),
+                  level = 'supercommunity')
+    output
+  }

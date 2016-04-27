@@ -29,16 +29,16 @@
 #' subcommunity.alpha.bar(data, 0:2)
 #' 
 subcommunity.alpha.bar <- 
-function(populations, qs) 
-{
-  if(!is.supercommunity(populations))
-    stop('populations must be object of class supercommunity.')
-  
-  res <- subcommunity.alpha(populations, qs, normalise = T)
-  res <- data.frame(res)
-  
-  output <- new('rdiv', res, measure = 'Subcommunity alpha bar',
-            tag = bquote('Subcommunity' ~ bar(alpha)),
-            level = 'subcommunity')
-  return(output) 
-}
+  function(populations, qs) 
+  {
+    if(!is.supercommunity(populations))
+      stop('populations must be object of class supercommunity.')
+    
+    res <- subcommunity.alpha(populations, qs, normalise = T)
+    res <- data.frame(res)
+    
+    output <- new('rdiv', res, measure = 'Subcommunity alpha bar',
+                  tag = bquote('Subcommunity' ~ bar(alpha)),
+                  level = 'subcommunity')
+    output
+  }
