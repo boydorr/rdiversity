@@ -27,11 +27,10 @@ setMethod(f = "subdiv", signature= "powermean",
             for(i in seq_along(qs))
               results[[i]] <- sapply(1:ncol(data), function(y) 
                 power.mean(data[,y], 1-qs[i], data@type_weights[,y]))
-            
             results <- data.frame(matrix(unlist(results), 
                                          nrow = length(results), 
-                                         byrow=T), 
-                                  stringsAsFactors=FALSE)
+                                         byrow = TRUE), 
+                                  stringsAsFactors = FALSE)
             colnames(results) <- colnames(data)
             row.names(results) <- paste0("q", qs) 
             results
@@ -46,11 +45,10 @@ setMethod(f = "subdiv", signature= "relativeentropy",
             for(i in seq_along(qs))
               results[[i]] <- sapply(1:ncol(data), function(y) 
                 power.mean(data[,y], qs[i]-1, data@type_weights[,y]))
-            
             results <- data.frame(matrix(unlist(results), 
                                          nrow = length(results), 
-                                         byrow=T), 
-                                  stringsAsFactors=FALSE)
+                                         byrow = TRUE), 
+                                  stringsAsFactors = FALSE)
             colnames(results) <- colnames(data)
             row.names(results) <- paste0("q", qs) 
             results
