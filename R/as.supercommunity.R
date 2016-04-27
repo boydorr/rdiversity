@@ -36,7 +36,7 @@
 #' @examples 
 #' tree <- ape::rtree(n = 5)
 #' a <- supercommunity(tree)
-#' b <- phylogenetic_similarity(tree)
+#' b <- similarity_phylo(tree)
 #' 
 setGeneric(name = "supercommunity",
            def = function(partition, similarity, ...) {
