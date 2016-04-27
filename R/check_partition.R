@@ -22,7 +22,7 @@ check_partition <- function(partition) {
   # normalise partition if it does not sum to 1
   if(!isTRUE(all.equal(sum(partition),1))) {
     partition <- partition / sum(partition)
-    warning('Population matrix was normalised to sum to 1.')
+    print('Population matrix was normalised to sum to 1.')
   }
   
   # add labels if rows and columns have none
