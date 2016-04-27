@@ -15,11 +15,11 @@
 #' @examples 
 #' 
 summarise <-
-function(populations, normalise = T)
 {
   totals <- array(rowSums(populations), dim=c(dim(populations)[1], 1))
   
   if (normalise)
+  function(populations, normalise = TRUE)
   {
     total <- sum(totals)
     totals <- totals / total
