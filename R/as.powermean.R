@@ -42,7 +42,8 @@ is.powermean <- function (x) inherits(x, "powermean")
 
 
 #' @rdname powermean
-#' @param \code{print(x)} prints an object object of class \code{powermean}
+#' @param object object of class \code{powermean}
+#' @return \code{print(x)} prints an object object of class \code{powermean}
 #' 
 setMethod(f = "show", signature = "powermean", 
           definition = function(object) {
