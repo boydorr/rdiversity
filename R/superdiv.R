@@ -1,7 +1,7 @@
 #' Calculate supercommunity diversity
 #' 
 #' Calculates supercommunity diversity by taking the powermean of diversity 
-#' terms.
+#' components.
 #' 
 #' @name superdiv
 #' @inheritParams subdiv 
