@@ -23,12 +23,11 @@
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains weight of types within a subcommunity
 #' 
-setClass("supercommunity", contains = "matrix",
+setClass("supercommunity", 
          slots = c(.Data = "matrix", 
                    similarity = "matrix",
                    type_abundance = "matrix",
                    ordinariness = "matrix",
                    subcommunity_weights = "numeric", 
                    type_weights = "matrix"))
-
 
