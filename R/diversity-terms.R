@@ -31,6 +31,7 @@ alpha <- function(super) {
 
 
 #' @rdname alpha
+#' @export
 #' 
 alphabar <- function(super) {
   ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
@@ -43,6 +44,7 @@ alphabar <- function(super) {
 
 
 #' @rdname alpha
+#' @export
 #' 
 rho <- function(super) {
   results <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
@@ -51,6 +53,7 @@ rho <- function(super) {
 
 
 #' @rdname alpha
+#' @export
 #' 
 rhobar <- function(super) {
   ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
@@ -63,6 +66,7 @@ rhobar <- function(super) {
 
 
 #' @rdname alpha
+#' @export
 #' 
 beta <- function(super) {
   results <- 1 / rho(super)
@@ -71,6 +75,7 @@ beta <- function(super) {
 
 
 #' @rdname alpha
+#' @export
 #' 
 betabar <- function(super) {
   results <- 1 / rhobar(super)
@@ -79,6 +84,7 @@ betabar <- function(super) {
 
 
 #' @rdname alpha
+#' @export
 #' 
 gamma <- function(super) {
   results <- rowSums(super@ordinariness, na.rm=T)
