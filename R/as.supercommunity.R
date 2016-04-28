@@ -145,8 +145,30 @@ setMethod(f = "supercommunity",
             new.tree <- as.rdphylo(partition)
             similarity <- similarity_phylo(new.tree, pds.abundance)
             
-            supercommunity(new.tree, similarity)
-          } )
+            # Calculate relative abundance of historic species
+            type_abundance <- new.tree@hs.abundance
+            row.names(type_abundance) <- new.tree@hs.name
+            
+            type_abundance <- check_partition(type_abundance)
+            # similarity <- check_similarity(type_abundance, similarity)
+            
+            subcommunity_weights <- colSums(type_abundance) / 
+              sum(type_abundance)
+            type_weights <- sapply(1:ncol(type_abundance), function(x)
+              (type_abundance[,x]/colSums(type_abundance)[x]))
+            Zp.j <- similarity %*% type_abundance
+            
+            # Now mark all of the species that have nothing similar as NaNs
+            # because diversity of an empty group is undefined
+            Zp.j[Zp.j==0] <- NaN
+            
+            new('supercommunity', pds.abundance, 
+                similarity = similarity, 
+                type_abundance = type_abundance, 
+                ordinariness = Zp.j,
+                subcommunity_weights = subcommunity_weights,
+                type_weights = type_weights)
+            } )
 
 
 #' @rdname supercommunity-class
