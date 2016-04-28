@@ -1,4 +1,4 @@
-#' Individual diversity term
+#' Low level diversity components
 #' 
 #' Calculates the diversity of a series of columns representing
 #' independent subcommunity counts, for a series of orders, repesented as
@@ -95,10 +95,4 @@ gamma <- function(super) {
   row.names(results) <- row.names(super)
   powermean(results, super, "gamma")
 }
-
-
-
-
-
-
 
