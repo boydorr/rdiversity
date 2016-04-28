@@ -8,6 +8,8 @@
 \alias{supercommunity}
 \alias{supercommunity,data.frame,matrix-method}
 \alias{supercommunity,data.frame,missing-method}
+\alias{supercommunity,integer,matrix-method}
+\alias{supercommunity,integer,missing-method}
 \alias{supercommunity,matrix,matrix-method}
 \alias{supercommunity,matrix,missing-method}
 \alias{supercommunity,phylo,matrix-method}
@@ -19,7 +21,11 @@ supercommunity(partition, similarity, ...)
 
 \S4method{supercommunity}{data.frame,missing}(partition, similarity = NA)
 
+\S4method{supercommunity}{integer,missing}(partition, similarity = NA)
+
 \S4method{supercommunity}{data.frame,matrix}(partition, similarity = NA)
+
+\S4method{supercommunity}{integer,matrix}(partition, similarity = NA)
 
 \S4method{supercommunity}{matrix,missing}(partition, similarity = NA)
 
@@ -110,7 +116,7 @@ contains weight of types within a subcommunity}
 \examples{
 tree <- ape::rtree(n = 5)
 a <- supercommunity(tree)
-b <- phylogenetic_similarity(tree)
+b <- similarity_phylo(tree)
 
 }
 

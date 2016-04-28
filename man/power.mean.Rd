@@ -27,7 +27,7 @@ and a order of 0 gives the geometric mean, and an order of -1 gives the
 harmonic mean.
 }
 \examples{
-values <- rnorm(5)
+values <- sample(1:50, 5)
 power.mean(values)
 
 }

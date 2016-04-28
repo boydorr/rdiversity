@@ -5,6 +5,7 @@
 \alias{superdiv}
 \alias{superdiv,powermean-method}
 \alias{superdiv,relativeentropy-method}
+\alias{superdiv,supercommunity-method}
 \title{Calculate supercommunity diversity}
 \usage{
 superdiv(data, qs)
@@ -12,10 +13,12 @@ superdiv(data, qs)
 \S4method{superdiv}{powermean}(data, qs)
 
 \S4method{superdiv}{relativeentropy}(data, qs)
+
+\S4method{superdiv}{supercommunity}(data, qs)
 }
 \arguments{
 \item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity 
-terms.}
+components.}
 
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
@@ -24,7 +27,7 @@ Returns a two-dimensional \code{matrix} of mode \code{numeric}.
 }
 \description{
 Calculates supercommunity diversity by taking the powermean of diversity 
-terms.
+components.
 }
 \details{
 
