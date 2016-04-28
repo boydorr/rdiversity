@@ -8,9 +8,9 @@ test_that("power.mean returns the correct answers for a set of positive integers
   expect_equal(power.mean(numbers, -1), 80/31)
   expect_equal(power.mean(numbers, -Inf), 1)
   expect_equal(power.mean(numbers, Inf, c(1, 1, 1, 1, 0)), 8)
-  expect_identical(power.mean(numbers, weights=numbers * 0), NaN)
+  expect_identical(power.mean(numbers, weights = numbers * 0), NaN)
   # Check that a error is returned when 'values' are incomplete, 
-  expect_error(power.mean(1:3, weights=rep(1, 4)))
+  expect_error(power.mean(1:3, weights = rep(1, 4)))
   # or when a term is negative
   expect_error(power.mean(c(-2,2),1))
 })
