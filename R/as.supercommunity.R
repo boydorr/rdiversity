@@ -125,7 +125,7 @@ setMethod(f = "supercommunity",
             # because diversity of an empty group is undefined
             Zp.j[Zp.j==0] <- NaN
             
-            new('supercommunity', partition, 
+            new('supercommunity', pds.abundance, 
                 similarity = similarity, 
                 type_abundance = type_abundance, 
                 ordinariness = Zp.j,
