@@ -1,18 +1,39 @@
 #' Calculate subcommunity diversity
 #' 
-#' Calculates subcommunity diversity by taking the powermean of diversity 
-#' terms.
+#' Generic function for calculating subcommunity diversity.
 #' 
-#' @name subdiv
+#' \code{data} may be input as three different classes:
+#' \itemize{
+#' \item{\code{powermean} calculates subcomunity alpha, alphabar, rho, rhobar, 
+#' or gamma diversity by taking the powermean of diversity components}
+#' \item{\code{relativeentropy} calculates subcommunity beta or betabar 
+#' diversity by taking the relative entropy of diversity components}
+#' \item{\code{supercommunity} caculates all subcommunity measures of diversity}
+#' }
+#' 
+#' 
 #' @param data two-dimensional \code{matrix} of mode \code{numeric}; diversity 
-#' terms.
+#' components.
 #' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
 #' 
 #' @details as ds
 #' 
 #' @return Returns a two-dimensional \code{matrix} of mode \code{numeric}.
 #' @export 
-#' @examples as
+#' @examples 
+#' pop <- sample(1:50, 5)
+#' super <- supercommunity(pop)
+#' 
+#' # Calculate subcommunity gamma diversity (takes the power mean)
+#' g <- gamma(super)
+#' subdiv(g, 0:2)
+#' 
+#' # Calculate subcommunity beta diversity (takes the relative entropy)
+#' b <- beta(super)
+#' subdiv(b, 0:2)
+#' 
+#' # Calculate all measures of subcommunity diversity
+#' subdiv(super, 0:2)
 #' 
 setGeneric(name = "subdiv",
            def = function(data, qs) {
@@ -38,6 +59,7 @@ setMethod(f = "subdiv", signature= "powermean",
 
 
 #' @rdname subdiv
+#' @return 
 #' 
 setMethod(f = "subdiv", signature= "relativeentropy", 
           definition = function(data, qs) {
@@ -55,16 +77,20 @@ setMethod(f = "subdiv", signature= "relativeentropy",
           } )
 
 
-#' @rdname superdiv
+#' @rdname subdiv
 #' 
 setMethod(f = "subdiv", signature= "supercommunity", 
           definition = function(data, qs) {  
             # Calculate terms
-            div.terms <- list(alpha(data), alphabar(data), 
-                              beta(data), betabar(data),
-                              rho(data), rhobar(data),
-                              gamma(data))
+            div.measures <- list(alpha, alphabar, 
+                              beta, betabar,
+                              rho, rhobar,
+                              gamma)
             # Calculate subcommunity diversity
-            results <- lapply(div.terms, subdiv, qs)
+            results <- lapply(div.measures, function(x) 
+              res <- subdiv(x(data), qs))
+            names(results) <- c("alpha", "alphabar", "beta", "betabar",
+                                "rho", "rhobar", "gamma") 
             results
           } )
+           
