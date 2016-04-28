@@ -4,10 +4,22 @@
 #' object into a \code{powermean}.
 #' 
 #' @param results two-dimensional \code{matrix} of mode \code{numeric}; 
-#' @param super object of class \code{supercommunity}; 
-#' @param tag object of class \code{character}; 
+#' contains values calculated from diversity-term functions, e.g. 
+#' \code{alphabar()}, \code{beta}, etc.
+#' @param super object of class \code{supercommunity}; contains proportional 
+#' abundance of types, pair-wise similarity, and other associated variables.
+#' @param tag object of class \code{character}; contains an identifier 
+#' associated with the calculated diversity-term, e.g. "alphabar", "beta", etc.
 #' 
-#' @details 
+#' @details \code{powermean} is a class of object output from calculating 
+#' \code{alpha}, \code{alphabar}, \code{rho}, 
+#' \code{rhobar}, and \code{gamma} diversity terms; 
+#' \code{beta} and \code{betabar} are output as 
+#' \code{relativeentropy} objects. 
+#' 
+#' To calculate the subcommunity or supercommunity diversity, an object of
+#' class \code{powermean} is input to \code{subdiv()} or \code{superdiv()}, 
+#' respectively.
 #' 
 #' @return \code{powermean(x)} returns an object of class \code{powermean}.
 #' @include class-powermean.R 
