@@ -59,6 +59,18 @@ setMethod(f = "supercommunity",
 #' @rdname supercommunity-class
 #' 
 setMethod(f = "supercommunity", 
+          signature(partition = "integer", similarity = "missing"), 
+          definition = function(partition, similarity = NA) {  
+            # If similarity is data.frame, convert to matrix
+            partition <- as.matrix(partition)
+            
+            supercommunity(partition)
+          } )
+
+
+#' @rdname supercommunity-class
+#' 
+setMethod(f = "supercommunity", 
           signature(partition = "data.frame", similarity = "matrix"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is data.frame, convert to matrix
