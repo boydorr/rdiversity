@@ -129,13 +129,13 @@ setMethod(f = "show", signature(object = "rdphylo"),
           definition = function(object){
             cat('Phylogenetic tree with', length(object$tip.label),
                 'tips and', object$Nnode,
-                'internal nodes (including the root.\n\n')
+                'internal nodes (including the root).\n\n')
             
             cat('Tip labels:\n', head(object$tip.label), '\n\n')
+            # 
+            # if(ape::is.rooted(object)) {
+            #   rooted <- 'Rooted'
+            # } else rooted <- 'Unrooted'
             
-            if(ape::is.rooted(object)) {
-              rooted <- 'Rooted'
-            } else rooted <- 'Unrooted'
-            
-            cat(rooted, '.')
+            # cat(rooted, '.')
           } )
