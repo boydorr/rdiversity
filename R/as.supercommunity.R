@@ -180,8 +180,11 @@ setMethod(f = "supercommunity",
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "matrix"), 
           definition = function(partition, similarity, pds.abundance = NA) {  
-            new.tree <- as.rdphylo(partition)
+            if(is.na(pds.abundance))
+              pds.abundance <- matrix(rep(1/length(partition$tip.label),
+                                          length(partition$tip.label)))
             # Calculate relative abundance of historic species
+            new.tree <- as.rdphylo(partition)
             type_abundance <- new.tree@hs.abundance
             row.names(type_abundance) <- new.tree@hs.name
             
