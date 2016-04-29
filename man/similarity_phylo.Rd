@@ -19,14 +19,9 @@ species}
 \description{
 Function to calculate phylogenetic similarity matrix from a phylogeny.
 }
-\details{
-
-}
 \examples{
-
 tree <- ape::rtree(n = 5)
 Z <- similarity_phylo(tree)
-
 
 }
 

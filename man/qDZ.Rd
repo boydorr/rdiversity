@@ -4,25 +4,33 @@
 \alias{qDZ}
 \title{Similarity-sensitive diversity}
 \usage{
-qDZ(populations, qs)
+qDZ(super, qs)
 }
 \arguments{
-\item{populations}{object of class \code{initDiv}}
+\item{super}{object of class \code{supercommunity}.}
 
-\item{qs}{Vector of values of parameter q}
+\item{qs}{\code{vector} of \emph{q} values.}
 }
 \value{
-Data frame of diversities, columns representing populations, and 
-rows representing values of q
+Returns a matrix of similarity-sensitive diversities, where rows 
+and columns represent values of q and subcommunities, respectively.
 }
 \description{
-Calculates the diversity of a series of columns representing independent
-populations, for a series of orders, repesented as a vector of qs.
-}
-\details{
-
+Calculates the similarity-sensitive diversity of a series of columns 
+representing independent populations, for a series of orders repesented as 
+a vector of \code{qs}.
 }
 \examples{
+pop <- sample(1:50, 5)
+
+# Create similarity matrix
+Z <- diag(1, length(pop))
+Z[Z==0] <- 0.4
+
+dat <- supercommunity(pop, Z)
+
+# Calculate similarity-sensitive diversity of order 0 (species richness)
+qDZ(dat, 0)
 
 }
 

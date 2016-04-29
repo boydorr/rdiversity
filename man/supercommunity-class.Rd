@@ -116,7 +116,8 @@ contains weight of types within a subcommunity}
 \examples{
 tree <- ape::rtree(n = 5)
 a <- supercommunity(tree)
-b <- similarity_phylo(tree)
+str(a)
+a
 
 }
 

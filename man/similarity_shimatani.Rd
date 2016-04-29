@@ -16,12 +16,11 @@ similarity_shimatani(data, lookup)
 Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity
 }
 \description{
-This function calculates taxonomic similarity based on Shimatani's 
-index of taxonomic similarity (See Details).
+\code{similarity_shimatani()} calculates taxonomic similarity based on 
+Shimatani's index of taxonomic similarity (See Details).
 }
 \details{
 Shimatani's taxonomic similarity index is defined:
-
 \tabular{ll}{
 \code{species.similarity} \tab 1 \cr
 \code{genus.similarity} \tab 0.75 \cr
@@ -31,7 +30,17 @@ Shimatani's taxonomic similarity index is defined:
 }
 }
 \examples{
-
+pop <- sample(1:50, 4)
+lookup <- data.frame(Subclass=c("Sapindales", "Malvales", "Fabales", 
+                                  "Fabales"),      
+                     Family=c("Burseraceae", "Bombacaceae", "Fabaceae", 
+                              "Fabaceae"), 
+                     Genus=c("Protium", "Quararibea", "Swartzia", 
+                             "Swartzia"),       
+                     Species= c("tenuifolium", "asterolepis",
+                                    "simplex var.grandiflora",
+                                    "simplex var.ochnacea"))
+similarity <- similarity_shimatani(pop, lookup)
 
 }
 

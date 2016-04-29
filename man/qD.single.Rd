@@ -2,27 +2,27 @@
 % Please edit documentation in R/qD.single.R
 \name{qD.single}
 \alias{qD.single}
-\title{Hill number / naive diversity with no similarity of a single population}
+\title{Hill number / naive diversity of a single population}
 \usage{
 qD.single(proportions, q)
 }
 \arguments{
-\item{proportions}{Relative proportions of different individuals / types 
-in population}
+\item{proportions}{\code{vector} of mode \code{numeric}; contains the 
+relative proportions of different individuals/types in a population.}
 
-\item{q}{Order of diversity measurement}
+\item{q}{object of class \code{numeric}; contains the order of diversity 
+measurement.}
 }
 \value{
-as
+Returns the naive divesity of order \emph{q}.
 }
 \description{
-Calculates the Hill number / naive diversity of order q of a population
-with given relative proportions
-}
-\details{
-asd
+Calculates the Hill number (naive diversity) of order \emph{q} of a single
+population with given relative proportions.
 }
 \examples{
+pop <- sample(1:50, 5)
+qD.single(pop, 0)
 
 }
 

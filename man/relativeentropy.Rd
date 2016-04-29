@@ -37,10 +37,13 @@ relativeentropy, FALSE otherwise.
 Functions to check if an object is a \code{relativeentropy} or coerce an  
 object into a \code{relativeentropy}.
 }
-\details{
-
-}
 \examples{
+pop <- sample(1:50, 5)
+super <- supercommunity(pop)
+
+# Calculate subcommunity beta diversity (takes the relative entropy)
+a <- beta(super)
+class(a)
 
 }
 

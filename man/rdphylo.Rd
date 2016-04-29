@@ -37,7 +37,4 @@ species, and proportional abundance.
 Functions to check if an object is a \code{rdphylo} or coerce an  
 object into a \code{rdphylo}.
 }
-\details{
-
-}
 

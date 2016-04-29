@@ -8,26 +8,34 @@ qDZ.single(proportions, q, Z = diag(nrow(proportions)), Zp = Z \%*\%
   proportions)
 }
 \arguments{
-\item{proportions}{Relative proportions of different individuals / types 
-in population}
+\item{proportions}{\code{vector} of mode \code{numeric}; contains the 
+relative proportions of different individuals/types in a population.}
 
-\item{q}{- order of diversity measurement}
+\item{q}{object of class \code{numeric}; contains the order of diversity 
+measurement.}
 
-\item{Z}{- similarity matrix}
+\item{Z}{two-dimensional \code{matrix} of mode \code{numeric}; contains the 
+pair-wise similarity of individuals/types in a population.}
 
-\item{Zp}{- ordinariness of individuals / types in population}
+\item{Zp}{two-dimensional \code{matrix} of mode \code{numeric}; contains 
+the ordinariness of individuals/types in population.}
 }
 \value{
-Similarity-sensitive diversity of order q
+Returns the similarity-sensitive diversity of order \emph{q}.
 }
 \description{
-Calculates the similarity-sensitive diversity of order q of a population 
-with given relative proportions.
-}
-\details{
-
+Calculates the similarity-sensitive diversity of order \emph{q} of a single  
+population with given relative proportions.
 }
 \examples{
+pop <- sample(1:50, 5)
+
+# Create similarity matrix
+Z <- diag(1, length(pop))
+Z[Z==0] <- 0.4
+
+# Calculate similarity-sensitive diversity of order 0 (species richness)
+qDZ.single(pop, 0, Z)
 
 }
 

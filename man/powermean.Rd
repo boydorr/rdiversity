@@ -50,13 +50,19 @@ object into a \code{powermean}.
 \code{alpha}, \code{alphabar}, \code{rho}, 
 \code{rhobar}, and \code{gamma} diversity terms; 
 \code{beta} and \code{betabar} are output as 
-\code{relativeentropy} objects. 
+\code{relativeentropy} objects.
 
 To calculate the subcommunity or supercommunity diversity, an object of
 class \code{powermean} is input to \code{subdiv()} or \code{superdiv()}, 
 respectively.
 }
 \examples{
+pop <- sample(1:50, 5)
+super <- supercommunity(pop)
+
+# Calculate subcommunity alpha diversity (takes the powermean)
+a <- alpha(super)
+class(a)
 
 }
 
