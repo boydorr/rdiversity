@@ -48,13 +48,10 @@ setMethod(f = "superdiv", signature= "powermean",
                                          data@subcommunity_weights)
             }
             
-            results <- data.frame(matrix(unlist(results), 
-                                         nrow = length(results), 
-                                         byrow = TRUE), 
-                                  stringsAsFactors = FALSE)
-            colnames(results) <- paste("supercommunity", data@measure)
-            row.names(results) <- paste0("q", qs)
-            results
+            output <- do.call(cbind,results)
+            colnames(output) <- paste0("q", qs) 
+            row.names(output) <- colnames(data)
+            output
           } )
 
 
@@ -70,13 +67,10 @@ setMethod(f = "superdiv", signature= "relativeentropy",
                                          data@subcommunity_weights)
             }
             
-            results <- data.frame(matrix(unlist(results), 
-                                         nrow = length(results), 
-                                         byrow = TRUE), 
-                                  stringsAsFactors = FALSE)
-            colnames(results) <- paste("supercommunity", data@measure)
-            row.names(results) <- paste0("q", qs)
-            results
+            output <- do.call(cbind,results)
+            colnames(output) <- paste0("q", qs) 
+            row.names(output) <- colnames(data)
+            output
           } )
 
 
