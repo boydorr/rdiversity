@@ -16,5 +16,7 @@
 #' qD.single(pop, 0)
 #' 
 qD.single <-
-function(proportions, q)
+function(proportions, q) {
+  proportions <- check_partition(proportions)
   1 / power.mean(values = proportions, order = q - 1, weights = proportions)
+}
