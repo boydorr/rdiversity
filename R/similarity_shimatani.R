@@ -61,8 +61,7 @@ similarity_shimatani <- function(data, lookup)
       }else zmatrix[i,j] <- other.similarity
     }
   }
-  row.names(zmatrix) <- row.names(data)
-  colnames(zmatrix) <- row.names(data)
-  # attr(zmatrix, 'similarity') <- similarity
+  row.names(zmatrix) <- lookup$Species
+  colnames(zmatrix) <- lookup$Species
   zmatrix
 }
