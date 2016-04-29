@@ -17,6 +17,7 @@
 #' new.population
 #' 
 check_partition <- function(partition) {
+  if(is.vector(partition)) partition <- as.matrix(partition)
   if(is.data.frame(partition)) partition <- as.matrix(partition)
   
   # normalise partition if it does not sum to 1
