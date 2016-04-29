@@ -142,6 +142,9 @@ setMethod(f = "supercommunity",
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "missing"), 
           definition = function(partition, similarity = NA, pds.abundance = NA) {  
+            if(is.na(pds.abundance))
+              pds.abundance <- matrix(rep(1/length(partition$tip.label),
+                                          length(partition$tip.label)))
             # Calculate pair-wise similarity of historic species
             new.tree <- as.rdphylo(partition)
             similarity <- similarity_phylo(new.tree, pds.abundance)
