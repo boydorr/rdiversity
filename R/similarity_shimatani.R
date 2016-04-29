@@ -35,6 +35,9 @@ similarity_shimatani <- function(data, lookup)
   # Data and lookup table must have the same number of entries
   stopifnot(nrow(data)==nrow(lookup))
   
+  if(is.vector(data))
+    data <- as.matrix(data)
+  
   # Based on Shimatani's taxonomic similarity indices
   species.similarity <- 1
   genus.similarity <- 0.75
