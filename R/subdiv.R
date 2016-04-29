@@ -11,7 +11,6 @@
 #' \item{\code{supercommunity} caculates all subcommunity measures of diversity}
 #' }
 #' 
-#' 
 #' @param data two-dimensional \code{matrix} of mode \code{numeric}; diversity 
 #' components.
 #' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.

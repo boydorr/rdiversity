@@ -6,16 +6,12 @@
 #' @param pds.abundance vector of length {S}; relative abundance of present-day 
 #' species
 #' 
-#' @details 
-#' 
 #' @return \eqn{hS x hS} matrix; pair-wise similarity of historic species
 #' @export
 #' 
 #' @examples 
-#' 
 #' tree <- ape::rtree(n = 5)
 #' Z <- similarity_phylo(tree)
-#' 
 #' 
 similarity_phylo <- 
   function(tree, pds.abundance = rep(1/length(tree$tip.label), 

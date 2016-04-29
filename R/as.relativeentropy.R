@@ -7,13 +7,17 @@
 #' @param super object of class \code{supercommunity}; 
 #' @param tag object of class \code{character}; 
 #' 
-#' @details 
-#' 
 #' @return object of class \code{relativeentropy}
 #' @include class-relativeentropy.R 
 #' @export
 #' 
 #' @examples 
+#' pop <- sample(1:50, 5)
+#' super <- supercommunity(pop)
+#' 
+#' # Calculate subcommunity beta diversity (takes the relative entropy)
+#' a <- beta(super)
+#' class(a)
 #' 
 relativeentropy <- function(results, super, tag) {
   new('relativeentropy', 

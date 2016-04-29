@@ -1,20 +1,29 @@
 #' Similarity-sensitive diversity of a single population
 #' 
-#' Calculates the similarity-sensitive diversity of order q of a population 
-#' with given relative proportions.
+#' Calculates the similarity-sensitive diversity of order \emph{q} of a single  
+#' population with given relative proportions.
 #'
-#' @param proportions Relative proportions of different individuals / types 
-#' in population
-#' @param q - order of diversity measurement
-#' @param Z - similarity matrix
-#' @param Zp - ordinariness of individuals / types in population
+#' @param proportions \code{vector} of mode \code{numeric}; contains the 
+#' relative proportions of different individuals/types in a population.
+#' @param q object of class \code{numeric}; contains the order of diversity 
+#' measurement.
+#' @param Z two-dimensional \code{matrix} of mode \code{numeric}; contains the 
+#' pair-wise similarity of individuals/types in a population.
+#' @param Zp two-dimensional \code{matrix} of mode \code{numeric}; contains 
+#' the ordinariness of individuals/types in population.
 #' 
-#' @details 
-#' 
-#' @return Similarity-sensitive diversity of order q
+#' @return Returns the similarity-sensitive diversity of order \emph{q}.
 #' @export
 #' 
 #' @examples 
+#' pop <- sample(1:50, 5)
+#' 
+#' # Create similarity matrix
+#' Z <- diag(1, length(pop))
+#' Z[Z==0] <- 0.4
+#' 
+#' # Calculate similarity-sensitive diversity of order 0 (species richness)
+#' qDZ.single(pop, 0, Z)
 #' 
 qDZ.single <-
   function(proportions, q,

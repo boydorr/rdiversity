@@ -7,8 +7,6 @@
 #' @param pds.abundance \code{vector} of length \eqn{S}; proportional
 #' abundance of present-day species
 #' 
-#' @details
-#' 
 #' @return S4 generic of class \code{rdphylo} containing historic 
 #' species: names, ancestral and descendant nodes, descendant present day 
 #' species, and proportional abundance. 
