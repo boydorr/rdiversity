@@ -22,6 +22,15 @@ rdphylo <- function(tree,
   hs.names <- unlist(sapply(pds.nodes, function(x) label.hs(tree, x)))
   
   new.tree <- tree
+  # If root has a length
+  if(!is.null(new.tree$root.edge)) {
+    hs.names <- c(hs.names, 
+                  paste(seq_along(new.tree$tip.label), 
+                        paste(0, length(new.tree$tip.label)+1, sep="-"), sep=","))
+    new.tree$edge <- rbind(new.tree$edge, c(0, length(new.tree$tip.label)+1))
+    new.tree$edge.length <- c(new.tree$edge.length, new.tree$root.edge)
+  }
+ 
   # Check pds.pmatrix
   if(sum(pds.abundance) != 1) pds.abundance <- pds.abundance/sum(pds.abundance)
   
