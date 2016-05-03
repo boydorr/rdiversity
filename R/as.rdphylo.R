@@ -56,8 +56,10 @@ rdphylo <- function(tree,
   })
   
   # Calculate the relative abundance of each historic species
-  hs.abundance <- apply(pds.abundance, 2, 
-                        function(x) (hs.length/Tbar) * x[hs.pds])
+  hs.abundance <- sapply(seq_along(hs.length),
+                        function(x) (hs.length[x]/Tbar) * pds.abundance[hs.pds[x]])
+  hs.abundance <- as.matrix(hs.abundance)
+  row.names(hs.abundance) <- hs.names
   
   output <- new('rdphylo', new.tree,
                 hs.name = hs.names,
