@@ -19,11 +19,11 @@ similarity_phylo <-
   {
     if(is.vector(pds.abundance)) pds.abundance <- matrix(pds.abundance)
     
-    if(class(tree)=='phylo') {
-      new.tree <- as.rdphylo(tree)
-    } else if(is.rdphylo(tree)) {
+    if(is.rdphylo(tree)) {
       new.tree <- tree
-    } else
+    } else if(class(tree)=='phylo') {
+      new.tree <- as.rdphylo(tree, pds.abundance)
+    } else 
       stop('tree should be object of class phylo (or rdphylo).')  
     
     # Count historic species
