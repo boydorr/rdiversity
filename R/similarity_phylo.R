@@ -35,16 +35,14 @@ similarity_phylo <-
     row.names(zmatrix) <- new.tree@hs.name
     
     # Calculate pairwise similarity between historic species
-    for (row.index in 1:N.hs) {
-      # cat("\r", "Calculating Z matrix: row", row.index, "of", N.hs) 
-      # flush.console()
+    for (row.index in seq_along(new.tree@hs.name)) {
       # Historic species 
       ib <- new.tree@hs.name[row.index]
-      # Present day species descendant
       ib.pds <- as.numeric(strsplit(ib,'-')[[1]][2])
+      # Branch
       
       zmatrix.row <- vector()
-      for (col.index in 1:N.hs) {
+      for (col.index in seq_along(new.tree@hs.name)) {
         # Historic species (to compare)
         jc <- new.tree@hs.name[col.index]
         # Present day species descendant
