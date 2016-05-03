@@ -166,7 +166,6 @@ setMethod(f = "supercommunity",
             
             # Calculate relative abundance of historic species
             type_abundance <- new.tree@hs.abundance
-            row.names(type_abundance) <- new.tree@hs.name
             
             type_abundance <- check_partition(type_abundance)
             # similarity <- check_similarity(type_abundance, similarity)
