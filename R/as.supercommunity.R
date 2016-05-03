@@ -201,8 +201,10 @@ setMethod(f = "supercommunity",
                                           length(partition$tip.label)))
             if(is.vector(pds.abundance)) 
               pds.abundance <- as.matrix(pds.abundance)
+            
+            new.tree <- as.rdphylo(partition, pds.abundance)
+            
             # Calculate relative abundance of historic species
-            new.tree <- as.rdphylo(partition)
             type_abundance <- new.tree@hs.abundance
             row.names(type_abundance) <- new.tree@hs.name
             
