@@ -21,6 +21,7 @@ rdphylo <- function(tree,
   pds.nodes <- seq_along(tree$tip.label)
   hs.names <- unlist(sapply(pds.nodes, function(x) label.hs(tree, x)))
   
+  new.tree <- tree
   # Check pds.pmatrix
   if(sum(pds.abundance) != 1) pds.abundance <- pds.abundance/sum(pds.abundance)
   
@@ -34,23 +35,23 @@ rdphylo <- function(tree,
     as.numeric(strsplit(strsplit(x,",")[[1]][2],'-')[[1]])))
   
   # Calculate Lj for each pds; total length of evolutionary change
-  Lj <- sapply(pds.nodes, function(x) calc.Lj(tree, x))
+  Lj <- sapply(pds.nodes, function(x) calc.Lj(new.tree, x))
   
   # Calculate the mean total evolutionary change over all pds
   Tbar <- sum(pds.abundance*Lj)
   
   # Calculate the length of each historic species
-  hs.length <- sapply(1:N.hs, function(x) {
-    which.edge <- which(apply(tree$edge, 1, 
+  hs.length <- sapply(seq_along(hs.names), function(x) {
+    which.edge <- which(apply(new.tree$edge, 1, 
                               function(y) isTRUE(all.equal(y, hs.edge[x,]))))
-    tree$edge.length[which.edge]
+    new.tree$edge.length[which.edge][1]
   })
   
   # Calculate the relative abundance of each historic species
   hs.abundance <- apply(pds.abundance, 2, 
                         function(x) (hs.length/Tbar) * x[hs.pds])
   
-  output <- new('rdphylo', tree,
+  output <- new('rdphylo', new.tree,
                 hs.name = hs.names,
                 hs.pds = hs.pds,
                 hs.edge = hs.edge,
