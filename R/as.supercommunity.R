@@ -185,7 +185,7 @@ setMethod(f = "supercommunity",
                 type_abundance = type_abundance, 
                 ordinariness = Zp.j,
                 subcommunity_weights = subcommunity_weights,
-                type_weights = type_weights)
+                type_weights = type_weights)          
             } )
 
 
@@ -221,8 +221,8 @@ setMethod(f = "supercommunity",
                 type_abundance = type_abundance, 
                 ordinariness = Zp.j,
                 subcommunity_weights = subcommunity_weights,
-                type_weights = type_weights)
-          } )
+                type_weights = type_weights)          
+            } )
 
 
 #' @rdname supercommunity-methods
