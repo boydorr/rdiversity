@@ -3,15 +3,6 @@
 #' Functions to check if an object is a \code{supercommunity} or coerce an  
 #' object into a \code{supercommunity}.
 #' 
-#' @rdname supercommunity-class
-#' @param partition \code{matrix} (usually two-dimensional) of mode numeric;  
-#' relative abundance of types
-#' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
-#' pair-wise similarity of types. Default sets similarity to the naive-type 
-#' case, where types are completely distinct. 
-#' @param ... additional arguments.
-#' 
-#' @details 
 #' \enumerate{
 #' \item .Data (partition) - proportional abundance of samples (usually types, 
 #' except in the phylogenetic case where samples correspond to the present day 
@@ -22,16 +13,29 @@
 #' phylogenetic case, this corresponds to the proportional abundance of 
 #' historic species, which is calculated from the proportional abundance of 
 #' present day species)
-#' \item ordinariness - ordinariness of types 
+#' \item ordinariness - ordinariness of types
 #' \item subcommunity_weights - subcommunity weights
 #' \item type_weights - weight of types within a subcommunity
 #' }
 #' 
+#' @name supercommunity
+#' @rdname supercommunity-methods
+#' @exportMethod supercommunity
+#' 
+#' @param partition \code{matrix} (usually two-dimensional) of mode numeric;  
+#' relative abundance of types
+#' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
+#' pair-wise similarity of types. Default sets similarity to the naive-type 
+#' case, where types are completely distinct. 
+#' @param pds.abundance \code{vector} of mode \code{numeric}; containing the 
+#' proportional abundance of present day species (leaves)
+#' @param ... additional arguments.
+#' 
 #' @return Returns an object of class \code{supercommunity}; an S4 object 
 #' containing five slots (see Details). 
 #' 
-#' @exportMethod supercommunity
 #' @include class-supercommunity.R check_partition.R check_similarity.R
+#' @seealso \code{\link{supercommunity-class}}
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)
@@ -45,7 +49,8 @@ setGeneric(name = "supercommunity",
            } )
 
 
-#' @rdname supercommunity-class
+#' @rdname supercommunity-methods
+#' @aliases supercommunity, ANY-method
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "data.frame", similarity = "missing"), 
@@ -57,7 +62,8 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-class
+#' @rdname supercommunity-methods
+#' @export
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "integer", similarity = "missing"), 
@@ -69,7 +75,8 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-class
+#' @rdname supercommunity-methods
+#' @export
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "data.frame", similarity = "matrix"), 
@@ -80,7 +87,9 @@ setMethod(f = "supercommunity",
             supercommunity(partition, similarity)
           } )
 
-#' @rdname supercommunity-class
+
+#' @rdname supercommunity-methods
+#' @export
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "integer", similarity = "matrix"), 
@@ -92,7 +101,8 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-class
+#' @rdname supercommunity-methods
+#' @export
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "matrix", similarity = "missing"), 
@@ -106,7 +116,8 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-class
+#' @rdname supercommunity-methods
+#' @export
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "matrix", similarity = "matrix"), 
@@ -135,9 +146,8 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-class
-#' @param pds.abundance \code{vector} of mode \code{numeric}; containing the 
-#' proportional abundance of present day species (leaves)
+#' @rdname supercommunity-methods
+#' @export
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "missing"), 
@@ -175,7 +185,8 @@ setMethod(f = "supercommunity",
             } )
 
 
-#' @rdname supercommunity-class
+#' @rdname supercommunity-methods
+#' @export
 #' 
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "matrix"), 
@@ -210,7 +221,8 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-class
+#' @rdname supercommunity-methods
+#' @export
 #' 
 as.supercommunity <- supercommunity
 
