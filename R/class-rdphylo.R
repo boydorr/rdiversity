@@ -48,6 +48,7 @@ setClass("rdphylo",
                               hs.length = "numeric",
                               hs.abundance = "matrix",
                               Lj = "numeric",
-                              Tbar = "numeric"
+                              Tbar = "numeric",
+                              branch_descendants = "list"
                     ))
 
