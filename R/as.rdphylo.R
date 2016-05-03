@@ -123,8 +123,10 @@ calc.Lj <- function(tree, node)
   daughters <- c(node, mothers[-length(mothers)])
   hs.length <- sapply(daughters, function(x) 
     tree$edge.length[which(tree$edge[,2]==x)])
-  hs.length <- sum(hs.length)
-hs.length
+  res <- sum(hs.length)
+  # If root has a length
+  if(!is.null(tree$root.edge)) res <- res + tree$root.edge
+  res
 }
 
 
