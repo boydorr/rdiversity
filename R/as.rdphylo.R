@@ -19,6 +19,8 @@ rdphylo <- function(tree,
                                                length(tree$tip.label)))) {
   # Label historic species
   pds.nodes <- seq_along(tree$tip.label)
+  
+  # Extract historic species names  
   hs.names <- unlist(sapply(pds.nodes, function(x) label.hs(tree, x)))
   
   new.tree <- tree
@@ -33,9 +35,6 @@ rdphylo <- function(tree,
  
   # Check pds.pmatrix
   if(sum(pds.abundance) != 1) pds.abundance <- pds.abundance/sum(pds.abundance)
-  
-  # Count historic species
-  N.hs <- length(hs.names)
   
   # Extract present day species, ancestral and desendant nodes associated with
   # each historic species
