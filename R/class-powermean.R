@@ -4,7 +4,6 @@
 #' 
 #' @name powermean-class
 #' @rdname powermean-class
-#' 
 #' @exportClass powermean
 #' 
 #' @field .Data two-dimensional \code{matrix} of mode \code{numeric}; contains 

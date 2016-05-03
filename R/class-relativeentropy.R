@@ -3,6 +3,8 @@
 #' Container for 
 #' 
 #' @name relativeentropy-class
+#' @rdname relativeentropy-class
+#' @exportClass relativeentropy
 #' 
 #' @field .Data two-dimensional \code{matrix} of mode \code{numeric}; contains 
 #' diversity term values 

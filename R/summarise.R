@@ -7,12 +7,8 @@
 #' @param normalise Normalise probability distribution to sum to 1 for each 
 #' column rather than just along each set
 #' 
-#' @details 
-#' 
 #' @return An array whose columns are proportions
 #' @export
-#' 
-#' @examples 
 #' 
 summarise <-
   function(populations, normalise = TRUE)
