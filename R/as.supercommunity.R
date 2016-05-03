@@ -195,7 +195,8 @@ setMethod(f = "supercommunity",
 setMethod(f = "supercommunity", 
           signature(partition = "phylo", similarity = "matrix"), 
           definition = function(partition, similarity, pds.abundance = NA) {  
-            if(is.na(pds.abundance))
+            # If pds.abundance is not entered, assume an even distribution
+            if(all(is.na(pds.abundance)))
               pds.abundance <- matrix(rep(1/length(partition$tip.label),
                                           length(partition$tip.label)))
             # Calculate relative abundance of historic species
