@@ -61,6 +61,12 @@ rdphylo <- function(tree,
   hs.abundance <- as.matrix(hs.abundance)
   row.names(hs.abundance) <- hs.names
   
+  # Extract branch descendants
+  internal_nodes <- 1:(max(tree$edge))
+  branch_descendants <- lapply(as.list(internal_nodes), function(x) 
+    phangorn::Descendants(tree, x, 'all'))
+  names(branch_descendants) <- internal_nodes
+  
   output <- new('rdphylo', new.tree,
                 hs.name = hs.names,
                 hs.pds = hs.pds,
@@ -68,7 +74,8 @@ rdphylo <- function(tree,
                 hs.length = hs.length,
                 hs.abundance = hs.abundance,
                 Lj = Lj,
-                Tbar = Tbar)
+                Tbar = Tbar,
+                branch_descendants = branch_descendants)
 output
 }
 
