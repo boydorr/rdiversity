@@ -38,8 +38,9 @@ similarity_phylo <-
     for (row.index in seq_along(new.tree@hs.name)) {
       # Historic species 
       ib <- new.tree@hs.name[row.index]
-      ib.pds <- as.numeric(strsplit(ib,'-')[[1]][2])
       # Branch
+      ib.anc <- as.numeric(strsplit(strsplit(ib,',')[[1]][2], "-")[[1]][2])
+      daughters <- new.tree@branch_descendants[ib.anc]
       
       zmatrix.row <- vector()
       for (col.index in seq_along(new.tree@hs.name)) {
@@ -53,8 +54,7 @@ similarity_phylo <-
         # Similarity between historic species (i,b) and species (j,c)  
         # is non-zero when species j is found within the set of species  
         # descended from branch b
-        if ((ib.pds==jc.pds)) {
-          
+        if (jc.pds %in% unlist(daughters)) {
           zmatrix.row[jc] <- new.tree@Tbar/j.length
         } else {
           zmatrix.row[jc] <- 0
