@@ -50,7 +50,7 @@ setMethod(f = "superdiv", signature= "powermean",
             
             output <- do.call(cbind,results)
             colnames(output) <- paste0("q", qs) 
-            row.names(output) <- colnames(data)
+            row.names(output) <- "supercommunity"
             output
           } )
 
@@ -69,7 +69,7 @@ setMethod(f = "superdiv", signature= "relativeentropy",
             
             output <- do.call(cbind,results)
             colnames(output) <- paste0("q", qs) 
-            row.names(output) <- colnames(data)
+            row.names(output) <- "supercommunity"
             output
           } )
 
