@@ -34,7 +34,7 @@ rdphylo <- function(tree,
   }
  
   # Check pds.pmatrix
-  if(sum(pds.abundance) != 1) pds.abundance <- pds.abundance/sum(pds.abundance)
+  pds.abundance <- check_partition(pds.abundance)
   
   # Extract present day species, ancestral and desendant nodes associated with
   # each historic species
