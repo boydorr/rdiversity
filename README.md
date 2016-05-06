@@ -47,7 +47,7 @@ For large datasets (or simply to run faster code), it makes sense to calculate d
 
 Before explaining these steps, it is important to note that both subcommunity and supercommunity  alpha diversity are transformations of the same low-level alpha component. The same is true for normalised alpha, beta, normalised beta, rho, normalised rho, and gamma.
 
-It makes sense then, to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `alpha()`, `alphabar()`, `beta()`, `betabar()`, `rho()`, `rhobar()`, or `gamma()`. Afterwhich `subdiv()` or `superdiv()` can be called to calculate subcommunity or supercommunity diversity, respectively.
+It makes sense then, to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `alpha()`, `alphabar()`, `beta()`, `betabar()`, `rho()`, `rhobar()`, or `gamma()`. Afterwhich `subdiv()` or `superdiv()` are used to calculate subcommunity or supercommunity diversity, respectively.
 
 ```r
 # First, calculate the normalised subcommunity alpha component
@@ -60,7 +60,7 @@ subdiv(component, 0:2)
 superdiv(component, 0:2)
 ```
 
-Alternatively, to calculate all subcommunity (or supercommunity) measures a supercommunity object is passed directly:
+Alternatively, to calculate **all** subcommunity (or supercommunity) measures, a supercommunity object is passed directly:
 
 ```r
 # To calculate all subcommunity diversity measures
