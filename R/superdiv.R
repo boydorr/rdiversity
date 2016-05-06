@@ -79,14 +79,14 @@ setMethod(f = "superdiv", signature= "relativeentropy",
 setMethod(f = "superdiv", signature= "supercommunity", 
           definition = function(data, qs) {  
             # Calculate terms
-            div.measures <- list(alpha(data), alphabar(data),
-                              beta(data), betabar(data),
-                              rho(data), rhobar(data),
-                              gamma(data))
+            div.measures <- list(alpha, alphabar, 
+                                 beta, betabar,
+                                 rho, rhobar,
+                                 gamma)
             # Calculate supercommunity diversity
             results <- lapply(div.measures, function(x) 
               res <- superdiv(x(data), qs))
-            names(results) <- c("A", "Abar", "B", "Bbar",
-                                "R", "Rbar", "G") 
+            names(results) <- paste("supercommunity", c("A", "Abar", "B", "Bbar",
+                                "R", "Rbar", "G") )
             results
           } )
