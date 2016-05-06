@@ -1,11 +1,6 @@
 context('Testing the superdiv() function')
 require(gtools)
 
-numspecies <- 100
-weights <- t(gtools::rdirichlet(1, rep(1, numspecies)))
-numcommunities <- 8
-manyweights <- t(gtools::rdirichlet(numcommunities, rep(1, numspecies)))
-
 pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 
 test_that("Supercommunity diversity across multiple populations", {
