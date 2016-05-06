@@ -23,6 +23,9 @@ check_similarity <- function(partition, similarity) {
   if(any(similarity<0)) 
     stop('similarity matrix elements must take positive values.')
   
+  if(is.matrix(partition) & any(similarity>1)) 
+    stop('similarity matrix elements must take a value between 0 and 1.')
+  
   if(ncol(similarity)!=nrow(similarity))
     stop('similarity matrix must be square.')
   
