@@ -40,8 +40,7 @@ setOldClass("phylo")
 #' \code{Nnode} \tab \code{integer}; number of internal nodes. \cr
 #' }
 #' 
-setClass("rdphylo",
-                    contains = "phylo",
+setClass("rdphylo", contains = "phylo",
                     slots = c(hs.name = "character",
                               hs.pds = "numeric",
                               hs.edge = "matrix",
