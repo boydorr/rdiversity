@@ -30,7 +30,6 @@ Collate:
     'class-supercommunity.R'
     'as.supercommunity.R'
     'class-rdiversity.R'
-    'distance_matrix.R'
     'diversity-components.R'
     'diversity-measures.R'
     'power.mean.R'

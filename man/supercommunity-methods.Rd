@@ -8,10 +8,10 @@
 \alias{supercommunity,}
 \alias{supercommunity,data.frame,matrix-method}
 \alias{supercommunity,data.frame,missing-method}
-\alias{supercommunity,integer,matrix-method}
-\alias{supercommunity,integer,missing-method}
 \alias{supercommunity,matrix,matrix-method}
 \alias{supercommunity,matrix,missing-method}
+\alias{supercommunity,numeric,matrix-method}
+\alias{supercommunity,numeric,missing-method}
 \alias{supercommunity,phylo,matrix-method}
 \alias{supercommunity,phylo,missing-method}
 \title{Coerse to Supercommunity}
@@ -20,11 +20,11 @@ supercommunity(partition, similarity, ...)
 
 \S4method{supercommunity}{data.frame,missing}(partition, similarity = NA)
 
-\S4method{supercommunity}{integer,missing}(partition, similarity = NA)
+\S4method{supercommunity}{numeric,missing}(partition, similarity = NA)
 
 \S4method{supercommunity}{data.frame,matrix}(partition, similarity = NA)
 
-\S4method{supercommunity}{integer,matrix}(partition, similarity = NA)
+\S4method{supercommunity}{numeric,matrix}(partition, similarity = NA)
 
 \S4method{supercommunity}{matrix,missing}(partition, similarity = NA)
 
