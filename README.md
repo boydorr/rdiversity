@@ -51,13 +51,13 @@ It makes sense then, to calculate the low-level diversity component seperately, 
 
 ```r
 # First, calculate the normalised subcommunity alpha component
-a <- alphabar(super)
+component <- alphabar(super)
 
 # Then, calculate normalised subcommunity alpha 
-subdiv(a, 0:2)
+subdiv(component, 0:2)
 
 # or normalised supercommunity alpha
-superdiv(a, 0:2)
+superdiv(component, 0:2)
 ```
 
 Alternatively, to calculate all subcommunity (or supercommunity) measures a supercommunity object is passed directly:
