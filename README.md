@@ -43,7 +43,7 @@ The supercommunity object contains all the information needed to calculate diver
 The functions within `rdiversity` can be accessed in two main ways. 
 
 ###1. Two part method (slightly more computationally efficient)
-For large datasets (or simply to be computationally efficient), it makes sense to calculate diversity in two steps. 
+For large datasets (or simply to run faster code), it makes sense to calculate diversity in two steps. 
 
 Before explaining these steps, it is important to note that both subcommunity and supercommunity  alpha diversity are transformations of the same low-level alpha component. The same is true for normalised alpha, beta, normalised beta, rho, normalised rho, and gamma.
 
@@ -69,9 +69,6 @@ subdiv(super)
 # To calculate all supercommunity diversity measures
 superdiv(super)
 ```
-
-The complete list of low-level components of diversity are:
-
 
 ###2. Direct method
 Simply, to calculate normalised subcommunity alpha diversity, a supercommunity object is passed to a wrapper function with a suitable *q* value (or range of values):
@@ -103,6 +100,7 @@ A complete list of these functions is shown below:
 ##General tools
 * `similarity_matrix()` :  
 * `similarity_shimatani()` :  
+* `similarity_phylo()` : 
 * `qD.single()` : the Hill number / naive-type diversity of order *q* of a single population  
 * `qD()` : the Hill number / naive-type diversity of a series of independent populations for a series of orders  
 * `qDZ.single()` : the similarity-sensitive diversity of order *q* of a single population  
