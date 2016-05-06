@@ -10,11 +10,10 @@ install.packages("devtools")
 devtools::install_github("boydorr/rdiversity")
 ```
 
-### Getting started
+## Getting started
 
-The functions within `rdiversity` may be accessed in two main ways. 
 
-Before calculating diversity a supercommunity object must be created
+Before calculating diversity a supercommunity object must be created:
 
 ```r
 # Example population
@@ -25,43 +24,66 @@ super <- supercommunity(pop)
 str(super)
 ```
 
-supercommunity() creates an object containing:  
+The `supercommunity()` function creates an object containing:  
 
-* `super@type_abundance` : the abundance of types within a population,  
-* `super@similarity` : the pair-wise similarity of types within a population,  
-* `super@ordinariness` : the ordinariness of types within a population,  
-* `super@subcommunity_weights` :  the relative weights of subcommunities within a population,  
-* `super@type_weighst` : the relative weights of types within a population,  
-* `super@.Data` : the *raw* abundance of types within a population; which may be  
+* `@type_abundance` : the abundance of types within a population,  
+* `@similarity` : the pair-wise similarity of types within a population,  
+* `@ordinariness` : the ordinariness of types within a population,  
+* `@subcommunity_weights` :  the relative weights of subcommunities within a population,  
+* `@type_weighst` : the relative weights of types within a population,  
+* `@.Data` : the *raw* abundance of types within a population; which may be  
     + count data, in which case `@type_abundance` is then normalised to sum to 1;  
     + relative abundance data, such that `@type_abundance` is numerically identical; or  
-    + count/relative abundance data of present-day samples in a phylogeny, where `@type_abundance` is then calculated for all historic species within the evolutionary history of that phylogeny.  
+    + count/relative abundance data of present-day samples in a phylogeny, where `@type_abundance` is then calculated for all historic species within the evolutionary history of that phylogeny. 
+    
+The supercommunity object contains all the information needed to calculate diversity.
+    
+##Calculating diversity
 
-At this point, we may select which measure we wish to calculate. Calculating first (for computational reasons) the low-level component of diversity, which may then be transformed into subcommunity or supercommunity diversity. 
+The functions within `rdiversity` can be accessed in two main ways. 
+
+###1. Two part method (slightly more computationally efficient)
+For large datasets (or simply to be computationally efficient), it makes sense to calculate diversity in two steps. 
+
+Before explaining these steps, it is important to note that both subcommunity and supercommunity  alpha diversity are transformations of the same low-level alpha component. The same is true for normalised alpha, beta, normalised beta, rho, normalised rho, and gamma.
+
+It makes sense then, to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `alpha()`, `alphabar()`, `beta()`, `betabar()`, `rho()`, `rhobar()`, or `gamma()`. Afterwhich `subdiv()` or `superdiv()` can be called to calculate subcommunity or supercommunity diversity, respectively.
 
 ```r
-# Calculate normalised subcommunity alpha diversity (takes the power mean)
+# First, calculate the normalised subcommunity alpha component
 a <- alphabar(super)
 
-# Calculate normalised subcommunity alpha 
+# Then, calculate normalised subcommunity alpha 
 subdiv(a, 0:2)
 
-# Calculate normalised supercommunity alpha
+# or normalised supercommunity alpha
 superdiv(a, 0:2)
 ```
 
-Low-level components of diversity are:
-* `alpha()` :  
-* `alphabar()` :  
-* `beta()` :  
-* `betabar()` :  
-* `rho()` :  
-* `rhobar()` :  
-* `gamma()` :  
+Alternatively, to calculate all subcommunity (or supercommunity) measures a supercommunity object is passed directly:
 
-Alternatively, subcommunity or supercommunity diversity may be calculated directly using the following wrappers:
+```r
+# To calculate all subcommunity diversity measures
+subdiv(super)
 
-**Diversity framework**  
+# To calculate all supercommunity diversity measures
+superdiv(super)
+```
+
+The complete list of low-level components of diversity are:
+
+
+###2. Direct method
+Simply, to calculate normalised subcommunity alpha diversity, a supercommunity object is passed to a wrapper function with a suitable *q* value (or range of values):
+```r
+subcommunity.alpha.bar(super,0)
+```
+And to calculate normalised supercommunity alpha:
+```r 
+supercommunity.alpha.bar(super,0:2)
+```
+A complete list of these functions is shown below:
+
 * `subcommunity.alpha()` : estimate of naive-community supercommunity diversity  
 * `subcommunity.alpha.bar()` : similarity-sensitive diversity of subcommunity *j* in isolation  
 * `subcommunity.rho()` : redundancy of subcommunity *j*  
@@ -78,7 +100,7 @@ Alternatively, subcommunity or supercommunity diversity may be calculated direct
 * `supercommunity.G()` : supercommunity similarity-sensitive diversity  
 
 
-**General tools**  
+##General tools
 * `similarity_matrix()` :  
 * `similarity_shimatani()` :  
 * `qD.single()` : the Hill number / naive-type diversity of order *q* of a single population  
