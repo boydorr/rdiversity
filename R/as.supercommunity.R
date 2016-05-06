@@ -66,7 +66,7 @@ setMethod(f = "supercommunity",
 #' @export
 #' 
 setMethod(f = "supercommunity", 
-          signature(partition = "integer", similarity = "missing"), 
+          signature(partition = "numeric", similarity = "missing"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is data.frame, convert to matrix
             partition <- as.matrix(partition)
@@ -92,7 +92,7 @@ setMethod(f = "supercommunity",
 #' @export
 #' 
 setMethod(f = "supercommunity", 
-          signature(partition = "integer", similarity = "matrix"), 
+          signature(partition = "numeric", similarity = "matrix"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is data.frame, convert to matrix
             partition <- as.matrix(partition)
