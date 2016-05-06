@@ -17,14 +17,8 @@ test_that ("The qDZ() function works for a single population", {
 
 test_that ("The qDZ() function works for a multiple populations", {   
   Z2 <- matrix(rep(1, numspecies*numspecies), ncol=numspecies)
-expect_equivalent(qDZ(supercommunity(manyweights/sum(manyweights), Z2), c(0:2, Inf)),
+expect_equivalent(qDZ(supercommunity(manyweights/sum(manyweights), Z2), 
+                      c(0:2, Inf)),
                  matrix(rep(1,(4 * dim(manyweights)[2])),ncol=4))
 })
 
-context('Testing qDZ() warning generation')
-pop <- c(0.1, 0.1)
-
-test_that ("Generate warnings, but normalise and calculate diversities", {
-  # expect_equivalent(qDZ(as.supercommunity(pop/sum(pop)), 1), 2)  
-  expect_error(qDZ(as.supercommunity(pop), 1))  
-})
