@@ -30,11 +30,11 @@ The `supercommunity()` function creates an object containing:
 * `@similarity` : the pair-wise similarity of types within a population,  
 * `@ordinariness` : the ordinariness of types within a population,  
 * `@subcommunity_weights` :  the relative weights of subcommunities within a population,  
-* `@type_weighst` : the relative weights of types within a population,  
-* `@.Data` : the *raw* abundance of types within a population; which may be  
-    + count data, in which case `@type_abundance` is then normalised to sum to 1;  
-    + relative abundance data, such that `@type_abundance` is numerically identical; or  
-    + count/relative abundance data of present-day samples in a phylogeny, where `@type_abundance` is then calculated for all historic species within the evolutionary history of that phylogeny. 
+* `@type_weights` : the relative weights of types within a population, and  
+* `@.Data` : the *raw* abundance of types within a population (in the example above `pop` is stored here in it's unnormalised state). Therefore, `.Data` may contain:
+    + Count data, in which case `@type_abundance` is then normalised to sum to 1;  
+    + Relative abundance data, such that `@type_abundance` is numerically identical; or  
+    + Count / Relative abundance data of present-day samples in a phylogeny, where `@type_abundance` is then calculated for all historic species within the evolutionary history of that phylogeny. 
     
 The supercommunity object contains all the information needed to calculate diversity.
     
@@ -60,7 +60,7 @@ subdiv(component, 0:2)
 superdiv(component, 0:2)
 ```
 
-Alternatively, to calculate **all** subcommunity (or supercommunity) measures, a supercommunity object is passed directly:
+Alternatively, to calculate **all** subcommunity (or supercommunity) measures, a supercommunity object should be passed directly:
 
 ```r
 # To calculate all subcommunity diversity measures
