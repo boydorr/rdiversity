@@ -9,7 +9,6 @@
 #' variable that describes how the similarity of individuals is assessed. 
 #' 
 #' @name rdiversity-package
-#' @alias rdiversity
 #' @docType package
 #' 
 #' @import ggplot2
