@@ -80,9 +80,18 @@ rdphylo <- function(tree,
     which.edge <- which(apply(new.tree$edge, 1, 
                               function(y) isTRUE(all.equal(y, hs.edge[x,]))))
     new.tree$edge.length[which.edge][1]
+  # Total length of evolutionary change
+  Lj <- lapply(pds.subset, function(x) {
+    daughters <- x[-length(x)]
+    hs.length <- sapply(daughters, function(y) 
+      lengths$length[match(y, lengths$d.node)])
+    sum(hs.length)
   })
   
   # Calculate the relative abundance of each historic species
+  Lj <- unlist(Lj)
+  tmp <- cbind(pds = seq_along(pds.subset), Lj = Lj)
+  parameters <- merge(parameters, tmp)
   if(ncol(pds.abundance)==1) {
     all.pds.abundance <- as.matrix(pds.abundance[hs.pds])
   } else all.pds.abundance <- pds.abundance[hs.pds,]
