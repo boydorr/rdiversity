@@ -20,10 +20,19 @@ rdphylo <- function(tree,
   pds.abundance <- check_partition(pds.abundance)
 
   pds.nodes <- seq_along(tree$tip.label)
-  new.tree <- tree
+  internal.nodes <- 1:(max(tree$edge))
+  root.node <- length(pds.nodes) + 1
+    
   # If root has a length
     new.tree$edge <- rbind(new.tree$edge, c(0, length(new.tree$tip.label)+1))
     new.tree$edge.length <- c(new.tree$edge.length, new.tree$root.edge)
+  if(!is.null(tree$root.edge)) {
+    long.root = TRUE
+    root.ancestor = 0
+    all.nodes <- c(internal.nodes, root.ancestor)
+  } else {
+    long.root = FALSE
+    all.nodes <- internal.nodes
   }
   # Extract present day species, ancestral and desendant nodes associated with
   # each historic species
