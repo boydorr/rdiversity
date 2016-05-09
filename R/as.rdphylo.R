@@ -24,8 +24,6 @@ rdphylo <- function(tree,
   root.node <- length(pds.nodes) + 1
     
   # If root has a length
-    new.tree$edge <- rbind(new.tree$edge, c(0, length(new.tree$tip.label)+1))
-    new.tree$edge.length <- c(new.tree$edge.length, new.tree$root.edge)
   if(!is.null(tree$root.edge)) {
     long.root = TRUE
     root.ancestor = 0
@@ -34,11 +32,7 @@ rdphylo <- function(tree,
     long.root = FALSE
     all.nodes <- internal.nodes
   }
-  # Extract present day species, ancestral and desendant nodes associated with
-  # each historic species
-  hs.pds <- sapply(hs.names, function(x) as.numeric(strsplit(x,",")[[1]][1]))
-  hs.edge <- t(sapply(hs.names, function(x) 
-    as.numeric(strsplit(strsplit(x,",")[[1]][2],'-')[[1]])))
+
   ancestral.nodes <- lapply(as.list(internal.nodes), function(node) {
     res <- c(node, phangorn::Ancestors(tree, node, 'all'))
     if(long.root) res <- c(res, root.ancestor)
@@ -46,8 +40,6 @@ rdphylo <- function(tree,
   })
   pds.subset <- ancestral.nodes[pds.nodes]
   
-  # Calculate Lj for each pds; total length of evolutionary change
-  Lj <- sapply(pds.nodes, function(x) calc.Lj(new.tree, x))
   n.historic <- lapply(pds.subset, function(x) length(x)-1)
     
   # Historic species names
@@ -58,8 +50,6 @@ rdphylo <- function(tree,
     })
   hs.name <- unlist(hs.name)
   
-  # Calculate the mean total evolutionary change over all pds
-  Tbar <- sum(pds.abundance*Lj)
   # Historic species nodes
   tmp <- lapply(as.list(hs.name), function(x)
     unlist(strsplit(unlist(strsplit(x,"-")),",")))
@@ -75,11 +65,6 @@ rdphylo <- function(tree,
     lengths <- rbind.data.frame(lengths, c(root.ancestor, root.node, tree$root.edge))
   parameters <- merge(parameters, lengths)
   
-  # Calculate the length of each historic species
-  hs.length <- sapply(seq_along(hs.names), function(x) {
-    which.edge <- which(apply(new.tree$edge, 1, 
-                              function(y) isTRUE(all.equal(y, hs.edge[x,]))))
-    new.tree$edge.length[which.edge][1]
   # Total length of evolutionary change
   Lj <- lapply(pds.subset, function(x) {
     daughters <- x[-length(x)]
@@ -87,8 +72,6 @@ rdphylo <- function(tree,
       lengths$length[match(y, lengths$d.node)])
     sum(hs.length)
   })
-  
-  # Calculate the relative abundance of each historic species
   Lj <- unlist(Lj)
   tmp <- cbind(pds = seq_along(pds.subset), Lj = Lj)
   parameters <- merge(parameters, tmp)
