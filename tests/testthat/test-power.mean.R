@@ -15,10 +15,21 @@ test_that("power.mean returns the correct answers for a set of positive integers
   expect_error(power.mean(c(-2,2),1))
 })
 
+rdirichlet = function(n, alpha) {
+  k = length(alpha)
+  r = matrix(0, nrow=n, ncol=k) 
+  for (i in 1:k) {
+    r[,i] = rgamma(n, alpha[i], 1)
+  }
+  r = matrix(mapply(function(r, s) {return (r/s)}, r, rowSums(r)), ncol=k)
+  return (r)
+}
+
+
 test_that("power.mean with some random numbers", { 
   numspecies <- 100
-  fragments <- t(gtools::rdirichlet(1, rep(1, numspecies)))
-  weights <- t(gtools::rdirichlet(1, rep(1, numspecies)))
+  fragments <- t(rdirichlet(1, rep(1, numspecies)))
+  weights <- t(rdirichlet(1, rep(1, numspecies)))
 
   expect_equal(power.mean(fragments, 0), prod(fragments ^ (1. / numspecies)))
   expect_equal(power.mean(fragments, 1), mean(fragments))

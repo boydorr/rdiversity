@@ -1,11 +1,21 @@
 context('The general Leinster-Cobbold calculations and qDZ()')
 
+rdirichlet = function(n, alpha) {
+  k = length(alpha)
+  r = matrix(0, nrow=n, ncol=k) 
+  for (i in 1:k) {
+    r[,i] = rgamma(n, alpha[i], 1)
+  }
+  r = matrix(mapply(function(r, s) {return (r/s)}, r, rowSums(r)), ncol=k)
+  return (r)
+}
+
 numspecies <- 100
-weights <- t(gtools::rdirichlet(1, rep(1, numspecies)))
+weights <- t(rdirichlet(1, rep(1, numspecies)))
 Z1 <- matrix(rep(1, times = (length(weights))^2), 
              length(weights), length(weights))
 numcommunities <- 8
-manyweights <- t(gtools::rdirichlet(numcommunities, rep(1, numspecies)))
+manyweights <- t(rdirichlet(numcommunities, rep(1, numspecies)))
 
 test_that ("The qDZ() function works for a single population", {
   expect_equivalent(qDZ(supercommunity(weights), 1:2), 
