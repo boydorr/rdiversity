@@ -27,35 +27,33 @@ similarity_phylo <-
       stop('tree should be object of class phylo (or rdphylo).')  
     
     # Count historic species
-    N.hs <- length(new.tree@hs.name)
+    N.hs <- length(new.tree@parameters$hs.name)
     
     # Define Z-matrix (type = historic species)
     zmatrix <- matrix(NA, nrow = N.hs, ncol = N.hs)
-    colnames(zmatrix) <- new.tree@hs.name 
-    row.names(zmatrix) <- new.tree@hs.name
+    colnames(zmatrix) <- new.tree@parameters$hs.name 
+    row.names(zmatrix) <- new.tree@parameters$hs.name
     
     # Calculate pairwise similarity between historic species
-    for (row.index in seq_along(new.tree@hs.name)) {
+    for (row.index in seq_along(new.tree@parameters$hs.name)) {
       # Historic species 
-      ib <- new.tree@hs.name[row.index]
-      # Branch
-      ib.anc <- as.numeric(strsplit(strsplit(ib,',')[[1]][2], "-")[[1]][2])
-      daughters <- new.tree@branch_descendants[ib.anc]
+      ib <- new.tree@parameters$hs.name[row.index]
+      daughters <- unlist(new.tree@parameters$branch.descendants[row.index])
       
       zmatrix.row <- vector()
-      for (col.index in seq_along(new.tree@hs.name)) {
+      for (col.index in seq_along(new.tree@parameters$hs.name)) {
         # Historic species (to compare)
-        jc <- new.tree@hs.name[col.index]
+        jc <- new.tree@parameters$hs.name[col.index]
         # Present day species descendant
-        jc.pds <- as.numeric(strsplit(jc,",")[[1]][1])
+        jc.pds <- new.tree@parameters$pds[col.index]
         # Length of evolutionary history of present day species j
-        j.length <- new.tree@Lj[jc.pds]
+        j.length <- new.tree@parameters$Lj[col.index]
         
         # Similarity between historic species (i,b) and species (j,c)  
         # is non-zero when species j is found within the set of species  
         # descended from branch b
-        if (jc.pds %in% unlist(daughters)) {
-          zmatrix.row[jc] <- new.tree@Tbar/j.length
+        if (jc.pds %in% daughters) {
+          zmatrix.row[jc] <- new.tree@parameters$Tbar[1] / j.length
         } else {
           zmatrix.row[jc] <- 0
         }
