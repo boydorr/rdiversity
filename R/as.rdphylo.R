@@ -60,6 +60,13 @@ rdphylo <- function(tree,
   
   # Calculate the mean total evolutionary change over all pds
   Tbar <- sum(pds.abundance*Lj)
+  # Historic species nodes
+  tmp <- lapply(as.list(hs.name), function(x)
+    unlist(strsplit(unlist(strsplit(x,"-")),",")))
+  tmp <- do.call(rbind, tmp)
+  tmp <- as.data.frame(t(apply(tmp, 1, as.numeric)), stringsAsFactors = FALSE)
+  colnames(tmp) <- c("pds", "a.node", "d.node")
+  parameters <- cbind.data.frame(hs.name, tmp, stringsAsFactors=FALSE)
   
   # Calculate the length of each historic species
   hs.length <- sapply(seq_along(hs.names), function(x) {
