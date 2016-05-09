@@ -165,7 +165,7 @@ setMethod(f = "supercommunity",
             similarity <- similarity_phylo(new.tree, pds.abundance)
             
             # Calculate relative abundance of historic species
-            type_abundance <- new.tree@hs.abundance
+            type_abundance <- new.tree@parameters$hs.abundance
             
             type_abundance <- check_partition(type_abundance)
             # similarity <- check_similarity(type_abundance, similarity)
@@ -205,7 +205,7 @@ setMethod(f = "supercommunity",
             new.tree <- as.rdphylo(partition, pds.abundance)
             
             # Calculate relative abundance of historic species
-            type_abundance <- new.tree@hs.abundance
+            type_abundance <- new.tree@parameters$hs.abundance
             
             type_abundance <- check_partition(type_abundance)
             # similarity <- check_similarity(type_abundance, similarity)
