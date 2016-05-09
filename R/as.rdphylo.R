@@ -17,16 +17,14 @@
 rdphylo <- function(tree,
                     pds.abundance = matrix(rep(1/length(tree$tip.label),
                                                length(tree$tip.label)))) {
+  pds.abundance <- check_partition(pds.abundance)
+
   pds.nodes <- seq_along(tree$tip.label)
   new.tree <- tree
   # If root has a length
     new.tree$edge <- rbind(new.tree$edge, c(0, length(new.tree$tip.label)+1))
     new.tree$edge.length <- c(new.tree$edge.length, new.tree$root.edge)
   }
- 
-  # Check pds.pmatrix
-  pds.abundance <- check_partition(pds.abundance)
-  
   # Extract present day species, ancestral and desendant nodes associated with
   # each historic species
   hs.pds <- sapply(hs.names, function(x) as.numeric(strsplit(x,",")[[1]][1]))
