@@ -93,10 +93,8 @@ rdphylo <- function(tree,
   parameters <- cbind(parameters, hs.abundance)
   
   # Extract branch descendants
-  internal_nodes <- 1:(max(tree$edge))
-  branch_descendants <- lapply(as.list(internal_nodes), function(x) 
-    phangorn::Descendants(tree, x, 'all'))
-  names(branch_descendants) <- internal_nodes
+  branch_descendants <- lapply(as.list(internal.nodes), function(x) 
+    cbind(d.node = x, pds.descendants = phangorn::Descendants(tree, x, 'all')))
   
   output <- new('rdphylo', new.tree,
                 hs.name = hs.names,
