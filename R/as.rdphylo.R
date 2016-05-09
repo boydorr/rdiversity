@@ -106,6 +106,12 @@ rdphylo <- function(tree,
                 Tbar = Tbar,
                 branch_descendants = branch_descendants)
 output
+  branch_descendants <- do.call(rbind, branch_descendants)
+  branch_descendants <- as.data.frame(branch_descendants)
+  branch_descendants <- tidyr::nest(branch_descendants, pds.descendants)
+  
+  parameters <- merge(parameters, branch_descendants, by = "d.node")
+  colnames(parameters)[ncol(parameters)] <- "branch.descendants"
 }
 
 
