@@ -1,10 +1,19 @@
 context('Testing the subdiv() function')
-require(gtools)
+
+rdirichlet = function(n, alpha) {
+  k = length(alpha)
+  r = matrix(0, nrow=n, ncol=k) 
+  for (i in 1:k) {
+    r[,i] = rgamma(n, alpha[i], 1)
+  }
+  r = matrix(mapply(function(r, s) {return (r/s)}, r, rowSums(r)), ncol=k)
+  return (r)
+}
 
 numspecies <- 100
-weights <- t(gtools::rdirichlet(1, rep(1, numspecies)))
+weights <- t(rdirichlet(1, rep(1, numspecies)))
 numcommunities <- 8
-manyweights <- t(gtools::rdirichlet(numcommunities, rep(1, numspecies)))
+manyweights <- t(rdirichlet(numcommunities, rep(1, numspecies)))
 
 pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 

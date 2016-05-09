@@ -1,5 +1,4 @@
 context('Testing the superdiv() function')
-require(gtools)
 
 pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 

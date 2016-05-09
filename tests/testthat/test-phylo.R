@@ -1,5 +1,4 @@
 context('Testing the phylogenetic diversity measures')
-require(gtools)
 
 test_that("Answers match up with Leinster-Cobbold Appendix A", {
   # Ultrametric

@@ -1,5 +1,4 @@
 context('Testing check_similarity()')
-require(gtools)
 
 test_that("The function check_similarity() gives the correct errors", {
   partition <- matrix(rep(1, 9), nrow = 3)
