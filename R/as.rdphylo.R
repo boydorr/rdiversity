@@ -85,6 +85,10 @@ rdphylo <- function(tree,
     all.pds.abundance <- pds.abundance[parameters$pds,]
   parameters <- cbind(parameters, pds.abundance = all.pds.abundance)
   
+  # Mean total evolutionary change
+  Tbar <- sum(pds.abundance * Lj)
+  parameters <- cbind(parameters, Tbar)
+  
   
   # Extract branch descendants
   internal_nodes <- 1:(max(tree$edge))
