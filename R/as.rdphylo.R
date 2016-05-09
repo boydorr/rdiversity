@@ -41,6 +41,12 @@ rdphylo <- function(tree,
   hs.pds <- sapply(hs.names, function(x) as.numeric(strsplit(x,",")[[1]][1]))
   hs.edge <- t(sapply(hs.names, function(x) 
     as.numeric(strsplit(strsplit(x,",")[[1]][2],'-')[[1]])))
+  ancestral.nodes <- lapply(as.list(internal.nodes), function(node) {
+    res <- c(node, phangorn::Ancestors(tree, node, 'all'))
+    if(long.root) res <- c(res, root.ancestor)
+    else res
+  })
+  pds.subset <- ancestral.nodes[pds.nodes]
   
   # Calculate Lj for each pds; total length of evolutionary change
   Lj <- sapply(pds.nodes, function(x) calc.Lj(new.tree, x))
@@ -94,19 +100,8 @@ as.rdphylo <- rdphylo
 #' with the present day species descendant, and node-tip corresponds to the 
 #' node index and tip index associated with the historic species itself.   
 #' 
-#' @param tree object of class \code{phylo}
-#' @param node integer corresponding to the node of interest
-#' @return object of class \code{character}
-#' 
-label.hs <- function(tree, node)
-{
-  mothers <- phangorn::Ancestors(tree, node, 'all')
-  daughters <- c(node, mothers[-length(mothers)])
-  hs.name <- sapply(daughters, function(x) {
-    branch.name <- paste(tree$edge[which(tree$edge[,2]==x),], collapse='-')
-    paste(node,branch.name,sep=',')})
-hs.name
-}
+
+
 
 
 #' Total evolutionary change
@@ -115,20 +110,8 @@ hs.name
 #' be an internal or external node corresponding to present-day and historic 
 #' species, respectively.
 #' 
-#' @inheritParams label.hs
-#' @return object of class \code{numeric}
-#' 
-calc.Lj <- function(tree, node) 
-{
-  mothers <- phangorn::Ancestors(tree, node, 'all')
-  daughters <- c(node, mothers[-length(mothers)])
-  hs.length <- sapply(daughters, function(x) 
-    tree$edge.length[which(tree$edge[,2]==x)])
-  res <- sum(hs.length)
-  # If root has a length
-  if(!is.null(tree$root.edge)) res <- res + tree$root.edge
-  res
-}
+
+
 
 
 #' @rdname rdphylo
