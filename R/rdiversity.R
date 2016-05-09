@@ -15,6 +15,8 @@
 #' @import methods
 #' @import ape
 #' @import phangorn
+#' @import tidyr
+#' @importFrom tibble as_data_frame
 #' 
 #' @author 
 #' Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve <richard.reeve@glasgow.ac.uk>
