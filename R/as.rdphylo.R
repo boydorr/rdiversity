@@ -39,6 +39,7 @@ rdphylo <- function(tree,
   
   # Calculate Lj for each pds; total length of evolutionary change
   Lj <- sapply(pds.nodes, function(x) calc.Lj(new.tree, x))
+  n.historic <- lapply(pds.subset, function(x) length(x)-1)
     
   # Historic species names
   hs.name <- lapply(pds.subset, function(x) {
