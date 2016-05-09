@@ -12,10 +12,11 @@
 #' @docType package
 #' 
 #' @import ggplot2
+#' @import rmarkdown
 #' @import methods
 #' @import ape
 #' @import phangorn
-#' @import tidyr
+#' @importFrom tidyr nest
 #' @importFrom tibble as_data_frame
 #' 
 #' @author 
