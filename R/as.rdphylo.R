@@ -78,8 +78,6 @@ rdphylo <- function(tree,
 
   # Relative abundance of terminal taxa for each historic species
   if(ncol(pds.abundance)==1) {
-  hs.abundance <- (hs.length/Tbar) * all.pds.abundance
-  row.names(hs.abundance) <- hs.names
     all.pds.abundance <- as.matrix(pds.abundance[parameters$pds])
   } else 
     all.pds.abundance <- pds.abundance[parameters$pds,]
@@ -89,6 +87,10 @@ rdphylo <- function(tree,
   Tbar <- sum(pds.abundance * Lj)
   parameters <- cbind(parameters, Tbar)
   
+ 
+  # Relative abundance of historic species
+  hs.abundance <- (parameters$length / Tbar) * parameters$pds.abundance
+  parameters <- cbind(parameters, hs.abundance)
   
   # Extract branch descendants
   internal_nodes <- 1:(max(tree$edge))
