@@ -96,22 +96,15 @@ rdphylo <- function(tree,
   branch_descendants <- lapply(as.list(internal.nodes), function(x) 
     cbind(d.node = x, pds.descendants = phangorn::Descendants(tree, x, 'all')))
   
-  output <- new('rdphylo', new.tree,
-                hs.name = hs.names,
-                hs.pds = hs.pds,
-                hs.edge = hs.edge,
-                hs.length = hs.length,
-                hs.abundance = hs.abundance,
-                Lj = Lj,
-                Tbar = Tbar,
-                branch_descendants = branch_descendants)
-output
   branch_descendants <- do.call(rbind, branch_descendants)
   branch_descendants <- as.data.frame(branch_descendants)
   branch_descendants <- tidyr::nest(branch_descendants, pds.descendants)
   
   parameters <- merge(parameters, branch_descendants, by = "d.node")
   colnames(parameters)[ncol(parameters)] <- "branch.descendants"
+
+  parameters <- tibble::as_data_frame(parameters)
+  new('rdphylo', tree, parameters = parameters)
 }
 
 
