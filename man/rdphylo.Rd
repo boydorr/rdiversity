@@ -36,5 +36,18 @@ species, and proportional abundance.
 \description{
 Functions to check if an object is a \code{rdphylo} or coerce an  
 object into a \code{rdphylo}.
+
+This function constructs unique identifiers for all historic species 
+ancestral to a given node. Unique identifiers take the form 
+\emph{(pds, node-tip)}, where \emph{pds} corresponds to the index associated 
+with the present day species descendant, and node-tip corresponds to the 
+node index and tip index associated with the historic species itself.
+}
+\details{
+Total evolutionary change
+
+Calculate the total length of evolutionary change of species \emph{j}; may 
+be an internal or external node corresponding to present-day and historic 
+species, respectively.
 }
 

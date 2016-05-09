@@ -12,7 +12,9 @@ Imports:
     methods,
     ggplot2,
     ape,
-    phangorn
+    phangorn,
+    tidyr,
+    tibble
 Suggests:
     testthat,
     knitr,

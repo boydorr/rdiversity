@@ -4,7 +4,7 @@
 
 ### Installation
 
-To install the newest version of rdiversity from github, simply run the following from an R console:
+To install the latest development version of rdiversity, simply run the following from an R console:
 ```r
 install.packages("devtools")
 devtools::install_github("boydorr/rdiversity")

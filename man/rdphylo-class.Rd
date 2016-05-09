@@ -26,25 +26,6 @@ diversity.
 \section{Fields}{
 
 \describe{
-\item{\code{hs.edge}}{two-column \code{matrix} of mode numeric; each row represents
-a historic species. Nodes and tips are symbolized with numbers. Tips are 
-numbered 1, 2, ..., and nodes are numbered after the tips. 
-For each row, the first column gives the ancestor.}
-
-\item{\code{hs.name}}{\code{vector} of more character; giving the names of the 
-historic species, ordered by the number in hs.edge.}
-
-\item{\code{hs.pds}}{\code{vector} of mode numeric; giving the present day 
-species descendant from each historic species, ordered by the number in 
-hs.edge.}
-
-\item{\code{hs.abundance}}{\code{vector} of mode numeric; giving the relative 
-abundance of historic species, ordered by the number in hs.edge.}
-
-\item{\code{Lj}}{\code{vector} of length \emph{S}; giving the total evolutionary 
-change of present day species, ordered by the number in edge.}
-
-\item{\code{Tbar}}{\code{numeric} element; giving the mean total evolutionary 
-change over present day species.}
+\item{\code{parameters}}{data.frame object}
 }}
 
