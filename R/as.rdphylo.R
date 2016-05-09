@@ -67,6 +67,13 @@ rdphylo <- function(tree,
   tmp <- as.data.frame(t(apply(tmp, 1, as.numeric)), stringsAsFactors = FALSE)
   colnames(tmp) <- c("pds", "a.node", "d.node")
   parameters <- cbind.data.frame(hs.name, tmp, stringsAsFactors=FALSE)
+
+  # Historic species lengths
+  lengths <- cbind.data.frame(tree$edge, tree$edge.length)
+  colnames(lengths) <- c("a.node", "d.node", "length")
+  if(long.root) 
+    lengths <- rbind.data.frame(lengths, c(root.ancestor, root.node, tree$root.edge))
+  parameters <- merge(parameters, lengths)
   
   # Calculate the length of each historic species
   hs.length <- sapply(seq_along(hs.names), function(x) {
