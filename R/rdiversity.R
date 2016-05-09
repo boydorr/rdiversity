@@ -12,7 +12,6 @@
 #' @docType package
 #' 
 #' @import ggplot2
-#' @import rmarkdown
 #' @import methods
 #' @import ape
 #' @import phangorn
