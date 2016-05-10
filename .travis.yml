@@ -4,5 +4,5 @@ language: r
 cache: packages
 warnings_are_errors: true
 sudo: required
-
-
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
