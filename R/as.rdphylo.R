@@ -148,6 +148,7 @@ rdphylo <- function(tree,
   
   branch_descendants <- do.call(rbind, branch_descendants)
   branch_descendants <- as.data.frame(branch_descendants)
+  pds.descendants <- NULL # hack to fix 'no visible binding for global variable'
   branch_descendants <- tidyr::nest(branch_descendants, pds.descendants)
   
   parameters <- merge(parameters, branch_descendants, by = "d.node")
