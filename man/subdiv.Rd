@@ -23,7 +23,7 @@ components.}
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
 \value{
-Returns a two-dimensional \code{matrix} of mode \code{numeric}.
+Returns a two-dimensional \code{data_frame} of mode \code{numeric}.
 
 
 }
@@ -43,18 +43,20 @@ diversity by taking the relative entropy of diversity components}
 as ds
 }
 \examples{
+# Calculate the diversity of a single population
 pop <- sample(1:50, 5)
+pop <- pop/sum(pop)
 super <- supercommunity(pop)
 
-# Calculate subcommunity gamma diversity (takes the power mean)
+# Subcommunity gamma diversity (takes the power mean)
 g <- gamma(super)
 subdiv(g, 0:2)
 
-# Calculate subcommunity beta diversity (takes the relative entropy)
+# Subcommunity beta diversity (takes the relative entropy)
 b <- beta(super)
 subdiv(b, 0:2)
 
-# Calculate all measures of subcommunity diversity
+# All measures of subcommunity diversity
 subdiv(super, 0:2)
 
 }

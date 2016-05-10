@@ -81,6 +81,8 @@ a <- supercommunity(tree)
 str(a)
 a
 
+showMethods("supercommunity")
+
 }
 \seealso{
 \code{\link{supercommunity-class}}

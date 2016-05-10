@@ -6,13 +6,11 @@
 \alias{is.rdphylo}
 \alias{rdphylo}
 \alias{show,rdphylo-method}
-\title{Coerse to rdphylo}
+\title{Convert to rdphylo}
 \usage{
-rdphylo(tree, pds.abundance = matrix(rep(1/length(tree$tip.label),
-  length(tree$tip.label))))
+rdphylo(tree, pds.abundance = NA)
 
-as.rdphylo(tree, pds.abundance = matrix(rep(1/length(tree$tip.label),
-  length(tree$tip.label))))
+as.rdphylo(tree, pds.abundance = NA)
 
 is.rdphylo(x)
 
@@ -29,25 +27,56 @@ abundance of present-day species}
 \item{object}{object of class \code{rdphylo}}
 }
 \value{
-S4 generic of class \code{rdphylo} containing historic 
-species: names, ancestral and descendant nodes, descendant present day 
-species, and proportional abundance.
+Returns an object of class \code{rdphylo}, which extends class 
+\code{phylo} and therefore inherits components associated  
+with terminal taxa (see \code{\link{phylo}}): 
+
+\tabular{ll}{
+\code{edge} \tab - each row denotes the ancestral and descendant nodes of 
+an edge (branch) of the tree \cr
+\code{edge.length} \tab - (optional) length of each branch of the tree \cr
+\code{tip.label} \tab - labels associated with present-day species 
+(terminal taxa)  \cr
+\code{Nnode} \tab - number of internal nodes \cr
+\code{node.label} \tab - (optional) labels associated with each node in 
+the tree \cr
+\code{root.edge} \tab - (optional) length of the branch at the root \cr
+}
+
+An additional \code{parameters} slot (accessed with @, not $) contains 
+a data_frame containing components associated with historic species:  
+
+\tabular{ll}{
+\code{pds} \tab - numeric index associated with the present-day species 
+(or terminal taxa) descended from each historic species  \cr
+\code{d.node} \tab - numeric index associated with the descending node of 
+each historic species  \cr
+\code{a.node} \tab - numeric index associated with the ascending node of 
+each historic species \cr
+\code{hs.name} \tab - unique identifier associated with each historic 
+species \cr
+\code{length} \tab - evolutionary length of each historic species \cr
+\code{Lj} \tab - total length of evolutionary change of species j \cr
+\code{pds.abundance} \tab - relative abundance of present-day species \cr
+\code{Tbar} \tab - mean total evolutionary change \cr
+\code{hs.abundance} \tab - relative abundance of historic species \cr
+\code{branch.descendants} \tab - present-day species descended from each 
+branch of the tree \cr
+}
 }
 \description{
-Functions to check if an object is a \code{rdphylo} or coerce an  
-object into a \code{rdphylo}.
-
-This function constructs unique identifiers for all historic species 
-ancestral to a given node. Unique identifiers take the form 
-\emph{(pds, node-tip)}, where \emph{pds} corresponds to the index associated 
-with the present day species descendant, and node-tip corresponds to the 
-node index and tip index associated with the historic species itself.
+Converts an object into class \code{phylo} into class \code{rdphylo}.
 }
-\details{
-Total evolutionary change
+\examples{
+tree <- ape::rtree(n = 5)
+rdtree <- rdphylo(tree)
 
-Calculate the total length of evolutionary change of species \emph{j}; may 
-be an internal or external node corresponding to present-day and historic 
-species, respectively.
+# Extract components of terminal taxa
+str(rdtree)
+rdtree$edge
+
+# Extract components of historic species
+rdtree@parameters
+
 }
 
