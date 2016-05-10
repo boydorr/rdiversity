@@ -17,7 +17,7 @@
 #' 
 #' @details as ds
 #' 
-#' @return Returns a two-dimensional \code{matrix} of mode \code{numeric}.
+#' @return Returns a two-dimensional \code{data_frame} of mode \code{numeric}.
 #' @export 
 #' @examples 
 #' # Calculate the diversity of a single population

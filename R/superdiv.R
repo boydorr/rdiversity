@@ -13,7 +13,7 @@
 #' 
 #' @inheritParams subdiv 
 #' 
-#' @return Returns a two-dimensional \code{matrix} of mode \code{numeric}.
+#' @return Returns a two-dimensional \code{data_frame} of mode \code{numeric}.
 #' @export
 #' @examples 
 #' pop <- data.frame(a = c(1,3), b = c(1,1))

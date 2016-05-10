@@ -23,7 +23,7 @@
 #' }
 #' 
 #' An additional \code{parameters} slot (accessed with @, not $) contains 
-#' components associated with historic species:  
+#' a data_frame containing components associated with historic species:  
 #' 
 #' \tabular{ll}{
 #' \code{pds} \tab - numeric index associated with the present-day species 
