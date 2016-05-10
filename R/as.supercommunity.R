@@ -58,7 +58,7 @@ setMethod(f = "supercommunity",
           signature(partition = "data.frame", similarity = "missing"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is data.frame, convert to matrix
-            partition <- as.matrix(partition)
+            partition <- check_partition(partition)
             
             supercommunity(partition)
           } )
@@ -70,9 +70,9 @@ setMethod(f = "supercommunity",
 setMethod(f = "supercommunity", 
           signature(partition = "numeric", similarity = "missing"), 
           definition = function(partition, similarity = NA) {  
-            # If similarity is data.frame, convert to matrix
-            partition <- as.matrix(partition)
-            
+            # If similarity is numeric/vector, convert to matrix
+            partition <- check_partition(partition)
+
             supercommunity(partition)
           } )
 
@@ -84,7 +84,7 @@ setMethod(f = "supercommunity",
           signature(partition = "data.frame", similarity = "matrix"), 
           definition = function(partition, similarity = NA) {  
             # If similarity is data.frame, convert to matrix
-            partition <- as.matrix(partition)
+            partition <- check_partition(partition)
             
             supercommunity(partition, similarity)
           } )
@@ -96,8 +96,8 @@ setMethod(f = "supercommunity",
 setMethod(f = "supercommunity", 
           signature(partition = "numeric", similarity = "matrix"), 
           definition = function(partition, similarity = NA) {  
-            # If similarity is data.frame, convert to matrix
-            partition <- as.matrix(partition)
+            # If similarity is numeric/vector, convert to matrix
+            partition <- check_partition(partition)
             
             supercommunity(partition, similarity)
           } )
