@@ -16,7 +16,8 @@
 #' @return Returns a two-dimensional \code{matrix} of mode \code{numeric}.
 #' @export
 #' @examples 
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- pop / sum(pop)
 #' super <- supercommunity(pop)
 #' 
 #' # Calculate subcommunity gamma diversity (takes the power mean)
