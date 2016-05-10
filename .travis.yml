@@ -4,5 +4,9 @@ language: r
 cache: packages
 warnings_are_errors: true
 sudo: required
+
+r_github_packages:
+  - jimhester/covr
+
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - Rscript -e 'covr::codecov()'
