@@ -8,7 +8,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   super <- supercommunity(phy, pds.abundance = pds)
   
   expect_equivalent(sum(phy$edge.length) + phy$root.edge, 
-                    c(superdiv(gamma(super),0) * x@parameters$Tbar[1]))
+                    unlist(superdiv(gamma(super),0) * x@parameters$Tbar[1]))
   expect_equivalent(c(super@type_abundance), 
                     c(0.4, (2/3)*0.4, 0.2, (1/3)*0.4))
   expect_equivalent(super@similarity, 
@@ -21,7 +21,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   super2 <- supercommunity(phy2, pds.abundance = pds)
   
   expect_equivalent(sum(phy2$edge.length) + phy2$root.edge, 
-                    c(superdiv(gamma(super2),0) * x2@parameters$Tbar[1]))
+                    unlist(superdiv(gamma(super2),0) * x2@parameters$Tbar[1]))
   expect_equivalent(c(super2@type_abundance), 
                     c(0.25, (2/2.4)*0.4, 0.25, (1/2.4)*0.4))
   expect_equivalent(super2@similarity, 
