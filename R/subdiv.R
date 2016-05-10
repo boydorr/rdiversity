@@ -22,6 +22,7 @@
 #' @examples 
 #' # Calculate the diversity of a single population
 #' pop <- sample(1:50, 5)
+#' pop <- pop/sum(pop)
 #' super <- supercommunity(pop)
 #' 
 #' # Subcommunity gamma diversity (takes the power mean)
