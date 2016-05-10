@@ -43,6 +43,8 @@
 #' str(a)
 #' a
 #' 
+#' showMethods("supercommunity")
+#' 
 setGeneric(name = "supercommunity",
            def = function(partition, similarity, ...) {
              standardGeneric("supercommunity")

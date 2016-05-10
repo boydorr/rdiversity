@@ -20,18 +20,19 @@
 #' @return Returns a two-dimensional \code{matrix} of mode \code{numeric}.
 #' @export 
 #' @examples 
+#' # Calculate the diversity of a single population
 #' pop <- sample(1:50, 5)
 #' super <- supercommunity(pop)
 #' 
-#' # Calculate subcommunity gamma diversity (takes the power mean)
+#' # Subcommunity gamma diversity (takes the power mean)
 #' g <- gamma(super)
 #' subdiv(g, 0:2)
 #' 
-#' # Calculate subcommunity beta diversity (takes the relative entropy)
+#' # Subcommunity beta diversity (takes the relative entropy)
 #' b <- beta(super)
 #' subdiv(b, 0:2)
 #' 
-#' # Calculate all measures of subcommunity diversity
+#' # All measures of subcommunity diversity
 #' subdiv(super, 0:2)
 #' 
 setGeneric(name = "subdiv",
