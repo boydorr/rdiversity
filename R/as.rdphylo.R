@@ -46,9 +46,6 @@
 #' @include class-rdphylo.R 
 #' @export
 #' 
-rdphylo <- function(tree,
-                    pds.abundance = matrix(rep(1/length(tree$tip.label),
-                                               length(tree$tip.label)))) {
 #' @examples 
 #' tree <- ape::rtree(n = 5)
 #' rdtree <- rdphylo(tree)
@@ -60,8 +57,15 @@ rdphylo <- function(tree,
 #' # Extract components of historic species
 #' rdtree@parameters
 #' 
+rdphylo <- function(tree, pds.abundance = NA) {
+  if(all(is.na(pds.abundance))) {
+    pds.abundance <- matrix(rep(1/length(tree$tip.label), 
+                                length(tree$tip.label)))
+    pds.abundance <- pds.abundance/sum(pds.abundance)
+  }
+  
   pds.abundance <- check_partition(pds.abundance)
-
+  
   pds.nodes <- seq_along(tree$tip.label)
   internal.nodes <- 1:(max(tree$edge))
   root.node <- length(pds.nodes) + 1
@@ -110,7 +114,8 @@ rdphylo <- function(tree,
   lengths <- cbind.data.frame(tree$edge, tree$edge.length)
   colnames(lengths) <- c("a.node", "d.node", "length")
   if(long.root) 
-    lengths <- rbind.data.frame(lengths, c(root.ancestor, root.node, tree$root.edge))
+    lengths <- rbind.data.frame(lengths, c(root.ancestor, root.node, 
+                                           tree$root.edge))
   parameters <- merge(parameters, lengths)
   
   # Total length of evolutionary change of species j  
@@ -162,28 +167,6 @@ rdphylo <- function(tree,
 #' @rdname rdphylo
 #' 
 as.rdphylo <- rdphylo
-
-
-#' Historic Species
-#' 
-#' This function constructs unique identifiers for all historic species 
-#' ancestral to a given node. Unique identifiers take the form 
-#' \emph{(pds, node-tip)}, where \emph{pds} corresponds to the index associated 
-#' with the present day species descendant, and node-tip corresponds to the 
-#' node index and tip index associated with the historic species itself.   
-#' 
-
-
-
-
-#' Total evolutionary change
-#' 
-#' Calculate the total length of evolutionary change of species \emph{j}; may 
-#' be an internal or external node corresponding to present-day and historic 
-#' species, respectively.
-#' 
-
-
 
 
 #' @rdname rdphylo
