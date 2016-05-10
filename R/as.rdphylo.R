@@ -86,6 +86,11 @@ rdphylo <- function(tree,
   n.historic <- lapply(pds.subset, function(x) length(x)-1)
     
   # Historic species names
+  # Constructs unique identifiers for all historic species ancestral to a 
+  # given node. Unique identifiers take the form \emph{(pds, node-tip)},
+  # where \emph{pds} corresponds to the index associated with the present
+  # day species descendant, and node-tip corresponds to the node index and
+  # tip index associated with the historic species itself.   
   hs.name <- lapply(pds.subset, function(x) {
     terminal.taxa <- x[1]
     branch.nodes <- sapply(1:(length(x)-1), function(y) {
@@ -108,7 +113,9 @@ rdphylo <- function(tree,
     lengths <- rbind.data.frame(lengths, c(root.ancestor, root.node, tree$root.edge))
   parameters <- merge(parameters, lengths)
   
-  # Total length of evolutionary change
+  # Total length of evolutionary change of species j  
+  # May be an internal or external node corresponding to present-day and  
+  # historic species, respectively.
   Lj <- lapply(pds.subset, function(x) {
     daughters <- x[-length(x)]
     hs.length <- sapply(daughters, function(y) 
