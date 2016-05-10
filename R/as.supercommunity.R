@@ -161,7 +161,7 @@ setMethod(f = "supercommunity",
             if(is.vector(pds.abundance)) 
               pds.abundance <- as.matrix(pds.abundance)
             
-            new.tree <- as.rdphylo(partition, pds.abundance)
+            new.tree <- rdphylo(partition, pds.abundance)
             
             # Calculate pair-wise similarity of historic species
             similarity <- similarity_phylo(new.tree, pds.abundance)
@@ -204,7 +204,7 @@ setMethod(f = "supercommunity",
             if(is.vector(pds.abundance)) 
               pds.abundance <- as.matrix(pds.abundance)
             
-            new.tree <- as.rdphylo(partition, pds.abundance)
+            new.tree <- rdphylo(partition, pds.abundance)
             
             # Calculate relative abundance of historic species
             type_abundance <- new.tree@parameters$hs.abundance
