@@ -1,11 +1,12 @@
-# A minimal rdiversity example  
+# rdiversity  
 [![Build Status](https://travis-ci.org/boydorr/rdiversity.svg?branch=master)](https://travis-ci.org/boydorr/rdiversity)
 
 `rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals; taxonomic, phenotypic, genetic, phylogenetic, etc. 
 
-### Installation
+## Installation
 
 To install the latest development version of rdiversity, simply run the following from an R console:
+
 ```r
 install.packages("devtools")
 devtools::install_github("boydorr/rdiversity")
@@ -39,7 +40,9 @@ The `supercommunity()` function creates an object containing:
     
 The supercommunity object contains all the information needed to calculate diversity.
     
+    
 ##Calculating diversity
+
 
 The functions within `rdiversity` can be accessed in two main ways. 
 
