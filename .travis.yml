@@ -6,7 +6,3 @@ warnings_are_errors: true
 sudo: required
 
 
-install:
-  - ./travis-tool.sh github_package jimhester/covr
-after_success:
-  - Rscript -e 'covr::coveralls()'
