@@ -52,7 +52,7 @@ setMethod(f = "subdiv", signature= "powermean",
             output <- do.call(cbind,results)
             colnames(output) <- paste0("q", qs) 
             row.names(output) <- colnames(data)
-            output
+            tibble::as_data_frame(output)
           } )
 
 
@@ -69,7 +69,7 @@ setMethod(f = "subdiv", signature= "relativeentropy",
             output <- do.call(cbind,results)
             colnames(output) <- paste0("q", qs) 
             row.names(output) <- colnames(data)
-            output
+            tibble::as_data_frame(output)
           } )
 
 
