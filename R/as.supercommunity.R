@@ -177,6 +177,7 @@ setMethod(f = "supercommunity",
               sum(type_abundance)
             type_weights <- sapply(1:ncol(type_abundance), function(x)
               (type_abundance[,x]/colSums(type_abundance)[x]))
+            colnames(type_weights) <- "supercommunity"
             Zp.j <- similarity %*% type_abundance
             
             # Now mark all of the species that have nothing similar as NaNs
