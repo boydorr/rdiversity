@@ -1,4 +1,4 @@
-#' Low level diversity components
+#' Low level diversity components: alpha
 #' 
 #' Calculates the low-level diversity component necessary for calculating alpha
 #' diversity.
@@ -25,7 +25,7 @@ alpha <- function(super) {
 }
 
 
-#' Low level diversity components
+#' Low level diversity components: normalised alpha
 #' 
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised alpha diversity.
@@ -57,7 +57,7 @@ alphabar <- function(super) {
 }
 
 
-#' Low level diversity components
+#' Low level diversity components: rho
 #' 
 #' Calculates the low-level diversity component necessary for calculating rho
 #' diversity.
@@ -84,7 +84,7 @@ rho <- function(super) {
 }
 
 
-#' Low level diversity components
+#' Low level diversity components: normalised rho
 #' 
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised rho diversity.
@@ -116,7 +116,7 @@ rhobar <- function(super) {
 }
 
 
-#' Low level diversity components
+#' Low level diversity components: gamma
 #' 
 #' Calculates the low-level diversity component necessary for calculating beta
 #' diversity.
