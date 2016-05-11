@@ -21,7 +21,7 @@
 #' @export 
 #' @examples 
 #' # Calculate the diversity of a single population
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' pop <- pop/sum(pop)
 #' super <- supercommunity(pop)
 #' 
