@@ -196,9 +196,10 @@ gamma <- function(super) {
   results <- rowSums(super@ordinariness, na.rm=T)
   results[results==0] <- NaN
   results <- 1 / results
-  results <- matrix(rep((results), ncol(super)), ncol=ncol(super))
-  colnames(results) <- colnames(super)
-  row.names(results) <- row.names(super)
+  results <- matrix(rep((results), ncol(super@type_abundance)), 
+                    ncol=ncol(super@type_abundance))
+  colnames(results) <- colnames(super@type_abundance)
+  row.names(results) <- row.names(super@type_abundance)
   powermean(results, super, "gamma")
 }
 
