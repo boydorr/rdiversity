@@ -155,11 +155,10 @@ setMethod(f = "supercommunity",
           signature(partition = "phylo", similarity = "missing"), 
           definition = function(partition, similarity, pds.abundance = NA) { 
             # If pds.abundance is not entered, assume an even distribution
-            if(all(is.na(pds.abundance)))
+            if(all(is.na(pds.abundance))) 
               pds.abundance <- matrix(rep(1/length(partition$tip.label),
                                           length(partition$tip.label)))
-            if(is.vector(pds.abundance)) 
-              pds.abundance <- as.matrix(pds.abundance)
+            pds.abundance <- check_partition(pds.abundance)
             
             new.tree <- rdphylo(partition, pds.abundance)
             
@@ -198,11 +197,10 @@ setMethod(f = "supercommunity",
           signature(partition = "phylo", similarity = "matrix"), 
           definition = function(partition, similarity, pds.abundance = NA) {  
             # If pds.abundance is not entered, assume an even distribution
-            if(all(is.na(pds.abundance)))
+            if(all(is.na(pds.abundance))) 
               pds.abundance <- matrix(rep(1/length(partition$tip.label),
                                           length(partition$tip.label)))
-            if(is.vector(pds.abundance)) 
-              pds.abundance <- as.matrix(pds.abundance)
+            pds.abundance <- check_partition(pds.abundance)
             
             new.tree <- rdphylo(partition, pds.abundance)
             

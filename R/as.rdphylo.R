@@ -58,12 +58,9 @@
 #' rdtree@parameters
 #' 
 rdphylo <- function(tree, pds.abundance = NA) {
-  if(all(is.na(pds.abundance))) {
+  if(all(is.na(pds.abundance))) 
     pds.abundance <- matrix(rep(1/length(tree$tip.label), 
                                 length(tree$tip.label)))
-    pds.abundance <- pds.abundance/sum(pds.abundance)
-  }
-  
   pds.abundance <- check_partition(pds.abundance)
   
   pds.nodes <- seq_along(tree$tip.label)
@@ -141,7 +138,6 @@ rdphylo <- function(tree, pds.abundance = NA) {
   # Mean total evolutionary change
   Tbar <- sum(pds.abundance * Lj)
   parameters <- cbind(parameters, Tbar)
-  
  
   # Relative abundance of historic species
   hs.abundance <- (parameters$length / Tbar) * parameters$pds.abundance
