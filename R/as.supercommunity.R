@@ -39,6 +39,8 @@
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)
+#' pds.abundance <- data.frame(a = c(1,0,1,0,0), b = c(0,1,0,1,1))
+#' pds.abundance <- pds.abundance / sum(pds.abundance)
 #' a <- supercommunity(tree)
 #' str(a)
 #' a
