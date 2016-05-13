@@ -154,8 +154,8 @@ setMethod(f = "supercommunity",
 #' @export
 #' 
 setMethod(f = "supercommunity", 
-          definition = function(partition, similarity, pds.abundance = NA) { 
           signature(partition = "missing", similarity = "phylo"), 
+          definition = function(partition, similarity, interval) { 
             # If pds.abundance is not entered, assume an even distribution
             if(all(is.na(pds.abundance))) 
               pds.abundance <- matrix(rep(1/length(partition$tip.label),
