@@ -155,8 +155,9 @@ rdphylo <- function(pds.abundance, tree) {
   hs.abundance <- cbind.data.frame(hs.name = historic.species$hs.name, hs.abundance)  
   
   # Extract branch descendants
-  branch_descendants <- lapply(as.list(internal.nodes), function(x) 
-    cbind(d.node = x, pds.descendants = phangorn::Descendants(tree, x, 'all')))
+  # if(!is.null(tree$root.edge)) 
+  pds.descendants <- lapply(as.list(all.nodes), function(x) 
+    cbind(d.node = x, pds.descendants = phangorn::Descendants(tree, x, 'tips')))
   
   branch_descendants <- do.call(rbind, branch_descendants)
   branch_descendants <- as.data.frame(branch_descendants)
