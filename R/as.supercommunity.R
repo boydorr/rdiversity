@@ -284,7 +284,8 @@ setMethod(f = "supercommunity",
               sum(type_abundance)
             type_weights <- sapply(1:ncol(type_abundance), function(x)
               (type_abundance[,x]/colSums(type_abundance)[x]))
-            Zp.j <- similarity %*% type_abundance
+            
+            zmatrix <- similarity_phylo(new.tree, partition)
             
             # Now mark all of the species that have nothing similar as NaNs
             # because diversity of an empty group is undefined
