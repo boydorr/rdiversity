@@ -22,13 +22,10 @@
 #' @rdname supercommunity-methods
 #' @exportMethod supercommunity
 #' 
-#' @param partition \code{matrix} (usually two-dimensional) of mode numeric;  
-#' relative abundance of types
-#' @param similarity (optional) two-dimensional \code{matrix} of mode numeric; 
-#' pair-wise similarity of types. Default sets similarity to the naive-type 
-#' case, where types are completely distinct. 
-#' @param pds.abundance \code{vector} of mode \code{numeric}; containing the 
+#' @param partition (optional) \code{vector} of mode \code{numeric}; containing the 
 #' proportional abundance of present day species (leaves)
+#' @param similarity object of class \code{phylo} or \code{rdphylo}
+#' @param interval object of mode numeric
 #' @param ... additional arguments.
 #' 
 #' @return Returns an object of class \code{supercommunity}; an S4 object 
@@ -39,9 +36,9 @@
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)
-#' pds.abundance <- data.frame(a = c(1,0,1,0,0), b = c(0,1,0,1,1))
-#' pds.abundance <- pds.abundance / sum(pds.abundance)
-#' a <- supercommunity(tree)
+#' partition <- data.frame(a = c(1,0,1,0,0), b = c(0,1,0,1,1))
+#' partition <- partition / sum(partition)
+#' a <- supercommunity(partition, tree)
 #' str(a)
 #' a
 #' 
