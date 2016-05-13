@@ -46,6 +46,7 @@ Collate:
     'similarity_matrix.R'
     'similarity_phylo.R'
     'similarity_shimatani.R'
+    'structure_phylo.R'
     'summarise.R'
     'superdiv.R'
 VignetteBuilder: knitr

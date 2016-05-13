@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{rho}
 \alias{rho}
-\title{Low level diversity components}
+\title{Low level diversity components: rho}
 \usage{
 rho(super)
 }

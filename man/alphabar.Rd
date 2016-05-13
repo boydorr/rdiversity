@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{alphabar}
 \alias{alphabar}
-\title{Low level diversity components}
+\title{Low level diversity components: normalised alpha}
 \usage{
 alphabar(super)
 }

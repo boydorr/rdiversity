@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{rhobar}
 \alias{rhobar}
-\title{Low level diversity components}
+\title{Low level diversity components: normalised rho}
 \usage{
 rhobar(super)
 }

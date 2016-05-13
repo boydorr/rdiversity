@@ -26,6 +26,12 @@ diversity.
 \section{Fields}{
 
 \describe{
-\item{\code{parameters}}{data.frame object}
+\item{\code{historic.species}}{\code{data_frame} object}
+
+\item{\code{terminal.taxa}}{\code{data_frame} object}
+
+\item{\code{Tbar}}{object of class \code{numeric}}
+
+\item{\code{structure}}{\code{matrix} of mode \code{numeric}}
 }}
 

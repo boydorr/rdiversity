@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{beta}
 \alias{beta}
-\title{Low level diversity components}
+\title{Low level diversity components: gamma}
 \usage{
 beta(super)
 }

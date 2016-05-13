@@ -8,12 +8,18 @@
 \alias{supercommunity,}
 \alias{supercommunity,data.frame,matrix-method}
 \alias{supercommunity,data.frame,missing-method}
+\alias{supercommunity,data.frame,phylo-method}
+\alias{supercommunity,data.frame,rdphylo-method}
 \alias{supercommunity,matrix,matrix-method}
 \alias{supercommunity,matrix,missing-method}
+\alias{supercommunity,matrix,phylo-method}
+\alias{supercommunity,matrix,rdphylo-method}
+\alias{supercommunity,missing,phylo-method}
+\alias{supercommunity,missing,rdphylo-method}
 \alias{supercommunity,numeric,matrix-method}
 \alias{supercommunity,numeric,missing-method}
-\alias{supercommunity,phylo,matrix-method}
-\alias{supercommunity,phylo,missing-method}
+\alias{supercommunity,numeric,phylo-method}
+\alias{supercommunity,numeric,rdphylo-method}
 \title{Coerse to Supercommunity}
 \usage{
 supercommunity(partition, similarity, ...)
@@ -30,26 +36,33 @@ supercommunity(partition, similarity, ...)
 
 \S4method{supercommunity}{matrix,matrix}(partition, similarity = NA)
 
-\S4method{supercommunity}{phylo,missing}(partition, similarity,
-  pds.abundance = NA)
+\S4method{supercommunity}{missing,phylo}(partition, similarity, interval)
 
-\S4method{supercommunity}{phylo,matrix}(partition, similarity,
-  pds.abundance = NA)
+\S4method{supercommunity}{numeric,phylo}(partition, similarity, interval)
+
+\S4method{supercommunity}{data.frame,phylo}(partition, similarity, interval)
+
+\S4method{supercommunity}{matrix,phylo}(partition, similarity, interval)
+
+\S4method{supercommunity}{missing,rdphylo}(partition, similarity, interval)
+
+\S4method{supercommunity}{numeric,rdphylo}(partition, similarity, interval)
+
+\S4method{supercommunity}{data.frame,rdphylo}(partition, similarity, interval)
+
+\S4method{supercommunity}{matrix,rdphylo}(partition, similarity, interval)
 
 supercommunity(partition, similarity, ...)
 }
 \arguments{
-\item{partition}{\code{matrix} (usually two-dimensional) of mode numeric;
-relative abundance of types}
+\item{partition}{(optional) \code{vector} of mode \code{numeric}; containing the 
+proportional abundance of present day species (leaves)}
 
-\item{similarity}{(optional) two-dimensional \code{matrix} of mode numeric; 
-pair-wise similarity of types. Default sets similarity to the naive-type 
-case, where types are completely distinct.}
+\item{similarity}{object of class \code{phylo} or \code{rdphylo}}
 
 \item{...}{additional arguments.}
 
-\item{pds.abundance}{\code{vector} of mode \code{numeric}; containing the 
-proportional abundance of present day species (leaves)}
+\item{interval}{object of mode numeric}
 }
 \value{
 Returns an object of class \code{supercommunity}; an S4 object 
@@ -77,7 +90,9 @@ present day species)
 }
 \examples{
 tree <- ape::rtree(n = 5)
-a <- supercommunity(tree)
+partition <- data.frame(a = c(1,0,1,0,0), b = c(0,1,0,1,1))
+partition <- partition / sum(partition)
+a <- supercommunity(partition, tree)
 str(a)
 a
 

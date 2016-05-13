@@ -8,19 +8,19 @@
 \alias{show,rdphylo-method}
 \title{Convert to rdphylo}
 \usage{
-rdphylo(tree, pds.abundance = NA)
+rdphylo(pds.abundance, tree)
 
-as.rdphylo(tree, pds.abundance = NA)
+as.rdphylo(pds.abundance, tree)
 
 is.rdphylo(x)
 
 \S4method{show}{rdphylo}(object)
 }
 \arguments{
-\item{tree}{object of class \code{phylo}}
-
 \item{pds.abundance}{\code{vector} of length \eqn{S}; proportional
 abundance of present-day species}
+
+\item{tree}{object of class \code{phylo}}
 
 \item{x}{any R object}
 
@@ -69,14 +69,18 @@ Converts an object into class \code{phylo} into class \code{rdphylo}.
 }
 \examples{
 tree <- ape::rtree(n = 5)
-rdtree <- rdphylo(tree)
+pop <- rep(1/5, 5)
+rdtree <- rdphylo(pop, tree)
+
+pds.abundance <- data.frame(a = c(0,1,1,1,0), b = c(1,0,0,0,1)) 
+pds.abundance <- check_partition(pds.abundance)
 
 # Extract components of terminal taxa
 str(rdtree)
 rdtree$edge
 
 # Extract components of historic species
-rdtree@parameters
+rdtree@historic.species
 
 }
 

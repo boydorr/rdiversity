@@ -4,11 +4,10 @@
 \alias{similarity_phylo}
 \title{Phylogenetic Similarity Matrix}
 \usage{
-similarity_phylo(tree, pds.abundance = rep(1/length(tree$tip.label),
-  length(tree$tip.label)))
+similarity_phylo(data, pds.abundance)
 }
 \arguments{
-\item{tree}{object of class \code{phylo}}
+\item{data}{object of class \code{rdphylo}}
 
 \item{pds.abundance}{vector of length {S}; relative abundance of present-day 
 species}
@@ -21,7 +20,9 @@ Function to calculate phylogenetic similarity matrix from a phylogeny.
 }
 \examples{
 tree <- ape::rtree(n = 5)
-Z <- similarity_phylo(tree)
+pop <- rep(1/5, 5)
+new.tree <- rdphylo(pop, tree)
+Z <- similarity_phylo(new.tree)
 
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{alpha}
 \alias{alpha}
-\title{Low level diversity components}
+\title{Low level diversity components: alpha}
 \usage{
 alpha(super)
 }
