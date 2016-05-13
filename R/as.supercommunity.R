@@ -250,8 +250,16 @@ setMethod(f = "supercommunity",
 #' @export
 #' 
 setMethod(f = "supercommunity", 
+          signature(partition = "matrix", similarity = "rdphylo"), 
+          definition = function(partition, similarity, interval) { 
+            partition <- check_partition(partition)
             
-            new.tree <- rdphylo(partition, pds.abundance)
+            new.tree <- similarity
+            historic.species <- new.tree@historic.species
+            terminal.taxa <- new.tree@terminal.taxa
+            Tbar <- new.tree@Tbar
+            tag <- row.names(new.tree@structure)
+            
             hs.abundance <- sapply(seq_along(historic.species$hs.name), function(x) {
               row.index <- match(historic.species$tip.node[x], terminal.taxa$tip.node)
               (historic.species$length[x] / Tbar) * terminal.taxa$pds.abundance[row.index]
@@ -287,17 +295,19 @@ setMethod(f = "supercommunity",
             
             zmatrix <- similarity_phylo(new.tree, partition)
             
+            Zp.j <- zmatrix %*% type_abundance
+            
             # Now mark all of the species that have nothing similar as NaNs
             # because diversity of an empty group is undefined
             Zp.j[Zp.j==0] <- NaN
             
-            new('supercommunity', pds.abundance, 
-                similarity = similarity, 
+            new('supercommunity', partition, 
+                similarity = zmatrix, 
                 type_abundance = type_abundance, 
                 ordinariness = Zp.j,
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights)          
-            } )
+          } )
 
 
 #' @rdname supercommunity-methods
