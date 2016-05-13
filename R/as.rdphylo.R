@@ -129,6 +129,10 @@ rdphylo <- function(pds.abundance, tree) {
   tmp <- cbind(pds = seq_along(pds.subset), Lj = Lj)
   parameters <- merge(parameters, tmp)
 
+  # Relative abundance of terminal taxa
+  just.abundance <- rowSums(pds.abundance)
+  tmp <- cbind(tip.nodes, just.abundance)
+  colnames(tmp) <- c("tip.node", "pds.abundance")
   # Relative abundance of terminal taxa for each historic species
   if(ncol(pds.abundance)==1) {
     all.pds.abundance <- as.matrix(pds.abundance[parameters$pds])
