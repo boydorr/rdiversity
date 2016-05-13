@@ -252,12 +252,33 @@ setMethod(f = "supercommunity",
 setMethod(f = "supercommunity", 
             
             new.tree <- rdphylo(partition, pds.abundance)
+            hs.abundance <- sapply(seq_along(historic.species$hs.name), function(x) {
+              row.index <- match(historic.species$tip.node[x], terminal.taxa$tip.node)
+              (historic.species$length[x] / Tbar) * terminal.taxa$pds.abundance[row.index]
+            })
+            hs.abundance <- cbind.data.frame(historic.species, hs.abundance)
+
+            # # Relative abundance of historic species
+            # type_abundance <- matrix(rep(0, nrow(tmp) * ncol(partition)), 
+            #                          nrow=nrow(tmp), ncol=ncol(partition))
+            # row.names(type_abundance) <- tmp$hs.name
             
-            # Calculate relative abundance of historic species
-            type_abundance <- new.tree@parameters$hs.abundance
             
-            type_abundance <- check_partition(type_abundance)
-            # similarity <- check_similarity(type_abundance, similarity)
+            index <- as.list(matrix(seq_along(hs.abundance$hs.name)))
+            type_abundance <- lapply(index, function(x) {
+              row.index <- hs.abundance$tip.node[x]
+              if(ncol(partition) == 1) {
+                col.index <- which(partition[row.index] > 0)
+              } else
+                col.index <- which(partition[row.index,] > 0)
+              vec <- t(matrix(rep(0, ncol(partition))))
+              vec[,col.index] <- hs.abundance$hs.abundance[x]
+              vec
+            })
+            type_abundance <- do.call(rbind, type_abundance)
+            row.names(type_abundance) <- hs.abundance$hs.name
+            colnames(type_abundance) <- colnames(partition)
+            # type_abundance <- check_partition(type_abundance)
             
             subcommunity_weights <- colSums(type_abundance) / 
               sum(type_abundance)
