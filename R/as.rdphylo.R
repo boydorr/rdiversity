@@ -71,18 +71,18 @@ rdphylo <- function(pds.abundance, tree) {
   root.ancestor = 0
   if(!is.null(tree$root.edge)) {
     long.root = TRUE
-    all.nodes <- c(internal.nodes, root.ancestor)
+    # all.nodes <- c(all.nodes, root.ancestor)
   } else {
     long.root = FALSE
-    all.nodes <- internal.nodes
+    # all.nodes <- all.nodes
   }
 
-  ancestral.nodes <- lapply(as.list(internal.nodes), function(node) {
+  ancestral.nodes <- lapply(as.list(all.nodes), function(node) {
     res <- c(node, phangorn::Ancestors(tree, node, 'all'))
     if(long.root) res <- c(res, root.ancestor)
     else res
   })
-  pds.subset <- ancestral.nodes[pds.nodes]
+  pds.subset <- ancestral.nodes[tip.nodes]
   
   n.historic <- lapply(pds.subset, function(x) length(x)-1)
     
@@ -104,8 +104,8 @@ rdphylo <- function(pds.abundance, tree) {
     unlist(strsplit(unlist(strsplit(x,"-")),",")))
   tmp <- do.call(rbind, tmp)
   tmp <- as.data.frame(t(apply(tmp, 1, as.numeric)), stringsAsFactors = FALSE)
-  colnames(tmp) <- c("pds", "a.node", "d.node")
   parameters <- cbind.data.frame(hs.name, tmp, stringsAsFactors=FALSE)
+  colnames(tmp) <- c("tip.node", "a.node", "d.node")
 
   # Historic species lengths
   lengths <- cbind.data.frame(tree$edge, tree$edge.length)
