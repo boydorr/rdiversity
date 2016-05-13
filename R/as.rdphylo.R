@@ -57,8 +57,8 @@
 #' # Extract components of historic species
 #' rdtree@parameters
 #' 
-rdphylo <- function(tree, pds.abundance = NA) {
-  if(all(is.na(pds.abundance))) 
+rdphylo <- function(pds.abundance, tree) {
+  if(missing(pds.abundance))
     pds.abundance <- matrix(rep(1/length(tree$tip.label), 
                                 length(tree$tip.label)))
   pds.abundance <- check_partition(pds.abundance)
