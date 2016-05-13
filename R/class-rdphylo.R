@@ -9,7 +9,10 @@ setOldClass("phylo")
 #' @rdname rdphylo-class
 #' @exportClass rdphylo
 #' 
-#' @field parameters data.frame object 
+#' @field historic.species \code{data_frame} object 
+#' @field terminal.taxa \code{data_frame} object
+#' @field Tbar object of class \code{numeric}
+#' @field structure \code{matrix} of mode \code{numeric}
 #' 
 #' @return 
 #' An object of class \code{rdphylo}. Builds on class \code{phylo} and 
@@ -27,5 +30,8 @@ setOldClass("phylo")
 #' }
 #' 
 setClass("rdphylo", contains = "phylo",
-                    slots = c(parameters = "tbl_df"))
+                    slots = c(historic.species = "tbl_df",
+                              terminal.taxa = "tbl_df", 
+                              Tbar = "numeric", 
+                              structure = "matrix"))
 
