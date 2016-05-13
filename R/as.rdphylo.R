@@ -173,6 +173,8 @@ rdphylo <- function(pds.abundance, tree) {
                                     "pds.abundance")]
   
   new('rdphylo', tree, parameters = parameters)
+  # Structural component of similarity matrix
+  structure <- structure_phylo(tree, historic.species)
 }
 
 
