@@ -172,9 +172,14 @@ rdphylo <- function(pds.abundance, tree) {
   terminal.taxa <- terminal.taxa[,c("tip.label", "tip.node", "Lj", 
                                     "pds.abundance")]
   
-  new('rdphylo', tree, parameters = parameters)
   # Structural component of similarity matrix
   structure <- structure_phylo(tree, historic.species)
+  
+  new('rdphylo', tree, 
+      historic.species = historic.species,
+      terminal.taxa = terminal.taxa, 
+      Tbar = Tbar,
+      structure = structure)
 }
 
 
