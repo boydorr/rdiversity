@@ -135,10 +135,13 @@ rdphylo <- function(pds.abundance, tree) {
   colnames(tmp) <- c("tip.node", "pds.abundance")
   # Relative abundance of terminal taxa for each historic species
   if(ncol(pds.abundance)==1) {
-    all.pds.abundance <- as.matrix(pds.abundance[parameters$pds])
+    all.abundance <- cbind(tip.node = historic.species$tip.node, 
+                           pds.abundance = pds.abundance[historic.species$tip.node])
   } else 
-    all.pds.abundance <- pds.abundance[parameters$pds,]
-  parameters <- cbind(parameters, pds.abundance = all.pds.abundance)
+    all.abundance <- cbind(tip.node = historic.species$tip.node, 
+                           pds.abundance = rowSums(pds.abundance[historic.species$tip.node,]))
+  
+  all.abundance <- merge(historic.species, all.abundance, by="tip.node")
   
   # Mean total evolutionary change
   Tbar <- sum(pds.abundance * Lj)
