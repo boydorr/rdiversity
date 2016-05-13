@@ -68,9 +68,9 @@ rdphylo <- function(pds.abundance, tree) {
   root.node <- length(tip.nodes) + 1
     
   # If root has a length
+  root.ancestor = 0
   if(!is.null(tree$root.edge)) {
     long.root = TRUE
-    root.ancestor = 0
     all.nodes <- c(internal.nodes, root.ancestor)
   } else {
     long.root = FALSE
