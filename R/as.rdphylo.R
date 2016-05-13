@@ -48,14 +48,18 @@
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)
-#' rdtree <- rdphylo(tree)
+#' pop <- rep(1/5, 5)
+#' rdtree <- rdphylo(pop, tree)
+#' 
+#' pds.abundance <- data.frame(a = c(0,1,1,1,0), b = c(1,0,0,0,1)) 
+#' pds.abundance <- check_partition(pds.abundance)
 #' 
 #' # Extract components of terminal taxa
 #' str(rdtree)
 #' rdtree$edge
 #' 
 #' # Extract components of historic species
-#' rdtree@parameters
+#' rdtree@historic.species
 #' 
 rdphylo <- function(pds.abundance, tree) {
   if(missing(pds.abundance))
