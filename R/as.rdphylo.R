@@ -148,8 +148,11 @@ rdphylo <- function(pds.abundance, tree) {
   parameters <- cbind(parameters, Tbar)
  
   # Relative abundance of historic species
-  hs.abundance <- (parameters$length / Tbar) * parameters$pds.abundance
-  parameters <- cbind(parameters, hs.abundance)
+  hs.abundance <- sapply(seq_along(historic.species$hs.name), function(x) {
+    row.index <- match(historic.species$tip.node[x], terminal.taxa$tip.node)
+    (historic.species$length[x] / Tbar) * terminal.taxa$pds.abundance[row.index]
+  })
+  hs.abundance <- cbind.data.frame(hs.name = historic.species$hs.name, hs.abundance)  
   
   # Extract branch descendants
   branch_descendants <- lapply(as.list(internal.nodes), function(x) 
