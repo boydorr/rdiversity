@@ -82,6 +82,7 @@ rdphylo <- function(pds.abundance, tree) {
     if(long.root) res <- c(res, root.ancestor)
     else res
   })
+  if(long.root) ancestral.nodes[[length(ancestral.nodes) + 1]] <- 0
   pds.subset <- ancestral.nodes[tip.nodes]
   
   n.historic <- lapply(pds.subset, function(x) length(x)-1)
