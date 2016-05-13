@@ -63,9 +63,9 @@ rdphylo <- function(pds.abundance, tree) {
                                 length(tree$tip.label)))
   pds.abundance <- check_partition(pds.abundance)
   
-  pds.nodes <- seq_along(tree$tip.label)
-  internal.nodes <- 1:(max(tree$edge))
-  root.node <- length(pds.nodes) + 1
+  tip.nodes <- seq_along(tree$tip.label)
+  all.nodes <- 1:(max(tree$edge))
+  root.node <- length(tip.nodes) + 1
     
   # If root has a length
   if(!is.null(tree$root.edge)) {
