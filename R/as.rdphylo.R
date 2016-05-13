@@ -105,8 +105,8 @@ rdphylo <- function(pds.abundance, tree) {
     unlist(strsplit(unlist(strsplit(x,"-")),",")))
   tmp <- do.call(rbind, tmp)
   tmp <- as.data.frame(t(apply(tmp, 1, as.numeric)), stringsAsFactors = FALSE)
-  parameters <- cbind.data.frame(hs.name, tmp, stringsAsFactors=FALSE)
   colnames(tmp) <- c("tip.node", "a.node", "d.node")
+  historic.species <- cbind.data.frame(hs.name, tmp, stringsAsFactors=FALSE)
 
   # Historic species lengths
   lengths <- cbind.data.frame(tree$edge, tree$edge.length)
@@ -114,7 +114,7 @@ rdphylo <- function(pds.abundance, tree) {
   if(long.root) 
     lengths <- rbind.data.frame(lengths, c(root.ancestor, root.node, 
                                            tree$root.edge))
-  parameters <- merge(parameters, lengths)
+  historic.species <- merge(historic.species, lengths)
   
   # Total length of evolutionary change of species j  
   # May be an internal or external node corresponding to present-day and  
@@ -126,13 +126,16 @@ rdphylo <- function(pds.abundance, tree) {
     sum(hs.length)
   })
   Lj <- unlist(Lj)
-  tmp <- cbind(pds = seq_along(pds.subset), Lj = Lj)
-  parameters <- merge(parameters, tmp)
+  terminal.taxa <- cbind.data.frame(tip.label = as.character(tree$tip.label), 
+                         tip.node = seq_along(pds.subset), 
+                         Lj = Lj)
 
   # Relative abundance of terminal taxa
   just.abundance <- rowSums(pds.abundance)
   tmp <- cbind(tip.nodes, just.abundance)
   colnames(tmp) <- c("tip.node", "pds.abundance")
+  terminal.taxa <- merge(terminal.taxa, tmp)
+  
   # Relative abundance of terminal taxa for each historic species
   if(ncol(pds.abundance)==1) {
     all.abundance <- cbind(tip.node = historic.species$tip.node, 
@@ -145,25 +148,30 @@ rdphylo <- function(pds.abundance, tree) {
   
   # Mean total evolutionary change
   Tbar <- sum(pds.abundance * Lj)
-  parameters <- cbind(parameters, Tbar)
- 
+
   # Relative abundance of historic species
   hs.abundance <- sapply(seq_along(historic.species$hs.name), function(x) {
     row.index <- match(historic.species$tip.node[x], terminal.taxa$tip.node)
     (historic.species$length[x] / Tbar) * terminal.taxa$pds.abundance[row.index]
   })
   hs.abundance <- cbind.data.frame(hs.name = historic.species$hs.name, hs.abundance)  
+  historic.species <- merge(historic.species, hs.abundance)
   
   # Extract branch descendants
   # if(!is.null(tree$root.edge)) 
   pds.descendants <- lapply(as.list(all.nodes), function(x) 
     cbind(d.node = x, pds.descendants = phangorn::Descendants(tree, x, 'tips')))
-  
-  
-  parameters <- merge(parameters, branch_descendants, by = "d.node")
-  colnames(parameters)[ncol(parameters)] <- "branch.descendants"
+  pds.descendants <- do.call(rbind.data.frame, pds.descendants)
+  historic.species <- merge(historic.species, pds.descendants, by = "d.node")
 
-  parameters <- tibble::as_data_frame(parameters)
+  historic.species <- tibble::as_data_frame(historic.species)
+  historic.species <- historic.species[,c("hs.name", "a.node", "d.node", 
+                                          "tip.node", "length", "pds.descendants")]
+  
+  terminal.taxa <- tibble::as_data_frame(terminal.taxa)
+  terminal.taxa <- terminal.taxa[,c("tip.label", "tip.node", "Lj", 
+                                    "pds.abundance")]
+  
   new('rdphylo', tree, parameters = parameters)
 }
 
