@@ -161,35 +161,9 @@ setMethod(f = "supercommunity",
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
             partition <- check_partition(partition)
+            similarity <- rdphylo(partition, similarity)
             
-            new.tree <- rdphylo(partition, pds.abundance)
-            
-            # Calculate pair-wise similarity of historic species
-            similarity <- similarity_phylo(new.tree, pds.abundance)
-            
-            # Calculate relative abundance of historic species
-            type_abundance <- new.tree@parameters$hs.abundance
-            
-            type_abundance <- check_partition(type_abundance)
-            # similarity <- check_similarity(type_abundance, similarity)
-            
-            subcommunity_weights <- colSums(type_abundance) / 
-              sum(type_abundance)
-            type_weights <- sapply(1:ncol(type_abundance), function(x)
-              (type_abundance[,x]/colSums(type_abundance)[x]))
-            colnames(type_weights) <- "supercommunity"
-            Zp.j <- similarity %*% type_abundance
-            
-            # Now mark all of the species that have nothing similar as NaNs
-            # because diversity of an empty group is undefined
-            Zp.j[Zp.j==0] <- NaN
-            
-            new('supercommunity', pds.abundance, 
-                similarity = similarity, 
-                type_abundance = type_abundance, 
-                ordinariness = Zp.j,
-                subcommunity_weights = subcommunity_weights,
-                type_weights = type_weights)          
+            supercommunity(partition, similarity)
             } )
 
 
@@ -197,13 +171,85 @@ setMethod(f = "supercommunity",
 #' @export
 #' 
 setMethod(f = "supercommunity", 
-          signature(partition = "phylo", similarity = "matrix"), 
-          definition = function(partition, similarity, pds.abundance = NA) {  
+          signature(partition = "numeric", similarity = "phylo"), 
+          definition = function(partition, similarity, interval) { 
+            partition <- check_partition(partition)
+            similarity <- rdphylo(partition, similarity)
+            
+            supercommunity(partition, similarity)
+          } )
+
+
+#' @rdname supercommunity-methods
+#' @export
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "data.frame", similarity = "phylo"), 
+          definition = function(partition, similarity, interval) { 
+            partition <- check_partition(partition)
+            similarity <- rdphylo(partition, similarity)
+            
+            supercommunity(partition, similarity)
+          } )
+
+
+#' @rdname supercommunity-methods
+#' @export
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "matrix", similarity = "phylo"), 
+          definition = function(partition, similarity, interval) {  
+            partition <- check_partition(partition)
+            similarity <- rdphylo(partition, similarity)
+            
+            supercommunity(partition, similarity)
+            } )
+
+
+#' @rdname supercommunity-methods
+#' @export
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "missing", similarity = "rdphylo"), 
+          definition = function(partition, similarity, interval) { 
             # If pds.abundance is not entered, assume an even distribution
-            if(all(is.na(pds.abundance))) 
-              pds.abundance <- matrix(rep(1/length(partition$tip.label),
-                                          length(partition$tip.label)))
-            pds.abundance <- check_partition(pds.abundance)
+            tips <- similarity$tip.label
+            partition <- matrix(rep(1/length(tips), length(tips)))
+            row.names(partition) <- tips
+            partition <- check_partition(partition)
+            
+            supercommunity(partition, similarity)
+          } )
+
+
+#' @rdname supercommunity-methods
+#' @export
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "numeric", similarity = "rdphylo"), 
+          definition = function(partition, similarity, interval) { 
+            partition <- check_partition(partition)
+            
+            supercommunity(partition, similarity)
+          } )
+
+
+#' @rdname supercommunity-methods
+#' @export
+#' 
+setMethod(f = "supercommunity", 
+          signature(partition = "data.frame", similarity = "rdphylo"), 
+          definition = function(partition, similarity, interval) { 
+            partition <- check_partition(partition)
+            
+            supercommunity(partition, similarity)
+          } )
+
+
+#' @rdname supercommunity-methods
+#' @export
+#' 
+setMethod(f = "supercommunity", 
             
             new.tree <- rdphylo(partition, pds.abundance)
             
