@@ -18,17 +18,17 @@ numcommunities <- 8
 manyweights <- t(rdirichlet(numcommunities, rep(1, numspecies)))
 
 test_that ("The qDZ() function works for a single population", {
-  expect_equivalent(as.matrix(qDZ(supercommunity(weights), 1:2)), 
-                    qD(weights, 1:2))
-  expect_equivalent(as.matrix(qDZ(supercommunity(weights, Z1), c(0:3,Inf))), 
-                    as.matrix(rep(1,5)))
+  expect_equivalent(qDZ(supercommunity(weights), 1:2)$diversity, 
+                    c(qD(weights, 1:2)))
+  expect_equivalent(qDZ(supercommunity(weights, Z1), c(0:3,Inf))$diversity, 
+                    c(rep(1,5)))
 })
 
 
 test_that ("The qDZ() function works for a multiple populations", {   
   Z2 <- matrix(rep(1, numspecies*numspecies), ncol=numspecies)
-  expect_equivalent(as.matrix(qDZ(supercommunity(manyweights/sum(manyweights), 
-                                                 Z2), c(0:2, Inf))),
-                    matrix(rep(1,(4 * dim(manyweights)[2])),ncol=4))
+  expect_equivalent(qDZ(supercommunity(manyweights/sum(manyweights), Z2), 
+                        c(0:2, Inf))$diversity,
+                    rep(1,(4 * dim(manyweights)[2])))
 })
 
