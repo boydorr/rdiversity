@@ -53,8 +53,10 @@ setMethod(f = "subdiv", signature= "powermean",
             output <- do.call(cbind, results)
             row.names(output) <- colnames(data)
             output <- reshape2::melt(output)
-            output <- cbind.data.frame(output, "subcommunity", data@measure)
+            output <- cbind.data.frame(output, "subcommunity", data@measure, 
+                                       stringsAsFactors = FALSE)
             colnames(output) <- c("partition", "q", "diversity", "community", "measure")
+            output$partition <- as.character(output$partition)
             tibble::as_data_frame(output)
           } )
 
@@ -72,8 +74,10 @@ setMethod(f = "subdiv", signature= "relativeentropy",
             output <- do.call(cbind,results)
             row.names(output) <- colnames(data)
             output <- reshape2::melt(output)
-            output <- cbind.data.frame(output, "subcommunity", data@measure)
+            output <- cbind.data.frame(output, "subcommunity", data@measure,
+                                       stringsAsFactors = FALSE)
             colnames(output) <- c("partition", "q", "diversity", "community", "measure")
+            output$partition <- as.character(output$partition)
             tibble::as_data_frame(output)
           } )
 
