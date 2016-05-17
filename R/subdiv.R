@@ -50,9 +50,10 @@ setMethod(f = "subdiv", signature= "powermean",
               results[[i]] <- sapply(1:ncol(data), function(y) 
                 power.mean(data[,y], 1-qs[i], data@type_weights[,y]))
             
-            output <- do.call(cbind,results)
-            colnames(output) <- paste0("q", qs) 
+            output <- do.call(cbind, results)
             row.names(output) <- colnames(data)
+            output <- reshape2::melt(output)
+            colnames(output) <- c("community", "q", "diversity")
             tibble::as_data_frame(output)
           } )
 
@@ -68,8 +69,9 @@ setMethod(f = "subdiv", signature= "relativeentropy",
                 power.mean(data[,y], qs[i]-1, data@type_weights[,y]))
 
             output <- do.call(cbind,results)
-            colnames(output) <- paste0("q", qs) 
             row.names(output) <- colnames(data)
+            output <- reshape2::melt(output)
+            colnames(output) <- c("community", "q", "diversity")
             tibble::as_data_frame(output)
           } )
 
