@@ -14,7 +14,8 @@ Imports:
     ape,
     phangorn,
     tidyr,
-    tibble
+    tibble,
+    reshape2
 Suggests:
     testthat,
     knitr,
