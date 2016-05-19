@@ -137,6 +137,11 @@ setMethod(f = "supercommunity",
             # because diversity of an empty group is undefined
             Zp.j[Zp.j==0] <- NaN
             
+            if(!is.matrix(type_weights)) {
+              type_weights<- t(as.matrix(type_weights))
+              row.names(type_weights) <- row.names(type_abundance)
+            }
+              
             new('supercommunity', partition, 
                 similarity = similarity, 
                 type_abundance = type_abundance, 
