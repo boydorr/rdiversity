@@ -138,7 +138,8 @@ rhobar <- function(super) {
 #' a <- beta(super)
 #' 
 beta <- function(super) {
-  results <- 1 / rho(super)
+  rho <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
+  results <- 1 / rho
   relativeentropy(results, super, "beta")
 }
 
@@ -166,7 +167,12 @@ beta <- function(super) {
 #' a <- betabar(super)
 #' 
 betabar <- function(super) {
-  results <- 1 / rhobar(super)
+  ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
+                             function(x) super@ordinariness[,x] /
+                               super@subcommunity_weights[x])
+  colnames(ordinariness.bar) <- colnames(super)
+  rhobar <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
+  results <- 1 / rhobar
   relativeentropy(results, super, "beta bar")
 }
 
