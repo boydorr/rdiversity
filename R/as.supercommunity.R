@@ -267,7 +267,8 @@ setMethod(f = "supercommunity",
             })
             hs.abundance <- cbind.data.frame(historic.species, hs.abundance)
             
-            index <- as.list(matrix(seq_along(hs.abundance$hs.name)))
+            # Reinstate partitions
+            index <- as.list(seq_along(hs.abundance$hs.name))
             type_abundance <- lapply(index, function(x) {
               row.index <- hs.abundance$tip.node[x]
               if(ncol(partition) == 1) {
