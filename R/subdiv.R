@@ -96,8 +96,6 @@ setMethod(f = "subdiv", signature= "supercommunity",
             # Calculate subcommunity diversity
             results <- lapply(div.measures, function(x) 
               res <- subdiv(x(data), qs))
-            names(results) <- c("alpha", "alphabar", "beta", "betabar",
-                                "rho", "rhobar", "gamma") 
-            results
+            results <- do.call(rbind.data.frame, results)
           } )
            

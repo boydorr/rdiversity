@@ -97,7 +97,5 @@ setMethod(f = "superdiv", signature= "supercommunity",
             # Calculate supercommunity diversity
             results <- lapply(div.measures, function(x) 
               res <- superdiv(x(data), qs))
-            names(results) <- paste("supercommunity", c("A", "Abar", "B", "Bbar",
-                                "R", "Rbar", "G") )
-            results
+            results <- do.call(rbind.data.frame, results)
           } )
