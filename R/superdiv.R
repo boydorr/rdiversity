@@ -51,6 +51,7 @@ setMethod(f = "superdiv", signature= "powermean",
             
             output <- do.call(cbind,results)
             row.names(output) <- "supercommunity"
+            colnames(output) <- qs
             output <- reshape2::melt(output)
             output <- cbind.data.frame(output, "supercommunity", data@measure, 
                                        stringsAsFactors = FALSE)
@@ -74,6 +75,7 @@ setMethod(f = "superdiv", signature= "relativeentropy",
             
             output <- do.call(cbind,results)
             row.names(output) <- "supercommunity"
+            colnames(output) <- qs
             output <- reshape2::melt(output)
             output <- cbind.data.frame(output, "supercommunity", data@measure,
                                        stringsAsFactors = FALSE)
