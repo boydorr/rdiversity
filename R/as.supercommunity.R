@@ -266,12 +266,6 @@ setMethod(f = "supercommunity",
               (historic.species$length[x] / Tbar) * terminal.taxa$pds.abundance[row.index]
             })
             hs.abundance <- cbind.data.frame(historic.species, hs.abundance)
-
-            # # Relative abundance of historic species
-            # type_abundance <- matrix(rep(0, nrow(tmp) * ncol(partition)), 
-            #                          nrow=nrow(tmp), ncol=ncol(partition))
-            # row.names(type_abundance) <- tmp$hs.name
-            
             
             index <- as.list(matrix(seq_along(hs.abundance$hs.name)))
             type_abundance <- lapply(index, function(x) {
