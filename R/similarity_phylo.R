@@ -36,12 +36,6 @@ similarity_phylo <-
     if(long.root) ancestral.nodes[[length(ancestral.nodes) + 1]] <- 0
     pds.subset <- ancestral.nodes[tip.nodes]
     
-    # # Nodes ancestral to terminal taxa.
-    # pds.subset <- lapply(as.list(pds), function(x) {
-    #   mothers <- c(x, phangorn::Ancestors(data, x, 'all'))
-    #   mothers <- mothers[-length(mothers)]
-    # })
-    
     # Branch lengths.
     lengths <- cbind.data.frame(data$edge, data$edge.length)
     if(long.root) 
