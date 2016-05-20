@@ -10,9 +10,9 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   expect_equivalent(sum(phy$edge.length) + phy$root.edge, 
                     unlist(superdiv(gamma(super),0)$diversity * x@Tbar))
   expect_equivalent(c(super@type_abundance), 
-                    c(0.4, (2/3)*0.4, 0.2, (1/3)*0.4))
+                    c(0.2, 0.4, (1/3)*0.4, (2/3)*0.4))
   expect_equivalent(super@similarity, 
-                    rbind(c(1,0,1,0),c(0,1,0,1),rep(1,4),rep(1,4)))
+                    rbind(rep(1,4),c(1,1,0,0),rep(1,4),c(0,0,1,1)))
   
   # Non-ultrametric
   phy2 <- ape::read.tree(text="(A:1,B:2)R:1;")
@@ -23,9 +23,9 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   expect_equivalent(sum(phy2$edge.length) + phy2$root.edge, 
                     unlist(superdiv(gamma(super2),0)$diversity * x2@Tbar[1]))
   expect_equivalent(c(super2@type_abundance), 
-                    c(0.25, (2/2.4)*0.4, 0.25, (1/2.4)*0.4))
+                    c(0.25, 0.25, (1/2.4)*0.4, (2/2.4)*0.4))
   expect_equivalent(super2@similarity, 
-                    rbind(c(1.2, 0, 1.2, 0), c(0, 0.8, 0, 0.8),
-                          c(1.2, 0.8, 1.2, 0.8), c(1.2, 0.8, 1.2, 0.8)))
+                    rbind(c(1.2, 1.2, 0.8, 0.8), c(1.2, 1.2, 0, 0),
+                          c(1.2, 1.2, 0.8, 0.8), c(0, 0, 0.8, 0.8)))
 })
 
