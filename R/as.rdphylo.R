@@ -130,7 +130,7 @@ rdphylo <- function(pds.abundance, tree) {
     sum(hs.length)
   })
   Lj <- unlist(Lj)
-  terminal.taxa <- cbind.data.frame(tip.label = as.character(tree$tip.label), 
+  terminal.taxa <- cbind.data.frame(tip.label = tree$tip.label, 
                          tip.node = seq_along(pds.subset), 
                          Lj = Lj)
 
@@ -175,6 +175,7 @@ rdphylo <- function(pds.abundance, tree) {
   terminal.taxa <- tibble::as_data_frame(terminal.taxa)
   terminal.taxa <- terminal.taxa[,c("tip.label", "tip.node", "Lj", 
                                     "pds.abundance")]
+  class(terminal.taxa$tip.label) <- "character"
   
   # Structural component of similarity matrix
   structure <- structure_phylo(tree, historic.species)
