@@ -26,8 +26,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
   leaf.abundance <- check_partition(leaf.abundance)
   
   if(interval == 1) {
-    zmatrix <- similarity_phylo(data, leaf.abundance)
-    super <- supercommunity(leaf.abundance, zmatrix)
+    super <- supercommunity(leaf.abundance, data)
     return(super)
   } 
   
