@@ -32,5 +32,9 @@ test_that("Answers match up in the non-ultrametric case", {
 
 
 test_that("Setting chainsaw interval to 1 returns the phylogeny intact", {
+  tree2 <- ape::read.tree(text="(A:1,B:2)R:2;")
+  leaf.abundance <- c(0.6, 0.4)
+  super2 <- supercommunity(leaf.abundance, tree2) # type_weights
+  
 expect_equal(super2, chainsaw(rdphylo(leaf.abundance, tree2), leaf.abundance, 1))
 })
