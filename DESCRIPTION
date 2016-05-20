@@ -32,6 +32,7 @@ Collate:
     'check_partition.R'
     'class-supercommunity.R'
     'as.supercommunity.R'
+    'chainsaw.R'
     'class-rdiversity.R'
     'diversity-components.R'
     'diversity-measures.R'
