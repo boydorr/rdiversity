@@ -21,7 +21,7 @@ test_that("Answers match up in the non-ultrametric case", {
   leaf.abundance <- c(0.6, 0.4)
   data <- as.rdphylo(leaf.abundance, tree)
   interval <- 2
-  super <- chainsaw(data, leaf.abundance, interval)
+  expect_warning(super <- chainsaw(data, leaf.abundance, interval))
   
   tree2 <- ape::read.tree(text="(A:1,B:2)R:2;")
   super2 <- supercommunity(leaf.abundance, tree2) # type_weights
