@@ -12,9 +12,9 @@ test_that("Answers match up in the ultrametric case", {
   
   expect_equivalent(supercommunity.A.bar(super, 0:2), 
                     supercommunity.A.bar(super2, 0:2))
+  
 })
   
-
 
 test_that("Answers match up in the non-ultrametric case", {
   tree <- ape::read.tree(text="(A:1,B:2);")
@@ -30,3 +30,7 @@ test_that("Answers match up in the non-ultrametric case", {
                     supercommunity.A.bar(super2, 0:2))
 })
 
+
+test_that("Setting chainsaw interval to 1 returns the phylogeny intact", {
+expect_equal(super2, chainsaw(rdphylo(leaf.abundance, tree2), leaf.abundance, 1))
+})
