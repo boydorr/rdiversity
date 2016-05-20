@@ -171,6 +171,7 @@ rdphylo <- function(pds.abundance, tree) {
   historic.species <- tibble::as_data_frame(historic.species)
   historic.species <- historic.species[,c("hs.name", "a.node", "d.node", 
                                           "tip.node", "length", "pds.descendants")]
+  historic.species <- historic.species[order(historic.species$hs.name),]
   
   terminal.taxa <- tibble::as_data_frame(terminal.taxa)
   terminal.taxa <- terminal.taxa[,c("tip.label", "tip.node", "Lj", 
