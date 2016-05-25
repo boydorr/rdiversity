@@ -3,7 +3,8 @@
 #' 
 #' @param data object of class \code{rdphylo}
 #' @param leaf.abundance proportional abundance of tips
-#' @param interval proportion of total tree height to be cut off (from the root)
+#' @param interval proportion of total tree height to be conserved (taken as 
+#' a proportion from the heighest tip)
 #' 
 #' @return
 #' Returns an object of class \code{supercommunity}.
@@ -36,19 +37,17 @@ chainsaw <- function(data, leaf.abundance, interval) {
   # Height of tree
   max.height <- max(node.height)
   
-  # Measure the distance (from the top of the tree) we want to cut
-  true.interval <- 1-interval
-  cut.height <- max.height * true.interval
+  cut.depth <- max.height * interval
   
   # Distance from top of tree
   node.depth <- max.height - node.height
   node.depth <- cbind.data.frame(all.nodes, node.depth)
   colnames(node.depth) <- c("node", "depth")
   if(interval > 1) {
-    root.depth <- max.height + abs(cut.height)
+    root.depth <- abs(cut.depth)
     node.depth <- rbind.data.frame(node.depth, c(0, root.depth))
     
-    data$root.edge <- abs(cut.height)
+    data$root.edge <- max.height * (interval - 1) 
     data <- rdphylo(leaf.abundance, data)
   }
   
@@ -64,7 +63,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
   
   
   # Unharmed branches
-  surviving.index <- which(node.depth$depth > cut.height)
+  surviving.index <- which(node.depth$depth <= abs(cut.depth))
   surviving.nodes <- node.depth$node[surviving.index]
   unharmed.branches <- surviving.nodes[-na.omit(match(tip.nodes, surviving.nodes))]
   find.unharmed <- historic.species$a.node %in% unharmed.branches
@@ -112,7 +111,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
       these.ancestors <- remaining.ancestors[[x]]
 
       if(interval < 1) {
-        length.remaining <- cut.height
+        length.remaining <- cut.depth
       } else if (interval > 1) {
         length.remaining <- root.depth
       }
@@ -122,21 +121,25 @@ chainsaw <- function(data, leaf.abundance, interval) {
       length.remaining <- length.remaining - node.depth$depth[this.pds]
       
       sum.these <- list()
-      
       for (i in seq_along(these.ancestors)) {
         this.node <- these.ancestors[i]
         find.length <- pruned.historic$d.node %in% this.node
         hs.length <- unique(pruned.historic$length[find.length])
         length.remaining <- length.remaining - hs.length
         sum.these <- c(sum.these, hs.length)
-        if(length.remaining==0) {
+        
+        if(isTRUE(all.equal(0,length.remaining))) {
           break
-        } else if (length.remaining < 0) {
+        }else if(length.remaining > 0) {
+          next
+        }else if (length.remaining < 0) {
+          # if(interval < 1) {
           new.length <- hs.length + length.remaining
           row.index <- pruned.historic$d.node %in% this.node
           pruned.historic$length[row.index] <- new.length
           # Edit sum vector
           sum.these[length(sum.these)] <- new.length
+          # }
           break
         }}
       sum(unlist(sum.these))
