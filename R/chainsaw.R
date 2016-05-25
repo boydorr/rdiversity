@@ -41,6 +41,8 @@ chainsaw <- function(data, leaf.abundance, interval) {
   
   # Distance from top of tree
   node.depth <- max.height - node.height
+  # Remove non-zero rounding errors
+  node.depth <- sapply(node.depth, function(x) ifelse(isTRUE(all.equal(0, x)), 0, x))
   node.depth <- cbind.data.frame(all.nodes, node.depth)
   colnames(node.depth) <- c("node", "depth")
   if(interval > 1) {
@@ -51,9 +53,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
     data <- rdphylo(leaf.abundance, data)
   }
   
-  
   historic.species <- data@historic.species
-  
   
   # Ancestral nodes
   node.ancestors <-  lapply(as.list(all.nodes), function(x)  
