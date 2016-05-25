@@ -77,7 +77,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
     injured <- lapply(injured, function(x) x[2])
     injured <- unique(unlist(injured))
     if(any(injured %in% surviving.nodes))
-      injured <- injured[-(na.omit(match(surviving.nodes, injured)))]
+      injured <- injured[-(stats::na.omit(match(surviving.nodes, injured)))]
     find.injured <- which(historic.species$a.node %in% injured)
     check.injured <- historic.species[find.injured,]
     truly.injured <- which(check.injured$d.node %in% surviving.nodes)
