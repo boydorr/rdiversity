@@ -331,7 +331,7 @@ setMethod(f = "show", signature= "supercommunity",
                 paste0('[', nrow(object@type_abundance), 'x', 
                        ncol(object@type_abundance), 
                        ']\n------------------\n'))
-            print(head(object@type_abundance),10) 
+            print(utils::head(object@type_abundance),10) 
             if(nrow(object@type_abundance)>10) {
               cat("..\t","...\n\n")
             } else
@@ -341,7 +341,7 @@ setMethod(f = "show", signature= "supercommunity",
                 paste0('[', nrow(object@ordinariness), 'x', 
                        ncol(object@ordinariness), 
                        ']\n------------------\n'))
-            print(head(object@ordinariness),10) 
+            print(utils::head(object@ordinariness),10) 
             if(nrow(object@ordinariness)>10)
               cat("..\t","...\n\n\n")
             } )
