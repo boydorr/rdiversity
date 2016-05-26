@@ -31,6 +31,12 @@ chainsaw <- function(data, leaf.abundance, interval) {
     return(super)
   } 
   
+  # When phylogeny is removed, calculate the diversity of the tips
+  if(interval == 0) {
+    super <- supercommunity(leaf.abundance)
+    return(super)
+  }
+  
   # Distance from root
   node.height <- ape::node.depth.edgelength(data)
   
