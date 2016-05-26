@@ -11,7 +11,8 @@ chainsaw(data, leaf.abundance, interval)
 
 \item{leaf.abundance}{proportional abundance of tips}
 
-\item{interval}{proportion of total tree height to be cut off (from the root)}
+\item{interval}{proportion of total tree height to be conserved (taken as 
+a proportion from the heighest tip)}
 }
 \value{
 Returns an object of class \code{supercommunity}.

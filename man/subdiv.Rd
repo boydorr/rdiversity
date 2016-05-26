@@ -39,8 +39,6 @@ or gamma diversity by taking the powermean of diversity components}
 diversity by taking the relative entropy of diversity components}
 \item{\code{supercommunity} caculates all subcommunity measures of diversity}
 }
-
-as ds
 }
 \examples{
 # Calculate the diversity of a single population

@@ -15,8 +15,6 @@
 #' components.
 #' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
 #' 
-#' @details as ds
-#' 
 #' @return Returns a two-dimensional \code{data_frame} of mode \code{numeric}.
 #' @export 
 #' @examples 
