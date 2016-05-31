@@ -113,44 +113,46 @@ chainsaw <- function(data, leaf.abundance, interval) {
   remaining.ancestors <- node.ancestors[remaining.tips]
   names(remaining.ancestors) <- remaining.tips
   
-    Lj <- lapply(seq_along(remaining.ancestors), function(x) {
-      these.ancestors <- remaining.ancestors[[x]]
-
-      if(interval < 1) {
-        length.remaining <- cut.depth
-      } else if (interval > 1) {
-        length.remaining <- root.depth
-      }
+  Lj <- list()
+  for (x in seq_along(remaining.ancestors)) {
+    these.ancestors <- remaining.ancestors[[x]]
+    
+    if(interval < 1) {
+      length.remaining <- cut.depth
+    } else if (interval > 1) {
+      length.remaining <- root.depth
+    }
+    
+    # for non-ultrametric trees, subtract the empty space above the tip
+    this.pds <- as.numeric(names(remaining.ancestors)[x])
+    length.remaining <- length.remaining - node.depth$depth[this.pds]
+    
+    sum.these <- list()
+    for (i in seq_along(these.ancestors)) {
+      this.node <- these.ancestors[i]
+      find.length <- pruned.historic$d.node %in% this.node
+      # True length of branch
+      hs.length <- unique(pruned.historic$length[find.length])
+      length.remaining <- length.remaining - hs.length
+      sum.these <- c(sum.these, hs.length)
       
-      # for non-ultrametric trees, subtract the empty space above the tip
-      this.pds <- as.numeric(names(remaining.ancestors)[x])
-      length.remaining <- length.remaining - node.depth$depth[this.pds]
-      
-      sum.these <- list()
-      for (i in seq_along(these.ancestors)) {
-        this.node <- these.ancestors[i]
-        find.length <- pruned.historic$d.node %in% this.node
-        hs.length <- unique(pruned.historic$length[find.length])
-        length.remaining <- length.remaining - hs.length
-        sum.these <- c(sum.these, hs.length)
-        
-        if(isTRUE(all.equal(0,length.remaining))) {
-          break
-        }else if(length.remaining > 0) {
-          next
-        }else if (length.remaining < 0) {
-          # if(interval < 1) {
-          new.length <- hs.length + length.remaining
-          row.index <- pruned.historic$d.node %in% this.node
-          pruned.historic$length[row.index] <- new.length
-          # Edit sum vector
-          sum.these[length(sum.these)] <- new.length
-          # }
-          break
-        }}
-      sum(unlist(sum.these))
-    })
-  
+      if(isTRUE(all.equal(0,length.remaining))) {
+        break
+      }else if(length.remaining > 0) {
+        next
+      }else if (length.remaining < 0) {
+        # if(interval < 1) {
+        new.length <- hs.length + length.remaining
+        row.index <- pruned.historic$d.node %in% this.node
+        pruned.historic$length[row.index] <- new.length
+        # Edit sum vector
+        sum.these[length(sum.these)] <- new.length
+        # }
+        break
+      }}
+    Lj[[x]] <- sum(unlist(sum.these))
+  }
+    
   Lj <- cbind.data.frame(remaining.tips, unlist(Lj))
   colnames(Lj) <- c("tip.node", "Lj")
   
