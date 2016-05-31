@@ -51,6 +51,8 @@ alphabar <- function(super) {
   ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
                                super@subcommunity_weights[x])
+  if(!is.matrix(ordinariness.bar))
+    ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(super)
   results <- 1 / ordinariness.bar
   powermean(results, super, "alpha bar")
@@ -110,6 +112,8 @@ rhobar <- function(super) {
   ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
                                super@subcommunity_weights[x])
+  if(!is.matrix(ordinariness.bar))
+    ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(super)
   results <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
   powermean(results, super, "rho bar")
