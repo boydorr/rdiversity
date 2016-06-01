@@ -31,12 +31,6 @@ chainsaw <- function(data, leaf.abundance, interval) {
     return(super)
   } 
   
-  # When phylogeny is removed, calculate the diversity of the tips
-  if(interval == 0) {
-    super <- supercommunity(leaf.abundance)
-    return(super)
-  }
-  
   # Distance from root
   node.height <- ape::node.depth.edgelength(data)
   
@@ -47,6 +41,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
   
   # Distance from top of tree
   node.depth <- max.height - node.height
+  
   # Remove non-zero rounding errors
   node.depth <- sapply(node.depth, function(x) ifelse(isTRUE(all.equal(0, x)), 0, x))
   node.depth <- cbind.data.frame(all.nodes, node.depth)
@@ -57,6 +52,18 @@ chainsaw <- function(data, leaf.abundance, interval) {
     
     data$root.edge <- max.height * (interval - 1) 
     data <- rdphylo(leaf.abundance, data)
+  }
+  
+  # When phylogeny is removed, calculate the diversity of the tips
+  if(isTRUE(all.equal(0, interval))) {
+    if(is.ultrametric(data))
+      super <- supercommunity(leaf.abundance)
+    
+    if(!is.ultrametric(data)) {
+      nodes.at.zero <- node.depth$node[node.depth$depth %in% 0]
+      super <- supercommunity(leaf.abundance[nodes.at.zero,])
+    }
+        return(super)
   }
   
   historic.species <- data@historic.species
