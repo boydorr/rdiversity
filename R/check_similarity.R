@@ -20,10 +20,10 @@
 check_similarity <- function(partition, similarity) {
   if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
   
-  if(any(similarity<0)) 
+  if(any(similarity[!is.na(similarity)]<0)) 
     stop('similarity matrix elements must take positive values.')
   
-  if(any(similarity>1)) 
+  if(any(similarity[!is.na(similarity)]>1)) 
     warning('non-phylogenetic similarity matrix elements should take a value between 0 and 1.')
   
   if(ncol(similarity)!=nrow(similarity))
