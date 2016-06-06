@@ -327,23 +327,7 @@ is.supercommunity <- function (x)
 #' 
 setMethod(f = "show", signature= "supercommunity", 
           definition = function(object) {
-            cat('Type abundance:', 
-                paste0('[', nrow(object@type_abundance), 'x', 
-                       ncol(object@type_abundance), 
-                       ']\n------------------\n'))
-            print(utils::head(object@type_abundance),10) 
-            if(nrow(object@type_abundance)>10) {
-              cat("..\t","...\n\n")
-            } else
-              cat("\n\n")
-            
-            cat('Type ordinariness:',
-                paste0('[', nrow(object@ordinariness), 'x', 
-                       ncol(object@ordinariness), 
-                       ']\n------------------\n'))
-            print(utils::head(object@ordinariness),10) 
-            if(nrow(object@ordinariness)>10)
-              cat("..\t","...\n\n\n")
+            cat('Supercommunity object contains:\n', paste(slotNames(object),"\n"))
             } )
 
 
