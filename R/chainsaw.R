@@ -6,6 +6,7 @@
 #' @param interval proportion of total tree height to be conserved (taken as 
 #' a proportion from the heighest tip)
 #' 
+#' @export
 #' @return
 #' Returns an object of class \code{supercommunity}.
 #' 
