@@ -216,11 +216,10 @@ setMethod(f = "show", signature(object = "rdphylo"),
                 'tips and', object$Nnode,
                 'internal nodes (including the root).\n\n')
             
-            cat('Tip labels:\n', head(object$tip.label), '\n\n')
-            # 
-            # if(ape::is.rooted(object)) {
-            #   rooted <- 'Rooted'
-            # } else rooted <- 'Unrooted'
+            if(length(object$tip.label) < 6)
+              cat('Tip labels:', object$tip.label, '\n\n')
+            else 
+              cat('Tip labels:', head(object$tip.label), '...\n\n')
             
-            # cat(rooted, '.')
+            cat('rdphylo object contains:\n', paste(slotNames(object),'\n'))
           } )
