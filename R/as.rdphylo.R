@@ -190,12 +190,14 @@ rdphylo <- function(pds.abundance, tree) {
 
 
 #' @rdname rdphylo
+#' @export
 #' 
 as.rdphylo <- rdphylo
 
 
 #' @rdname rdphylo
 #' @param x any R object 
+#' @export
 #' 
 is.rdphylo <-
   function (x)
@@ -206,6 +208,7 @@ is.rdphylo <-
 
 #' @rdname rdphylo
 #' @param object object of class \code{rdphylo}
+#' @export
 #' 
 setMethod(f = "show", signature(object = "rdphylo"),
           definition = function(object){
