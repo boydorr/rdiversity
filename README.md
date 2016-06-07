@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/boydorr/rdiversity.svg?branch=master)](https://travis-ci.org/boydorr/rdiversity)
 [![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
 
-`rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals; taxonomic, phenotypic, genetic, phylogenetic, etc. 
+`rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals. Similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. 
 
 ## Installation
 
@@ -17,7 +17,7 @@ devtools::install_github("boydorr/rdiversity")
 ## Getting started
 
 
-Before calculating diversity a supercommunity object must be created:
+Before calculating diversity a 'supercommunity' object must be created. This object contains all the information needed to calculate diversity.
 
 ```r
 # Example population
@@ -25,17 +25,16 @@ pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 
 # Create supercommunity object
 super <- supercommunity(pop)
-str(super)
 ```
 
-The `supercommunity()` function creates an object containing:  
+The `supercommunity()` function takes two arguments, `partition` and `similarity`, and creates an object containing:  
 
 * `@type_abundance` : the abundance of types within a population,  
 * `@similarity` : the pair-wise similarity of types within a population,  
 * `@ordinariness` : the ordinariness of types within a population,  
 * `@subcommunity_weights` :  the relative weights of subcommunities within a population,  
 * `@type_weights` : the relative weights of types within a population, and  
-* `@.Data` : the *raw* abundance of types within a population (in the example above `pop` is stored here in it's unnormalised state). Therefore, `.Data` may contain:
+* `@.Data` : the *raw* abundance of types within a population (contents of the partition argument), which may be: 
     + Count data, in which case `@type_abundance` is then normalised to sum to 1;  
     + Relative abundance data, such that `@type_abundance` is numerically identical; or  
     + Count / Relative abundance data of present-day samples in a phylogeny, where `@type_abundance` is then calculated for all historic species within the evolutionary history of that phylogeny. 
@@ -43,12 +42,12 @@ The `supercommunity()` function creates an object containing:
 The supercommunity object contains all the information needed to calculate diversity.
     
     
-##Calculating diversity
+## Calculating diversity
 
 
 The functions within `rdiversity` can be accessed in two main ways. 
 
-###1. Two part method (slightly more computationally efficient)
+### 1. Two part method (slightly more computationally efficient)
 For large datasets (or simply to run faster code), it makes sense to calculate diversity in two steps. 
 
 Before explaining these steps, it is important to note that both subcommunity and supercommunity  alpha diversity are transformations of the same low-level alpha component. The same is true for normalised alpha, beta, normalised beta, rho, normalised rho, and gamma.
@@ -76,7 +75,7 @@ subdiv(super)
 superdiv(super)
 ```
 
-###2. Direct method
+### 2. Direct method
 Simply, to calculate normalised subcommunity alpha diversity, a supercommunity object is passed to a wrapper function with a suitable *q* value (or range of values):
 ```r
 subcommunity.alpha.bar(super,0)
@@ -103,7 +102,7 @@ A complete list of these functions is shown below:
 * `supercommunity.G()` : supercommunity similarity-sensitive diversity  
 
 
-##General tools
+## General tools
 * `similarity_matrix()` :  
 * `similarity_shimatani()` :  
 * `similarity_phylo()` : 

@@ -18,7 +18,6 @@
 #' @importFrom tidyr nest
 #' @importFrom tibble as_data_frame
 #' @importFrom reshape2 melt
-#' @importClassesFrom phytools phylo
 #' 
 #' @author 
 #' Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve <richard.reeve@glasgow.ac.uk>

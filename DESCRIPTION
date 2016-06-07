@@ -42,7 +42,7 @@ Collate:
     'subdiv.R'
     'qDZ.R'
     'qDZ.single.R'
-    'rdiversity.R'
+    'rdiversity-package.R'
     'similarity_matrix.R'
     'similarity_phylo.R'
     'similarity_shimatani.R'
