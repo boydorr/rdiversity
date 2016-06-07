@@ -212,5 +212,8 @@ chainsaw <- function(data, leaf.abundance, interval) {
 
   # Input similarity as matrix, not phylo, so partition must have the same 
   # number of species (i.e. abundance of historic species, not tips)
-  supercommunity(pruned.pds, zmatrix)
+  new.super <- supercommunity(pruned.pds, zmatrix)
+  new.super@.Data <- new.leaf.abundance
+  new.super
+  
 } 
