@@ -14,6 +14,9 @@ chainsaw <- function(data, leaf.abundance, interval) {
   if(!is.rdphylo(data))
     stop("data must be class rdphylo.")
   
+  if(interval == 0)
+    stop("Cannot set interval to zero as this would remove the entire phylogeny.")
+  
   # Terminal taxa.
   tip.nodes <- seq_along(data$tip.label)
   all.nodes <- 1:(max(data$edge))
