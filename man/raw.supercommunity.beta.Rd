@@ -32,7 +32,7 @@ pop <- sample(1:50, 5)
 super <- supercommunity(pop)
 
 # Calculate raw supercommunity beta diversity
-b <- beta(super)
+b <- raw.beta(super)
 superdiv(b, 0:2)
 raw.supercommunity.beta(super, 0:2)
 

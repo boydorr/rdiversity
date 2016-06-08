@@ -79,11 +79,11 @@ normalised.subcommunity.alpha <- function(super, qs)
 #' super <- supercommunity(pop)
 #' 
 #' # Calculate raw subcommunity beta diversity
-#' b <- beta(super)
+#' b <- raw.beta(super)
 #' subdiv(b, 0:2)
 #' raw.subcommunity.beta(super, 0:2)
 #' 
-subcommunity.beta <- function(super, qs) 
+raw.subcommunity.beta <- function(super, qs) 
   subdiv(raw.beta(super), qs)
 
 
@@ -293,7 +293,7 @@ normalised.supercommunity.alpha <- function(super, qs)
 #' super <- supercommunity(pop)
 #' 
 #' # Calculate raw supercommunity beta diversity
-#' b <- beta(super)
+#' b <- raw.beta(super)
 #' superdiv(b, 0:2)
 #' raw.supercommunity.beta(super, 0:2)
 #' 
