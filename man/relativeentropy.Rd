@@ -6,7 +6,7 @@
 \alias{is.relativeentropy}
 \alias{relativeentropy}
 \alias{show,relativeentropy-method}
-\title{Coerse to relativeentropy}
+\title{Coerce to relativeentropy}
 \usage{
 relativeentropy(results, super, tag)
 
@@ -41,8 +41,8 @@ object into a \code{relativeentropy}.
 pop <- sample(1:50, 5)
 super <- supercommunity(pop)
 
-# Calculate subcommunity beta diversity (takes the relative entropy)
-a <- beta(super)
+# Calculate raw subcommunity beta diversity
+a <- raw.beta(super)
 class(a)
 
 }

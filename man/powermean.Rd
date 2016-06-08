@@ -6,7 +6,7 @@
 \alias{is.powermean}
 \alias{powermean}
 \alias{show,powermean-method}
-\title{Coerse to powermean}
+\title{Coerce to powermean}
 \usage{
 powermean(results, super, tag)
 
@@ -19,13 +19,14 @@ is.powermean(x)
 \arguments{
 \item{results}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains values calculated from diversity-term functions, e.g. 
-\code{alphabar()}, \code{beta}, etc.}
+\code{normalised.alpha()}, \code{raw.beta}, etc.}
 
 \item{super}{object of class \code{supercommunity}; contains proportional 
 abundance of types, pair-wise similarity, and other associated variables.}
 
-\item{tag}{object of class \code{character}; contains an identifier 
-associated with the calculated diversity-term, e.g. "alphabar", "beta", etc.}
+\item{tag}{object of class \code{character}; contains an identifier
+associated with the calculated diversity-term, e.g.
+"normalised.alpha", "raw.beta", etc.}
 
 \item{x}{any R object}
 
@@ -47,9 +48,9 @@ object into a \code{powermean}.
 }
 \details{
 \code{powermean} is a class of object output from calculating 
-\code{alpha}, \code{alphabar}, \code{rho}, 
-\code{rhobar}, and \code{gamma} diversity terms; 
-\code{beta} and \code{betabar} are output as 
+\code{raw.alpha}, \code{normalised.alpha}, \code{raw.rho}, 
+\code{normalised.rho}, and \code{raw.gamma} diversity terms; 
+\code{raw.beta} and \code{normalised.beta} are output as 
 \code{relativeentropy} objects.
 
 To calculate the subcommunity or supercommunity diversity, an object of
@@ -60,8 +61,8 @@ respectively.
 pop <- sample(1:50, 5)
 super <- supercommunity(pop)
 
-# Calculate subcommunity alpha diversity (takes the powermean)
-a <- alpha(super)
+# Calculate subcommunity raw alpha diversity (takes the powermean)
+a <- raw.alpha(super)
 class(a)
 
 }

@@ -20,7 +20,7 @@
 \alias{supercommunity,numeric,missing-method}
 \alias{supercommunity,numeric,phylo-method}
 \alias{supercommunity,numeric,rdphylo-method}
-\title{Coerse to Supercommunity}
+\title{Coerce to Supercommunity}
 \usage{
 supercommunity(partition, similarity, ...)
 

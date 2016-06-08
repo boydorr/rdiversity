@@ -3,12 +3,12 @@
 #' Calculates the low-level diversity component necessary for calculating alpha
 #' diversity.
 #'
-#' Values generated from \code{alpha()} may be input into \code{subdiv()} and
-#' \code{superdiv} to calcualte raw subcommunity/supercommunity alpha diversity.
+#' Values generated from \code{raw.alpha()} may be input into \code{subdiv()} and
+#' \code{superdiv()} to calculate raw subcommunity/supercommunity alpha diversity.
 #' 
 #' @param super object of class \code{supercommunity}.
 #' 
-#' @return Returns 
+#' @return Returns an object of class \code{powermean}.
 #' @include as.supercommunity.R
 #' @export
 #' 
@@ -16,12 +16,12 @@
 #' pop <- sample(1:50, 5)
 #' super <- supercommunity(pop)
 #' 
-#' # Calculate alpha component
-#' a <- alpha(super)
+#' # Calculate raw alpha component
+#' a <- raw.alpha(super)
 #' 
-alpha <- function(super) {
+raw.alpha <- function(super) {
   results <- 1 / super@ordinariness
-  powermean(results, super, "alpha")
+  powermean(results, super, "raw alpha")
 }
 
 
@@ -30,13 +30,13 @@ alpha <- function(super) {
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised alpha diversity.
 #'
-#' Values generated from \code{alphabar()} may be input into \code{subdiv()} 
-#' and \code{superdiv} to calcualte normalised subcommunity/supercommunity 
+#' Values generated from \code{normalised.alpha()} may be input into \code{subdiv()} 
+#' and \code{superdiv()} to calculate normalised subcommunity/supercommunity 
 #' alpha diversity.
 #' 
 #' @param super object of class \code{supercommunity}.
 #' 
-#' @return Returns 
+#' @return Returns an object of class \code{powermean}.
 #' @include as.supercommunity.R
 #' @export
 #' 
@@ -45,9 +45,9 @@ alpha <- function(super) {
 #' super <- supercommunity(pop)
 #' 
 #' # Calculate normalised alpha component
-#' a <- alphabar(super)
+#' a <- normalised.alpha(super)
 #' 
-alphabar <- function(super) {
+normalised.alpha <- function(super) {
   ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
                                super@subcommunity_weights[x])
@@ -55,21 +55,21 @@ alphabar <- function(super) {
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(super)
   results <- 1 / ordinariness.bar
-  powermean(results, super, "alpha bar")
+  powermean(results, super, "normalised alpha")
 }
 
 
-#' Low level diversity components: rho
+#' Low level diversity components: raw rho
 #' 
-#' Calculates the low-level diversity component necessary for calculating rho
+#' Calculates the low-level diversity component necessary for calculating raw rho
 #' diversity.
 #'
-#' Values generated from \code{rho()} may be input into \code{subdiv()} and
-#' \code{superdiv} to calcualte raw subcommunity/supercommunity rho diversity.
+#' Values generated from \code{raw.rho()} may be input into \code{subdiv()} and
+#' \code{superdiv()} to calculate raw subcommunity/supercommunity rho diversity.
 #' 
 #' @param super object of class \code{supercommunity}.
 #' 
-#' @return Returns 
+#' @return Returns an object of class \code{powermean}.
 #' @include as.supercommunity.R
 #' @export
 #' 
@@ -77,12 +77,12 @@ alphabar <- function(super) {
 #' pop <- sample(1:50, 5)
 #' super <- supercommunity(pop)
 #' 
-#' # Calculate rho component
-#' a <- rho(super)
+#' # Calculate raw rho component
+#' a <- raw.rho(super)
 #' 
-rho <- function(super) {
+raw.rho <- function(super) {
   results <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
-  powermean(results, super, "rho")
+  powermean(results, super, "raw rho")
 }
 
 
@@ -91,13 +91,13 @@ rho <- function(super) {
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised rho diversity.
 #'
-#' Values generated from \code{rhobar()} may be input into \code{subdiv()} and
-#' \code{superdiv} to calcualte normalised subcommunity/supercommunity rho 
+#' Values generated from \code{normalised.rho()} may be input into \code{subdiv()} and
+#' \code{superdiv()} to calculate normalised subcommunity/supercommunity rho 
 #' diversity.
 #' 
 #' @param super object of class \code{supercommunity}.
 #' 
-#' @return Returns 
+#' @return Returns an object of class \code{powermean}.
 #' @include as.supercommunity.R
 #' @export
 #' 
@@ -106,9 +106,9 @@ rho <- function(super) {
 #' super <- supercommunity(pop)
 #' 
 #' # Calculate normalised rho component
-#' a <- rhobar(super)
+#' a <- normalised.rho(super)
 #' 
-rhobar <- function(super) {
+normalised.rho <- function(super) {
   ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
                                super@subcommunity_weights[x])
@@ -116,21 +116,21 @@ rhobar <- function(super) {
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(super)
   results <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
-  powermean(results, super, "rho bar")
+  powermean(results, super, "normalised rho")
 }
 
 
-#' Low level diversity components: gamma
+#' Low level diversity components: raw beta
 #' 
-#' Calculates the low-level diversity component necessary for calculating beta
+#' Calculates the low-level diversity component necessary for calculating raw beta
 #' diversity.
 #'
-#' Values generated from \code{beta()} may be input into \code{subdiv()} and
-#' \code{superdiv} to calcualte raw subcommunity/supercommunity beta diversity.
+#' Values generated from \code{raw.beta()} may be input into \code{subdiv()} and
+#' \code{superdiv()} to calculate raw subcommunity/supercommunity beta diversity.
 #' 
 #' @param super object of class \code{supercommunity}.
 #' 
-#' @return Returns 
+#' @return Returns an object of class \code{relativeentropy}.
 #' @include as.supercommunity.R
 #' @export
 #' 
@@ -138,28 +138,28 @@ rhobar <- function(super) {
 #' pop <- sample(1:50, 5)
 #' super <- supercommunity(pop)
 #' 
-#' # Calculate beta component
-#' a <- beta(super)
+#' # Calculate raw beta component
+#' a <- raw.beta(super)
 #' 
-beta <- function(super) {
+raw.beta <- function(super) {
   rho <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
   results <- 1 / rho
-  relativeentropy(results, super, "beta")
+  relativeentropy(results, super, "raw beta")
 }
 
 
-#' Low level diversity components
+#' Low level diversity components: normalised beta
 #' 
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised beta diversity.
 #'
-#' Values generated from \code{betabar()} may be input into \code{subdiv()} and
-#' \code{superdiv} to calcualte normalised subcommunity/supercommunity beta 
+#' Values generated from \code{normalised.beta()} may be input into \code{subdiv()} and
+#' \code{superdiv()} to calculate normalised subcommunity/supercommunity beta 
 #' diversity.
 #' 
 #' @param super object of class \code{supercommunity}.
 #' 
-#' @return Returns 
+#' @return Returns an object of class \code{relativeentropy}.
 #' @include as.supercommunity.R
 #' @export
 #' 
@@ -168,32 +168,32 @@ beta <- function(super) {
 #' super <- supercommunity(pop)
 #' 
 #' # Calculate normalised beta component
-#' a <- betabar(super)
+#' a <- normalised.beta(super)
 #' 
-betabar <- function(super) {
+normalised.beta <- function(super) {
   ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
                              function(x) super@ordinariness[,x] /
                                super@subcommunity_weights[x])
   if(!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(super)
-  rhobar <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
-  results <- 1 / rhobar
-  relativeentropy(results, super, "beta bar")
+  normalised.rho <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
+  results <- 1 / normalised.rho
+  relativeentropy(results, super, "normalised beta")
 }
 
 
-#' Low level diversity components
+#' Low level diversity components: gamma
 #' 
 #' Calculates the low-level diversity component necessary for calculating gamma
 #' diversity.
 #'
-#' Values generated from \code{gamma()} may be input into \code{subdiv()} and
-#' \code{superdiv} to calcualte subcommunity/supercommunity gamma diversity.
+#' Values generated from \code{raw.gamma()} may be input into \code{subdiv()} and
+#' \code{superdiv()} to calculate subcommunity/supercommunity gamma diversity.
 #' 
 #' @param super object of class \code{supercommunity}.
 #' 
-#' @return Returns 
+#' @return Returns an object of class \code{powermean}.
 #' @include as.supercommunity.R
 #' @export
 #' 
@@ -202,9 +202,9 @@ betabar <- function(super) {
 #' super <- supercommunity(pop)
 #' 
 #' # Calculate gamma component
-#' a <- gamma(super)
+#' a <- raw.gamma(super)
 #' 
-gamma <- function(super) {
+raw.gamma <- function(super) {
   results <- rowSums(super@ordinariness, na.rm=T)
   results[results==0] <- NaN
   results <- 1 / results

@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-measures.R
 \name{subcommunity.beta}
 \alias{subcommunity.beta}
-\title{Similarity-sensitive raw subcommunity.beta diversity}
+\title{Similarity-sensitive raw subcommunity beta diversity}
 \usage{
 subcommunity.beta(super, qs)
 }
@@ -16,11 +16,11 @@ Returns a two-dimensional \code{matrix} of diversities, with columns
 representing subcommunities and rows representing values of \emph{q}.
 }
 \description{
-\code{subcommunity.beta()} is used to calculate the 
+\code{raw.subcommunity.beta()} is used to calculate the 
 distinctiveness of subcommunity \emph{j}.
 }
 \details{
-\code{subcommunity.beta()} calculates the subcommunity beta diversity of a 
+\code{raw.subcommunity.beta()} calculates the subcommunity beta diversity of a 
 series of columns representing independent subcommunity counts relative to 
 the supercommunity as a whole (by default the sum of the subcommunities).  
 This measure may be calculated for a series of orders, repesented as a  
@@ -30,9 +30,10 @@ vector of \code{qs}.
 pop <- sample(1:50, 5)
 super <- supercommunity(pop)
 
-# Calculate subcommunity beta diversity (takes the relative entropy)
-a <- beta(super)
-subdiv(a, 0:2)
+# Calculate raw subcommunity beta diversity
+b <- beta(super)
+subdiv(b, 0:2)
+raw.subcommunity.beta(super, 0:2)
 
 }
 
