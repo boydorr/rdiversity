@@ -327,7 +327,22 @@ is.supercommunity <- function (x)
 #' 
 setMethod(f = "show", signature= "supercommunity", 
           definition = function(object) {
-            cat('Supercommunity object contains:\n', paste(slotNames(object),"\n"))
+            # cat('Supercommunity object contains:\n', paste(slotNames(object),"\n"))
+            # cat("\n-------------------")
+            cat("Similarity :\n")
+            print(tibble::as_data_frame(object@similarity))
+            cat("\n-------------------\n")
+            cat("\nType abundance :\n")
+            print(tibble::as_data_frame(object@type_abundance))
+            cat("\n-------------------\n")
+            cat("\nOrdinariness :\n")
+            print(tibble::as_data_frame(object@ordinariness))
+            cat("\n-------------------\n")
+            cat("\nSubcommunity weights :\n")
+            print(tibble::as_data_frame(t(as.data.frame(object@subcommunity_weights))))
+            cat("\n-------------------\n")
+            cat("\nType weights :\n")
+            print(tibble::as_data_frame(object@type_weights))
             } )
 
 
