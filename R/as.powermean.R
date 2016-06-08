@@ -1,4 +1,4 @@
-#' Coerse to powermean
+#' Coerce to powermean
 #' 
 #' Functions to check if an object is a \code{powermean} or coerce an  
 #' object into a \code{powermean}.

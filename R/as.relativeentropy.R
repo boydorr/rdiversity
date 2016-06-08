@@ -1,4 +1,4 @@
-#' Coerse to relativeentropy
+#' Coerce to relativeentropy
 #' 
 #' Functions to check if an object is a \code{relativeentropy} or coerce an  
 #' object into a \code{relativeentropy}.

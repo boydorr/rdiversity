@@ -1,4 +1,4 @@
-#' Coerse to Supercommunity
+#' Coerce to Supercommunity
 #' 
 #' Functions to check if an object is a \code{supercommunity} or coerce an  
 #' object into a \code{supercommunity}.
