@@ -29,7 +29,7 @@ rdplot <- function(data, plot.title) {
     m <- bquote(bar(.(m)))
     y.title <- bquote(.(com) ~ .(m))
   }else{
-    m <- as.symbol(.(measure))
+    m <- as.symbol(measure)
     y.title <- bquote(.(com) ~ .(m))
   }
   
