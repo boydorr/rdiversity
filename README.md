@@ -89,7 +89,7 @@ A complete list of these functions is shown below:
 * `normalised.supercommunity.rho()` : average representativeness of subcommunities  
 * `raw.supercommunity.beta()` : average distinctiveness of subcommunities  
 * `normalised.supercommunity.beta()` : effective number of distinct subcommunities  
-* `raw.supercommunity.gamma()` : supercommunity similarity-sensitive diversity  
+* `supercommunity.gamma()` : supercommunity similarity-sensitive diversity  
 
 
 ## General tools
