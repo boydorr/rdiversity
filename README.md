@@ -34,55 +34,45 @@ The `supercommunity()` function takes two arguments, `partition` and `similarity
 * `@ordinariness` : the ordinariness of types within a population,  
 * `@subcommunity_weights` :  the relative weights of subcommunities within a population,  
 * `@type_weights` : the relative weights of types within a population, and  
-* `@.Data` : the *raw* abundance of types within a population (contents of the partition argument), which may be: 
-    + Count data, in which case `@type_abundance` is then normalised to sum to 1;  
-    + Relative abundance data, such that `@type_abundance` is numerically identical; or  
-    + Count / Relative abundance data of present-day samples in a phylogeny, where `@type_abundance` is then calculated for all historic species within the evolutionary history of that phylogeny. 
+* `@.Data` : the contents of the partition argument, which is usually the *raw* abundance of types within a population.
     
-The supercommunity object contains all the information needed to calculate diversity.
-    
-    
+
 ## Calculating diversity
-
-
-The functions within `rdiversity` can be accessed in two main ways. 
-
-### 1. Two part method (slightly more computationally efficient)
-For large datasets (or simply to run faster code), it makes sense to calculate diversity in two steps. 
-
-Before explaining these steps, it is important to note that both subcommunity and supercommunity  alpha diversity are transformations of the same low-level alpha component. The same is true for normalised alpha, beta, normalised beta, rho, normalised rho, and gamma.
-
-It makes sense then, to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `alpha()`, `alphabar()`, `beta()`, `betabar()`, `rho()`, `rhobar()`, or `gamma()`. Afterwhich `subdiv()` or `superdiv()` are used to calculate subcommunity or supercommunity diversity, respectively.
+First we need to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `alpha()`, `alphabar()`, `beta()`, `betabar()`, `rho()`, `rhobar()`, or `gamma()`. 
 
 ```r
 # First, calculate the normalised subcommunity alpha component
 component <- alphabar(super)
-
-# Then, calculate normalised subcommunity alpha 
-subdiv(component, 0:2)
-
-# or normalised supercommunity alpha
-superdiv(component, 0:2)
 ```
 
-Alternatively, to calculate **all** subcommunity (or supercommunity) measures, a supercommunity object should be passed directly:
+Afterwhich, `subdiv()` or `superdiv()` are used to calculate subcommunity or supercommunity diversity, respectively (since both subcommunity and supercommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
+
+```r
+# Then, calculate species richness
+subdiv(component, 0)
+
+# or the average species richness across the whole population
+superdiv(component, 0)
+
+# We can also generate a diversity profile by calculating multiple q-values simultaneously
+df <- subdiv(component, 0:30)
+rdplot(df)
+```
+
+Alternatively, to calculate **all** subcommunity (or supercommunity) measures, a supercommunity object may be passed directly:
 
 ```r
 # To calculate all subcommunity diversity measures
-subdiv(super)
+subdiv(super, 0:2)
 
 # To calculate all supercommunity diversity measures
-superdiv(super)
+superdiv(super, 0:2)
 ```
 
-### 2. Direct method
-Simply, to calculate normalised subcommunity alpha diversity, a supercommunity object is passed to a wrapper function with a suitable *q* value (or range of values):
+
+Alternatively, a single measure of diversity may be calculated by calling a wrapper function:
 ```r
-subcommunity.alpha.bar(super,0)
-```
-And to calculate normalised supercommunity alpha:
-```r 
-supercommunity.alpha.bar(super,0:2)
+subcommunity.alpha.bar(super,0:2)
 ```
 A complete list of these functions is shown below:
 

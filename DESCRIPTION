@@ -43,6 +43,7 @@ Collate:
     'qDZ.R'
     'qDZ.single.R'
     'rdiversity-package.R'
+    'rdplot.R'
     'similarity_matrix.R'
     'similarity_phylo.R'
     'similarity_shimatani.R'
