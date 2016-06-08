@@ -329,21 +329,30 @@ setMethod(f = "show", signature= "supercommunity",
           definition = function(object) {
             # cat('Supercommunity object contains:\n', paste(slotNames(object),"\n"))
             # cat("\n-------------------")
-            cat("Similarity :\n")
-            print(tibble::as_data_frame(object@similarity))
-            cat("\n-------------------\n")
-            cat("\nType abundance :\n")
-            print(tibble::as_data_frame(object@type_abundance))
-            cat("\n-------------------\n")
-            cat("\nOrdinariness :\n")
-            print(tibble::as_data_frame(object@ordinariness))
-            cat("\n-------------------\n")
-            cat("\nSubcommunity weights :\n")
-            print(tibble::as_data_frame(t(as.data.frame(object@subcommunity_weights))))
-            cat("\n-------------------\n")
-            cat("\nType weights :\n")
-            print(tibble::as_data_frame(object@type_weights))
+            print(pseudo_data_frame(object@similarity, "Similarity"))
+            cat("\n-------------------\n\n")
+            print(pseudo_data_frame(object@type_abundance, "Type abundance"))
+            cat("\n-------------------\n\n")
+            print(pseudo_data_frame(object@ordinariness, "Ordinariness"))
+            cat("\n-------------------\n\n")
+            len <- length(object@subcommunity_weights)
+            cat(paste0("Subcommunity weights", ": [",  len, "]"), "\n")
+            print(object@subcommunity_weights)
+            cat("\n-------------------\n\n")
+            print(pseudo_data_frame(object@type_weights, "Type weights"))
             } )
 
 
+pseudo_data_frame <- function(x, tag) {
+    rows <- nrow(x)
+    cols <- ncol(x)
+    cat(paste0(tag, ": [", rows, " x ", cols, "]"), "\n")
+    if(nrow(x)>6) {
+    output <- rbind.data.frame(head(x),"...")
+    row.names(output)[nrow(output)] <- ".."
+    }else{
+      output <- head(x)
+    }
+    output
+}
 
