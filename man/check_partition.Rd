@@ -20,6 +20,7 @@ input as an argument.
 }
 \examples{
 population <- data.frame(a = 1:2, b = 3:4)
+population <- population / sum(population)
 row.names(population) <- NULL
 new.population <- check_partition(population)
 new.population
