@@ -21,16 +21,22 @@
 #' @name supercommunity
 #' @rdname supercommunity-methods
 #' @exportMethod supercommunity
-#' 
-#' @param partition (optional) \code{vector} of mode \code{numeric}; containing the 
-#' proportional abundance of present day species (leaves)
-#' @param similarity object of class \code{phylo} or \code{rdphylo}
-#' @param interval object of mode numeric
-#' @param ... additional arguments.
-#' 
-#' @return Returns an object of class \code{supercommunity}; an S4 object 
-#' containing five slots (see Details). 
-#' 
+#'
+#' @param partition \code{vector} or \code{matrix} containing the
+#' relative abundances of individuals or types in their subcommunities. In the
+#' case of phylogenetic supercommunities, these are the relative abundances of
+#' the tips of the tree (the present day species).
+#' @param similarity (optional) object that describes similarity between
+#' individuals or types. Usually missing (all types are distinct) or a matrix
+#' showing similarities, but can be of class \code{phylo} or \code{rdphylo}.
+#' @param interval (optional) for phylogenetic supercommunities only, how
+#' far back we go in the tree, with 0 marking the date of the most
+#' recent tip, and 1 (the default) marking the most recent common
+#' ancestor. Numbers greater than 1 extend the root of the tree.
+#'
+#' @return Returns an object of class \code{supercommunity}; an S4 object
+#' containing five slots (see Details).
+#'
 #' @include class-supercommunity.R check_partition.R check_similarity.R
 #' @seealso \code{\link{supercommunity-class}}
 #'
@@ -51,11 +57,11 @@ setGeneric(name = "supercommunity",
 
 
 #' @rdname supercommunity-methods
-#' @aliases supercommunity, ANY-method
-#' 
-setMethod(f = "supercommunity", 
-          signature(partition = "data.frame", similarity = "missing"), 
-          definition = function(partition, similarity = NA) {  
+#' @aliases supercommunity,data.frame-method
+#'
+setMethod(f = "supercommunity",
+          signature(partition = "data.frame", similarity = "missing"),
+          definition = function(partition) {
             # If similarity is data.frame, convert to matrix
             partition <- check_partition(partition)
 
@@ -64,11 +70,12 @@ setMethod(f = "supercommunity",
 
 
 #' @rdname supercommunity-methods
+#' @aliases supercommunity,numeric-method
 #' @export
-#' 
-setMethod(f = "supercommunity", 
-          signature(partition = "numeric", similarity = "missing"), 
-          definition = function(partition, similarity = NA) {  
+#'
+setMethod(f = "supercommunity",
+          signature(partition = "numeric", similarity = "missing"),
+          definition = function(partition) {
             # If similarity is numeric/vector, convert to matrix
             partition <- check_partition(partition)
 
@@ -77,52 +84,54 @@ setMethod(f = "supercommunity",
 
 
 #' @rdname supercommunity-methods
+#' @aliases supercommunity,matrix-method
 #' @export
-#' 
-setMethod(f = "supercommunity", 
-          signature(partition = "data.frame", similarity = "matrix"), 
-          definition = function(partition, similarity = NA) {  
-            # If similarity is data.frame, convert to matrix
-            partition <- check_partition(partition)
-            
-            supercommunity(partition, similarity)
-          } )
-
-
-#' @rdname supercommunity-methods
-#' @export
-#' 
-setMethod(f = "supercommunity", 
-          signature(partition = "numeric", similarity = "matrix"), 
-          definition = function(partition, similarity = NA) {  
-            # If similarity is numeric/vector, convert to matrix
-            partition <- check_partition(partition)
-
-            supercommunity(partition, similarity)
-          } )
-
-
-#' @rdname supercommunity-methods
-#' @export
-#' 
-setMethod(f = "supercommunity", 
-          signature(partition = "matrix", similarity = "missing"), 
-          definition = function(partition, similarity = NA) {  
-            # If similarity is not input, create identity matrix 
+#'
+setMethod(f = "supercommunity",
+          signature(partition = "matrix", similarity = "missing"),
+          definition = function(partition) {
+            # If similarity is not input, create identity matrix
             similarity <- diag(1, nrow(partition))
             row.names(similarity) <- row.names(partition)
             colnames(similarity) <- row.names(partition)
-            
+
+            supercommunity(partition, similarity)
+          } )
+
+
+#' @rdname supercommunity-methods
+#' @aliases supercommunity,data.frame,matrix-method
+#' @export
+#'
+setMethod(f = "supercommunity",
+          signature(partition = "data.frame", similarity = "matrix"),
+          definition = function(partition, similarity) {
+            # If similarity is data.frame, convert to matrix
+            partition <- check_partition(partition)
+
             supercommunity(partition, similarity)
           } )
 
 
 #' @rdname supercommunity-methods
 #' @export
-setMethod(f = "supercommunity", 
-          signature(partition = "matrix", similarity = "matrix"), 
-          definition = function(partition, similarity = NA) {  
 #'
+setMethod(f = "supercommunity",
+          signature(partition = "numeric", similarity = "matrix"),
+          definition = function(partition, similarity) {
+            # If similarity is numeric/vector, convert to matrix
+            partition <- check_partition(partition)
+
+            supercommunity(partition, similarity)
+          } )
+
+
+#' @rdname supercommunity-methods
+#' @export
+#'
+setMethod(f = "supercommunity",
+          signature(partition = "matrix", similarity = "matrix"),
+          definition = function(partition, similarity) {
             # Check partition and simliarity matrices
             type_abundance <- check_partition(partition)
             similarity <- check_similarity(partition, similarity)
