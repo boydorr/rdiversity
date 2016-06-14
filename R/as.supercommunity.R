@@ -29,6 +29,7 @@
 #' @param similarity (optional) object that describes similarity between
 #' individuals or types. Usually missing (all types are distinct) or a matrix
 #' showing similarities, but can be of class \code{phylo} or \code{rdphylo}.
+#' @param ... (optional) additional arguments, especially:
 #' @param interval (optional) for phylogenetic supercommunities only, how
 #' far back we go in the tree, with 0 marking the date of the most
 #' recent tip, and 1 (the default) marking the most recent common
