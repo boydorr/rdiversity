@@ -1,8 +1,8 @@
 Package: rdiversity
 Type: Package
 Title: Measures similarity-sensitive diversity
-Version: 0.1
-Date: 2016-02-22
+Version: 0.2
+Date: 2016-06-14
 Author: Sonia Mitchell, Richard Reeve
 Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
 Description: Calculates the similarity-sensitive diversity of a population and

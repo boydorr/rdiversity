@@ -1,13 +1,13 @@
-#' Coerse to powermean
+#' Coerce to powermean
 #' 
 #' Functions to check if an object is a \code{powermean} or coerce an  
 #' object into a \code{powermean}.
 #' 
 #' \code{powermean} is a class of object output from calculating 
-#' \code{alpha}, \code{alphabar}, \code{rho}, 
-#' \code{rhobar}, and \code{gamma} diversity terms; 
-#' \code{beta} and \code{betabar} are output as 
-#' \code{relativeentropy} objects. 
+#' \code{raw.alpha}, \code{normalised.alpha}, \code{raw.rho}, 
+#' \code{normalised.rho}, and \code{raw.gamma} diversity terms; 
+#' \code{raw.beta} and \code{normalised.beta} are output as 
+#' \code{relativeentropy} objects.
 #' 
 #' To calculate the subcommunity or supercommunity diversity, an object of
 #' class \code{powermean} is input to \code{subdiv()} or \code{superdiv()}, 
@@ -15,11 +15,12 @@
 #' 
 #' @param results two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains values calculated from diversity-term functions, e.g. 
-#' \code{alphabar()}, \code{beta}, etc.
+#' \code{normalised.alpha()}, \code{raw.beta}, etc.
 #' @param super object of class \code{supercommunity}; contains proportional 
 #' abundance of types, pair-wise similarity, and other associated variables.
-#' @param tag object of class \code{character}; contains an identifier 
-#' associated with the calculated diversity-term, e.g. "alphabar", "beta", etc.
+#' @param tag object of class \code{character}; contains an identifier
+#' associated with the calculated diversity-term, e.g.
+#' "normalised.alpha", "raw.beta", etc.
 #' 
 #' @return \code{powermean(x)} returns an object of class \code{powermean}.
 #' @include class-powermean.R 
@@ -29,8 +30,8 @@
 #' pop <- sample(1:50, 5)
 #' super <- supercommunity(pop)
 #' 
-#' # Calculate subcommunity alpha diversity (takes the powermean)
-#' a <- alpha(super)
+#' # Calculate subcommunity raw alpha diversity (takes the powermean)
+#' a <- raw.alpha(super)
 #' class(a)
 #' 
 powermean <- function(results, super, tag) {

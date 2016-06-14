@@ -10,8 +10,8 @@ test_that("Answers match up in the ultrametric case", {
   tree2 <- ape::read.tree(text="(A:2,B:2)R:2;")
   super2 <- supercommunity(leaf.abundance, tree2) # type_weights
   
-  expect_equivalent(supercommunity.A.bar(super, 0:2), 
-                    supercommunity.A.bar(super2, 0:2))
+  expect_equivalent(normalised.supercommunity.alpha(super, 0:2), 
+                    normalised.supercommunity.alpha(super2, 0:2))
   
 })
   
@@ -26,8 +26,8 @@ test_that("Answers match up in the non-ultrametric case", {
   tree2 <- ape::read.tree(text="(A:1,B:2)R:2;")
   super2 <- supercommunity(leaf.abundance, tree2) # type_weights
   
-  expect_equivalent(supercommunity.A.bar(super, 0:2), 
-                    supercommunity.A.bar(super2, 0:2))
+  expect_equivalent(normalised.supercommunity.alpha(super, 0:2), 
+                    normalised.supercommunity.alpha(super2, 0:2))
 })
 
 

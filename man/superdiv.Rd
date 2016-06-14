@@ -23,19 +23,19 @@ components.}
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
 \value{
-Returns a two-dimensional \code{data_frame} of mode \code{numeric}.
+Returns a \code{data_frame} containing all of the diversity measures.
 }
 \description{
-Generic function for calculating subcommunity diversity.
+Generic function for calculating supercommunity diversity.
 }
 \details{
 \code{data} may be input as three different classes:
 \itemize{
-\item{\code{powermean} calculates subcomunity alpha, alphabar, rho, rhobar, 
+\item{\code{powermean} calculates raw or normalised supercomunity alpha, rho
 or gamma diversity by taking the powermean of diversity components}
-\item{\code{relativeentropy} calculates subcommunity beta or betabar 
+\item{\code{relativeentropy} calculates raw or normalised supercommunity beta
 diversity by taking the relative entropy of diversity components}
-\item{\code{supercommunity} caculates all subcommunity measures of diversity}
+\item{\code{supercommunity} calculates all supercommunity measures of diversity}
 }
 }
 \examples{
@@ -43,16 +43,16 @@ pop <- data.frame(a = c(1,3), b = c(1,1))
 pop <- pop / sum(pop)
 super <- supercommunity(pop)
 
-# Calculate subcommunity gamma diversity (takes the power mean)
-g <- gamma(super)
+# Calculate supercommunity gamma diversity (takes the power mean)
+g <- raw.gamma(super)
 superdiv(g, 0:2)
 
-# Calculate subcommunity beta diversity (takes the relative entropy)
-b <- beta(super)
-subdiv(b, 0:2)
+# Calculate supercommunity beta diversity (takes the relative entropy)
+b <- raw.beta(super)
+superdiv(b, 0:2)
 
-# Calculate all measures of subcommunity diversity
-subdiv(super, 0:2)
+# Calculate all measures of supercommunity diversity
+superdiv(super, 0:2)
 
 }
 

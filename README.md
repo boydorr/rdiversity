@@ -38,11 +38,11 @@ The `supercommunity()` function takes two arguments, `partition` and `similarity
     
 
 ## Calculating diversity
-First we need to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `alpha()`, `alphabar()`, `beta()`, `betabar()`, `rho()`, `rhobar()`, or `gamma()`. 
+First we need to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `raw.alpha()`, `normalised.alpha()`, `raw.beta()`, `normalised.beta()`, `raw.rho()`, `normalised.rho()`, or `raw.gamma()`. 
 
 ```r
 # First, calculate the normalised subcommunity alpha component
-component <- alphabar(super)
+component <- normalised.alpha(super)
 ```
 
 Afterwhich, `subdiv()` or `superdiv()` are used to calculate subcommunity or supercommunity diversity, respectively (since both subcommunity and supercommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
@@ -72,24 +72,24 @@ superdiv(super, 0:2)
 
 Alternatively, a single measure of diversity may be calculated by calling a wrapper function:
 ```r
-subcommunity.alpha.bar(super,0:2)
+normalised.subcommunity.alpha(super,0:2)
 ```
 A complete list of these functions is shown below:
 
-* `subcommunity.alpha()` : estimate of naive-community supercommunity diversity  
-* `subcommunity.alpha.bar()` : similarity-sensitive diversity of subcommunity *j* in isolation  
-* `subcommunity.rho()` : redundancy of subcommunity *j*  
-* `subcommunity.rho.bar()` : representativeness of subcommunity *j*  
-* `subcommunity.beta()` : distinctiveness of subcommunity *j*  
-* `subcommunity.beta.bar()` : estimate of effective number of distinct subcommunities  
-* `subcommunity.gamma()` : contribution per individual toward supercommunity diversity  
-* `supercommunity.A()` : naive-community supercommunity diversity  
-* `supercommunity.A.bar()` : average similarity-sensitive diversity of subcommunities  
-* `supercommunity.R()` : average redundancy of subcommunities  
-* `supercommunity.R.bar()` : average representativeness of subcommunities  
-* `supercommunity.B()` : average distinctiveness of subcommunities  
-* `supercommunity.B.bar()` : effective number of distinct subcommunities  
-* `supercommunity.G()` : supercommunity similarity-sensitive diversity  
+* `raw.subcommunity.alpha()` : estimate of naive-community supercommunity diversity  
+* `normalised.subcommunity.alpha()` : similarity-sensitive diversity of subcommunity *j* in isolation  
+* `raw.subcommunity.rho()` : redundancy of subcommunity *j*  
+* `normalised.subcommunity.rho()` : representativeness of subcommunity *j*  
+* `raw.subcommunity.beta()` : distinctiveness of subcommunity *j*  
+* `normalised.subcommunity.beta()` : estimate of effective number of distinct subcommunities  
+* `raw.subcommunity.gamma()` : contribution per individual toward supercommunity diversity  
+* `raw.supercommunity.alpha()` : naive-community supercommunity diversity  
+* `normalised.supercommunity.alpha()` : average similarity-sensitive diversity of subcommunities  
+* `raw.supercommunity.rho()` : average redundancy of subcommunities  
+* `normalised.supercommunity.rho()` : average representativeness of subcommunities  
+* `raw.supercommunity.beta()` : average distinctiveness of subcommunities  
+* `normalised.supercommunity.beta()` : effective number of distinct subcommunities  
+* `supercommunity.gamma()` : supercommunity similarity-sensitive diversity  
 
 
 ## General tools

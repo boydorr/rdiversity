@@ -2,39 +2,40 @@
 % Please edit documentation in R/as.supercommunity.R
 \docType{methods}
 \name{supercommunity}
-\alias{ANY-method}
 \alias{as.supercommunity}
 \alias{supercommunity}
-\alias{supercommunity,}
 \alias{supercommunity,data.frame,matrix-method}
 \alias{supercommunity,data.frame,missing-method}
 \alias{supercommunity,data.frame,phylo-method}
 \alias{supercommunity,data.frame,rdphylo-method}
+\alias{supercommunity,data.frame-method}
 \alias{supercommunity,matrix,matrix-method}
 \alias{supercommunity,matrix,missing-method}
 \alias{supercommunity,matrix,phylo-method}
 \alias{supercommunity,matrix,rdphylo-method}
+\alias{supercommunity,matrix-method}
 \alias{supercommunity,missing,phylo-method}
 \alias{supercommunity,missing,rdphylo-method}
 \alias{supercommunity,numeric,matrix-method}
 \alias{supercommunity,numeric,missing-method}
 \alias{supercommunity,numeric,phylo-method}
 \alias{supercommunity,numeric,rdphylo-method}
-\title{Coerse to Supercommunity}
+\alias{supercommunity,numeric-method}
+\title{Coerce to Supercommunity}
 \usage{
 supercommunity(partition, similarity, ...)
 
-\S4method{supercommunity}{data.frame,missing}(partition, similarity = NA)
+\S4method{supercommunity}{data.frame,missing}(partition)
 
-\S4method{supercommunity}{numeric,missing}(partition, similarity = NA)
+\S4method{supercommunity}{numeric,missing}(partition)
 
-\S4method{supercommunity}{data.frame,matrix}(partition, similarity = NA)
+\S4method{supercommunity}{matrix,missing}(partition)
 
-\S4method{supercommunity}{numeric,matrix}(partition, similarity = NA)
+\S4method{supercommunity}{data.frame,matrix}(partition, similarity)
 
-\S4method{supercommunity}{matrix,missing}(partition, similarity = NA)
+\S4method{supercommunity}{numeric,matrix}(partition, similarity)
 
-\S4method{supercommunity}{matrix,matrix}(partition, similarity = NA)
+\S4method{supercommunity}{matrix,matrix}(partition, similarity)
 
 \S4method{supercommunity}{missing,phylo}(partition, similarity, interval)
 
@@ -55,33 +56,40 @@ supercommunity(partition, similarity, ...)
 supercommunity(partition, similarity, ...)
 }
 \arguments{
-\item{partition}{(optional) \code{vector} of mode \code{numeric}; containing the 
-proportional abundance of present day species (leaves)}
+\item{partition}{\code{vector} or \code{matrix} containing the
+relative abundances of individuals or types in their subcommunities. In the
+case of phylogenetic supercommunities, these are the relative abundances of
+the tips of the tree (the present day species).}
 
-\item{similarity}{object of class \code{phylo} or \code{rdphylo}}
+\item{similarity}{(optional) object that describes similarity between
+individuals or types. Usually missing (all types are distinct) or a matrix
+showing similarities, but can be of class \code{phylo} or \code{rdphylo}.}
 
-\item{...}{additional arguments.}
+\item{...}{(optional) additional arguments, especially:}
 
-\item{interval}{object of mode numeric}
+\item{interval}{(optional) for phylogenetic supercommunities only, how
+far back we go in the tree, with 0 marking the date of the most
+recent tip, and 1 (the default) marking the most recent common
+ancestor. Numbers greater than 1 extend the root of the tree.}
 }
 \value{
-Returns an object of class \code{supercommunity}; an S4 object 
+Returns an object of class \code{supercommunity}; an S4 object
 containing five slots (see Details).
 }
 \description{
-Functions to check if an object is a \code{supercommunity} or coerce an  
+Functions to check if an object is a \code{supercommunity} or coerce an
 object into a \code{supercommunity}.
 }
 \details{
 \enumerate{
-\item .Data (partition) - proportional abundance of samples (usually types, 
-except in the phylogenetic case where samples correspond to the present day 
+\item .Data (partition) - proportional abundance of samples (usually types,
+except in the phylogenetic case where samples correspond to the present day
 species)
 \item similarity - pairwise similarity between \emph{types}
-\item type_abundance - proportional abundance of \emph{types} in the  
-subcommunity as a fraction of the supercommunity as a whole (in the  
-phylogenetic case, this corresponds to the proportional abundance of 
-historic species, which is calculated from the proportional abundance of 
+\item type_abundance - proportional abundance of \emph{types} in the
+subcommunity as a fraction of the supercommunity as a whole (in the
+phylogenetic case, this corresponds to the proportional abundance of
+historic species, which is calculated from the proportional abundance of
 present day species)
 \item ordinariness - ordinariness of types
 \item subcommunity_weights - subcommunity weights

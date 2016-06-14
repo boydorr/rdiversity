@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-measures.R
 \name{subcommunity.gamma}
 \alias{subcommunity.gamma}
-\title{Similarity-sensitive raw subcommunity.gamma diversity}
+\title{Similarity-sensitive subcommunity gamma diversity}
 \usage{
 subcommunity.gamma(super, qs)
 }
@@ -30,9 +30,10 @@ vector of \code{qs}.
 pop <- sample(1:50, 5)
 super <- supercommunity(pop)
 
-# Calculate subcommunity gamma diversity (takes the power mean)
-a <- gamma(super)
-subdiv(a, 0:2)
+# Calculate subcommunity gamma diversity
+g <- gamma(super)
+subdiv(g, 0:2)
+subcommunity.gamma(super, 0:2)
 
 }
 

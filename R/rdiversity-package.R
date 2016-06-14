@@ -18,6 +18,8 @@
 #' @importFrom tidyr nest
 #' @importFrom tibble as_data_frame
 #' @importFrom reshape2 melt
+#' @importFrom stats na.omit
+#' @importFrom utils head
 #' 
 #' @author 
 #' Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve <richard.reeve@glasgow.ac.uk>

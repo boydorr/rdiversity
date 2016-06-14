@@ -4,9 +4,9 @@
 #' 
 #' \code{data} may be input as three different classes:
 #' \itemize{
-#' \item{\code{powermean} calculates subcomunity alpha, alphabar, rho, rhobar, 
+#' \item{\code{powermean} calculates raw and normalised subcomunity alpha, rho 
 #' or gamma diversity by taking the powermean of diversity components}
-#' \item{\code{relativeentropy} calculates subcommunity beta or betabar 
+#' \item{\code{relativeentropy} calculates raw or normalised subcommunity beta 
 #' diversity by taking the relative entropy of diversity components}
 #' \item{\code{supercommunity} caculates all subcommunity measures of diversity}
 #' }
@@ -15,7 +15,7 @@
 #' components.
 #' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
 #' 
-#' @return Returns a two-dimensional \code{data_frame} of mode \code{numeric}.
+#' @return Returns a \code{data_frame} containing all of the diversity measures.
 #' @export 
 #' @examples 
 #' # Calculate the diversity of a single population
@@ -24,11 +24,11 @@
 #' super <- supercommunity(pop)
 #' 
 #' # Subcommunity gamma diversity (takes the power mean)
-#' g <- gamma(super)
+#' g <- raw.gamma(super)
 #' subdiv(g, 0:2)
 #' 
 #' # Subcommunity beta diversity (takes the relative entropy)
-#' b <- beta(super)
+#' b <- raw.beta(super)
 #' subdiv(b, 0:2)
 #' 
 #' # All measures of subcommunity diversity
@@ -87,10 +87,10 @@ setMethod(f = "subdiv", signature= "relativeentropy",
 setMethod(f = "subdiv", signature= "supercommunity", 
           definition = function(data, qs) {  
             # Calculate terms
-            div.measures <- list(alpha, alphabar, 
-                              beta, betabar,
-                              rho, rhobar,
-                              gamma)
+            div.measures <- list(raw.alpha, normalised.alpha, 
+                                 raw.beta, normalised.beta,
+                                 raw.rho, normalised.rho,
+                                 raw.gamma)
             # Calculate subcommunity diversity
             results <- lapply(div.measures, function(x) 
               res <- subdiv(x(data), qs))
