@@ -166,7 +166,7 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "missing", similarity = "phylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             # If pds.abundance is not entered, assume an even distribution
             tips <- similarity$tip.label
             partition <- matrix(rep(1/length(tips), length(tips)))
@@ -174,7 +174,7 @@ setMethod(f = "supercommunity",
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity)
+            supercommunity(partition, similarity, interval)
             } )
 
 
@@ -183,11 +183,11 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "numeric", similarity = "phylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity)
+            supercommunity(partition, similarity, interval)
           } )
 
 
@@ -196,11 +196,11 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "data.frame", similarity = "phylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity)
+            supercommunity(partition, similarity, interval)
           } )
 
 
@@ -209,11 +209,11 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "matrix", similarity = "phylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity)
+            supercommunity(partition, similarity, interval)
             } )
 
 
@@ -222,14 +222,14 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "missing", similarity = "rdphylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             # If pds.abundance is not entered, assume an even distribution
             tips <- similarity$tip.label
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity)
+            supercommunity(partition, similarity, interval)
           } )
 
 
@@ -238,10 +238,10 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "numeric", similarity = "rdphylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity)
+            supercommunity(partition, similarity, interval)
           } )
 
 
@@ -250,10 +250,10 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "data.frame", similarity = "rdphylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity)
+            supercommunity(partition, similarity, interval)
           } )
 
 
@@ -262,10 +262,14 @@ setMethod(f = "supercommunity",
 #'
 setMethod(f = "supercommunity",
           signature(partition = "matrix", similarity = "rdphylo"),
-          definition = function(partition, similarity, interval) {
+          definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
 
             new.tree <- similarity
+            
+            if(interval != 1) 
+              super <- chainsaw(new.tree, partition, interval)
+            else {
             historic.species <- new.tree@historic.species
             terminal.taxa <- new.tree@terminal.taxa
             Tbar <- new.tree@Tbar
@@ -313,7 +317,7 @@ setMethod(f = "supercommunity",
                 ordinariness = Zp.j,
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights)
-          } )
+          }} )
 
 
 #' @rdname supercommunity-methods

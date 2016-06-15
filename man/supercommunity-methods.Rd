@@ -37,21 +37,25 @@ supercommunity(partition, similarity, ...)
 
 \S4method{supercommunity}{matrix,matrix}(partition, similarity)
 
-\S4method{supercommunity}{missing,phylo}(partition, similarity, interval)
+\S4method{supercommunity}{missing,phylo}(partition, similarity, interval = 1)
 
-\S4method{supercommunity}{numeric,phylo}(partition, similarity, interval)
+\S4method{supercommunity}{numeric,phylo}(partition, similarity, interval = 1)
 
-\S4method{supercommunity}{data.frame,phylo}(partition, similarity, interval)
+\S4method{supercommunity}{data.frame,phylo}(partition, similarity,
+  interval = 1)
 
-\S4method{supercommunity}{matrix,phylo}(partition, similarity, interval)
+\S4method{supercommunity}{matrix,phylo}(partition, similarity, interval = 1)
 
-\S4method{supercommunity}{missing,rdphylo}(partition, similarity, interval)
+\S4method{supercommunity}{missing,rdphylo}(partition, similarity,
+  interval = 1)
 
-\S4method{supercommunity}{numeric,rdphylo}(partition, similarity, interval)
+\S4method{supercommunity}{numeric,rdphylo}(partition, similarity,
+  interval = 1)
 
-\S4method{supercommunity}{data.frame,rdphylo}(partition, similarity, interval)
+\S4method{supercommunity}{data.frame,rdphylo}(partition, similarity,
+  interval = 1)
 
-\S4method{supercommunity}{matrix,rdphylo}(partition, similarity, interval)
+\S4method{supercommunity}{matrix,rdphylo}(partition, similarity, interval = 1)
 
 supercommunity(partition, similarity, ...)
 }
