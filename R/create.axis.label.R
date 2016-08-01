@@ -2,6 +2,7 @@
 #' 
 #' @param results object of class \code{data.frame} or \code{data_frame}, output from \code{subdiv()} or \code{superdiv}
 #' @param symbol (optional) by default, output is e.g. "Supercommunity x"; if symbol is set to \code{TRUE}, output will be given as "x
+#' @export
 #' 
 create.axis.label <- function(results, symbol = F) {
   # Identify which diversity measure is being calculated
