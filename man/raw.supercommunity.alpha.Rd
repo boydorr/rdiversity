@@ -12,8 +12,11 @@ raw.supercommunity.alpha(super, qs)
 \item{qs}{\code{vector} of \emph{q} values}
 }
 \value{
-Returns a two-dimensional \code{matrix} of diversities, with columns  
-representing subcommunities and rows representing values of \emph{q}.
+Returns a five-column \code{tibble}/\code{dataframe} containing:  
+\code{partition} (label attributed to partition), \code{q} (parameter of 
+conservatism), \code{diversity}, \code{community} (level of diversity, 
+\emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+(alpha, beta, rho, or gamma).
 }
 \description{
 \code{raw.supercommunity.alpha()} is used to calculate the 

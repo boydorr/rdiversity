@@ -23,7 +23,10 @@ components.}
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
 \value{
-Returns a \code{data_frame} containing all of the diversity measures.
+Returns a five-column \code{tibble}/\code{dataframe} containing:  
+\code{partition} (label attributed to partition), \code{q} (parameter of 
+conservatism), \code{diversity}, \code{community} (level of diversity, 
+\emph{i.e.} supercommunity), and \code{measure} (alpha, beta, rho, or gamma).
 }
 \description{
 Generic function for calculating supercommunity diversity.

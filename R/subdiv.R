@@ -15,7 +15,11 @@
 #' components.
 #' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
 #' 
-#' @return Returns a \code{data_frame} containing all of the diversity measures.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity), and \code{measure} (alpha, beta, rho, or gamma). 
+#' 
 #' @export 
 #' @examples 
 #' # Calculate the diversity of a single population

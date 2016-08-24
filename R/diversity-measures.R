@@ -12,8 +12,12 @@
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -41,8 +45,12 @@ raw.subcommunity.alpha <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -71,8 +79,12 @@ normalised.subcommunity.alpha <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -101,8 +113,12 @@ raw.subcommunity.beta <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -132,8 +148,12 @@ normalised.subcommunity.beta <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -162,8 +182,12 @@ raw.subcommunity.rho <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -192,8 +216,12 @@ normalised.subcommunity.rho <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -223,8 +251,12 @@ raw.subcommunity.gamma <- subcommunity.gamma
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -254,8 +286,12 @@ raw.supercommunity.alpha <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -285,8 +321,12 @@ normalised.supercommunity.alpha <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -316,8 +356,12 @@ raw.supercommunity.beta <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -347,8 +391,12 @@ normalised.supercommunity.beta <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -377,8 +425,12 @@ raw.supercommunity.rho <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
@@ -407,8 +459,12 @@ normalised.supercommunity.rho <- function(super, qs)
 #' @param super object of class \code{supercommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
-#' @return Returns a two-dimensional \code{matrix} of diversities, with columns  
-#' representing subcommunities and rows representing values of \emph{q}.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)

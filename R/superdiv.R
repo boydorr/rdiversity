@@ -13,7 +13,11 @@
 #' 
 #' @inheritParams subdiv 
 #' 
-#' @return Returns a \code{data_frame} containing all of the diversity measures.
+#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
+#' \code{partition} (label attributed to partition), \code{q} (parameter of 
+#' conservatism), \code{diversity}, \code{community} (level of diversity, 
+#' \emph{i.e.} supercommunity), and \code{measure} (alpha, beta, rho, or gamma). 
+#' 
 #' @export
 #' @examples 
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
