@@ -4,7 +4,7 @@
 #' object into a \code{relativeentropy}.
 #' 
 #' @param results two-dimensional \code{matrix} of mode \code{numeric}; 
-#' @param super object of class \code{supercommunity}; 
+#' @param super object of class \code{metacommunity}; 
 #' @param tag object of class \code{character}; 
 #' 
 #' @return object of class \code{relativeentropy}
@@ -13,7 +13,7 @@
 #' 
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity beta diversity
 #' a <- raw.beta(super)
