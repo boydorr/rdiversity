@@ -16,7 +16,7 @@
 #' @param results two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains values calculated from diversity-term functions, e.g. 
 #' \code{normalised.alpha()}, \code{raw.beta}, etc.
-#' @param super object of class \code{metacommunity}; contains proportional 
+#' @param meta object of class \code{metacommunity}; contains proportional 
 #' abundance of types, pair-wise similarity, and other associated variables.
 #' @param tag object of class \code{character}; contains an identifier
 #' associated with the calculated diversity-term, e.g.
@@ -28,20 +28,20 @@
 #' 
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate subcommunity raw alpha diversity (takes the powermean)
-#' a <- raw.alpha(super)
+#' a <- raw.alpha(meta)
 #' class(a)
 #' 
-powermean <- function(results, super, tag) {
+powermean <- function(results, meta, tag) {
   new('powermean', 
       results, 
       measure = tag,
-      type_abundance = super@type_abundance,
-      ordinariness = super@ordinariness,
-      subcommunity_weights = super@subcommunity_weights,
-      type_weights = super@type_weights)
+      type_abundance = meta@type_abundance,
+      ordinariness = meta@ordinariness,
+      subcommunity_weights = meta@subcommunity_weights,
+      type_weights = meta@type_weights)
 }
 
 
