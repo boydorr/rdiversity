@@ -338,19 +338,14 @@ is.metacommunity <- function (x)
 #'
 setMethod(f = "show", signature= "metacommunity",
           definition = function(object) {
-            # cat('Supercommunity object contains:\n', paste(slotNames(object),"\n"))
-            # cat("\n-------------------")
-            print(pseudo_data_frame(object@similarity, "Similarity"))
-            cat("\n-------------------\n\n")
-            print(pseudo_data_frame(object@type_abundance, "Type abundance"))
-            cat("\n-------------------\n\n")
-            print(pseudo_data_frame(object@ordinariness, "Ordinariness"))
-            cat("\n-------------------\n\n")
-            len <- length(object@subcommunity_weights)
-            cat(paste0("Subcommunity weights", ": [",  len, "]"), "\n")
-            print(object@subcommunity_weights)
-            cat("\n-------------------\n\n")
-            print(pseudo_data_frame(object@type_weights, "Type weights"))
+            n <- dim(object@type_abundance)[2]
+            S <- dim(object@type_abundance)[1]
+            cat('Metacommunity object with', n, 
+                'subcommunities and', S, 'types.\n\n')
+            cat('Subcommunity labels:\n')
+            cat(colnames(object@type_abundance),'\n\n')
+            cat('Type labels:\n')
+            cat(rownames(object@type_abundance),'\n')
             } )
 
 
