@@ -18,7 +18,7 @@ normalised alpha diversity.
 }
 \details{
 Values generated from \code{normalised.alpha()} may be input into \code{subdiv()} 
-and \code{superdiv()} to calculate normalised subcommunity/metacommunity 
+and \code{metadiv()} to calculate normalised subcommunity/metacommunity 
 alpha diversity.
 }
 \examples{

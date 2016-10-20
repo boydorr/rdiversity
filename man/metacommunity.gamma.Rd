@@ -35,7 +35,7 @@ super <- metacommunity(pop)
 
 # Calculate metacommunity gamma diversity
 g <- gamma(super)
-superdiv(g, 0:2)
+metadiv(g, 0:2)
 metacommunity.gamma(super, 0:2)
 
 }

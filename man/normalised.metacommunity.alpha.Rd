@@ -36,7 +36,7 @@ super <- metacommunity(pop)
 
 # Calculate normalised metacommunity alpha diversity
 a <- normalised.alpha(super)
-superdiv(a, 0:2)
+metadiv(a, 0:2)
 normalised.metacommunity.alpha(super, 0:2)
 
 }

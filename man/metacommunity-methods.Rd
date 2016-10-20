@@ -103,10 +103,8 @@ tree <- ape::rtree(n = 5)
 partition <- data.frame(a = c(1,0,1,0,0), b = c(0,1,0,1,1))
 partition <- partition / sum(partition)
 a <- metacommunity(partition, tree)
-str(a)
 a
-
-showMethods("metacommunity")
+slotNames(a)
 
 }
 \seealso{

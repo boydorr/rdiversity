@@ -18,7 +18,7 @@ normalised rho diversity.
 }
 \details{
 Values generated from \code{normalised.rho()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate normalised subcommunity/metacommunity rho 
+\code{metadiv()} to calculate normalised subcommunity/metacommunity rho 
 diversity.
 }
 \examples{

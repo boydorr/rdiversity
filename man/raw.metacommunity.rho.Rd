@@ -36,7 +36,7 @@ super <- metacommunity(pop)
 
 # Calculate metacommunity rho diversity
 r <- raw.rho(super)
-superdiv(r, 0:2)
+metadiv(r, 0:2)
 raw.metacommunity.rho(super, 0:2)
 
 }

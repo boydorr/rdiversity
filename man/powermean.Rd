@@ -54,7 +54,7 @@ object into a \code{powermean}.
 \code{relativeentropy} objects.
 
 To calculate the subcommunity or metacommunity diversity, an object of
-class \code{powermean} is input to \code{subdiv()} or \code{superdiv()}, 
+class \code{powermean} is input to \code{subdiv()} or \code{metadiv()}, 
 respectively.
 }
 \examples{

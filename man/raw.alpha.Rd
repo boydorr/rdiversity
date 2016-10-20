@@ -18,7 +18,7 @@ diversity.
 }
 \details{
 Values generated from \code{raw.alpha()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate raw subcommunity/metacommunity alpha diversity.
+\code{metadiv()} to calculate raw subcommunity/metacommunity alpha diversity.
 }
 \examples{
 pop <- sample(1:50, 5)

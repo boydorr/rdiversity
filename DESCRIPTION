@@ -37,6 +37,7 @@ Collate:
     'create.axis.label.R'
     'diversity-components.R'
     'diversity-measures.R'
+    'metadiv.R'
     'power.mean.R'
     'qD.R'
     'qD.single.R'
@@ -49,5 +50,4 @@ Collate:
     'similarity_shimatani.R'
     'structure_phylo.R'
     'summarise.R'
-    'superdiv.R'
 VignetteBuilder: knitr

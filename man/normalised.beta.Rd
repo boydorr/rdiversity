@@ -18,7 +18,7 @@ normalised beta diversity.
 }
 \details{
 Values generated from \code{normalised.beta()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate normalised subcommunity/metacommunity beta 
+\code{metadiv()} to calculate normalised subcommunity/metacommunity beta 
 diversity.
 }
 \examples{
