@@ -4,7 +4,7 @@
 #' representing independent populations, for a series of orders repesented as 
 #' a vector of \code{qs}.
 #'
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' @param qs \code{vector} of \emph{q} values.
 #' 
 #' @include as.metacommunity.R subdiv.R
