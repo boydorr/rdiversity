@@ -25,13 +25,13 @@
 #'
 #' @param partition \code{vector} or \code{matrix} containing the
 #' relative abundances of individuals or types in their subcommunities. In the
-#' case of phylogenetic supercommunities, these are the relative abundances of
+#' case of phylogenetic metacommunities, these are the relative abundances of
 #' the tips of the tree (the present day species).
 #' @param similarity (optional) object that describes similarity between
 #' individuals or types. Usually missing (all types are distinct) or a matrix
 #' showing similarities, but can be of class \code{phylo} or \code{rdphylo}.
 #' @param ... (optional) additional arguments, especially:
-#' @param interval (optional) for phylogenetic supercommunities only, how
+#' @param interval (optional) for phylogenetic metacommunities only, how
 #' far back we go in the tree, with 0 marking the date of the most
 #' recent tip, and 1 (the default) marking the most recent common
 #' ancestor. Numbers greater than 1 extend the root of the tree.
@@ -266,7 +266,7 @@ setMethod(f = "metacommunity",
             new.tree <- similarity
             
             if(interval != 1) 
-              super <- chainsaw(new.tree, partition, interval)
+              meta <- chainsaw(new.tree, partition, interval)
             else {
             historic.species <- new.tree@historic.species
             terminal.taxa <- new.tree@terminal.taxa
