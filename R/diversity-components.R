@@ -6,7 +6,7 @@
 #' Values generated from \code{raw.alpha()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity alpha diversity.
 #' 
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
 #' @include as.metacommunity.R
@@ -14,14 +14,14 @@
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw alpha component
-#' a <- raw.alpha(super)
+#' a <- raw.alpha(meta)
 #' 
-raw.alpha <- function(super) {
-  results <- 1 / super@ordinariness
-  powermean(results, super, "raw alpha")
+raw.alpha <- function(meta) {
+  results <- 1 / meta@ordinariness
+  powermean(results, meta, "raw alpha")
 }
 
 
@@ -34,7 +34,7 @@ raw.alpha <- function(super) {
 #' and \code{metadiv()} to calculate normalised subcommunity/metacommunity 
 #' alpha diversity.
 #' 
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
 #' @include as.metacommunity.R
@@ -42,20 +42,20 @@ raw.alpha <- function(super) {
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised alpha component
-#' a <- normalised.alpha(super)
+#' a <- normalised.alpha(meta)
 #' 
-normalised.alpha <- function(super) {
-  ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
-                             function(x) super@ordinariness[,x] /
-                               super@subcommunity_weights[x])
+normalised.alpha <- function(meta) {
+  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights), 
+                             function(x) meta@ordinariness[,x] /
+                               meta@subcommunity_weights[x])
   if(!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
-  colnames(ordinariness.bar) <- colnames(super)
+  colnames(ordinariness.bar) <- colnames(meta)
   results <- 1 / ordinariness.bar
-  powermean(results, super, "normalised alpha")
+  powermean(results, meta, "normalised alpha")
 }
 
 
@@ -67,7 +67,7 @@ normalised.alpha <- function(super) {
 #' Values generated from \code{raw.rho()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity rho diversity.
 #' 
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
 #' @include as.metacommunity.R
@@ -75,14 +75,14 @@ normalised.alpha <- function(super) {
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw rho component
-#' a <- raw.rho(super)
+#' a <- raw.rho(meta)
 #' 
-raw.rho <- function(super) {
-  results <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
-  powermean(results, super, "raw rho")
+raw.rho <- function(meta) {
+  results <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
+  powermean(results, meta, "raw rho")
 }
 
 
@@ -95,7 +95,7 @@ raw.rho <- function(super) {
 #' \code{metadiv()} to calculate normalised subcommunity/metacommunity rho 
 #' diversity.
 #' 
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
 #' @include as.metacommunity.R
@@ -103,20 +103,20 @@ raw.rho <- function(super) {
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised rho component
-#' a <- normalised.rho(super)
+#' a <- normalised.rho(meta)
 #' 
-normalised.rho <- function(super) {
-  ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
-                             function(x) super@ordinariness[,x] /
-                               super@subcommunity_weights[x])
+normalised.rho <- function(meta) {
+  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights), 
+                             function(x) meta@ordinariness[,x] /
+                               meta@subcommunity_weights[x])
   if(!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
-  colnames(ordinariness.bar) <- colnames(super)
-  results <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
-  powermean(results, super, "normalised rho")
+  colnames(ordinariness.bar) <- colnames(meta)
+  results <- rowSums(meta@ordinariness, na.rm = T) / ordinariness.bar
+  powermean(results, meta, "normalised rho")
 }
 
 
@@ -128,7 +128,7 @@ normalised.rho <- function(super) {
 #' Values generated from \code{raw.beta()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity beta diversity.
 #' 
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{relativeentropy}.
 #' @include as.metacommunity.R
@@ -136,15 +136,15 @@ normalised.rho <- function(super) {
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw beta component
-#' a <- raw.beta(super)
+#' a <- raw.beta(meta)
 #' 
-raw.beta <- function(super) {
-  rho <- rowSums(super@ordinariness, na.rm = T) / super@ordinariness
+raw.beta <- function(meta) {
+  rho <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
   results <- 1 / rho
-  relativeentropy(results, super, "raw beta")
+  relativeentropy(results, meta, "raw beta")
 }
 
 
@@ -157,7 +157,7 @@ raw.beta <- function(super) {
 #' \code{metadiv()} to calculate normalised subcommunity/metacommunity beta 
 #' diversity.
 #' 
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{relativeentropy}.
 #' @include as.metacommunity.R
@@ -165,21 +165,21 @@ raw.beta <- function(super) {
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised beta component
-#' a <- normalised.beta(super)
+#' a <- normalised.beta(meta)
 #' 
-normalised.beta <- function(super) {
-  ordinariness.bar <- sapply(seq_along(super@subcommunity_weights), 
-                             function(x) super@ordinariness[,x] /
-                               super@subcommunity_weights[x])
+normalised.beta <- function(meta) {
+  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights), 
+                             function(x) meta@ordinariness[,x] /
+                               meta@subcommunity_weights[x])
   if(!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
-  colnames(ordinariness.bar) <- colnames(super)
-  normalised.rho <- rowSums(super@ordinariness, na.rm = T) / ordinariness.bar
+  colnames(ordinariness.bar) <- colnames(meta)
+  normalised.rho <- rowSums(meta@ordinariness, na.rm = T) / ordinariness.bar
   results <- 1 / normalised.rho
-  relativeentropy(results, super, "normalised beta")
+  relativeentropy(results, meta, "normalised beta")
 }
 
 
@@ -191,7 +191,7 @@ normalised.beta <- function(super) {
 #' Values generated from \code{raw.gamma()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate subcommunity/metacommunity gamma diversity.
 #' 
-#' @param super object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
 #' @include as.metacommunity.R
@@ -199,19 +199,19 @@ normalised.beta <- function(super) {
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate gamma component
-#' a <- raw.gamma(super)
+#' a <- raw.gamma(meta)
 #' 
-raw.gamma <- function(super) {
-  results <- rowSums(super@ordinariness, na.rm=T)
+raw.gamma <- function(meta) {
+  results <- rowSums(meta@ordinariness, na.rm=T)
   results[results==0] <- NaN
   results <- 1 / results
-  results <- matrix(rep((results), ncol(super@type_abundance)), 
-                    ncol=ncol(super@type_abundance))
-  colnames(results) <- colnames(super@type_abundance)
-  row.names(results) <- row.names(super@type_abundance)
-  powermean(results, super, "gamma")
+  results <- matrix(rep((results), ncol(meta@type_abundance)), 
+                    ncol=ncol(meta@type_abundance))
+  colnames(results) <- colnames(meta@type_abundance)
+  row.names(results) <- row.names(meta@type_abundance)
+  powermean(results, meta, "gamma")
 }
 
