@@ -4,10 +4,10 @@
 #' representing independent populations, for a series of orders repesented as 
 #' a vector of \code{qs}.
 #'
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' @param qs \code{vector} of \emph{q} values.
 #' 
-#' @include as.supercommunity.R subdiv.R
+#' @include as.metacommunity.R subdiv.R
 #' @return Returns a matrix of similarity-sensitive diversities, where rows 
 #' and columns represent values of q and subcommunities, respectively.
 #' @export
@@ -19,7 +19,7 @@
 #' Z <- diag(1, length(pop))
 #' Z[Z==0] <- 0.4
 #' 
-#' dat <- supercommunity(pop, Z)
+#' dat <- metacommunity(pop, Z)
 #' 
 #' # Calculate similarity-sensitive diversity of order 0 (species richness)
 #' qDZ(dat, 0)
