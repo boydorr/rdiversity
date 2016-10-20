@@ -6,6 +6,8 @@
 
 `rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals. Similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. 
 
+This package is still in alpha and under heavy development, and so we do not guarantee its correctness, although we are aware of no problems with it. Please raise an issue if you find any problems.
+
 ## Installation
 
 To install the latest development version of rdiversity, simply run the following from an R console:
