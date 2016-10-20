@@ -4,7 +4,7 @@
 #' diversity.
 #'
 #' Values generated from \code{raw.alpha()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate raw subcommunity/metacommunity alpha diversity.
+#' \code{metadiv()} to calculate raw subcommunity/metacommunity alpha diversity.
 #' 
 #' @param super object of class \code{metacommunity}.
 #' 
@@ -31,7 +31,7 @@ raw.alpha <- function(super) {
 #' normalised alpha diversity.
 #'
 #' Values generated from \code{normalised.alpha()} may be input into \code{subdiv()} 
-#' and \code{superdiv()} to calculate normalised subcommunity/metacommunity 
+#' and \code{metadiv()} to calculate normalised subcommunity/metacommunity 
 #' alpha diversity.
 #' 
 #' @param super object of class \code{metacommunity}.
@@ -65,7 +65,7 @@ normalised.alpha <- function(super) {
 #' diversity.
 #'
 #' Values generated from \code{raw.rho()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate raw subcommunity/metacommunity rho diversity.
+#' \code{metadiv()} to calculate raw subcommunity/metacommunity rho diversity.
 #' 
 #' @param super object of class \code{metacommunity}.
 #' 
@@ -92,7 +92,7 @@ raw.rho <- function(super) {
 #' normalised rho diversity.
 #'
 #' Values generated from \code{normalised.rho()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate normalised subcommunity/metacommunity rho 
+#' \code{metadiv()} to calculate normalised subcommunity/metacommunity rho 
 #' diversity.
 #' 
 #' @param super object of class \code{metacommunity}.
@@ -126,7 +126,7 @@ normalised.rho <- function(super) {
 #' diversity.
 #'
 #' Values generated from \code{raw.beta()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate raw subcommunity/metacommunity beta diversity.
+#' \code{metadiv()} to calculate raw subcommunity/metacommunity beta diversity.
 #' 
 #' @param super object of class \code{metacommunity}.
 #' 
@@ -154,7 +154,7 @@ raw.beta <- function(super) {
 #' normalised beta diversity.
 #'
 #' Values generated from \code{normalised.beta()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate normalised subcommunity/metacommunity beta 
+#' \code{metadiv()} to calculate normalised subcommunity/metacommunity beta 
 #' diversity.
 #' 
 #' @param super object of class \code{metacommunity}.
@@ -189,7 +189,7 @@ normalised.beta <- function(super) {
 #' diversity.
 #'
 #' Values generated from \code{raw.gamma()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate subcommunity/metacommunity gamma diversity.
+#' \code{metadiv()} to calculate subcommunity/metacommunity gamma diversity.
 #' 
 #' @param super object of class \code{metacommunity}.
 #' 
