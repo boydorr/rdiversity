@@ -264,11 +264,11 @@ raw.subcommunity.gamma <- subcommunity.gamma
 #' 
 #' # Calculate raw metacommunity alpha diversity
 #' a <- raw.alpha(super)
-#' superdiv(a, 0:2)
+#' metadiv(a, 0:2)
 #' raw.metacommunity.alpha(super, 0:2)
 #' 
 raw.metacommunity.alpha <- function(super, qs) 
-  superdiv(raw.alpha(super), qs)
+  metadiv(raw.alpha(super), qs)
 
 
 #' Similarity-sensitive normalised metacommunity alpha diversity
@@ -299,11 +299,11 @@ raw.metacommunity.alpha <- function(super, qs)
 #' 
 #' # Calculate normalised metacommunity alpha diversity
 #' a <- normalised.alpha(super)
-#' superdiv(a, 0:2)
+#' metadiv(a, 0:2)
 #' normalised.metacommunity.alpha(super, 0:2)
 #' 
 normalised.metacommunity.alpha <- function(super, qs) 
-  superdiv(normalised.alpha(super), qs)
+  metadiv(normalised.alpha(super), qs)
 
 
 #' Similarity-sensitive raw metacommunity beta diversity
@@ -334,11 +334,11 @@ normalised.metacommunity.alpha <- function(super, qs)
 #' 
 #' # Calculate raw metacommunity beta diversity
 #' b <- raw.beta(super)
-#' superdiv(b, 0:2)
+#' metadiv(b, 0:2)
 #' raw.metacommunity.beta(super, 0:2)
 #' 
 raw.metacommunity.beta <- function(super, qs) 
-  superdiv(raw.beta(super), qs)
+  metadiv(raw.beta(super), qs)
 
 
 #' Similarity-sensitive normalised metacommunity beta diversity
@@ -369,11 +369,11 @@ raw.metacommunity.beta <- function(super, qs)
 #' 
 #' # Calculate normalised metacommunity beta diversity
 #' b <- normalised.beta(super)
-#' superdiv(b, 0:2)
+#' metadiv(b, 0:2)
 #' normalised.metacommunity.beta(super, 0:2)
 #' 
 normalised.metacommunity.beta <- function(super, qs) 
-  superdiv(normalised.beta(super), qs)
+  metadiv(normalised.beta(super), qs)
 
 
 #' Similarity-sensitive raw metacommunity rho diversity
@@ -404,11 +404,11 @@ normalised.metacommunity.beta <- function(super, qs)
 #' 
 #' # Calculate metacommunity rho diversity
 #' r <- raw.rho(super)
-#' superdiv(r, 0:2)
+#' metadiv(r, 0:2)
 #' raw.metacommunity.rho(super, 0:2)
 #' 
 raw.metacommunity.rho <- function(super, qs) 
-  superdiv(raw.rho(super), qs)
+  metadiv(raw.rho(super), qs)
 
 
 #' Similarity-sensitive normalised metacommunity rho diversity
@@ -438,11 +438,11 @@ raw.metacommunity.rho <- function(super, qs)
 #' 
 #' # Calculate normalised metacommunity rho diversity
 #' r <- normalised.rho(super)
-#' superdiv(r, 0:2)
+#' metadiv(r, 0:2)
 #' normalised.metacommunity.rho(super, 0:2)
 #' 
 normalised.metacommunity.rho <- function(super, qs) 
-  superdiv(normalised.rho(super), qs)
+  metadiv(normalised.rho(super), qs)
 
 
 #' Similarity-sensitive metacommunity gamma diversity
@@ -472,9 +472,9 @@ normalised.metacommunity.rho <- function(super, qs)
 #' 
 #' # Calculate metacommunity gamma diversity
 #' g <- gamma(super)
-#' superdiv(g, 0:2)
+#' metadiv(g, 0:2)
 #' metacommunity.gamma(super, 0:2)
 #' 
 metacommunity.gamma <- function(super, qs) 
-  superdiv(raw.gamma(super), qs)
+  metadiv(raw.gamma(super), qs)
 raw.metacommunity.gamma <- metacommunity.gamma
