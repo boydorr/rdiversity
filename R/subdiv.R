@@ -8,7 +8,7 @@
 #' or gamma diversity by taking the powermean of diversity components}
 #' \item{\code{relativeentropy} calculates raw or normalised subcommunity beta 
 #' diversity by taking the relative entropy of diversity components}
-#' \item{\code{supercommunity} caculates all subcommunity measures of diversity}
+#' \item{\code{metacommunity} caculates all subcommunity measures of diversity}
 #' }
 #' 
 #' @param data two-dimensional \code{matrix} of mode \code{numeric}; diversity 
@@ -25,7 +25,7 @@
 #' # Calculate the diversity of a single population
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' pop <- pop/sum(pop)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Subcommunity gamma diversity (takes the power mean)
 #' g <- raw.gamma(super)
@@ -88,7 +88,7 @@ setMethod(f = "subdiv", signature= "relativeentropy",
 
 #' @rdname subdiv
 #' 
-setMethod(f = "subdiv", signature= "supercommunity", 
+setMethod(f = "subdiv", signature= "metacommunity", 
           definition = function(data, qs) {  
             # Calculate terms
             div.measures <- list(raw.alpha, normalised.alpha, 
