@@ -1,7 +1,7 @@
 #' Create axis label
 #' 
 #' @param results object of class \code{data.frame} or \code{data_frame}, output from \code{subdiv()} or \code{superdiv}
-#' @param symbol (optional) by default, output is e.g. "Supercommunity x"; if symbol is set to \code{TRUE}, output will be given as "x
+#' @param symbol (optional) by default, output is e.g. "Metacommunity x"; if symbol is set to \code{TRUE}, output will be given as "x
 #' @export
 #' 
 create.axis.label <- function(results, symbol = F) {
@@ -32,7 +32,7 @@ create.axis.label <- function(results, symbol = F) {
     }else {
       tag <- bquote(.(tag))
     }
-  }else if(community.type %in% "supercommunity") {
+  }else if(community.type %in% "metacommunity") {
     if(grepl(" ", measure)) {
       type <- unlist(strsplit(measure, " "))[2]
     } else type <- measure
