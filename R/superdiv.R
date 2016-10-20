@@ -26,24 +26,24 @@
 #' 
 #' # Calculate metacommunity gamma diversity (takes the power mean)
 #' g <- raw.gamma(super)
-#' superdiv(g, 0:2)
+#' metadiv(g, 0:2)
 #' 
 #' # Calculate metacommunity beta diversity (takes the relative entropy)
 #' b <- raw.beta(super)
-#' superdiv(b, 0:2)
+#' metadiv(b, 0:2)
 #' 
 #' # Calculate all measures of metacommunity diversity
-#' superdiv(super, 0:2)
+#' metadiv(super, 0:2)
 #' 
-setGeneric(name = "superdiv",
+setGeneric(name = "metadiv",
            def = function(data, qs) {
-             standardGeneric("superdiv")
+             standardGeneric("metadiv")
            } )
 
 
-#' @rdname superdiv
+#' @rdname metadiv
 #' 
-setMethod(f = "superdiv", signature= "powermean", 
+setMethod(f = "metadiv", signature= "powermean", 
           definition = function(data, qs) {  
             results <- list()
             for(i in 1:length(qs)) {
@@ -65,9 +65,9 @@ setMethod(f = "superdiv", signature= "powermean",
           } )
 
 
-#' @rdname superdiv
+#' @rdname metadiv
 #' 
-setMethod(f = "superdiv", signature= "relativeentropy", 
+setMethod(f = "metadiv", signature= "relativeentropy", 
           definition = function(data, qs) {  
             results <- list()
             for(i in 1:length(qs)) {
@@ -89,9 +89,9 @@ setMethod(f = "superdiv", signature= "relativeentropy",
           } )
 
 
-#' @rdname superdiv
+#' @rdname metadiv
 #' 
-setMethod(f = "superdiv", signature= "metacommunity", 
+setMethod(f = "metadiv", signature= "metacommunity", 
           definition = function(data, qs) {  
             # Calculate terms
             div.measures <- list(raw.alpha, normalised.alpha, 
@@ -100,6 +100,6 @@ setMethod(f = "superdiv", signature= "metacommunity",
                                  raw.gamma)
             # Calculate metacommunity diversity
             results <- lapply(div.measures, function(x) 
-              res <- superdiv(x(data), qs))
+              res <- metadiv(x(data), qs))
             results <- do.call(rbind.data.frame, results)
           } )
