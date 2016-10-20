@@ -25,18 +25,18 @@
 #' # Calculate the diversity of a single population
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' pop <- pop/sum(pop)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Subcommunity gamma diversity (takes the power mean)
-#' g <- raw.gamma(super)
+#' g <- raw.gamma(meta)
 #' subdiv(g, 0:2)
 #' 
 #' # Subcommunity beta diversity (takes the relative entropy)
-#' b <- raw.beta(super)
+#' b <- raw.beta(meta)
 #' subdiv(b, 0:2)
 #' 
 #' # All measures of subcommunity diversity
-#' subdiv(super, 0:2)
+#' subdiv(meta, 0:2)
 #' 
 setGeneric(name = "subdiv",
            def = function(data, qs) {
