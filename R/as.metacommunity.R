@@ -349,17 +349,3 @@ setMethod(f = "show", signature= "metacommunity",
             cat(rownames(object@type_abundance),'\n')
             } )
 
-
-pseudo_data_frame <- function(x, tag) {
-    rows <- nrow(x)
-    cols <- ncol(x)
-    cat(paste0(tag, ": [", rows, " x ", cols, "]"), "\n")
-    if(nrow(x)>6) {
-    output <- rbind.data.frame(head(x),"...")
-    row.names(output)[nrow(output)] <- ".."
-    }else{
-      output <- head(x)
-    }
-    output
-}
-
