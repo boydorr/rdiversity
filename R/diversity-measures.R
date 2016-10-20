@@ -1,27 +1,27 @@
 #' Similarity-sensitive raw subcommunity alpha
 #' 
 #' \code{raw.subcommunity.alpha()} is used to calculate an estimate of 
-#' naive-community supercommunity diversity.
+#' naive-community metacommunity diversity.
 #' 
 #' \code{raw.subcommunity.alpha()} calculates the subcommunity alpha diversity of 
 #' a series of columns representing independent subcommunity counts relative 
-#' to the supercommunity as a whole (by default the sum of the subcommunities). 
+#' to the metacommunity as a whole (by default the sum of the subcommunities). 
 #' This measure may be calculated for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity alpha diversity
 #' a <- raw.alpha(super)
@@ -38,23 +38,23 @@ raw.subcommunity.alpha <- function(super, qs)
 #' 
 #' \code{normalised.subcommunity.alpha()} calculates the normalised subcommunity 
 #' alpha diversity of a series of columns representing independent subcommunity 
-#' counts relative to the supercommunity as a whole (by default the sum of the 
+#' counts relative to the metacommunity as a whole (by default the sum of the 
 #' subcommunities). This measure may be calculated for a series of orders, 
 #' repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity alpha diversity
 #' a <- normalised.alpha(super)
@@ -72,23 +72,23 @@ normalised.subcommunity.alpha <- function(super, qs)
 #' 
 #' \code{raw.subcommunity.beta()} calculates the subcommunity beta diversity of a 
 #' series of columns representing independent subcommunity counts relative to 
-#' the supercommunity as a whole (by default the sum of the subcommunities).  
+#' the metacommunity as a whole (by default the sum of the subcommunities).  
 #' This measure may be calculated for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity beta diversity
 #' b <- raw.beta(super)
@@ -106,23 +106,23 @@ raw.subcommunity.beta <- function(super, qs)
 #' 
 #' \code{normalised.subcommunity.beta()} calculates the normalised subcommunity beta 
 #' diversity of a series of columns representing independent subcommunity 
-#' counts relative to the supercommunity as a whole (by default the sum of the 
+#' counts relative to the metacommunity as a whole (by default the sum of the 
 #' subcommunities). This measure may be calculated for a series of orders, 
 #' repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity beta diversity
 #' b <- normalised.beta(super)
@@ -141,23 +141,23 @@ normalised.subcommunity.beta <- function(super, qs)
 #' \code{raw.subcommunity.rho()}, the inverse of \code{raw.subcommunity.beta()}, 
 #' calculates the raw subcommunity rho diversity of a series of columns  
 #' representing independent subcommunity counts relative to the
-#' supercommunity as a whole (by default the sum of the subcommunities). This 
+#' metacommunity as a whole (by default the sum of the subcommunities). This 
 #' measure may be calculated for a series of orders, repesented as a vector 
 #' of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity rho diversity
 #' r <- raw.rho(super)
@@ -176,22 +176,22 @@ raw.subcommunity.rho <- function(super, qs)
 #' \code{normalised.subcommunity.rho()}, the inverse of \code{subcommunity.beta}), 
 #' calculates the normalised subcommunity rho diversity of a series of columns 
 #' representing independent subcommunities counts relative to a total 
-#' supercommunity (by default the sum of the subcommunities), for a series of 
+#' metacommunity (by default the sum of the subcommunities), for a series of 
 #' orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity rho diversity
 #' r <- normalised.rho(super)
@@ -205,27 +205,27 @@ normalised.subcommunity.rho <- function(super, qs)
 #' Similarity-sensitive subcommunity gamma diversity
 #' 
 #' \code{subcommunity.gamma()} is used to calculate the 
-#' contribution per individual toward supercommunity diversity.
+#' contribution per individual toward metacommunity diversity.
 #' 
 #' \code{subcommunity.gamma()} calculates the subcommunity gamma diversity of 
 #' a series of columns representing independent subcommunity counts relative 
-#' to the supercommunity as a whole (by default the sum of the subcommunities).  
+#' to the metacommunity as a whole (by default the sum of the subcommunities).  
 #' This measure may be calculated for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate subcommunity gamma diversity
 #' g <- gamma(super)
@@ -237,244 +237,244 @@ subcommunity.gamma <- function(super, qs)
 raw.subcommunity.gamma <- subcommunity.gamma
 
 
-#' Similarity-sensitive raw supercommunity alpha diversity
+#' Similarity-sensitive raw metacommunity alpha diversity
 #' 
-#' \code{raw.supercommunity.alpha()} is used to calculate the 
-#' naive-community supercommunity diversity.
+#' \code{raw.metacommunity.alpha()} is used to calculate the 
+#' naive-community metacommunity diversity.
 #' 
-#' \code{raw.supercommunity.alpha()} calculates the total supercommunity alpha  
+#' \code{raw.metacommunity.alpha()} calculates the total metacommunity alpha  
 #' diversity of a series of columns representing independent subcommunity 
-#' counts relative to the supercommunity as a whole (by default the sum of the 
+#' counts relative to the metacommunity as a whole (by default the sum of the 
 #' subcommunities). This measure may be calculated for a series of orders, 
 #' repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
-#' # Calculate raw supercommunity alpha diversity
+#' # Calculate raw metacommunity alpha diversity
 #' a <- raw.alpha(super)
 #' superdiv(a, 0:2)
-#' raw.supercommunity.alpha(super, 0:2)
+#' raw.metacommunity.alpha(super, 0:2)
 #' 
-raw.supercommunity.alpha <- function(super, qs) 
+raw.metacommunity.alpha <- function(super, qs) 
   superdiv(raw.alpha(super), qs)
 
 
-#' Similarity-sensitive normalised supercommunity alpha diversity
+#' Similarity-sensitive normalised metacommunity alpha diversity
 #' 
-#' \code{normalised.supercommunity.alpha()} is used to calculate the 
+#' \code{normalised.metacommunity.alpha()} is used to calculate the 
 #' average similarity-sensitive diversity of subcommunities.
 #' 
-#' \code{normalised.supercommunity.alpha()} calculates the total
-#' normalised supercommunity alpha diversity of a series of columns
+#' \code{normalised.metacommunity.alpha()} calculates the total
+#' normalised metacommunity alpha diversity of a series of columns
 #' representing independent subcommunity counts relative to the
-#' supercommunity as a whole (by default the sum of the
+#' metacommunity as a whole (by default the sum of the
 #' subcommunities). This measure may be calculated for a series of
 #' orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
-#' # Calculate normalised supercommunity alpha diversity
+#' # Calculate normalised metacommunity alpha diversity
 #' a <- normalised.alpha(super)
 #' superdiv(a, 0:2)
-#' normalised.supercommunity.alpha(super, 0:2)
+#' normalised.metacommunity.alpha(super, 0:2)
 #' 
-normalised.supercommunity.alpha <- function(super, qs) 
+normalised.metacommunity.alpha <- function(super, qs) 
   superdiv(normalised.alpha(super), qs)
 
 
-#' Similarity-sensitive raw supercommunity beta diversity
+#' Similarity-sensitive raw metacommunity beta diversity
 #' 
-#' \code{raw.supercommunity.beta()} is used to calculate the 
+#' \code{raw.metacommunity.beta()} is used to calculate the 
 #' average distinctiveness of subcommunities.
 #' 
-#' \code{raw.supercommunity.beta()} calculates the total
-#' supercommunity beta diversity of a series of columns representing
-#' independent subcommunity counts relative to the supercommunity as a
+#' \code{raw.metacommunity.beta()} calculates the total
+#' metacommunity beta diversity of a series of columns representing
+#' independent subcommunity counts relative to the metacommunity as a
 #' whole (by default the sum of the subcommunities). This measure may
 #' be calculated for a series of orders, repesented as a vector of
 #' \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
-#' # Calculate raw supercommunity beta diversity
+#' # Calculate raw metacommunity beta diversity
 #' b <- raw.beta(super)
 #' superdiv(b, 0:2)
-#' raw.supercommunity.beta(super, 0:2)
+#' raw.metacommunity.beta(super, 0:2)
 #' 
-raw.supercommunity.beta <- function(super, qs) 
+raw.metacommunity.beta <- function(super, qs) 
   superdiv(raw.beta(super), qs)
 
 
-#' Similarity-sensitive normalised supercommunity beta diversity
+#' Similarity-sensitive normalised metacommunity beta diversity
 #' 
-#' \code{normalised.supercommunity.beta()} is used to calculate the 
+#' \code{normalised.metacommunity.beta()} is used to calculate the 
 #' effective number of distinct subcommunities.
 #' 
-#' \code{normalised.supercommunity.beta()} calculates the total
-#' normalised supercommunity beta diversity of a series of columns
+#' \code{normalised.metacommunity.beta()} calculates the total
+#' normalised metacommunity beta diversity of a series of columns
 #' representing independent subcommunity counts relative to the
-#' supercommunity as a whole (by default the sum of the
+#' metacommunity as a whole (by default the sum of the
 #' subcommunities). This measure may be calculated for a series of
 #' orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
-#' # Calculate normalised supercommunity beta diversity
+#' # Calculate normalised metacommunity beta diversity
 #' b <- normalised.beta(super)
 #' superdiv(b, 0:2)
-#' normalised.supercommunity.beta(super, 0:2)
+#' normalised.metacommunity.beta(super, 0:2)
 #' 
-normalised.supercommunity.beta <- function(super, qs) 
+normalised.metacommunity.beta <- function(super, qs) 
   superdiv(normalised.beta(super), qs)
 
 
-#' Similarity-sensitive raw supercommunity rho diversity
+#' Similarity-sensitive raw metacommunity rho diversity
 #' 
-#' \code{raw.supercommunity.rho()} is used to calculate the 
+#' \code{raw.metacommunity.rho()} is used to calculate the 
 #' average redundancy of subcommunities.
 #' 
-#' \code{raw.supercommunity.rho()} calculates the total supercommunity
+#' \code{raw.metacommunity.rho()} calculates the total metacommunity
 #' rho diversity of a series of columns representing independent
-#' subcommunity counts relative to the supercommunity as a whole (by
+#' subcommunity counts relative to the metacommunity as a whole (by
 #' default the sum of the subcommunities). This measure may be
 #' calculated for a series of orders, repesented as a vector of
 #' \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
-#' # Calculate supercommunity rho diversity
+#' # Calculate metacommunity rho diversity
 #' r <- raw.rho(super)
 #' superdiv(r, 0:2)
-#' raw.supercommunity.rho(super, 0:2)
+#' raw.metacommunity.rho(super, 0:2)
 #' 
-raw.supercommunity.rho <- function(super, qs) 
+raw.metacommunity.rho <- function(super, qs) 
   superdiv(raw.rho(super), qs)
 
 
-#' Similarity-sensitive normalised supercommunity rho diversity
+#' Similarity-sensitive normalised metacommunity rho diversity
 #' 
-#' \code{normalised.supercommunity.rho()} is used to calculate the 
+#' \code{normalised.metacommunity.rho()} is used to calculate the 
 #' average representativeness of subcommunities.
 #' 
-#' \code{normalised.supercommunity.rho()} calculates the total normalised 
-#' supercommunity rho diversity of a series of columns representing independent 
-#' subcommunity counts relative to the supercommunity as a whole (by default 
+#' \code{normalised.metacommunity.rho()} calculates the total normalised 
+#' metacommunity rho diversity of a series of columns representing independent 
+#' subcommunity counts relative to the metacommunity as a whole (by default 
 #' the sum of the subcommunities). This measure may be calculated for a series 
 #' of orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
-#' # Calculate normalised supercommunity rho diversity
+#' # Calculate normalised metacommunity rho diversity
 #' r <- normalised.rho(super)
 #' superdiv(r, 0:2)
-#' normalised.supercommunity.rho(super, 0:2)
+#' normalised.metacommunity.rho(super, 0:2)
 #' 
-normalised.supercommunity.rho <- function(super, qs) 
+normalised.metacommunity.rho <- function(super, qs) 
   superdiv(normalised.rho(super), qs)
 
 
-#' Similarity-sensitive supercommunity gamma diversity
+#' Similarity-sensitive metacommunity gamma diversity
 #' 
-#' \code{supercommunity.gamma()} is used to calculate the 
-#' supercommunity similarity-sensitive diversity.
+#' \code{metacommunity.gamma()} is used to calculate the 
+#' metacommunity similarity-sensitive diversity.
 #' 
-#' \code{supercommunity.gamma()} calculates the total supercommunity gamma diversity 
+#' \code{metacommunity.gamma()} calculates the total metacommunity gamma diversity 
 #' of a series of columns representing independent subcommunity counts relative 
-#' to the supercommunity as a whole (by default the sum of the subcommunities).  
+#' to the metacommunity as a whole (by default the sum of the subcommunities).  
 #' This measure may be calculated for a series of orders, repesented as a vector 
 #' of \code{qs}.
 #' 
-#' @param super object of class \code{supercommunity}
+#' @param super object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
 #' \code{partition} (label attributed to partition), \code{q} (parameter of 
 #' conservatism), \code{diversity}, \code{community} (level of diversity, 
-#' \emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+#' \emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 #' (alpha, beta, rho, or gamma). 
 #' 
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
-#' # Calculate supercommunity gamma diversity
+#' # Calculate metacommunity gamma diversity
 #' g <- gamma(super)
 #' superdiv(g, 0:2)
-#' supercommunity.gamma(super, 0:2)
+#' metacommunity.gamma(super, 0:2)
 #' 
-supercommunity.gamma <- function(super, qs) 
+metacommunity.gamma <- function(super, qs) 
   superdiv(raw.gamma(super), qs)
-raw.supercommunity.gamma <- supercommunity.gamma
+raw.metacommunity.gamma <- metacommunity.gamma
