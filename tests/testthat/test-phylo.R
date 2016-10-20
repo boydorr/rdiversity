@@ -5,7 +5,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   phy <- ape::read.tree(text="(A:2,B:2)R:1;")
   pds <- c(0.6, 0.4)
   x <- as.rdphylo(pds, phy)
-  super <- supercommunity(pds, phy)
+  super <- metacommunity(pds, phy)
   
   expect_equivalent(sum(phy$edge.length) + phy$root.edge, 
                     unlist(superdiv(raw.gamma(super),0)$diversity * x@Tbar))
@@ -18,7 +18,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   phy2 <- ape::read.tree(text="(A:1,B:2)R:1;")
   pds <- c(0.6, 0.4)
   x2 <- as.rdphylo(pds, phy2)
-  super2 <- supercommunity(pds, phy2)
+  super2 <- metacommunity(pds, phy2)
   
   expect_equivalent(sum(phy2$edge.length) + phy2$root.edge, 
                     unlist(superdiv(raw.gamma(super2),0)$diversity * x2@Tbar[1]))
