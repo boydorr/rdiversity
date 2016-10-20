@@ -4,17 +4,17 @@
 #' diversity.
 #'
 #' Values generated from \code{raw.alpha()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate raw subcommunity/supercommunity alpha diversity.
+#' \code{superdiv()} to calculate raw subcommunity/metacommunity alpha diversity.
 #' 
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
-#' @include as.supercommunity.R
+#' @include as.metacommunity.R
 #' @export
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate raw alpha component
 #' a <- raw.alpha(super)
@@ -31,18 +31,18 @@ raw.alpha <- function(super) {
 #' normalised alpha diversity.
 #'
 #' Values generated from \code{normalised.alpha()} may be input into \code{subdiv()} 
-#' and \code{superdiv()} to calculate normalised subcommunity/supercommunity 
+#' and \code{superdiv()} to calculate normalised subcommunity/metacommunity 
 #' alpha diversity.
 #' 
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
-#' @include as.supercommunity.R
+#' @include as.metacommunity.R
 #' @export
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate normalised alpha component
 #' a <- normalised.alpha(super)
@@ -65,17 +65,17 @@ normalised.alpha <- function(super) {
 #' diversity.
 #'
 #' Values generated from \code{raw.rho()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate raw subcommunity/supercommunity rho diversity.
+#' \code{superdiv()} to calculate raw subcommunity/metacommunity rho diversity.
 #' 
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
-#' @include as.supercommunity.R
+#' @include as.metacommunity.R
 #' @export
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate raw rho component
 #' a <- raw.rho(super)
@@ -92,18 +92,18 @@ raw.rho <- function(super) {
 #' normalised rho diversity.
 #'
 #' Values generated from \code{normalised.rho()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate normalised subcommunity/supercommunity rho 
+#' \code{superdiv()} to calculate normalised subcommunity/metacommunity rho 
 #' diversity.
 #' 
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
-#' @include as.supercommunity.R
+#' @include as.metacommunity.R
 #' @export
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate normalised rho component
 #' a <- normalised.rho(super)
@@ -126,17 +126,17 @@ normalised.rho <- function(super) {
 #' diversity.
 #'
 #' Values generated from \code{raw.beta()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate raw subcommunity/supercommunity beta diversity.
+#' \code{superdiv()} to calculate raw subcommunity/metacommunity beta diversity.
 #' 
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{relativeentropy}.
-#' @include as.supercommunity.R
+#' @include as.metacommunity.R
 #' @export
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate raw beta component
 #' a <- raw.beta(super)
@@ -154,18 +154,18 @@ raw.beta <- function(super) {
 #' normalised beta diversity.
 #'
 #' Values generated from \code{normalised.beta()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate normalised subcommunity/supercommunity beta 
+#' \code{superdiv()} to calculate normalised subcommunity/metacommunity beta 
 #' diversity.
 #' 
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{relativeentropy}.
-#' @include as.supercommunity.R
+#' @include as.metacommunity.R
 #' @export
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate normalised beta component
 #' a <- normalised.beta(super)
@@ -189,17 +189,17 @@ normalised.beta <- function(super) {
 #' diversity.
 #'
 #' Values generated from \code{raw.gamma()} may be input into \code{subdiv()} and
-#' \code{superdiv()} to calculate subcommunity/supercommunity gamma diversity.
+#' \code{superdiv()} to calculate subcommunity/metacommunity gamma diversity.
 #' 
-#' @param super object of class \code{supercommunity}.
+#' @param super object of class \code{metacommunity}.
 #' 
 #' @return Returns an object of class \code{powermean}.
-#' @include as.supercommunity.R
+#' @include as.metacommunity.R
 #' @export
 #' 
 #' @examples
 #' pop <- sample(1:50, 5)
-#' super <- supercommunity(pop)
+#' super <- metacommunity(pop)
 #' 
 #' # Calculate gamma component
 #' a <- raw.gamma(super)
