@@ -1,7 +1,7 @@
-#' Coerce to Supercommunity
+#' Coerce to Metacommunity
 #'
-#' Functions to check if an object is a \code{supercommunity} or coerce an
-#' object into a \code{supercommunity}.
+#' Functions to check if an object is a \code{metacommunity} or coerce an
+#' object into a \code{metacommunity}.
 #'
 #' \enumerate{
 #' \item .Data (partition) - proportional abundance of samples (usually types,
@@ -9,7 +9,7 @@
 #' species)
 #' \item similarity - pairwise similarity between \emph{types}
 #' \item type_abundance - proportional abundance of \emph{types} in the
-#' subcommunity as a fraction of the supercommunity as a whole (in the
+#' subcommunity as a fraction of the metacommunity as a whole (in the
 #' phylogenetic case, this corresponds to the proportional abundance of
 #' historic species, which is calculated from the proportional abundance of
 #' present day species)
@@ -18,9 +18,9 @@
 #' \item type_weights - weight of types within a subcommunity
 #' }
 #'
-#' @name supercommunity
-#' @rdname supercommunity-methods
-#' @exportMethod supercommunity
+#' @name metacommunity
+#' @rdname metacommunity-methods
+#' @exportMethod metacommunity
 #'
 #' @param partition \code{vector} or \code{matrix} containing the
 #' relative abundances of individuals or types in their subcommunities. In the
@@ -35,60 +35,57 @@
 #' recent tip, and 1 (the default) marking the most recent common
 #' ancestor. Numbers greater than 1 extend the root of the tree.
 #'
-#' @return Returns an object of class \code{supercommunity}; an S4 object
+#' @return Returns an object of class \code{metacommunity}; an S4 object
 #' containing five slots (see Details).
 #'
 #' @include class-supercommunity.R check_partition.R check_similarity.R
-#' @seealso \code{\link{supercommunity-class}}
+#' @seealso \code{\link{metacommunity-class}}
 #'
 #' @examples
 #' tree <- ape::rtree(n = 5)
 #' partition <- data.frame(a = c(1,0,1,0,0), b = c(0,1,0,1,1))
 #' partition <- partition / sum(partition)
-#' a <- supercommunity(partition, tree)
-#' str(a)
+#' a <- metacommunity(partition, tree)
 #' a
 #'
-#' showMethods("supercommunity")
-#'
-setGeneric(name = "supercommunity",
+setGeneric(name = "metacommunity",
            def = function(partition, similarity, ...) {
-             standardGeneric("supercommunity")
+             standardGeneric("metacommunity")
            } )
 
 
-#' @rdname supercommunity-methods
-#' @aliases supercommunity,data.frame-method
+#' @rdname metacommunity-methods
+#' @aliases metacommunity,data.frame-method
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "missing"),
           definition = function(partition) {
             # If similarity is data.frame, convert to matrix
             partition <- check_partition(partition)
 
-            supercommunity(partition)
+            metacommunity(partition)
           } )
 
 
-#' @rdname supercommunity-methods
-#' @aliases supercommunity,numeric-method
+#' @rdname metacommunity-methods
+#' @aliases metacommunity,numeric-method
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "missing"),
           definition = function(partition) {
             # If similarity is numeric/vector, convert to matrix
             partition <- check_partition(partition)
 
-            supercommunity(partition)
+            metacommunity(partition)
           } )
 
 
-#' @rdname supercommunity-methods
-#' @aliases supercommunity,matrix-method
+#' @rdname metacommunity-methods
+#' @aliases metacommunity,matrix-method
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "missing"),
           definition = function(partition) {
             # If similarity is not input, create identity matrix
@@ -96,41 +93,41 @@ setMethod(f = "supercommunity",
             row.names(similarity) <- row.names(partition)
             colnames(similarity) <- row.names(partition)
 
-            supercommunity(partition, similarity)
+            metacommunity(partition, similarity)
           } )
 
 
-#' @rdname supercommunity-methods
-#' @aliases supercommunity,data.frame,matrix-method
+#' @rdname metacommunity-methods
+#' @aliases metacommunity,data.frame,matrix-method
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "matrix"),
           definition = function(partition, similarity) {
             # If similarity is data.frame, convert to matrix
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity)
+            metacommunity(partition, similarity)
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "matrix"),
           definition = function(partition, similarity) {
             # If similarity is numeric/vector, convert to matrix
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity)
+            metacommunity(partition, similarity)
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "matrix"),
           definition = function(partition, similarity) {
             # Check partition and simliarity matrices
@@ -152,7 +149,7 @@ setMethod(f = "supercommunity",
               row.names(type_weights) <- row.names(type_abundance)
             }
 
-            new('supercommunity', partition,
+            new('metacommunity', partition,
                 similarity = similarity,
                 type_abundance = type_abundance,
                 ordinariness = Zp.j,
@@ -161,10 +158,10 @@ setMethod(f = "supercommunity",
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "missing", similarity = "phylo"),
           definition = function(partition, similarity, interval = 1) {
             # If pds.abundance is not entered, assume an even distribution
@@ -174,53 +171,53 @@ setMethod(f = "supercommunity",
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, interval)
             } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "phylo"),
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, interval)
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "phylo"),
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, interval)
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "phylo"),
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             similarity <- rdphylo(partition, similarity)
 
-            supercommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, interval)
             } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "missing", similarity = "rdphylo"),
           definition = function(partition, similarity, interval = 1) {
             # If pds.abundance is not entered, assume an even distribution
@@ -229,38 +226,38 @@ setMethod(f = "supercommunity",
             row.names(partition) <- tips
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, interval)
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "rdphylo"),
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, interval)
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "rdphylo"),
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
 
-            supercommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, interval)
           } )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-setMethod(f = "supercommunity",
+setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "rdphylo"),
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
@@ -311,7 +308,7 @@ setMethod(f = "supercommunity",
             # because diversity of an empty group is undefined
             Zp.j[Zp.j==0] <- NaN
 
-            new('supercommunity', partition,
+            new('metacommunity', partition,
                 similarity = zmatrix,
                 type_abundance = type_abundance,
                 ordinariness = Zp.j,
@@ -320,26 +317,26 @@ setMethod(f = "supercommunity",
           }} )
 
 
-#' @rdname supercommunity-methods
+#' @rdname metacommunity-methods
 #' @export
 #'
-as.supercommunity <- supercommunity
+as.metacommunity <- metacommunity
 
 
-#' @rdname supercommunity-class
+#' @rdname metacommunity-class
 #' @param x any R object
 #' @return
-#' returns TRUE if its argument is a supercommunity, FALSE otherwise.
+#' returns TRUE if its argument is a metacommunity, FALSE otherwise.
 #' @export
 #'
-is.supercommunity <- function (x)
-  inherits(x, "supercommunity")
+is.metacommunity <- function (x)
+  inherits(x, "metacommunity")
 
 
-#' @rdname supercommunity-class
-#' @param object object of class \code{supercommunity}
+#' @rdname metacommunity-class
+#' @param object object of class \code{metacommunity}
 #'
-setMethod(f = "show", signature= "supercommunity",
+setMethod(f = "show", signature= "metacommunity",
           definition = function(object) {
             # cat('Supercommunity object contains:\n', paste(slotNames(object),"\n"))
             # cat("\n-------------------")
