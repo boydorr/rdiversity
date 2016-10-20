@@ -12,7 +12,7 @@
 #' associated with the diversity term being calculated
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains proportional abundance of \emph{types} in the subcommunity 
-#' as a fraction of the supercommunity as a whole (in the phylogenetic case, 
+#' as a fraction of the metacommunity as a whole (in the phylogenetic case, 
 #' this corresponds to the proportional abundance of historic species, which
 #' is calculated from the proportional abundance of present day species)
 #' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric}; 
