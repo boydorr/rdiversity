@@ -9,7 +9,7 @@
 #' This measure may be calculated for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -21,14 +21,14 @@
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity alpha diversity
-#' a <- raw.alpha(super)
+#' a <- raw.alpha(meta)
 #' subdiv(a, 0:2)
 #' 
-raw.subcommunity.alpha <- function(super, qs) 
-  subdiv(raw.alpha(super), qs)
+raw.subcommunity.alpha <- function(meta, qs) 
+  subdiv(raw.alpha(meta), qs)
 
 
 #' Similarity-sensitive normalised subcommunity alpha
@@ -42,7 +42,7 @@ raw.subcommunity.alpha <- function(super, qs)
 #' subcommunities). This measure may be calculated for a series of orders, 
 #' repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -54,15 +54,15 @@ raw.subcommunity.alpha <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity alpha diversity
-#' a <- normalised.alpha(super)
+#' a <- normalised.alpha(meta)
 #' subdiv(a, 0:2)
-#' normalised.subcommunity.alpha(super, 0:2)
+#' normalised.subcommunity.alpha(meta, 0:2)
 #' 
-normalised.subcommunity.alpha <- function(super, qs) 
-  subdiv(normalised.alpha(super), qs)
+normalised.subcommunity.alpha <- function(meta, qs) 
+  subdiv(normalised.alpha(meta), qs)
 
 
 #' Similarity-sensitive raw subcommunity beta diversity
@@ -76,7 +76,7 @@ normalised.subcommunity.alpha <- function(super, qs)
 #' This measure may be calculated for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -88,15 +88,15 @@ normalised.subcommunity.alpha <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity beta diversity
-#' b <- raw.beta(super)
+#' b <- raw.beta(meta)
 #' subdiv(b, 0:2)
-#' raw.subcommunity.beta(super, 0:2)
+#' raw.subcommunity.beta(meta, 0:2)
 #' 
-raw.subcommunity.beta <- function(super, qs) 
-  subdiv(raw.beta(super), qs)
+raw.subcommunity.beta <- function(meta, qs) 
+  subdiv(raw.beta(meta), qs)
 
 
 #' Similarity-sensitive normalised subcommunity beta diversity
@@ -110,7 +110,7 @@ raw.subcommunity.beta <- function(super, qs)
 #' subcommunities). This measure may be calculated for a series of orders, 
 #' repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -122,15 +122,15 @@ raw.subcommunity.beta <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity beta diversity
-#' b <- normalised.beta(super)
+#' b <- normalised.beta(meta)
 #' subdiv(b, 0:2)
-#' normalised.subcommunity.beta(super, 0:2)
+#' normalised.subcommunity.beta(meta, 0:2)
 #' 
-normalised.subcommunity.beta <- function(super, qs) 
-  subdiv(normalised.beta(super), qs)
+normalised.subcommunity.beta <- function(meta, qs) 
+  subdiv(normalised.beta(meta), qs)
 
 
 #' Similarity-sensitive raw subcommunity rho diversity
@@ -145,7 +145,7 @@ normalised.subcommunity.beta <- function(super, qs)
 #' measure may be calculated for a series of orders, repesented as a vector 
 #' of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -157,15 +157,15 @@ normalised.subcommunity.beta <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity rho diversity
-#' r <- raw.rho(super)
+#' r <- raw.rho(meta)
 #' subdiv(r, 0:2)
-#' raw.subcommunity.rho(super, 0:2)
+#' raw.subcommunity.rho(meta, 0:2)
 #' 
-raw.subcommunity.rho <- function(super, qs) 
-  subdiv(raw.rho(super), qs)
+raw.subcommunity.rho <- function(meta, qs) 
+  subdiv(raw.rho(meta), qs)
 
 
 #' Similarity-sensitive normalised subcommunity rho diversity
@@ -179,7 +179,7 @@ raw.subcommunity.rho <- function(super, qs)
 #' metacommunity (by default the sum of the subcommunities), for a series of 
 #' orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -191,15 +191,15 @@ raw.subcommunity.rho <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity rho diversity
-#' r <- normalised.rho(super)
+#' r <- normalised.rho(meta)
 #' subdiv(r, 0:2)
-#' normalised.subcommunity.rho(super, 0:2)
+#' normalised.subcommunity.rho(meta, 0:2)
 #' 
-normalised.subcommunity.rho <- function(super, qs) 
-  subdiv(normalised.rho(super), qs)
+normalised.subcommunity.rho <- function(meta, qs) 
+  subdiv(normalised.rho(meta), qs)
 
 
 #' Similarity-sensitive subcommunity gamma diversity
@@ -213,7 +213,7 @@ normalised.subcommunity.rho <- function(super, qs)
 #' This measure may be calculated for a series of orders, repesented as a  
 #' vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -225,15 +225,15 @@ normalised.subcommunity.rho <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate subcommunity gamma diversity
-#' g <- gamma(super)
+#' g <- gamma(meta)
 #' subdiv(g, 0:2)
-#' subcommunity.gamma(super, 0:2)
+#' subcommunity.gamma(meta, 0:2)
 #' 
-subcommunity.gamma <- function(super, qs) 
-  subdiv(raw.gamma(super), qs)
+subcommunity.gamma <- function(meta, qs) 
+  subdiv(raw.gamma(meta), qs)
 raw.subcommunity.gamma <- subcommunity.gamma
 
 
@@ -248,7 +248,7 @@ raw.subcommunity.gamma <- subcommunity.gamma
 #' subcommunities). This measure may be calculated for a series of orders, 
 #' repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -260,15 +260,15 @@ raw.subcommunity.gamma <- subcommunity.gamma
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw metacommunity alpha diversity
-#' a <- raw.alpha(super)
+#' a <- raw.alpha(meta)
 #' metadiv(a, 0:2)
-#' raw.metacommunity.alpha(super, 0:2)
+#' raw.metacommunity.alpha(meta, 0:2)
 #' 
-raw.metacommunity.alpha <- function(super, qs) 
-  metadiv(raw.alpha(super), qs)
+raw.metacommunity.alpha <- function(meta, qs) 
+  metadiv(raw.alpha(meta), qs)
 
 
 #' Similarity-sensitive normalised metacommunity alpha diversity
@@ -283,7 +283,7 @@ raw.metacommunity.alpha <- function(super, qs)
 #' subcommunities). This measure may be calculated for a series of
 #' orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -295,15 +295,15 @@ raw.metacommunity.alpha <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised metacommunity alpha diversity
-#' a <- normalised.alpha(super)
+#' a <- normalised.alpha(meta)
 #' metadiv(a, 0:2)
-#' normalised.metacommunity.alpha(super, 0:2)
+#' normalised.metacommunity.alpha(meta, 0:2)
 #' 
-normalised.metacommunity.alpha <- function(super, qs) 
-  metadiv(normalised.alpha(super), qs)
+normalised.metacommunity.alpha <- function(meta, qs) 
+  metadiv(normalised.alpha(meta), qs)
 
 
 #' Similarity-sensitive raw metacommunity beta diversity
@@ -318,7 +318,7 @@ normalised.metacommunity.alpha <- function(super, qs)
 #' be calculated for a series of orders, repesented as a vector of
 #' \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -330,15 +330,15 @@ normalised.metacommunity.alpha <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw metacommunity beta diversity
-#' b <- raw.beta(super)
+#' b <- raw.beta(meta)
 #' metadiv(b, 0:2)
-#' raw.metacommunity.beta(super, 0:2)
+#' raw.metacommunity.beta(meta, 0:2)
 #' 
-raw.metacommunity.beta <- function(super, qs) 
-  metadiv(raw.beta(super), qs)
+raw.metacommunity.beta <- function(meta, qs) 
+  metadiv(raw.beta(meta), qs)
 
 
 #' Similarity-sensitive normalised metacommunity beta diversity
@@ -353,7 +353,7 @@ raw.metacommunity.beta <- function(super, qs)
 #' subcommunities). This measure may be calculated for a series of
 #' orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -365,15 +365,15 @@ raw.metacommunity.beta <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised metacommunity beta diversity
-#' b <- normalised.beta(super)
+#' b <- normalised.beta(meta)
 #' metadiv(b, 0:2)
-#' normalised.metacommunity.beta(super, 0:2)
+#' normalised.metacommunity.beta(meta, 0:2)
 #' 
-normalised.metacommunity.beta <- function(super, qs) 
-  metadiv(normalised.beta(super), qs)
+normalised.metacommunity.beta <- function(meta, qs) 
+  metadiv(normalised.beta(meta), qs)
 
 
 #' Similarity-sensitive raw metacommunity rho diversity
@@ -388,7 +388,7 @@ normalised.metacommunity.beta <- function(super, qs)
 #' calculated for a series of orders, repesented as a vector of
 #' \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -400,15 +400,15 @@ normalised.metacommunity.beta <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate metacommunity rho diversity
-#' r <- raw.rho(super)
+#' r <- raw.rho(meta)
 #' metadiv(r, 0:2)
-#' raw.metacommunity.rho(super, 0:2)
+#' raw.metacommunity.rho(meta, 0:2)
 #' 
-raw.metacommunity.rho <- function(super, qs) 
-  metadiv(raw.rho(super), qs)
+raw.metacommunity.rho <- function(meta, qs) 
+  metadiv(raw.rho(meta), qs)
 
 
 #' Similarity-sensitive normalised metacommunity rho diversity
@@ -422,7 +422,7 @@ raw.metacommunity.rho <- function(super, qs)
 #' the sum of the subcommunities). This measure may be calculated for a series 
 #' of orders, repesented as a vector of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -434,15 +434,15 @@ raw.metacommunity.rho <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised metacommunity rho diversity
-#' r <- normalised.rho(super)
+#' r <- normalised.rho(meta)
 #' metadiv(r, 0:2)
-#' normalised.metacommunity.rho(super, 0:2)
+#' normalised.metacommunity.rho(meta, 0:2)
 #' 
-normalised.metacommunity.rho <- function(super, qs) 
-  metadiv(normalised.rho(super), qs)
+normalised.metacommunity.rho <- function(meta, qs) 
+  metadiv(normalised.rho(meta), qs)
 
 
 #' Similarity-sensitive metacommunity gamma diversity
@@ -456,7 +456,7 @@ normalised.metacommunity.rho <- function(super, qs)
 #' This measure may be calculated for a series of orders, repesented as a vector 
 #' of \code{qs}.
 #' 
-#' @param super object of class \code{metacommunity}
+#' @param meta object of class \code{metacommunity}
 #' @param qs \code{vector} of \emph{q} values
 #' 
 #' @return Returns a five-column \code{tibble}/\code{dataframe} containing:  
@@ -468,13 +468,13 @@ normalised.metacommunity.rho <- function(super, qs)
 #' @export
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' super <- metacommunity(pop)
+#' meta <- metacommunity(pop)
 #' 
 #' # Calculate metacommunity gamma diversity
-#' g <- gamma(super)
+#' g <- gamma(meta)
 #' metadiv(g, 0:2)
-#' metacommunity.gamma(super, 0:2)
+#' metacommunity.gamma(meta, 0:2)
 #' 
-metacommunity.gamma <- function(super, qs) 
-  metadiv(raw.gamma(super), qs)
+metacommunity.gamma <- function(meta, qs) 
+  metadiv(raw.gamma(meta), qs)
 raw.metacommunity.gamma <- metacommunity.gamma
