@@ -7,7 +7,7 @@
 raw.gamma(super)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}.}
+\item{super}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -18,11 +18,11 @@ diversity.
 }
 \details{
 Values generated from \code{raw.gamma()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate subcommunity/supercommunity gamma diversity.
+\code{superdiv()} to calculate subcommunity/metacommunity gamma diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate gamma component
 a <- raw.gamma(super)

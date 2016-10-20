@@ -7,7 +7,7 @@
 raw.subcommunity.alpha(super, qs)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}}
+\item{super}{object of class \code{metacommunity}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 }
@@ -15,23 +15,23 @@ raw.subcommunity.alpha(super, qs)
 Returns a five-column \code{tibble}/\code{dataframe} containing:  
 \code{partition} (label attributed to partition), \code{q} (parameter of 
 conservatism), \code{diversity}, \code{community} (level of diversity, 
-\emph{i.e.} subcommunity, community, or supercommunity), and \code{measure} 
+\emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
 (alpha, beta, rho, or gamma).
 }
 \description{
 \code{raw.subcommunity.alpha()} is used to calculate an estimate of 
-naive-community supercommunity diversity.
+naive-community metacommunity diversity.
 }
 \details{
 \code{raw.subcommunity.alpha()} calculates the subcommunity alpha diversity of 
 a series of columns representing independent subcommunity counts relative 
-to the supercommunity as a whole (by default the sum of the subcommunities). 
+to the metacommunity as a whole (by default the sum of the subcommunities). 
 This measure may be calculated for a series of orders, repesented as a  
 vector of \code{qs}.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate raw subcommunity alpha diversity
 a <- raw.alpha(super)

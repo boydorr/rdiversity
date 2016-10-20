@@ -3,10 +3,10 @@
 \docType{methods}
 \name{superdiv}
 \alias{superdiv}
+\alias{superdiv,metacommunity-method}
 \alias{superdiv,powermean-method}
 \alias{superdiv,relativeentropy-method}
-\alias{superdiv,supercommunity-method}
-\title{Calculate supercommunity diversity}
+\title{Calculate metacommunity diversity}
 \usage{
 superdiv(data, qs)
 
@@ -14,7 +14,7 @@ superdiv(data, qs)
 
 \S4method{superdiv}{relativeentropy}(data, qs)
 
-\S4method{superdiv}{supercommunity}(data, qs)
+\S4method{superdiv}{metacommunity}(data, qs)
 }
 \arguments{
 \item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity 
@@ -26,35 +26,35 @@ components.}
 Returns a five-column \code{tibble}/\code{dataframe} containing:  
 \code{partition} (label attributed to partition), \code{q} (parameter of 
 conservatism), \code{diversity}, \code{community} (level of diversity, 
-\emph{i.e.} supercommunity), and \code{measure} (alpha, beta, rho, or gamma).
+\emph{i.e.} metacommunity), and \code{measure} (alpha, beta, rho, or gamma).
 }
 \description{
-Generic function for calculating supercommunity diversity.
+Generic function for calculating metacommunity diversity.
 }
 \details{
 \code{data} may be input as three different classes:
 \itemize{
 \item{\code{powermean} calculates raw or normalised supercomunity alpha, rho
 or gamma diversity by taking the powermean of diversity components}
-\item{\code{relativeentropy} calculates raw or normalised supercommunity beta
+\item{\code{relativeentropy} calculates raw or normalised metacommunity beta
 diversity by taking the relative entropy of diversity components}
-\item{\code{supercommunity} calculates all supercommunity measures of diversity}
+\item{\code{metacommunity} calculates all metacommunity measures of diversity}
 }
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))
 pop <- pop / sum(pop)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
-# Calculate supercommunity gamma diversity (takes the power mean)
+# Calculate metacommunity gamma diversity (takes the power mean)
 g <- raw.gamma(super)
 superdiv(g, 0:2)
 
-# Calculate supercommunity beta diversity (takes the relative entropy)
+# Calculate metacommunity beta diversity (takes the relative entropy)
 b <- raw.beta(super)
 superdiv(b, 0:2)
 
-# Calculate all measures of supercommunity diversity
+# Calculate all measures of metacommunity diversity
 superdiv(super, 0:2)
 
 }

@@ -7,7 +7,7 @@
 normalised.alpha(super)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}.}
+\item{super}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -18,12 +18,12 @@ normalised alpha diversity.
 }
 \details{
 Values generated from \code{normalised.alpha()} may be input into \code{subdiv()} 
-and \code{superdiv()} to calculate normalised subcommunity/supercommunity 
+and \code{superdiv()} to calculate normalised subcommunity/metacommunity 
 alpha diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate normalised alpha component
 a <- normalised.alpha(super)

@@ -15,7 +15,7 @@ chainsaw(data, leaf.abundance, interval)
 a proportion from the heighest tip)}
 }
 \value{
-Returns an object of class \code{supercommunity}.
+Returns an object of class \code{metacommunity}.
 }
 \description{
 Cut phylogeny

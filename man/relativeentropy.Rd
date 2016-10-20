@@ -19,7 +19,7 @@ is.relativeentropy(x)
 \arguments{
 \item{results}{two-dimensional \code{matrix} of mode \code{numeric};}
 
-\item{super}{object of class \code{supercommunity};}
+\item{super}{object of class \code{metacommunity};}
 
 \item{tag}{object of class \code{character};}
 
@@ -39,7 +39,7 @@ object into a \code{relativeentropy}.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate raw subcommunity beta diversity
 a <- raw.beta(super)

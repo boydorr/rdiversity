@@ -3,9 +3,9 @@
 \docType{methods}
 \name{subdiv}
 \alias{subdiv}
+\alias{subdiv,metacommunity-method}
 \alias{subdiv,powermean-method}
 \alias{subdiv,relativeentropy-method}
-\alias{subdiv,supercommunity-method}
 \title{Calculate subcommunity diversity}
 \usage{
 subdiv(data, qs)
@@ -14,7 +14,7 @@ subdiv(data, qs)
 
 \S4method{subdiv}{relativeentropy}(data, qs)
 
-\S4method{subdiv}{supercommunity}(data, qs)
+\S4method{subdiv}{metacommunity}(data, qs)
 }
 \arguments{
 \item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity 
@@ -40,14 +40,14 @@ Generic function for calculating subcommunity diversity.
 or gamma diversity by taking the powermean of diversity components}
 \item{\code{relativeentropy} calculates raw or normalised subcommunity beta 
 diversity by taking the relative entropy of diversity components}
-\item{\code{supercommunity} caculates all subcommunity measures of diversity}
+\item{\code{metacommunity} caculates all subcommunity measures of diversity}
 }
 }
 \examples{
 # Calculate the diversity of a single population
 pop <- data.frame(a = c(1,3), b = c(1,1))
 pop <- pop/sum(pop)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Subcommunity gamma diversity (takes the power mean)
 g <- raw.gamma(super)

@@ -7,7 +7,7 @@
 normalised.rho(super)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}.}
+\item{super}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -18,12 +18,12 @@ normalised rho diversity.
 }
 \details{
 Values generated from \code{normalised.rho()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate normalised subcommunity/supercommunity rho 
+\code{superdiv()} to calculate normalised subcommunity/metacommunity rho 
 diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate normalised rho component
 a <- normalised.rho(super)

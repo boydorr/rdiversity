@@ -7,7 +7,7 @@
 raw.beta(super)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}.}
+\item{super}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{relativeentropy}.
@@ -18,11 +18,11 @@ diversity.
 }
 \details{
 Values generated from \code{raw.beta()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate raw subcommunity/supercommunity beta diversity.
+\code{superdiv()} to calculate raw subcommunity/metacommunity beta diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate raw beta component
 a <- raw.beta(super)

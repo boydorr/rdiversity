@@ -7,7 +7,7 @@
 raw.rho(super)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}.}
+\item{super}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -18,11 +18,11 @@ diversity.
 }
 \details{
 Values generated from \code{raw.rho()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate raw subcommunity/supercommunity rho diversity.
+\code{superdiv()} to calculate raw subcommunity/metacommunity rho diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate raw rho component
 a <- raw.rho(super)

@@ -7,7 +7,7 @@
 normalised.beta(super)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}.}
+\item{super}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{relativeentropy}.
@@ -18,12 +18,12 @@ normalised beta diversity.
 }
 \details{
 Values generated from \code{normalised.beta()} may be input into \code{subdiv()} and
-\code{superdiv()} to calculate normalised subcommunity/supercommunity beta 
+\code{superdiv()} to calculate normalised subcommunity/metacommunity beta 
 diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate normalised beta component
 a <- normalised.beta(super)

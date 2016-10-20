@@ -21,7 +21,7 @@ is.powermean(x)
 contains values calculated from diversity-term functions, e.g. 
 \code{normalised.alpha()}, \code{raw.beta}, etc.}
 
-\item{super}{object of class \code{supercommunity}; contains proportional 
+\item{super}{object of class \code{metacommunity}; contains proportional 
 abundance of types, pair-wise similarity, and other associated variables.}
 
 \item{tag}{object of class \code{character}; contains an identifier
@@ -53,13 +53,13 @@ object into a \code{powermean}.
 \code{raw.beta} and \code{normalised.beta} are output as 
 \code{relativeentropy} objects.
 
-To calculate the subcommunity or supercommunity diversity, an object of
+To calculate the subcommunity or metacommunity diversity, an object of
 class \code{powermean} is input to \code{subdiv()} or \code{superdiv()}, 
 respectively.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- supercommunity(pop)
+super <- metacommunity(pop)
 
 # Calculate subcommunity raw alpha diversity (takes the powermean)
 a <- raw.alpha(super)

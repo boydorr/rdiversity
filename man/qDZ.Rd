@@ -7,7 +7,7 @@
 qDZ(super, qs)
 }
 \arguments{
-\item{super}{object of class \code{supercommunity}.}
+\item{super}{object of class \code{metacommunity}.}
 
 \item{qs}{\code{vector} of \emph{q} values.}
 }
@@ -27,7 +27,7 @@ pop <- sample(1:50, 5)
 Z <- diag(1, length(pop))
 Z[Z==0] <- 0.4
 
-dat <- supercommunity(pop, Z)
+dat <- metacommunity(pop, Z)
 
 # Calculate similarity-sensitive diversity of order 0 (species richness)
 qDZ(dat, 0)
