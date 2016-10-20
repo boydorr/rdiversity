@@ -20,6 +20,7 @@
 #'
 #' @name metacommunity
 #' @rdname metacommunity-methods
+#' @include class-metacommunity.R check_partition.R check_similarity.R as.rdphylo.R
 #' @exportMethod metacommunity
 #'
 #' @param partition \code{vector} or \code{matrix} containing the
@@ -38,7 +39,6 @@
 #' @return Returns an object of class \code{metacommunity}; an S4 object
 #' containing five slots (see Details).
 #'
-#' @include class-supercommunity.R check_partition.R check_similarity.R
 #' @seealso \code{\link{metacommunity-class}}
 #'
 #' @examples
@@ -47,6 +47,7 @@
 #' partition <- partition / sum(partition)
 #' a <- metacommunity(partition, tree)
 #' a
+#' slotNames(a)
 #'
 setGeneric(name = "metacommunity",
            def = function(partition, similarity, ...) {
