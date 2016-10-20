@@ -31,8 +31,8 @@ chainsaw <- function(data, leaf.abundance, interval) {
   leaf.abundance <- check_partition(leaf.abundance)
   
   if(interval == 1) {
-    super <- metacommunity(leaf.abundance, data)
-    return(super)
+    meta <- metacommunity(leaf.abundance, data)
+    return(meta)
   } 
   
   # Distance from root
@@ -61,13 +61,13 @@ chainsaw <- function(data, leaf.abundance, interval) {
   # When phylogeny is removed, calculate the diversity of the tips
   if(isTRUE(all.equal(0, interval))) {
     if(is.ultrametric(data))
-      super <- metacommunity(leaf.abundance)
+      meta <- metacommunity(leaf.abundance)
     
     if(!is.ultrametric(data)) {
       nodes.at.zero <- node.depth$node[node.depth$depth %in% 0]
-      super <- metacommunity(leaf.abundance[nodes.at.zero,])
+      meta <- metacommunity(leaf.abundance[nodes.at.zero,])
     }
-        return(super)
+        return(meta)
   }
   
   historic.species <- data@historic.species
@@ -215,8 +215,8 @@ chainsaw <- function(data, leaf.abundance, interval) {
 
   # Input similarity as matrix, not phylo, so partition must have the same 
   # number of species (i.e. abundance of historic species, not tips)
-  new.super <- metacommunity(pruned.pds, zmatrix)
-  new.super@.Data <- new.leaf.abundance
-  new.super
+  new.meta <- metacommunity(pruned.pds, zmatrix)
+  new.meta@.Data <- new.leaf.abundance
+  new.meta
   
 } 
