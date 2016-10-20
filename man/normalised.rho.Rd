@@ -4,10 +4,10 @@
 \alias{normalised.rho}
 \title{Low level diversity components: normalised rho}
 \usage{
-normalised.rho(super)
+normalised.rho(meta)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -23,10 +23,10 @@ diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate normalised rho component
-a <- normalised.rho(super)
+a <- normalised.rho(meta)
 
 }
 

@@ -34,7 +34,7 @@ Generic function for calculating metacommunity diversity.
 \details{
 \code{data} may be input as three different classes:
 \itemize{
-\item{\code{powermean} calculates raw or normalised supercomunity alpha, rho
+\item{\code{powermean} calculates raw or normalised metacomunity alpha, rho
 or gamma diversity by taking the powermean of diversity components}
 \item{\code{relativeentropy} calculates raw or normalised metacommunity beta
 diversity by taking the relative entropy of diversity components}
@@ -44,18 +44,18 @@ diversity by taking the relative entropy of diversity components}
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))
 pop <- pop / sum(pop)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate metacommunity gamma diversity (takes the power mean)
-g <- raw.gamma(super)
+g <- raw.gamma(meta)
 metadiv(g, 0:2)
 
 # Calculate metacommunity beta diversity (takes the relative entropy)
-b <- raw.beta(super)
+b <- raw.beta(meta)
 metadiv(b, 0:2)
 
 # Calculate all measures of metacommunity diversity
-metadiv(super, 0:2)
+metadiv(meta, 0:2)
 
 }
 

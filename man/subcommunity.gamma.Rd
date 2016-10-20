@@ -4,10 +4,10 @@
 \alias{subcommunity.gamma}
 \title{Similarity-sensitive subcommunity gamma diversity}
 \usage{
-subcommunity.gamma(super, qs)
+subcommunity.gamma(meta, qs)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}}
+\item{meta}{object of class \code{metacommunity}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 }
@@ -31,12 +31,12 @@ vector of \code{qs}.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate subcommunity gamma diversity
-g <- gamma(super)
+g <- gamma(meta)
 subdiv(g, 0:2)
-subcommunity.gamma(super, 0:2)
+subcommunity.gamma(meta, 0:2)
 
 }
 

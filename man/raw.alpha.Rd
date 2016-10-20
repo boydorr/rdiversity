@@ -4,10 +4,10 @@
 \alias{raw.alpha}
 \title{Low level diversity components: alpha}
 \usage{
-raw.alpha(super)
+raw.alpha(meta)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -22,10 +22,10 @@ Values generated from \code{raw.alpha()} may be input into \code{subdiv()} and
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate raw alpha component
-a <- raw.alpha(super)
+a <- raw.alpha(meta)
 
 }
 

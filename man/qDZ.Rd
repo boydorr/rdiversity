@@ -4,10 +4,10 @@
 \alias{qDZ}
 \title{Similarity-sensitive diversity}
 \usage{
-qDZ(super, qs)
+qDZ(meta, qs)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 
 \item{qs}{\code{vector} of \emph{q} values.}
 }

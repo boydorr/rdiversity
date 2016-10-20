@@ -4,10 +4,10 @@
 \alias{normalised.beta}
 \title{Low level diversity components: normalised beta}
 \usage{
-normalised.beta(super)
+normalised.beta(meta)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{relativeentropy}.
@@ -23,10 +23,10 @@ diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate normalised beta component
-a <- normalised.beta(super)
+a <- normalised.beta(meta)
 
 }
 

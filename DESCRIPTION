@@ -22,11 +22,11 @@ Suggests:
     rmarkdown
 RoxygenNote: 5.0.1
 Collate:
+    'class-rdphylo.R'
+    'as.rdphylo.R'
     'check_similarity.R'
     'check_partition.R'
     'class-metacommunity.R'
-    'class-rdphylo.R'
-    'as.rdphylo.R'
     'as.metacommunity.R'
     'class-powermean.R'
     'as.powermean.R'

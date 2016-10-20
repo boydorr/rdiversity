@@ -4,10 +4,10 @@
 \alias{normalised.alpha}
 \title{Low level diversity components: normalised alpha}
 \usage{
-normalised.alpha(super)
+normalised.alpha(meta)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -23,10 +23,10 @@ alpha diversity.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate normalised alpha component
-a <- normalised.alpha(super)
+a <- normalised.alpha(meta)
 
 }
 

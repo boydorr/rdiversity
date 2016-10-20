@@ -4,10 +4,10 @@
 \alias{raw.metacommunity.rho}
 \title{Similarity-sensitive raw metacommunity rho diversity}
 \usage{
-raw.metacommunity.rho(super, qs)
+raw.metacommunity.rho(meta, qs)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}}
+\item{meta}{object of class \code{metacommunity}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 }
@@ -32,12 +32,12 @@ calculated for a series of orders, repesented as a vector of
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate metacommunity rho diversity
-r <- raw.rho(super)
+r <- raw.rho(meta)
 metadiv(r, 0:2)
-raw.metacommunity.rho(super, 0:2)
+raw.metacommunity.rho(meta, 0:2)
 
 }
 

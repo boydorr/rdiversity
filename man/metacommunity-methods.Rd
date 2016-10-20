@@ -60,7 +60,7 @@ metacommunity(partition, similarity, ...)
 \arguments{
 \item{partition}{\code{vector} or \code{matrix} containing the
 relative abundances of individuals or types in their subcommunities. In the
-case of phylogenetic supercommunities, these are the relative abundances of
+case of phylogenetic metacommunities, these are the relative abundances of
 the tips of the tree (the present day species).}
 
 \item{similarity}{(optional) object that describes similarity between
@@ -69,7 +69,7 @@ showing similarities, but can be of class \code{phylo} or \code{rdphylo}.}
 
 \item{...}{(optional) additional arguments, especially:}
 
-\item{interval}{(optional) for phylogenetic supercommunities only, how
+\item{interval}{(optional) for phylogenetic metacommunities only, how
 far back we go in the tree, with 0 marking the date of the most
 recent tip, and 1 (the default) marking the most recent common
 ancestor. Numbers greater than 1 extend the root of the tree.}

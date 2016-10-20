@@ -4,10 +4,10 @@
 \alias{raw.gamma}
 \title{Low level diversity components: gamma}
 \usage{
-raw.gamma(super)
+raw.gamma(meta)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -22,10 +22,10 @@ Values generated from \code{raw.gamma()} may be input into \code{subdiv()} and
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate gamma component
-a <- raw.gamma(super)
+a <- raw.gamma(meta)
 
 }
 

@@ -4,10 +4,10 @@
 \alias{raw.beta}
 \title{Low level diversity components: raw beta}
 \usage{
-raw.beta(super)
+raw.beta(meta)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{relativeentropy}.
@@ -22,10 +22,10 @@ Values generated from \code{raw.beta()} may be input into \code{subdiv()} and
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate raw beta component
-a <- raw.beta(super)
+a <- raw.beta(meta)
 
 }
 

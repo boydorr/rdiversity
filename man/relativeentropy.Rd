@@ -8,9 +8,9 @@
 \alias{show,relativeentropy-method}
 \title{Coerce to relativeentropy}
 \usage{
-relativeentropy(results, super, tag)
+relativeentropy(results, meta, tag)
 
-as.relativeentropy(results, super, tag)
+as.relativeentropy(results, meta, tag)
 
 is.relativeentropy(x)
 
@@ -19,7 +19,7 @@ is.relativeentropy(x)
 \arguments{
 \item{results}{two-dimensional \code{matrix} of mode \code{numeric};}
 
-\item{super}{object of class \code{metacommunity};}
+\item{meta}{object of class \code{metacommunity};}
 
 \item{tag}{object of class \code{character};}
 
@@ -39,10 +39,10 @@ object into a \code{relativeentropy}.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate raw subcommunity beta diversity
-a <- raw.beta(super)
+a <- raw.beta(meta)
 class(a)
 
 }

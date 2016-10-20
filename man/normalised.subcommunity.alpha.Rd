@@ -4,10 +4,10 @@
 \alias{normalised.subcommunity.alpha}
 \title{Similarity-sensitive normalised subcommunity alpha}
 \usage{
-normalised.subcommunity.alpha(super, qs)
+normalised.subcommunity.alpha(meta, qs)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}}
+\item{meta}{object of class \code{metacommunity}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 }
@@ -31,12 +31,12 @@ repesented as a vector of \code{qs}.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate normalised subcommunity alpha diversity
-a <- normalised.alpha(super)
+a <- normalised.alpha(meta)
 subdiv(a, 0:2)
-normalised.subcommunity.alpha(super, 0:2)
+normalised.subcommunity.alpha(meta, 0:2)
 
 }
 

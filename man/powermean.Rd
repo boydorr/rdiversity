@@ -8,9 +8,9 @@
 \alias{show,powermean-method}
 \title{Coerce to powermean}
 \usage{
-powermean(results, super, tag)
+powermean(results, meta, tag)
 
-as.powermean(results, super, tag)
+as.powermean(results, meta, tag)
 
 is.powermean(x)
 
@@ -21,7 +21,7 @@ is.powermean(x)
 contains values calculated from diversity-term functions, e.g. 
 \code{normalised.alpha()}, \code{raw.beta}, etc.}
 
-\item{super}{object of class \code{metacommunity}; contains proportional 
+\item{meta}{object of class \code{metacommunity}; contains proportional 
 abundance of types, pair-wise similarity, and other associated variables.}
 
 \item{tag}{object of class \code{character}; contains an identifier
@@ -59,10 +59,10 @@ respectively.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate subcommunity raw alpha diversity (takes the powermean)
-a <- raw.alpha(super)
+a <- raw.alpha(meta)
 class(a)
 
 }

@@ -4,10 +4,10 @@
 \alias{raw.rho}
 \title{Low level diversity components: raw rho}
 \usage{
-raw.rho(super)
+raw.rho(meta)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}.}
 }
 \value{
 Returns an object of class \code{powermean}.
@@ -22,10 +22,10 @@ Values generated from \code{raw.rho()} may be input into \code{subdiv()} and
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate raw rho component
-a <- raw.rho(super)
+a <- raw.rho(meta)
 
 }
 

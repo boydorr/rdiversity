@@ -4,10 +4,10 @@
 \alias{normalised.subcommunity.rho}
 \title{Similarity-sensitive normalised subcommunity rho diversity}
 \usage{
-normalised.subcommunity.rho(super, qs)
+normalised.subcommunity.rho(meta, qs)
 }
 \arguments{
-\item{super}{object of class \code{metacommunity}}
+\item{meta}{object of class \code{metacommunity}}
 
 \item{qs}{\code{vector} of \emph{q} values}
 }
@@ -31,12 +31,12 @@ orders, repesented as a vector of \code{qs}.
 }
 \examples{
 pop <- sample(1:50, 5)
-super <- metacommunity(pop)
+meta <- metacommunity(pop)
 
 # Calculate normalised subcommunity rho diversity
-r <- normalised.rho(super)
+r <- normalised.rho(meta)
 subdiv(r, 0:2)
-normalised.subcommunity.rho(super, 0:2)
+normalised.subcommunity.rho(meta, 0:2)
 
 }
 
