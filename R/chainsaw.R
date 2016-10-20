@@ -8,7 +8,7 @@
 #' 
 #' @export
 #' @return
-#' Returns an object of class \code{supercommunity}.
+#' Returns an object of class \code{metacommunity}.
 #' 
 chainsaw <- function(data, leaf.abundance, interval) {
   if(!is.rdphylo(data))
@@ -31,7 +31,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
   leaf.abundance <- check_partition(leaf.abundance)
   
   if(interval == 1) {
-    super <- supercommunity(leaf.abundance, data)
+    super <- metacommunity(leaf.abundance, data)
     return(super)
   } 
   
@@ -61,11 +61,11 @@ chainsaw <- function(data, leaf.abundance, interval) {
   # When phylogeny is removed, calculate the diversity of the tips
   if(isTRUE(all.equal(0, interval))) {
     if(is.ultrametric(data))
-      super <- supercommunity(leaf.abundance)
+      super <- metacommunity(leaf.abundance)
     
     if(!is.ultrametric(data)) {
       nodes.at.zero <- node.depth$node[node.depth$depth %in% 0]
-      super <- supercommunity(leaf.abundance[nodes.at.zero,])
+      super <- metacommunity(leaf.abundance[nodes.at.zero,])
     }
         return(super)
   }
@@ -215,7 +215,7 @@ chainsaw <- function(data, leaf.abundance, interval) {
 
   # Input similarity as matrix, not phylo, so partition must have the same 
   # number of species (i.e. abundance of historic species, not tips)
-  new.super <- supercommunity(pruned.pds, zmatrix)
+  new.super <- metacommunity(pruned.pds, zmatrix)
   new.super@.Data <- new.leaf.abundance
   new.super
   
