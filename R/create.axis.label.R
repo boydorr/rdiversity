@@ -48,8 +48,8 @@ create.axis.label <- function(results, symbol = F) {
       tag <- bquote(italic(.(tag)))
     }
     }
- 
-  community.type <- gsub("s", "S", community.type)
+  community.type <- gsub("subcommunity", "Subcommunity", community.type)
+  community.type <- gsub("metacommunity", "Metacommunity", community.type)
   
   if(!isTRUE(symbol)) tag <- bquote(.(community.type) ~ .(tag))
 
