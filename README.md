@@ -62,7 +62,7 @@ df <- subdiv(component, 0:30)
 rdplot(df)
 ```
 
-Alternatively, to calculate **all** subcommunity (or metacommunity) measures, a metacommunity object may be passed directly:
+In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a metacommunity object may be passed directly to `subdiv()` or `metadiv()`:
 
 ```r
 # To calculate all subcommunity diversity measures
@@ -72,8 +72,7 @@ subdiv(meta, 0:2)
 metadiv(meta, 0:2)
 ```
 
-
-Alternatively, a single measure of diversity may be calculated by calling a wrapper function:
+Alternatively, if computational efficiency is not an issue, a single measure of diversity may be calculated directly (without first generating a `metacommunity` object) by calling a wrapper function:
 ```r
 normalised.subcommunity.alpha(meta,0:2)
 ```
@@ -96,9 +95,6 @@ A complete list of these functions is shown below:
 
 
 ## General tools
-* `similarity_matrix()` :  
-* `similarity_shimatani()` :  
-* `similarity_phylo()` : 
 * `qD.single()` : the Hill number / naive-type diversity of order *q* of a single population  
 * `qD()` : the Hill number / naive-type diversity of a series of independent populations for a series of orders  
 * `qDZ.single()` : the similarity-sensitive diversity of order *q* of a single population  
