@@ -2,16 +2,17 @@
 % Please edit documentation in R/rdiversity-package.R
 \docType{package}
 \name{rdiversity-package}
+\alias{rdiversity}
 \alias{rdiversity-package}
 \title{rdiversity}
 \description{
-The \code{rdiversity} package calculates the similarity-sensitive diversity 
+The \code{rdiversity} package calculates the similarity-sensitive diversity
 of a population and it's partitions.
 }
 \details{
-This package calculates, or takes as input, the similarity between 
-types (naive, taxonomic, phenotypic, genetic, 
-phylogenetic, functional, etc.), where a type is defined as the categorical 
+This package calculates, or takes as input, the similarity between
+types (naive, taxonomic, phenotypic, genetic,
+phylogenetic, functional, etc.), where a type is defined as the categorical
 variable that describes how the similarity of individuals is assessed.
 }
 \author{

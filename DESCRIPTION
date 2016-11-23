@@ -3,7 +3,10 @@ Type: Package
 Title: Measures similarity-sensitive diversity
 Version: 0.3
 Date: 2016-06-14
-Author: Sonia Mitchell, Richard Reeve
+Authors@R: c(person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
+                  role = "aut"),
+             person("Sonia", "Mitchell", email = "soniamitchell@gmail.com",
+                  role = c("aut", "cre")))
 Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
 Description: Calculates the similarity-sensitive diversity of a population and
     it's partitions.
