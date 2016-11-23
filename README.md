@@ -20,17 +20,17 @@ devtools::install_github("boydorr/rdiversity")
 ## Getting started
 
 
-Before calculating diversity a 'supercommunity' object must be created. This object contains all the information needed to calculate diversity.
+Before calculating diversity a 'metacommunity' object must be created. This object contains all the information needed to calculate diversity.
 
 ```r
 # Example population
 pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 
-# Create supercommunity object
-super <- supercommunity(pop)
+# Create metacommunity object
+meta <- metacommunity(pop)
 ```
 
-The `supercommunity()` function takes two arguments, `partition` and `similarity`, and creates an object containing:  
+The `metacommunity()` function takes two arguments, `partition` and `similarity`, and creates an object containing:  
 
 * `@type_abundance` : the abundance of types within a population,  
 * `@similarity` : the pair-wise similarity of types within a population,  
@@ -41,58 +41,58 @@ The `supercommunity()` function takes two arguments, `partition` and `similarity
     
 
 ## Calculating diversity
-First we need to calculate the low-level diversity component seperately, by passing a supercommunity object to the appropriate function; `raw.alpha()`, `normalised.alpha()`, `raw.beta()`, `normalised.beta()`, `raw.rho()`, `normalised.rho()`, or `raw.gamma()`. 
+First we need to calculate the low-level diversity component seperately, by passing a metacommunity object to the appropriate function; `raw.alpha()`, `normalised.alpha()`, `raw.beta()`, `normalised.beta()`, `raw.rho()`, `normalised.rho()`, or `raw.gamma()`. 
 
 ```r
 # First, calculate the normalised subcommunity alpha component
-component <- normalised.alpha(super)
+component <- normalised.alpha(meta)
 ```
 
-Afterwhich, `subdiv()` or `superdiv()` are used to calculate subcommunity or supercommunity diversity, respectively (since both subcommunity and supercommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
+Afterwhich, `subdiv()` or `metadiv()` are used to calculate subcommunity or metacommunity diversity, respectively (since both subcommunity and metacommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
 
 ```r
 # Then, calculate species richness
 subdiv(component, 0)
 
 # or the average species richness across the whole population
-superdiv(component, 0)
+metadiv(component, 0)
 
 # We can also generate a diversity profile by calculating multiple q-values simultaneously
 df <- subdiv(component, 0:30)
 rdplot(df)
 ```
 
-Alternatively, to calculate **all** subcommunity (or supercommunity) measures, a supercommunity object may be passed directly:
+Alternatively, to calculate **all** subcommunity (or metacommunity) measures, a metacommunity object may be passed directly:
 
 ```r
 # To calculate all subcommunity diversity measures
-subdiv(super, 0:2)
+subdiv(meta, 0:2)
 
-# To calculate all supercommunity diversity measures
-superdiv(super, 0:2)
+# To calculate all metacommunity diversity measures
+metadiv(meta, 0:2)
 ```
 
 
 Alternatively, a single measure of diversity may be calculated by calling a wrapper function:
 ```r
-normalised.subcommunity.alpha(super,0:2)
+normalised.subcommunity.alpha(meta,0:2)
 ```
 A complete list of these functions is shown below:
 
-* `raw.subcommunity.alpha()` : estimate of naive-community supercommunity diversity  
+* `raw.subcommunity.alpha()` : estimate of naive-community metacommunity diversity  
 * `normalised.subcommunity.alpha()` : similarity-sensitive diversity of subcommunity *j* in isolation  
 * `raw.subcommunity.rho()` : redundancy of subcommunity *j*  
 * `normalised.subcommunity.rho()` : representativeness of subcommunity *j*  
 * `raw.subcommunity.beta()` : distinctiveness of subcommunity *j*  
 * `normalised.subcommunity.beta()` : estimate of effective number of distinct subcommunities  
-* `raw.subcommunity.gamma()` : contribution per individual toward supercommunity diversity  
-* `raw.supercommunity.alpha()` : naive-community supercommunity diversity  
-* `normalised.supercommunity.alpha()` : average similarity-sensitive diversity of subcommunities  
-* `raw.supercommunity.rho()` : average redundancy of subcommunities  
-* `normalised.supercommunity.rho()` : average representativeness of subcommunities  
-* `raw.supercommunity.beta()` : average distinctiveness of subcommunities  
-* `normalised.supercommunity.beta()` : effective number of distinct subcommunities  
-* `supercommunity.gamma()` : supercommunity similarity-sensitive diversity  
+* `raw.subcommunity.gamma()` : contribution per individual toward metacommunity diversity  
+* `raw.metacommunity.alpha()` : naive-community metacommunity diversity  
+* `normalised.metacommunity.alpha()` : average similarity-sensitive diversity of subcommunities  
+* `raw.metacommunity.rho()` : average redundancy of subcommunities  
+* `normalised.metacommunity.rho()` : average representativeness of subcommunities  
+* `raw.metacommunity.beta()` : average distinctiveness of subcommunities  
+* `normalised.metacommunity.beta()` : effective number of distinct subcommunities  
+* `metacommunity.gamma()` : metacommunity similarity-sensitive diversity  
 
 
 ## General tools
