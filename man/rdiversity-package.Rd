@@ -15,9 +15,4 @@ types (naive, taxonomic, phenotypic, genetic,
 phylogenetic, functional, etc.), where a type is defined as the categorical
 variable that describes how the similarity of individuals is assessed.
 }
-\author{
-Sonia Mitchell <soniamitchell@gmail.com>, Richard Reeve <richard.reeve@glasgow.ac.uk>
-\cr
-Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
-}
 
