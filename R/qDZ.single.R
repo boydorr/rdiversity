@@ -23,12 +23,12 @@
 #' Z[Z==0] <- 0.4
 #' 
 #' # Calculate similarity-sensitive diversity of order 0 (species richness)
-#' qDZ.single(pop, 0, Z)
+#' qDZ_single(pop, 0, Z)
 #' 
-qDZ.single <-
+qDZ_single <-
   function(proportions, q,
            Z = diag(nrow(proportions)),
            Zp = Z %*% proportions) {
     proportions <- check_partition(proportions)
-    1 / power.mean(values = Zp, order = q - 1, weights = proportions)
+    1 / power_mean(values = Zp, order = q - 1, weights = proportions)
   }

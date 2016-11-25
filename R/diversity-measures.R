@@ -1,9 +1,9 @@
 #' Similarity-sensitive raw subcommunity alpha
 #' 
-#' \code{raw.subcommunity.alpha()} is used to calculate an estimate of 
+#' \code{raw_subcommunity_alpha()} is used to calculate an estimate of 
 #' naive-community metacommunity diversity.
 #' 
-#' \code{raw.subcommunity.alpha()} calculates the subcommunity alpha diversity of 
+#' \code{raw_subcommunity_alpha()} calculates the subcommunity alpha diversity of 
 #' a series of columns representing independent subcommunity counts relative 
 #' to the metacommunity as a whole (by default the sum of the subcommunities). 
 #' This measure may be calculated for a series of orders, repesented as a  
@@ -24,19 +24,18 @@
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity alpha diversity
-#' a <- raw.alpha(meta)
-#' subdiv(a, 0:2)
+#' raw_subcommunity_alpha(meta, 0:2)
 #' 
-raw.subcommunity.alpha <- function(meta, qs) 
-  subdiv(raw.alpha(meta), qs)
+raw_subcommunity_alpha <- function(meta, qs) 
+  subdiv(raw_alpha(meta), qs)
 
 
 #' Similarity-sensitive normalised subcommunity alpha
 #' 
-#' \code{normalised.subcommunity.alpha()} is used to calculate the 
+#' \code{normalised_subcommunity_alpha()} is used to calculate the 
 #' similarity-sensitive diversity of subcommunity \emph{j} in isolation.
 #' 
-#' \code{normalised.subcommunity.alpha()} calculates the normalised subcommunity 
+#' \code{normalised_subcommunity_alpha()} calculates the normalised subcommunity 
 #' alpha diversity of a series of columns representing independent subcommunity 
 #' counts relative to the metacommunity as a whole (by default the sum of the 
 #' subcommunities). This measure may be calculated for a series of orders, 
@@ -57,20 +56,18 @@ raw.subcommunity.alpha <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity alpha diversity
-#' a <- normalised.alpha(meta)
-#' subdiv(a, 0:2)
-#' normalised.subcommunity.alpha(meta, 0:2)
+#' normalised_subcommunity_alpha(meta, 0:2)
 #' 
-normalised.subcommunity.alpha <- function(meta, qs) 
-  subdiv(normalised.alpha(meta), qs)
+normalised_subcommunity_alpha <- function(meta, qs) 
+  subdiv(normalised_alpha(meta), qs)
 
 
 #' Similarity-sensitive raw subcommunity beta diversity
 #' 
-#' \code{raw.subcommunity.beta()} is used to calculate the 
+#' \code{raw_subcommunity_beta()} is used to calculate the 
 #' distinctiveness of subcommunity \emph{j}.
 #' 
-#' \code{raw.subcommunity.beta()} calculates the subcommunity beta diversity of a 
+#' \code{raw_subcommunity_beta()} calculates the subcommunity beta diversity of a 
 #' series of columns representing independent subcommunity counts relative to 
 #' the metacommunity as a whole (by default the sum of the subcommunities).  
 #' This measure may be calculated for a series of orders, repesented as a  
@@ -91,20 +88,18 @@ normalised.subcommunity.alpha <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity beta diversity
-#' b <- raw.beta(meta)
-#' subdiv(b, 0:2)
-#' raw.subcommunity.beta(meta, 0:2)
+#' raw_subcommunity_beta(meta, 0:2)
 #' 
-raw.subcommunity.beta <- function(meta, qs) 
-  subdiv(raw.beta(meta), qs)
+raw_subcommunity_beta <- function(meta, qs) 
+  subdiv(raw_beta(meta), qs)
 
 
 #' Similarity-sensitive normalised subcommunity beta diversity
 #' 
-#' \code{normalised.subcommunity.beta()} is used to calculate an 
+#' \code{normalised_subcommunity_beta()} is used to calculate an 
 #' estimate of the effective number of distinct subcommunities.
 #' 
-#' \code{normalised.subcommunity.beta()} calculates the normalised subcommunity beta 
+#' \code{normalised_subcommunity_beta()} calculates the normalised subcommunity beta 
 #' diversity of a series of columns representing independent subcommunity 
 #' counts relative to the metacommunity as a whole (by default the sum of the 
 #' subcommunities). This measure may be calculated for a series of orders, 
@@ -125,20 +120,18 @@ raw.subcommunity.beta <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity beta diversity
-#' b <- normalised.beta(meta)
-#' subdiv(b, 0:2)
-#' normalised.subcommunity.beta(meta, 0:2)
+#' normalised_subcommunity_beta(meta, 0:2)
 #' 
-normalised.subcommunity.beta <- function(meta, qs) 
-  subdiv(normalised.beta(meta), qs)
+normalised_subcommunity_beta <- function(meta, qs) 
+  subdiv(normalised_beta(meta), qs)
 
 
 #' Similarity-sensitive raw subcommunity rho diversity
 #' 
-#' \code{raw.subcommunity.rho()} is used to calculate the redundancy of 
+#' \code{raw_subcommunity_rho()} is used to calculate the redundancy of 
 #' subcommunity \emph{j}.
 #' 
-#' \code{raw.subcommunity.rho()}, the inverse of \code{raw.subcommunity.beta()}, 
+#' \code{raw_subcommunity_rho()}, the inverse of \code{raw_subcommunity_beta()}, 
 #' calculates the raw subcommunity rho diversity of a series of columns  
 #' representing independent subcommunity counts relative to the
 #' metacommunity as a whole (by default the sum of the subcommunities). This 
@@ -160,20 +153,18 @@ normalised.subcommunity.beta <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity rho diversity
-#' r <- raw.rho(meta)
-#' subdiv(r, 0:2)
-#' raw.subcommunity.rho(meta, 0:2)
+#' raw_subcommunity_rho(meta, 0:2)
 #' 
-raw.subcommunity.rho <- function(meta, qs) 
-  subdiv(raw.rho(meta), qs)
+raw_subcommunity_rho <- function(meta, qs) 
+  subdiv(raw_rho(meta), qs)
 
 
 #' Similarity-sensitive normalised subcommunity rho diversity
 #' 
-#' \code{normalised.subcommunity.rho()} is used to calculate the 
+#' \code{normalised_subcommunity_rho()} is used to calculate the 
 #' representativeness of subcommunity \emph{j}.
 #' 
-#' \code{normalised.subcommunity.rho()}, the inverse of \code{subcommunity.beta}), 
+#' \code{normalised_subcommunity_rho()}, the inverse of \code{subcommunity.beta}), 
 #' calculates the normalised subcommunity rho diversity of a series of columns 
 #' representing independent subcommunities counts relative to a total 
 #' metacommunity (by default the sum of the subcommunities), for a series of 
@@ -194,20 +185,18 @@ raw.subcommunity.rho <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised subcommunity rho diversity
-#' r <- normalised.rho(meta)
-#' subdiv(r, 0:2)
-#' normalised.subcommunity.rho(meta, 0:2)
+#' normalised_subcommunity_rho(meta, 0:2)
 #' 
-normalised.subcommunity.rho <- function(meta, qs) 
-  subdiv(normalised.rho(meta), qs)
+normalised_subcommunity_rho <- function(meta, qs) 
+  subdiv(normalised_rho(meta), qs)
 
 
 #' Similarity-sensitive subcommunity gamma diversity
 #' 
-#' \code{subcommunity.gamma()} is used to calculate the 
+#' \code{subcommunity_gamma()} is used to calculate the 
 #' contribution per individual toward metacommunity diversity.
 #' 
-#' \code{subcommunity.gamma()} calculates the subcommunity gamma diversity of 
+#' \code{subcommunity_gamma()} calculates the subcommunity gamma diversity of 
 #' a series of columns representing independent subcommunity counts relative 
 #' to the metacommunity as a whole (by default the sum of the subcommunities).  
 #' This measure may be calculated for a series of orders, repesented as a  
@@ -228,21 +217,18 @@ normalised.subcommunity.rho <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate subcommunity gamma diversity
-#' g <- gamma(meta)
-#' subdiv(g, 0:2)
-#' subcommunity.gamma(meta, 0:2)
+#' subcommunity_gamma(meta, 0:2)
 #' 
-subcommunity.gamma <- function(meta, qs) 
-  subdiv(raw.gamma(meta), qs)
-raw.subcommunity.gamma <- subcommunity.gamma
+subcommunity_gamma <- function(meta, qs) 
+  subdiv(raw_gamma(meta), qs)
 
 
 #' Similarity-sensitive raw metacommunity alpha diversity
 #' 
-#' \code{raw.metacommunity.alpha()} is used to calculate the 
+#' \code{raw_metacommunity_alpha()} is used to calculate the 
 #' naive-community metacommunity diversity.
 #' 
-#' \code{raw.metacommunity.alpha()} calculates the total metacommunity alpha  
+#' \code{raw_metacommunity_alpha()} calculates the total metacommunity alpha  
 #' diversity of a series of columns representing independent subcommunity 
 #' counts relative to the metacommunity as a whole (by default the sum of the 
 #' subcommunities). This measure may be calculated for a series of orders, 
@@ -263,20 +249,18 @@ raw.subcommunity.gamma <- subcommunity.gamma
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw metacommunity alpha diversity
-#' a <- raw.alpha(meta)
-#' metadiv(a, 0:2)
-#' raw.metacommunity.alpha(meta, 0:2)
+#' raw_metacommunity_alpha(meta, 0:2)
 #' 
-raw.metacommunity.alpha <- function(meta, qs) 
-  metadiv(raw.alpha(meta), qs)
+raw_metacommunity_alpha <- function(meta, qs) 
+  metadiv(raw_alpha(meta), qs)
 
 
 #' Similarity-sensitive normalised metacommunity alpha diversity
 #' 
-#' \code{normalised.metacommunity.alpha()} is used to calculate the 
+#' \code{normalised_metacommunity_alpha()} is used to calculate the 
 #' average similarity-sensitive diversity of subcommunities.
 #' 
-#' \code{normalised.metacommunity.alpha()} calculates the total
+#' \code{normalised_metacommunity_alpha()} calculates the total
 #' normalised metacommunity alpha diversity of a series of columns
 #' representing independent subcommunity counts relative to the
 #' metacommunity as a whole (by default the sum of the
@@ -298,20 +282,18 @@ raw.metacommunity.alpha <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised metacommunity alpha diversity
-#' a <- normalised.alpha(meta)
-#' metadiv(a, 0:2)
-#' normalised.metacommunity.alpha(meta, 0:2)
+#' normalised_metacommunity_alpha(meta, 0:2)
 #' 
-normalised.metacommunity.alpha <- function(meta, qs) 
-  metadiv(normalised.alpha(meta), qs)
+normalised_metacommunity_alpha <- function(meta, qs) 
+  metadiv(normalised_alpha(meta), qs)
 
 
 #' Similarity-sensitive raw metacommunity beta diversity
 #' 
-#' \code{raw.metacommunity.beta()} is used to calculate the 
+#' \code{raw_metacommunity_beta()} is used to calculate the 
 #' average distinctiveness of subcommunities.
 #' 
-#' \code{raw.metacommunity.beta()} calculates the total
+#' \code{raw_metacommunity_beta()} calculates the total
 #' metacommunity beta diversity of a series of columns representing
 #' independent subcommunity counts relative to the metacommunity as a
 #' whole (by default the sum of the subcommunities). This measure may
@@ -333,20 +315,18 @@ normalised.metacommunity.alpha <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw metacommunity beta diversity
-#' b <- raw.beta(meta)
-#' metadiv(b, 0:2)
-#' raw.metacommunity.beta(meta, 0:2)
+#' raw_metacommunity_beta(meta, 0:2)
 #' 
-raw.metacommunity.beta <- function(meta, qs) 
-  metadiv(raw.beta(meta), qs)
+raw_metacommunity_beta <- function(meta, qs) 
+  metadiv(raw_beta(meta), qs)
 
 
 #' Similarity-sensitive normalised metacommunity beta diversity
 #' 
-#' \code{normalised.metacommunity.beta()} is used to calculate the 
+#' \code{normalised_metacommunity_beta()} is used to calculate the 
 #' effective number of distinct subcommunities.
 #' 
-#' \code{normalised.metacommunity.beta()} calculates the total
+#' \code{normalised_metacommunity_beta()} calculates the total
 #' normalised metacommunity beta diversity of a series of columns
 #' representing independent subcommunity counts relative to the
 #' metacommunity as a whole (by default the sum of the
@@ -368,20 +348,18 @@ raw.metacommunity.beta <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised metacommunity beta diversity
-#' b <- normalised.beta(meta)
-#' metadiv(b, 0:2)
-#' normalised.metacommunity.beta(meta, 0:2)
+#' normalised_metacommunity_beta(meta, 0:2)
 #' 
-normalised.metacommunity.beta <- function(meta, qs) 
-  metadiv(normalised.beta(meta), qs)
+normalised_metacommunity_beta <- function(meta, qs) 
+  metadiv(normalised_beta(meta), qs)
 
 
 #' Similarity-sensitive raw metacommunity rho diversity
 #' 
-#' \code{raw.metacommunity.rho()} is used to calculate the 
+#' \code{raw_metacommunity_rho()} is used to calculate the 
 #' average redundancy of subcommunities.
 #' 
-#' \code{raw.metacommunity.rho()} calculates the total metacommunity
+#' \code{raw_metacommunity_rho()} calculates the total metacommunity
 #' rho diversity of a series of columns representing independent
 #' subcommunity counts relative to the metacommunity as a whole (by
 #' default the sum of the subcommunities). This measure may be
@@ -403,20 +381,18 @@ normalised.metacommunity.beta <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate metacommunity rho diversity
-#' r <- raw.rho(meta)
-#' metadiv(r, 0:2)
-#' raw.metacommunity.rho(meta, 0:2)
+#' raw_metacommunity_rho(meta, 0:2)
 #' 
-raw.metacommunity.rho <- function(meta, qs) 
-  metadiv(raw.rho(meta), qs)
+raw_metacommunity_rho <- function(meta, qs) 
+  metadiv(raw_rho(meta), qs)
 
 
 #' Similarity-sensitive normalised metacommunity rho diversity
 #' 
-#' \code{normalised.metacommunity.rho()} is used to calculate the 
+#' \code{normalised_metacommunity_rho()} is used to calculate the 
 #' average representativeness of subcommunities.
 #' 
-#' \code{normalised.metacommunity.rho()} calculates the total normalised 
+#' \code{normalised_metacommunity_rho()} calculates the total normalised 
 #' metacommunity rho diversity of a series of columns representing independent 
 #' subcommunity counts relative to the metacommunity as a whole (by default 
 #' the sum of the subcommunities). This measure may be calculated for a series 
@@ -437,20 +413,20 @@ raw.metacommunity.rho <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised metacommunity rho diversity
-#' r <- normalised.rho(meta)
+#' r <- normalised_rho(meta)
 #' metadiv(r, 0:2)
-#' normalised.metacommunity.rho(meta, 0:2)
+#' normalised_metacommunity_rho(meta, 0:2)
 #' 
-normalised.metacommunity.rho <- function(meta, qs) 
-  metadiv(normalised.rho(meta), qs)
+normalised_metacommunity_rho <- function(meta, qs) 
+  metadiv(normalised_rho(meta), qs)
 
 
 #' Similarity-sensitive metacommunity gamma diversity
 #' 
-#' \code{metacommunity.gamma()} is used to calculate the 
+#' \code{metacommunity_gamma()} is used to calculate the 
 #' metacommunity similarity-sensitive diversity.
 #' 
-#' \code{metacommunity.gamma()} calculates the total metacommunity gamma diversity 
+#' \code{metacommunity_gamma()} calculates the total metacommunity gamma diversity 
 #' of a series of columns representing independent subcommunity counts relative 
 #' to the metacommunity as a whole (by default the sum of the subcommunities).  
 #' This measure may be calculated for a series of orders, repesented as a vector 
@@ -471,10 +447,9 @@ normalised.metacommunity.rho <- function(meta, qs)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate metacommunity gamma diversity
-#' g <- gamma(meta)
+#' g <- raw_gamma(meta)
 #' metadiv(g, 0:2)
-#' metacommunity.gamma(meta, 0:2)
+#' metacommunity_gamma(meta, 0:2)
 #' 
-metacommunity.gamma <- function(meta, qs) 
-  metadiv(raw.gamma(meta), qs)
-raw.metacommunity.gamma <- metacommunity.gamma
+metacommunity_gamma <- function(meta, qs) 
+  metadiv(raw_gamma(meta), qs)

@@ -2,7 +2,7 @@
 #' 
 #' Define S4 class \code{rdiv}.
 #' 
-#' @field measure object of class \code{character}; e.g. 'raw.subcommunity.alpha'
+#' @field measure object of class \code{character}; e.g. 'raw_subcommunity_alpha'
 #' @field tag object of class \code{formula}; e.g. bquote('Subcommunity' ~ bar(alpha))
 #' @field level object of class \code{character}; e.g. 'subcommunity'
 #' 

@@ -25,11 +25,11 @@
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate metacommunity gamma diversity (takes the power mean)
-#' g <- raw.gamma(meta)
+#' g <- raw_gamma(meta)
 #' metadiv(g, 0:2)
 #' 
 #' # Calculate metacommunity beta diversity (takes the relative entropy)
-#' b <- raw.beta(meta)
+#' b <- raw_beta(meta)
 #' metadiv(b, 0:2)
 #' 
 #' # Calculate all measures of metacommunity diversity
@@ -48,8 +48,8 @@ setMethod(f = "metadiv", signature= "powermean",
             results <- list()
             for(i in 1:length(qs)) {
               subdiv <- sapply(1:ncol(data), function(y) 
-                power.mean(data[,y], 1-qs[i], data@type_weights[,y]))
-              results[[i]] <- power.mean(subdiv, 1-qs[i], 
+                power_mean(data[,y], 1-qs[i], data@type_weights[,y]))
+              results[[i]] <- power_mean(subdiv, 1-qs[i], 
                                          data@subcommunity_weights)
             }
             
@@ -72,8 +72,8 @@ setMethod(f = "metadiv", signature= "relativeentropy",
             results <- list()
             for(i in 1:length(qs)) {
               subdiv <- sapply(1:ncol(data), function(y) 
-                power.mean(data[,y], qs[i]-1, data@type_weights[,y]))
-              results[[i]] <- power.mean(subdiv, 1-qs[i], 
+                power_mean(data[,y], qs[i]-1, data@type_weights[,y]))
+              results[[i]] <- power_mean(subdiv, 1-qs[i], 
                                          data@subcommunity_weights)
             }
             
@@ -94,10 +94,10 @@ setMethod(f = "metadiv", signature= "relativeentropy",
 setMethod(f = "metadiv", signature= "metacommunity", 
           definition = function(data, qs) {  
             # Calculate terms
-            div.measures <- list(raw.alpha, normalised.alpha, 
-                                 raw.beta, normalised.beta,
-                                 raw.rho, normalised.rho,
-                                 raw.gamma)
+            div.measures <- list(raw_alpha, normalised_alpha, 
+                                 raw_beta, normalised_beta,
+                                 raw_rho, normalised_rho,
+                                 raw_gamma)
             # Calculate metacommunity diversity
             results <- lapply(div.measures, function(x) 
               res <- metadiv(x(data), qs))

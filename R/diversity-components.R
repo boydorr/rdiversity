@@ -3,7 +3,7 @@
 #' Calculates the low-level diversity component necessary for calculating alpha
 #' diversity.
 #'
-#' Values generated from \code{raw.alpha()} may be input into \code{subdiv()} and
+#' Values generated from \code{raw_alpha()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity alpha diversity.
 #' 
 #' @param meta object of class \code{metacommunity}.
@@ -17,9 +17,9 @@
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw alpha component
-#' a <- raw.alpha(meta)
+#' a <- raw_alpha(meta)
 #' 
-raw.alpha <- function(meta) {
+raw_alpha <- function(meta) {
   results <- 1 / meta@ordinariness
   powermean(results, meta, "raw alpha")
 }
@@ -30,7 +30,7 @@ raw.alpha <- function(meta) {
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised alpha diversity.
 #'
-#' Values generated from \code{normalised.alpha()} may be input into \code{subdiv()} 
+#' Values generated from \code{normalised_alpha()} may be input into \code{subdiv()} 
 #' and \code{metadiv()} to calculate normalised subcommunity/metacommunity 
 #' alpha diversity.
 #' 
@@ -45,9 +45,9 @@ raw.alpha <- function(meta) {
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised alpha component
-#' a <- normalised.alpha(meta)
+#' a <- normalised_alpha(meta)
 #' 
-normalised.alpha <- function(meta) {
+normalised_alpha <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights), 
                              function(x) meta@ordinariness[,x] /
                                meta@subcommunity_weights[x])
@@ -64,7 +64,7 @@ normalised.alpha <- function(meta) {
 #' Calculates the low-level diversity component necessary for calculating raw rho
 #' diversity.
 #'
-#' Values generated from \code{raw.rho()} may be input into \code{subdiv()} and
+#' Values generated from \code{raw_rho()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity rho diversity.
 #' 
 #' @param meta object of class \code{metacommunity}.
@@ -78,9 +78,9 @@ normalised.alpha <- function(meta) {
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw rho component
-#' a <- raw.rho(meta)
+#' a <- raw_rho(meta)
 #' 
-raw.rho <- function(meta) {
+raw_rho <- function(meta) {
   results <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
   powermean(results, meta, "raw rho")
 }
@@ -91,7 +91,7 @@ raw.rho <- function(meta) {
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised rho diversity.
 #'
-#' Values generated from \code{normalised.rho()} may be input into \code{subdiv()} and
+#' Values generated from \code{normalised_rho()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate normalised subcommunity/metacommunity rho 
 #' diversity.
 #' 
@@ -106,9 +106,9 @@ raw.rho <- function(meta) {
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised rho component
-#' a <- normalised.rho(meta)
+#' a <- normalised_rho(meta)
 #' 
-normalised.rho <- function(meta) {
+normalised_rho <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights), 
                              function(x) meta@ordinariness[,x] /
                                meta@subcommunity_weights[x])
@@ -125,7 +125,7 @@ normalised.rho <- function(meta) {
 #' Calculates the low-level diversity component necessary for calculating raw beta
 #' diversity.
 #'
-#' Values generated from \code{raw.beta()} may be input into \code{subdiv()} and
+#' Values generated from \code{raw_beta()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity beta diversity.
 #' 
 #' @param meta object of class \code{metacommunity}.
@@ -139,9 +139,9 @@ normalised.rho <- function(meta) {
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw beta component
-#' a <- raw.beta(meta)
+#' a <- raw_beta(meta)
 #' 
-raw.beta <- function(meta) {
+raw_beta <- function(meta) {
   rho <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
   results <- 1 / rho
   relativeentropy(results, meta, "raw beta")
@@ -153,7 +153,7 @@ raw.beta <- function(meta) {
 #' Calculates the low-level diversity component necessary for calculating 
 #' normalised beta diversity.
 #'
-#' Values generated from \code{normalised.beta()} may be input into \code{subdiv()} and
+#' Values generated from \code{normalised_beta()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate normalised subcommunity/metacommunity beta 
 #' diversity.
 #' 
@@ -168,9 +168,9 @@ raw.beta <- function(meta) {
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate normalised beta component
-#' a <- normalised.beta(meta)
+#' a <- normalised_beta(meta)
 #' 
-normalised.beta <- function(meta) {
+normalised_beta <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights), 
                              function(x) meta@ordinariness[,x] /
                                meta@subcommunity_weights[x])
@@ -188,7 +188,7 @@ normalised.beta <- function(meta) {
 #' Calculates the low-level diversity component necessary for calculating gamma
 #' diversity.
 #'
-#' Values generated from \code{raw.gamma()} may be input into \code{subdiv()} and
+#' Values generated from \code{raw_gamma()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate subcommunity/metacommunity gamma diversity.
 #' 
 #' @param meta object of class \code{metacommunity}.
@@ -202,9 +202,9 @@ normalised.beta <- function(meta) {
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate gamma component
-#' a <- raw.gamma(meta)
+#' a <- raw_gamma(meta)
 #' 
-raw.gamma <- function(meta) {
+raw_gamma <- function(meta) {
   results <- rowSums(meta@ordinariness, na.rm=T)
   results[results==0] <- NaN
   results <- 1 / results

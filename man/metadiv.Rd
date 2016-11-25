@@ -47,11 +47,11 @@ pop <- pop / sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate metacommunity gamma diversity (takes the power mean)
-g <- raw.gamma(meta)
+g <- raw_gamma(meta)
 metadiv(g, 0:2)
 
 # Calculate metacommunity beta diversity (takes the relative entropy)
-b <- raw.beta(meta)
+b <- raw_beta(meta)
 metadiv(b, 0:2)
 
 # Calculate all measures of metacommunity diversity

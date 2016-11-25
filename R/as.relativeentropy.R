@@ -16,7 +16,7 @@
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity beta diversity
-#' a <- raw.beta(meta)
+#' a <- raw_beta(meta)
 #' class(a)
 #' 
 relativeentropy <- function(results, meta, tag) {

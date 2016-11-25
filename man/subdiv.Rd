@@ -36,7 +36,7 @@ Generic function for calculating subcommunity diversity.
 \details{
 \code{data} may be input as three different classes:
 \itemize{
-\item{\code{powermean} calculates raw and normalised subcomunity alpha, rho 
+\item{\code{power_mean} calculates raw and normalised subcomunity alpha, rho 
 or gamma diversity by taking the powermean of diversity components}
 \item{\code{relativeentropy} calculates raw or normalised subcommunity beta 
 diversity by taking the relative entropy of diversity components}
@@ -50,11 +50,11 @@ pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Subcommunity gamma diversity (takes the power mean)
-g <- raw.gamma(meta)
+g <- raw_gamma(meta)
 subdiv(g, 0:2)
 
 # Subcommunity beta diversity (takes the relative entropy)
-b <- raw.beta(meta)
+b <- raw_beta(meta)
 subdiv(b, 0:2)
 
 # All measures of subcommunity diversity

@@ -39,7 +39,7 @@ function(populations, qs)
   props <- lapply(as.list(as.data.frame(populations)), function(x) x / sum(x))
   
   # Calculate diversities
-  res <- mapply(qD.single,
+  res <- mapply(qD_single,
                 proportions=props, # Will repeat length(qs) times
                 q=rep(qs, rep(length(props), length(qs))))
 

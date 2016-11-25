@@ -13,10 +13,10 @@
 #' 
 #' @examples 
 #' pop <- sample(1:50, 5)
-#' qD.single(pop, 0)
+#' qD_single(pop, 0)
 #' 
-qD.single <-
+qD_single <-
 function(proportions, q) {
   proportions <- check_partition(proportions)
-  1 / power.mean(values = proportions, order = q - 1, weights = proportions)
+  1 / power_mean(values = proportions, order = q - 1, weights = proportions)
 }

@@ -4,7 +4,7 @@
 #' @param symbol (optional) by default, output is e.g. "Metacommunity x"; if symbol is set to \code{TRUE}, output will be given as "x
 #' @export
 #' 
-create.axis.label <- function(results, symbol = F) {
+create_axis_label <- function(results, symbol = F) {
   # Identify which diversity measure is being calculated
   community.type <- unique(results$community)
   measure <- unique(results$measure)

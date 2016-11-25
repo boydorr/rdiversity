@@ -8,7 +8,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   meta <- metacommunity(pds, phy)
   
   expect_equivalent(sum(phy$edge.length) + phy$root.edge, 
-                    unlist(metadiv(raw.gamma(meta),0)$diversity * x@Tbar))
+                    unlist(metadiv(raw_gamma(meta),0)$diversity * x@Tbar))
   expect_equivalent(c(meta@type_abundance), 
                     c(0.2, 0.4, (1/3)*0.4, (2/3)*0.4))
   expect_equivalent(meta@similarity, 
@@ -21,7 +21,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   meta2 <- metacommunity(pds, phy2)
   
   expect_equivalent(sum(phy2$edge.length) + phy2$root.edge, 
-                    unlist(metadiv(raw.gamma(meta2),0)$diversity * x2@Tbar[1]))
+                    unlist(metadiv(raw_gamma(meta2),0)$diversity * x2@Tbar[1]))
   expect_equivalent(c(meta2@type_abundance), 
                     c(0.25, 0.25, (1/2.4)*0.4, (2/2.4)*0.4))
   expect_equivalent(meta2@similarity, 

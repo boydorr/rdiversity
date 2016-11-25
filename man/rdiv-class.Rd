@@ -22,7 +22,7 @@ Define S4 class \code{rdiv}.
 \section{Fields}{
 
 \describe{
-\item{\code{measure}}{object of class \code{character}; e.g. 'raw.subcommunity.alpha'}
+\item{\code{measure}}{object of class \code{character}; e.g. 'raw_subcommunity_alpha'}
 
 \item{\code{tag}}{object of class \code{formula}; e.g. bquote('Subcommunity' ~ bar(alpha))}
 

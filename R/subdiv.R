@@ -4,7 +4,7 @@
 #' 
 #' \code{data} may be input as three different classes:
 #' \itemize{
-#' \item{\code{powermean} calculates raw and normalised subcomunity alpha, rho 
+#' \item{\code{power_mean} calculates raw and normalised subcomunity alpha, rho 
 #' or gamma diversity by taking the powermean of diversity components}
 #' \item{\code{relativeentropy} calculates raw or normalised subcommunity beta 
 #' diversity by taking the relative entropy of diversity components}
@@ -28,11 +28,11 @@
 #' meta <- metacommunity(pop)
 #' 
 #' # Subcommunity gamma diversity (takes the power mean)
-#' g <- raw.gamma(meta)
+#' g <- raw_gamma(meta)
 #' subdiv(g, 0:2)
 #' 
 #' # Subcommunity beta diversity (takes the relative entropy)
-#' b <- raw.beta(meta)
+#' b <- raw_beta(meta)
 #' subdiv(b, 0:2)
 #' 
 #' # All measures of subcommunity diversity
@@ -50,7 +50,7 @@ setMethod(f = "subdiv", signature= "powermean",
             results <- list()
             for(i in seq_along(qs))
               results[[i]] <- sapply(1:ncol(data), function(y) 
-                power.mean(data[,y], 1-qs[i], data@type_weights[,y]))
+                power_mean(data[,y], 1-qs[i], data@type_weights[,y]))
             
             output <- do.call(cbind, results)
             row.names(output) <- colnames(data)
@@ -72,7 +72,7 @@ setMethod(f = "subdiv", signature= "relativeentropy",
             results <- list()
             for(i in seq_along(qs))
               results[[i]] <- sapply(1:ncol(data), function(y) 
-                power.mean(data[,y], qs[i]-1, data@type_weights[,y]))
+                power_mean(data[,y], qs[i]-1, data@type_weights[,y]))
 
             output <- do.call(cbind,results)
             row.names(output) <- colnames(data)
@@ -91,10 +91,10 @@ setMethod(f = "subdiv", signature= "relativeentropy",
 setMethod(f = "subdiv", signature= "metacommunity", 
           definition = function(data, qs) {  
             # Calculate terms
-            div.measures <- list(raw.alpha, normalised.alpha, 
-                                 raw.beta, normalised.beta,
-                                 raw.rho, normalised.rho,
-                                 raw.gamma)
+            div.measures <- list(raw_alpha, normalised_alpha, 
+                                 raw_beta, normalised_beta,
+                                 raw_rho, normalised_rho,
+                                 raw_gamma)
             # Calculate subcommunity diversity
             results <- lapply(div.measures, function(x) 
               res <- subdiv(x(data), qs))

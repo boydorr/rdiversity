@@ -42,7 +42,7 @@ pop <- sample(1:50, 5)
 meta <- metacommunity(pop)
 
 # Calculate raw subcommunity beta diversity
-a <- raw.beta(meta)
+a <- raw_beta(meta)
 class(a)
 
 }
