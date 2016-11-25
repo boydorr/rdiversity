@@ -36,7 +36,6 @@ Collate:
     'class-relativeentropy.R'
     'as.relativeentropy.R'
     'chainsaw.R'
-    'class-rdiversity.R'
     'create_axis_label.R'
     'diversity-components.R'
     'diversity-measures.R'
