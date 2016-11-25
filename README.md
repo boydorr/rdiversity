@@ -20,7 +20,7 @@ devtools::install_github("boydorr/rdiversity")
 ## Getting started
 
 
-Before calculating diversity a 'metacommunity' object must be created. This object contains all the information needed to calculate diversity.
+Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity.
 
 ```r
 # Example population
@@ -41,11 +41,11 @@ The `metacommunity()` function takes two arguments, `partition` and `similarity`
     
 
 ## Calculating diversity
-First we need to calculate the low-level diversity component seperately, by passing a metacommunity object to the appropriate function; `raw.alpha()`, `normalised.alpha()`, `raw.beta()`, `normalised.beta()`, `raw.rho()`, `normalised.rho()`, or `raw.gamma()`. 
+First we need to calculate the low-level diversity component seperately, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `normalised_alpha()`, `raw_beta()`, `normalised_beta()`, `raw_rho()`, `normalised_rho()`, or `raw_gamma()`. 
 
 ```r
 # First, calculate the normalised subcommunity alpha component
-component <- normalised.alpha(meta)
+component <- normalised_alpha(meta)
 ```
 
 Afterwhich, `subdiv()` or `metadiv()` are used to calculate subcommunity or metacommunity diversity, respectively (since both subcommunity and metacommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
@@ -62,7 +62,7 @@ df <- subdiv(component, 0:30)
 rdplot(df)
 ```
 
-In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a metacommunity object may be passed directly to `subdiv()` or `metadiv()`:
+In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a `metacommunity` object may be passed directly to `subdiv()` or `metadiv()`:
 
 ```r
 # To calculate all subcommunity diversity measures
@@ -72,33 +72,35 @@ subdiv(meta, 0:2)
 metadiv(meta, 0:2)
 ```
 
-Alternatively, if computational efficiency is not an issue, a single measure of diversity may be calculated directly (without first generating a `metacommunity` object) by calling a wrapper function:
+Alternatively, if computational efficiency is not an issue, a single measure of diversity may be calculated directly by calling a wrapper function:
 ```r
 normalised.subcommunity.alpha(meta,0:2)
 ```
 A complete list of these functions is shown below:
 
-* `raw.subcommunity.alpha()` : estimate of naive-community metacommunity diversity  
-* `normalised.subcommunity.alpha()` : similarity-sensitive diversity of subcommunity *j* in isolation  
-* `raw.subcommunity.rho()` : redundancy of subcommunity *j*  
-* `normalised.subcommunity.rho()` : representativeness of subcommunity *j*  
-* `raw.subcommunity.beta()` : distinctiveness of subcommunity *j*  
-* `normalised.subcommunity.beta()` : estimate of effective number of distinct subcommunities  
-* `raw.subcommunity.gamma()` : contribution per individual toward metacommunity diversity  
-* `raw.metacommunity.alpha()` : naive-community metacommunity diversity  
-* `normalised.metacommunity.alpha()` : average similarity-sensitive diversity of subcommunities  
-* `raw.metacommunity.rho()` : average redundancy of subcommunities  
-* `normalised.metacommunity.rho()` : average representativeness of subcommunities  
-* `raw.metacommunity.beta()` : average distinctiveness of subcommunities  
-* `normalised.metacommunity.beta()` : effective number of distinct subcommunities  
-* `metacommunity.gamma()` : metacommunity similarity-sensitive diversity  
+* `raw_sub_alpha()` : estimate of naive-community metacommunity diversity  
+* `normalised_sub_alpha()` : similarity-sensitive diversity of subcommunity *j* in isolation  
+* `raw_sub_rho()` : redundancy of subcommunity *j*  
+* `normalised_sub_rho()` : representativeness of subcommunity *j*  
+* `raw_sub_beta()` : distinctiveness of subcommunity *j*  
+* `normalised_sub_beta()` : estimate of effective number of distinct subcommunities  
+* `raw_sub_gamma()` : contribution per individual toward metacommunity diversity  
+* `raw_meta_alpha()` : naive-community metacommunity diversity  
+* `normalised_meta_alpha()` : average similarity-sensitive diversity of subcommunities  
+* `raw_meta_rho()` : average redundancy of subcommunities  
+* `normalised_meta_rho()` : average representativeness of subcommunities  
+* `raw_meta_beta()` : average distinctiveness of subcommunities  
+* `normalised_meta_beta()` : effective number of distinct subcommunities  
+* `meta_gamma()` : metacommunity similarity-sensitive diversity  
 
 
 ## General tools
 * `qD.single()` : the Hill number / naive-type diversity of order *q* of a single population  
 * `qD()` : the Hill number / naive-type diversity of a series of independent populations for a series of orders  
-* `qDZ.single()` : the similarity-sensitive diversity of order *q* of a single population  
+* `qDZ.single()` : the similarity-sensitive diversity of order *q* of a single population 
 * `qDZ()` : the similarity-sensitive diversity of a series of independent populations for a series of orders  
+* `similarity_shimatani()`
+* `similarity_phylo()`
 
 
 
