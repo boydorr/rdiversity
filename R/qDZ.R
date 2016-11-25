@@ -24,4 +24,4 @@
 #' # Calculate similarity-sensitive diversity of order 0 (species richness)
 #' qDZ(dat, 0)
 #' 
-qDZ <- normalised_subcommunity_alpha
+qDZ <- normalised_sub_alpha
