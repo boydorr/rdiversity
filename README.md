@@ -74,7 +74,7 @@ metadiv(meta, 0:2)
 
 Alternatively, if computational efficiency is not an issue, a single measure of diversity may be calculated directly by calling a wrapper function:
 ```r
-normalised_subcommunity_alpha(meta,0:2)
+normalised_sub_alpha(meta,0:2)
 ```
 A complete list of these functions is shown below:
 
