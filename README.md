@@ -74,7 +74,7 @@ metadiv(meta, 0:2)
 
 Alternatively, if computational efficiency is not an issue, a single measure of diversity may be calculated directly by calling a wrapper function:
 ```r
-normalised.subcommunity.alpha(meta,0:2)
+normalised_subcommunity_alpha(meta,0:2)
 ```
 A complete list of these functions is shown below:
 
@@ -95,9 +95,9 @@ A complete list of these functions is shown below:
 
 
 ## General tools
-* `qD.single()` : the Hill number / naive-type diversity of order *q* of a single population  
+* `qD_single()` : the Hill number / naive-type diversity of order *q* of a single population  
 * `qD()` : the Hill number / naive-type diversity of a series of independent populations for a series of orders  
-* `qDZ.single()` : the similarity-sensitive diversity of order *q* of a single population 
+* `qDZ_single()` : the similarity-sensitive diversity of order *q* of a single population 
 * `qDZ()` : the similarity-sensitive diversity of a series of independent populations for a series of orders  
 * `similarity_shimatani()`
 * `similarity_phylo()`
