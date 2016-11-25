@@ -3,11 +3,11 @@ Type: Package
 Title: Measures similarity-sensitive diversity
 Version: 0.3
 Date: 2016-06-14
-Authors@R: c(person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
-                  role = "aut"),
-             person("Sonia", "Mitchell", email = "soniamitchell@gmail.com",
-                  role = c("aut", "cre")))
-Maintainer: Sonia Mitchell <soniamitchell@gmail.com>
+Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.uk",
+                  role = c("aut", "cre")),
+             person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
+                  role = "aut"))
+Maintainer: Sonia Mitchell <s.mitchell.2@research.gla.ac.uk>
 Description: Calculates the similarity-sensitive diversity of a population and
     it's partitions.
 License: BSD 2-clause License + file LICENSE
