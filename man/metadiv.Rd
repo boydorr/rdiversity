@@ -17,15 +17,15 @@ metadiv(data, qs)
 \S4method{metadiv}{metacommunity}(data, qs)
 }
 \arguments{
-\item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity 
+\item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity
 components.}
 
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
 \value{
-Returns a five-column \code{tibble}/\code{dataframe} containing:  
-\code{partition} (label attributed to partition), \code{q} (parameter of 
-conservatism), \code{diversity}, \code{community} (level of diversity, 
+Returns a five-column \code{tibble}/\code{dataframe} containing:
+\code{partition} (label attributed to partition), \code{q} (parameter of
+conservatism), \code{diversity}, \code{community} (level of diversity,
 \emph{i.e.} metacommunity), and \code{measure} (alpha, beta, rho, or gamma).
 }
 \description{

@@ -12,14 +12,14 @@ raw_meta_rho(meta, qs)
 \item{qs}{\code{vector} of \emph{q} values}
 }
 \value{
-Returns a five-column \code{tibble}/\code{dataframe} containing:  
-\code{partition} (label attributed to partition), \code{q} (parameter of 
-conservatism), \code{diversity}, \code{community} (level of diversity, 
-\emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
+Returns a five-column \code{tibble}/\code{dataframe} containing:
+\code{partition} (label attributed to partition), \code{q} (parameter of
+conservatism), \code{diversity}, \code{community} (level of diversity,
+\emph{i.e.} subcommunity, community, or metacommunity), and \code{measure}
 (alpha, beta, rho, or gamma).
 }
 \description{
-\code{raw_meta_rho()} is used to calculate the 
+\code{raw_meta_rho()} is used to calculate the
 average redundancy of subcommunities.
 }
 \details{

@@ -17,15 +17,15 @@ subdiv(data, qs)
 \S4method{subdiv}{metacommunity}(data, qs)
 }
 \arguments{
-\item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity 
+\item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity
 components.}
 
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
 \value{
-Returns a five-column \code{tibble}/\code{dataframe} containing:  
-\code{partition} (label attributed to partition), \code{q} (parameter of 
-conservatism), \code{diversity}, \code{community} (level of diversity, 
+Returns a five-column \code{tibble}/\code{dataframe} containing:
+\code{partition} (label attributed to partition), \code{q} (parameter of
+conservatism), \code{diversity}, \code{community} (level of diversity,
 \emph{i.e.} subcommunity), and \code{measure} (alpha, beta, rho, or gamma).
 
 
@@ -36,9 +36,9 @@ Generic function for calculating subcommunity diversity.
 \details{
 \code{data} may be input as three different classes:
 \itemize{
-\item{\code{power_mean} calculates raw and normalised subcomunity alpha, rho 
+\item{\code{power_mean} calculates raw and normalised subcomunity alpha, rho
 or gamma diversity by taking the powermean of diversity components}
-\item{\code{relativeentropy} calculates raw or normalised subcommunity beta 
+\item{\code{relativeentropy} calculates raw or normalised subcommunity beta
 diversity by taking the relative entropy of diversity components}
 \item{\code{metacommunity} caculates all subcommunity measures of diversity}
 }

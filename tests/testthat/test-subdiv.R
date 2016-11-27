@@ -2,7 +2,7 @@ context('Testing the subdiv() function')
 
 rdirichlet = function(n, alpha) {
   k = length(alpha)
-  r = matrix(0, nrow=n, ncol=k) 
+  r = matrix(0, nrow=n, ncol=k)
   for (i in 1:k) {
     r[,i] = rgamma(n, alpha[i], 1)
   }
@@ -20,11 +20,11 @@ pop <- pop / sum(pop)
 
 test_that("Subcommunity diversity across multiple populations", {
   expect_equivalent(as.matrix(subdiv(raw_alpha(metacommunity(pop)), 0)$diversity), t(c(8,4,4)))
-  expect_equivalent(as.matrix(subdiv(normalised_alpha(metacommunity(pop)), 0)$diversity), t(c(2,1,2)))
+  expect_equivalent(as.matrix(subdiv(norm_alpha(metacommunity(pop)), 0)$diversity), t(c(2,1,2)))
   expect_equivalent(as.matrix(subdiv(raw_beta(metacommunity(pop)), 0)$diversity), t(c(1/4,1/3,1/2)))
-  expect_equivalent(as.matrix(subdiv(normalised_beta(metacommunity(pop)), 0)$diversity), t(c(1,4/3,1)))
+  expect_equivalent(as.matrix(subdiv(norm_beta(metacommunity(pop)), 0)$diversity), t(c(1,4/3,1)))
   expect_equivalent(as.matrix(subdiv(raw_rho(metacommunity(pop)), 0)$diversity), t(c(4,3,2)))
-  expect_equivalent(as.matrix(subdiv(normalised_rho(metacommunity(pop)), 0)$diversity), t(c(1,3/4,1)))
+  expect_equivalent(as.matrix(subdiv(norm_rho(metacommunity(pop)), 0)$diversity), t(c(1,3/4,1)))
   expect_equivalent(as.matrix(subdiv(raw_gamma(metacommunity(pop)), 0)$diversity), t(c(8/3,4/3,2)))
 })
 

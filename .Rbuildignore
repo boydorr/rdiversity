@@ -3,3 +3,4 @@
 ^appveyor\.yml$
 ^\.gitignore$
 ^\.travis\.yml$
+^README\.html$

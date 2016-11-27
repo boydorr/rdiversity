@@ -12,21 +12,21 @@ meta_gamma(meta, qs)
 \item{qs}{\code{vector} of \emph{q} values}
 }
 \value{
-Returns a five-column \code{tibble}/\code{dataframe} containing:  
-\code{partition} (label attributed to partition), \code{q} (parameter of 
-conservatism), \code{diversity}, \code{community} (level of diversity, 
-\emph{i.e.} subcommunity, community, or metacommunity), and \code{measure} 
+Returns a five-column \code{tibble}/\code{dataframe} containing:
+\code{partition} (label attributed to partition), \code{q} (parameter of
+conservatism), \code{diversity}, \code{community} (level of diversity,
+\emph{i.e.} subcommunity, community, or metacommunity), and \code{measure}
 (alpha, beta, rho, or gamma).
 }
 \description{
-\code{meta_gamma()} is used to calculate the 
+\code{meta_gamma()} is used to calculate the
 metacommunity similarity-sensitive diversity.
 }
 \details{
-\code{meta_gamma()} calculates the total metacommunity gamma diversity 
-of a series of columns representing independent subcommunity counts relative 
-to the metacommunity as a whole (by default the sum of the subcommunities).  
-This measure may be calculated for a series of orders, repesented as a vector 
+\code{meta_gamma()} calculates the total metacommunity gamma diversity
+of a series of columns representing independent subcommunity counts relative
+to the metacommunity as a whole (by default the sum of the subcommunities).
+This measure may be calculated for a series of orders, repesented as a vector
 of \code{qs}.
 }
 \examples{

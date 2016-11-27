@@ -12,12 +12,12 @@ qDZ(meta, qs)
 \item{qs}{\code{vector} of \emph{q} values.}
 }
 \value{
-Returns a matrix of similarity-sensitive diversities, where rows 
+Returns a matrix of similarity-sensitive diversities, where rows
 and columns represent values of q and subcommunities, respectively.
 }
 \description{
-Calculates the similarity-sensitive diversity of a series of columns 
-representing independent populations, for a series of orders repesented as 
+Calculates the similarity-sensitive diversity of a series of columns
+representing independent populations, for a series of orders repesented as
 a vector of \code{qs}.
 }
 \examples{
