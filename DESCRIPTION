@@ -10,7 +10,7 @@ Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.u
 Maintainer: Sonia Mitchell <s.mitchell.2@research.gla.ac.uk>
 Description: Calculates the similarity-sensitive diversity of a population and
     it's partitions.
-License: BSD 2-clause License + file LICENSE
+License: GPL-3
 Imports:
     methods,
     ggplot2,
