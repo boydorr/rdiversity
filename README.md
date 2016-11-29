@@ -23,6 +23,9 @@ devtools::install_github("boydorr/rdiversity")
 Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity.
 
 ```r
+# Load the package into R
+library(rdiversity)
+
 # Example population
 pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 
