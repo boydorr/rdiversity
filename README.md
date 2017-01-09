@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/boydorr/rdiversity.svg?branch=master)](https://travis-ci.org/boydorr/rdiversity)
 [![Build status](https://ci.appveyor.com/api/projects/status/463vspjivh08o9x1?svg=true)](https://ci.appveyor.com/project/mysteryduck/rdiversity)
 [![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
+[![DOI](https://zenodo.org/badge/52015898.svg)](https://zenodo.org/badge/latestdoi/52015898)
 
 `rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals. Similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. 
 
