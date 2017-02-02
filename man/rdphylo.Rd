@@ -27,41 +27,31 @@ abundance of present-day species}
 \item{object}{object of class \code{rdphylo}}
 }
 \value{
-Returns an object of class \code{rdphylo}, which extends class 
-\code{phylo} and therefore inherits components associated  
-with terminal taxa (see \code{\link{phylo}}): 
+Returns an object of class \code{rdphylo}, which extends class
+\code{phylo} and therefore inherits components associated
+with terminal taxa (see \code{\link{phylo}}):
 
 \tabular{ll}{
-\code{edge} \tab - each row denotes the ancestral and descendant nodes of 
+\code{edge} \tab - each row denotes the ancestral and descendant nodes of
 an edge (branch) of the tree \cr
 \code{edge.length} \tab - (optional) length of each branch of the tree \cr
-\code{tip.label} \tab - labels associated with present-day species 
+\code{tip.label} \tab - labels associated with present-day species
 (terminal taxa)  \cr
 \code{Nnode} \tab - number of internal nodes \cr
-\code{node.label} \tab - (optional) labels associated with each node in 
+\code{node.label} \tab - (optional) labels associated with each node in
 the tree \cr
 \code{root.edge} \tab - (optional) length of the branch at the root \cr
 }
 
-An additional \code{parameters} slot (accessed with @, not $) contains 
-a data_frame containing components associated with historic species:  
+Additional slots (accessed with @, not $) include:
 
 \tabular{ll}{
-\code{pds} \tab - numeric index associated with the present-day species 
-(or terminal taxa) descended from each historic species  \cr
-\code{d.node} \tab - numeric index associated with the descending node of 
-each historic species  \cr
-\code{a.node} \tab - numeric index associated with the ascending node of 
-each historic species \cr
-\code{hs.name} \tab - unique identifier associated with each historic 
-species \cr
-\code{length} \tab - evolutionary length of each historic species \cr
-\code{Lj} \tab - total length of evolutionary change of species j \cr
-\code{pds.abundance} \tab - relative abundance of present-day species \cr
-\code{Tbar} \tab - mean total evolutionary change \cr
-\code{hs.abundance} \tab - relative abundance of historic species \cr
-\code{branch.descendants} \tab - present-day species descended from each 
-branch of the tree \cr
+\code{historic.species} \tab - a data_frame containing components associated 
+with historic species \cr
+\code{terminal.taxa} \tab - na data_frame containing components associated 
+with terminal taxa \cr
+\code{Tbar} \tab - \cr
+\code{structure} \tab -  \cr
 }
 }
 \description{
@@ -72,12 +62,8 @@ tree <- ape::rtree(n = 5)
 pop <- rep(1/5, 5)
 rdtree <- rdphylo(pop, tree)
 
-pds.abundance <- data.frame(a = c(0,1,1,1,0), b = c(1,0,0,0,1)) 
+pds.abundance <- data.frame(a = c(0,1,1,1,0), b = c(1,0,0,0,1))
 pds.abundance <- check_partition(pds.abundance)
-
-# Extract components of terminal taxa
-str(rdtree)
-rdtree$edge
 
 # Extract components of historic species
 rdtree@historic.species

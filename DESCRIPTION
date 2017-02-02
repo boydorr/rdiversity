@@ -39,6 +39,7 @@ Collate:
     'create_axis_label.R'
     'diversity-components.R'
     'diversity-measures.R'
+    'hs_abundance.R'
     'metadiv.R'
     'power_mean.R'
     'qD.R'

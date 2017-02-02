@@ -43,7 +43,7 @@
 #'
 #' @examples
 #' tree <- ape::rtree(n = 5)
-#' partition <- data.frame(a = c(1,0,1,0,0), b = c(0,1,0,1,1))
+#' partition <- data.frame(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 #' partition <- partition / sum(partition)
 #' a <- metacommunity(partition, tree)
 #' a
@@ -173,7 +173,7 @@ setMethod(f = "metacommunity",
             similarity <- rdphylo(partition, similarity)
 
             metacommunity(partition, similarity, interval)
-            } )
+          } )
 
 
 #' @rdname metacommunity-methods
@@ -212,7 +212,7 @@ setMethod(f = "metacommunity",
             similarity <- rdphylo(partition, similarity)
 
             metacommunity(partition, similarity, interval)
-            } )
+          } )
 
 
 #' @rdname metacommunity-methods
@@ -263,58 +263,40 @@ setMethod(f = "metacommunity",
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
 
-            new.tree <- similarity
-            
-            if(interval != 1) 
-              meta <- chainsaw(new.tree, partition, interval)
+            if(interval != 1)
+              meta <- chainsaw(similarity, partition, interval)
             else {
-            historic.species <- new.tree@historic.species
-            terminal.taxa <- new.tree@terminal.taxa
-            Tbar <- new.tree@Tbar
-            tag <- row.names(new.tree@structure)
+              historic.species <- similarity@historic.species
+              terminal.taxa <- similarity@terminal.taxa
+              Tbar <- similarity@Tbar
+              tag <- row.names(similarity@structure)
 
-            hs.abundance <- sapply(seq_along(historic.species$hs.name), function(x) {
-              row.index <- match(historic.species$tip.node[x], terminal.taxa$tip.node)
-              (historic.species$length[x] / Tbar) * terminal.taxa$pds.abundance[row.index]
-            })
-            hs.abundance <- cbind.data.frame(historic.species, hs.abundance)
+              type_abundance <- hs_abundance(partition,
+                                             historic.species,
+                                             terminal.taxa,
+                                             Tbar,
+                                             tag)
 
-            # Reinstate partitions
-            index <- as.list(seq_along(hs.abundance$hs.name))
-            type_abundance <- lapply(index, function(x) {
-              row.index <- hs.abundance$tip.node[x]
-              if(ncol(partition) == 1) {
-                col.index <- which(partition[row.index] > 0)
-              } else
-                col.index <- which(partition[row.index,] > 0)
-              vec <- t(matrix(rep(0, ncol(partition))))
-              vec[,col.index] <- hs.abundance$hs.abundance[x]
-              vec
-            })
-            type_abundance <- do.call(rbind, type_abundance)
-            row.names(type_abundance) <- hs.abundance$hs.name
-            colnames(type_abundance) <- colnames(partition)
+              subcommunity_weights <- colSums(type_abundance) /
+                sum(type_abundance)
+              type_weights <- sapply(1:ncol(type_abundance), function(x)
+                (type_abundance[,x]/colSums(type_abundance)[x]))
 
-            subcommunity_weights <- colSums(type_abundance) /
-              sum(type_abundance)
-            type_weights <- sapply(1:ncol(type_abundance), function(x)
-              (type_abundance[,x]/colSums(type_abundance)[x]))
+              zmatrix <- similarity_phylo(similarity, partition)
 
-            zmatrix <- similarity_phylo(new.tree, partition)
+              Zp.j <- zmatrix %*% type_abundance
 
-            Zp.j <- zmatrix %*% type_abundance
+              # Now mark all of the species that have nothing similar as NaNs
+              # because diversity of an empty group is undefined
+              Zp.j[Zp.j==0] <- NaN
 
-            # Now mark all of the species that have nothing similar as NaNs
-            # because diversity of an empty group is undefined
-            Zp.j[Zp.j==0] <- NaN
-
-            new('metacommunity', partition,
-                similarity = zmatrix,
-                type_abundance = type_abundance,
-                ordinariness = Zp.j,
-                subcommunity_weights = subcommunity_weights,
-                type_weights = type_weights)
-          }} )
+              new('metacommunity', partition,
+                  similarity = zmatrix,
+                  type_abundance = type_abundance,
+                  ordinariness = Zp.j,
+                  subcommunity_weights = subcommunity_weights,
+                  type_weights = type_weights)
+            }} )
 
 
 #' @rdname metacommunity-methods
@@ -340,11 +322,11 @@ setMethod(f = "show", signature= "metacommunity",
           definition = function(object) {
             n <- dim(object@type_abundance)[2]
             S <- dim(object@type_abundance)[1]
-            cat('Metacommunity object with', n, 
+            cat('Metacommunity object with', n,
                 'subcommunities and', S, 'types.\n\n')
             cat('Subcommunity labels:\n')
             cat(colnames(object@type_abundance),'\n\n')
             cat('Type labels:\n')
             cat(rownames(object@type_abundance),'\n')
-            } )
+          } )
 
