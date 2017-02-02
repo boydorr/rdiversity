@@ -29,15 +29,22 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
                           c(1.2, 1.2, 0.8, 0.8), c(0, 0, 0.8, 0.8)))
 })
 
+
 test_that("pmatrix is correct when tips belong to the same subcommunities", {
-  # Set up tree  
+  # Using a specific example
   tree <- ape::read.tree(text="(A:2,B:2)R:1;")
   partition <- cbind(A=c(1,1), B=c(1,0))
   partition <- partition / sum(partition)
-  x <- as.rdphylo(partition, tree)
   meta <- metacommunity(partition, tree)
   
-  expect_equivalent(sum(meta@type_abundance), 1)
   expect_equivalent(meta@type_abundance, 
                     cbind(A=c(1,2,1,2), B=c(1,2,0,0))/9)
+  
+  # Random example
+  tree2 <- ape::rtree(10)
+  partition2 <- cbind(A=sample(10), B=sample(10))
+  partition2 <- partition2 / sum(partition2)
+  meta2 <- metacommunity(partition2, tree2)
+  
+  expect_equivalent(sum(meta2@type_abundance), 1)
 })
