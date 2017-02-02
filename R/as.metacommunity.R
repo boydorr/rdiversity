@@ -294,7 +294,6 @@ setMethod(f = "metacommunity",
             type_abundance <- do.call(rbind, type_abundance)
             row.names(type_abundance) <- hs.abundance$hs.name
             colnames(type_abundance) <- colnames(partition)
-            type_abundance <- check_partition(type_abundance)
 
             subcommunity_weights <- colSums(type_abundance) /
               sum(type_abundance)
