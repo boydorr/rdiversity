@@ -1,21 +1,21 @@
 #' Cut phylogeny
 #'
-#' @param tree object of class \code{phylo}
 #' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with 
 #' rows as types, columns as subcommunities, and elements containing relative 
 #' abundances of types in subcommunities. In the case of phylogenetic 
 #' metacommunities, these are the relative abundances of terminal taxa. 
+#' @param tree object of class \code{phylo}
 #' @param interval proportion of total tree height to be conserved (taken as
 #' a proportion from the heighest tip). Describes how far back we go in the tree,
 #' with 0 marking the date of the most recent tip, and 1 (the default) marking 
 #' the most recent common ancestor. Numbers greater than 1 extend the root of 
-#' the tree.
+#' the tree. 
 #'
 #' @export
 #' @return
-#' Returns an object of class \code{phy_struct} containing the original 
-#' phylogenetic parameters ('@parameters') and a new structural matrix 
-#' ('@structure').
+#' Returns an object of class \code{phy_struct} containing a new structural  
+#' matrix ('@structure').and the original phylogenetic parameters 
+#' ('@parameters')  
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)
@@ -24,29 +24,30 @@
 #' partition <- cbind(a = c(0,1,1,1,0), b = c(1,0,0,0,1))
 #' row.names(partition) <- tree$tip.label 
 #' partition <- partition / sum(partition)
+#' meta <- phy_struct(partition, tree)
 #'
-#' res <- trim(tree, partition, 0.2)
+#' res <- trim(partition, tree, 0.2)
 #' 
-trim <- function(tree, partition, interval) {
+trim <- function(partition, tree, interval) {
   if(class(tree) != "phylo") stop("'tree' must be an object of class phylo")
   if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
-  partition <- check_partition(partition)
-  
+
   long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)
   
   if(interval == 1) {
     # If interval = 1, return original phylogeny 
-    ps <- phy_struct(tree, partition)
+    ps <- phy_struct(partition, tree)
     trim_struct <- ps@structure
     
   }else if(isTRUE(all.equal(0, interval))) {
     # If interval = 0, remove phylogeny 
-    ps <- phy_struct(tree, partition)
+    ps <- phy_struct(partition, tree)
     trim_struct <- ps@structure
     trim_struct[] <- 0
     
-  }else if(interval > 1) {
+  }else if(interval > 1){
     # If interval > 1, add root to phylogeny
+    partition <- check_partition(partition)
     Ntips <- ape::Ntip(tree)
     d_nodes <- 1:ape::Nnode(tree, internal.only = FALSE)
     d_nodes <- d_nodes[-which(d_nodes %in% (Ntips + 1))]
@@ -64,14 +65,14 @@ trim <- function(tree, partition, interval) {
     
     rooted_tree <- tree
     rooted_tree$root.edge <- abs(cut_height)
-    ps <- phy_struct(rooted_tree, partition)
+    ps <- phy_struct(partition, rooted_tree)
     
     trim_struct <- ps@structure
     
   }else { 
-    # if(0 < interval < 1)    
-    ps <- phy_struct(tree, partition)
-    Ntips <- ape::Ntip(tree)
+    # if interval is betweel 0 and 1  
+    ps <- phy_struct(partition, tree)
+    Ntips <- ncol(ps@structure)
     d_nodes <- 1:ape::Nnode(tree, internal.only = FALSE)
     d_nodes <- if(long_root) d_nodes[-which(d_nodes %in% 0)] else 
       d_nodes[-which(d_nodes %in% (Ntips + 1))]

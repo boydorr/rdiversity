@@ -2,12 +2,12 @@
 #'
 #' Converts an object into class \code{phylo} into class \code{phy_struct}.
 #'
-#' @param tree object of class \code{phylo}
 #' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with 
 #' rows as types, columns as subcommunities, and elements containing relative 
 #' abundances of types in subcommunities. In the case of phylogenetic 
 #' metacommunities, these are the relative abundances of terminal taxa. 
-#'
+#' @param tree object of class \code{phylo}
+#' 
 #' @return Returns an object of class \code{phy_struct}, which contains: 
 #'
 #' \tabular{ll}{
@@ -38,9 +38,9 @@
 #' row.names(partition) <- tree$tip.label 
 #' partition <- partition / sum(partition)
 #' 
-#' res <- phy_struct(tree, partition)
+#' res <- phy_struct(partition, tree)
 #' 
-phy_struct <- function(tree, partition) {
+phy_struct <- function(partition, tree) {
   # Perform checks
   if(class(tree) != "phylo") stop("'tree' argument must be class phylo.")
   b <- "'row.names(partition)' must 'equal tree$tip.label'"
