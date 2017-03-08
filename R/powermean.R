@@ -46,12 +46,6 @@ powermean <- function(results, meta, tag) {
 
 
 #' @rdname powermean
-#' @return \code{as.powermean(x)} returns an object of class \code{powermean}.
-#'
-as.powermean <- powermean
-
-
-#' @rdname powermean
 #' @param x any R object
 #' @return \code{is.powermean(x)} returns TRUE if its argument is a
 #' powermean, FALSE otherwise.
