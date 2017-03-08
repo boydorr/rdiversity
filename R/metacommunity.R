@@ -16,6 +16,7 @@ setOldClass("phylo")
 #' historic species, which is calculated from the proportional abundance of
 #' present day species)
 #' \item ordinariness - ordinariness of types
+#' \item phylo_struct - length of historic species (in phylogeny)
 #' \item subcommunity_weights - subcommunity weights
 #' \item type_weights - weight of types within a subcommunity
 #' }
@@ -38,8 +39,7 @@ setOldClass("phylo")
 #' recent tip, and 1 (the default) marking the most recent common
 #' ancestor. Numbers greater than 1 extend the root of the tree.
 #'
-#' @return Returns an object of class \code{metacommunity}; an S4 object
-#' containing five slots (see Details).
+#' @return Returns an object of class \code{metacommunity} (see Details).
 #'
 #' @seealso \code{\link{metacommunity-class}}
 #'
@@ -63,7 +63,7 @@ setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "missing"),
           definition = function(partition) {
             # If similarity is data.frame, convert to matrix
-            partition <- check_partition(partition)
+            partition <- as.matrix(partition)
             
             metacommunity(partition)
           } )
@@ -77,7 +77,7 @@ setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "missing"),
           definition = function(partition) {
             # If similarity is numeric/vector, convert to matrix
-            partition <- check_partition(partition)
+            partition <- as.matrix(partition)
             
             metacommunity(partition)
           } )
@@ -107,7 +107,7 @@ setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "matrix"),
           definition = function(partition, similarity) {
             # If similarity is data.frame, convert to matrix
-            partition <- check_partition(partition)
+            partition <- as.matrix(partition)
             
             metacommunity(partition, similarity)
           } )
@@ -121,7 +121,7 @@ setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "matrix"),
           definition = function(partition, similarity) {
             # If similarity is numeric/vector, convert to matrix
-            partition <- check_partition(partition)
+            partition <- as.matrix(partition)
             
             metacommunity(partition, similarity)
           } )
@@ -157,6 +157,7 @@ setMethod(f = "metacommunity",
                 similarity = similarity,
                 type_abundance = type_abundance,
                 ordinariness = Zp.j,
+                phylo_struct = diag(1, nrow(type_abundance)),
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights)
           } )
@@ -173,7 +174,7 @@ setMethod(f = "metacommunity",
             tips <- similarity$tip.label
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
-            partition <- check_partition(partition)
+            colnames(partition) <- "sc1"
             
             metacommunity(partition, similarity, interval)
           } )
@@ -186,8 +187,8 @@ setMethod(f = "metacommunity",
 setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "phylo"),
           definition = function(partition, similarity, interval = 1) {
-            partition <- check_partition(partition)
-
+            partition <- as.matrix(partition)
+            
             metacommunity(partition, similarity, interval)            
           } )
 
@@ -199,7 +200,7 @@ setMethod(f = "metacommunity",
 setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "phylo"),
           definition = function(partition, similarity, interval = 1) {
-            partition <- check_partition(partition)
+            partition <- as.matrix(partition)
             
             metacommunity(partition, similarity, interval)            
           } )
@@ -214,11 +215,34 @@ setMethod(f = "metacommunity",
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             ps <- prune(similarity, partition, interval)
-            hs_partition <- phy_abundance(partition, ps)
+            
+            type_abundance <- phy_abundance(partition, ps)
             s_matrix <- s_matrix(similarity, ps)
             zmatrix <- z_matrix(partition, s_matrix, ps)
+            similarity <- check_similarity(type_abundance, zmatrix)
             
-            metacommunity(hs_partition, zmatrix)
+            # Calculate parameters
+            subcommunity_weights <- colSums(type_abundance) /
+              sum(type_abundance)
+            type_weights <- apply(type_abundance, 2, function(x) x/sum(x))
+            Zp.j <- similarity %*% type_abundance
+            
+            # Mark all of the species that have nothing similar as NaNs
+            # because diversity of an empty group is undefined
+            Zp.j[Zp.j==0] <- NaN
+            
+            if(!is.matrix(type_weights)) {
+              type_weights<- t(as.matrix(type_weights))
+              row.names(type_weights) <- row.names(type_abundance)
+            }
+            
+            new('metacommunity', partition,
+                similarity = similarity,
+                type_abundance = type_abundance,
+                ordinariness = Zp.j,
+                phylo_struct = ps@structure,
+                subcommunity_weights = subcommunity_weights,
+                type_weights = type_weights)
           } )
 
 

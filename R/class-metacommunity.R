@@ -18,6 +18,8 @@
 #' is calculated from the proportional abundance of present day species)
 #' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains ordinariness of types 
+#' @field phylo_struct two-dimensional \code{matrix} of mode \code{numeric}; 
+#' contains length of historic species (in phylogeny)
 #' @field subcommunity_weights \code{vector} of mode \code{numeric}; contains
 #' subcommunity weights
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
@@ -28,6 +30,7 @@ setClass("metacommunity",
                    similarity = "matrix",
                    type_abundance = "matrix",
                    ordinariness = "matrix",
+                   phylo_struct = "matrix",
                    subcommunity_weights = "numeric", 
                    type_weights = "matrix"))
 
