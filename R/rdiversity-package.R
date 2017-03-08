@@ -16,6 +16,7 @@
 #' @import methods
 #' @import ape
 #' @import phangorn
+#' @importFrom phytools nodeHeights
 #' @importFrom tidyr nest
 #' @importFrom tibble as_data_frame
 #' @importFrom reshape2 melt
@@ -24,4 +25,3 @@
 #'
 #'
 NULL
-
