@@ -19,12 +19,19 @@ pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 pop <- pop / sum(pop)
 
 test_that("Subcommunity diversity across multiple populations", {
-  expect_equivalent(as.matrix(subdiv(raw_alpha(metacommunity(pop)), 0)$diversity), t(c(8,4,4)))
-  expect_equivalent(as.matrix(subdiv(norm_alpha(metacommunity(pop)), 0)$diversity), t(c(2,1,2)))
-  expect_equivalent(as.matrix(subdiv(raw_beta(metacommunity(pop)), 0)$diversity), t(c(1/4,1/3,1/2)))
-  expect_equivalent(as.matrix(subdiv(norm_beta(metacommunity(pop)), 0)$diversity), t(c(1,4/3,1)))
-  expect_equivalent(as.matrix(subdiv(raw_rho(metacommunity(pop)), 0)$diversity), t(c(4,3,2)))
-  expect_equivalent(as.matrix(subdiv(norm_rho(metacommunity(pop)), 0)$diversity), t(c(1,3/4,1)))
-  expect_equivalent(as.matrix(subdiv(raw_gamma(metacommunity(pop)), 0)$diversity), t(c(8/3,4/3,2)))
+  expect_equivalent(as.matrix(subdiv(raw_alpha(metacommunity(pop)), 0)$diversity), 
+                    t(c(8,4,4)))
+  expect_equivalent(as.matrix(subdiv(norm_alpha(metacommunity(pop)), 0)$diversity), 
+                    t(c(2,1,2)))
+  expect_equivalent(as.matrix(subdiv(raw_beta(metacommunity(pop)), 0)$diversity), 
+                    t(c(1/4,1/3,1/2)))
+  expect_equivalent(as.matrix(subdiv(norm_beta(metacommunity(pop)), 0)$diversity), 
+                    t(c(1,4/3,1)))
+  expect_equivalent(as.matrix(subdiv(raw_rho(metacommunity(pop)), 0)$diversity), 
+                    t(c(4,3,2)))
+  expect_equivalent(as.matrix(subdiv(norm_rho(metacommunity(pop)), 0)$diversity), 
+                    t(c(1,3/4,1)))
+  expect_equivalent(as.matrix(subdiv(raw_gamma(metacommunity(pop)), 0)$diversity), 
+                    t(c(8/3,4/3,2)))
 })
 

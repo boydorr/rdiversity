@@ -66,8 +66,7 @@ recent tip, and 1 (the default) marking the most recent common
 ancestor. Numbers greater than 1 extend the root of the tree.}
 }
 \value{
-Returns an object of class \code{metacommunity}; an S4 object
-containing five slots (see Details).
+Returns an object of class \code{metacommunity} (see Details).
 }
 \description{
 Functions to check if an object is a \code{metacommunity} or coerce an
@@ -85,6 +84,7 @@ phylogenetic case, this corresponds to the proportional abundance of
 historic species, which is calculated from the proportional abundance of
 present day species)
 \item ordinariness - ordinariness of types
+\item phylo_struct - length of historic species (in phylogeny)
 \item subcommunity_weights - subcommunity weights
 \item type_weights - weight of types within a subcommunity
 }

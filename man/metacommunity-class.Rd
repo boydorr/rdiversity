@@ -41,6 +41,9 @@ is calculated from the proportional abundance of present day species)}
 \item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains ordinariness of types}
 
+\item{\code{phylo_struct}}{two-dimensional \code{matrix} of mode \code{numeric}; 
+contains length of historic species (in phylogeny)}
+
 \item{\code{subcommunity_weights}}{\code{vector} of mode \code{numeric}; contains
 subcommunity weights}
 
