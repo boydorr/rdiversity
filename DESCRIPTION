@@ -51,7 +51,6 @@ Collate:
     'relativeentropy.R'
     's_matrix.R'
     'similarity_shimatani.R'
-    'structure_phylo.R'
     'summarise.R'
     'trim.R'
     'z_matrix.R'
