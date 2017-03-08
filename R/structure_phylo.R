@@ -11,8 +11,6 @@
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)
-#' new.tree <- rdphylo(tree = tree)
-#' new.tree@structure
 #' 
 structure_phylo <- 
   function(tree, historic.species) 

@@ -2,8 +2,10 @@
 #' 
 #' \code{check_partition()} is used to validate partition matrices.
 #' 
-#' @param partition two-dimensional \code{matrix} of mode \code{numeric}; 
-#' contains relative abundance of types
+#' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with 
+#' rows as types, columns as subcommunities, and elements containing relative 
+#' abundances of types in subcommunities. In the case of phylogenetic 
+#' metacommunities, these are the relative abundances of terminal taxa. 
 #' 
 #' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If 
 #' the partition matrix was valid, this should be identical to that which was
