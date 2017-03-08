@@ -27,4 +27,3 @@ populations, for a series of orders, repesented as a vector of qs.
 #
 
 }
-

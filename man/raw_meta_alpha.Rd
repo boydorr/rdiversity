@@ -37,4 +37,3 @@ meta <- metacommunity(pop)
 raw_meta_alpha(meta, 0:2)
 
 }
-

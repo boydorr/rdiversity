@@ -38,4 +38,3 @@ Z[Z==0] <- 0.4
 qDZ_single(pop, 0, Z)
 
 }
-

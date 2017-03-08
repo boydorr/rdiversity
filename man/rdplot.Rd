@@ -14,4 +14,3 @@ rdplot(data, plot.title)
 \description{
 Simple function to plot the diversity profile of a single diversity measure
 }
-

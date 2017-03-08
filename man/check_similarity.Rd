@@ -7,8 +7,10 @@
 check_similarity(partition, similarity)
 }
 \arguments{
-\item{partition}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains relative abundance of types}
+\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
+rows as types, columns as subcommunities, and elements containing relative 
+abundances of types in subcommunities. In the case of phylogenetic 
+metacommunities, these are the relative abundances of terminal taxa.}
 
 \item{similarity}{two-dimensinal \code{matrix} of mode \code{numeric}; 
 contains pair-wise similarity between types}
@@ -27,4 +29,3 @@ zmatrix <- matrix(rep(-1,4), 2)
 \dontrun{check_similarity(population, zmatrix)}
 
 }
-

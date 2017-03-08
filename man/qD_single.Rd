@@ -25,4 +25,3 @@ pop <- sample(1:50, 5)
 qD_single(pop, 0)
 
 }
-

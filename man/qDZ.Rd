@@ -33,4 +33,3 @@ dat <- metacommunity(pop, Z)
 qDZ(dat, 0)
 
 }
-

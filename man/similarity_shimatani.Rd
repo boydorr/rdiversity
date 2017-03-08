@@ -43,4 +43,3 @@ lookup <- data.frame(Subclass=c("Sapindales", "Malvales", "Fabales",
 similarity <- similarity_shimatani(pop, lookup)
 
 }
-

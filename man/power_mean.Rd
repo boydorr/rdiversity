@@ -31,4 +31,3 @@ values <- sample(1:50, 5)
 power_mean(values)
 
 }
-

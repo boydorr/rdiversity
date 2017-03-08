@@ -2,9 +2,9 @@
 % Please edit documentation in R/as.relativeentropy.R
 \docType{methods}
 \name{relativeentropy}
+\alias{relativeentropy}
 \alias{as.relativeentropy}
 \alias{is.relativeentropy}
-\alias{relativeentropy}
 \alias{show,relativeentropy-method}
 \title{Coerce to relativeentropy}
 \usage{
@@ -46,4 +46,3 @@ a <- raw_beta(meta)
 class(a)
 
 }
-

@@ -2,25 +2,20 @@
 % Please edit documentation in R/as.metacommunity.R
 \docType{methods}
 \name{metacommunity}
-\alias{as.metacommunity}
 \alias{metacommunity}
-\alias{metacommunity,data.frame,matrix-method}
 \alias{metacommunity,data.frame,missing-method}
-\alias{metacommunity,data.frame,phylo-method}
-\alias{metacommunity,data.frame,rdphylo-method}
 \alias{metacommunity,data.frame-method}
-\alias{metacommunity,matrix,matrix-method}
-\alias{metacommunity,matrix,missing-method}
-\alias{metacommunity,matrix,phylo-method}
-\alias{metacommunity,matrix,rdphylo-method}
-\alias{metacommunity,matrix-method}
-\alias{metacommunity,missing,phylo-method}
-\alias{metacommunity,missing,rdphylo-method}
-\alias{metacommunity,numeric,matrix-method}
 \alias{metacommunity,numeric,missing-method}
-\alias{metacommunity,numeric,phylo-method}
-\alias{metacommunity,numeric,rdphylo-method}
 \alias{metacommunity,numeric-method}
+\alias{metacommunity,matrix,missing-method}
+\alias{metacommunity,matrix-method}
+\alias{metacommunity,data.frame,matrix-method}
+\alias{metacommunity,numeric,matrix-method}
+\alias{metacommunity,matrix,matrix-method}
+\alias{metacommunity,missing,phylo-method}
+\alias{metacommunity,numeric,phylo-method}
+\alias{metacommunity,data.frame,phylo-method}
+\alias{metacommunity,matrix,phylo-method}
 \title{Coerce to Metacommunity}
 \usage{
 metacommunity(partition, similarity, ...)
@@ -45,23 +40,12 @@ metacommunity(partition, similarity, ...)
   interval = 1)
 
 \S4method{metacommunity}{matrix,phylo}(partition, similarity, interval = 1)
-
-\S4method{metacommunity}{missing,rdphylo}(partition, similarity, interval = 1)
-
-\S4method{metacommunity}{numeric,rdphylo}(partition, similarity, interval = 1)
-
-\S4method{metacommunity}{data.frame,rdphylo}(partition, similarity,
-  interval = 1)
-
-\S4method{metacommunity}{matrix,rdphylo}(partition, similarity, interval = 1)
-
-metacommunity(partition, similarity, ...)
 }
 \arguments{
-\item{partition}{\code{vector} or \code{matrix} containing the
-relative abundances of individuals or types in their subcommunities. In the
-case of phylogenetic metacommunities, these are the relative abundances of
-the tips of the tree (the present day species).}
+\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
+rows as types, columns as subcommunities, and elements containing relative 
+abundances of types in subcommunities. In the case of phylogenetic 
+metacommunities, these are the relative abundances of terminal taxa.}
 
 \item{similarity}{(optional) object that describes similarity between
 individuals or types. Usually missing (all types are distinct) or a matrix
@@ -100,14 +84,12 @@ present day species)
 }
 \examples{
 tree <- ape::rtree(n = 5)
-partition <- data.frame(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
-a <- metacommunity(partition, tree)
-a
-slotNames(a)
 
 }
 \seealso{
 \code{\link{metacommunity-class}}
 }
-

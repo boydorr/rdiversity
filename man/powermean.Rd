@@ -2,9 +2,9 @@
 % Please edit documentation in R/as.powermean.R
 \docType{methods}
 \name{powermean}
+\alias{powermean}
 \alias{as.powermean}
 \alias{is.powermean}
-\alias{powermean}
 \alias{show,powermean-method}
 \title{Coerce to powermean}
 \usage{
@@ -66,4 +66,3 @@ a <- raw_alpha(meta)
 class(a)
 
 }
-

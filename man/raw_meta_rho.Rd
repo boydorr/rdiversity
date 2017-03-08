@@ -38,4 +38,3 @@ meta <- metacommunity(pop)
 raw_meta_rho(meta, 0:2)
 
 }
-

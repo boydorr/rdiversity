@@ -7,11 +7,12 @@
 create_axis_label(results, symbol = F)
 }
 \arguments{
-\item{results}{object of class \code{data.frame} or \code{data_frame}, output from \code{subdiv()} or \code{metadiv}}
+\item{results}{object of class \code{data.frame} or \code{data_frame}, output 
+from \code{subdiv()} or \code{metadiv}}
 
-\item{symbol}{(optional) by default, output is e.g. "Metacommunity x"; if symbol is set to \code{TRUE}, output will be given as "x}
+\item{symbol}{(optional) by default, output is e.g. "Metacommunity x"; if 
+symbol is set to \code{TRUE}, output will be given as "x}
 }
 \description{
 Create axis label
 }
-

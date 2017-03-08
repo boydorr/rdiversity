@@ -2,8 +2,8 @@
 % Please edit documentation in R/class-metacommunity.R, R/as.metacommunity.R
 \docType{class}
 \name{metacommunity-class}
-\alias{is.metacommunity}
 \alias{metacommunity-class}
+\alias{is.metacommunity}
 \alias{show,metacommunity-method}
 \title{metacommunity-class}
 \usage{

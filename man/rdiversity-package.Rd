@@ -2,8 +2,8 @@
 % Please edit documentation in R/rdiversity-package.R
 \docType{package}
 \name{rdiversity-package}
-\alias{rdiversity}
 \alias{rdiversity-package}
+\alias{rdiversity}
 \title{rdiversity}
 \description{
 The \code{rdiversity} package calculates the similarity-sensitive diversity
@@ -15,4 +15,3 @@ types (naive, taxonomic, phenotypic, genetic,
 phylogenetic, functional, etc.), where a type is defined as the categorical
 variable that describes how the similarity of individuals is assessed.
 }
-

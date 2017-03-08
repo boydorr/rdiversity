@@ -7,8 +7,10 @@
 check_partition(partition)
 }
 \arguments{
-\item{partition}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains relative abundance of types}
+\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
+rows as types, columns as subcommunities, and elements containing relative 
+abundances of types in subcommunities. In the case of phylogenetic 
+metacommunities, these are the relative abundances of terminal taxa.}
 }
 \value{
 Returns a two-dimensions \code{matrix} of mode \code{numeric}. If 
@@ -26,4 +28,3 @@ new.population <- check_partition(population)
 new.population
 
 }
-

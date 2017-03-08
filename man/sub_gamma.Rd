@@ -37,4 +37,3 @@ meta <- metacommunity(pop)
 sub_gamma(meta, 0:2)
 
 }
-

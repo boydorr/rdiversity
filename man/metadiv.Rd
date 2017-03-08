@@ -3,9 +3,9 @@
 \docType{methods}
 \name{metadiv}
 \alias{metadiv}
-\alias{metadiv,metacommunity-method}
 \alias{metadiv,powermean-method}
 \alias{metadiv,relativeentropy-method}
+\alias{metadiv,metacommunity-method}
 \title{Calculate metacommunity diversity}
 \usage{
 metadiv(data, qs)
@@ -58,4 +58,3 @@ metadiv(b, 0:2)
 metadiv(meta, 0:2)
 
 }
-

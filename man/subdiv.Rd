@@ -3,9 +3,9 @@
 \docType{methods}
 \name{subdiv}
 \alias{subdiv}
-\alias{subdiv,metacommunity-method}
 \alias{subdiv,powermean-method}
 \alias{subdiv,relativeentropy-method}
+\alias{subdiv,metacommunity-method}
 \title{Calculate subcommunity diversity}
 \usage{
 subdiv(data, qs)
@@ -61,4 +61,3 @@ subdiv(b, 0:2)
 subdiv(meta, 0:2)
 
 }
-

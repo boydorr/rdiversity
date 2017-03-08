@@ -37,4 +37,3 @@ meta <- metacommunity(pop)
 norm_meta_rho(meta, 0:2)
 
 }
-

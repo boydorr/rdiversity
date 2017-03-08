@@ -29,4 +29,3 @@ meta <- metacommunity(pop)
 a <- norm_alpha(meta)
 
 }
-

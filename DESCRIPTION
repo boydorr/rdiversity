@@ -18,15 +18,14 @@ Imports:
     phangorn,
     tidyr,
     tibble,
+    phytools,
     reshape2
 Suggests:
     testthat,
     knitr,
     rmarkdown
-RoxygenNote: 5.0.1
-Collate:
-    'class-rdphylo.R'
-    'as.rdphylo.R'
+RoxygenNote: 6.0.1
+Collate: 
     'check_similarity.R'
     'check_partition.R'
     'class-metacommunity.R'
@@ -35,12 +34,13 @@ Collate:
     'as.powermean.R'
     'class-relativeentropy.R'
     'as.relativeentropy.R'
-    'chainsaw.R'
+    'class-phy_struct.R'
     'create_axis_label.R'
     'diversity-components.R'
     'diversity-measures.R'
-    'hs_abundance.R'
     'metadiv.R'
+    'phy_abundance.R'
+    'phy_struct.R'
     'power_mean.R'
     'qD.R'
     'subdiv.R'
@@ -49,8 +49,10 @@ Collate:
     'qD_single.R'
     'rdiversity-package.R'
     'rdplot.R'
-    'similarity_phylo.R'
+    's_matrix.R'
     'similarity_shimatani.R'
     'structure_phylo.R'
     'summarise.R'
+    'trim.R'
+    'z_matrix.R'
 VignetteBuilder: knitr
