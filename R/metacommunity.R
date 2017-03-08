@@ -214,7 +214,7 @@ setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "phylo"),
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
-            ps <- prune(similarity, partition, interval)
+            ps <- trim(similarity, partition, interval)
             
             type_abundance <- phy_abundance(partition, ps)
             s_matrix <- s_matrix(similarity, ps)

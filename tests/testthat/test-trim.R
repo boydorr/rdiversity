@@ -58,7 +58,7 @@ test_that("Setting interval to < 1 returns correct results", {
   
   # Cut tree
   interval <- 7/11
-  short_ps <- prune(tree, partition, interval)
+  short_ps <- trim(tree, partition, interval)
   short_pa <- phy_abundance(partition, short_ps)
   short_T_bar <- sum(short_ps@structure %*% partition)
   short_smatrix <- s_matrix(tree, short_ps)

@@ -25,9 +25,9 @@
 #' row.names(partition) <- tree$tip.label 
 #' partition <- partition / sum(partition)
 #'
-#' res <- phy_struct(tree, partition)
+#' res <- trim(tree, partition, 0.2)
 #' 
-prune <- function(tree, partition, interval) {
+trim <- function(tree, partition, interval) {
   if(class(tree) != "phylo") stop("'tree' must be an object of class phylo")
   if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
   partition <- check_partition(partition)
