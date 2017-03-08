@@ -27,11 +27,5 @@ check_partition <- function(partition) {
     warning ('Population matrix was normalised to sum to 1.')
   }
   
-  # add labels if rows and columns have none
-  if(is.null(row.names(partition))) 
-    row.names(partition) <- paste('type', 1:nrow(partition))
-  if(is.null(colnames(partition))) 
-    colnames(partition) <- paste('subcommunity', 1:ncol(partition))
-  
   partition
 }
