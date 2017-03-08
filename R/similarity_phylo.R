@@ -19,35 +19,35 @@ similarity_phylo <-
   function(data, pds.abundance) 
   {
     if(!is.null(data$root.edge)) {
-      long.root = TRUE
-    } else long.root = FALSE
+      long_root = TRUE
+    } else long_root = FALSE
     
     pds <- seq_along(data$tip.label)
-    tip.nodes <- seq_along(data$tip.label)
+    tip_nodes <- seq_along(data$tip.label)
     all.nodes <- 1:(max(data$edge))
-    root.node <- length(tip.nodes) + 1
+    root.node <- length(tip_nodes) + 1
     root.ancestor <- 0
     
     ancestral.nodes <- lapply(as.list(all.nodes), function(node) {
       res <- c(node, phangorn::Ancestors(data, node, 'all'))
-      if(long.root) res <- c(res, root.ancestor)
+      if(long_root) res <- c(res, root.ancestor)
       else res
     })
-    if(long.root) ancestral.nodes[[length(ancestral.nodes) + 1]] <- 0
-    pds.subset <- ancestral.nodes[tip.nodes]
+    if(long_root) ancestral.nodes[[length(ancestral.nodes) + 1]] <- 0
+    pds.subset <- ancestral.nodes[tip_nodes]
     
     # Branch lengths.
     lengths <- cbind.data.frame(data$edge, data$edge.length)
-    if(long.root) 
+    if(long_root) 
       lengths <- rbind.data.frame(lengths, c(root.ancestor, root.node, 
                                            data$root.edge))
-    colnames(lengths) <- c("a.node", "d.node", "branch_length")
+    colnames(lengths) <- c("a.node", "d_node", "branch_length")
 
     # Total evolutionary lengths.
     Lj <- lapply(pds.subset, function(x) {
       daughters <- x[-length(x)]
       hs.length <- sapply(daughters, function(y)
-        lengths$branch_length[match(y, lengths$d.node)])
+        lengths$branch_length[match(y, lengths$d_node)])
       sum(hs.length)
     })
     Lj <- cbind.data.frame(pds, unlist(Lj))
@@ -62,9 +62,9 @@ similarity_phylo <-
     row.index <- match(row.names(data@structure), hs.Lj$hs.name)
     j.lengths <- hs.Lj$Lj[row.index]
     
-    scaling.factor <- Tbar / j.lengths
-    scaling.matrix <- diag(scaling.factor, nrow(hs.Lj))
-    zmatrix <- data@structure %*% scaling.matrix
+    scaling_factor <- Tbar / j.lengths
+    scaling_matrix <- diag(scaling_factor, nrow(hs.Lj))
+    zmatrix <- data@structure %*% scaling_matrix
     colnames(zmatrix) <- row.names(zmatrix)
     zmatrix
 }
