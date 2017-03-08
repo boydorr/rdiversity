@@ -14,11 +14,6 @@
 #' input as an argument.
 #' @export
 #' 
-#' @examples 
-#' population <- data.frame(a = 1:2, b = 3:4)
-#' zmatrix <- matrix(rep(-1,4), 2)
-#' \dontrun{check_similarity(population, zmatrix)}
-#' 
 check_similarity <- function(partition, similarity) {
   if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
   

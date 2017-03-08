@@ -23,9 +23,3 @@ input as an argument.
 \description{
 \code{check_similarity()} is used to validate similarity matrices.
 }
-\examples{
-population <- data.frame(a = 1:2, b = 3:4)
-zmatrix <- matrix(rep(-1,4), 2)
-\dontrun{check_similarity(population, zmatrix)}
-
-}
