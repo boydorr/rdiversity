@@ -100,7 +100,7 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
-#' @aliases metacommunity,data.frame,matrix-method
+#' @aliases metacommunity,data.frame-method,matrix-method
 #' @export
 #'
 setMethod(f = "metacommunity",
@@ -114,6 +114,7 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
+#' @aliases metacommunity,numeric-method,matrix-method
 #' @export
 #'
 setMethod(f = "metacommunity",
@@ -127,6 +128,7 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
+#' @aliases metacommunity,matrix-method
 #' @export
 #'
 setMethod(f = "metacommunity",
@@ -161,6 +163,7 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
+#' @aliases metacommunity,phylo-method
 #' @export
 #'
 setMethod(f = "metacommunity",
@@ -177,6 +180,7 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
+#' @aliases metacommunity,numeric-method,phylo-method
 #' @export
 #'
 setMethod(f = "metacommunity",
@@ -189,6 +193,7 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
+#' @aliases metacommunity,data.frame-method,phylo-method
 #' @export
 #'
 setMethod(f = "metacommunity",
@@ -201,6 +206,7 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
+#' @aliases metacommunity,matrix-method,phylo-method
 #' @export
 #'
 setMethod(f = "metacommunity",
@@ -214,8 +220,6 @@ setMethod(f = "metacommunity",
             
             metacommunity(hs_partition, zmatrix)
           } )
-
-
 
 
 #' @rdname metacommunity-class

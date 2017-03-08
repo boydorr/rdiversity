@@ -9,7 +9,7 @@
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include as.metacommunity.R
+#' @include metacommunity.R
 #' @export
 #'
 #' @examples
@@ -37,7 +37,7 @@ raw_alpha <- function(meta) {
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include as.metacommunity.R
+#' @include metacommunity.R
 #' @export
 #'
 #' @examples
@@ -70,7 +70,7 @@ norm_alpha <- function(meta) {
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include as.metacommunity.R
+#' @include metacommunity.R
 #' @export
 #'
 #' @examples
@@ -98,7 +98,7 @@ raw_rho <- function(meta) {
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include as.metacommunity.R
+#' @include metacommunity.R
 #' @export
 #'
 #' @examples
@@ -131,7 +131,7 @@ norm_rho <- function(meta) {
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{relativeentropy}.
-#' @include as.metacommunity.R
+#' @include metacommunity.R
 #' @export
 #'
 #' @examples
@@ -160,7 +160,7 @@ raw_beta <- function(meta) {
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{relativeentropy}.
-#' @include as.metacommunity.R
+#' @include metacommunity.R
 #' @export
 #'
 #' @examples
@@ -194,7 +194,7 @@ norm_beta <- function(meta) {
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include as.metacommunity.R
+#' @include metacommunity.R
 #' @export
 #'
 #' @examples

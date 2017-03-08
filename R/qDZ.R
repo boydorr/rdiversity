@@ -7,7 +7,7 @@
 #' @param meta object of class \code{metacommunity}.
 #' @param qs \code{vector} of \emph{q} values.
 #'
-#' @include as.metacommunity.R subdiv.R
+#' @include metacommunity.R subdiv.R
 #' @return Returns a matrix of similarity-sensitive diversities, where rows
 #' and columns represent values of q and subcommunities, respectively.
 #' @export
