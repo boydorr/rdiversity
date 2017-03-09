@@ -4,16 +4,18 @@
 \alias{trim}
 \title{Cut phylogeny}
 \usage{
-trim(tree, interval)
+trim(ps, interval, tree)
 }
 \arguments{
-\item{tree}{object of class \code{phylo}}
+\item{ps}{[optional] object of class \code{phy_struct}.}
 
 \item{interval}{proportion of total tree height to be conserved (taken as
 a proportion from the heighest tip). Describes how far back we go in the tree,
 with 0 marking the date of the most recent tip, and 1 (the default) marking 
 the most recent common ancestor. Numbers greater than 1 extend the root of 
 the tree.}
+
+\item{tree}{object of class \code{phylo}; required when interval > 1..}
 }
 \value{
 Returns an object of class \code{phy_struct} containing a new structural  
@@ -27,8 +29,8 @@ Cut phylogeny
 tree <- ape::rtree(n = 5)
 tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 
-meta <- phy_struct(tree)
+ps <- phy_struct(tree)
 
-res <- trim(tree, 0.2)
+res <- trim(ps, 0.2)
 
 }

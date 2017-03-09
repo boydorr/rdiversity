@@ -49,6 +49,7 @@ Collate:
     'rdiversity-package.R'
     'rdplot.R'
     'relativeentropy.R'
+    'repartition.R'
     's_matrix.R'
     'similarity_shimatani.R'
     'summarise.R'
