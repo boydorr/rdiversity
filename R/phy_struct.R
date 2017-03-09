@@ -1,7 +1,7 @@
 #' Convert to phy_struct
 #'
 #' Converts an object into class \code{phylo} into class \code{phy_struct}.
-#'
+#' 
 #' @param tree object of class \code{phylo}
 #' 
 #' @return Returns an object of class \code{phy_struct}, which contains: 
@@ -35,7 +35,7 @@
 phy_struct <- function(tree) {
   # Perform checks
   if(class(tree) != "phylo") stop("'tree' argument must be class phylo.")
-  
+ 
   # If root has a length
   root_ancestor = 0
   long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)

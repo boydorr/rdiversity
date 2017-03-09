@@ -57,18 +57,16 @@ trim <- function(tree, interval) {
     
     rooted_tree <- tree
     rooted_tree$root.edge <- abs(cut_height)
-    
     ps <- phy_struct(rooted_tree)
+    
     trim_struct <- ps@structure
     
   }else { 
     # if interval is betweel 0 and 1  
     ps <- phy_struct(tree)
-    
     Ntips <- ncol(ps@structure)
     d_nodes <- 1:ape::Nnode(tree, internal.only = FALSE)
-    d_nodes <- if(long_root) d_nodes[-which(d_nodes %in% 0)] else 
-      d_nodes[-which(d_nodes %in% (Ntips + 1))]
+    d_nodes <- d_nodes[-which(d_nodes %in% (Ntips + 1))]
     
     node_heights <- phytools::nodeHeights(tree)
     index <- sapply(d_nodes, function(x) which(tree$edge[,2] %in% x))
