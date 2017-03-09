@@ -25,29 +25,29 @@ Container for proportional abundance and similarity matrices.
 \section{Fields}{
 
 \describe{
-\item{\code{.Data}}{two-dimensional \code{matrix} of mode \code{numeric}; contains 
-proportional abundance of samples (usually types, except in the phylogenetic
-case where samples correspond to the present day species)}
-
-\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains pairwise similarity between \emph{types}}
-
 \item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains proportional abundance of \emph{types} in the subcommunity 
 as a fraction of the metacommunity as a whole (in the phylogenetic case, 
 this corresponds to the proportional abundance of historic species, which
 is calculated from the proportional abundance of present day species)}
 
+\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric}; 
+contains pairwise similarity between \emph{types}}
+
 \item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains ordinariness of types}
-
-\item{\code{phylo_struct}}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains length of historic species (in phylogeny)}
 
 \item{\code{subcommunity_weights}}{\code{vector} of mode \code{numeric}; contains
 subcommunity weights}
 
 \item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains weight of types within a subcommunity}
+
+\item{\code{tip_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}; contains 
+proportional abundance of samples (usually types, except in the phylogenetic
+case where samples correspond to the present day species)}
+
+\item{\code{structure}}{two-dimensional \code{matrix} of mode \code{numeric}; 
+contains length of historic species (in phylogeny)}
 }}
 
