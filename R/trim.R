@@ -27,7 +27,7 @@ trim <- function(tree, interval) {
 
   long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)
   
-  if(interval == 1) {
+  if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny 
     ps <- phy_struct(tree)
     trim_struct <- ps@structure
