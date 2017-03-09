@@ -77,7 +77,8 @@ trim <- function(tree, interval) {
       ifelse(isTRUE(all.equal(0, x)), 0, x))
     
     tree_height <- max(node_heights[,2])
-    cut_height <- tree_height - (tree_height * interval)
+    # cut_height <- tree_height - (tree_height * interval)
+    cut_depth <- tree_height * interval
     
     # Find branch lengths
     index <- apply(ps@structure, 2, function(x) which(x>0))
@@ -89,7 +90,7 @@ trim <- function(tree, interval) {
     
     trim_struct <- ps@structure
     for(i in 1:nrow(index)) {
-      these_branches <- trim_struct[index$end_row[i]:index$start_row[i],i]
+      these_branches <- trim_struct[index$start_row[i]:index$end_row[i],i]
       cut_here <- cut_height
       j = 0
       while(cut_here >= 0) {
@@ -103,7 +104,7 @@ trim <- function(tree, interval) {
         if(length(these_branches) > j) 
           these_branches[(j+1):length(these_branches)] <- 0
       }
-      trim_struct[index$end_row[i]:index$start_row[i],i] <- these_branches
+      trim_struct[index$start_row[i]:index$end_row[i],i] <- these_branches
     }
     
   }
