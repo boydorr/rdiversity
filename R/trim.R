@@ -23,8 +23,8 @@
 #' 
 trim <- function(tree, interval) {
   if(class(tree) != "phylo") stop("'tree' must be an object of class phylo")
-  if(length(interval) > 1) stop("Only one value may be input as 'interval'")
-  
+  if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
+
   long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)
   
   if(interval == 1) {
