@@ -153,11 +153,10 @@ setMethod(f = "metacommunity",
               row.names(type_weights) <- row.names(type_abundance)
             }
             
-            new('metacommunity', partition,
-                similarity = similarity,
+            new('metacommunity', 
                 type_abundance = type_abundance,
+                similarity = similarity,
                 ordinariness = Zp.j,
-                phylo_struct = diag(1, nrow(type_abundance)),
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights)
           } )
@@ -236,13 +235,14 @@ setMethod(f = "metacommunity",
               row.names(type_weights) <- row.names(type_abundance)
             }
             
-            new('metacommunity', partition,
-                similarity = similarity,
+            new('metacommunity', 
                 type_abundance = type_abundance,
+                similarity = similarity,
                 ordinariness = Zp.j,
-                phylo_struct = ps@structure,
                 subcommunity_weights = subcommunity_weights,
-                type_weights = type_weights)
+                type_weights = type_weights,
+                tip_abundance = partition,
+                structure = ps@structure)
           } )
 
 
