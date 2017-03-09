@@ -110,7 +110,7 @@ setMethod(f = "show", signature(object = "phy_struct"),
           definition = function(object){
             all_tips <- sum(colSums(object@structure) > 0)
             Nhs <- sum(rowSums(object@structure) > 0)
-            cat('@structure: Structural matrix describing', all_tips, 'tips and',
+            cat('@phylo_struct: Structural matrix describing', all_tips, 'tips and',
                 Nhs, 'historic species.\n')
             cat('@parameters: Historic species parameters.')
           })
