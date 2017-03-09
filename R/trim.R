@@ -53,10 +53,10 @@ trim <- function(tree, interval) {
       ifelse(isTRUE(all.equal(0, x)), 0, x))
     
     tree_height <- max(node_heights[,2])
-    cut_height <- tree_height - (tree_height * interval)
+    cut_depth <- tree_height - (tree_height * interval)
     
     rooted_tree <- tree
-    rooted_tree$root.edge <- abs(cut_height)
+    rooted_tree$root.edge <- abs(cut_depth)
     ps <- phy_struct(rooted_tree)
     
     trim_struct <- ps@structure
@@ -91,7 +91,7 @@ trim <- function(tree, interval) {
     trim_struct <- ps@structure
     for(i in 1:nrow(index)) {
       these_branches <- trim_struct[index$start_row[i]:index$end_row[i],i]
-      cut_here <- cut_height
+      cut_here <- cut_depth
       j = 0
       while(cut_here >= 0) {
         j <- j + 1
