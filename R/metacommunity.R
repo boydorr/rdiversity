@@ -268,10 +268,10 @@ setMethod(f = "show", signature= "metacommunity",
             Nhs <- sum(rowSums(object@structure) > 0)
             cat('@type_abundance: Matrix of relative abundances, with', n, 
                 'subcommunities and', S, 'types.\n')
-            cat('@similarity: Similarity matrix')
-            cat('@ordinariness: Matrix of type ordinariness.')
-            cat('@subcommunity_weights: Vector of subcommunity weights.')
-            cat('@type_weights: Vector of type weights.')
+            cat('@similarity: Similarity matrix.\n')
+            cat('@ordinariness: Matrix of type ordinariness.\n')
+            cat('@subcommunity_weights: Vector of subcommunity weights.\n')
+            cat('@type_weights: Vector of type weights.\n')
             cat('@tip_abundance: Matrix of (phylo) tip relative abundances, with', n, 
                 'subcommunities and', S, 'terminal taxa.\n')
             cat('@structure: Matrix of (phylo) structure, with', all_tips, 'tips and',
