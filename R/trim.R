@@ -23,8 +23,8 @@
 #' 
 trim <- function(tree, interval) {
   if(class(tree) != "phylo") stop("'tree' must be an object of class phylo")
-  if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
-
+  if(length(interval) > 1) stop("Only one value may be input as 'interval'")
+  
   long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)
   
   if(interval == 1) {
@@ -57,13 +57,14 @@ trim <- function(tree, interval) {
     
     rooted_tree <- tree
     rooted_tree$root.edge <- abs(cut_height)
-    ps <- phy_struct(rooted_tree)
     
+    ps <- phy_struct(rooted_tree)
     trim_struct <- ps@structure
     
   }else { 
     # if interval is betweel 0 and 1  
     ps <- phy_struct(tree)
+    
     Ntips <- ncol(ps@structure)
     d_nodes <- 1:ape::Nnode(tree, internal.only = FALSE)
     d_nodes <- if(long_root) d_nodes[-which(d_nodes %in% 0)] else 
