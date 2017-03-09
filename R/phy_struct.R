@@ -2,10 +2,6 @@
 #'
 #' Converts an object into class \code{phylo} into class \code{phy_struct}.
 #'
-#' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with 
-#' rows as types, columns as subcommunities, and elements containing relative 
-#' abundances of types in subcommunities. In the case of phylogenetic 
-#' metacommunities, these are the relative abundances of terminal taxa. 
 #' @param tree object of class \code{phylo}
 #' 
 #' @return Returns an object of class \code{phy_struct}, which contains: 
@@ -34,18 +30,11 @@
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 #' 
-#' partition <- cbind(a = c(0,1,1,1,0), b = c(1,0,0,0,1))
-#' row.names(partition) <- tree$tip.label 
-#' partition <- partition / sum(partition)
+#' res <- phy_struct(tree)
 #' 
-#' res <- phy_struct(partition, tree)
-#' 
-phy_struct <- function(partition, tree) {
+phy_struct <- function(tree) {
   # Perform checks
   if(class(tree) != "phylo") stop("'tree' argument must be class phylo.")
-  b <- "'row.names(partition)' must 'equal tree$tip.label'"
-  if(any(row.names(partition) != tree$tip.label)) stop(b)
-  partition <- check_partition(partition)
   
   # If root has a length
   root_ancestor = 0

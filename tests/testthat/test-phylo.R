@@ -6,7 +6,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
   # x <- rdphylo(partition, tree)
   # x@Tbar
-  ps <- phy_struct(partition, tree)
+  ps <- phy_struct(tree)
   T_bar <- sum(ps@structure %*% partition)
   meta <- metacommunity(partition, tree)
   
@@ -20,7 +20,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   # Non-ultrametric
   tree <- ape::read.tree(text="(A:1,B:2)R:1;")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  ps <- phy_struct(partition, tree)
+  ps <- phy_struct(tree)
   T_bar <- sum(ps@structure %*% partition)
   meta <- metacommunity(partition, tree)
   

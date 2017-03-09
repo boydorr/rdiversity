@@ -15,7 +15,7 @@
 #' @examples
 #' tree <- ape::read.tree(text="(A:1,B:2)R:1;")
 #' partition <- setNames(c(0.6, 0.4), tree$tip.label)
-#' ps <- phy_struct(partition, tree)
+#' ps <- phy_struct(tree)
 #' smatrix <- s_matrix(tree, ps)
 #' z_matrix(partition, smatrix, ps)
 #' 

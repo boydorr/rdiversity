@@ -7,18 +7,13 @@
 \alias{show,phy_struct-method}
 \title{Convert to phy_struct}
 \usage{
-phy_struct(partition, tree)
+phy_struct(tree)
 
 is.phy_struct(x)
 
 \S4method{show}{phy_struct}(object)
 }
 \arguments{
-\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
-rows as types, columns as subcommunities, and elements containing relative 
-abundances of types in subcommunities. In the case of phylogenetic 
-metacommunities, these are the relative abundances of terminal taxa.}
-
 \item{tree}{object of class \code{phylo}}
 
 \item{x}{any R object}
@@ -52,10 +47,6 @@ Converts an object into class \code{phylo} into class \code{phy_struct}.
 tree <- ape::rtree(n = 5)
 tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 
-partition <- cbind(a = c(0,1,1,1,0), b = c(1,0,0,0,1))
-row.names(partition) <- tree$tip.label 
-partition <- partition / sum(partition)
-
-res <- phy_struct(partition, tree)
+res <- phy_struct(tree)
 
 }

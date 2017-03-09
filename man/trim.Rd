@@ -4,14 +4,9 @@
 \alias{trim}
 \title{Cut phylogeny}
 \usage{
-trim(partition, tree, interval)
+trim(tree, interval)
 }
 \arguments{
-\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
-rows as types, columns as subcommunities, and elements containing relative 
-abundances of types in subcommunities. In the case of phylogenetic 
-metacommunities, these are the relative abundances of terminal taxa.}
-
 \item{tree}{object of class \code{phylo}}
 
 \item{interval}{proportion of total tree height to be conserved (taken as
@@ -32,11 +27,8 @@ Cut phylogeny
 tree <- ape::rtree(n = 5)
 tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 
-partition <- cbind(a = c(0,1,1,1,0), b = c(1,0,0,0,1))
-row.names(partition) <- tree$tip.label 
-partition <- partition / sum(partition)
-meta <- phy_struct(partition, tree)
+meta <- phy_struct(tree)
 
-res <- trim(partition, tree, 0.2)
+res <- trim(tree, 0.2)
 
 }
