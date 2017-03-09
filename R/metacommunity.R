@@ -243,7 +243,8 @@ setMethod(f = "metacommunity",
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights,
                 tip_abundance = partition,
-                structure = ps@structure)
+                structure = ps@structure,
+                hs_parameters = ps@parameters)
           } )
 
 
@@ -262,20 +263,26 @@ is.metacommunity <- function (x)
 #'
 setMethod(f = "show", signature= "metacommunity",
           definition = function(object) {
-            n <- dim(object@type_abundance)[2]
-            S <- dim(object@type_abundance)[1]
-
-            all_tips <- sum(colSums(object@structure) > 0)
-            Nhs <- sum(rowSums(object@structure) > 0)
-            cat('@type_abundance: Matrix of relative abundances, with', n, 
-                'subcommunities and', S, 'types.\n')
-            cat('@similarity: Similarity matrix.\n')
-            cat('@ordinariness: Matrix of type ordinariness.\n')
-            cat('@subcommunity_weights: Vector of subcommunity weights.\n')
-            cat('@type_weights: Vector of type weights.\n')
-            cat('@tip_abundance: Matrix of (phylo) tip relative abundances, with', n, 
-                'subcommunities and', S, 'terminal taxa.\n')
-            cat('@structure: Matrix of (phylo) structure, with', all_tips, 'tips and',
-                Nhs, 'historic species.\n')
+            
+            cat('@type_abundance: Matrix of relative abundances (', 
+                ncol(object@type_abundance), 'subcommunities,',
+                nrow(object@type_abundance), 'types )\n')
+            cat('@similarity: Similarity matrix\n')
+            cat('@ordinariness: Matrix of type ordinariness\n')
+            cat('@subcommunity_weights: Vector of subcommunity weights\n')
+            cat('@type_weights: Vector of type weights\n')
+            
+            if(!isTRUE(all.equal(0, length(object@tip_abundance))))
+              cat('@tip_abundance: Matrix of (phylo) tip relative abundances (', 
+                  ncol(object@tip_abundance), 'subcommunities,', 
+                  nrow(object@tip_abundance), 'terminal taxa )\n')
+            
+            if(!isTRUE(all.equal(0, length(object@structure))))
+              cat('@structure: Matrix of (phylo) structure (', 
+                  sum(colSums(object@structure) > 0), 'tips,',
+                  sum(rowSums(object@structure) > 0), 'historic species )\n')
+            
+            if(!isTRUE(all.equal(0, length(object@hs_parameters))))
+              cat('@hs_parameters: Parameters associated with (phylo) historic species\n')
           } )
 

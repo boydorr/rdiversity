@@ -24,7 +24,8 @@
 #' case where samples correspond to the present day species)
 #' @field structure two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains length of historic species (in phylogeny)
-
+#' @field hs_parameters \code{tibble} containing parameters associated with each 
+#' historic species (in phylogeny)
 #' 
 setClass("metacommunity", 
          slots = c(type_abundance = "matrix",
@@ -33,12 +34,13 @@ setClass("metacommunity",
                    subcommunity_weights = "numeric", 
                    type_weights = "matrix",
                    tip_abundance = "matrix",
-                   structure = "matrix"),
+                   structure = "matrix",
+                   hs_parameters = "data.frame"),
          prototype = c(type_abundance = matrix(),
                        similarity = matrix(),
                        ordinariness = matrix(),
                        subcommunity_weights = numeric(), 
                        type_weights = matrix(),
                        tip_abundance = matrix(),
-                       phylo_struct = matrix()))
+                       structure = matrix()))
 
