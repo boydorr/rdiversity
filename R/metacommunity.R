@@ -263,11 +263,18 @@ setMethod(f = "show", signature= "metacommunity",
           definition = function(object) {
             n <- dim(object@type_abundance)[2]
             S <- dim(object@type_abundance)[1]
-            cat('Metacommunity object with', n,
-                'subcommunities and', S, 'types.\n\n')
-            cat('Subcommunity labels:\n')
-            cat(colnames(object@type_abundance),'\n\n')
-            cat('Type labels:\n')
-            cat(rownames(object@type_abundance),'\n')
+
+            all_tips <- sum(colSums(object@structure) > 0)
+            Nhs <- sum(rowSums(object@structure) > 0)
+            cat('@type_abundance: Matrix of relative abundances, with', n, 
+                'subcommunities and', S, 'types.\n')
+            cat('@similarity: Similarity matrix')
+            cat('@ordinariness: Matrix of type ordinariness.')
+            cat('@subcommunity_weights: Vector of subcommunity weights.')
+            cat('@type_weights: Vector of type weights.')
+            cat('@tip_abundance: Matrix of (phylo) tip relative abundances, with', n, 
+                'subcommunities and', S, 'terminal taxa.\n')
+            cat('@structure: Matrix of (phylo) structure, with', all_tips, 'tips and',
+                Nhs, 'historic species.\n')
           } )
 
