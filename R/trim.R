@@ -1,12 +1,13 @@
 #' Cut phylogeny
 #'
-#' @param tree object of class \code{phylo}
+#' @param ps [optional] object of class \code{phy_struct}.
 #' @param interval proportion of total tree height to be conserved (taken as
 #' a proportion from the heighest tip). Describes how far back we go in the tree,
 #' with 0 marking the date of the most recent tip, and 1 (the default) marking 
 #' the most recent common ancestor. Numbers greater than 1 extend the root of 
 #' the tree. 
-#'
+#' @param tree object of class \code{phylo}; required when interval > 1..
+#' 
 #' @export
 #' @return
 #' Returns an object of class \code{phy_struct} containing a new structural  
@@ -17,29 +18,30 @@
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 #' 
-#' meta <- phy_struct(tree)
+#' ps <- phy_struct(tree)
 #'
-#' res <- trim(tree, 0.2)
+#' res <- trim(ps, 0.2)
 #' 
-trim <- function(tree, interval) {
-  if(class(tree) != "phylo") stop("'tree' must be an object of class phylo")
+trim <- function(ps, interval, tree) {
   if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
 
-  long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)
-  
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny 
-    ps <- phy_struct(tree)
+    if(missing(ps)) ps <- phy_struct(tree)
     trim_struct <- ps@structure
     
   }else if(isTRUE(all.equal(0, interval))) {
     # If interval = 0, remove phylogeny 
-    ps <- phy_struct(tree)
+    if(missing(ps)) ps <- phy_struct(tree)
     trim_struct <- ps@structure
     trim_struct[] <- 0
     
   }else if(interval > 1){
     # If interval > 1, add root to phylogeny
+    if(missing(tree))
+      stop("'tree' argument is missing.")
+    if(class(tree) != "phylo") stop("'tree' must be an object of class phylo")
+    
     Ntips <- ape::Ntip(tree)
     d_nodes <- 1:ape::Nnode(tree, internal.only = FALSE)
     d_nodes <- d_nodes[-which(d_nodes %in% (Ntips + 1))]
@@ -63,21 +65,9 @@ trim <- function(tree, interval) {
     
   }else { 
     # if interval is betweel 0 and 1  
-    ps <- phy_struct(tree)
-    Ntips <- ncol(ps@structure)
-    d_nodes <- 1:ape::Nnode(tree, internal.only = FALSE)
-    d_nodes <- d_nodes[-which(d_nodes %in% (Ntips + 1))]
-    
-    node_heights <- phytools::nodeHeights(tree)
-    index <- sapply(d_nodes, function(x) which(tree$edge[,2] %in% x))
-    node_heights <- cbind.data.frame(d_node = d_nodes, 
-                                     height = node_heights[index, 2])
-    # Remove non-zero rounding errors
-    node_heights$height <- sapply(node_heights$height, function(x) 
-      ifelse(isTRUE(all.equal(0, x)), 0, x))
-    
-    tree_height <- max(node_heights[,2])
-    # cut_height <- tree_height - (tree_height * interval)
+    if(missing(ps)) ps <- phy_struct(tree)
+
+    tree_height <- max(colSums(ps@structure))
     cut_depth <- tree_height * interval
     
     # Find branch lengths
