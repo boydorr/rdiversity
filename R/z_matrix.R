@@ -23,11 +23,11 @@ z_matrix <-
   function(partition, smatrix, ps) 
   {
     partition <- check_partition(partition)
-    T_bar <- sum(ps@structure %*% partition)
-    L_j <- colSums(ps@structure)
-    L_j <- L_j[match(ps@parameters$tip_label, colnames(ps@structure))]
+    T_bar <- sum(ps$structure %*% partition)
+    L_j <- colSums(ps$structure)
+    L_j <- L_j[match(ps$parameters$tip_label, colnames(ps$structure))]
     scaling_factor <- T_bar / L_j
-    scaling_matrix <- diag(scaling_factor, nrow(ps@structure))
+    scaling_matrix <- diag(scaling_factor, nrow(ps$structure))
     zmatrix <- smatrix %*% scaling_matrix
     colnames(zmatrix) <- row.names(zmatrix)
     zmatrix

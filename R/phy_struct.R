@@ -4,12 +4,13 @@
 #' 
 #' @param tree object of class \code{phylo}
 #' 
-#' @return Returns an object of class \code{phy_struct}, which contains: 
+#' @return Returns a \code{list} containing:
 #'
 #' \tabular{ll}{
-#' \code{/@structure} \tab - each row denotes historic species, columns denote 
+#' \code{$structure} \tab - each row denotes historic species, columns denote 
 #' terminal taxa, and elements contain branch lengths \cr
-#' \code{/@parameters} \tab - information associated with each historic species \cr
+#' \code{$parameters} \tab - information associated with each historic species \cr
+#' \code{$tree} \tab - object of class \code{phylo} \cr
 #' }
 #'
 #' Additional slots (accessed with @, not $) include:
@@ -23,7 +24,6 @@
 #' \code{structure} \tab -  \cr
 #' }
 #'
-#' @include class-phy_struct.R
 #' @export
 #'
 #' @examples
@@ -46,31 +46,9 @@ phy_struct <- function(tree) {
   s_matrix[index] <- parameters$lengths
   
   # Output
-  new('phy_struct', 
-      structure = s_matrix, 
-      parameters = parameters)
+  list(structure = s_matrix, 
+      parameters = parameters,
+      tree = tree)
 }
 
 
-#' @rdname phy_struct
-#' @param x any R object
-#' @export
-#'
-is.phy_struct <-
-  function (x)
-  {
-    inherits(x, "phy_struct")
-  }
-
-
-#' @rdname phy_struct
-#' @param object object of class \code{phy_struct}
-#' @export
-#'
-setMethod(f = "show", signature(object = "phy_struct"),
-          definition = function(object){
-            Nhs <- sum(rowSums(object@structure) > 0)
-            cat('@phylo_struct: Structural matrix describing', Nhs,
-                'historic species.\n')
-            cat('@parameters: Historic species parameters.')
-          })

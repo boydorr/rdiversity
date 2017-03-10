@@ -1,6 +1,6 @@
 #' Cut phylogeny
 #'
-#' @param ps [optional] object of class \code{phy_struct}.
+#' @param ps \code{phy_struct()} output.
 #' @param interval proportion of total tree height to be conserved (taken as
 #' a proportion from the heighest tip). Describes how far back we go in the tree,
 #' with 0 marking the date of the most recent tip, and 1 (the default) marking 
@@ -27,27 +27,21 @@ trim <- function(ps, interval, tree) {
   
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny 
-    if(missing(ps)) ps <- phy_struct(tree)
-    trim_struct <- ps@structure
+    trim_struct <- ps$structure
     
   }else if(isTRUE(all.equal(0, interval))) {
     # If interval = 0, remove phylogeny 
-    if(missing(ps)) ps <- phy_struct(tree)
-    trim_struct <- ps@structure
+    trim_struct <- ps$structure
     trim_struct[] <- 0
     
   }else if(interval > 1){
     # If interval > 1, add root to phylogeny
-    if(missing(tree))
-      stop("'tree' argument is missing.")
-    if(class(tree) != "phylo") stop("'tree' must be an object of class phylo")
-    
-    Ntips <- ape::Ntip(tree)
-    d_nodes <- 1:ape::Nnode(tree, internal.only = FALSE)
+    Ntips <- ape::Ntip(ps$tree)
+    d_nodes <- 1:ape::Nnode(ps$tree, internal.only = FALSE)
     d_nodes <- d_nodes[-which(d_nodes %in% (Ntips + 1))]
     
-    node_heights <- phytools::nodeHeights(tree)
-    index <- sapply(d_nodes, function(x) which(tree$edge[,2] %in% x))
+    node_heights <- phytools::nodeHeights(ps$tree)
+    index <- sapply(d_nodes, function(x) which(ps$tree$edge[,2] %in% x))
     node_heights <- cbind.data.frame(d_node = d_nodes, 
                                      height = node_heights[index, 2])
     # Remove non-zero rounding errors
@@ -57,28 +51,26 @@ trim <- function(ps, interval, tree) {
     tree_height <- max(node_heights[,2])
     cut_depth <- tree_height - (tree_height * interval)
     
-    rooted_tree <- tree
+    rooted_tree <- ps$tree
     rooted_tree$root.edge <- abs(cut_depth)
     ps <- phy_struct(rooted_tree)
     
-    trim_struct <- ps@structure
+    trim_struct <- ps$structure
     
   }else { 
     # if interval is betweel 0 and 1  
-    if(missing(ps)) ps <- phy_struct(tree)
-    
-    tree_height <- max(colSums(ps@structure))
+    tree_height <- max(colSums(ps$structure))
     cut_height <- tree_height - (tree_height * interval)
     
     # Find branch lengths
-    index <- apply(ps@structure, 2, function(x) which(x>0))
+    index <- apply(ps$structure, 2, function(x) which(x>0))
     index <- lapply(seq_along(index), function(x) 
       cbind.data.frame(column = x, 
                        start_row = index[[x]][1], 
                        end_row = index[[x]][length(index[[x]])]))
     index <- do.call(rbind.data.frame, index)  
     
-    trim_struct <- ps@structure
+    trim_struct <- ps$structure
     for(i in 1:nrow(index)) {
       these_branches <- trim_struct[index$end_row[i]:index$start_row[i],i]
       cut_here <- cut_height
@@ -97,7 +89,7 @@ trim <- function(ps, interval, tree) {
     
   }
   
-  new('phy_struct', 
-      structure = trim_struct, 
-      parameters = ps@parameters)
+  list(structure = trim_struct, 
+      parameters = ps$parameters,
+      tree = ps$tree)
 }

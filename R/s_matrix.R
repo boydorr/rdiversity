@@ -2,8 +2,7 @@
 #' 
 #' Function to calculate phylogenetic similarity matrix from a phylogeny.
 #' 
-#' @param tree object of class \code{phylo}
-#' @param ps object of class \code{phy_struct}
+#' @param ps \code{phy_struct()} output.
 #' 
 #' @return \eqn{hS x hS} matrix; pair-wise similarity of historic species
 #' @export
@@ -12,10 +11,10 @@
 #' tree <- ape::rtree(n = 5)
 #' 
 s_matrix <- 
-  function(tree, ps) 
+  function(ps) 
   {
     # Define s_matrix (type = historic species)
-    hs <- ps@parameters$hs_names
+    hs <- ps$parameters$hs_names
     Nhs <- length(hs)
     
     s_matrix <- matrix(0, nrow = Nhs, ncol = Nhs)
@@ -26,7 +25,7 @@ s_matrix <-
     for (row_index in 1:Nhs) {
       # Historic species 
       ib <- hs[row_index]
-      daughters <- phangorn::Descendants(tree, ps@parameters$d_node[row_index])
+      daughters <- phangorn::Descendants(ps$tree, ps$parameters$d_node[row_index])
       daughters <- unlist(daughters)
       # daughters <- unlist(historic_species$Ntips.descendants[row_index])
       
