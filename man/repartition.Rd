@@ -2,10 +2,23 @@
 % Please edit documentation in R/repartition.R
 \name{repartition}
 \alias{repartition}
-\title{repartition}
+\title{Repartition metacommunity}
 \usage{
-repartition(x)
+repartition(meta, tree)
+}
+\arguments{
+\item{meta}{object of class \code{metacommunity}.}
+
+\item{tree}{object of class \code{phylo}.}
+}
+\value{
+Returns an object of class \code{metacommunity.}
 }
 \description{
-repartition
+Randomly reshuffles the relative abundance of types (e.g. species) in a 
+metacommunity (whilst maintaining the relationship between the relative
+abundance of a particular species across subcommunities). In the case of a
+phylogenetic metacommunity, the relative abundance of terminal taxa are 
+randomly reshuffled and the relative abundance of types (historic species) 
+are calculated from the resulting partition.
 }

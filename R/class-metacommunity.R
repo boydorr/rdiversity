@@ -19,9 +19,9 @@
 #' subcommunity weights
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains weight of types within a subcommunity
-#' @field tip_abundance two-dimensional \code{matrix} of mode \code{numeric}; contains 
-#' proportional abundance of samples (usually types, except in the phylogenetic
-#' case where samples correspond to the present day species)
+#' @field tip_abundance two-dimensional \code{matrix} of mode \code{numeric};  
+#' contains proportional abundance of samples (usually types, except in the 
+#' phylogenetic case where samples correspond to the present day species)
 #' @field structure two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains length of historic species (in phylogeny)
 #' @field hs_parameters \code{tibble} containing parameters associated with each 

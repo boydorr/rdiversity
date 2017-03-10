@@ -36,6 +36,7 @@ Collate:
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'
+    'hs_parameters.R'
     'metadiv.R'
     'phy_abundance.R'
     'phy_struct.R'
