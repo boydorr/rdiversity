@@ -58,7 +58,6 @@ test_that("Setting interval to < 1 returns correct results", {
   
   # Cut tree
   interval <- 7/11
-  ps <- phy_struct(tree)
   short_ps <- trim(ps, interval)
   short_pa <- phy_abundance(partition, short_ps)
   short_T_bar <- sum(short_ps@structure %*% partition)
@@ -66,12 +65,12 @@ test_that("Setting interval to < 1 returns correct results", {
   short_zmatrix <- z_matrix(partition, short_smatrix, short_ps)
   testthat::expect_warning(m <- metacommunity(partition, tree, interval))
   
-  ans = cbind(A = c(0.4,0.2,0.3,0.1,0,0,0,0,0.1,0.3,0.1,0.3)/3.7, 
-              B = c(0.2,0.1,0,0,0,0.1,0.3,0,0.3,0.9,0,0)/3.7)
+  ans = cbind(A = c(0,0,0,0,0,0,0,0.6,0.1,0,0.4,0)/3.7, 
+              B = c(0,0,0,0,0.4,0.1,0,1.8,0.3,0,0,0)/3.7)
   row.names(ans) <- row.names(short_pa)
   
-  # testthat::expect_equal(short_T_bar, 3.7) 
-  # testthat::expect_equal(short_pa, ans)
+  testthat::expect_equal(short_T_bar, 3.7)
+  testthat::expect_equal(short_pa, ans)
 })
 
 

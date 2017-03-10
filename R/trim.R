@@ -24,7 +24,7 @@
 #' 
 trim <- function(ps, interval, tree) {
   if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
-
+  
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny 
     if(missing(ps)) ps <- phy_struct(tree)
@@ -66,9 +66,9 @@ trim <- function(ps, interval, tree) {
   }else { 
     # if interval is betweel 0 and 1  
     if(missing(ps)) ps <- phy_struct(tree)
-
+    
     tree_height <- max(colSums(ps@structure))
-    cut_depth <- tree_height * interval
+    cut_height <- tree_height - (tree_height * interval)
     
     # Find branch lengths
     index <- apply(ps@structure, 2, function(x) which(x>0))
@@ -80,21 +80,19 @@ trim <- function(ps, interval, tree) {
     
     trim_struct <- ps@structure
     for(i in 1:nrow(index)) {
-      these_branches <- trim_struct[index$start_row[i]:index$end_row[i],i]
-      cut_here <- cut_depth
+      these_branches <- trim_struct[index$end_row[i]:index$start_row[i],i]
+      cut_here <- cut_height
       j = 0
-      while(cut_here >= 0) {
+      while(cut_here > 0) {
         j <- j + 1
-        if(j > length(these_branches)) break
-        cut_here <- cut_here - these_branches[j]
+        cut_here <- cut_here - these_branches[[j]]
+        if(isTRUE(all.equal(length(these_branches), j))) break
       }
-       
-      if(cut_here < 0) {
-        these_branches[j] <- these_branches[j] - abs(cut_here)
-        if(length(these_branches) > j) 
-          these_branches[(j+1):length(these_branches)] <- 0
-      }
-      trim_struct[index$start_row[i]:index$end_row[i],i] <- these_branches
+      these_branches[1:j] <- 0
+      if(cut_here < 0) 
+        these_branches[j] <- abs(cut_here)
+      
+      trim_struct[index$end_row[i]:index$start_row[i],i] <- these_branches
     }
     
   }
