@@ -7,7 +7,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   # x <- rdphylo(partition, tree)
   # x@Tbar
   ps <- phy_struct(tree)
-  T_bar <- sum(ps@structure %*% partition)
+  T_bar <- sum(ps$structure %*% partition)
   meta <- metacommunity(partition, tree)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,
@@ -21,7 +21,7 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   tree <- ape::read.tree(text="(A:1,B:2)R:1;")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
   ps <- phy_struct(tree)
-  T_bar <- sum(ps@structure %*% partition)
+  T_bar <- sum(ps$structure %*% partition)
   meta <- metacommunity(partition, tree)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,

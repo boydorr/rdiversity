@@ -1,4 +1,4 @@
-context('Testing trim() function')
+context('Testing chainsaw() function')
 
 test_that("Setting interval to 2 returns a long root for ultrametric trees", {
   tree <- ape::read.tree(text="(A:2,B:2);")
@@ -45,8 +45,8 @@ test_that("Setting interval to < 1 returns correct results", {
   # Full tree
   ps <- phy_struct(tree)
   pa <- phy_abundance(partition, ps)
-  T_bar <- sum(ps@structure %*% partition)
-  smatrix <- s_matrix(tree, ps)
+  T_bar <- sum(ps$structure %*% partition)
+  smatrix <- s_matrix(ps)
   zmatrix <- z_matrix(partition, smatrix, ps)
   
   ans = cbind(A = c(0.4,0.2,0.3,0.1,0,0,0,0.6,0.2,0.3,0.5,0.3)/7.4,
@@ -58,10 +58,10 @@ test_that("Setting interval to < 1 returns correct results", {
   
   # Cut tree
   interval <- 7/11
-  short_ps <- trim(ps, interval)
+  short_ps <- chainsaw(ps, interval)
   short_pa <- phy_abundance(partition, short_ps)
-  short_T_bar <- sum(short_ps@structure %*% partition)
-  short_smatrix <- s_matrix(tree, short_ps)
+  short_T_bar <- sum(short_ps$structure %*% partition)
+  short_smatrix <- s_matrix(short_ps)
   short_zmatrix <- z_matrix(partition, short_smatrix, short_ps)
   testthat::expect_warning(m <- metacommunity(partition, tree, interval))
   

@@ -214,18 +214,18 @@ setMethod(f = "metacommunity",
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             ps <- phy_struct(similarity)
-            ps <- trim(ps, interval, similarity)
+            ps <- chainsaw(ps, interval)
             
             type_abundance <- phy_abundance(partition, ps)
-            s_matrix <- s_matrix(similarity, ps)
+            s_matrix <- s_matrix(ps)
             zmatrix <- z_matrix(partition, s_matrix, ps)
-            similarity <- check_similarity(type_abundance, zmatrix)
+            zmatrix <- check_similarity(type_abundance, zmatrix)
             
             # Calculate parameters
             subcommunity_weights <- colSums(type_abundance) /
               sum(type_abundance)
             type_weights <- apply(type_abundance, 2, function(x) x/sum(x))
-            Zp.j <- similarity %*% type_abundance
+            Zp.j <- zmatrix %*% type_abundance
             
             # Mark all of the species that have nothing similar as NaNs
             # because diversity of an empty group is undefined
@@ -238,13 +238,13 @@ setMethod(f = "metacommunity",
             
             new('metacommunity', 
                 type_abundance = type_abundance,
-                similarity = similarity,
+                similarity = zmatrix,
                 ordinariness = Zp.j,
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights,
-                tip_abundance = partition,
-                structure = ps@structure,
-                hs_parameters = ps@parameters)
+                raw_abundance = partition,
+                raw_structure = ps$structure,
+                parameters = ps$parameters)
           } )
 
 
@@ -271,18 +271,18 @@ setMethod(f = "show", signature= "metacommunity",
             cat('@ordinariness: Matrix of type ordinariness\n')
             cat('@subcommunity_weights: Vector of subcommunity weights\n')
             cat('@type_weights: Vector of type weights\n')
-            
-            if(!isTRUE(all.equal(0, length(object@tip_abundance))))
-              cat('@tip_abundance: Matrix of (phylo) tip relative abundances (', 
-                  ncol(object@tip_abundance), 'subcommunities,', 
-                  nrow(object@tip_abundance), 'terminal taxa )\n')
-            
-            if(!isTRUE(all.equal(0, length(object@structure))))
-              cat('@structure: Matrix of (phylo) structure (', 
-                  sum(colSums(object@structure) > 0), 'tips,',
-                  sum(rowSums(object@structure) > 0), 'historic species )\n')
-            
-            if(!isTRUE(all.equal(0, length(object@hs_parameters))))
-              cat('@hs_parameters: Parameters associated with (phylo) historic species\n')
+          #   
+          #   if(!isTRUE(all.equal(0, length(object@raw_abundance))))
+          #     cat('@raw_abundance: Matrix of (phylo) tip relative abundances (', 
+          #         ncol(object@raw_abundance), 'subcommunities,', 
+          #         nrow(object@raw_abundance), 'terminal taxa )\n')
+          #   
+          #   if(!isTRUE(all.equal(0, length(object@raw_structure))))
+          #     cat('@raw_structure: Matrix of (phylo) structure (', 
+          #         sum(colSums(object@raw_structure) > 0), 'tips,',
+          #         sum(rowSums(object@raw_structure) > 0), 'historic species )\n')
+          #   
+          #   if(!isTRUE(all.equal(0, length(object@hs_parameters))))
+          #     cat('@parameters: Parameters associated with (phylo) historic species\n')
           } )
 

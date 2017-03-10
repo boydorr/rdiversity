@@ -29,7 +29,6 @@ Collate:
     'check_partition.R'
     'check_similarity.R'
     'class-metacommunity.R'
-    'class-phy_struct.R'
     'class-powermean.R'
     'class-relativeentropy.R'
     'create_axis_label.R'

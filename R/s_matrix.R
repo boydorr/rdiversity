@@ -9,6 +9,13 @@
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)
+#' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+#' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+#' row.names(partition) <- tree$tip.label
+#' partition <- partition / sum(partition)
+#' 
+#' ps <- phy_struct(tree)
+#' s_matrix(ps)
 #' 
 s_matrix <- 
   function(ps) 
@@ -27,19 +34,16 @@ s_matrix <-
       ib <- hs[row_index]
       daughters <- phangorn::Descendants(ps$tree, ps$parameters$d_node[row_index])
       daughters <- unlist(daughters)
-      # daughters <- unlist(historic_species$Ntips.descendants[row_index])
-      
+
       s_matrix_row <- vector()
       for (col_index in 1:Nhs) {
         # Historic species (to compare)
         jc <- hs[col_index]
-        jc_tip <- ps@parameters$tip_node[col_index]
-        # jc_Ntips <- historic_species$tip.node[col_index]
+        jc_tip <- ps$parameters$tip_node[col_index]
         # Similarity between historic species (i,b) and species (j,c)  
         # is non-zero when species j is found within the set of species  
         # descended from branch b
         if (jc_tip %in% daughters) {
-          # zmatrix.row[jc] <- new.tree@parameters$Tbar[1] / j.length
           s_matrix_row[col_index] <- 1
         } else {
           s_matrix_row[col_index] <- 0

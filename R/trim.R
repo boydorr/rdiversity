@@ -6,7 +6,7 @@
 #' with 0 marking the date of the most recent tip, and 1 (the default) marking 
 #' the most recent common ancestor. Numbers greater than 1 extend the root of 
 #' the tree. 
-#' @param tree object of class \code{phylo}; required when interval > 1..
+#' @param depth object
 #' 
 #' @export
 #' @return
@@ -17,16 +17,20 @@
 #' @examples 
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+#' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+#' row.names(partition) <- tree$tip.label
+#' partition <- partition / sum(partition)
 #' 
 #' ps <- phy_struct(tree)
-#'
-#' res <- trim(ps, 0.2)
 #' 
-trim <- function(ps, interval, tree) {
-  if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
-  
 #' chainsaw(ps, interval = 0.4)
+#' 
 chainsaw <- function(ps, interval, depth) {
+  if(!missing(interval))if(length(interval) > 1) 
+    stop("Only one value may be input as 'interval'")
+  if(!missing(depth))if(length(depth) > 1) 
+    stop("Only one value may be input as 'depth'")
+
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny 
     trim_struct <- ps$structure

@@ -9,6 +9,9 @@
 #' @param ps \code{phy_struct()} output.
 #' @export
 #' 
+#' @examples 
+#' 
+#' 
 phy_abundance <- function(partition, ps) {
   
   T_bar <- sum(ps$structure %*% partition)
