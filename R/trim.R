@@ -25,6 +25,8 @@
 trim <- function(ps, interval, tree) {
   if(class(interval) == "vector") stop("Only one value may be input as 'interval'")
   
+#' chainsaw(ps, interval = 0.4)
+chainsaw <- function(ps, interval, depth) {
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny 
     trim_struct <- ps$structure
