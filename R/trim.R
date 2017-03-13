@@ -6,7 +6,7 @@
 #' with 0 marking the date of the most recent tip, and 1 (the default) marking 
 #' the most recent common ancestor. Numbers greater than 1 extend the root of 
 #' the tree. 
-#' @param depth object
+#' @param depth object length of total tree height to be conserved. 
 #' 
 #' @export
 #' @return
@@ -20,17 +20,26 @@
 #' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
-#' 
 #' ps <- phy_struct(tree)
 #' 
-#' chainsaw(ps, interval = 0.4)
+#' a <- chainsaw(ps, interval = 0.4)
+#' b <- chainsaw(ps, interval = 2)
+#' z <- chainsaw(ps, interval = 0)
+#' m <- chainsaw(ps, interval = 1)
 #' 
 chainsaw <- function(ps, interval, depth) {
   if(!missing(interval))if(length(interval) > 1) 
     stop("Only one value may be input as 'interval'")
   if(!missing(depth))if(length(depth) > 1) 
     stop("Only one value may be input as 'depth'")
-
+  if(!missing(interval) & !missing(depth)) 
+    stop("Either 'interval' or 'depth' may be input, not both!")
+  
+  if(!missing(depth)) {
+    tree_height <- max(colSums(ps$structure))
+    interval <- depth / tree_height
+  }
+  
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny 
     trim_struct <- ps$structure
@@ -41,20 +50,8 @@ chainsaw <- function(ps, interval, depth) {
     trim_struct[] <- 0
     
   }else if(interval > 1){
-    # If interval > 1, add root to phylogeny
-    Ntips <- ape::Ntip(ps$tree)
-    d_nodes <- 1:ape::Nnode(ps$tree, internal.only = FALSE)
-    d_nodes <- d_nodes[-which(d_nodes %in% (Ntips + 1))]
-    
-    node_heights <- phytools::nodeHeights(ps$tree)
-    index <- sapply(d_nodes, function(x) which(ps$tree$edge[,2] %in% x))
-    node_heights <- cbind.data.frame(d_node = d_nodes, 
-                                     height = node_heights[index, 2])
-    # Remove non-zero rounding errors
-    node_heights$height <- sapply(node_heights$height, function(x) 
-      ifelse(isTRUE(all.equal(0, x)), 0, x))
-    
-    tree_height <- max(node_heights[,2])
+    # if interval is greater than 1  
+    tree_height <- max(colSums(ps$structure))
     cut_depth <- tree_height - (tree_height * interval)
     
     rooted_tree <- ps$tree
@@ -63,10 +60,10 @@ chainsaw <- function(ps, interval, depth) {
     
     trim_struct <- ps$structure
     
-  }else { 
+  }else if(interval > 0 & interval < 1){ 
     # if interval is betweel 0 and 1  
     tree_height <- max(colSums(ps$structure))
-    cut_height <- tree_height - (tree_height * interval)
+    cut_depth <- tree_height - (tree_height * interval)
     
     # Find branch lengths
     index <- apply(ps$structure, 2, function(x) which(x>0))
@@ -79,7 +76,7 @@ chainsaw <- function(ps, interval, depth) {
     trim_struct <- ps$structure
     for(i in 1:nrow(index)) {
       these_branches <- trim_struct[index$end_row[i]:index$start_row[i],i]
-      cut_here <- cut_height
+      cut_here <- cut_depth
       j = 0
       while(cut_here > 0) {
         j <- j + 1
@@ -96,6 +93,6 @@ chainsaw <- function(ps, interval, depth) {
   }
   
   list(structure = trim_struct, 
-      parameters = ps$parameters,
-      tree = ps$tree)
+       parameters = ps$parameters,
+       tree = ps$tree)
 }
