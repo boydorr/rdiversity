@@ -35,12 +35,5 @@ setClass("metacommunity",
                    type_weights = "matrix",
                    raw_abundance = "matrix",
                    raw_structure = "matrix",
-                   parameters = "data.frame"),
-         prototype = c(type_abundance = matrix(),
-                       similarity = matrix(),
-                       ordinariness = matrix(),
-                       subcommunity_weights = numeric(), 
-                       type_weights = matrix(),
-                       raw_abundance = matrix(),
-                       raw_structure = matrix()))
+                   parameters = "data.frame"))
 
