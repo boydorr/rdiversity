@@ -13,7 +13,6 @@
 #' @return Returns an object of class \code{metacommunity.}
 #' @export
 #' 
-repartition <- function(meta, tree) {
 #' @examples
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
@@ -25,36 +24,33 @@ repartition <- function(meta, tree) {
 #' 
 #' repartition(meta, ps)
 #' 
+repartition <- function(meta, ps) {
   
-  if(isTRUE(all.equal(0, length(meta@structure)))) {
+  if(isTRUE(all.equal(0, length(meta@raw_structure)))) {
     # Non-phylogenetic metacommunity
     partition <- meta@type_abundance
     new_partition <- partition[sample(seq_along(row.names(partition))),]
     new_partition <- check_partition(new_partition)
     row.names(new_partition) <- row.names(partition)
-    
+
     new_meta <- metacommunity(new_partition, meta@similarity)
-    
+
   }else {
     # Phylogenetic metacommunity
-    tip_abundance <- meta@tip_abundance
-    new_abundance <- tip_abundance[sample(seq_along(row.names(tip_abundance))),]
+    raw_abundance <- meta@raw_abundance
+    new_abundance <- raw_abundance[sample(seq_along(row.names(raw_abundance))),]
     new_abundance <- check_partition(new_abundance)
-    row.names(new_abundance) <- row.names(tip_abundance)
-    
-    ps <- new('phy_struct', 
-              structure = meta@structure, 
-              parameters = meta@hs_parameters)
-    
+    row.names(new_abundance) <- row.names(raw_abundance)
+
     hs_abundance <- phy_abundance(new_abundance, ps)
-    smatrix <- s_matrix(tree, ps)
+    smatrix <- s_matrix(ps)
     zmatrix <- z_matrix(new_abundance, smatrix, ps)
-    
+
     new_meta <- metacommunity(hs_abundance, zmatrix)
-    new_meta@tip_abundance <- new_abundance
-    new_meta@structure <- meta@structure
-    new_meta@hs_parameters <- meta@hs_parameters
+    new_meta@raw_abundance <- new_abundance
+    new_meta@raw_structure <- meta@raw_structure
+    new_meta@parameters <- meta@parameters
   }
-  
+
   new_meta
 }
