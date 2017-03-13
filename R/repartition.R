@@ -8,12 +8,23 @@
 #' are calculated from the resulting partition. 
 #' 
 #' @param meta object of class \code{metacommunity}.
-#' @param tree object of class \code{phylo}.
+#' @param ps \code{phy_struct()} output.
 #' 
 #' @return Returns an object of class \code{metacommunity.}
 #' @export
 #' 
 repartition <- function(meta, tree) {
+#' @examples
+#' tree <- ape::rtree(n = 5)
+#' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+#' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+#' row.names(partition) <- tree$tip.label
+#' partition <- partition / sum(partition)
+#' meta <- metacommunity(partition, tree)
+#' ps <- phy_struct(tree)
+#' 
+#' repartition(meta, ps)
+#' 
   
   if(isTRUE(all.equal(0, length(meta@structure)))) {
     # Non-phylogenetic metacommunity

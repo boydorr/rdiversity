@@ -4,12 +4,12 @@
 \alias{repartition}
 \title{Repartition metacommunity}
 \usage{
-repartition(meta, tree)
+repartition(meta, ps)
 }
 \arguments{
 \item{meta}{object of class \code{metacommunity}.}
 
-\item{tree}{object of class \code{phylo}.}
+\item{ps}{\code{phy_struct()} output.}
 }
 \value{
 Returns an object of class \code{metacommunity.}
@@ -21,4 +21,16 @@ abundance of a particular species across subcommunities). In the case of a
 phylogenetic metacommunity, the relative abundance of terminal taxa are 
 randomly reshuffled and the relative abundance of types (historic species) 
 are calculated from the resulting partition.
+}
+\examples{
+tree <- ape::rtree(n = 5)
+tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+row.names(partition) <- tree$tip.label
+partition <- partition / sum(partition)
+meta <- metacommunity(partition, tree)
+ps <- phy_struct(tree)
+
+repartition(meta, ps)
+
 }

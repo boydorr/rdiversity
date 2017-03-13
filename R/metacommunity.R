@@ -6,19 +6,21 @@ setOldClass("phylo")
 #' object into a \code{metacommunity}.
 #'
 #' \enumerate{
-#' \item .Data (partition) - proportional abundance of samples (usually types,
-#' except in the phylogenetic case where samples correspond to the present day
-#' species)
-#' \item similarity - pairwise similarity between \emph{types}
-#' \item type_abundance - proportional abundance of \emph{types} in the
-#' subcommunity as a fraction of the metacommunity as a whole (in the
-#' phylogenetic case, this corresponds to the proportional abundance of
-#' historic species, which is calculated from the proportional abundance of
+#' \item type_abundance - proportional abundance of \emph{types} in the  
+#' subcommunity as a fraction of the metacommunity as a whole (in the 
+#' phylogenetic case, this corresponds to the proportional abundance of 
+#' historic species, which is calculated from the proportional abundance of 
 #' present day species)
-#' \item ordinariness - ordinariness of types
-#' \item phylo_struct - length of historic species (in phylogeny)
+#' \item similarity - pairwise similarity between \emph{types}
+#' \item ordinariness - ordinariness of types 
 #' \item subcommunity_weights - subcommunity weights
 #' \item type_weights - weight of types within a subcommunity
+#' \item raw_abundance - proportional abundance of samples (usually types, 
+#' except in the phylogenetic case where samples correspond to the present 
+#' day species)
+#' \item raw_structure - length of historic species (in phylogeny)
+#' \item parameters - parameters associated with each 
+#' historic species (in phylogeny)
 #' }
 #'
 #' @name metacommunity
@@ -32,7 +34,7 @@ setOldClass("phylo")
 #' metacommunities, these are the relative abundances of terminal taxa. 
 #' @param similarity (optional) object that describes similarity between
 #' individuals or types. Usually missing (all types are distinct) or a matrix
-#' showing similarities, but can be of class \code{phylo} or \code{rdphylo}.
+#' showing similarities, but can be of class \code{phylo}.
 #' @param ... (optional) additional arguments, especially:
 #' @param interval (optional) for phylogenetic metacommunities only, how
 #' far back we go in the tree, with 0 marking the date of the most
@@ -49,7 +51,10 @@ setOldClass("phylo")
 #' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
-#'
+#' 
+#' a <- metacommunity(partition, tree)
+#' b <- metacommunity(partition)
+#' 
 setGeneric(name = "metacommunity",
            def = function(partition, similarity, ...) {
              standardGeneric("metacommunity")

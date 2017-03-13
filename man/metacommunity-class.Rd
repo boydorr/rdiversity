@@ -43,14 +43,14 @@ subcommunity weights}
 \item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains weight of types within a subcommunity}
 
-\item{\code{tip_abundance}}{two-dimensional \code{matrix} of mode \code{numeric};
+\item{\code{raw_abundance}}{two-dimensional \code{matrix} of mode \code{numeric};
 contains proportional abundance of samples (usually types, except in the 
 phylogenetic case where samples correspond to the present day species)}
 
-\item{\code{structure}}{two-dimensional \code{matrix} of mode \code{numeric}; 
+\item{\code{raw_structure}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains length of historic species (in phylogeny)}
 
-\item{\code{hs_parameters}}{\code{tibble} containing parameters associated with each 
+\item{\code{parameters}}{\code{tibble} containing parameters associated with each 
 historic species (in phylogeny)}
 }}
 

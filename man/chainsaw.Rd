@@ -31,9 +31,11 @@ tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
-
 ps <- phy_struct(tree)
 
-chainsaw(ps, interval = 0.4)
+a <- chainsaw(ps, interval = 0.4)
+b <- chainsaw(ps, interval = 2)
+z <- chainsaw(ps, interval = 0)
+m <- chainsaw(ps, interval = 1)
 
 }
