@@ -276,18 +276,18 @@ setMethod(f = "show", signature= "metacommunity",
             cat('@ordinariness: Matrix of type ordinariness\n')
             cat('@subcommunity_weights: Vector of subcommunity weights\n')
             cat('@type_weights: Vector of type weights\n')
-          #   
-          #   if(!isTRUE(all.equal(0, length(object@raw_abundance))))
-          #     cat('@raw_abundance: Matrix of (phylo) tip relative abundances (', 
-          #         ncol(object@raw_abundance), 'subcommunities,', 
-          #         nrow(object@raw_abundance), 'terminal taxa )\n')
-          #   
-          #   if(!isTRUE(all.equal(0, length(object@raw_structure))))
-          #     cat('@raw_structure: Matrix of (phylo) structure (', 
-          #         sum(colSums(object@raw_structure) > 0), 'tips,',
-          #         sum(rowSums(object@raw_structure) > 0), 'historic species )\n')
-          #   
-          #   if(!isTRUE(all.equal(0, length(object@hs_parameters))))
-          #     cat('@parameters: Parameters associated with (phylo) historic species\n')
+
+            if(!isTRUE(all.equal(0, length(object@raw_abundance))))
+              cat('@raw_abundance: Matrix of (phylo) tip relative abundances (',
+                  ncol(object@raw_abundance), 'subcommunities,',
+                  nrow(object@raw_abundance), 'terminal taxa )\n')
+
+            if(!isTRUE(all.equal(0, length(object@raw_structure))))
+              cat('@raw_structure: Matrix of (phylo) structure (',
+                  sum(colSums(object@raw_structure) > 0), 'tips,',
+                  sum(rowSums(object@raw_structure) > 0), 'historic species )\n')
+
+            if(!isTRUE(all.equal(0, length(object@parameters))))
+              cat('@parameters: Parameters associated with (phylo) historic species\n')
           } )
 
