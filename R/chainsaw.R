@@ -34,52 +34,52 @@ chainsaw <- function(ps, interval, depth) {
     stop("Only one value may be input as 'depth'")
   if(!missing(interval) & !missing(depth))
     stop("Either 'interval' or 'depth' may be input, not both!")
-  
+
   if(!missing(depth)) {
     tree_height <- max(colSums(ps$structure))
     interval <- depth / tree_height
   }
-  
+
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny
     trim_struct <- ps$structure
     parameters <- ps$parameters
-    
+
   }else if(isTRUE(all.equal(0, interval))) {
     # If interval = 0, remove phylogeny
     trim_struct <- ps$structure
     trim_struct[] <- 0
     parameters <- ps$parameters
-    
+
   }else if(interval > 1){
     # if interval is greater than 1
     tree_height <- max(colSums(ps$structure))
     cut_depth <- tree_height - (tree_height * interval)
-    
+
     rooted_tree <- ps$tree
     rooted_tree$root.edge <- abs(cut_depth)
     ps <- phy_struct(rooted_tree)
-    
+
     trim_struct <- ps$structure
-    
-    # Edit $parameters 
+
+    # Edit $parameters
     Ntips <- ape::Ntip(rooted_tree)
     root_parameters <- cbind.data.frame(tip_label = rooted_tree$tip.label,
-                                        tip_node = 1:Ntips, 
-                                        a_node = 0, 
+                                        tip_node = 1:Ntips,
+                                        a_node = 0,
                                         d_node = Ntips + 1,
                                         lengths = abs(cut_depth))
-    hs_names <- paste(root_parameters$tip_node, 
-                      paste(root_parameters$a_node, 
+    hs_names <- paste(root_parameters$tip_node,
+                      paste(root_parameters$a_node,
                             root_parameters$d_node, sep = "-"), sep = ",")
     root_parameters <- cbind.data.frame(hs_names, root_parameters)
     parameters <- rbind.data.frame(ps$parameters, root_parameters)
-    
+
   }else if(interval > 0 & interval < 1){
     # if interval is betweel 0 and 1
     tree_height <- max(colSums(ps$structure))
     cut_depth <- tree_height - (tree_height * interval)
-    
+
     # Find branch lengths
     index <- apply(ps$structure, 2, function(x) which(x>0))
     index <- lapply(seq_along(index), function(x)
@@ -87,7 +87,7 @@ chainsaw <- function(ps, interval, depth) {
                        start_row = index[[x]][1],
                        end_row = index[[x]][length(index[[x]])]))
     index <- do.call(rbind.data.frame, index)
-    
+
     # Edit $structure matrix
     trim_struct <- ps$structure
     for(i in 1:nrow(index)) {
@@ -102,27 +102,27 @@ chainsaw <- function(ps, interval, depth) {
       these_branches[1:j] <- 0
       if(cut_here < 0)
         these_branches[j] <- abs(cut_here)
-      
+
       trim_struct[index$end_row[i]:index$start_row[i],i] <- these_branches
     }
-    
+
     # Remove species that are no longer present
     missing_species <- which(sapply(colSums(trim_struct),
                                     function(x) isTRUE(all.equal(x, 0))))
     if(!isTRUE(all.equal(length(missing_species), 0)))
-      trim_struct <- trim_struct[,-missing_species]
-    
+      trim_struct <- trim_struct[,-missing_species, drop = FALSE]
+
     # Remove historic species that are no longer present
     missing_hs <- which(sapply(rowSums(trim_struct),
                                function(x) isTRUE(all.equal(x, 0))))
     if(!isTRUE(all.equal(length(missing_hs), 0)))
       trim_struct <- trim_struct[-missing_hs,]
-    
-    # Edit $parameters 
+
+    # Edit $parameters
     parameters <- ps$parameters
     parameters <- parameters[parameters$hs_names %in% row.names(trim_struct),]
   }
-  
+
   list(structure = trim_struct,
        parameters = parameters,
        tree = ps$tree)
