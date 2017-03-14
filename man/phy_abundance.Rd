@@ -7,9 +7,9 @@
 phy_abundance(partition, ps)
 }
 \arguments{
-\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
-rows as types, columns as subcommunities, and elements containing relative 
-abundances of types in subcommunities. In the case of phylogenetic 
+\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with
+rows as types, columns as subcommunities, and elements containing relative
+abundances of types in subcommunities. In the case of phylogenetic
 metacommunities, these are the relative abundances of terminal taxa.}
 
 \item{ps}{\code{phy_struct()} output.}

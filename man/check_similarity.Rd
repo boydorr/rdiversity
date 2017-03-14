@@ -7,16 +7,16 @@
 check_similarity(partition, similarity)
 }
 \arguments{
-\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
-rows as types, columns as subcommunities, and elements containing relative 
-abundances of types in subcommunities. In the case of phylogenetic 
+\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with
+rows as types, columns as subcommunities, and elements containing relative
+abundances of types in subcommunities. In the case of phylogenetic
 metacommunities, these are the relative abundances of terminal taxa.}
 
-\item{similarity}{two-dimensinal \code{matrix} of mode \code{numeric}; 
+\item{similarity}{two-dimensinal \code{matrix} of mode \code{numeric};
 contains pair-wise similarity between types}
 }
 \value{
-Returns a two-dimensions \code{matrix} of mode \code{numeric}. If 
+Returns a two-dimensions \code{matrix} of mode \code{numeric}. If
 the similarity matrix was valid, this should be identical to that which was
 input as an argument.
 }

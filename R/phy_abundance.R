@@ -1,14 +1,14 @@
 #' phy_abundance
-#' 
+#'
 #' Calculates the relative abundance of historic species
-#' 
-#' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with 
-#' rows as types, columns as subcommunities, and elements containing relative 
-#' abundances of types in subcommunities. In the case of phylogenetic 
-#' metacommunities, these are the relative abundances of terminal taxa. 
+#'
+#' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with
+#' rows as types, columns as subcommunities, and elements containing relative
+#' abundances of types in subcommunities. In the case of phylogenetic
+#' metacommunities, these are the relative abundances of terminal taxa.
 #' @param ps \code{phy_struct()} output.
 #' @export
-#' 
+#'
 #' @examples
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
