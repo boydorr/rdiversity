@@ -32,16 +32,16 @@ zmatrix <-
     L_j <- L_j[match(parameters$tip_label, colnames(structure))]
 
     keep <- which(row.names(partition) %in% colnames(structure))
-    structure <- structure[,keep]
+    partition <- partition[keep,]
 
     T_bar <- sum(structure %*% partition)
     scaling_factor <- T_bar / L_j
     partition <- check_partition(partition)
 
     scaling_matrix <- diag(scaling_factor, nrow(structure))
-    zmatrix <- s %*% scaling_matrix
-    colnames(zmatrix) <- row.names(zmatrix)
+    z <- s %*% scaling_matrix
+    colnames(z) <- row.names(z)
 
-    zmatrix
+    z
   }
 
