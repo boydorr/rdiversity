@@ -20,10 +20,13 @@
 smatrix <- 
   function(ps) 
   {
-    # Define s_matrix (type = historic species)
-    hs <- ps$parameters$hs_names
-    Nhs <- length(hs)
+    # Identify which historic species are present
+    hs <- row.names(ps$structure)
+    parameters <- ps$parameters
     
+    # Define s_matrix (type = historic species)
+    Nhs <- length(hs)
+
     s_matrix <- matrix(0, nrow = Nhs, ncol = Nhs)
     colnames(s_matrix) <- hs
     row.names(s_matrix) <- hs
@@ -32,14 +35,14 @@ smatrix <-
     for (row_index in 1:Nhs) {
       # Historic species 
       ib <- hs[row_index]
-      daughters <- phangorn::Descendants(ps$tree, ps$parameters$d_node[row_index])
+      daughters <- phangorn::Descendants(ps$tree, parameters$d_node[row_index])
       daughters <- unlist(daughters)
 
       s_matrix_row <- vector()
       for (col_index in 1:Nhs) {
         # Historic species (to compare)
         jc <- hs[col_index]
-        jc_tip <- ps$parameters$tip_node[col_index]
+        jc_tip <- parameters$tip_node[col_index]
         # Similarity between historic species (i,b) and species (j,c)  
         # is non-zero when species j is found within the set of species  
         # descended from branch b
