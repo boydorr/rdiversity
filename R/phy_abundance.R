@@ -16,12 +16,16 @@
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' ps <- phy_struct(tree)
-#' 
+#'
 #' phy_abundance(partition, ps)
-#' 
+#'
 phy_abundance <- function(partition, ps) {
-  
-  T_bar <- sum(ps$structure %*% partition)
-  res <- ps$structure %*% partition / T_bar
-  
+
+  structure <- ps$structure
+  keep <- which(row.names(partition) %in% colnames(structure))
+  structure <- structure[,keep]
+
+  T_bar <- sum(structure %*% partition)
+  res <- structure %*% partition / T_bar
+
 }
