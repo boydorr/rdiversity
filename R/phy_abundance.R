@@ -21,12 +21,12 @@
 #'
 phy_abundance <- function(partition, ps) {
   structure <- ps$structure
-  
+
   # Identify which species are present
   keep <- which(row.names(partition) %in% colnames(structure))
-  partition <- partition[keep,]
-
-  T_bar <- sum(structure %*% partition)
+  partition <- partition[keep,, drop=FALSE]
+  
+  T_bar <- tbar(ps, partition)
   structure %*% partition / T_bar
 
 }
