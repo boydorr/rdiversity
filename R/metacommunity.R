@@ -222,15 +222,15 @@ setMethod(f = "metacommunity",
             ps <- chainsaw(ps, interval)
             
             type_abundance <- phy_abundance(partition, ps)
-            s_matrix <- s_matrix(ps)
-            zmatrix <- z_matrix(partition, s_matrix, ps)
-            zmatrix <- check_similarity(type_abundance, zmatrix)
+            s <- smatrix(ps)
+            z <- zmatrix(partition, s, ps)
+            z <- check_similarity(type_abundance, z)
             
             # Calculate parameters
             subcommunity_weights <- colSums(type_abundance) /
               sum(type_abundance)
             type_weights <- apply(type_abundance, 2, function(x) x/sum(x))
-            Zp.j <- zmatrix %*% type_abundance
+            Zp.j <- z %*% type_abundance
             
             # Mark all of the species that have nothing similar as NaNs
             # because diversity of an empty group is undefined
@@ -243,7 +243,7 @@ setMethod(f = "metacommunity",
             
             new('metacommunity', 
                 type_abundance = type_abundance,
-                similarity = zmatrix,
+                similarity = z,
                 ordinariness = Zp.j,
                 subcommunity_weights = subcommunity_weights,
                 type_weights = type_weights,

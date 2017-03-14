@@ -15,9 +15,9 @@
 #' partition <- partition / sum(partition)
 #' 
 #' ps <- phy_struct(tree)
-#' s_matrix(ps)
+#' smatrix(ps)
 #' 
-s_matrix <- 
+smatrix <- 
   function(ps) 
   {
     # Define s_matrix (type = historic species)
