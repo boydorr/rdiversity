@@ -54,5 +54,6 @@ Collate:
     'similarity_shimatani.R'
     'smatrix.R'
     'summarise.R'
+    'tbar.R'
     'zmatrix.R'
 VignetteBuilder: knitr

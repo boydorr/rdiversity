@@ -11,15 +11,15 @@ chainsaw(ps, interval, depth)
 
 \item{interval}{proportion of total tree height to be conserved (taken as
 a proportion from the heighest tip). Describes how far back we go in the tree,
-with 0 marking the date of the most recent tip, and 1 (the default) marking 
-the most recent common ancestor. Numbers greater than 1 extend the root of 
+with 0 marking the date of the most recent tip, and 1 (the default) marking
+the most recent common ancestor. Numbers greater than 1 extend the root of
 the tree.}
 
 \item{depth}{object length of total tree height to be conserved.}
 }
 \value{
-Returns an object of class \code{phy_struct} containing a new structural  
-matrix ('@structure').and the original phylogenetic parameters 
+Returns an object of class \code{phy_struct} containing a new structural
+matrix ('@structure').and the original phylogenetic parameters
 ('@parameters')
 }
 \description{

@@ -3,11 +3,12 @@ context('Testing the phylogenetic diversity measures')
 test_that("Answers match up with Leinster-Cobbold Appendix A", {
   # Ultrametric
   tree <- ape::read.tree(text="(A:2,B:2)R:1;")
-  partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  # x <- rdphylo(partition, tree)
-  # x@Tbar
+  partition <- c(0.6, 0.4)
+  names(partition) <- tree$tip.label
+  partition <- check_partition(partition)
+  
   ps <- phy_struct(tree)
-  T_bar <- sum(ps$structure %*% partition)
+  T_bar <- tbar(ps, partition)
   meta <- metacommunity(partition, tree)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,
@@ -19,9 +20,12 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   
   # Non-ultrametric
   tree <- ape::read.tree(text="(A:1,B:2)R:1;")
-  partition <- setNames(c(0.6, 0.4), tree$tip.label)
+  partition <- c(0.6, 0.4)
+  names(partition) <- tree$tip.label
+  partition <- check_partition(partition)
+  
   ps <- phy_struct(tree)
-  T_bar <- sum(ps$structure %*% partition)
+  T_bar <- tbar(ps, partition)
   meta <- metacommunity(partition, tree)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,
@@ -42,7 +46,7 @@ test_that("pmatrix is correct when tips belong to the same subcommunities", {
   row.names(partition) <- tree$tip.label
   meta <- metacommunity(partition, tree)
   
-  expect_equivalent(meta@type_abundance, 
+  expect_equivalent(meta@type_abundance,
                     cbind(A=c(2,1,2,1), B=c(2,1,0,0))/9)
   
   # Random example
