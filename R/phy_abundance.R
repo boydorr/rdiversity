@@ -22,7 +22,7 @@
 phy_abundance <- function(partition, ps) {
 
   structure <- ps$structure
-  keep <- which(row.names(partition) %in% colnames(structure))
+  keep <- which(colnames(structure) %in% row.names(partition))
   structure <- structure[,keep]
 
   T_bar <- sum(structure %*% partition)
