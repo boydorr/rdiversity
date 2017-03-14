@@ -12,7 +12,8 @@
 tbar <- function(ps, partition) {
   # Identify which species are here
   structure <- ps$structure
-  partition <- partition[which(row.names(partition) %in% colnames(structure)),]
+  keep <- which(row.names(partition) %in% colnames(structure))
+  partition <- partition[keep,, drop=FALSE]
   
   sum(structure %*% partition)
 }
