@@ -6,7 +6,9 @@
 #' rows as types, columns as subcommunities, and elements containing relative
 #' abundances of types in subcommunities. In the case of phylogenetic
 #' metacommunities, these are the relative abundances of terminal taxa.
-#' @param ps \code{phy_struct()} output.
+#' @param structure_matrix \code{output$structure} of \code{phy_struct()}; each 
+#' row denotes historic species, columns denote terminal taxa, and elements 
+#' contain branch lengths
 #' @export
 #'
 #' @examples
@@ -16,17 +18,15 @@
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' ps <- phy_struct(tree)
+#' structure_matrix <- ps$structure
+#' phy_abundance(partition, structure_matrix)
 #'
-#' phy_abundance(partition, ps)
-#'
-phy_abundance <- function(partition, ps) {
-  structure <- ps$structure
-
+phy_abundance <- function(partition, structure_matrix) {
   # Identify which species are present
   keep <- which(row.names(partition) %in% colnames(structure))
   partition <- partition[keep,, drop=FALSE]
   
   T_bar <- tbar(ps, partition)
-  structure %*% partition / T_bar
 
+  structure_matrix %*% partition / T_bar
 }

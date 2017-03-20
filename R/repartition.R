@@ -42,7 +42,7 @@ repartition <- function(meta, ps) {
     new_abundance <- check_partition(new_abundance)
     row.names(new_abundance) <- row.names(raw_abundance)
 
-    hs_abundance <- phy_abundance(new_abundance, ps)
+    hs_abundance <- phy_abundance(new_abundance, meta@raw_structure)
 
     new_meta <- metacommunity(hs_abundance, z)
     new_meta@raw_abundance <- new_abundance
