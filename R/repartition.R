@@ -43,8 +43,6 @@ repartition <- function(meta, ps) {
     row.names(new_abundance) <- row.names(raw_abundance)
 
     hs_abundance <- phy_abundance(new_abundance, ps)
-    s <- smatrix(ps)
-    z <- zmatrix(new_abundance, s, ps)
 
     new_meta <- metacommunity(hs_abundance, z)
     new_meta@raw_abundance <- new_abundance
