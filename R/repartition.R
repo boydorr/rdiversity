@@ -42,14 +42,14 @@ repartition <- function(meta, new_partition) {
     # Phylogenetic metacommunity
     raw_abundance <- meta@raw_abundance
     if (missing(new_partition))
-      new_abundance <- raw_abundance[sample(seq_along(row.names(raw_abundance))),]
-    new_abundance <- check_partition(new_abundance)
-    row.names(new_abundance) <- row.names(raw_abundance)
+      new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))),]
+    new_partition <- check_partition(new_partition)
+    row.names(new_partition) <- row.names(raw_abundance)
 
-    hs_abundance <- phy_abundance(new_abundance, meta@raw_structure)
+    hs_abundance <- phy_abundance(new_partition, meta@raw_structure)
 
     new_meta <- metacommunity(hs_abundance, meta@similarity)
-    new_meta@raw_abundance <- new_abundance
+    new_meta@raw_abundance <- new_partition
     new_meta@raw_structure <- meta@raw_structure
     new_meta@parameters <- meta@parameters
   }
