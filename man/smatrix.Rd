@@ -7,7 +7,7 @@
 smatrix(ps)
 }
 \arguments{
-\item{ps}{\code{phy_struct()} output \code{$parameters}.}
+\item{ps}{\code{phy_struct()} output.}
 }
 \value{
 \eqn{hS x hS} matrix; pair-wise similarity of historic species
