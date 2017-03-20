@@ -60,7 +60,7 @@ test_that("Setting interval to < 1 returns correct results", {
   
   # Cut tree
   interval <- 7/11
-  c_ps <- chainsaw(ps, interval)
+  c_ps <- cut_struct(ps, interval)
   structure_matrix <- c_ps$structure
   c_partition <- partition[which(row.names(partition) %in% 
                                    colnames(structure_matrix)),]

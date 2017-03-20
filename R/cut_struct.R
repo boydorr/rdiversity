@@ -22,12 +22,12 @@
 #' partition <- partition / sum(partition)
 #' ps <- phy_struct(tree)
 #'
-#' a <- chainsaw(ps, interval = 0.4)
-#' b <- chainsaw(ps, interval = 2)
-#' z <- chainsaw(ps, interval = 0)
-#' m <- chainsaw(ps, interval = 1)
+#' a <- cut_struct(ps, interval = 0.4)
+#' b <- cut_struct(ps, interval = 2)
+#' z <- cut_struct(ps, interval = 0)
+#' m <- cut_struct(ps, interval = 1)
 #'
-chainsaw <- function(ps, interval, depth) {
+cut_struct <- function(ps, interval, depth) {
   if(!missing(interval))if(length(interval) > 1)
     stop("Only one value may be input as 'interval'")
   if(!missing(depth))if(length(depth) > 1)

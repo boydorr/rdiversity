@@ -26,13 +26,13 @@ Suggests:
     rmarkdown
 RoxygenNote: 6.0.1
 Collate: 
-    'chainsaw.R'
     'check_partition.R'
     'check_similarity.R'
     'class-metacommunity.R'
     'class-powermean.R'
     'class-relativeentropy.R'
     'create_axis_label.R'
+    'cut_struct.R'
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'

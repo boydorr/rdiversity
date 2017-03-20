@@ -219,7 +219,7 @@ setMethod(f = "metacommunity",
           definition = function(partition, similarity, interval = 1) {
             partition <- check_partition(partition)
             ps <- phy_struct(similarity)
-            ps <- chainsaw(ps, interval)
+            ps <- cut_struct(ps, interval)
             structure_matrix <- ps$structure
             
             type_abundance <- phy_abundance(partition, structure_matrix)
