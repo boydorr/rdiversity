@@ -34,7 +34,7 @@ zmatrix <-
     keep <- which(row.names(partition) %in% colnames(structure))
     partition <- partition[keep,, drop=FALSE]
     
-    T_bar <- tbar(ps, partition)
+    T_bar <- tbar(partition, structure)
     scaling_factor <- T_bar / L_j
     partition <- check_partition(partition)
 

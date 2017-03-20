@@ -26,7 +26,7 @@ phy_abundance <- function(partition, structure_matrix) {
   keep <- which(row.names(partition) %in% colnames(structure))
   partition <- partition[keep,, drop=FALSE]
   
-  T_bar <- tbar(ps, partition)
 
+  T_bar <- tbar(partition, structure_matrix)
   structure_matrix %*% partition / T_bar
 }
