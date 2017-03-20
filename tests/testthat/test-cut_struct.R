@@ -60,16 +60,13 @@ test_that("Setting interval to < 1 returns correct results", {
   
   # Cut tree
   interval <- 7/11
-  c_ps <- cut_struct(ps, interval)
-  structure_matrix <- c_ps$structure
+  c_meta <- chainsaw(partition, ps, interval)
+  structure_matrix <- c_meta@raw_structure
   c_partition <- partition[which(row.names(partition) %in% 
                                    colnames(structure_matrix)),]
   c_hs <- phy_abundance(c_partition, structure_matrix)
   c_tbar <- tbar(c_partition, structure_matrix)
-  # c_s <- smatrix(c_ps)
-  # c_z <- zmatrix(partition, c_s, c_ps)
-  # c_m <- metacommunity(partition, tree, interval)
-  
+ 
   ps_ans = cbind(A = c(0,0,0.6,0.1,0.4)/3.7,
                  B = c(0.4,0.1,1.8,0.3,0)/3.7)
   row.names(ps_ans) <- row.names(c_hs)

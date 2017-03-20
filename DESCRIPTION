@@ -33,7 +33,6 @@ Collate:
     'class-powermean.R'
     'class-relativeentropy.R'
     'create_axis_label.R'
-    'cut_struct.R'
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'

@@ -4,19 +4,43 @@
 \alias{chainsaw}
 \title{Cut phylogeny}
 \usage{
-chainsaw(partition, ps)
+chainsaw(partition, ps, interval, depth)
 }
 \arguments{
-\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with
-rows as types, columns as subcommunities, and elements containing relative
-abundances of types in subcommunities. In the case of phylogenetic
-metacommunities, these are the relative abundances of terminal taxa.}
+\item{partition}{proportional abundance of \emph{types} in the
+subcommunity as a fraction of the metacommunity as a whole (in the 
+phylogenetic case, this corresponds to the proportional abundance of 
+terminal taxa)}
 
 \item{ps}{\code{phy_struct()} output.}
+
+\item{interval}{proportion of total tree height to be conserved (taken as
+a proportion from the heighest tip). Describes how far back we go in the tree,
+with 0 marking the date of the most recent tip, and 1 (the default) marking
+the most recent common ancestor. Numbers greater than 1 extend the root of
+the tree.}
+
+\item{depth}{object length of total tree height to be conserved.}
 }
 \value{
-Returns an object of class \code{metacommunity}.
+Returns an object of class \code{phy_struct} containing a new structural
+matrix ('@structure').and the original phylogenetic parameters
+('@parameters')
 }
 \description{
 Cut phylogeny
+}
+\examples{
+tree <- ape::rtree(n = 5)
+tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+row.names(partition) <- tree$tip.label
+partition <- partition / sum(partition)
+ps <- phy_struct(tree)
+
+a <- chainsaw(partition, ps, interval = 0.4)
+b <- chainsaw(partition, ps, interval = 2)
+z <- chainsaw(partition, ps, interval = 0)
+m <- chainsaw(partition, ps, interval = 1)
+
 }
