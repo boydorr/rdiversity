@@ -6,8 +6,8 @@
 #' rows as types, columns as subcommunities, and elements containing relative
 #' abundances of types in subcommunities. In the case of phylogenetic
 #' metacommunities, these are the relative abundances of terminal taxa.
-#' @param s object
-#' @param ps object
+#' @param s \code{smatrix()} output; ultrametric-similarity matrix
+#' @param ps \code{phy_struct()} output.
 #'
 #' @return \eqn{hS x hS} matrix; pair-wise similarity of historic species
 #' @export
@@ -26,19 +26,21 @@
 zmatrix <-
   function(partition, s, ps)
   {
-    parameters <- ps$parameters
-    structure <- ps$structure
-    L_j <- colSums(structure)
-    L_j <- L_j[match(parameters$tip_label, colnames(structure))]
-
-    keep <- which(row.names(partition) %in% colnames(structure))
-    partition <- partition[keep,, drop=FALSE]
-    
-    T_bar <- tbar(partition, structure)
-    scaling_factor <- T_bar / L_j
     partition <- check_partition(partition)
+    
+    parameters <- ps$parameters
+    structure_matrix <- ps$structure
+    L_j <- colSums(structure_matrix)
+    L_j <- L_j[match(parameters$tip_label, colnames(structure_matrix))]
 
-    scaling_matrix <- diag(scaling_factor, nrow(structure))
+    # Identify which species are present
+    if (any(row.names(partition) != colnames(structure_matrix)))
+      stop("Partition does not match phylogeny.")
+    
+    T_bar <- tbar(partition, structure_matrix)
+    scaling_factor <- T_bar / L_j
+
+    scaling_matrix <- diag(scaling_factor, nrow(structure_matrix))
     z <- s %*% scaling_matrix
     colnames(z) <- row.names(z)
 

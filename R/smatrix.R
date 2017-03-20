@@ -18,12 +18,10 @@
 #' smatrix(ps)
 #' 
 smatrix <- 
-  function(ps) 
-  {
-    # Identify which historic species are present
-    hs <- row.names(ps$structure)
+  function(ps) {
     parameters <- ps$parameters
-    
+    hs <- parameters$hs_names
+
     # Define s_matrix (type = historic species)
     Nhs <- length(hs)
 

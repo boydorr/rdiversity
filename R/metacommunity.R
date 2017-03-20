@@ -221,7 +221,7 @@ setMethod(f = "metacommunity",
             ps <- phy_struct(similarity)
             ps <- cut_struct(ps, interval)
             structure_matrix <- ps$structure
-            
+
             type_abundance <- phy_abundance(partition, structure_matrix)
             s <- smatrix(ps)
             z <- zmatrix(partition, s, ps)
