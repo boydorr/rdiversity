@@ -44,8 +44,10 @@ test_that("Setting interval to < 1 returns correct results", {
   
   # Full tree
   ps <- phy_struct(tree)
-  pa <- phy_abundance(partition, ps)
-  T_bar <- tbar(ps, partition)
+  structure_matrix <- ps$structure
+  
+  pa <- phy_abundance(partition, structure_matrix)
+  T_bar <- tbar(partition, structure_matrix)
   s <- smatrix(ps)
   z <- zmatrix(partition, s, ps)
   
@@ -58,20 +60,22 @@ test_that("Setting interval to < 1 returns correct results", {
   
   # Cut tree
   interval <- 7/11
-  short_ps <- chainsaw(ps, interval)
-  short_pa <- phy_abundance(partition, short_ps)
-  short_T_bar <- tbar(short_ps, partition)
-  # short_T_bar <- sum(short_ps$structure %*% partition)
-  ss <- smatrix(short_ps)
-  sz <- zmatrix(partition, ss, short_ps)
-  m <- metacommunity(partition, tree, interval)
+  c_ps <- chainsaw(ps, interval)
+  structure_matrix <- c_ps$structure
+  c_partition <- partition[which(row.names(partition) %in% 
+                                   colnames(structure_matrix)),]
+  c_hs <- phy_abundance(c_partition, structure_matrix)
+  c_tbar <- tbar(c_partition, structure_matrix)
+  # c_s <- smatrix(c_ps)
+  # c_z <- zmatrix(partition, c_s, c_ps)
+  # c_m <- metacommunity(partition, tree, interval)
   
   ps_ans = cbind(A = c(0,0,0.6,0.1,0.4)/3.7,
                  B = c(0.4,0.1,1.8,0.3,0)/3.7)
-  row.names(ps_ans) <- row.names(short_pa)
+  row.names(ps_ans) <- row.names(c_hs)
   
-  testthat::expect_equal(short_T_bar, 3.7)
-  testthat::expect_equal(short_pa, ps_ans)
+  testthat::expect_equal(c_tbar, 3.7)
+  testthat::expect_equal(c_hs, ps_ans)
 })
 
 
@@ -86,12 +90,12 @@ test_that("Metacommunity G increases when trees are cut", {
   partition <- partition / sum(partition)
   # Generate metacommunitites
   meta <- metacommunity(partition, tree)
-  cut_meta <- metacommunity(partition, tree, 0.4)
+  c_meta <- metacommunity(partition, tree, 0.4)
   # Calculate diversity
   div <- meta_gamma(meta,0)$diversity
-  cut_div <- meta_gamma(cut_meta,0)$diversity
+  c_div <- meta_gamma(c_meta,0)$diversity
   # Test that n_div < u_div
-  testthat::expect_lt(div, cut_div)
+  testthat::expect_lt(div, c_div)
 })
 
 

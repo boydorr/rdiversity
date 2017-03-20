@@ -2,17 +2,19 @@
 % Please edit documentation in R/tbar.R
 \name{tbar}
 \alias{tbar}
-\title{tbars}
+\title{tbar}
 \usage{
-tbar(ps, partition)
+tbar(partition, structure_matrix)
 }
 \arguments{
-\item{ps}{\code{phy_struct()} output.}
-
 \item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with
 rows as types, columns as subcommunities, and elements containing relative
 abundances of types in subcommunities. In the case of phylogenetic
 metacommunities, these are the relative abundances of terminal taxa.}
+
+\item{structure_matrix}{\code{output$structure} of \code{phy_struct()}; each 
+row denotes historic species, columns denote terminal taxa, and elements 
+contain branch lengths}
 }
 \description{
 Function to calculate T_bar.

@@ -8,7 +8,8 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   partition <- check_partition(partition)
   
   ps <- phy_struct(tree)
-  T_bar <- tbar(ps, partition)
+  structure_matrix <- ps$structure
+  T_bar <- tbar(partition, structure_matrix)
   meta <- metacommunity(partition, tree)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,
@@ -25,7 +26,8 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   partition <- check_partition(partition)
   
   ps <- phy_struct(tree)
-  T_bar <- tbar(ps, partition)
+  structure_matrix <- ps$structure
+  T_bar <- tbar(partition, structure_matrix)
   meta <- metacommunity(partition, tree)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,

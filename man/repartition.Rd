@@ -4,22 +4,25 @@
 \alias{repartition}
 \title{Repartition metacommunity}
 \usage{
-repartition(meta, ps)
+repartition(meta, new_partition)
 }
 \arguments{
 \item{meta}{object of class \code{metacommunity}.}
 
-\item{ps}{\code{phy_struct()} output.}
+\item{new_partition}{proportional abundance of \emph{types} in the
+subcommunity as a fraction of the metacommunity as a whole (in the 
+phylogenetic case, this corresponds to the proportional abundance of 
+terminal taxa)}
 }
 \value{
 Returns an object of class \code{metacommunity.}
 }
 \description{
-Randomly reshuffles the relative abundance of types (e.g. species) in a 
+Randomly reshuffles the relative abundance of types (e.g. species) in a
 metacommunity (whilst maintaining the relationship between the relative
 abundance of a particular species across subcommunities). In the case of a
-phylogenetic metacommunity, the relative abundance of terminal taxa are 
-randomly reshuffled and the relative abundance of types (historic species) 
+phylogenetic metacommunity, the relative abundance of terminal taxa are
+randomly reshuffled and the relative abundance of types (historic species)
 are calculated from the resulting partition.
 }
 \examples{
@@ -31,6 +34,5 @@ partition <- partition / sum(partition)
 meta <- metacommunity(partition, tree)
 ps <- phy_struct(tree)
 
-repartition(meta, ps)
 
 }

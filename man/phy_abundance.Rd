@@ -4,7 +4,7 @@
 \alias{phy_abundance}
 \title{phy_abundance}
 \usage{
-phy_abundance(partition, ps)
+phy_abundance(partition, structure_matrix)
 }
 \arguments{
 \item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with
@@ -12,7 +12,9 @@ rows as types, columns as subcommunities, and elements containing relative
 abundances of types in subcommunities. In the case of phylogenetic
 metacommunities, these are the relative abundances of terminal taxa.}
 
-\item{ps}{\code{phy_struct()} output.}
+\item{structure_matrix}{\code{output$structure} of \code{phy_struct()}; each 
+row denotes historic species, columns denote terminal taxa, and elements 
+contain branch lengths}
 }
 \description{
 Calculates the relative abundance of historic species
@@ -24,7 +26,7 @@ partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 ps <- phy_struct(tree)
-
-phy_abundance(partition, ps)
+structure_matrix <- ps$structure
+phy_abundance(partition, structure_matrix)
 
 }
