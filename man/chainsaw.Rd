@@ -8,8 +8,8 @@ chainsaw(partition, ps, interval, depth)
 }
 \arguments{
 \item{partition}{proportional abundance of \emph{types} in the
-subcommunity as a fraction of the metacommunity as a whole (in the 
-phylogenetic case, this corresponds to the proportional abundance of 
+subcommunity as a fraction of the metacommunity as a whole (in the
+phylogenetic case, this corresponds to the proportional abundance of
 terminal taxa)}
 
 \item{ps}{\code{phy_struct()} output.}
