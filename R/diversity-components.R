@@ -13,11 +13,13 @@
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw alpha component
-#' a <- raw_alpha(meta)
+#' raw_alpha(meta)
 #'
 raw_alpha <- function(meta) {
   results <- 1 / meta@ordinariness
@@ -41,11 +43,12 @@ raw_alpha <- function(meta) {
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised alpha component
-#' a <- norm_alpha(meta)
+#' norm_alpha(meta)
 #'
 norm_alpha <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
@@ -74,11 +77,12 @@ norm_alpha <- function(meta) {
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw rho component
-#' a <- raw_rho(meta)
+#' raw_rho(meta)
 #'
 raw_rho <- function(meta) {
   results <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
@@ -102,11 +106,12 @@ raw_rho <- function(meta) {
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised rho component
-#' a <- norm_rho(meta)
+#' norm_rho(meta)
 #'
 norm_rho <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
@@ -135,11 +140,13 @@ norm_rho <- function(meta) {
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw beta component
-#' a <- raw_beta(meta)
+#' raw_beta(meta)
 #'
 raw_beta <- function(meta) {
   rho <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
@@ -164,11 +171,12 @@ raw_beta <- function(meta) {
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised beta component
-#' a <- norm_beta(meta)
+#' norm_beta(meta)
 #'
 norm_beta <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
@@ -198,11 +206,12 @@ norm_beta <- function(meta) {
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate gamma component
-#' a <- raw_gamma(meta)
+#' raw_gamma(meta)
 #'
 raw_gamma <- function(meta) {
   results <- rowSums(meta@ordinariness, na.rm=T)
