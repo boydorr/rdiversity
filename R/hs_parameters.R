@@ -53,7 +53,6 @@ hs_parameters <- function(tree) {
                     paste(parameters$a_node, 
                           parameters$d_node, sep = "-"), sep = ",")
   parameters <- cbind.data.frame(hs_names, parameters)
-  # tibble::as_data_frame(parameters)
-  
+  tibble::as_data_frame(parameters)
 }
 
