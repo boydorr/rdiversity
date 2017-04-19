@@ -63,10 +63,15 @@ setMethod(f = "metadiv", signature= "powermean",
             row.names(output) <- "metacommunity"
             colnames(output) <- qs
             output <- reshape2::melt(output)
-            output <- cbind.data.frame(output, "metacommunity", data@measure,
+            # Output
+            output <- cbind.data.frame(measure = unique(data@output$measure),
+                                       q = output$Var2, 
+                                       type_level = "types",
+                                       type_name = NA,
+                                       partition_level = "metacommunity",
+                                       partition_name = output$Var1,
+                                       diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            colnames(output) <- c("partition", "q", "diversity", "community", "measure")
-            output$partition <- as.character(output$partition)
             tibble::as_data_frame(output)
           } )
 
@@ -86,10 +91,15 @@ setMethod(f = "metadiv", signature= "relativeentropy",
             row.names(output) <- "metacommunity"
             colnames(output) <- qs
             output <- reshape2::melt(output)
-            output <- cbind.data.frame(output, "metacommunity", data@measure,
+            # Output
+            output <- cbind.data.frame(measure = unique(data@output$measure),
+                                       q = output$Var2, 
+                                       type_level = "types",
+                                       type_name = NA,
+                                       partition_level = "metacommunity",
+                                       partition_name = output$Var1,
+                                       diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            colnames(output) <- c("partition", "q", "diversity", "community", "measure")
-            output$partition <- as.character(output$partition)
             tibble::as_data_frame(output)
           } )
 
@@ -107,4 +117,5 @@ setMethod(f = "metadiv", signature= "metacommunity",
             results <- lapply(div.measures, function(x)
               res <- metadiv(x(data), qs))
             results <- do.call(rbind.data.frame, results)
+            tibble::as_data_frame(results)
           } )
