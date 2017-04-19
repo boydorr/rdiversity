@@ -57,8 +57,9 @@ norm_alpha <- function(meta) {
                                meta@subcommunity_weights[x])
   if(!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
-  colnames(ordinariness.bar) <- colnames(meta)
+  colnames(ordinariness.bar) <- colnames(meta@type_abundance)
   results <- 1 / ordinariness.bar
+  
   powermean(results, meta, "normalised alpha")
 }
 
@@ -122,7 +123,7 @@ norm_rho <- function(meta) {
                                meta@subcommunity_weights[x])
   if(!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
-  colnames(ordinariness.bar) <- colnames(meta)
+  colnames(ordinariness.bar) <- colnames(meta@type_abundance)
   results <- rowSums(meta@ordinariness, na.rm = T) / ordinariness.bar
   powermean(results, meta, "normalised rho")
 }
@@ -188,7 +189,7 @@ norm_beta <- function(meta) {
                                meta@subcommunity_weights[x])
   if(!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
-  colnames(ordinariness.bar) <- colnames(meta)
+  colnames(ordinariness.bar) <- colnames(meta@type_abundance)
   normalised.rho <- rowSums(meta@ordinariness, na.rm = T) / ordinariness.bar
   results <- 1 / normalised.rho
   relativeentropy(results, meta, "normalised beta")
