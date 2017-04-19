@@ -64,5 +64,5 @@ is.powermean <- function (x) inherits(x, "powermean")
 #'
 setMethod(f = "show", signature = "powermean",
           definition = function(object) {
-            print(object@.Data)
-          } )
+            print(object@output)
+          })
