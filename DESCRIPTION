@@ -14,6 +14,7 @@ License: GPL-3
 Imports:
     methods,
     ggplot2,
+    ggthemes,
     ape,
     phangorn,
     tidyr,
@@ -32,14 +33,15 @@ Collate:
     'class-metacommunity.R'
     'class-powermean.R'
     'class-relativeentropy.R'
-    'create_axis_label.R'
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'
+    'get_title.R'
     'hs_parameters.R'
     'metadiv.R'
     'phy_abundance.R'
     'phy_struct.R'
+    'plot_diversity.R'
     'power_mean.R'
     'powermean.R'
     'qD.R'
@@ -48,7 +50,6 @@ Collate:
     'qDZ_single.R'
     'qD_single.R'
     'rdiversity-package.R'
-    'rdplot.R'
     'relativeentropy.R'
     'repartition.R'
     'similarity_shimatani.R'

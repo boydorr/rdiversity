@@ -1,4 +1,4 @@
-#' Convert to phy_struct
+#' Calculate phylogenetic structure matrix
 #'
 #' Converts an object into class \code{phylo} into class \code{phy_struct}.
 #' 
