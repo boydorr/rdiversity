@@ -26,8 +26,8 @@
 #' 
 relativeentropy <- function(results, meta, tag) {
   new('relativeentropy', 
-      results, 
-      measure = tag,
+      output = output, 
+      results = results, 
       type_abundance = meta@type_abundance,
       ordinariness = meta@ordinariness,
       subcommunity_weights = meta@subcommunity_weights,
