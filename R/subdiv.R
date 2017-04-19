@@ -114,8 +114,8 @@ setMethod(f = "subdiv", signature= "metacommunity",
                                  raw_rho, norm_rho,
                                  raw_gamma)
             # Calculate subcommunity diversity
-            results <- lapply(div.measures, function(x)
-              res <- subdiv(x(data), qs))
+            results <- lapply(div.measures, function(x) subdiv(x(data), qs))
             results <- do.call(rbind.data.frame, results)
+            tibble::as_data_frame(results)
           } )
 
