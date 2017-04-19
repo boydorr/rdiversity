@@ -17,16 +17,22 @@ metadiv(data, qs)
 \S4method{metadiv}{metacommunity}(data, qs)
 }
 \arguments{
-\item{data}{two-dimensional \code{matrix} of mode \code{numeric}; diversity
+\item{data}{\code{matrix} of mode \code{numeric}; containing diversity
 components.}
 
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
 \value{
-Returns a five-column \code{tibble}/\code{dataframe} containing:
-\code{partition} (label attributed to partition), \code{q} (parameter of
-conservatism), \code{diversity}, \code{community} (level of diversity,
-\emph{i.e.} metacommunity), and \code{measure} (alpha, beta, rho, or gamma).
+Returns a standard output of class \code{tibble}, with columns:
+\itemize{
+\item\code{measure}: raw or normalised, alpha, beta, rho, or gamma
+\item\code{q}: parameter of conservatism
+\item\code{type_level}: "metacommunity"
+\item\code{type_name}: label attributed to type
+\item\code{partition_level}: level of diversity, \emph{i.e.} metacommunity
+\item\code{partition_name}: label attributed to partition
+\item\code{diversity}: calculated metacommunity diversity
+}
 }
 \description{
 Generic function for calculating metacommunity diversity.
@@ -42,6 +48,7 @@ diversity by taking the relative entropy of diversity components}
 }
 }
 \examples{
+# Define metacommunity
 pop <- data.frame(a = c(1,3), b = c(1,1))
 pop <- pop / sum(pop)
 meta <- metacommunity(pop)

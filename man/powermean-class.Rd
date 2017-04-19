@@ -5,16 +5,24 @@
 \alias{powermean-class}
 \title{powermean-class}
 \description{
-Container for
+Container for class \code{powermean}.
 }
 \section{Fields}{
 
 \describe{
-\item{\code{.Data}}{two-dimensional \code{matrix} of mode \code{numeric}; contains 
-diversity term values}
+\item{\code{output}}{object of class \code{tibble}, with columns:
+\code{measure}, (raw alpha, norm alpha, raw rho, etc.),
+\code{q} (parameter of conservatism), 
+\code{type_level} (), 
+\code{type_name} (label attributed to type), 
+\code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
+\code{partition_name} (label attributed to partition), and 
+\code{diversity}}
 
-\item{\code{measure}}{object of class \code{character}; contains an identifier 
-associated with the diversity term being calculated}
+\item{\code{results}}{\code{matrix} of mode \code{numeric}; contains values 
+calculated from diversity-term values output from \code{raw_alpha()}, 
+\code{norm_alpha()}, \code{raw_rho()}, \code{norm_rho()}, or 
+\code{raw_gamma()}}
 
 \item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains proportional abundance of \emph{types} in the subcommunity 

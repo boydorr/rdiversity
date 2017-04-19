@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_similarity.R
 \name{check_similarity}
 \alias{check_similarity}
-\title{Check similarity}
+\title{Check similarity matrix}
 \usage{
 check_similarity(partition, similarity)
 }
@@ -13,7 +13,7 @@ abundances of types in subcommunities. In the case of phylogenetic
 metacommunities, these are the relative abundances of terminal taxa.}
 
 \item{similarity}{two-dimensinal \code{matrix} of mode \code{numeric};
-contains pair-wise similarity between types}
+contains pair-wise similarity between types.}
 }
 \value{
 Returns a two-dimensions \code{matrix} of mode \code{numeric}. If

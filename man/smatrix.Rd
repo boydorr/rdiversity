@@ -2,7 +2,7 @@
 % Please edit documentation in R/smatrix.R
 \name{smatrix}
 \alias{smatrix}
-\title{Phylogenetic Similarity Matrix}
+\title{Phylogenetic similarity matrix (ultrametric)}
 \usage{
 smatrix(ps)
 }
@@ -10,10 +10,11 @@ smatrix(ps)
 \item{ps}{\code{phy_struct()} output.}
 }
 \value{
-\eqn{hS x hS} matrix; pair-wise similarity of historic species
+Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
+species.
 }
 \description{
-Function to calculate phylogenetic similarity matrix from a phylogeny.
+Function to calculate an ultrametric-similarity matrix.
 }
 \examples{
 tree <- ape::rtree(n = 5)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_partition.R
 \name{check_partition}
 \alias{check_partition}
-\title{Check partition}
+\title{Check partition matrix}
 \usage{
 check_partition(partition)
 }

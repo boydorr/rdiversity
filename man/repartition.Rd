@@ -12,10 +12,10 @@ repartition(meta, new_partition)
 \item{new_partition}{proportional abundance of \emph{types} in the
 subcommunity as a fraction of the metacommunity as a whole (in the 
 phylogenetic case, this corresponds to the proportional abundance of 
-terminal taxa)}
+terminal taxa).}
 }
 \value{
-Returns an object of class \code{metacommunity.}
+Returns an object of class \code{metacommunity}.
 }
 \description{
 Randomly reshuffles the relative abundance of types (e.g. species) in a
@@ -32,7 +32,8 @@ partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 meta <- metacommunity(partition, tree)
-ps <- phy_struct(tree)
+new_partition <- partition[sample(1:5),]
 
+repartition(meta, new_partition)
 
 }

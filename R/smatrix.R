@@ -1,10 +1,11 @@
-#' Phylogenetic Similarity Matrix
+#' Phylogenetic similarity matrix (ultrametric)
 #' 
-#' Function to calculate phylogenetic similarity matrix from a phylogeny.
+#' Function to calculate an ultrametric-similarity matrix.
 #' 
 #' @param ps \code{phy_struct()} output.
 #' 
-#' @return \eqn{hS x hS} matrix; pair-wise similarity of historic species
+#' @return Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
+#' species.
 #' @export
 #' 
 #' @examples 

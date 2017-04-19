@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{raw_beta}
 \alias{raw_beta}
-\title{Low level diversity components: raw beta}
+\title{Raw beta (low level diversity component)}
 \usage{
 raw_beta(meta)
 }
@@ -21,10 +21,12 @@ Values generated from \code{raw_beta()} may be input into \code{subdiv()} and
 \code{metadiv()} to calculate raw subcommunity/metacommunity beta diversity.
 }
 \examples{
-pop <- sample(1:50, 5)
+pop <- data.frame(a = c(1,3), b = c(1,1))
+row.names(pop) <- paste0("sp", 1:2)
+pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate raw beta component
-a <- raw_beta(meta)
+raw_beta(meta)
 
 }

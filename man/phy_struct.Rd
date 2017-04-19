@@ -2,7 +2,7 @@
 % Please edit documentation in R/phy_struct.R
 \name{phy_struct}
 \alias{phy_struct}
-\title{Convert to phy_struct}
+\title{Calculate phylogenetic structure matrix}
 \usage{
 phy_struct(tree)
 }

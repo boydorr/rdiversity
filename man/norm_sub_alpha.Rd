@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-measures.R
 \name{norm_sub_alpha}
 \alias{norm_sub_alpha}
-\title{Similarity-sensitive normalised subcommunity alpha}
+\title{Normalised subcommunity alpha diversity}
 \usage{
 norm_sub_alpha(meta, qs)
 }
@@ -12,25 +12,24 @@ norm_sub_alpha(meta, qs)
 \item{qs}{\code{vector} of \emph{q} values}
 }
 \value{
-Returns a five-column \code{tibble}/\code{dataframe} containing:
-\code{partition} (label attributed to partition), \code{q} (parameter of
-conservatism), \code{diversity}, \code{community} (level of diversity,
-\emph{i.e.} subcommunity, community, or metacommunity), and \code{measure}
-(alpha, beta, rho, or gamma).
+Returns a standard output of class \code{tibble}, with columns:
+\code{measure}, (norm alpha),
+\code{q} (parameter of conservatism), 
+\code{type_level} (), 
+\code{type_name} (label attributed to type), 
+\code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
+\code{partition_name} (label attributed to partition), and 
+\code{diversity}.
 }
 \description{
-\code{norm_sub_alpha()} is used to calculate the
-similarity-sensitive diversity of subcommunity \emph{j} in isolation.
-}
-\details{
-\code{norm_sub_alpha()} calculates the normalised subcommunity
-alpha diversity of a series of columns representing independent subcommunity
-counts relative to the metacommunity as a whole (by default the sum of the
-subcommunities). This measure may be calculated for a series of orders,
-repesented as a vector of \code{qs}.
+Calculates similarity-sensitive normalised subcommunity alpha diversity 
+(the diversity of subcommunity \emph{j} in isolation. This measure may be 
+calculated for a series of orders, repesented as a vector of \code{qs}.
 }
 \examples{
-pop <- sample(1:50, 5)
+pop <- data.frame(a = c(1,3), b = c(1,1))
+row.names(pop) <- paste0("sp", 1:2)
+pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate normalised subcommunity alpha diversity

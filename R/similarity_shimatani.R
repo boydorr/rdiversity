@@ -1,7 +1,7 @@
 #' Taxonomic similarity matrix
 #' 
-#' \code{similarity_shimatani()} calculates taxonomic similarity based on 
-#' Shimatani's index of taxonomic similarity (See Details).
+#' Calculates taxonomic similarity based on Shimatani's index of taxonomic 
+#' similarity (see \emph{Details}).
 #' 
 #' Shimatani's taxonomic similarity index is defined:
 #' \tabular{ll}{

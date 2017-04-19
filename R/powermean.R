@@ -1,21 +1,14 @@
-#' Coerce to powermean
+#' Calculate power mean
 #'
-#' Functions to check if an object is a \code{powermean} or coerce an
-#' object into a \code{powermean}.
-#'
-#' \code{powermean} is a class of object output from calculating
-#' \code{raw_alpha}, \code{norm_alpha}, \code{raw_rho},
-#' \code{norm_rho}, and \code{raw_gamma} diversity terms;
-#' \code{raw_beta} and \code{norm_beta} are output as
-#' \code{relativeentropy} objects.
-#'
-#' To calculate the subcommunity or metacommunity diversity, an object of
-#' class \code{powermean} is input to \code{subdiv()} or \code{metadiv()},
-#' respectively.
-#'
-#' @param results two-dimensional \code{matrix} of mode \code{numeric};
-#' contains values calculated from diversity-term functions, e.g.
-#' \code{norm_alpha()}, \code{raw_beta}, etc.
+#' Functions to check if an object is a \code{powermean} or calculate 
+#' the power mean of diversity components: \code{raw_alpha()}, 
+#' \code{norm_alpha()}, \code{raw_rho()}, \code{norm_rho()}, or 
+#' \code{raw_gamma()}. 
+#' 
+#' @param results \code{matrix} of mode \code{numeric}; contains values 
+#' calculated from diversity-term functions \code{norm_alpha()}, 
+#' \code{raw_alpha()}, \code{raw_rho()}, \code{norm_rho()}, and 
+#' \code{raw_gamma()}
 #' @param meta object of class \code{metacommunity}; contains proportional
 #' abundance of types, pair-wise similarity, and other associated variables.
 #' @param tag object of class \code{character}; contains an identifier
@@ -27,7 +20,9 @@
 #' @export
 #'
 #' @examples
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate subcommunity raw alpha diversity (takes the powermean)

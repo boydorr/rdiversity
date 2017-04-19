@@ -20,14 +20,14 @@ is.metacommunity(x)
 returns TRUE if its argument is a metacommunity, FALSE otherwise.
 }
 \description{
-Container for proportional abundance and similarity matrices.
+Container for class \code{metacommunity}.
 }
 \section{Fields}{
 
 \describe{
-\item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains proportional abundance of \emph{types} in the subcommunity 
-as a fraction of the metacommunity as a whole (in the phylogenetic case, 
+\item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}
+with rows as types, columns as subcommunities, and elements containing  
+relative abundances of types in subcommunities.  (in the phylogenetic case, 
 this corresponds to the proportional abundance of historic species, which
 is calculated from the proportional abundance of present day species)}
 

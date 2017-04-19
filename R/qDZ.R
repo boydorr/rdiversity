@@ -8,8 +8,8 @@
 #' @param qs \code{vector} of \emph{q} values.
 #'
 #' @include metacommunity.R subdiv.R
-#' @return Returns a matrix of similarity-sensitive diversities, where rows
-#' and columns represent values of q and subcommunities, respectively.
+#' @return Returns an object of class \code{matrix}, with rows as \code{qs} 
+#' columns as subcommunities, and elements containing diversity values.
 #' @export
 #'
 #' @examples

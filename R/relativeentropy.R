@@ -1,18 +1,23 @@
-#' Coerce to relativeentropy
+#' Calculate relative entropy
 #' 
-#' Functions to check if an object is a \code{relativeentropy} or coerce an  
-#' object into a \code{relativeentropy}.
+#' Functions to check if an object is a \code{relativeentropy} or calculate 
+#' the relative entropy of diversity components: \code{raw_beta()} or 
+#' \code{norm_beta()}. 
 #' 
-#' @param results two-dimensional \code{matrix} of mode \code{numeric}; 
-#' @param meta object of class \code{metacommunity}; 
-#' @param tag object of class \code{character}; 
+#' @param results \code{matrix} of mode \code{numeric}; contains values 
+#' calculated from diversity-term functions \code{raw_beta()} and 
+#' \code{norm_beta()}
+#' @param meta object of class \code{metacommunity}
+#' @param tag object of class \code{character}
 #' 
 #' @return object of class \code{relativeentropy}
 #' @include class-relativeentropy.R 
 #' @export
 #' 
 #' @examples 
-#' pop <- sample(1:50, 5)
+#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
+#' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #' 
 #' # Calculate raw subcommunity beta diversity

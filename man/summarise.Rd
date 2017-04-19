@@ -7,13 +7,13 @@
 summarise(populations, normalise = TRUE)
 }
 \arguments{
-\item{populations}{An S x N array whose columns are counts of individuals}
+\item{populations}{An S x N array whose columns are counts of individuals.}
 
 \item{normalise}{Normalise probability distribution to sum to 1 for each 
-column rather than just along each set}
+column rather than just along each set.}
 }
 \value{
-An array whose columns are proportions
+Returns an array whose columns are proportions.
 }
 \description{
 This function converts columns of an array (each representing population 

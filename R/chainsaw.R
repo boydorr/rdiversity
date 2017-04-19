@@ -1,9 +1,9 @@
-#' Cut phylogeny
+#' Cut Phylogeny
 #'
 #' @param partition proportional abundance of \emph{types} in the
 #' subcommunity as a fraction of the metacommunity as a whole (in the
 #' phylogenetic case, this corresponds to the proportional abundance of
-#' terminal taxa)
+#' terminal taxa).
 #' @param ps \code{phy_struct()} output.
 #' @param interval proportion of total tree height to be conserved (taken as
 #' a proportion from the heighest tip). Describes how far back we go in the tree,
@@ -16,7 +16,7 @@
 #' @return
 #' Returns an object of class \code{phy_struct} containing a new structural
 #' matrix ('@structure').and the original phylogenetic parameters
-#' ('@parameters')
+#' ('@parameters').
 #'
 #' @examples
 #' tree <- ape::rtree(n = 5)

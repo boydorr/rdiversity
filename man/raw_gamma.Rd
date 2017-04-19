@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{raw_gamma}
 \alias{raw_gamma}
-\title{Low level diversity components: gamma}
+\title{Gamma (low level diversity component)}
 \usage{
 raw_gamma(meta)
 }
@@ -21,10 +21,12 @@ Values generated from \code{raw_gamma()} may be input into \code{subdiv()} and
 \code{metadiv()} to calculate subcommunity/metacommunity gamma diversity.
 }
 \examples{
-pop <- sample(1:50, 5)
+pop <- data.frame(a = c(1,3), b = c(1,1))
+row.names(pop) <- paste0("sp", 1:2)
+pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate gamma component
-a <- raw_gamma(meta)
+raw_gamma(meta)
 
 }

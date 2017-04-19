@@ -16,8 +16,8 @@ similarity_shimatani(data, lookup)
 Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity
 }
 \description{
-\code{similarity_shimatani()} calculates taxonomic similarity based on 
-Shimatani's index of taxonomic similarity (See Details).
+Calculates taxonomic similarity based on Shimatani's index of taxonomic 
+similarity (see \emph{Details}).
 }
 \details{
 Shimatani's taxonomic similarity index is defined:

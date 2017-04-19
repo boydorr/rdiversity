@@ -1,15 +1,16 @@
-#' z_matrix
+#' Similarity matrix
 #'
-#' Function to
+#' Function to calculate a phylogenetic similarity matrix.
 #'
 #' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with
 #' rows as types, columns as subcommunities, and elements containing relative
 #' abundances of types in subcommunities. In the case of phylogenetic
 #' metacommunities, these are the relative abundances of terminal taxa.
-#' @param s \code{smatrix()} output; ultrametric-similarity matrix
+#' @param s \code{smatrix()} output; ultrametric-similarity matrix.
 #' @param ps \code{phy_struct()} output.
 #'
-#' @return \eqn{hS x hS} matrix; pair-wise similarity of historic species
+#' @return Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
+#' species.
 #' @export
 #'
 #' @examples

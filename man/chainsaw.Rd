@@ -2,7 +2,7 @@
 % Please edit documentation in R/chainsaw.R
 \name{chainsaw}
 \alias{chainsaw}
-\title{Cut phylogeny}
+\title{Cut Phylogeny}
 \usage{
 chainsaw(partition, ps, interval, depth)
 }
@@ -10,7 +10,7 @@ chainsaw(partition, ps, interval, depth)
 \item{partition}{proportional abundance of \emph{types} in the
 subcommunity as a fraction of the metacommunity as a whole (in the
 phylogenetic case, this corresponds to the proportional abundance of
-terminal taxa)}
+terminal taxa).}
 
 \item{ps}{\code{phy_struct()} output.}
 
@@ -25,10 +25,10 @@ the tree.}
 \value{
 Returns an object of class \code{phy_struct} containing a new structural
 matrix ('@structure').and the original phylogenetic parameters
-('@parameters')
+('@parameters').
 }
 \description{
-Cut phylogeny
+Cut Phylogeny
 }
 \examples{
 tree <- ape::rtree(n = 5)

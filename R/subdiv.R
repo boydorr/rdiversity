@@ -4,38 +4,45 @@
 #'
 #' \code{data} may be input as three different classes:
 #' \itemize{
-#' \item{\code{power_mean} calculates raw and normalised subcomunity alpha, rho
+#' \item{\code{power_mean}: calculates raw and normalised subcomunity alpha, rho
 #' or gamma diversity by taking the powermean of diversity components}
-#' \item{\code{relativeentropy} calculates raw or normalised subcommunity beta
+#' \item{\code{relativeentropy}: calculates raw or normalised subcommunity beta
 #' diversity by taking the relative entropy of diversity components}
-#' \item{\code{metacommunity} caculates all subcommunity measures of diversity}
+#' \item{\code{metacommunity}: calculates all subcommunity measures of diversity}
 #' }
 #'
-#' @param data two-dimensional \code{matrix} of mode \code{numeric}; diversity
+#' @param data \code{matrix} of mode \code{numeric}; containing diversity
 #' components.
 #' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
 #'
-#' @return Returns a five-column \code{tibble}/\code{dataframe} containing:
-#' \code{partition} (label attributed to partition), \code{q} (parameter of
-#' conservatism), \code{diversity}, \code{community} (level of diversity,
-#' \emph{i.e.} subcommunity), and \code{measure} (alpha, beta, rho, or gamma).
-#'
+#' @return Returns a standard output of class \code{tibble}, with columns:
+#' \itemize{
+#' \item\code{measure}: raw or normalised, alpha, beta, rho, or gamma
+#' \item\code{q}: parameter of conservatism
+#' \item\code{type_level}: "subcommunity"
+#' \item\code{type_name}: label attributed to type
+#' \item\code{partition_level}: level of diversity, \emph{i.e.} subcommunity
+#' \item\code{partition_name}: label attributed to partition
+#' \item\code{diversity}: calculated subcommunity diversity
+#' }
+#' 
 #' @export
 #' @examples
-#' # Calculate the diversity of a single population
+#' # Define metacommunity
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
 #' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
-#' # Subcommunity gamma diversity (takes the power mean)
+#' # Calculate subcommunity gamma diversity (takes the power mean)
 #' g <- raw_gamma(meta)
 #' subdiv(g, 0:2)
 #'
-#' # Subcommunity beta diversity (takes the relative entropy)
+#' # Calculate subcommunity beta diversity (takes the relative entropy)
 #' b <- raw_beta(meta)
 #' subdiv(b, 0:2)
 #'
-#' # All measures of subcommunity diversity
+#' # Calculate all measures of subcommunity diversity
 #' subdiv(meta, 0:2)
 #'
 setGeneric(name = "subdiv",

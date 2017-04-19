@@ -5,7 +5,7 @@
 \alias{relativeentropy}
 \alias{is.relativeentropy}
 \alias{show,relativeentropy-method}
-\title{Coerce to relativeentropy}
+\title{Calculate relative entropy}
 \usage{
 relativeentropy(results, meta, tag)
 
@@ -14,11 +14,13 @@ is.relativeentropy(x)
 \S4method{show}{relativeentropy}(object)
 }
 \arguments{
-\item{results}{two-dimensional \code{matrix} of mode \code{numeric};}
+\item{results}{\code{matrix} of mode \code{numeric}; contains values 
+calculated from diversity-term functions \code{raw_beta()} and 
+\code{norm_beta()}}
 
-\item{meta}{object of class \code{metacommunity};}
+\item{meta}{object of class \code{metacommunity}}
 
-\item{tag}{object of class \code{character};}
+\item{tag}{object of class \code{character}}
 
 \item{x}{any R object}
 
@@ -31,11 +33,14 @@ object of class \code{relativeentropy}
 relativeentropy, FALSE otherwise.
 }
 \description{
-Functions to check if an object is a \code{relativeentropy} or coerce an  
-object into a \code{relativeentropy}.
+Functions to check if an object is a \code{relativeentropy} or calculate 
+the relative entropy of diversity components: \code{raw_beta()} or 
+\code{norm_beta()}.
 }
 \examples{
-pop <- sample(1:50, 5)
+pop <- data.frame(a = c(1,3), b = c(1,1))
+row.names(pop) <- paste0("sp", 1:2)
+pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate raw subcommunity beta diversity

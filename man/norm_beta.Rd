@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{norm_beta}
 \alias{norm_beta}
-\title{Low level diversity components: normalised beta}
+\title{Normalised beta (low level diversity component)}
 \usage{
 norm_beta(meta)
 }
@@ -22,10 +22,12 @@ Values generated from \code{norm_beta()} may be input into \code{subdiv()} and
 diversity.
 }
 \examples{
-pop <- sample(1:50, 5)
+pop <- data.frame(a = c(1,3), b = c(1,1))
+row.names(pop) <- paste0("sp", 1:2)
+pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate normalised beta component
-a <- norm_beta(meta)
+norm_beta(meta)
 
 }

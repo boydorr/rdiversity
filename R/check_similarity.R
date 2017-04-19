@@ -1,4 +1,4 @@
-#' Check similarity
+#' Check similarity matrix
 #'
 #' \code{check_similarity()} is used to validate similarity matrices.
 #'
@@ -7,7 +7,7 @@
 #' abundances of types in subcommunities. In the case of phylogenetic
 #' metacommunities, these are the relative abundances of terminal taxa.
 #' @param similarity two-dimensinal \code{matrix} of mode \code{numeric};
-#' contains pair-wise similarity between types
+#' contains pair-wise similarity between types.
 #'
 #' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If
 #' the similarity matrix was valid, this should be identical to that which was

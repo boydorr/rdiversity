@@ -2,7 +2,7 @@
 % Please edit documentation in R/diversity-components.R
 \name{norm_alpha}
 \alias{norm_alpha}
-\title{Low level diversity components: normalised alpha}
+\title{Normalised alpha (low level diversity component)}
 \usage{
 norm_alpha(meta)
 }
@@ -22,10 +22,12 @@ and \code{metadiv()} to calculate normalised subcommunity/metacommunity
 alpha diversity.
 }
 \examples{
-pop <- sample(1:50, 5)
+pop <- data.frame(a = c(1,3), b = c(1,1))
+row.names(pop) <- paste0("sp", 1:2)
+pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate normalised alpha component
-a <- norm_alpha(meta)
+norm_alpha(meta)
 
 }

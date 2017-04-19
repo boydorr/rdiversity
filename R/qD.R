@@ -1,20 +1,17 @@
 #' Hill number / naive diversity with no similarity 
 #' 
 #' Calculates the diversity of a series of columns representing independent
-#' populations, for a series of orders, repesented as a vector of qs.
+#' populations, for a series of orders, repesented as a vector of \code{qs}.
 #'
-#' @param populations - population counts or proportions
-#' @param  qs - vector of values of parameter q
+#' @param populations - population counts or proportions.
+#' @param  qs - vector of values of parameter \emph{q}.
 #' 
 #' @details \code{qD} is used to calculate the diversity of a population
 #' (in the naive-type case). 
 #' 
-#' @return data frame of diversities, columns representing populations, and 
-#' rows representing values of q
+#' @return Returns an object of class \code{data.frame} with columns as
+#' populations, rows as values of \emph{q}, and elements containing diversities.
 #' @export
-#' 
-#' @examples 
-#' #
 #' 
 qD <-
 function(populations, qs)

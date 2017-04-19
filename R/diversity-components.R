@@ -1,4 +1,4 @@
-#' Low level diversity components: alpha
+#' Raw alpha (low level diversity component)
 #'
 #' Calculates the low-level diversity component necessary for calculating alpha
 #' diversity.
@@ -27,7 +27,7 @@ raw_alpha <- function(meta) {
 }
 
 
-#' Low level diversity components: normalised alpha
+#' Normalised alpha (low level diversity component)
 #'
 #' Calculates the low-level diversity component necessary for calculating
 #' normalised alpha diversity.
@@ -36,7 +36,7 @@ raw_alpha <- function(meta) {
 #' and \code{metadiv()} to calculate normalised subcommunity/metacommunity
 #' alpha diversity.
 #'
-#' @param meta object of class \code{metacommunity}.
+#' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
@@ -44,6 +44,7 @@ raw_alpha <- function(meta) {
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
 #' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
@@ -62,7 +63,7 @@ norm_alpha <- function(meta) {
 }
 
 
-#' Low level diversity components: raw rho
+#' Raw rho (low level diversity component)
 #'
 #' Calculates the low-level diversity component necessary for calculating raw rho
 #' diversity.
@@ -70,7 +71,7 @@ norm_alpha <- function(meta) {
 #' Values generated from \code{raw_rho()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity rho diversity.
 #'
-#' @param meta object of class \code{metacommunity}.
+#' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
@@ -78,6 +79,7 @@ norm_alpha <- function(meta) {
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
 #' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
@@ -90,7 +92,7 @@ raw_rho <- function(meta) {
 }
 
 
-#' Low level diversity components: normalised rho
+#' Normalised rho (low level diversity component)
 #'
 #' Calculates the low-level diversity component necessary for calculating
 #' normalised rho diversity.
@@ -99,7 +101,7 @@ raw_rho <- function(meta) {
 #' \code{metadiv()} to calculate normalised subcommunity/metacommunity rho
 #' diversity.
 #'
-#' @param meta object of class \code{metacommunity}.
+#' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
@@ -107,6 +109,7 @@ raw_rho <- function(meta) {
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
 #' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
@@ -125,7 +128,7 @@ norm_rho <- function(meta) {
 }
 
 
-#' Low level diversity components: raw beta
+#' Raw beta (low level diversity component)
 #'
 #' Calculates the low-level diversity component necessary for calculating raw beta
 #' diversity.
@@ -133,7 +136,7 @@ norm_rho <- function(meta) {
 #' Values generated from \code{raw_beta()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate raw subcommunity/metacommunity beta diversity.
 #'
-#' @param meta object of class \code{metacommunity}.
+#' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{relativeentropy}.
 #' @include metacommunity.R
@@ -155,7 +158,7 @@ raw_beta <- function(meta) {
 }
 
 
-#' Low level diversity components: normalised beta
+#' Normalised beta (low level diversity component)
 #'
 #' Calculates the low-level diversity component necessary for calculating
 #' normalised beta diversity.
@@ -164,7 +167,7 @@ raw_beta <- function(meta) {
 #' \code{metadiv()} to calculate normalised subcommunity/metacommunity beta
 #' diversity.
 #'
-#' @param meta object of class \code{metacommunity}.
+#' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{relativeentropy}.
 #' @include metacommunity.R
@@ -172,6 +175,7 @@ raw_beta <- function(meta) {
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
 #' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'
@@ -191,7 +195,7 @@ norm_beta <- function(meta) {
 }
 
 
-#' Low level diversity components: gamma
+#' Gamma (low level diversity component)
 #'
 #' Calculates the low-level diversity component necessary for calculating gamma
 #' diversity.
@@ -199,7 +203,7 @@ norm_beta <- function(meta) {
 #' Values generated from \code{raw_gamma()} may be input into \code{subdiv()} and
 #' \code{metadiv()} to calculate subcommunity/metacommunity gamma diversity.
 #'
-#' @param meta object of class \code{metacommunity}.
+#' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
@@ -207,6 +211,7 @@ norm_beta <- function(meta) {
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' row.names(pop) <- paste0("sp", 1:2)
 #' pop <- pop/sum(pop)
 #' meta <- metacommunity(pop)
 #'

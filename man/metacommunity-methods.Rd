@@ -23,7 +23,7 @@
 \alias{metacommunity,data.frame-method,phylo-method}
 \alias{metacommunity,matrix,phylo-method}
 \alias{metacommunity,matrix-method,phylo-method}
-\title{Coerce to Metacommunity}
+\title{Coerce to metacommunity}
 \usage{
 metacommunity(partition, similarity, ...)
 
@@ -49,31 +49,32 @@ metacommunity(partition, similarity, ...)
 \S4method{metacommunity}{matrix,phylo}(partition, similarity, interval = 1)
 }
 \arguments{
-\item{partition}{two-dimensinal \code{matrix} of mode \code{numeric} with 
-rows as types, columns as subcommunities, and elements containing relative 
-abundances of types in subcommunities. In the case of phylogenetic 
-metacommunities, these are the relative abundances of terminal taxa.}
+\item{partition}{two-dimensional \code{matrix} of mode \code{numeric}
+with rows as types, columns as subcommunities, and elements containing  
+the relative abundances of types in subcommunities. For phylogenetic 
+diversity, see \emph{Details}.}
 
-\item{similarity}{(optional) object that describes similarity between
-individuals or types. Usually missing (all types are distinct) or a matrix
-showing similarities, but can be of class \code{phylo}.}
+\item{similarity}{(optional) two-dimensional \code{matrix} of mode 
+\code{numeric}, with rows as types, columns as types, and elements 
+containing the pairwise similarity between \emph{types}. For phylogenetic 
+diversity, see \emph{Details}.}
 
 \item{...}{(optional) additional arguments, especially:}
 
-\item{interval}{(optional) for phylogenetic metacommunities only, how
-far back we go in the tree, with 0 marking the date of the most
-recent tip, and 1 (the default) marking the most recent common
-ancestor. Numbers greater than 1 extend the root of the tree.}
+\item{interval}{(optional; and for phylogenetic metacommunities only) how
+much evolutionary history should be retained, with 0 marking the most
+recent present-day species, and 1 (the default) marking the most recent 
+common ancestor. Numbers greater than 1 extend the root of the tree.}
 }
 \value{
-Returns an object of class \code{metacommunity} (see Details).
+Returns an object of class \code{metacommunity} (see \emph{Details}).
 }
 \description{
 Functions to check if an object is a \code{metacommunity} or coerce an
 object into a \code{metacommunity}.
 }
 \details{
-\enumerate{
+\itemize{
 \item type_abundance - proportional abundance of \emph{types} in the  
 subcommunity as a fraction of the metacommunity as a whole (in the 
 phylogenetic case, this corresponds to the proportional abundance of 
@@ -89,6 +90,16 @@ day species)
 \item raw_structure - length of historic species (in phylogeny)
 \item parameters - parameters associated with each 
 historic species (in phylogeny)
+}
+
+When calculating phylogenetic diversity either:
+\itemize{
+\item set \code{partition} as the relative abundance of present-day species,  
+with \code{similarity} as an object of class \code{phylo}, from which the 
+relative abundance and pairwise similarity of historical species will be
+calculated; or
+\item set \code{partition} as the relative abundance of historical species,
+with \code{similarity} as the pairwise similarity of historical species.
 }
 }
 \examples{

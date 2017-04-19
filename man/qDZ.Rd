@@ -12,8 +12,8 @@ qDZ(meta, qs)
 \item{qs}{\code{vector} of \emph{q} values.}
 }
 \value{
-Returns a matrix of similarity-sensitive diversities, where rows
-and columns represent values of q and subcommunities, respectively.
+Returns an object of class \code{matrix}, with rows as \code{qs} 
+columns as subcommunities, and elements containing diversity values.
 }
 \description{
 Calculates the similarity-sensitive diversity of a series of columns

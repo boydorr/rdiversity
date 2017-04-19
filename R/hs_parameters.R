@@ -1,11 +1,16 @@
-#' hs_parameters
+#' Historical species parameters
 #'
-#' hs_parameters
+#' Extracts various parameters associated with historical species.
 #' 
-#' @param tree object of class \code{phylo}
+#' @param tree object of class \code{phylo}.
 #' 
-#' @return Returns parameters associated with each historic species 
+#' @return Returns parameters associated with each historic species.
 #' @export
+#' 
+#' @examples 
+#' tree <- ape::rtree(n = 5)
+#' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+#' hs_parameters(tree)
 #' 
 hs_parameters <- function(tree) {
   # Perform checks

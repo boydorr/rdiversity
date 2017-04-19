@@ -11,9 +11,9 @@
 #' @param new_partition proportional abundance of \emph{types} in the  
 #' subcommunity as a fraction of the metacommunity as a whole (in the 
 #' phylogenetic case, this corresponds to the proportional abundance of 
-#' terminal taxa)
+#' terminal taxa).
 #'
-#' @return Returns an object of class \code{metacommunity.}
+#' @return Returns an object of class \code{metacommunity}.
 #' @export
 #'
 #' @examples
@@ -23,8 +23,9 @@
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' meta <- metacommunity(partition, tree)
-#' ps <- phy_struct(tree)
-#'
+#' new_partition <- partition[sample(1:5),]
+#' 
+#' repartition(meta, new_partition)
 #'
 repartition <- function(meta, new_partition) {
 

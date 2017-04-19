@@ -2,7 +2,7 @@
 % Please edit documentation in R/tbar.R
 \name{tbar}
 \alias{tbar}
-\title{tbar}
+\title{Calculate T_bar}
 \usage{
 tbar(partition, structure_matrix)
 }
@@ -14,7 +14,7 @@ metacommunities, these are the relative abundances of terminal taxa.}
 
 \item{structure_matrix}{\code{output$structure} of \code{phy_struct()}; each 
 row denotes historic species, columns denote terminal taxa, and elements 
-contain branch lengths}
+contain branch lengths.}
 }
 \description{
 Function to calculate T_bar.

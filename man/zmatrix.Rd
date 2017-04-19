@@ -2,7 +2,7 @@
 % Please edit documentation in R/zmatrix.R
 \name{zmatrix}
 \alias{zmatrix}
-\title{z_matrix}
+\title{Similarity matrix}
 \usage{
 zmatrix(partition, s, ps)
 }
@@ -12,15 +12,16 @@ rows as types, columns as subcommunities, and elements containing relative
 abundances of types in subcommunities. In the case of phylogenetic
 metacommunities, these are the relative abundances of terminal taxa.}
 
-\item{s}{\code{smatrix()} output; ultrametric-similarity matrix}
+\item{s}{\code{smatrix()} output; ultrametric-similarity matrix.}
 
 \item{ps}{\code{phy_struct()} output.}
 }
 \value{
-\eqn{hS x hS} matrix; pair-wise similarity of historic species
+Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
+species.
 }
 \description{
-Function to
+Function to calculate a phylogenetic similarity matrix.
 }
 \examples{
 tree <- ape::rtree(n = 5)

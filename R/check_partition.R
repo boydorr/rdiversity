@@ -1,4 +1,4 @@
-#' Check partition
+#' Check partition matrix
 #' 
 #' \code{check_partition()} is used to validate partition matrices.
 #' 

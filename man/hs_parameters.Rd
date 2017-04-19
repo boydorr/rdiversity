@@ -2,16 +2,22 @@
 % Please edit documentation in R/hs_parameters.R
 \name{hs_parameters}
 \alias{hs_parameters}
-\title{hs_parameters}
+\title{Historical species parameters}
 \usage{
 hs_parameters(tree)
 }
 \arguments{
-\item{tree}{object of class \code{phylo}}
+\item{tree}{object of class \code{phylo}.}
 }
 \value{
-Returns parameters associated with each historic species
+Returns parameters associated with each historic species.
 }
 \description{
-hs_parameters
+Extracts various parameters associated with historical species.
+}
+\examples{
+tree <- ape::rtree(n = 5)
+tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+hs_parameters(tree)
+
 }

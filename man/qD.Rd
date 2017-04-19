@@ -7,23 +7,19 @@
 qD(populations, qs)
 }
 \arguments{
-\item{populations}{- population counts or proportions}
+\item{populations}{- population counts or proportions.}
 
-\item{qs}{- vector of values of parameter q}
+\item{qs}{- vector of values of parameter \emph{q}.}
 }
 \value{
-data frame of diversities, columns representing populations, and 
-rows representing values of q
+Returns an object of class \code{data.frame} with columns as
+populations, rows as values of \emph{q}, and elements containing diversities.
 }
 \description{
 Calculates the diversity of a series of columns representing independent
-populations, for a series of orders, repesented as a vector of qs.
+populations, for a series of orders, repesented as a vector of \code{qs}.
 }
 \details{
 \code{qD} is used to calculate the diversity of a population
 (in the naive-type case).
-}
-\examples{
-#
-
 }

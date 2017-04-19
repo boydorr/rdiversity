@@ -2,7 +2,7 @@
 % Please edit documentation in R/phy_abundance.R
 \name{phy_abundance}
 \alias{phy_abundance}
-\title{phy_abundance}
+\title{Calculate abundance of historical species}
 \usage{
 phy_abundance(partition, structure_matrix)
 }
@@ -14,10 +14,10 @@ metacommunities, these are the relative abundances of terminal taxa.}
 
 \item{structure_matrix}{\code{output$structure} of \code{phy_struct()}; each 
 row denotes historic species, columns denote terminal taxa, and elements 
-contain branch lengths}
+contain branch lengths.}
 }
 \description{
-Calculates the relative abundance of historic species
+Calculates the relative abundance of historical species.
 }
 \examples{
 tree <- ape::rtree(n = 5)
