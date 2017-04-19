@@ -28,12 +28,11 @@
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains weight of types within a subcommunity
 #' 
-setClass("relativeentropy", contains = "matrix",
-         slots = c(.Data = "matrix", 
-                   measure = "character",
-                   type_abundance = "matrix",
-                   ordinariness = "matrix",
-                   subcommunity_weights = "vector",
-                   type_weights = "matrix"))
+setClass("relativeentropy", slots = c(output = "data.frame",
+                                      results = "matrix",
+                                      type_abundance = "matrix",
+                                      ordinariness = "matrix",
+                                      subcommunity_weights = "vector",
+                                      type_weights = "matrix"))
 
 
