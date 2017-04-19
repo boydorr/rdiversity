@@ -41,8 +41,12 @@ The `metacommunity()` function takes two arguments, `partition` and `similarity`
 * `@ordinariness` : the ordinariness of types within a population,  
 * `@subcommunity_weights` :  the relative weights of subcommunities within a population,  
 * `@type_weights` : the relative weights of types within a population, and  
-* `@.Data` : the contents of the partition argument, which is usually the *raw* abundance of types within a population.
-    
+
+A metcommunity originating from a phylogeny will contain three additional slots:
+
+* `@raw_abundance` : the relative abundance of present-day species (where types are then considered to be historical species),
+* `@raw_structure` : the length of evolutionary history of each historical species
+* `@parameters` : parameters associated with historical species
 
 ## Calculating diversity
 First we need to calculate the low-level diversity component seperately, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. 
@@ -61,9 +65,9 @@ subdiv(component, 0)
 # or the average species richness across the whole population
 metadiv(component, 0)
 
-# We can also generate a diversity profile by calculating multiple q-values simultaneously
+# We can also generate a diversity profile (for a single diversity measure, or multiple measures of the same level) by calculating multiple q-values simultaneously
 df <- subdiv(component, 0:30)
-rdplot(df)
+plot_diversity(df)
 ```
 
 In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a `metacommunity` object may be passed directly to `subdiv()` or `metadiv()`:
@@ -78,7 +82,7 @@ metadiv(meta, 0:2)
 
 Alternatively, if computational efficiency is not an issue, a single measure of diversity may be calculated directly by calling a wrapper function:
 ```r
-norm_sub_alpha(meta,0:2)
+norm_sub_alpha(meta, 0:2)
 ```
 A complete list of these functions is shown below:
 
