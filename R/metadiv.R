@@ -52,14 +52,13 @@ setGeneric(name = "metadiv",
 #'
 setMethod(f = "metadiv", signature= "powermean",
           definition = function(data, qs) {
-            results <- list()
-            for(i in 1:length(qs)) {
-              subdiv <- sapply(1:ncol(data), function(y)
-                power_mean(data[,y], 1-qs[i], data@type_weights[,y]))
-              results[[i]] <- power_mean(subdiv, 1-qs[i],
-                                         data@subcommunity_weights)
-            }
-
+            # Calculate
+            results <- lapply(seq_along(qs), function(x) {
+              subdiv <- sapply(1:ncol(data@results), function(y)
+                power_mean(data@results[,y], 1-qs[x], data@type_weights[,y]))
+              power_mean(subdiv, 1-qs[x], data@subcommunity_weights)
+            })
+            # Tidy up
             output <- do.call(cbind,results)
             row.names(output) <- "metacommunity"
             colnames(output) <- qs
@@ -76,14 +75,13 @@ setMethod(f = "metadiv", signature= "powermean",
 #'
 setMethod(f = "metadiv", signature= "relativeentropy",
           definition = function(data, qs) {
-            results <- list()
-            for(i in 1:length(qs)) {
-              subdiv <- sapply(1:ncol(data), function(y)
-                power_mean(data[,y], qs[i]-1, data@type_weights[,y]))
-              results[[i]] <- power_mean(subdiv, 1-qs[i],
-                                         data@subcommunity_weights)
-            }
-
+            # Calculate
+            results <- lapply(seq_along(qs), function(x) {
+              subdiv <- sapply(1:ncol(data@results), function(y)
+                power_mean(data@results[,y], qs[x]-1, data@type_weights[,y]))
+              power_mean(subdiv, 1-qs[x], data@subcommunity_weights)
+            })
+            # Tidy up
             output <- do.call(cbind,results)
             row.names(output) <- "metacommunity"
             colnames(output) <- qs
