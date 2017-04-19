@@ -59,6 +59,6 @@ is.relativeentropy <- function (x)
 #' 
 setMethod(f = "show", signature = "relativeentropy", 
           definition = function(object) {
-            print(object@.Data)
-          } )
+            print(object@output)
+          })
 
