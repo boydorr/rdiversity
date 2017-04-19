@@ -13,6 +13,7 @@
 #' @docType package
 #'
 #' @import ggplot2
+#' @import ggthemes
 #' @import methods
 #' @import ape
 #' @import phangorn
