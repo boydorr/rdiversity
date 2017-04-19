@@ -64,10 +64,15 @@ setMethod(f = "subdiv", signature= "powermean",
             row.names(output) <- colnames(data@results)
             colnames(output) <- qs
             output <- reshape2::melt(output)
-            output <- cbind.data.frame(output, "subcommunity", data@measure,
+            # Output
+            output <- cbind.data.frame(measure = unique(data@output$measure),
+                                       q = output$Var2, 
+                                       type_level = "types",
+                                       type_name = NA,
+                                       partition_level = "subcommunity",
+                                       partition_name = output$Var1,
+                                       diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            colnames(output) <- c("partition", "q", "diversity", "community", "measure")
-            output$partition <- as.character(output$partition)
             tibble::as_data_frame(output)
           } )
 
@@ -86,10 +91,15 @@ setMethod(f = "subdiv", signature= "relativeentropy",
             row.names(output) <- colnames(data@results)
             colnames(output) <- qs
             output <- reshape2::melt(output)
-            output <- cbind.data.frame(output, "subcommunity", data@measure,
+            # Output
+            output <- cbind.data.frame(measure = unique(data@output$measure),
+                                       q = output$Var2, 
+                                       type_level = "types",
+                                       type_name = NA,
+                                       partition_level = "subcommunity",
+                                       partition_name = output$Var1,
+                                       diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            colnames(output) <- c("partition", "q", "diversity", "community", "measure")
-            output$partition <- as.character(output$partition)
             tibble::as_data_frame(output)
           } )
 
