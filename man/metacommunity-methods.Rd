@@ -78,7 +78,7 @@ object into a \code{metacommunity}.
 \item type_abundance - proportional abundance of \emph{types} in the  
 subcommunity as a fraction of the metacommunity as a whole (in the 
 phylogenetic case, this corresponds to the proportional abundance of 
-historic species, which is calculated from the proportional abundance of 
+historical species, which is calculated from the proportional abundance of 
 present day species)
 \item similarity - pairwise similarity between \emph{types}
 \item ordinariness - ordinariness of types 
@@ -87,9 +87,9 @@ present day species)
 \item raw_abundance - proportional abundance of samples (usually types, 
 except in the phylogenetic case where samples correspond to the present 
 day species)
-\item raw_structure - length of historic species (in phylogeny)
+\item raw_structure - length of historical species (in phylogeny)
 \item parameters - parameters associated with each 
-historic species (in phylogeny)
+historical species (in phylogeny)
 }
 
 When calculating phylogenetic diversity either:

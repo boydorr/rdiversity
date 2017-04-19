@@ -9,7 +9,7 @@ setOldClass("phylo")
 #' \item type_abundance - proportional abundance of \emph{types} in the  
 #' subcommunity as a fraction of the metacommunity as a whole (in the 
 #' phylogenetic case, this corresponds to the proportional abundance of 
-#' historic species, which is calculated from the proportional abundance of 
+#' historical species, which is calculated from the proportional abundance of 
 #' present day species)
 #' \item similarity - pairwise similarity between \emph{types}
 #' \item ordinariness - ordinariness of types 
@@ -18,9 +18,9 @@ setOldClass("phylo")
 #' \item raw_abundance - proportional abundance of samples (usually types, 
 #' except in the phylogenetic case where samples correspond to the present 
 #' day species)
-#' \item raw_structure - length of historic species (in phylogeny)
+#' \item raw_structure - length of historical species (in phylogeny)
 #' \item parameters - parameters associated with each 
-#' historic species (in phylogeny)
+#' historical species (in phylogeny)
 #' }
 #'
 #' When calculating phylogenetic diversity either:
@@ -267,9 +267,9 @@ setMethod(f = "show", signature= "metacommunity",
             if(!isTRUE(all.equal(0, length(object@raw_structure))))
               cat('@raw_structure: Matrix of (phylo) structure (',
                   sum(colSums(object@raw_structure) > 0), 'tips,',
-                  sum(rowSums(object@raw_structure) > 0), 'historic species )\n')
+                  sum(rowSums(object@raw_structure) > 0), 'historical species )\n')
             
             if(!isTRUE(all.equal(0, length(object@parameters))))
-              cat('@parameters: Parameters associated with (phylo) historic species\n')
+              cat('@parameters: Parameters associated with (phylo) historical species\n')
           } )
 
