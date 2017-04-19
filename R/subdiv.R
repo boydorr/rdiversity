@@ -50,17 +50,18 @@ setGeneric(name = "subdiv",
              standardGeneric("subdiv")
            } )
 
+
 #' @rdname subdiv
 #'
 setMethod(f = "subdiv", signature= "powermean",
           definition = function(data, qs) {
-            results <- list()
-            for(i in seq_along(qs))
-              results[[i]] <- sapply(1:ncol(data), function(y)
-                power_mean(data[,y], 1-qs[i], data@type_weights[,y]))
-
+            # Calculate
+            results <- lapply(seq_along(qs), function(x)
+              sapply(1:ncol(data@results), function(y)
+                power_mean(data@results[,y], 1-qs[x], data@type_weights[,y])))
+            # Tidy up
             output <- do.call(cbind, results)
-            row.names(output) <- colnames(data)
+            row.names(output) <- colnames(data@results)
             colnames(output) <- qs
             output <- reshape2::melt(output)
             output <- cbind.data.frame(output, "subcommunity", data@measure,
@@ -76,13 +77,13 @@ setMethod(f = "subdiv", signature= "powermean",
 #'
 setMethod(f = "subdiv", signature= "relativeentropy",
           definition = function(data, qs) {
-            results <- list()
-            for(i in seq_along(qs))
-              results[[i]] <- sapply(1:ncol(data), function(y)
-                power_mean(data[,y], qs[i]-1, data@type_weights[,y]))
-
+            # Calculate
+            results <- lapply(seq_along(qs), function(x)
+              sapply(1:ncol(data@results), function(y)
+                power_mean(data@results[,y], qs[x]-1, data@type_weights[,y])))
+            # Tidy up
             output <- do.call(cbind,results)
-            row.names(output) <- colnames(data)
+            row.names(output) <- colnames(data@results)
             colnames(output) <- qs
             output <- reshape2::melt(output)
             output <- cbind.data.frame(output, "subcommunity", data@measure,
