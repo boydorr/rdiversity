@@ -27,7 +27,7 @@ function(values, order = 1, weights = rep(1, length(values)))
   
   # Values and weights must be greater than zero
   if(any(values[!is.nan(values)] < 0)) stop('values must be greater than 0')
-  if(any(weights < 0)) stop('weights must be greater than 0')
+  if(any(weights[!is.nan(weights)] < 0)) stop('weights must be greater than 0')
   
   # Normalise weights to sum to 1 (as per Rényi)
   proportions <- weights / sum(weights)
