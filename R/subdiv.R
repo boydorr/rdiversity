@@ -68,7 +68,7 @@ setMethod(f = "subdiv", signature= "powermean",
             colnames(output) <- qs
             output <- reshape2::melt(output)
             # Output
-            output <- cbind.data.frame(measure = unique(data@output$measure),
+            output <- cbind.data.frame(measure = data@measure,
                                        q = output$Var2, 
                                        type_level = "types",
                                        type_name = NA,
@@ -95,7 +95,7 @@ setMethod(f = "subdiv", signature= "relativeentropy",
             colnames(output) <- qs
             output <- reshape2::melt(output)
             # Output
-            output <- cbind.data.frame(measure = unique(data@output$measure),
+            output <- cbind.data.frame(measure = data@measure,
                                        q = output$Var2, 
                                        type_level = "types",
                                        type_name = NA,
