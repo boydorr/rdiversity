@@ -4,11 +4,11 @@
 #' object into a \code{relativeentropy}; for \code{raw_beta()} or 
 #' \code{norm_beta()}. 
 #' 
+#' @param tag measure
 #' @param results \code{matrix} of mode \code{numeric}; contains values 
 #' calculated from diversity-term functions \code{raw_beta()} and 
 #' \code{norm_beta()}
 #' @param meta object of class \code{metacommunity}
-#' @param tag object of class \code{character}
 #' 
 #' @return object of class \code{relativeentropy}
 #' @include class-relativeentropy.R 
@@ -27,6 +27,7 @@
 relativeentropy <- function(results, meta, tag) {
   new('relativeentropy', 
       results = results, 
+      measure = tag,
       type_abundance = meta@type_abundance,
       ordinariness = meta@ordinariness,
       subcommunity_weights = meta@subcommunity_weights,
