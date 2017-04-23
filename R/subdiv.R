@@ -25,6 +25,9 @@
 #' \item\code{partition_name}: label attributed to partition
 #' \item\code{diversity}: calculated subcommunity diversity
 #' }
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' 
 #' @export
 #' @examples

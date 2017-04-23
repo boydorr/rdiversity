@@ -30,6 +30,10 @@
 #' 
 setClass("relativeentropy", slots = c(output = "data.frame",
                                       results = "matrix",
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
+#' 
                                       type_abundance = "matrix",
                                       ordinariness = "matrix",
                                       subcommunity_weights = "vector",

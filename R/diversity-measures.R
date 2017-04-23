@@ -15,7 +15,10 @@
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -46,7 +49,10 @@ raw_sub_alpha <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -77,7 +83,10 @@ norm_sub_alpha <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -109,7 +118,10 @@ raw_sub_beta <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -140,7 +152,10 @@ norm_sub_beta <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -171,7 +186,10 @@ raw_sub_rho <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -203,7 +221,10 @@ norm_sub_rho <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -234,7 +255,10 @@ sub_gamma <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -266,7 +290,10 @@ raw_meta_alpha <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -297,7 +324,10 @@ norm_meta_alpha <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -328,7 +358,10 @@ raw_meta_beta <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -359,7 +392,10 @@ norm_meta_beta <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -390,7 +426,10 @@ raw_meta_rho <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -421,7 +460,10 @@ norm_meta_rho <- function(meta, qs)
 #' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}.
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @export
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))

@@ -11,7 +11,10 @@
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
 #' @export
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -41,7 +44,10 @@ raw_alpha <- function(meta) {
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
 #' @export
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -77,7 +83,10 @@ norm_alpha <- function(meta) {
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
 #' @export
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -107,7 +116,10 @@ raw_rho <- function(meta) {
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
 #' @export
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -142,7 +154,10 @@ norm_rho <- function(meta) {
 #' @return Returns an object of class \code{relativeentropy}.
 #' @include metacommunity.R
 #' @export
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -173,7 +188,10 @@ raw_beta <- function(meta) {
 #' @return Returns an object of class \code{relativeentropy}.
 #' @include metacommunity.R
 #' @export
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -209,7 +227,10 @@ norm_beta <- function(meta) {
 #' @return Returns an object of class \code{powermean}.
 #' @include metacommunity.R
 #' @export
-#'
+#' 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+#' arXiv 1404.6520:1–9.
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
