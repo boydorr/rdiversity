@@ -250,7 +250,7 @@ is.metacommunity <- function (x)
 #'
 setMethod(f = "show", signature= "metacommunity",
           definition = function(object) {
-            
+            cat('Object of class metacommunity, containing:\n')
             cat('@type_abundance: Matrix of relative abundances (', 
                 ncol(object@type_abundance), 'subcommunities,',
                 nrow(object@type_abundance), 'types )\n')
