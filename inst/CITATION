@@ -1,6 +1,6 @@
 bibentry(bibtype = "Article",
          title        = "How to partition diversity",
-         author       = c(person(given = "Richaard",
+         author       = c(person(given = "Richard",
                                  family = "Reeve"),
                           person(given = "Tom",
                                  family = "Leinster"),
@@ -23,5 +23,6 @@ bibentry(bibtype = "Article",
          textVersion  =
            paste("Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,",
                  "S. Mitchell, and L. Matthews. 2014. How to partition diversity.",
-                 "arXiv 1404.6520:1–9.")
+                 "arXiv 1404.6520 [q-bio.QM]:1–9.")
 )
+
