@@ -64,5 +64,13 @@ is.powermean <- function (x) inherits(x, "powermean")
 #'
 setMethod(f = "show", signature = "powermean",
           definition = function(object) {
-            print(object@output)
-          })
+            cat('Object of class powermean, containing:\n')
+            cat('@results: inddiv() results\n')
+            cat('@measure: measure\n')
+            cat('@type_abundance: Matrix of relative abundances (', 
+                ncol(object@type_abundance), 'subcommunities,',
+                nrow(object@type_abundance), 'types )\n')
+            cat('@ordinariness: Matrix of type ordinariness\n')
+            cat('@subcommunity_weights: Vector of subcommunity weights\n')
+            cat('@type_weights: Vector of type weights\n')
+          } )
