@@ -30,17 +30,7 @@
 #' class(a)
 #'
 powermean <- function(results, meta, tag) {
-  output <- reshape2::melt(results)
-  output <- cbind.data.frame(measure = tag, 
-                             q = NA,  
-                             type_level = "type", 
-                             type_name = output$Var1, 
-                             partition_level = "type",
-                             partition_name = output$Var2,
-                             diversity = output$value, 
-                             stringsAsFactors = FALSE)
   new('powermean',
-      output = output,
       results = results,
       type_abundance = meta@type_abundance,
       ordinariness = meta@ordinariness,
