@@ -38,6 +38,7 @@ Collate:
     'diversity-measures.R'
     'get_title.R'
     'hs_parameters.R'
+    'inddiv.R'
     'metadiv.R'
     'phy_abundance.R'
     'phy_struct.R'
@@ -58,3 +59,4 @@ Collate:
     'tbar.R'
     'zmatrix.R'
 VignetteBuilder: knitr
+Encoding: UTF-8

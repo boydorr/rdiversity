@@ -22,9 +22,7 @@ calculated from diversity-term functions \code{norm_alpha()},
 \item{meta}{object of class \code{metacommunity}; contains proportional
 abundance of types, pair-wise similarity, and other associated variables.}
 
-\item{tag}{object of class \code{character}; contains an identifier
-associated with the calculated diversity-term, e.g.
-"norm_alpha", "raw_beta", etc.}
+\item{tag}{measure}
 
 \item{x}{any R object}
 
@@ -39,10 +37,9 @@ powermean, FALSE otherwise.
 \code{print(x)} prints an object object of class \code{powermean}
 }
 \description{
-Functions to check if an object is a \code{powermean} or calculate 
-the power mean of diversity components: \code{raw_alpha()}, 
-\code{norm_alpha()}, \code{raw_rho()}, \code{norm_rho()}, or 
-\code{raw_gamma()}.
+Functions to check if an object is a \code{powermean}, or coerse an object 
+into a \code{powermean}; for \code{raw_alpha()}, \code{norm_alpha()}, 
+\code{raw_rho()}, \code{norm_rho()}, or  \code{raw_gamma()}.
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))

@@ -11,7 +11,6 @@ phy_struct(tree)
 }
 \value{
 Returns a \code{list} containing:
-
 \tabular{ll}{
 \code{$structure} \tab - each row denotes historic species, columns denote 
 terminal taxa, and elements contain branch lengths \cr

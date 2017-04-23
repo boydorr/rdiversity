@@ -43,3 +43,7 @@ lookup <- data.frame(Subclass=c("Sapindales", "Malvales", "Fabales",
 similarity <- similarity_shimatani(pop, lookup)
 
 }
+\references{
+Shimatani, K. 2001. On the measurement of species diversity 
+incorporating species differences. Oikos 93:135–147.
+}

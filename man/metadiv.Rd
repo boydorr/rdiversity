@@ -6,7 +6,7 @@
 \alias{metadiv,powermean-method}
 \alias{metadiv,relativeentropy-method}
 \alias{metadiv,metacommunity-method}
-\title{Calculate metacommunity diversity}
+\title{Calculate metacommunity-level diversity}
 \usage{
 metadiv(data, qs)
 
@@ -35,7 +35,7 @@ Returns a standard output of class \code{tibble}, with columns:
 }
 }
 \description{
-Generic function for calculating metacommunity diversity.
+Generic function for calculating metacommunity-level diversity.
 }
 \details{
 \code{data} may be input as three different classes:

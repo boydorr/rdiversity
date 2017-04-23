@@ -20,7 +20,7 @@ calculated from diversity-term functions \code{raw_beta()} and
 
 \item{meta}{object of class \code{metacommunity}}
 
-\item{tag}{object of class \code{character}}
+\item{tag}{measure}
 
 \item{x}{any R object}
 
@@ -33,8 +33,8 @@ object of class \code{relativeentropy}
 relativeentropy, FALSE otherwise.
 }
 \description{
-Functions to check if an object is a \code{relativeentropy} or calculate 
-the relative entropy of diversity components: \code{raw_beta()} or 
+Functions to check if an object is a \code{relativeentropy}, or coerse an  
+object into a \code{relativeentropy}; for \code{raw_beta()} or 
 \code{norm_beta()}.
 }
 \examples{
