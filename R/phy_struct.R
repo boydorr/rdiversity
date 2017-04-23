@@ -3,9 +3,8 @@
 #' Converts an object into class \code{phylo} into class \code{phy_struct}.
 #' 
 #' @param tree object of class \code{phylo}
-#' 
+
 #' @return Returns a \code{list} containing:
-#'
 #' \tabular{ll}{
 #' \code{$structure} \tab - each row denotes historic species, columns denote 
 #' terminal taxa, and elements contain branch lengths \cr

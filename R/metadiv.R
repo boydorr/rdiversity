@@ -1,6 +1,6 @@
-#' Calculate metacommunity diversity
+#' Calculate metacommunity-level diversity
 #'
-#' Generic function for calculating metacommunity diversity.
+#' Generic function for calculating metacommunity-level diversity.
 #'
 #' \code{data} may be input as three different classes:
 #' \itemize{

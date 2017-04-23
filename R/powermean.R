@@ -1,9 +1,8 @@
 #' Calculate power mean
 #'
-#' Functions to check if an object is a \code{powermean} or calculate 
-#' the power mean of diversity components: \code{raw_alpha()}, 
-#' \code{norm_alpha()}, \code{raw_rho()}, \code{norm_rho()}, or 
-#' \code{raw_gamma()}. 
+#' Functions to check if an object is a \code{powermean}, or coerse an object 
+#' into a \code{powermean}; for \code{raw_alpha()}, \code{norm_alpha()}, 
+#' \code{raw_rho()}, \code{norm_rho()}, or  \code{raw_gamma()}. 
 #' 
 #' @param results \code{matrix} of mode \code{numeric}; contains values 
 #' calculated from diversity-term functions \code{norm_alpha()}, 

@@ -1,6 +1,6 @@
-#' Calculate subcommunity diversity
+#' Calculate subcommunity-level diversity
 #'
-#' Generic function for calculating subcommunity diversity.
+#' Generic function for calculating subcommunity-level diversity.
 #'
 #' \code{data} may be input as three different classes:
 #' \itemize{
