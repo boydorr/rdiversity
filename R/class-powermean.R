@@ -30,12 +30,12 @@
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains weight of types within a subcommunity
 #' 
-setClass("powermean", slots = c(output = "data.frame",
-                                results = "matrix",
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
 #' 
+setClass("powermean", slots = c(results = "matrix",
+                                measure = "character",
                                 type_abundance = "matrix",
                                 ordinariness = "matrix",
                                 subcommunity_weights = "vector",
