@@ -11,6 +11,8 @@
 #' \code{subclass.similarity} \tab 0.25 \cr
 #' \code{other.similarity} \tab 0 \cr
 #' }
+#' @references Shimatani, K. 2001. On the measurement of species diversity 
+#' incorporating species differences. Oikos 93:135–147.
 #' 
 #' @param data \eqn{S * N} \code{matrix}; population counts
 #' @param lookup \code{data.frame} with colnames = c('Species', 'Genus', 
