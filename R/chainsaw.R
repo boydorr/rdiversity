@@ -39,10 +39,10 @@ chainsaw <- function(partition, ps, interval, depth) {
   if(!missing(interval) & !missing(depth))
     stop("Either 'interval' or 'depth' may be input, not both!")
 
-  if(!missing(depth)) {
-    tree_height <- max(colSums(ps$structure))
-    interval <- depth / tree_height
-  }
+  # if(!missing(depth)) {
+  #   tree_height <- max(colSums(ps$structure))
+  #   interval <- depth / tree_height
+  # }
 
   partition <- check_partition(partition)
 
