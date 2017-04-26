@@ -65,7 +65,7 @@ chainsaw <- function(partition, ps, interval, depth) {
 
     rooted_tree <- ps$tree
     rooted_tree$root.edge <- abs(cut_depth)
-    ps <- phy_struct(rooted_tree)
+    ps <- phy_struct(rooted_tree, partition)
 
     structure_matrix <- ps$structure
     T_bar <- ps$tbar
