@@ -73,7 +73,8 @@ chainsaw <- function(partition, ps, interval, depth) {
 
   }else if(interval > 0 & interval < 1){
     # if interval is betweel 0 and 1
-    tree_height <- max(colSums(ps$structure))
+    old_struct <- ps$structure*ps$tbar
+    tree_height <- max(colSums(old_struct))
     cut_depth <- tree_height - (tree_height * interval)
 
     # Find branch lengths
