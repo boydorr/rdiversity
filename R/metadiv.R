@@ -67,9 +67,9 @@ setMethod(f = "metadiv", signature= "powermean",
             output <- cbind.data.frame(measure = data@measure,
                                        q = output$Var2, 
                                        type_level = "types",
-                                       type_name = NA,
+                                       type_name = "",
                                        partition_level = "metacommunity",
-                                       partition_name = output$Var1,
+                                       partition_name = "",
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
             tibble::as_data_frame(output)
@@ -95,9 +95,9 @@ setMethod(f = "metadiv", signature= "relativeentropy",
             output <- cbind.data.frame(measure = data@measure,
                                        q = output$Var2, 
                                        type_level = "types",
-                                       type_name = NA,
+                                       type_name = "",
                                        partition_level = "metacommunity",
-                                       partition_name = output$Var1,
+                                       partition_name = "",
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
             tibble::as_data_frame(output)
