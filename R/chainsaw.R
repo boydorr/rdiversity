@@ -125,6 +125,9 @@ chainsaw <- function(partition, ps, interval, depth) {
                                    colnames(structure_matrix)),, drop = FALSE]
     partition <- partition / sum(partition)
 
+    # New phy_struct() $structure
+    structure_matrix <- structure_matrix / T_bar
+    
   }
 
   # Repackage metacommunity object
