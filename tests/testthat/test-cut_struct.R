@@ -27,6 +27,40 @@ test_that("Setting interval to 2 returns a long root for non-ultrametric trees",
 })
 
 
+
+# test_that("Setting interval to 0.5 cuts off root", {
+#   tree <- ape::read.tree(text="(A:1,B:2);")
+#   partition <- setNames(c(0.6, 0.4), tree$tip.label)
+#   meta <- metacommunity(partition, tree)
+# 
+#   tree2 <- ape::read.tree(text="(A:1,B:2)R:2;")
+#   meta2 <- metacommunity(partition, tree2, 0.5)
+# 
+#   expect_equivalent(norm_meta_alpha(meta, 0:2),
+#                     norm_meta_alpha(meta2, 0:2))
+# })
+
+
+
+test_that("Setting interval to 0.5 cuts off root", {
+  tree <- ape::read.tree(text="(A:4,B:3);")
+  partition <- setNames(c(0.6, 0.4), tree$tip.label)
+  meta <- metacommunity(partition, tree, 0.5)
+  ps <- phy_struct(tree, partition)
+  structure_matrix <- ps$structure
+  pa <- phy_abundance(partition, structure_matrix)
+  
+  tree2 <- ape::read.tree(text="(A:2,B:1);")
+  meta2 <- metacommunity(partition, tree2)
+  ps2 <- phy_struct(tree2, partition)
+  structure_matrix2 <- ps2$structure
+  pa2 <- phy_abundance(partition, structure_matrix2)
+  
+  expect_equivalent(norm_meta_alpha(meta, 0:2),
+                    norm_meta_alpha(meta2, 0:2))
+})
+
+
 test_that("Setting interval to 1 returns the phylogeny intact", {
   tree <- ape::read.tree(text="(A:1,B:2)R:2;")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
@@ -43,11 +77,11 @@ test_that("Setting interval to < 1 returns correct results", {
   partition <- partition / sum(partition)
   
   # Full tree
-  ps <- phy_struct(tree)
+  ps <- phy_struct(tree, partition)
   structure_matrix <- ps$structure
   
   pa <- phy_abundance(partition, structure_matrix)
-  T_bar <- tbar(partition, structure_matrix)
+  T_bar <- ps$tbar
   s <- smatrix(ps)
   z <- zmatrix(partition, s, ps)
   
@@ -62,16 +96,15 @@ test_that("Setting interval to < 1 returns correct results", {
   interval <- 7/11
   c_meta <- chainsaw(partition, ps, interval)
   structure_matrix <- c_meta@raw_structure
+  
   c_partition <- partition[which(row.names(partition) %in% 
                                    colnames(structure_matrix)),]
   c_hs <- phy_abundance(c_partition, structure_matrix)
-  c_tbar <- tbar(c_partition, structure_matrix)
- 
+
   ps_ans = cbind(A = c(0,0,0.6,0.1,0.4)/3.7,
                  B = c(0.4,0.1,1.8,0.3,0)/3.7)
   row.names(ps_ans) <- row.names(c_hs)
   
-  testthat::expect_equal(c_tbar, 3.7)
   testthat::expect_equal(c_hs, ps_ans)
 })
 
