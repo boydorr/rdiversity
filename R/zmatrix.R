@@ -31,14 +31,14 @@ zmatrix <-
     
     parameters <- ps$parameters
     structure_matrix <- ps$structure
-    L_j <- colSums(structure_matrix)
+    T_bar <- ps$tbar
+    L_j <- colSums(structure_matrix*T_bar)
     L_j <- L_j[match(parameters$tip_label, colnames(structure_matrix))]
 
     # Identify which species are present
     if (any(row.names(partition) != colnames(structure_matrix)))
       stop("Partition does not match phylogeny.")
     
-    T_bar <- tbar(partition, structure_matrix)
     scaling_factor <- T_bar / L_j
 
     scaling_matrix <- diag(scaling_factor, nrow(structure_matrix))
