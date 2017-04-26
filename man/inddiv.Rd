@@ -64,7 +64,7 @@ inddiv(g, 0:2)
 b <- raw_beta(meta)
 inddiv(b, 0:2)
 
-# Calculate all measures of subcommunity diversity
+# Calculate all measures of individual diversity
 inddiv(meta, 0:2)
 
 }

@@ -16,17 +16,6 @@
 #' \code{$tree} \tab - object of class \code{phylo} \cr
 #' }
 #'
-#' Additional slots (accessed with @, not $) include:
-#' 
-#' \tabular{ll}{
-#' \code{historic.species} \tab - a data_frame containing components associated 
-#' with historic species \cr
-#' \code{terminal_taxa} \tab - na data_frame containing components associated 
-#' with terminal taxa \cr
-#' \code{Tbar} \tab - \cr
-#' \code{structure} \tab -  \cr
-#' }
-#'
 #' @export
 #'
 #' @examples

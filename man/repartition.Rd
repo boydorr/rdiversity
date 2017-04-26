@@ -10,8 +10,8 @@ repartition(meta, new_partition)
 \item{meta}{object of class \code{metacommunity}.}
 
 \item{new_partition}{proportional abundance of \emph{types} in the
-subcommunity as a fraction of the metacommunity as a whole (in the 
-phylogenetic case, this corresponds to the proportional abundance of 
+subcommunity as a fraction of the metacommunity as a whole (in the
+phylogenetic case, this corresponds to the proportional abundance of
 terminal taxa).}
 }
 \value{

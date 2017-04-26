@@ -15,7 +15,7 @@
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' 
-#' ps <- phy_struct(tree)
+#' ps <- phy_struct(tree, partition)
 #' smatrix(ps)
 #' 
 smatrix <- 
