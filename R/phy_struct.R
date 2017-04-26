@@ -3,7 +3,11 @@
 #' Converts an object into class \code{phylo} into class \code{phy_struct}.
 #'
 #' @param tree object of class \code{phylo}
-
+#' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with
+#' rows as types, columns as subcommunities, and elements containing relative
+#' abundances of types in subcommunities. In the case of phylogenetic
+#' metacommunities, these are the relative abundances of terminal taxa.
+#'
 #' @return Returns a \code{list} containing:
 #' \tabular{ll}{
 #' \code{$structure} \tab - each row denotes historic species, columns denote
