@@ -48,9 +48,10 @@ phy_struct <- function(tree) {
   s_matrix <- s_matrix / T_bar
   
   # Output
-  list(structure = s_matrix, 
-      parameters = parameters,
-      tree = tree)
+  list(structure = s_matrix,
+       tbar = T_bar,
+       parameters = parameters,
+       tree = tree)
 }
 
 
