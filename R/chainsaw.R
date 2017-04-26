@@ -49,6 +49,7 @@ chainsaw <- function(partition, ps, interval, depth) {
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny
     structure_matrix <- ps$structure
+    T_bar <- ps$tbar
     parameters <- ps$parameters
 
   }else if(isTRUE(all.equal(0, interval))) {
@@ -66,6 +67,7 @@ chainsaw <- function(partition, ps, interval, depth) {
     ps <- phy_struct(rooted_tree)
 
     structure_matrix <- ps$structure
+    T_bar <- ps$tbar
     parameters <- ps$parameters
 
   }else if(interval > 0 & interval < 1){
