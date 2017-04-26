@@ -43,7 +43,7 @@
 #' b <- raw_beta(meta)
 #' inddiv(b, 0:2)
 #'
-#' # Calculate all measures of subcommunity diversity
+#' # Calculate all measures of individual diversity
 #' inddiv(meta, 0:2)
 #' 
 setGeneric(name = "inddiv",
@@ -58,10 +58,10 @@ setMethod(f = "inddiv", signature= "powermean",
           definition = function(data, qs) {
             output <- reshape2::melt(data@results)
             output <- cbind.data.frame(measure = data@measure, 
-                                       q = NA,  
+                                       q = rep(qs, each=nrow(output)),  
                                        type_level = "type", 
                                        type_name = output$Var1, 
-                                       partition_level = "type",
+                                       partition_level = "subcommunity",
                                        partition_name = output$Var2,
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
@@ -76,10 +76,10 @@ setMethod(f = "inddiv", signature= "relativeentropy",
           definition = function(data, qs) {
             output <- reshape2::melt(data@results)
             output <- cbind.data.frame(measure = data@measure, 
-                                       q = NA,  
+                                       q = rep(qs, each=nrow(output)),  
                                        type_level = "type", 
                                        type_name = output$Var1, 
-                                       partition_level = "type",
+                                       partition_level = "subcommunity",
                                        partition_name = output$Var2,
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
