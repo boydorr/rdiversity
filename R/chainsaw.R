@@ -78,7 +78,7 @@ chainsaw <- function(partition, ps, interval, depth) {
     cut_depth <- tree_height - (tree_height * interval)
 
     # Find branch lengths
-    index <- apply(ps$structure, 2, function(x) which(x>0))
+    index <- apply(old_struct, 2, function(x) which(x>0))
     index <- lapply(seq_along(index), function(x)
       cbind.data.frame(column = x,
                        start_row = index[[x]][1],
@@ -86,7 +86,7 @@ chainsaw <- function(partition, ps, interval, depth) {
     index <- do.call(rbind.data.frame, index)
 
     # Edit $structure matrix
-    structure_matrix <- ps$structure
+    structure_matrix <- old_struct
     for(i in 1:nrow(index)) {
       these_branches <- structure_matrix[index$end_row[i]:index$start_row[i],i]
       cut_here <- cut_depth
@@ -102,7 +102,8 @@ chainsaw <- function(partition, ps, interval, depth) {
 
       structure_matrix[index$end_row[i]:index$start_row[i],i] <- these_branches
     }
-
+    T_bar <-  sum(structure_matrix %*% partition)
+    
     # Remove species that are no longer present
     missing_species <- which(sapply(colSums(structure_matrix),
                                     function(x) isTRUE(all.equal(x, 0))))
@@ -129,6 +130,7 @@ chainsaw <- function(partition, ps, interval, depth) {
   # Repackage metacommunity object
   hs <- phy_abundance(partition, structure_matrix)
   ps <- list(structure = structure_matrix,
+             tbar = T_bar,
              parameters = parameters,
              tree = ps$tree)
   s <- smatrix(ps)
