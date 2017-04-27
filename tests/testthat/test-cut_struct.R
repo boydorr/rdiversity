@@ -28,21 +28,21 @@ test_that("Setting interval to 2 returns a long root for non-ultrametric trees",
 
 
 
-# test_that("Setting interval to 0.5 cuts off root", {
-#   tree <- ape::read.tree(text="(A:1,B:2);")
-#   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-#   meta <- metacommunity(partition, tree)
-# 
-#   tree2 <- ape::read.tree(text="(A:1,B:2)R:2;")
-#   meta2 <- metacommunity(partition, tree2, 0.5)
-# 
-#   expect_equivalent(norm_meta_alpha(meta, 0:2),
-#                     norm_meta_alpha(meta2, 0:2))
-# })
-
-
-
 test_that("Setting interval to 0.5 cuts off root", {
+  tree <- ape::read.tree(text="(A:1,B:2);")
+  partition <- setNames(c(0.6, 0.4), tree$tip.label)
+  meta <- metacommunity(partition, tree)
+
+  tree2 <- ape::read.tree(text="(A:1,B:2)R:2;")
+  meta2 <- metacommunity(partition, tree2, 0.5)
+
+  expect_equivalent(norm_meta_alpha(meta, 0:2),
+                    norm_meta_alpha(meta2, 0:2))
+})
+
+
+
+test_that("Setting interval to 0.5 cuts the phylogeny in half", {
   tree <- ape::read.tree(text="(A:4,B:3);")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
   meta <- metacommunity(partition, tree, 0.5)
