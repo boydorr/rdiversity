@@ -28,9 +28,11 @@
 #' res <- phy_struct(tree, partition)
 #'
 phy_struct <- function(tree, partition) {
+  partition <- check_partition(partition)
+
   # Extract parameters associated with each historic species
   parameters <- hs_parameters(tree)
-  
+
   # Create structural matrix
   s_matrix <- matrix(0, ncol = length(seq_along(tree$tip.label)),
                      nrow = nrow(parameters))
@@ -40,9 +42,9 @@ phy_struct <- function(tree, partition) {
   index <- cbind(row = 1:nrow(parameters), col = index)
   s_matrix[index] <- parameters$lengths
   T_bar <-  sum(s_matrix %*% partition)
-  
+
   s_matrix <- s_matrix / T_bar
-  
+
   # Output
   list(structure = s_matrix,
        tbar = T_bar,
