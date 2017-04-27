@@ -38,69 +38,66 @@ chainsaw <- function(partition, ps, interval, depth) {
     stop("Only one value may be input as 'depth'")
   if(!missing(interval) & !missing(depth))
     stop("Either 'interval' or 'depth' may be input, not both!")
-
-  # if(!missing(depth)) {
-  #   tree_height <- max(colSums(ps$structure))
-  #   interval <- depth / tree_height
-  # }
-
+  
   partition <- check_partition(partition)
-
+  
   if(isTRUE(all.equal(1, interval))) {
     # If interval = 1, return original phylogeny
     structure_matrix <- ps$structure
     T_bar <- ps$tbar
     parameters <- ps$parameters
-
+    
   }else if(isTRUE(all.equal(0, interval))) {
     # If interval = 0, remove phylogeny
     cut_meta <- metacommunity(partition)
     return(cut_meta)
-
+    
   }else if(interval > 1){
     # if interval is greater than 1
     old_struct <- ps$structure*ps$tbar
     tree_height <- max(old_struct)
     cut_depth <- tree_height - (tree_height * interval)
-
+    
     rooted_tree <- ps$tree
     rooted_tree$root.edge <- abs(cut_depth)
     ps <- phy_struct(rooted_tree, partition)
-
+    
     structure_matrix <- ps$structure
     T_bar <- ps$tbar
     parameters <- ps$parameters
-
+    
   }else if(interval > 0 & interval < 1){
     # if interval is betweel 0 and 1
     old_struct <- ps$structure*ps$tbar
     tree_height <- max(colSums(old_struct))
     cut_depth <- tree_height - (tree_height * interval)
-
-    # Find branch lengths
-    index <- apply(old_struct, 2, function(x) which(x>0))
+    
+    # Extract branch lengths
+    index <- lapply(seq_along(colnames(old_struct)), 
+                    function(x) which(old_struct[,x]>0))
+    
     index <- lapply(seq_along(index), function(x)
-      cbind.data.frame(column = x,
-                       start_row = index[[x]][1],
-                       end_row = index[[x]][length(index[[x]])]))
+      cbind.data.frame(sp = x,
+                       first_branch = index[[x]][1],
+                       last_branch = index[[x]][length(index[[x]])]))
     index <- do.call(rbind.data.frame, index)
-
+    
     # Edit $structure matrix
     structure_matrix <- old_struct
-    for(i in 1:nrow(index)) {
-      these_branches <- structure_matrix[index$end_row[i]:index$start_row[i],i]
+    for(i in 1:nrow(index)) { # for each species
+      lineage <- structure_matrix[index$last_branch[i]:index$first_branch[i],i, drop=FALSE]
       cut_here <- cut_depth
       j = 0
       while(cut_here > 0) {
         j <- j + 1
-        cut_here <- cut_here - these_branches[[j]]
-        if(isTRUE(all.equal(length(these_branches), j))) break
+        cut_here <- cut_here - lineage[[j]]
+        if(isTRUE(all.equal(length(lineage), j))) break
       }
-      these_branches[1:j] <- 0
+      lineage[1:j] <- 0
       if(cut_here < 0)
-        these_branches[j] <- abs(cut_here)
-
-      structure_matrix[index$end_row[i]:index$start_row[i],i] <- these_branches
+        lineage[j] <- abs(cut_here)
+      
+      structure_matrix[index$last_branch[i]:index$first_branch[i],i] <- lineage
     }
     T_bar <-  sum(structure_matrix %*% partition)
     
@@ -109,27 +106,27 @@ chainsaw <- function(partition, ps, interval, depth) {
                                     function(x) isTRUE(all.equal(x, 0))))
     if(!isTRUE(all.equal(length(missing_species), 0)))
       structure_matrix <- structure_matrix[,-missing_species, drop = FALSE]
-
+    
     # Remove historic species that are no longer present
     missing_hs <- which(sapply(rowSums(structure_matrix),
                                function(x) isTRUE(all.equal(x, 0))))
     if(!isTRUE(all.equal(length(missing_hs), 0)))
       structure_matrix <- structure_matrix[-missing_hs,, drop = FALSE]
-
+    
     # Edit $parameters
     parameters <- ps$parameters
     parameters <- parameters[parameters$hs_names %in% row.names(structure_matrix),]
-
+    
     # Remove species that are no longer present
     partition <- partition[which(row.names(partition) %in%
                                    colnames(structure_matrix)),, drop = FALSE]
     partition <- partition / sum(partition)
-
+    
     # New phy_struct() $structure
     structure_matrix <- structure_matrix / T_bar
     
   }
-
+  
   # Repackage metacommunity object
   hs <- phy_abundance(partition, structure_matrix)
   ps <- list(structure = structure_matrix,
@@ -139,12 +136,12 @@ chainsaw <- function(partition, ps, interval, depth) {
   s <- smatrix(ps)
   z <- zmatrix(partition, s, ps)
   cut_meta <- metacommunity(hs, z)
-
+  
   # Fill in 'phylogeny' metacommunity slots
   cut_meta@raw_abundance <- partition
   cut_meta@raw_structure <- structure_matrix
   cut_meta@parameters <- parameters
-
+  
   # Output
   cut_meta
 }
