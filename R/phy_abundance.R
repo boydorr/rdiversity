@@ -2,7 +2,7 @@
 #'
 #' Calculates the relative abundance of historical species.
 #'
-#' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with
+#' @param partition two-dimensional \code{matrix} of mode \code{numeric} with
 #' rows as types, columns as subcommunities, and elements containing relative
 #' abundances of types in subcommunities. In the case of phylogenetic
 #' metacommunities, these are the relative abundances of terminal taxa.

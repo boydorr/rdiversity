@@ -28,12 +28,13 @@ are calculated from the resulting partition.
 \examples{
 tree <- ape::rtree(n = 5)
 tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
-partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+partition <- cbind(a = sample(5,5), b = sample(5,5))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 meta <- metacommunity(partition, tree)
-new_partition <- partition[sample(1:5),]
+meta@raw_abundance
 
-repartition(meta, new_partition)
+a <- repartition(meta)
+a@raw_abundance
 
 }

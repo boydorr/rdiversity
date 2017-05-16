@@ -38,7 +38,7 @@ row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 ps <- phy_struct(tree, partition)
 
-a <- chainsaw(partition, ps, interval = 0.4)
+a <- chainsaw(partition, ps, interval = 0.9)
 b <- chainsaw(partition, ps, interval = 2)
 z <- chainsaw(partition, ps, interval = 0)
 m <- chainsaw(partition, ps, interval = 1)
