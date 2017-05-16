@@ -91,8 +91,8 @@ chainsaw <- function(partition, ps, interval, depth) {
       j = 0
       while(cut_here > 0) {
         j <- j + 1
-        cut_here <- cut_here - lineage[[j]]
-        if(isTRUE(all.equal(length(lineage), j))) break
+        cut_here <- cut_here - lineage[j,1]
+        if(nrow(lineage) == j) break
       }
       lineage[1:j,1] <- 0
       if(cut_here < 0)
