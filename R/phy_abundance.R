@@ -23,6 +23,7 @@ phy_abundance <- function(partition, structure_matrix) {
   # Identify which species are present
   if (any(row.names(partition) != colnames(structure_matrix)))
     stop("Partition does not match phylogeny.")
-
+  partition <- check_partition(partition)
+  
   structure_matrix %*% partition
 }
