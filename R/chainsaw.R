@@ -121,6 +121,11 @@ chainsaw <- function(partition, ps, interval, depth) {
     # Remove species that are no longer present
     partition <- partition[which(row.names(partition) %in%
                                    colnames(structure_matrix)),, drop = FALSE]
+    
+    # If no species are present, we don't want NAs.
+    if(isTRUE(all.equal(0, sum(partition)))) 
+      stop("Zero individuals does not make a metacommunity.")
+      
     partition <- partition / sum(partition)
     
     # New phy_struct() $structure
