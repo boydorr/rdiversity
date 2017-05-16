@@ -52,7 +52,7 @@ repartition <- function(meta, new_partition) {
     new_meta <- metacommunity(hs_abundance/sum(hs_abundance),
                               meta@similarity*sum(hs_abundance))
     new_meta@raw_abundance <- new_partition
-    new_meta@raw_structure <- meta@raw_structure
+    new_meta@raw_structure <- meta@raw_structure/sum(hs_abundance)
     new_meta@parameters <- meta@parameters
   }
 
