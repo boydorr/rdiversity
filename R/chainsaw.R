@@ -26,7 +26,7 @@
 #' partition <- partition / sum(partition)
 #' ps <- phy_struct(tree, partition)
 #'
-#' a <- chainsaw(partition, ps, interval = 0.4)
+#' a <- chainsaw(partition, ps, interval = 0.9)
 #' b <- chainsaw(partition, ps, interval = 2)
 #' z <- chainsaw(partition, ps, interval = 0)
 #' m <- chainsaw(partition, ps, interval = 1)
@@ -52,7 +52,7 @@ chainsaw <- function(partition, ps, interval, depth) {
     cut_meta <- metacommunity(partition)
     return(cut_meta)
     
-  }else if(interval > 1){
+  }else if(interval > 1) {
     # if interval is greater than 1
     old_struct <- ps$structure*ps$tbar
     tree_height <- max(old_struct)
@@ -85,7 +85,8 @@ chainsaw <- function(partition, ps, interval, depth) {
     # Edit $structure matrix
     structure_matrix <- old_struct
     for(i in 1:nrow(index)) { # for each species
-      lineage <- structure_matrix[index$last_branch[i]:index$first_branch[i],i, drop=FALSE]
+      lineage <- structure_matrix[index$last_branch[i]:index$first_branch[i],
+                                  i, drop=FALSE]
       cut_here <- cut_depth
       j = 0
       while(cut_here > 0) {
@@ -93,9 +94,9 @@ chainsaw <- function(partition, ps, interval, depth) {
         cut_here <- cut_here - lineage[[j]]
         if(isTRUE(all.equal(length(lineage), j))) break
       }
-      lineage[1:j] <- 0
+      lineage[1:j,1] <- 0
       if(cut_here < 0)
-        lineage[j] <- abs(cut_here)
+        lineage[j,1] <- abs(cut_here)
       
       structure_matrix[index$last_branch[i]:index$first_branch[i],i] <- lineage
     }
@@ -124,7 +125,6 @@ chainsaw <- function(partition, ps, interval, depth) {
     
     # New phy_struct() $structure
     structure_matrix <- structure_matrix / T_bar
-    
   }
   
   # Repackage metacommunity object
