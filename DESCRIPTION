@@ -1,8 +1,8 @@
 Package: rdiversity
 Type: Package
 Title: A package for measuring similarity-sensitive diversity
-Version: 0.6
-Date: 2017-04-28
+Version: 0.6.1
+Date: 2017-05-16
 Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.uk",
                   role = c("aut", "cre")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
