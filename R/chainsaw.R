@@ -100,7 +100,6 @@ chainsaw <- function(partition, ps, interval, depth) {
       
       structure_matrix[index$last_branch[i]:index$first_branch[i],i] <- lineage
     }
-    T_bar <-  sum(structure_matrix %*% partition)
     
     # Remove species that are no longer present
     missing_species <- which(sapply(colSums(structure_matrix),
@@ -127,6 +126,8 @@ chainsaw <- function(partition, ps, interval, depth) {
       stop("Zero individuals does not make a metacommunity.")
       
     partition <- partition / sum(partition)
+    
+    T_bar <- sum(structure_matrix %*% partition)
     
     # New phy_struct() $structure
     structure_matrix <- structure_matrix / T_bar
