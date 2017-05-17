@@ -49,6 +49,12 @@ chainsaw <- function(partition, ps, interval, depth) {
 
   }else if(isTRUE(all.equal(0, interval))) {
     # If interval = 0, remove phylogeny
+    old_struct <- ps$structure*ps$tbar
+    lineage_heights <- colSums(old_struct)
+    tree_height <- max(lineage_heights)
+    present_day_species <- sapply(lineage_heights, function(x)
+      isTRUE(all.equal(tree_height, x)))
+    partition <- partition[present_day_species,]
     cut_meta <- metacommunity(partition)
     return(cut_meta)
 
