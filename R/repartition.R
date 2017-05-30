@@ -24,10 +24,10 @@
 #' partition <- partition / sum(partition)
 #' meta <- metacommunity(partition, tree)
 #' meta@raw_abundance
-#' 
+#'
 #' a <- repartition(meta)
 #' a@raw_abundance
-#' 
+#'
 repartition <- function(meta, new_partition) {
 
   if(isTRUE(all.equal(0, length(meta@raw_structure)))) {
@@ -44,7 +44,8 @@ repartition <- function(meta, new_partition) {
     # Phylogenetic metacommunity
     raw_abundance <- meta@raw_abundance
     if (missing(new_partition))
-      new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))),]
+      new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))),
+                                     , drop = FALSE]
     new_partition <- check_partition(new_partition)
     row.names(new_partition) <- row.names(raw_abundance)
 
