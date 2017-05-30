@@ -34,9 +34,13 @@ repartition <- function(meta, new_partition) {
     # Non-phylogenetic metacommunity
     partition <- meta@type_abundance
     if(missing(new_partition))
-      new_partition <- partition[sample(seq_along(row.names(partition))),, 
+      new_partition <- partition[sample(seq_along(row.names(partition))),,
                                  drop = FALSE]
     new_partition <- check_partition(new_partition)
+    # Check
+    if(any(dim(partition) != dim(new_partition)))
+      stop('Something has gone wrong.')
+
     row.names(new_partition) <- row.names(partition)
 
     new_meta <- metacommunity(new_partition, meta@similarity)
@@ -48,6 +52,10 @@ repartition <- function(meta, new_partition) {
       new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))),
                                      , drop = FALSE]
     new_partition <- check_partition(new_partition)
+    # Check
+    if(any(dim(raw_abundance) != dim(new_partition)))
+      stop('Something has gone wrong.')
+
     row.names(new_partition) <- row.names(raw_abundance)
 
     hs_abundance <- phy_abundance(new_partition, meta@raw_structure)
