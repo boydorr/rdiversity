@@ -33,8 +33,9 @@ repartition <- function(meta, new_partition) {
   if(isTRUE(all.equal(0, length(meta@raw_structure)))) {
     # Non-phylogenetic metacommunity
     partition <- meta@type_abundance
-    if (missing(new_partition))
-      new_partition <- partition[sample(seq_along(row.names(partition))),]
+    if(missing(new_partition))
+      new_partition <- partition[sample(seq_along(row.names(partition))),, 
+                                 drop = FALSE]
     new_partition <- check_partition(new_partition)
     row.names(new_partition) <- row.names(partition)
 
@@ -43,7 +44,7 @@ repartition <- function(meta, new_partition) {
   }else {
     # Phylogenetic metacommunity
     raw_abundance <- meta@raw_abundance
-    if (missing(new_partition))
+    if(missing(new_partition))
       new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))),
                                      , drop = FALSE]
     new_partition <- check_partition(new_partition)
