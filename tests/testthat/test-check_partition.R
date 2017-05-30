@@ -9,3 +9,10 @@ test_that("The function check_partition() is correct", {
   expect_equal(class(pd), class(pv))
 })
 
+test_that("check_partition() returns the same population dimensions when only a single subcommunity is present", {
+  single_sc <- matrix(c(1,3), ncol=1)
+  rownames(single_sc) <- c("sp1", "sp2")
+  colnames(single_sc) <- "a"
+  
+  expect_warning(expect_equal(dim(check_partition(single_sc)), dim(single_sc)))
+})
