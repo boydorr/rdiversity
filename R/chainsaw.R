@@ -73,7 +73,7 @@ chainsaw <- function(partition, ps, interval, depth) {
     parameters <- ps$parameters
 
   }else if(interval > 0 & interval < 1){
-    # if interval is betweel 0 and 1
+    # if interval is between 0 and 1
     old_struct <- ps$structure*ps$tbar
     tree_height <- max(colSums(old_struct))
     cut_depth <- tree_height - (tree_height * interval)
