@@ -39,7 +39,7 @@ repartition <- function(meta, new_partition) {
     new_partition <- check_partition(new_partition)
     # Check
     if(any(dim(partition) != dim(new_partition)))
-      stop('Something has gone wrong.')
+      stop('Dimensionality has changed during repartition()ing')
 
     row.names(new_partition) <- row.names(partition)
 
@@ -54,7 +54,7 @@ repartition <- function(meta, new_partition) {
     new_partition <- check_partition(new_partition)
     # Check
     if(any(dim(raw_abundance) != dim(new_partition)))
-      stop('Something has gone wrong.')
+      stop('Dimensionality has changed during repartition()ing')
 
     row.names(new_partition) <- row.names(raw_abundance)
 
