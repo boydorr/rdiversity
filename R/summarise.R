@@ -8,7 +8,6 @@
 #' column rather than just along each set.
 #' 
 #' @return Returns an array whose columns are proportions.
-#' @export
 #' 
 summarise <-
   function(populations, normalise = TRUE)
