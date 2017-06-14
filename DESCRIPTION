@@ -1,6 +1,6 @@
 Package: rdiversity
 Type: Package
-Title: A Package for Measuring Similarity-Sensitive Diversity
+Title: Measurement and Partitioning of Similarity-Sensitive Biodiversity
 Version: 1.0
 Date: 2017-06-14
 Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.uk",
@@ -10,8 +10,9 @@ Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.u
 Maintainer: Sonia Mitchell <s.mitchell.2@research.gla.ac.uk>
 URL: https://github.com/boydorr/rdiversity
 BugReports: https://github.com/boydorr/rdiversity/issues
-Description: Calculates the similarity-sensitive diversity of a population and
-    its partitions.
+Description: This package provides a framework for the measurement and
+    partitioning of the (similarity-sensitive) biodiversity of a
+    metacommunity and its constituent subcommunities.
 License: GPL-3
 Imports:
     methods,
