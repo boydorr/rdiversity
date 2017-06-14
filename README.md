@@ -8,7 +8,7 @@
 `rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (e.g. ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity measures described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520),
 *How to partition diversity*. 
 
-This package is still in beta and under development, and so we do not guarantee its correctness. However, it is cross-validated against our Julia package [richardreeve/Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently, so please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
+This package is still in beta and under development, and so we do not guarantee its correctness. However, it is cross-validated against our Julia package [richardreeve/Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently. Please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
 
 ## Installation
 
