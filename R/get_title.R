@@ -24,7 +24,8 @@ get_title <- function(community_type, measure, symbol = FALSE) {
     if(isTRUE(symbol)) {
       tag <- ifelse(grepl(" ", measure), unlist(strsplit(measure, " "))[2], measure) 
       tag <- as.symbol(tag)
-      tag <- if(grepl("normalised", measure)) bquote(bar(.(tag))) else bquote(.(tag))
+      tag <- if(grepl("normalised", measure)) bquote(bar(plyr::.(tag))) else 
+        bquote(plyr::.(tag))
     }else tag <- measure
     
   }else if(community_type %in% "metacommunity") {
@@ -35,12 +36,12 @@ get_title <- function(community_type, measure, symbol = FALSE) {
       if(tag %in% 'rho') tag <- 'R'
       if(tag %in% 'gamma') tag <- 'G'
       tag <- if(grepl("normalised", measure)) 
-        bquote(bar(italic(.(tag)))) else bquote(italic(.(tag))) 
+        bquote(bar(italic(plyr::.(tag)))) else bquote(italic(plyr::.(tag))) 
     }else tag <- measure
   }
   
   community_type <- gsub("subcommunity", "Subcommunity", community_type)
   community_type <- gsub("metacommunity", "Metacommunity", community_type)
-  bquote(.(community_type) ~ .(tag))
+  bquote(.(community_type) ~ plyr::.(tag))
 }
 
