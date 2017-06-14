@@ -1,12 +1,17 @@
 #' rdiversity
 #'
-#' The \code{rdiversity} package calculates the similarity-sensitive diversity
-#' of a population and it's partitions.
-#'
-#' This package calculates, or takes as input, the similarity between types
-#' (naive, taxonomic, phenotypic, genetic, phylogenetic, functional, etc.), 
-#' where a type is defined as the categorical variable that describes how the
-#' similarity of individuals is assessed.
+#' \code{rdiversity} is a package for R based around a framework of 
+#' similarity-sensitive diversity measures. It provides functionality for 
+#' measuring alpha, beta and gamma diversity of metacommunities (e.g. 
+#' ecosystems) and their constituent subcommunities, where similarity may be 
+#' defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so 
+#' on. It uses the diversity measures described in the arXiv paper 
+#' arXiv:1404.6520 (q-bio.QM), How to partition diversity.
+#' 
+#' For more information go to our GitHub page 
+#' (https://github.com/boydorr/rdiversity).
+#' 
+#' 
 #'
 #' @name rdiversity-package
 #' @aliases rdiversity
