@@ -28,4 +28,10 @@ plot_diversity(res)
 res <- subdiv(meta, 0:2)
 plot_diversity(res)
 
+# Try a single population
+pop <- c(1,3,4)
+meta <- metacommunity(pop)
+res <- norm_sub_alpha(meta, 0:2)
+plot_diversity(res)
+
 }
