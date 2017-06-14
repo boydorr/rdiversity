@@ -16,7 +16,8 @@
 #' \item This package is cross-validated against our Julia package; \url{https://github.com/richardreeve/Diversity.jl}
 #' }
 #'
-#' @author Sonia Mitchell, Richard Reeve
+#' @author Sonia Mitchell <s.mitchell.2@research.gla.ac.uk>, 
+#' Richard Reeve <richard.reeve@glasgow.ac.uk>
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
 #' @name rdiversity-package

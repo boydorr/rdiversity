@@ -28,5 +28,6 @@ Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
 S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
 }
 \author{
-Sonia Mitchell, Richard Reeve
+Sonia Mitchell <s.mitchell.2@research.gla.ac.uk>, 
+Richard Reeve <richard.reeve@glasgow.ac.uk>
 }
