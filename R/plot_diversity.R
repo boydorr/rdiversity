@@ -48,7 +48,7 @@ plot_diversity <- function(data) {
     ggthemes::scale_color_ptol()
 
   if(length(measure)>1) {
-    x = ggplot2::label_bquote(.(measure))
+    x = ggplot2::label_bquote(plyr::.(measure))
     g <- g + ggplot2::facet_wrap(~measure, labeller = x)
   }
 
