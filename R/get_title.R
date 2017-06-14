@@ -20,15 +20,15 @@ get_title <- function(community_type, measure, symbol = FALSE) {
     stop("Results must not contain any more than one partition_level.")
   
   # Create tag
-  if(community_type %in% "subcommunity") {
+  if(community_type %in% "subcommunity" | community_type %in% "Subcommunity") {
     if(isTRUE(symbol)) {
       tag <- ifelse(grepl(" ", measure), unlist(strsplit(measure, " "))[2], measure) 
       tag <- as.symbol(tag)
-      tag <- if(grepl("normalised", measure)) bquote(bar(plyr::.(tag))) else 
-        bquote(plyr::.(tag))
+      tag <- if(grepl("normalised", measure)) bquote(bar(.(tag))) else 
+        bquote(.(tag))
     }else tag <- measure
     
-  }else if(community_type %in% "metacommunity") {
+  }else if(community_type %in% "metacommunity" | community_type %in% "Metacommunity") {
     if(isTRUE(symbol)) {
       tag <- ifelse(grepl(" ", measure), unlist(strsplit(measure, " "))[2], measure)
       if(tag %in% 'alpha') tag <- "A"
@@ -36,12 +36,12 @@ get_title <- function(community_type, measure, symbol = FALSE) {
       if(tag %in% 'rho') tag <- 'R'
       if(tag %in% 'gamma') tag <- 'G'
       tag <- if(grepl("normalised", measure)) 
-        bquote(bar(italic(plyr::.(tag)))) else bquote(italic(plyr::.(tag))) 
+        bquote(bar(italic(.(tag)))) else bquote(italic(.(tag))) 
     }else tag <- measure
   }
   
   community_type <- gsub("subcommunity", "Subcommunity", community_type)
   community_type <- gsub("metacommunity", "Metacommunity", community_type)
-  bquote(.(community_type) ~ plyr::.(tag))
+  bquote(.(community_type) ~ .(tag))
 }
 
