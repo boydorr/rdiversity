@@ -62,5 +62,4 @@ Collate:
     'summarise.R'
     'tbar.R'
     'zmatrix.R'
-VignetteBuilder: knitr
 Encoding: UTF-8
