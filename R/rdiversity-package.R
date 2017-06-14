@@ -17,6 +17,7 @@
 #' @import methods
 #' @import ape
 #' @import phangorn
+#' @import plyr
 #' @importFrom phytools nodeHeights
 #' @importFrom tidyr nest
 #' @importFrom tibble as_data_frame

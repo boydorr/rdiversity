@@ -17,6 +17,7 @@ Imports:
     ggthemes,
     ape,
     phangorn,
+    plyr,
     tidyr,
     tibble,
     phytools,
