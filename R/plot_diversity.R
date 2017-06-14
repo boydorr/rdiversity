@@ -25,7 +25,7 @@
 #' # Try a single population
 #' pop <- c(1,3,4)
 #' meta <- metacommunity(pop)
-#' res <- norm_sub_alpha(meta, 0:2)
+#' res <- meta_gamma(meta, 0:2)
 #' plot_diversity(res)
 #'
 plot_diversity <- function(data) {
@@ -33,12 +33,12 @@ plot_diversity <- function(data) {
   measure <- unique(data$measure)
   data$partition_name <- as.factor(data$partition_name)
 
+  community <- gsub("subcommunity", "Subcommunity", community)
+  community <- gsub("metacommunity", "Metacommunity", community)
+  
   if(isTRUE(all.equal(1, length(measure))))
     tag <- rdiversity::get_title(community, measure, TRUE) else
       tag <- paste(community, "diversity")
-
-  community <- gsub("subcommunity", "Subcommunity", community)
-  community <- gsub("metacommunity", "Metacommunity", community)
 
   g <- ggplot2::ggplot(data, ggplot2::aes_string(x="q", y="diversity")) +
     ggplot2::theme_bw() +
@@ -47,8 +47,11 @@ plot_diversity <- function(data) {
     ggplot2::labs(x = bquote(italic("q")), y = tag, colour = "Partitions") +
     ggthemes::scale_color_ptol()
 
+  if(community %in% "Metacommunity") 
+    g <- g + theme(legend.position="none")
+  
   if(length(measure)>1) {
-    x = ggplot2::label_bquote(plyr::.(measure))
+    x = ggplot2::label_bquote(.(measure))
     g <- g + ggplot2::facet_wrap(~measure, labeller = x)
   }
 
