@@ -5,9 +5,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.345361.svg)](https://zenodo.org/badge/latestdoi/52015898)
 
-`rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It calculates the diversity of a population and its constituent subcommunities inclusive of similarity between individuals. Similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. 
+`rdiversity` is a package for R based around a framework of similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (e.g. ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity measures described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520),
+*How to partition diversity*. 
 
-This package is still in alpha and under heavy development, and so we do not guarantee its correctness, although we are aware of no problems with it. Please raise an issue if you find any problems.
+This package is still in beta and under development, and so we do not guarantee its correctness. However, it is cross-validated against our Julia package [richardreeve/Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently, so please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
 
 ## Installation
 
@@ -19,7 +20,6 @@ devtools::install_github("boydorr/rdiversity")
 ```
 
 ## Getting started
-
 
 Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity.
 
