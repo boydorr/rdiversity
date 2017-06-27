@@ -10,9 +10,10 @@ Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.u
 Maintainer: Sonia Mitchell <s.mitchell.2@research.gla.ac.uk>
 URL: https://github.com/boydorr/rdiversity
 BugReports: https://github.com/boydorr/rdiversity/issues
-Description: This package provides a framework for the measurement and
-    partitioning of the (similarity-sensitive) biodiversity of a
-    metacommunity and its constituent subcommunities.
+Description: Provides a framework for the measurement and partitioning of
+    the (similarity-sensitive) biodiversity of a metacommunity and its
+    constituent subcommunities. Richard Reeve, et al. (2015) 
+    <arXiv:1404.6520v3 [q-bio.QM].
 License: GPL-3
 Imports:
     methods,
