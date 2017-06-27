@@ -13,7 +13,7 @@ BugReports: https://github.com/boydorr/rdiversity/issues
 Description: Provides a framework for the measurement and partitioning of
     the (similarity-sensitive) biodiversity of a metacommunity and its
     constituent subcommunities. Richard Reeve, et al. (2015) 
-    <arXiv:1404.6520v3 [q-bio.QM].
+    <arXiv:1404.6520v3>.
 License: GPL-3
 Imports:
     methods,
