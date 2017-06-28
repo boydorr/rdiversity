@@ -1,5 +1,6 @@
 # rdiversity  
 
+![](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=ff69b4)
 [![Build Status](https://travis-ci.org/boydorr/rdiversity.svg?branch=master)](https://travis-ci.org/boydorr/rdiversity)
 [![Build status](https://ci.appveyor.com/api/projects/status/463vspjivh08o9x1?svg=true)](https://ci.appveyor.com/project/mysteryduck/rdiversity)
 [![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
@@ -11,7 +12,13 @@ This package has now reached a stable release and is cross-validated against our
 
 ## Installation
 
-To install the latest development version of rdiversity, simply run the following from an R console:
+To install rdiversity from CRAN, simply run the following from an R console:
+
+```r
+install.packages("rdiversity")
+```
+
+or to install the latest development version:
 
 ```r
 install.packages("devtools")
