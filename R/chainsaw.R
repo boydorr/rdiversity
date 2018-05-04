@@ -5,12 +5,11 @@
 #' phylogenetic case, this corresponds to the proportional abundance of
 #' terminal taxa).
 #' @param ps \code{phy_struct()} output.
-#' @param interval proportion of total tree height to be conserved (taken as
+#' @param depth proportion of total tree height to be conserved (taken as
 #' a proportion from the heighest tip). Describes how far back we go in the tree,
 #' with 0 marking the date of the most recent tip, and 1 (the default) marking
 #' the most recent common ancestor. Numbers greater than 1 extend the root of
 #' the tree.
-#' @param depth object length of total tree height to be conserved.
 #'
 #' @export
 #' @return
@@ -26,29 +25,25 @@
 #' partition <- partition / sum(partition)
 #' ps <- phy_struct(tree, partition)
 #'
-#' a <- chainsaw(partition, ps, interval = 0.9)
-#' b <- chainsaw(partition, ps, interval = 2)
-#' z <- chainsaw(partition, ps, interval = 0)
-#' m <- chainsaw(partition, ps, interval = 1)
+#' a <- chainsaw(partition, ps, depth = 0.9)
+#' b <- chainsaw(partition, ps, depth = 2)
+#' z <- chainsaw(partition, ps, depth = 0)
+#' m <- chainsaw(partition, ps, depth = 1)
 #'
-chainsaw <- function(partition, ps, interval, depth) {
-  if(!missing(interval))if(length(interval) > 1)
-    stop("Only one value may be input as 'interval'")
+chainsaw <- function(partition, ps, depth) {
   if(!missing(depth))if(length(depth) > 1)
     stop("Only one value may be input as 'depth'")
-  if(!missing(interval) & !missing(depth))
-    stop("Either 'interval' or 'depth' may be input, not both!")
 
   partition <- check_partition(partition)
 
-  if(isTRUE(all.equal(1, interval))) {
-    # If interval = 1, return original phylogeny
+  if(isTRUE(all.equal(1, depth))) {
+    # If depth = 1, return original phylogeny
     structure_matrix <- ps$structure
     T_bar <- ps$tbar
     parameters <- ps$parameters
 
-  }else if(isTRUE(all.equal(0, interval))) {
-    # If interval = 0, remove phylogeny
+  }else if(isTRUE(all.equal(0, depth))) {
+    # If depth = 0, remove phylogeny
     old_struct <- ps$structure*ps$tbar
     lineage_heights <- colSums(old_struct)
     tree_height <- max(lineage_heights)
@@ -58,11 +53,11 @@ chainsaw <- function(partition, ps, interval, depth) {
     cut_meta <- metacommunity(partition)
     return(cut_meta)
 
-  }else if(interval > 1) {
-    # if interval is greater than 1
+  }else if(depth > 1) {
+    # if depth is greater than 1
     old_struct <- ps$structure*ps$tbar
     tree_height <- max(colSums(old_struct))
-    cut_depth <- tree_height - (tree_height * interval)
+    cut_depth <- tree_height - (tree_height * depth)
 
     rooted_tree <- ps$tree
     rooted_tree$root.edge <- abs(cut_depth)
@@ -72,11 +67,11 @@ chainsaw <- function(partition, ps, interval, depth) {
     T_bar <- ps$tbar
     parameters <- ps$parameters
 
-  }else if(interval > 0 & interval < 1){
-    # if interval is between 0 and 1
+  }else if(depth > 0 & depth < 1){
+    # if depth is between 0 and 1
     old_struct <- ps$structure*ps$tbar
     tree_height <- max(colSums(old_struct))
-    cut_depth <- tree_height - (tree_height * interval)
+    cut_depth <- tree_height - (tree_height * depth)
 
     # Extract branch lengths
     index <- lapply(seq_along(colnames(old_struct)),

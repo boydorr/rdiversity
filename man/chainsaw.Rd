@@ -4,7 +4,7 @@
 \alias{chainsaw}
 \title{Cut Phylogeny}
 \usage{
-chainsaw(partition, ps, interval, depth)
+chainsaw(partition, ps, depth)
 }
 \arguments{
 \item{partition}{proportional abundance of \emph{types} in the
@@ -14,13 +14,11 @@ terminal taxa).}
 
 \item{ps}{\code{phy_struct()} output.}
 
-\item{interval}{proportion of total tree height to be conserved (taken as
+\item{depth}{proportion of total tree height to be conserved (taken as
 a proportion from the heighest tip). Describes how far back we go in the tree,
 with 0 marking the date of the most recent tip, and 1 (the default) marking
 the most recent common ancestor. Numbers greater than 1 extend the root of
 the tree.}
-
-\item{depth}{object length of total tree height to be conserved.}
 }
 \value{
 Returns an object of class \code{phy_struct} containing a new structural
@@ -38,9 +36,9 @@ row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 ps <- phy_struct(tree, partition)
 
-a <- chainsaw(partition, ps, interval = 0.9)
-b <- chainsaw(partition, ps, interval = 2)
-z <- chainsaw(partition, ps, interval = 0)
-m <- chainsaw(partition, ps, interval = 1)
+a <- chainsaw(partition, ps, depth = 0.9)
+b <- chainsaw(partition, ps, depth = 2)
+z <- chainsaw(partition, ps, depth = 0)
+m <- chainsaw(partition, ps, depth = 1)
 
 }
