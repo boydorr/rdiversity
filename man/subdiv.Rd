@@ -40,13 +40,16 @@ Returns a standard output of class \code{tibble}, with columns:
 Generic function for calculating subcommunity-level diversity.
 }
 \details{
-\code{data} may be input as three different classes:
+\code{data} may be input as one of three different classes:
 \itemize{
-\item{\code{power_mean}: calculates raw and normalised subcomunity alpha, rho
-or gamma diversity by taking the powermean of diversity components}
-\item{\code{relativeentropy}: calculates raw or normalised subcommunity beta
-diversity by taking the relative entropy of diversity components}
-\item{\code{metacommunity}: calculates all subcommunity measures of diversity}
+\item{\code{powermean}: raw or normalised metacomunity alpha, rho or gamma 
+diversity components; will calculate subcommunity-level raw or normalised 
+metacomunity alpha, rho or gamma diversity}
+\item{\code{relativeentropy}: raw or normalised metacommunity beta
+diversity components; will calculate subcommunity-level raw or normalised 
+metacommunity beta diversity}
+\item{\code{metacommunity}: will calculate all subcommunity measures of 
+diversity}
 }
 }
 \examples{

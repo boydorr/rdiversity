@@ -1,15 +1,14 @@
-#' Cut Phylogeny
+#' Function to cut phylogeny from present day species to a specified depth.
 #'
-#' @param partition proportional abundance of \emph{types} in the
-#' subcommunity as a fraction of the metacommunity as a whole (in the
-#' phylogenetic case, this corresponds to the proportional abundance of
-#' terminal taxa).
-#' @param ps \code{phy_struct()} output.
+#' @param partition proportional abundance of types in the subcommunity as a 
+#' fraction of the metacommunity as a whole (in the phylogenetic case, this 
+#' corresponds to the proportional abundance of present day species)
+#' @param ps \code{phy_struct()} output
 #' @param depth proportion of total tree height to be conserved (taken as
 #' a proportion from the heighest tip). Describes how far back we go in the tree,
 #' with 0 marking the date of the most recent tip, and 1 (the default) marking
 #' the most recent common ancestor. Numbers greater than 1 extend the root of
-#' the tree.
+#' the tree
 #'
 #' @export
 #' @return

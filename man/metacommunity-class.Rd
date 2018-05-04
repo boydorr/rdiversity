@@ -3,21 +3,13 @@
 \docType{class}
 \name{metacommunity-class}
 \alias{metacommunity-class}
-\alias{is.metacommunity}
 \alias{show,metacommunity-method}
 \title{metacommunity-class}
 \usage{
-is.metacommunity(x)
-
 \S4method{show}{metacommunity}(object)
 }
 \arguments{
-\item{x}{any R object}
-
 \item{object}{object of class \code{metacommunity}}
-}
-\value{
-returns TRUE if its argument is a metacommunity, FALSE otherwise.
 }
 \description{
 Container for class \code{metacommunity}.
@@ -27,30 +19,34 @@ Container for class \code{metacommunity}.
 \describe{
 \item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}
 with rows as types, columns as subcommunities, and elements containing  
-relative abundances of types in subcommunities.  (in the phylogenetic case, 
+relative abundances of types in subcommunities.  In the phylogenetic case, 
 this corresponds to the proportional abundance of historic species, which
-is calculated from the proportional abundance of present day species)}
+is calculated from the proportional abundance of present day species.}
 
-\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains pairwise similarity between \emph{types}}
+\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric} with 
+rows as types, columns as types, and elements containing pairwise 
+similarities between types}
 
-\item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains ordinariness of types}
+\item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric} 
+with rows as types, columns as subcommunities, and elements containing the
+ordinariness of types within subcommunities}
 
 \item{\code{subcommunity_weights}}{\code{vector} of mode \code{numeric}; contains
 subcommunity weights}
 
-\item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains weight of types within a subcommunity}
+\item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}, 
+with rows as types, columns as subcommunities, and elements containing 
+weights of types within a subcommunity}
 
-\item{\code{raw_abundance}}{two-dimensional \code{matrix} of mode \code{numeric};
-contains proportional abundance of samples (usually types, except in the 
-phylogenetic case where samples correspond to the present day species)}
+\item{\code{raw_abundance}}{[Phylogenetic] two-dimensional \code{matrix} of mode 
+\code{numeric} with rows as types, columns as subcommunities, and elements 
+containing the relative abundance of present day species}
 
-\item{\code{raw_structure}}{two-dimensional \code{matrix} of mode \code{numeric}; 
-contains length of historic species (in phylogeny)}
+\item{\code{raw_structure}}{[Phylogenetic] two-dimensional \code{matrix} of mode 
+\code{numeric} with rows as historical species, columns as present day 
+species, and elements containing historical species lengths within lineages}
 
-\item{\code{parameters}}{\code{tibble} containing parameters associated with each 
-historic species (in phylogeny)}
+\item{\code{parameters}}{[Phylogenetic] \code{tibble} containing parameters 
+associated with each historic species in the phylogeny}
 }}
 

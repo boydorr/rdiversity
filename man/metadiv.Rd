@@ -17,8 +17,7 @@ metadiv(data, qs)
 \S4method{metadiv}{metacommunity}(data, qs)
 }
 \arguments{
-\item{data}{\code{matrix} of mode \code{numeric}; containing diversity
-components.}
+\item{data}{see \emph{Details}}
 
 \item{qs}{\code{vector} of mode \code{numeric}; parameter of conservatism.}
 }
@@ -38,13 +37,16 @@ Returns a standard output of class \code{tibble}, with columns:
 Generic function for calculating metacommunity-level diversity.
 }
 \details{
-\code{data} may be input as three different classes:
+\code{data} may be input as one of three different classes:
 \itemize{
-\item{\code{powermean} calculates raw or normalised metacomunity alpha, rho
-or gamma diversity by taking the powermean of diversity components}
-\item{\code{relativeentropy} calculates raw or normalised metacommunity beta
-diversity by taking the relative entropy of diversity components}
-\item{\code{metacommunity} calculates all metacommunity measures of diversity}
+\item{\code{powermean}: raw or normalised metacomunity alpha, rho or gamma 
+diversity components; will calculate metacommunity-level raw or normalised 
+metacomunity alpha, rho or gamma diversity}
+\item{\code{relativeentropy}: raw or normalised metacommunity beta
+diversity components; will calculate metacommunity-level raw or normalised 
+metacommunity beta diversity}
+\item{\code{metacommunity}: will calculate all metacommunity measures of 
+diversity}
 }
 }
 \examples{

@@ -1,17 +1,18 @@
 #' Repartition metacommunity
 #'
-#' Randomly reshuffles the relative abundance of types (e.g. species) in a
-#' metacommunity (whilst maintaining the relationship between the relative
+#' Randomly reshuffles the relative abundance of types (\emph{e.g}. species) in 
+#' a metacommunity (whilst maintaining the relationship between the relative
 #' abundance of a particular species across subcommunities). In the case of a
 #' phylogenetic metacommunity, the relative abundance of terminal taxa are
-#' randomly reshuffled and the relative abundance of types (historic species)
+#' randomly reshuffled and the relative abundance of types (historical species)
 #' are calculated from the resulting partition.
 #'
 #' @param meta object of class \code{metacommunity}.
 #' @param new_partition proportional abundance of \emph{types} in the
 #' subcommunity as a fraction of the metacommunity as a whole (in the
 #' phylogenetic case, this corresponds to the proportional abundance of
-#' terminal taxa).
+#' terminal taxa). If this argument is missing, all species/tips will be
+#' shuffled.
 #'
 #' @return Returns an object of class \code{metacommunity}.
 #' @export
@@ -27,6 +28,12 @@
 #'
 #' a <- repartition(meta)
 #' a@raw_abundance
+#'
+#' # Non-phylogenetic example
+#' meta <- metacommunity(partition)
+#' meta@type_abundance
+#' a <- repartition(meta)
+#' a@type_abundance
 #'
 repartition <- function(meta, new_partition) {
 

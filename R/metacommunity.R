@@ -1,27 +1,9 @@
 setOldClass("phylo")
 
-#' Coerce to metacommunity
+#' Coerce to \code{metacommunity}
 #'
 #' Functions to check if an object is a \code{metacommunity} or coerce an
 #' object into a \code{metacommunity}.
-#'
-#' \itemize{
-#' \item type_abundance - proportional abundance of \emph{types} in the  
-#' subcommunity as a fraction of the metacommunity as a whole (in the 
-#' phylogenetic case, this corresponds to the proportional abundance of 
-#' historical species, which is calculated from the proportional abundance of 
-#' present day species)
-#' \item similarity - pairwise similarity between \emph{types}
-#' \item ordinariness - ordinariness of types 
-#' \item subcommunity_weights - subcommunity weights
-#' \item type_weights - weight of types within a subcommunity
-#' \item raw_abundance - proportional abundance of samples (usually types, 
-#' except in the phylogenetic case where samples correspond to the present 
-#' day species)
-#' \item raw_structure - length of historical species (in phylogeny)
-#' \item parameters - parameters associated with each 
-#' historical species (in phylogeny)
-#' }
 #'
 #' When calculating phylogenetic diversity either:
 #' \itemize{
@@ -32,6 +14,31 @@ setOldClass("phylo")
 #' \item set \code{partition} as the relative abundance of historical species,
 #' with \code{similarity} as the pairwise similarity of historical species.
 #' }
+#' 
+#' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}  
+#' with rows as types, columns as subcommunities, and elements containing  
+#' relative abundances of types in subcommunities.  In the phylogenetic case, 
+#' this corresponds to the proportional abundance of historic species, which
+#' is calculated from the proportional abundance of present day species.
+#' @field similarity two-dimensional \code{matrix} of mode \code{numeric} with 
+#' rows as types, columns as types, and elements containing pairwise 
+#' similarities between types
+#' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric} 
+#' with rows as types, columns as subcommunities, and elements containing the
+#' ordinariness of types within subcommunities 
+#' @field subcommunity_weights \code{vector} of mode \code{numeric}; contains
+#' subcommunity weights
+#' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}, 
+#' with rows as types, columns as subcommunities, and elements containing 
+#' weights of types within a subcommunity
+#' @field raw_abundance [Phylogenetic] two-dimensional \code{matrix} of mode 
+#' \code{numeric} with rows as types, columns as subcommunities, and elements 
+#' containing the relative abundance of present day species
+#' @field raw_structure [Phylogenetic] two-dimensional \code{matrix} of mode 
+#' \code{numeric} with rows as historical species, columns as present day 
+#' species, and elements containing historical species lengths within lineages
+#' @field parameters [Phylogenetic] \code{tibble} containing parameters 
+#' associated with each historic species in the phylogeny
 #'
 #' @name metacommunity
 #' @rdname metacommunity-methods
@@ -44,7 +51,7 @@ setOldClass("phylo")
 #' diversity, see \emph{Details}.
 #' @param similarity (optional) two-dimensional \code{matrix} of mode 
 #' \code{numeric}, with rows as types, columns as types, and elements 
-#' containing the pairwise similarity between \emph{types}. For phylogenetic 
+#' containing the pairwise similarity between types. For phylogenetic 
 #' diversity, see \emph{Details}.
 #' @param ... (optional) additional arguments, especially:
 #' @param depth (optional; and for phylogenetic metacommunities only) how
@@ -52,7 +59,7 @@ setOldClass("phylo")
 #' recent present-day species, and 1 (the default) marking the most recent 
 #' common ancestor. Numbers greater than 1 extend the root of the tree.
 #'
-#' @return Returns an object of class \code{metacommunity} (see \emph{Details}).
+#' @return Returns an object of class \code{metacommunity} (see \emph{Fields}).
 #'
 #' @seealso \code{\link{metacommunity-class}}
 #'
@@ -235,10 +242,10 @@ setMethod(f = "metacommunity",
           } )
 
 
-#' @rdname metacommunity-class
+#' @rdname metacommunity-methods
 #' @param x any R object
 #' @return
-#' returns TRUE if its argument is a metacommunity, FALSE otherwise.
+#' Returns TRUE if its argument is a metacommunity, FALSE otherwise.
 #' @export
 #'
 is.metacommunity <- function (x)
