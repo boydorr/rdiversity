@@ -39,14 +39,13 @@ metacommunity(partition, similarity, ...)
 
 \S4method{metacommunity}{matrix,matrix}(partition, similarity)
 
-\S4method{metacommunity}{missing,phylo}(partition, similarity, interval = 1)
+\S4method{metacommunity}{missing,phylo}(partition, similarity, depth = 1)
 
-\S4method{metacommunity}{numeric,phylo}(partition, similarity, interval = 1)
+\S4method{metacommunity}{numeric,phylo}(partition, similarity, depth = 1)
 
-\S4method{metacommunity}{data.frame,phylo}(partition, similarity,
-  interval = 1)
+\S4method{metacommunity}{data.frame,phylo}(partition, similarity, depth = 1)
 
-\S4method{metacommunity}{matrix,phylo}(partition, similarity, interval = 1)
+\S4method{metacommunity}{matrix,phylo}(partition, similarity, depth = 1)
 }
 \arguments{
 \item{partition}{two-dimensional \code{matrix} of mode \code{numeric}
@@ -61,7 +60,7 @@ diversity, see \emph{Details}.}
 
 \item{...}{(optional) additional arguments, especially:}
 
-\item{interval}{(optional; and for phylogenetic metacommunities only) how
+\item{depth}{(optional; and for phylogenetic metacommunities only) how
 much evolutionary history should be retained, with 0 marking the most
 recent present-day species, and 1 (the default) marking the most recent 
 common ancestor. Numbers greater than 1 extend the root of the tree.}

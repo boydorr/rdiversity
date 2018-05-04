@@ -47,7 +47,7 @@ setOldClass("phylo")
 #' containing the pairwise similarity between \emph{types}. For phylogenetic 
 #' diversity, see \emph{Details}.
 #' @param ... (optional) additional arguments, especially:
-#' @param interval (optional; and for phylogenetic metacommunities only) how
+#' @param depth (optional; and for phylogenetic metacommunities only) how
 #' much evolutionary history should be retained, with 0 marking the most
 #' recent present-day species, and 1 (the default) marking the most recent 
 #' common ancestor. Numbers greater than 1 extend the root of the tree.
@@ -184,14 +184,14 @@ setMethod(f = "metacommunity",
 #'
 setMethod(f = "metacommunity",
           signature(partition = "missing", similarity = "phylo"),
-          definition = function(partition, similarity, interval = 1) {
+          definition = function(partition, similarity, depth = 1) {
             # If pds.abundance is not entered, assume an even distribution
             tips <- similarity$tip.label
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
             colnames(partition) <- "sc1"
             
-            metacommunity(partition, similarity, interval)
+            metacommunity(partition, similarity, depth)
           } )
 
 
@@ -201,10 +201,10 @@ setMethod(f = "metacommunity",
 #'
 setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "phylo"),
-          definition = function(partition, similarity, interval = 1) {
+          definition = function(partition, similarity, depth = 1) {
             partition <- as.matrix(partition)
             
-            metacommunity(partition, similarity, interval)            
+            metacommunity(partition, similarity, depth)            
           } )
 
 
@@ -214,10 +214,10 @@ setMethod(f = "metacommunity",
 #'
 setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "phylo"),
-          definition = function(partition, similarity, interval = 1) {
+          definition = function(partition, similarity, depth = 1) {
             partition <- as.matrix(partition)
             
-            metacommunity(partition, similarity, interval)            
+            metacommunity(partition, similarity, depth)            
           } )
 
 
@@ -227,11 +227,11 @@ setMethod(f = "metacommunity",
 #'
 setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "phylo"),
-          definition = function(partition, similarity, interval = 1) {
+          definition = function(partition, similarity, depth = 1) {
             partition <- check_partition(partition = partition)
             ps <- phy_struct(tree = similarity, partition = partition)
             
-            chainsaw(partition = partition, ps = ps, interval = interval)
+            chainsaw(partition = partition, ps = ps, depth = depth)
           } )
 
 
