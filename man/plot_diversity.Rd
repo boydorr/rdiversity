@@ -7,7 +7,9 @@
 plot_diversity(data)
 }
 \arguments{
-\item{data}{output}
+\item{data}{object of class \code{tibble} (or \code{data.frame}); output of 
+\code{subdiv}, \code{metadiv}, or any of the specific subcommunity- or 
+metacommunity-level diversity functions.}
 }
 \description{
 Simple function to plot diversity profiles.
@@ -32,6 +34,10 @@ plot_diversity(res)
 pop <- c(1,3,4)
 meta <- metacommunity(pop)
 res <- meta_gamma(meta, 0:2)
+plot_diversity(res)
+
+# Calculate all measures of metacommunity diversity
+res <- metadiv(meta, 0:2)
 plot_diversity(res)
 
 }

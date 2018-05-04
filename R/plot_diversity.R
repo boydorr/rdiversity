@@ -2,7 +2,9 @@
 #'
 #' Simple function to plot diversity profiles.
 #'
-#' @param data output
+#' @param data object of class \code{tibble} (or \code{data.frame}); output of 
+#' \code{subdiv}, \code{metadiv}, or any of the specific subcommunity- or 
+#' metacommunity-level diversity functions.
 #'
 #' @export
 #'
@@ -28,25 +30,33 @@
 #' res <- meta_gamma(meta, 0:2)
 #' plot_diversity(res)
 #'
+#' # Calculate all measures of metacommunity diversity
+#' res <- metadiv(meta, 0:2)
+#' plot_diversity(res)
+#' 
 plot_diversity <- function(data) {
+  if(any(length(unique(data$partition_level)) > 1))
+    stop('This function will plot subcommunity- or metacommunity-level
+         diversity measures, not both.')
+  
   community <- unique(data$partition_level)
   measure <- unique(data$measure)
   data$partition_name <- as.factor(data$partition_name)
-
+  
   community <- gsub("subcommunity", "Subcommunity", community)
   community <- gsub("metacommunity", "Metacommunity", community)
   
   if(isTRUE(all.equal(1, length(measure))))
     tag <- rdiversity::get_title(community, measure, TRUE) else
       tag <- paste(community, "diversity")
-
+  
   g <- ggplot2::ggplot(data, ggplot2::aes_string(x="q", y="diversity")) +
     ggplot2::theme_bw() +
     ggplot2::geom_line(ggplot2::aes_string(group = "partition_name",
                                            colour = "partition_name")) +
     ggplot2::labs(x = bquote(italic("q")), y = tag, colour = "Partitions") +
     ggthemes::scale_color_ptol()
-
+  
   if(community %in% "Metacommunity") 
     g <- g + theme(legend.position="none")
   
@@ -54,7 +64,7 @@ plot_diversity <- function(data) {
     x = ggplot2::label_bquote(.(measure))
     g <- g + ggplot2::facet_wrap(~measure, labeller = x)
   }
-
+  
   g
 }
 
