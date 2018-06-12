@@ -1,8 +1,8 @@
 Package: rdiversity
 Type: Package
 Title: Measurement and Partitioning of Similarity-Sensitive Biodiversity
-Version: 1.1
-Date: 2017-06-14
+Version: 1.2
+Date: 2018-06-12
 Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.uk",
                   role = c("aut", "cre")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
