@@ -2,6 +2,7 @@
 
 export(chainsaw)
 export(check_partition)
+export(check_phypartition)
 export(check_similarity)
 export(get_title)
 export(hs_parameters)

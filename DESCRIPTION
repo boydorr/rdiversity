@@ -34,6 +34,7 @@ RoxygenNote: 6.0.1
 Collate: 
     'chainsaw.R'
     'check_partition.R'
+    'check_phypartition.R'
     'check_similarity.R'
     'class-metacommunity.R'
     'class-powermean.R'

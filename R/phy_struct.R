@@ -28,23 +28,24 @@
 #' res <- phy_struct(tree, partition)
 #'
 phy_struct <- function(tree, partition) {
-  partition <- check_partition(partition)
-
+  partition <- check_phypartition(tree$tip.label, partition)
+  
   # Extract parameters associated with each historic species
   parameters <- hs_parameters(tree)
-
-  # Create structural matrix
+  
+  # Generate structural matrix for entire phylogeny
   s_matrix <- matrix(0, ncol = length(seq_along(tree$tip.label)),
                      nrow = nrow(parameters))
   row.names(s_matrix) <- parameters$hs_names
   colnames(s_matrix) <- tree$tip.label
-  index <- sapply(parameters$tip_label, function(x) which(colnames(s_matrix) %in% x))
+  index <- sapply(parameters$tip_label, function(x) 
+    which(colnames(s_matrix) %in% x))
   index <- cbind(row = 1:nrow(parameters), col = index)
   s_matrix[index] <- parameters$lengths
   T_bar <-  sum(s_matrix %*% partition)
-
+  
   s_matrix <- s_matrix / T_bar
-
+  
   # Output
   list(structure = s_matrix,
        tbar = T_bar,

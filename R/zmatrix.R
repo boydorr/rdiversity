@@ -24,27 +24,26 @@
 #'
 #' zmatrix(partition, s, ps)
 #'
-zmatrix <-
-  function(partition, s, ps)
-  {
-    partition <- check_partition(partition)
-    
-    parameters <- ps$parameters
-    structure_matrix <- ps$structure
-    T_bar <- ps$tbar
-    L_j <- colSums(structure_matrix*T_bar)
-    L_j <- L_j[match(parameters$tip_label, colnames(structure_matrix))]
-
-    # Identify which species are present
-    if (any(row.names(partition) != colnames(structure_matrix)))
-      stop("Partition does not match phylogeny.")
-    
-    scaling_factor <- T_bar / L_j
-
-    scaling_matrix <- diag(scaling_factor, nrow(structure_matrix))
-    z <- s %*% scaling_matrix
-    colnames(z) <- row.names(z)
-
-    z
-  }
+zmatrix <- function(partition, s, ps){
+  partition <- check_phypartition(tip_labels = colnames(ps$structure), 
+                                  partition = partition)
+  
+  parameters <- ps$parameters
+  structure_matrix <- ps$structure
+  T_bar <- ps$tbar
+  L_j <- colSums(structure_matrix*T_bar)
+  L_j <- L_j[match(parameters$tip_label, colnames(structure_matrix))]
+  
+  # Identify which species are present
+  if (any(row.names(partition) != colnames(structure_matrix)))
+    stop("Partition does not match phylogeny.")
+  
+  scaling_factor <- T_bar / L_j
+  
+  scaling_matrix <- diag(scaling_factor, nrow(structure_matrix))
+  z <- s %*% scaling_matrix
+  colnames(z) <- row.names(z)
+  
+  z
+}
 

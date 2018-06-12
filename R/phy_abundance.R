@@ -15,15 +15,12 @@
 #' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
+#' partition <- partition[sample(1:nrow(partition)),]
 #' ps <- phy_struct(tree, partition)
 #' structure_matrix <- ps$structure
 #' phy_abundance(partition, structure_matrix)
 #'
 phy_abundance <- function(partition, structure_matrix) {
-  # Identify which species are present
-  if (any(row.names(partition) != colnames(structure_matrix)))
-    stop("Partition does not match phylogeny.")
-  partition <- check_partition(partition)
-  
+  partition <- check_phypartition(colnames(structure_matrix), partition)
   structure_matrix %*% partition
 }
