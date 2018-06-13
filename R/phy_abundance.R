@@ -15,7 +15,6 @@
 #' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
-#' partition <- partition[sample(1:nrow(partition)),]
 #' ps <- phy_struct(tree, partition)
 #' structure_matrix <- ps$structure
 #' phy_abundance(partition, structure_matrix)

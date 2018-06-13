@@ -15,13 +15,12 @@ corresponds to the proportional abundance of present day species)}
 
 \item{depth}{proportion of total tree height to be conserved (taken as
 a proportion from the heighest tip). Describes how far back we go in the tree,
-with 0 marking the date of the most recent tip, and 1 (the default) marking
-the most recent common ancestor. Numbers greater than 1 extend the root of
-the tree}
+with 0 marking the date of the most recent tip, and 1 marking the most
+recent common ancestor. Numbers greater than 1 extend the root of the tree}
 }
 \value{
 Returns an object of class \code{phy_struct} containing a new structural
-matrix ('@structure').and the original phylogenetic parameters
+matrix ('@structure') and the original phylogenetic parameters
 ('@parameters').
 }
 \description{
