@@ -235,7 +235,6 @@ setMethod(f = "metacommunity",
 setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "phylo"),
           definition = function(partition, similarity, depth = 1) {
-            partition <- check_partition(partition = partition)
             ps <- phy_struct(tree = similarity, partition = partition)
             
             chainsaw(partition = partition, ps = ps, depth = depth)
