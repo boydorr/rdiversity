@@ -19,6 +19,9 @@ check_phypartition <- function(tip_labels, partition){
   partition <- check_partition(partition)
   
   # Remove species from partition, if not in phylogeny
+  if(is.null(row.names(partition)))
+    stop(paste("Partition object most have row names.",
+                "\nThese should match some or all of the tip labels in theh phylogeny"))
   if (any(!row.names(partition) %in% tip_labels)) {
     absent <- row.names(partition)[!row.names(partition) %in% tip_labels]
     if(length(absent)==1)
