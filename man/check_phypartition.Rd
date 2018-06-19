@@ -23,12 +23,3 @@ input as an argument.
 \code{check_phypartition()} is used to validate partition matrices for use 
 with phylogenies.
 }
-\examples{
-tree <- ape::rtree(n = 5)
-tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
-partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
-partition <- partition / sum(partition)
-
-a <- metacommunity(partition, tree)
-
-}
