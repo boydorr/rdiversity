@@ -15,14 +15,14 @@ bibentry(bibtype = "Article",
                           person(given = "Louise",
                                  family = "Matthews")),
          journal      = "arXiv",
-         year         = "2014",
-         volume       = "1404.6520 [q-bio.QM]",
+         year         = "2016",
+         volume       = "1404.6520v3 [q-bio.QM]",
          pages        = "1--9",
          
          header       = "To cite rdiversity in publications use:",
          textVersion  =
            paste("Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,",
-                 "S. Mitchell, and L. Matthews. 2014. How to partition diversity.",
-                 "arXiv 1404.6520 [q-bio.QM]:1–9.")
+                 "S. Mitchell, and L. Matthews. 2016. How to partition diversity.",
+                 "arXiv 1404.6520v3 [q-bio.QM]:1–9.")
 )
 
