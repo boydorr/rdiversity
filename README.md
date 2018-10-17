@@ -1,3 +1,8 @@
+---
+output:
+  html_document: rmarkdown::github_document
+  pdf_document: default
+---
 # rdiversity  
 
 [![Build Status](https://travis-ci.org/boydorr/rdiversity.svg?branch=master)](https://travis-ci.org/boydorr/rdiversity)
@@ -13,15 +18,15 @@ This package has now reached a stable release and is cross-validated against our
 
 To install rdiversity from CRAN, simply run the following from an R console:
 
-```r
+```{r}
 install.packages("rdiversity")
 ```
 
-## Getting started
+## Generating a metacommunity
 
 Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity.
 
-```r
+```{r}
 # Load the package into R
 library(rdiversity)
 
@@ -37,26 +42,20 @@ The `metacommunity()` function takes two arguments, `partition` and `similarity`
 * `@type_abundance` : the abundance of types within a population,  
 * `@similarity` : the pair-wise similarity of types within a population,  
 * `@ordinariness` : the ordinariness of types within a population,  
-* `@subcommunity_weights` :  the relative weights of subcommunities within a population,  
-* `@type_weights` : the relative weights of types within a population, and  
+* `@subcommunity_weights` :  the relative weights of subcommunities within a population, and
+* `@type_weights` : the relative weights of types within a population.
 
-A metcommunity originating from a phylogeny will contain three additional slots:
+## Calculating diversity - Method 1
+if to first calculate the low-level diversity component seperately, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. 
 
-* `@raw_abundance` : the relative abundance of present-day species (where types are then considered to be historical species),
-* `@raw_structure` : the length of evolutionary history of each historical species
-* `@parameters` : parameters associated with historical species
-
-## Calculating diversity
-First we need to calculate the low-level diversity component seperately, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. 
-
-```r
+```{r}
 # First, calculate the normalised subcommunity alpha component
 component <- norm_alpha(meta)
 ```
 
-Afterwhich, `subdiv()` or `metadiv()` are used to calculate subcommunity or metacommunity diversity, respectively (since both subcommunity and metacommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
+These diversity components are either `relativeentropy` or `powermean` objects, which calculate the ordinariness of types prior to averaging at the subcommunity and metacommunity levels. The functions `subdiv()` and `metadiv()` can then be used to calculate subcommunity or metacommunity diversity, respectively (since both subcommunity and metacommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
 
-```r
+```{r}
 # Then, calculate species richness
 subdiv(component, 0)
 
@@ -64,23 +63,51 @@ subdiv(component, 0)
 metadiv(component, 0)
 
 # We can also generate a diversity profile (for a single diversity measure, or multiple measures of the same level) by calculating multiple q-values simultaneously
-df <- subdiv(component, 0:30)
-plot_diversity(df)
+sc <- subdiv(component, c(0:100, Inf))
+plot(sc)
 ```
+
+![Example1](./man/figures/README-example-1.png)
 
 In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a `metacommunity` object may be passed directly to `subdiv()` or `metadiv()`:
 
-```r
+```{r}
 # To calculate all subcommunity diversity measures
-subdiv(meta, 0:2)
-
-# To calculate all metacommunity diversity measures
-metadiv(meta, 0:2)
+sc <- subdiv(meta, 0:10)
+plot(sc)
 ```
 
-Alternatively, if computational efficiency is not an issue, a single measure of diversity may be calculated directly by calling a wrapper function:
-```r
-norm_sub_alpha(meta, 0:2)
+![Example1](./man/figures/README-example-2.png)
+
+```{r}
+sc2 <- subdiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
+plot(sc2)
+```
+
+![Example1](./man/figures/README-example-3.png)
+
+
+```{r}
+# We can generate plots containing both the subcommunity- and metacommunity-level diversity values
+mc <- metadiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
+res <- diversity(list(sc2, mc))
+plot(res)
+```
+
+```{r}
+# Or we can look at the individual species-level components
+ind <- inddiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
+plot(ind)
+```
+
+Note that generally defined as **types** or any biologically meaningful unit)
+
+## Calculating diversity - Method 2
+
+Alternatively, if computational efficiency is not an issue, the following method may be used. Subcommunity alpha diversity can be calculated by calling a wrapper function, which outputs results as a `diversity` object:
+
+```{r}
+res <- norm_sub_alpha(meta, 0:2)
 ```
 A complete list of these functions is shown below:
 
@@ -99,11 +126,16 @@ A complete list of these functions is shown below:
 * `norm_meta_beta()` : effective number of distinct subcommunities  
 * `meta_gamma()` : metacommunity similarity-sensitive diversity  
 
+A metcommunity originating from a phylogeny will contain three additional slots:
 
-## General tools
+* `@raw_abundance` : the relative abundance of present-day species (where types are then considered to be historical species),
+* `@raw_structure` : the length of evolutionary history of each historical species
+* `@parameters` : parameters associated with historical species
+
+
+## Additional tools
 * `qD_single()` : the Hill number / naive-type diversity of order *q* of a single population  
 * `qD()` : the Hill number / naive-type diversity of a series of independent populations for a series of orders  
 * `qDZ_single()` : the similarity-sensitive diversity of order *q* of a single population 
 * `qDZ()` : the similarity-sensitive diversity of a series of independent populations for a series of orders  
 * `similarity_shimatani()`
-* `similarity_phylo()`
