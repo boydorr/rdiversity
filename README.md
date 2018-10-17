@@ -1,6 +1,6 @@
 ---
 output:
-  html_document: rmarkdown::github_document
+  html_document: default
   pdf_document: default
 ---
 # rdiversity  
@@ -24,7 +24,7 @@ install.packages("rdiversity")
 
 ## Generating a metacommunity
 
-Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity.
+Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (``pop``) comprising three species ("cows", "sheep", and "ducks"), and partitioned across three subcommunitites (a, b, and c).
 
 ```{r}
 # Load the package into R
@@ -32,12 +32,15 @@ library(rdiversity)
 
 # Example population
 pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
-
-# Create metacommunity object
-meta <- metacommunity(pop)
+row.names(pop) <- c("cows", "sheep", "ducks")
 ```
+The `metacommunity()` function takes two arguments, `partition` and `similarity`. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the `similarity` argument is missing.
 
-The `metacommunity()` function takes two arguments, `partition` and `similarity`, and creates an object containing:  
+```{r}
+# Create metacommunity object
+meta <- metacommunity(partition=pop)
+```
+Each `metacommunity` object contains the following slots:
 
 * `@type_abundance` : the abundance of types within a population,  
 * `@similarity` : the pair-wise similarity of types within a population,  
@@ -45,70 +48,10 @@ The `metacommunity()` function takes two arguments, `partition` and `similarity`
 * `@subcommunity_weights` :  the relative weights of subcommunities within a population, and
 * `@type_weights` : the relative weights of types within a population.
 
+
 ## Calculating diversity - Method 1
-if to first calculate the low-level diversity component seperately, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. 
+This method uses a wrapper function to simplify the pipeline and is recommended if only a few measures are being calculated.
 
-```{r}
-# First, calculate the normalised subcommunity alpha component
-component <- norm_alpha(meta)
-```
-
-These diversity components are either `relativeentropy` or `powermean` objects, which calculate the ordinariness of types prior to averaging at the subcommunity and metacommunity levels. The functions `subdiv()` and `metadiv()` can then be used to calculate subcommunity or metacommunity diversity, respectively (since both subcommunity and metacommunity diversity measures are transformations of the same low-level components, this is computationally more efficient).
-
-```{r}
-# Then, calculate species richness
-subdiv(component, 0)
-
-# or the average species richness across the whole population
-metadiv(component, 0)
-
-# We can also generate a diversity profile (for a single diversity measure, or multiple measures of the same level) by calculating multiple q-values simultaneously
-sc <- subdiv(component, c(0:100, Inf))
-plot(sc)
-```
-
-![Example1](./man/figures/README-example-1.png)
-
-In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a `metacommunity` object may be passed directly to `subdiv()` or `metadiv()`:
-
-```{r}
-# To calculate all subcommunity diversity measures
-sc <- subdiv(meta, 0:10)
-plot(sc)
-```
-
-![Example1](./man/figures/README-example-2.png)
-
-```{r}
-sc2 <- subdiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
-plot(sc2)
-```
-
-![Example1](./man/figures/README-example-3.png)
-
-
-```{r}
-# We can generate plots containing both the subcommunity- and metacommunity-level diversity values
-mc <- metadiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
-res <- diversity(list(sc2, mc))
-plot(res)
-```
-
-```{r}
-# Or we can look at the individual species-level components
-ind <- inddiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
-plot(ind)
-```
-
-Note that generally defined as **types** or any biologically meaningful unit)
-
-## Calculating diversity - Method 2
-
-Alternatively, if computational efficiency is not an issue, the following method may be used. Subcommunity alpha diversity can be calculated by calling a wrapper function, which outputs results as a `diversity` object:
-
-```{r}
-res <- norm_sub_alpha(meta, 0:2)
-```
 A complete list of these functions is shown below:
 
 * `raw_sub_alpha()` : estimate of naive-community metacommunity diversity  
@@ -125,6 +68,121 @@ A complete list of these functions is shown below:
 * `raw_meta_beta()` : average distinctiveness of subcommunities  
 * `norm_meta_beta()` : effective number of distinct subcommunities  
 * `meta_gamma()` : metacommunity similarity-sensitive diversity  
+
+Each of these functions take two arguments, `meta` (a `metacommunity` object) and `qs` (a vector of q values), and output results as a `diversity` object. For example, to calculate normalised subcommunity alpha diversity for q=0, q=1, and q=2:
+
+```{r}
+norm_sub_alpha(meta=meta, qs=0:2)
+```
+
+However, if multiple measures are required and computational efficiency is an issue, then the following method is recommended (the same results are obtained).
+
+
+## Calculating diversity - Method 2
+To calculate the diversity of a population, we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are a kind of average (based on q) of these values, which are calculated using the functions `subdiv()` and `metadiv()`. Note that, since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this is computationally more efficient.
+
+```{r}
+# First, calculate the species-level component for normalised alpha
+component <- norm_alpha(meta=meta)
+
+# Then, calculate normalised alpha at the subcommunity-level 
+subdiv(data=component, qs=0:2)
+
+# Likewise, calculate normalised alpha at the metacommunity-level 
+metadiv(data=component, qs=0:2)
+```
+
+In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a `metacommunity` object may be passed directly to `subdiv()` or `metadiv()`:
+
+```{r}
+# To calculate all subcommunity diversity measures
+subdiv(data=meta, qs=0:2)
+
+# To calculate all metacommunity diversity measures
+metadiv(data=meta, qs=0:2)
+```
+
+
+## How to plot diversity
+
+All of these results are output as `diversity` objects, which can be visualised using the `plot()` function. For example:
+
+```{r}
+component <- norm_alpha(meta=meta)
+
+# Normalised subcommunity alpha
+sc <- subdiv(data=component, qs=0:10)
+plot(sc)
+```
+
+![Example1](./man/figures/README-example-1.png)
+
+```{r}
+# Normalised metacommunity alpha
+mc <- metadiv(data=component, qs=0:10)
+plot(mc)
+```
+
+![Example2](./man/figures/README-example-2.png)
+
+```{r}
+# All subcommunity measures
+all <- subdiv(data=meta, qs=0:10)
+plot(all)
+```
+
+![Example3](./man/figures/README-example-3.png)
+
+The function `diversity()` can be used to transform `data.frame` and `list` objects into `diversity` objects ready for plotting. This function is useful when generating plots containing both the subcommunity- and metacommunity-level diversities, or when only certain measures are of interest. For example:
+
+```{r}
+combine <- rbind.data.frame(sc, mc)
+res1 <- diversity(combine)
+
+# or...
+combine <- list(sc, mc)
+res1 <- diversity(combine)
+
+plot(res1)
+```
+
+![Example4](./man/figures/README-example-4.png)
+
+```{r}
+alpha <- norm_sub_alpha(meta=meta, qs=0:10)
+rho <- norm_sub_rho(meta=meta, qs=0:10)
+
+res2 <- diversity(list(alpha, rho)) 
+
+plot(res2)
+```
+
+![Example5](./man/figures/README-example-5.png)
+
+If q=Inf is calculated, q is transformed on a log scale. For example:
+
+```{r}
+qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
+res3 <- norm_sub_alpha(meta=meta, qs=qs)
+plot(res3)
+```
+
+![Example6](./man/figures/README-example-6.png)
+
+Note that in the above example, q=0, q=1, q=2, and q=Inf are highlighted as important, corresponding to Species Richness, Shannon, Simpson, and Berger Parker diversity, respecively.
+
+It might also be useful
+
+
+```{r}
+# Or we can look at the individual species-level components
+ind <- inddiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
+plot(ind)
+```
+
+Note that generally defined as **types** or any biologically meaningful unit)
+
+
 
 A metcommunity originating from a phylogeny will contain three additional slots:
 
