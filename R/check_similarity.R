@@ -12,7 +12,6 @@
 #' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If
 #' the similarity matrix was valid, this should be identical to that which was
 #' input as an argument.
-#' @export
 #'
 check_similarity <- function(partition, similarity) {
   if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
