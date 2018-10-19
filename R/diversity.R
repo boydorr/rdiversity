@@ -68,3 +68,20 @@ setMethod(f = "show", signature = "diversity",
             print(object)
           } )
 
+
+
+#' @rdname diversity-methods
+#' @param x object of class \code{diversity}
+#' @export
+#'
+setMethod(f = "plot", signature(x = "diversity"),
+          definition = function(x) {
+            what <- what(x)
+            if(what=="inddiv") return(plot_inddiv(x))
+            if(what=="subdiv" || (what=="metadiv") || what=="both") {
+              qs <- unique(x$q)
+              if(length(qs)==1) return(plot_single(x))
+              if(any(qs==0) && any(qs==Inf)) return(plot_diversity(x))
+              if(!any(qs %in% Inf)) return(simple_plot(x))
+            }
+          })
