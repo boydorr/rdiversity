@@ -1,8 +1,3 @@
----
-output:
-html_document: default
-pdf_document: default
----
 # rdiversity  
 
 [![Build Status](https://travis-ci.org/boydorr/rdiversity.svg?branch=master)](https://travis-ci.org/boydorr/rdiversity)
