@@ -53,7 +53,6 @@ setOldClass("phylo")
 #' \code{numeric}, with rows as types, columns as types, and elements 
 #' containing the pairwise similarity between types. For phylogenetic 
 #' diversity, see \emph{Details}.
-#' @param ... (optional) additional arguments, especially:
 #' @param depth (optional; and for phylogenetic metacommunities only) how
 #' much evolutionary history should be retained, with 0 marking the most
 #' recent present-day species, and 1 (the default) marking the most recent 
@@ -74,7 +73,7 @@ setOldClass("phylo")
 #' b <- metacommunity(partition)
 #' 
 setGeneric(name = "metacommunity",
-           def = function(partition, similarity, ...) {
+           def = function(partition, similarity) {
              standardGeneric("metacommunity")
            } )
 
