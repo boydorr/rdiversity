@@ -79,13 +79,13 @@ setMethod(f = "metadiv", signature= "powermean",
                                        partition_name = "",
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            tibble::as_data_frame(output)
-          } )
+            new("diversity", output)
+            } )
 
 
 #' @rdname metadiv
 #'
-setMethod(f = "metadiv", signature= "relativeentropy",
+setMethod(f = "metadiv", signature = "relativeentropy",
           definition = function(data, qs) {
             # Calculate
             results <- lapply(seq_along(qs), function(x) {
@@ -107,13 +107,13 @@ setMethod(f = "metadiv", signature= "relativeentropy",
                                        partition_name = "",
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            tibble::as_data_frame(output)
-          } )
+            new("diversity", output)
+            } )
 
 
 #' @rdname metadiv
 #'
-setMethod(f = "metadiv", signature= "metacommunity",
+setMethod(f = "metadiv", signature = "metacommunity",
           definition = function(data, qs) {
             # Calculate terms
             div.measures <- list(raw_alpha, norm_alpha,
@@ -121,8 +121,7 @@ setMethod(f = "metadiv", signature= "metacommunity",
                                  raw_rho, norm_rho,
                                  raw_gamma)
             # Calculate metacommunity diversity
-            results <- lapply(div.measures, function(x)
-              res <- metadiv(x(data), qs))
-            results <- do.call(rbind.data.frame, results)
-            tibble::as_data_frame(results)
+            output <- lapply(div.measures, function(x) metadiv(x(data), qs))
+            output <- do.call(rbind.data.frame, output)
+            new("diversity", output)
           } )
