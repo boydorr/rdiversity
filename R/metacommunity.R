@@ -1,9 +1,6 @@
-setOldClass("phylo")
-
-#' Coerce to \code{metacommunity}
+#' Metacommunity
 #'
-#' Functions to check if an object is a \code{metacommunity} or coerce an
-#' object into a \code{metacommunity}.
+#' Functions to generate a \code{metacommunity} object.
 #'
 #' When calculating phylogenetic diversity either:
 #' \itemize{
@@ -17,7 +14,7 @@ setOldClass("phylo")
 #' 
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}  
 #' with rows as types, columns as subcommunities, and elements containing  
-#' relative abundances of types in subcommunities.  In the phylogenetic case, 
+#' relative abundances of types in subcommunities. In the phylogenetic case, 
 #' this corresponds to the proportional abundance of historic species, which
 #' is calculated from the proportional abundance of present day species.
 #' @field similarity two-dimensional \code{matrix} of mode \code{numeric} with 
@@ -42,7 +39,6 @@ setOldClass("phylo")
 #'
 #' @name metacommunity
 #' @rdname metacommunity-methods
-#' @include class-metacommunity.R check_partition.R check_similarity.R
 #' @exportMethod metacommunity
 #'
 #' @param partition two-dimensional \code{matrix} of mode \code{numeric}  
@@ -51,17 +47,13 @@ setOldClass("phylo")
 #' diversity, see \emph{Details}.
 #' @param similarity (optional) two-dimensional \code{matrix} of mode 
 #' \code{numeric}, with rows as types, columns as types, and elements 
-#' containing the pairwise similarity between types. For phylogenetic 
-#' diversity, see \emph{Details}.
-#' @param depth (optional; and for phylogenetic metacommunities only) how
-#' much evolutionary history should be retained, with 0 marking the most
-#' recent present-day species, and 1 (the default) marking the most recent 
-#' common ancestor. Numbers greater than 1 extend the root of the tree.
-#'
+#' containing the pairwise similarity between types.
+#' 
 #' @return Returns an object of class \code{metacommunity} (see \emph{Fields}).
 #'
 #' @seealso \code{\link{metacommunity-class}}
 #'
+#' @include similarity.R
 #' @examples
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
@@ -69,7 +61,8 @@ setOldClass("phylo")
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' 
-#' a <- metacommunity(partition, tree)
+#' similarity <- similarity(tree)
+#' a <- metacommunity(partition, similarity)
 #' b <- metacommunity(partition)
 #' 
 setGeneric(name = "metacommunity",
@@ -93,7 +86,6 @@ setMethod(f = "metacommunity",
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,numeric-method
-#' @export
 #'
 setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "missing"),
@@ -107,7 +99,6 @@ setMethod(f = "metacommunity",
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,matrix-method
-#' @export
 #'
 setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "missing"),
@@ -123,7 +114,6 @@ setMethod(f = "metacommunity",
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,data.frame-method,matrix-method
-#' @export
 #'
 setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "matrix"),
@@ -137,7 +127,6 @@ setMethod(f = "metacommunity",
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,numeric-method,matrix-method
-#' @export
 #'
 setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "matrix"),
@@ -151,7 +140,6 @@ setMethod(f = "metacommunity",
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,matrix-method
-#' @export
 #'
 setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "matrix"),
