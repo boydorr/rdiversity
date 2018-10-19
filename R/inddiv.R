@@ -65,12 +65,11 @@ setMethod(f = "inddiv", signature= "powermean",
                                        partition_name = output$Var2,
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            tibble::as_data_frame(output)
+            new("diversity", output)
           } )
 
 
 #' @rdname inddiv
-#' @return
 #'
 setMethod(f = "inddiv", signature= "relativeentropy",
           definition = function(data, qs) {
@@ -83,7 +82,7 @@ setMethod(f = "inddiv", signature= "relativeentropy",
                                        partition_name = output$Var2,
                                        diversity = output$value, 
                                        stringsAsFactors = FALSE)
-            tibble::as_data_frame(output)
+            new("diversity", output)
           } )
 
 
@@ -97,8 +96,8 @@ setMethod(f = "inddiv", signature= "metacommunity",
                                  raw_rho, norm_rho,
                                  raw_gamma)
             # Calculate subcommunity diversity
-            results <- lapply(div.measures, function(x) inddiv(x(data), qs))
-            results <- do.call(rbind.data.frame, results)
-            tibble::as_data_frame(results)
+            output <- lapply(div.measures, function(x) inddiv(x(data), qs))
+            output <- do.call(rbind.data.frame, output)
+            new("diversity", output)
           } )
 
