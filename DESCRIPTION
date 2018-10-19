@@ -25,7 +25,8 @@ Imports:
     tidyr,
     tibble,
     phytools,
-    reshape2
+    reshape2,
+    scales
 Suggests:
     testthat,
     knitr,
@@ -36,19 +37,28 @@ Collate:
     'check_partition.R'
     'check_phypartition.R'
     'check_similarity.R'
+    'class-diversity.R'
     'class-metacommunity.R'
     'class-powermean.R'
     'class-relativeentropy.R'
+    'class-similarity.R'
+    'dist2sim.R'
+    'similarity.R'
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'
-    'get_title.R'
+    'diversity.R'
+    'get_label.R'
     'hs_parameters.R'
     'inddiv.R'
     'metadiv.R'
+    'phy2branch.R'
+    'phy2dist.R'
     'phy_abundance.R'
     'phy_struct.R'
     'plot_diversity.R'
+    'plot_inddiv.R'
+    'plot_single.R'
     'power_mean.R'
     'powermean.R'
     'qD.R'
@@ -59,9 +69,11 @@ Collate:
     'rdiversity-package.R'
     'relativeentropy.R'
     'repartition.R'
-    'similarity_shimatani.R'
+    'simple_plot.R'
     'smatrix.R'
     'summarise.R'
+    'tax2dist.R'
     'tbar.R'
+    'what.R'
     'zmatrix.R'
 Encoding: UTF-8

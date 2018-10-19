@@ -33,8 +33,6 @@ Returns a standard output of class \code{tibble}, with columns:
 \item\code{partition_name}: label attributed to partition
 \item\code{diversity}: calculated subcommunity diversity
 }
-
-
 }
 \description{
 Generic function for calculating individual-level diversity.

@@ -3,13 +3,10 @@
 \docType{methods}
 \name{powermean}
 \alias{powermean}
-\alias{is.powermean}
 \alias{show,powermean-method}
 \title{Calculate power mean}
 \usage{
 powermean(results, meta, tag)
-
-is.powermean(x)
 
 \S4method{show}{powermean}(object)
 }
@@ -24,15 +21,10 @@ abundance of types, pair-wise similarity, and other associated variables.}
 
 \item{tag}{measure}
 
-\item{x}{any R object}
-
 \item{object}{object of class \code{powermean}}
 }
 \value{
 \code{powermean(x)} returns an object of class \code{powermean}.
-
-\code{is.powermean(x)} returns TRUE if its argument is a
-powermean, FALSE otherwise.
 
 \code{print(x)} prints an object object of class \code{powermean}
 }
@@ -40,6 +32,14 @@ powermean, FALSE otherwise.
 Functions to check if an object is a \code{powermean}, or coerse an object 
 into a \code{powermean}; for \code{raw_alpha()}, \code{norm_alpha()}, 
 \code{raw_rho()}, \code{norm_rho()}, or  \code{raw_gamma()}.
+
+#' @rdname powermean
+#' @param x any R object
+#' @return \code{is.powermean(x)} returns TRUE if its argument is a
+#' powermean, FALSE otherwise.
+#' @export
+#'
+is.powermean <- function (x) inherits(x, "powermean")
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))

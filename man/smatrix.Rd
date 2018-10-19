@@ -10,8 +10,8 @@ smatrix(ps)
 \item{ps}{\code{phy_struct()} output.}
 }
 \value{
-Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
-species.
+Returns an \eqn{hS x hS} matrix; pair-wise ultrametric-similarity of  
+historic species.
 }
 \description{
 Function to calculate an ultrametric-similarity matrix.

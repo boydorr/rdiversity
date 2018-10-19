@@ -15,18 +15,17 @@
 \alias{metacommunity,numeric-method,matrix-method}
 \alias{metacommunity,matrix,matrix-method}
 \alias{metacommunity,matrix-method}
-\alias{metacommunity,missing,phylo-method}
-\alias{metacommunity,phylo-method}
-\alias{metacommunity,numeric,phylo-method}
-\alias{metacommunity,numeric-method,phylo-method}
-\alias{metacommunity,data.frame,phylo-method}
-\alias{metacommunity,data.frame-method,phylo-method}
-\alias{metacommunity,matrix,phylo-method}
-\alias{metacommunity,matrix-method,phylo-method}
-\alias{is.metacommunity}
-\title{Coerce to \code{metacommunity}}
+\alias{metacommunity,missing,similarity-method}
+\alias{metacommunity,similarity-method}
+\alias{metacommunity,numeric,similarity-method}
+\alias{metacommunity,similarity-method}
+\alias{metacommunity,data.frame,similarity-method}
+\alias{metacommunity,similarity-method}
+\alias{metacommunity,matrix,similarity-method}
+\alias{metacommunity,similarity-method}
+\title{Metacommunity}
 \usage{
-metacommunity(partition, similarity, ...)
+metacommunity(partition, similarity)
 
 \S4method{metacommunity}{data.frame,missing}(partition)
 
@@ -40,15 +39,13 @@ metacommunity(partition, similarity, ...)
 
 \S4method{metacommunity}{matrix,matrix}(partition, similarity)
 
-\S4method{metacommunity}{missing,phylo}(partition, similarity, depth = 1)
+\S4method{metacommunity}{missing,similarity}(partition, similarity)
 
-\S4method{metacommunity}{numeric,phylo}(partition, similarity, depth = 1)
+\S4method{metacommunity}{numeric,similarity}(partition, similarity)
 
-\S4method{metacommunity}{data.frame,phylo}(partition, similarity, depth = 1)
+\S4method{metacommunity}{data.frame,similarity}(partition, similarity)
 
-\S4method{metacommunity}{matrix,phylo}(partition, similarity, depth = 1)
-
-is.metacommunity(x)
+\S4method{metacommunity}{matrix,similarity}(partition, similarity)
 }
 \arguments{
 \item{partition}{two-dimensional \code{matrix} of mode \code{numeric}
@@ -58,26 +55,13 @@ diversity, see \emph{Details}.}
 
 \item{similarity}{(optional) two-dimensional \code{matrix} of mode 
 \code{numeric}, with rows as types, columns as types, and elements 
-containing the pairwise similarity between types. For phylogenetic 
-diversity, see \emph{Details}.}
-
-\item{...}{(optional) additional arguments, especially:}
-
-\item{depth}{(optional; and for phylogenetic metacommunities only) how
-much evolutionary history should be retained, with 0 marking the most
-recent present-day species, and 1 (the default) marking the most recent 
-common ancestor. Numbers greater than 1 extend the root of the tree.}
-
-\item{x}{any R object}
+containing the pairwise similarity between types.}
 }
 \value{
 Returns an object of class \code{metacommunity} (see \emph{Fields}).
-
-Returns TRUE if its argument is a metacommunity, FALSE otherwise.
 }
 \description{
-Functions to check if an object is a \code{metacommunity} or coerce an
-object into a \code{metacommunity}.
+Functions to generate a \code{metacommunity} object.
 }
 \details{
 When calculating phylogenetic diversity either:
@@ -95,7 +79,7 @@ with \code{similarity} as the pairwise similarity of historical species.
 \describe{
 \item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}
 with rows as types, columns as subcommunities, and elements containing  
-relative abundances of types in subcommunities.  In the phylogenetic case, 
+relative abundances of types in subcommunities. In the phylogenetic case, 
 this corresponds to the proportional abundance of historic species, which
 is calculated from the proportional abundance of present day species.}
 
@@ -133,7 +117,8 @@ partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 
-a <- metacommunity(partition, tree)
+similarity <- similarity(tree)
+a <- metacommunity(partition, similarity)
 b <- metacommunity(partition)
 
 }

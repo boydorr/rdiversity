@@ -3,13 +3,10 @@
 \docType{methods}
 \name{relativeentropy}
 \alias{relativeentropy}
-\alias{is.relativeentropy}
 \alias{show,relativeentropy-method}
 \title{Calculate relative entropy}
 \usage{
 relativeentropy(results, meta, tag)
-
-is.relativeentropy(x)
 
 \S4method{show}{relativeentropy}(object)
 }
@@ -22,20 +19,24 @@ calculated from diversity-term functions \code{raw_beta()} and
 
 \item{tag}{measure}
 
-\item{x}{any R object}
-
 \item{object}{object of class \code{relativeentropy}}
 }
 \value{
 object of class \code{relativeentropy}
-
-\code{is.relativeentropy(x)} returns TRUE if its argument is a 
-relativeentropy, FALSE otherwise.
 }
 \description{
 Functions to check if an object is a \code{relativeentropy}, or coerse an  
 object into a \code{relativeentropy}; for \code{raw_beta()} or 
 \code{norm_beta()}.
+
+#' @rdname relativeentropy
+#' @param x any R object 
+#' @return \code{is.relativeentropy(x)} returns TRUE if its argument is a 
+#' relativeentropy, FALSE otherwise.
+#' @export 
+#' 
+is.relativeentropy <- function (x) 
+  inherits(x, "relativeentropy")
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))
