@@ -13,13 +13,11 @@
 #' the partition matrix was valid, this should be identical to that which was
 #' input as an argument. 
 #' 
-#' @export
-#' 
 check_phypartition <- function(tip_labels, partition){
   partition <- check_partition(partition)
   
   if(is.null(row.names(partition)))
-    stop(paste("Partition object most have row names.",
+    stop(paste("Partition object must have row names.",
                 "\nThese should match some or all of the tip labels in theh phylogeny"))
   
   # Remove species from the partition that aren't in the phylogeny
