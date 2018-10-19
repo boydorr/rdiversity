@@ -59,7 +59,7 @@ setGeneric(name = "subdiv",
 
 #' @rdname subdiv
 #'
-setMethod(f = "subdiv", signature= "powermean",
+setMethod(f = "subdiv", signature = "powermean",
           definition = function(data, qs) {
             # Calculate
             results <- lapply(seq_along(qs), function(x)
@@ -111,7 +111,7 @@ setMethod(f = "subdiv", signature = "relativeentropy",
 
 #' @rdname subdiv
 #'
-setMethod(f = "subdiv", signature= "metacommunity",
+setMethod(f = "subdiv", signature = "metacommunity",
           definition = function(data, qs) {
             # Calculate terms
             div.measures <- list(raw_alpha, norm_alpha,
