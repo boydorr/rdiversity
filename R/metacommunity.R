@@ -186,75 +186,61 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
-#' @aliases metacommunity,phylo-method
-#' @export
+#' @aliases metacommunity,similarity-method
 #'
 setMethod(f = "metacommunity",
-          signature(partition = "missing", similarity = "phylo"),
-          definition = function(partition, similarity, depth = 1) {
-            # If pds.abundance is not entered, assume an even distribution
+          signature(partition = "missing", similarity = "similarity"),
+          definition = function(partition, similarity) {
+            # If partition is missing, assume an even distribution
             tips <- similarity$tip.label
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
             colnames(partition) <- "sc1"
-            
-            metacommunity(partition, similarity, depth)
-          } )
+            ps <- phy_struct(tree = similarity@phylo, partition = partition)
+            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
+            } )
 
 
 #' @rdname metacommunity-methods
-#' @aliases metacommunity,numeric-method,phylo-method
-#' @export
+#' @aliases metacommunity,similarity-method
 #'
 setMethod(f = "metacommunity",
-          signature(partition = "numeric", similarity = "phylo"),
-          definition = function(partition, similarity, depth = 1) {
+          signature(partition = "numeric", similarity = "similarity"),
+          definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            
-            metacommunity(partition, similarity, depth)            
+            ps <- phy_struct(tree = similarity@phylo, partition = partition)
+            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
           } )
 
 
 #' @rdname metacommunity-methods
-#' @aliases metacommunity,data.frame-method,phylo-method
-#' @export
+#' @aliases metacommunity,similarity-method
 #'
 setMethod(f = "metacommunity",
-          signature(partition = "data.frame", similarity = "phylo"),
-          definition = function(partition, similarity, depth = 1) {
+          signature(partition = "data.frame", similarity = "similarity"),
+          definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            
-            metacommunity(partition, similarity, depth)            
+            ps <- phy_struct(tree = similarity@phylo, partition = partition)
+            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
           } )
 
 
 #' @rdname metacommunity-methods
-#' @aliases metacommunity,matrix-method,phylo-method
-#' @export
+#' @aliases metacommunity,similarity-method
 #'
 setMethod(f = "metacommunity",
-          signature(partition = "matrix", similarity = "phylo"),
-          definition = function(partition, similarity, depth = 1) {
-            ps <- phy_struct(tree = similarity, partition = partition)
-            
-            chainsaw(partition = partition, ps = ps, depth = depth)
+          signature(partition = "matrix", similarity = "similarity"),
+          definition = function(partition, similarity) {
+            ps <- phy_struct(tree = similarity@phylo, partition = partition)
+            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
           } )
 
-
-#' @rdname metacommunity-methods
-#' @param x any R object
-#' @return
-#' Returns TRUE if its argument is a metacommunity, FALSE otherwise.
-#' @export
-#'
-is.metacommunity <- function (x)
-  inherits(x, "metacommunity")
 
 
 #' @rdname metacommunity-class
 #' @param object object of class \code{metacommunity}
 #'
-setMethod(f = "show", signature= "metacommunity",
+setMethod(f = "show", signature = "metacommunity",
           definition = function(object) {
             cat('Object of class metacommunity, containing:\n')
             cat('@type_abundance: Matrix of relative abundances (', 
