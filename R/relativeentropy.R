@@ -4,15 +4,14 @@
 #' object into a \code{relativeentropy}; for \code{raw_beta()} or 
 #' \code{norm_beta()}. 
 #' 
-#' @param tag measure
 #' @param results \code{matrix} of mode \code{numeric}; contains values 
 #' calculated from diversity-term functions \code{raw_beta()} and 
 #' \code{norm_beta()}
 #' @param meta object of class \code{metacommunity}
+#' @param tag measure
 #' 
 #' @return object of class \code{relativeentropy}
 #' @include class-relativeentropy.R 
-#' @export
 #' 
 #' @examples 
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -35,14 +34,14 @@ relativeentropy <- function(results, meta, tag) {
 }
 
 
-#' @rdname relativeentropy
-#' @param x any R object 
-#' @return \code{is.relativeentropy(x)} returns TRUE if its argument is a 
-#' relativeentropy, FALSE otherwise.
-#' @export 
-#' 
-is.relativeentropy <- function (x) 
-  inherits(x, "relativeentropy")
+#' #' @rdname relativeentropy
+#' #' @param x any R object 
+#' #' @return \code{is.relativeentropy(x)} returns TRUE if its argument is a 
+#' #' relativeentropy, FALSE otherwise.
+#' #' @export 
+#' #' 
+#' is.relativeentropy <- function (x) 
+#'   inherits(x, "relativeentropy")
 
 
 #' @rdname relativeentropy
