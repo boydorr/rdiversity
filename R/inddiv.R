@@ -27,7 +27,7 @@
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
 #' arXiv 1404.6520v3:1–9.
 #' 
-#' @export
+#' @exportMethod inddiv
 #' @examples
 #' # Define metacommunity
 #' pop <- data.frame(a = c(1,3), b = c(1,1))

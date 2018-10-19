@@ -23,7 +23,8 @@
 #' partition <- cbind(a = sample(5,5), b = sample(5,5))
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
-#' meta <- metacommunity(partition, tree)
+#' similarity <- phy2branch(tree)
+#' meta <- metacommunity(partition, similarity)
 #' meta@raw_abundance
 #'
 #' a <- repartition(meta)

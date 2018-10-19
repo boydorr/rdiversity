@@ -25,7 +25,6 @@
 #' @docType package
 #'
 #' @import ggplot2
-#' @import ggthemes
 #' @import methods
 #' @import ape
 #' @import phangorn
@@ -36,6 +35,7 @@
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
 #' @importFrom utils head
-#'
+#' @importFrom scales hue_pal
+#' @importFrom ggthemes ptol_pal
 #'
 NULL

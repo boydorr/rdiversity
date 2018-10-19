@@ -31,7 +31,8 @@
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
 #' arXiv 1404.6520v3:1–9.
 #' 
-#' @export
+#' @exportMethod metadiv
+#' 
 #' @examples
 #' # Define metacommunity
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -57,7 +58,7 @@ setGeneric(name = "metadiv",
 
 #' @rdname metadiv
 #'
-setMethod(f = "metadiv", signature= "powermean",
+setMethod(f = "metadiv", signature = "powermean",
           definition = function(data, qs) {
             # Calculate
             results <- lapply(seq_along(qs), function(x) {

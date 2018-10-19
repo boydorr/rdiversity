@@ -4,8 +4,8 @@
 #' 
 #' @param ps \code{phy_struct()} output.
 #' 
-#' @return Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
-#' species.
+#' @return Returns an \eqn{hS x hS} matrix; pair-wise ultrametric-similarity of  
+#' historic species.
 #' @export
 #' 
 #' @examples 
