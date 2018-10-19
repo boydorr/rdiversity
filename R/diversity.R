@@ -57,3 +57,14 @@ setMethod(f = "diversity", signature = "list",
           } )
 
 
+
+#' @rdname diversity-methods
+#' @param object object of class \code{diversity}
+#'
+setMethod(f = "show", signature = "diversity",
+          definition = function(object) {
+            object <- asS3(object)
+            object <- tibble::as_data_frame(object)
+            print(object)
+          } )
+
