@@ -3,13 +3,15 @@ context('Testing chainsaw() function')
 test_that("Setting depth to 2 returns a long root for ultrametric trees", {
   tree <- ape::read.tree(text="(A:2,B:2);")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  meta <- metacommunity(partition, tree, 2)
+  similarity <- similarity(tree, 2)
+  meta <- metacommunity(partition, similarity)
   
   tree2 <- ape::read.tree(text="(A:2,B:2)R:2;")
-  meta2 <- metacommunity(partition, tree2) # type_weights
+  similarity2 <- similarity(tree2)
+  meta2 <- metacommunity(partition, similarity2) # type_weights
   
-  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2),
-                    norm_meta_alpha(meta2, 0:2))
+  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2)$diversity,
+                    norm_meta_alpha(meta2, 0:2)$diversity)
   
 })
 
@@ -18,13 +20,15 @@ test_that("Setting depth to 2 returns a long root for ultrametric trees", {
 test_that("Setting depth to 0.5 cuts off root", {
   tree <- ape::read.tree(text="(A:1,B:2);")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  meta <- metacommunity(partition, tree)
+  similarity <- similarity(tree)
+  meta <- metacommunity(partition, similarity)
 
   tree2 <- ape::read.tree(text="(A:1,B:2)R:2;")
-  meta2 <- metacommunity(partition, tree2, 0.5)
+  similarity2 <- similarity(tree2, 0.5)
+  meta2 <- metacommunity(partition, similarity)
 
-  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2),
-                    norm_meta_alpha(meta2, 0:2))
+  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2)$diversity,
+                    norm_meta_alpha(meta2, 0:2)$diversity)
 })
 
 
@@ -32,28 +36,31 @@ test_that("Setting depth to 0.5 cuts off root", {
 test_that("Setting depth to 0.5 cuts the phylogeny in half", {
   tree <- ape::read.tree(text="(A:4,B:3);")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  meta <- metacommunity(partition, tree, 0.5)
+  similarity <- similarity(tree, 0.5)
+  meta <- metacommunity(partition, similarity)
   ps <- phy_struct(tree, partition)
   structure_matrix <- ps$structure
   pa <- phy_abundance(partition, structure_matrix)
   
   tree2 <- ape::read.tree(text="(A:2,B:1);")
-  meta2 <- metacommunity(partition, tree2)
+  similarity2 <- similarity(tree2)
+  meta2 <- metacommunity(partition, similarity2)
   ps2 <- phy_struct(tree2, partition)
   structure_matrix2 <- ps2$structure
   pa2 <- phy_abundance(partition, structure_matrix2)
   
-  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2),
-                    norm_meta_alpha(meta2, 0:2))
+  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2)$diversity,
+                    norm_meta_alpha(meta2, 0:2)$diversity)
 })
 
 
 test_that("Setting depth to 1 returns the phylogeny intact", {
   tree <- ape::read.tree(text="(A:1,B:2)R:2;")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  meta <- metacommunity(partition, tree)
+  similarity <- similarity(tree)
+  meta <- metacommunity(partition, similarity)
   
-  testthat::expect_equal(meta, metacommunity(partition, tree, 1))
+  testthat::expect_equal(meta, metacommunity(partition, similarity))
 })
 
 
@@ -106,8 +113,10 @@ test_that("Metacommunity G increases when trees are cut", {
   row.names(partition) <- tree$tip.label
   partition <- partition / sum(partition)
   # Generate metacommunitites
-  meta <- metacommunity(partition, tree)
-  c_meta <- metacommunity(partition, tree, 0.4)
+  similarity <- similarity(tree)
+  meta <- metacommunity(partition, similarity)
+  c_similarity <- similarity(tree, 0.4)
+  c_meta <- metacommunity(partition, c_similarity)
   # Calculate diversity
   div <- meta_gamma(meta,0)$diversity
   c_div <- meta_gamma(c_meta,0)$diversity
@@ -126,8 +135,10 @@ test_that("Metacommunity G is smaller for trees with extended roots", {
   row.names(partition) <- tree$tip.label
   partition <- partition / sum(partition)
   # Generate metacommunitites
-  meta <- metacommunity(partition, tree)
-  r_meta <- metacommunity(partition, tree, 2)
+  similarity <- similarity(tree)
+  meta <- metacommunity(partition, similarity)
+  r_similarity <- similarity(tree, 2)
+  r_meta <- metacommunity(partition, r_similarity)
   # Calculate diversity
   div <- meta_gamma(meta,0)$diversity
   r_div <- meta_gamma(r_meta,0)$diversity

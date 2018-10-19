@@ -10,7 +10,8 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   ps <- phy_struct(tree, partition)
   structure_matrix <- ps$structure
   T_bar <- ps$tbar
-  meta <- metacommunity(partition, tree)
+  similarity <- similarity(tree)
+  meta <- metacommunity(partition, similarity)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,
                     unlist(metadiv(raw_gamma(meta),0)$diversity * T_bar))
@@ -28,7 +29,8 @@ test_that("Answers match up with Leinster-Cobbold Appendix A", {
   ps <- phy_struct(tree, partition)
   structure_matrix <- ps$structure
   T_bar <- ps$tbar
-  meta <- metacommunity(partition, tree)
+  similarity <- similarity(tree)
+  meta <- metacommunity(partition, similarity)
   
   expect_equivalent(sum(tree$edge.length) + tree$root.edge,
                     unlist(metadiv(raw_gamma(meta),0)$diversity * T_bar))
@@ -46,7 +48,8 @@ test_that("pmatrix is correct when tips belong to the same subcommunities", {
   partition <- cbind(A=c(1,1), B=c(1,0))
   partition <- partition / sum(partition)
   row.names(partition) <- tree$tip.label
-  meta <- metacommunity(partition, tree)
+  similarity <- similarity(tree)
+  meta <- metacommunity(partition, similarity)
   
   expect_equivalent(meta@type_abundance,
                     cbind(A=c(2,1,2,1), B=c(2,1,0,0))/9)
@@ -56,7 +59,8 @@ test_that("pmatrix is correct when tips belong to the same subcommunities", {
   partition2 <- cbind(A=sample(10), B=sample(10))
   partition2 <- partition2 / sum(partition2)
   row.names(partition2) <- tree2$tip.label
-  meta2 <- metacommunity(partition2, tree2)
+  similarity2 <- similarity(tree2)
+  meta2 <- metacommunity(partition2, similarity2)
   
   expect_equivalent(sum(meta2@type_abundance), 1)
 })
