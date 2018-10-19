@@ -10,7 +10,6 @@
 #' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If 
 #' the partition matrix was valid, this should be identical to that which was
 #' input as an argument.
-#' @export
 #' 
 check_partition <- function(partition) {
   if(is.vector(partition)) partition <- as.matrix(partition)
