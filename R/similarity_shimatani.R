@@ -1,6 +1,6 @@
-#' Taxonomic similarity matrix
+#' tax2dist
 #' 
-#' Calculates taxonomic similarity based on Shimatani's index of taxonomic 
+#' Calculates taxonomic distances based on Shimatani's index of taxonomic 
 #' similarity (see \emph{Details}).
 #' 
 #' Shimatani's taxonomic similarity index is defined:
@@ -30,9 +30,10 @@
 #'                      Species= c("tenuifolium", "asterolepis",
 #'                                     "simplex var.grandiflora",
 #'                                     "simplex var.ochnacea"))
-#' similarity <- similarity_shimatani(pop, lookup)
+#' dist <- tax2dist(pop, lookup)
+#' dist2sim(dist, "l")
 #' 
-similarity_shimatani <- function(data, lookup) 
+tax2dist <- function(data, lookup) 
 {
   # Data and lookup table must have the same number of entries
   stopifnot(nrow(data)==nrow(lookup))
@@ -41,11 +42,11 @@ similarity_shimatani <- function(data, lookup)
     data <- as.matrix(data)
   
   # Based on Shimatani's taxonomic similarity indices
-  species.similarity <- 1
-  genus.similarity <- 0.75
-  family.similarity <- 0.5
-  subclass.similarity <- 0.25 
-  other.similarity <- 0
+  species.similarity <- 0
+  genus.similarity <- 1
+  family.similarity <- 2
+  subclass.similarity <- 3
+  other.similarity <- 4
   
   S <- nrow(data)
   zmatrix <- diag(S)
