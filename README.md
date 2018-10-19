@@ -1,7 +1,7 @@
 ---
 output:
-  html_document: default
-  pdf_document: default
+html_document: default
+pdf_document: default
 ---
 # rdiversity  
 
@@ -13,6 +13,26 @@ output:
 `rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (e.g. ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), *How to partition diversity*. 
 
 This package has now reached a stable release and is cross-validated against our Julia package [Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently. Please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
+
+
+## Contents
+
+Getting started:
+
+* [Installation](#installation)
+* [Generating a metacommunity](#generating-a-metacommunity)
+* [Calculating diversity](#calculating-diversity)
+* [Plotting diversity](#plotting-diversity)
+
+Special cases:
+
+* [Taxonomic diversity](#taxonomic-diversity)
+* [Phylogenetic diversity](#phylogenetic-diversity)
+
+Miscellaneous:
+
+* [Additional tools](#additional-tools)
+
 
 ## Installation
 
@@ -31,8 +51,8 @@ Before calculating diversity a `metacommunity` object must be created. This obje
 library(rdiversity)
 
 # Example population
-pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
-row.names(pop) <- c("cows", "sheep", "ducks")
+pop <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
+row.names(pop) <- c("cows", "sheep")
 ```
 The `metacommunity()` function takes two arguments, `partition` and `similarity`. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the `similarity` argument is missing.
 
@@ -103,7 +123,7 @@ metadiv(data=meta, qs=0:2)
 ```
 
 
-## How to plot diversity
+## Plotting diversity
 
 All of these results are output as `diversity` objects, which can be visualised using the `plot()` function. For example:
 
@@ -115,7 +135,7 @@ sc <- subdiv(data=component, qs=0:10)
 plot(sc)
 ```
 
-![Example1](./man/figures/README-example-1.png)
+![](./man/figures/README-example-1.png)
 
 ```{r}
 # Normalised metacommunity alpha
@@ -123,7 +143,7 @@ mc <- metadiv(data=component, qs=0:10)
 plot(mc)
 ```
 
-![Example2](./man/figures/README-example-2.png)
+![](./man/figures/README-example-2.png)
 
 ```{r}
 # All subcommunity measures
@@ -131,7 +151,7 @@ all <- subdiv(data=meta, qs=0:10)
 plot(all)
 ```
 
-![Example3](./man/figures/README-example-3.png)
+![](./man/figures/README-example-3.png)
 
 The function `diversity()` can be used to transform `data.frame` and `list` objects into `diversity` objects ready for plotting. This function is useful when generating plots containing both the subcommunity- and metacommunity-level diversities, or when only certain measures are of interest. For example:
 
@@ -146,7 +166,7 @@ res1 <- diversity(combine)
 plot(res1)
 ```
 
-![Example4](./man/figures/README-example-4.png)
+![](./man/figures/README-example-4.png)
 
 ```{r}
 alpha <- norm_sub_alpha(meta=meta, qs=0:10)
@@ -157,17 +177,18 @@ res2 <- diversity(list(alpha, rho))
 plot(res2)
 ```
 
-![Example5](./man/figures/README-example-5.png)
+![](./man/figures/README-example-5.png)
 
 If q=Inf is calculated, q is transformed on a log scale. For example:
 
 ```{r}
 qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
 res3 <- norm_sub_alpha(meta=meta, qs=qs)
+
 plot(res3)
 ```
 
-![Example6](./man/figures/README-example-6.png)
+![](./man/figures/README-example-6.png)
 
 Note that in the above example, q=0, q=1, q=2, and q=Inf are highlighted as important, corresponding to Species Richness, Shannon, Simpson, and Berger Parker diversity, respecively.
 
@@ -177,10 +198,78 @@ It might also be useful
 ```{r}
 # Or we can look at the individual species-level components
 ind <- inddiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
+
 plot(ind)
 ```
 
+![](./man/figures/README-example-7.png)
+
 Note that generally defined as **types** or any biologically meaningful unit)
+
+
+
+## Taxonomic diversity
+
+`tax2dist()`
+
+
+```{r}
+
+pop <- sample(1:50, 4)
+lookup <- data.frame(Subclass=c("Sapindales", "Malvales", "Fabales", "Fabales"),      
+Family=c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae"), 
+Genus=c("Protium", "Quararibea", "Swartzia", "Swartzia"),       
+Species= c("tenuifolium", "asterolepis","simplex var.grandiflora","simplex var.ochnacea"))
+qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
+
+# Calculate distance matrix
+dist <- tax2dist(pop, lookup)
+
+# Calculate similarity matrix
+similarity <- dist2sim(dist, "l")
+
+# Calculate diversity
+meta <- metacommunity(partition=pop, similarity=similarity)
+div <- norm_meta_alpha(meta, qs)
+plot(div)
+
+```
+
+![](./man/figures/README-example-8.png)
+
+
+## Phylogenetic diversity
+Phylogenetic diversity measures can be broadly split into two categories – those that look at the phylogeny as a whole, such as Faith’s (1992) phylogenetic diversity (Faith’s PD), and those that look at pairwise tip distances, such as mean pairwise distance (MPD; Webb, 2000). Our framework of measures is able to quantify phylogenetic diversity using both of these methods.
+
+Distance-based phylogenetic diversity
+
+```{r}
+pop <- matrix(1:100, ncol=4)
+tree <- ape::rtree(4)
+dist <- phy2dist(tree)
+```
+
+
+```{r}
+similarity <- dists2sim(tree, "l")
+```
+
+
+
+
+Tree-based phylogenetic diversity
+```{r}
+pop <- matrix(1:12, ncol=3)
+colnames(pop) <- letters[1:3]
+row.names(pop) <- paste0("sp",1:4)
+tree <- ape::rtree(4)
+tree$tip.label <- row.names(pop)
+
+dist <- phy2branch(tree)
+meta <- metacommunity(partition=pop, similarity=similarity)
+```
+
+
 
 
 
@@ -191,9 +280,9 @@ A metcommunity originating from a phylogeny will contain three additional slots:
 * `@parameters` : parameters associated with historical species
 
 
+
 ## Additional tools
 * `qD_single()` : the Hill number / naive-type diversity of order *q* of a single population  
 * `qD()` : the Hill number / naive-type diversity of a series of independent populations for a series of orders  
-* `qDZ_single()` : the similarity-sensitive diversity of order *q* of a single population 
+* `qDZ_single()` : the similarity-sensitive diversity of order *q* of a single population
 * `qDZ()` : the similarity-sensitive diversity of a series of independent populations for a series of orders  
-* `similarity_shimatani()`
