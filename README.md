@@ -256,9 +256,9 @@ similarity <- dist2sim(dist, "l")
 ```
 Note that this transformation can be done in three different ways, by setting the `transform` argument as `l`, `e1`, or `e2`, respectively:
 
-<img src="./man/figures/README-l.png"/>
-<img src="./man/figures/README-e1.png"/>
-<img src="./man/figures/README-e2.png"/>
+<img src="./man/figures/l.svg"/>
+<img src="./man/figures/e1.svg"/>
+<img src="./man/figures/e2.svg"/>
 
 3. Generate a metacommunity object using the `metacommunity()` function
 ```{r}
