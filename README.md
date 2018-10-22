@@ -6,7 +6,6 @@
 [![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
 
 
-
 `rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (e.g. ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), *How to partition diversity*. 
 
 This package has now reached a stable release and is cross-validated against our Julia package [Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently. Please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
@@ -87,7 +86,7 @@ A complete list of these functions is shown below:
 * `norm_meta_beta()` : effective number of distinct subcommunities  
 * `meta_gamma()` : metacommunity similarity-sensitive diversity  
 
-Each of these functions take two arguments, `meta` (a `metacommunity` object) and `qs` (a vector of q values), and output results as a `diversity` object. For example, to calculate normalised subcommunity alpha diversity for q=0, q=1, and q=2:
+Each of these functions take two arguments, `meta` (a `metacommunity` object) and `qs` (a vector of q values), and output results as a `diversity` object. For example, to calculate normalised subcommunity alpha diversity for $q=0$, $q=1$, and $q=2$:
 
 ```{r}
 norm_sub_alpha(meta, 0:2)
@@ -97,7 +96,7 @@ However, if multiple measures are required and computational efficiency is an is
 
 
 ### Method 2
-This method requires that we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are a kind of average (based on q) of these values, which are calculated using the functions `subdiv()` and `metadiv()`. Note that, since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this is computationally more efficient.
+This method requires that we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are a kind of average (based on $q$) of these values, which are calculated using the functions `subdiv()` and `metadiv()`. Note that, since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this is computationally more efficient.
 
 ```{r}
 # First, calculate the species-level component for normalised alpha
@@ -177,7 +176,7 @@ plot(res2)
 
 ![](./man/figures/README-example-5.png)
 
-If diversity is calculated for q=Inf is calculated, q is transformed on a log scale. For example:
+If diversity is calculated for $q=\infty$ is calculated, $q$ is transformed on a log scale. For example:
 
 ```{r}
 qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
@@ -188,10 +187,9 @@ plot(res3)
 
 ![](./man/figures/README-example-6.png)
 
-Note that in the above example, q=0, q=1, q=2, and q=Inf are highlighted as important, corresponding to Species Richness, Shannon, Simpson, and Berger Parker diversity, respecively.
+Note that in the above example, $q=0$, $q=1$, $q=2$, and $q=\infty$ are highlighted as important, corresponding to Species Richness, Shannon, Simpson, and Berger Parker diversity, respecively.
 
-It might also be useful
-
+In some cases, it might also be useful to examine the species-level components, which is done in the following way:
 
 ```{r}
 # Or we can look at the individual species-level components
@@ -256,8 +254,15 @@ dist <- phy2dist(tree)
 # Convert distances to similarities
 similarity <- dist2sim(dist, "l")
 ```
-Note that this transformation can be done in three different ways:
-<p align="center"><img src="./man/figures/README-similarity.png"></p>
+Note that this transformation can be done in three different ways, by setting the `transform` argument as `l`, `e1`, or `e2`, respectively:
+
+$$
+\begin{aligned}
+l &:\quad 1-\frac{d}{k d_{max}} \\
+e1 &:\quad e^{kd} \\
+e2 &:\quad e^{\frac{d}{k d_{max}}}
+\end{aligned}
+$$
 
 3. Generate a metacommunity object using the `metacommunity()` function
 ```{r}
