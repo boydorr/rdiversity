@@ -55,7 +55,7 @@ The `metacommunity()` function takes two arguments, `partition` and `similarity`
 
 ```{r}
 # Create metacommunity object
-meta <- metacommunity(partition=pop)
+meta <- metacommunity(pop)
 ```
 Each `metacommunity` object contains the following slots:
 
@@ -89,7 +89,7 @@ A complete list of these functions is shown below:
 Each of these functions take two arguments, `meta` (a `metacommunity` object) and `qs` (a vector of q values), and output results as a `diversity` object. For example, to calculate normalised subcommunity alpha diversity for q=0, q=1, and q=2:
 
 ```{r}
-norm_sub_alpha(meta=meta, qs=0:2)
+norm_sub_alpha(meta, 0:2)
 ```
 
 However, if multiple measures are required and computational efficiency is an issue, then the following method is recommended (the same results are obtained).
@@ -100,23 +100,23 @@ To calculate the diversity of a population, we first calculate the species-level
 
 ```{r}
 # First, calculate the species-level component for normalised alpha
-component <- norm_alpha(meta=meta)
+component <- norm_alpha(meta)
 
 # Then, calculate normalised alpha at the subcommunity-level 
-subdiv(data=component, qs=0:2)
+subdiv(component, 0:2)
 
 # Likewise, calculate normalised alpha at the metacommunity-level 
-metadiv(data=component, qs=0:2)
+metadiv(component, 0:2)
 ```
 
 In some instances, it may be useful to calculate **all** subcommunity (or metacommunity) measures. In which case, a `metacommunity` object may be passed directly to `subdiv()` or `metadiv()`:
 
 ```{r}
 # To calculate all subcommunity diversity measures
-subdiv(data=meta, qs=0:2)
+subdiv(meta, 0:2)
 
 # To calculate all metacommunity diversity measures
-metadiv(data=meta, qs=0:2)
+metadiv(meta, 0:2)
 ```
 
 
@@ -125,10 +125,10 @@ metadiv(data=meta, qs=0:2)
 All of these results are output as `diversity` objects, which can be visualised using the `plot()` function. For example:
 
 ```{r}
-component <- norm_alpha(meta=meta)
+component <- norm_alpha(meta)
 
 # Normalised subcommunity alpha
-sc <- subdiv(data=component, qs=0:10)
+sc <- subdiv(component, 0:10)
 plot(sc)
 ```
 
@@ -136,7 +136,7 @@ plot(sc)
 
 ```{r}
 # Normalised metacommunity alpha
-mc <- metadiv(data=component, qs=0:10)
+mc <- metadiv(component, 0:10)
 plot(mc)
 ```
 
@@ -144,7 +144,7 @@ plot(mc)
 
 ```{r}
 # All subcommunity measures
-all <- subdiv(data=meta, qs=0:10)
+all <- subdiv(meta, 0:10)
 plot(all)
 ```
 
@@ -166,8 +166,8 @@ plot(res1)
 ![](./man/figures/README-example-4.png)
 
 ```{r}
-alpha <- norm_sub_alpha(meta=meta, qs=0:10)
-rho <- norm_sub_rho(meta=meta, qs=0:10)
+alpha <- norm_sub_alpha(meta, 0:10)
+rho <- norm_sub_rho(meta, 0:10)
 
 res2 <- diversity(list(alpha, rho)) 
 
@@ -180,7 +180,7 @@ If q=Inf is calculated, q is transformed on a log scale. For example:
 
 ```{r}
 qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
-res3 <- norm_sub_alpha(meta=meta, qs=qs)
+res3 <- norm_sub_alpha(meta, qs)
 
 plot(res3)
 ```
@@ -226,7 +226,7 @@ dist <- tax2dist(pop, lookup)
 similarity <- dist2sim(dist, "l")
 
 # Generate metacommunity object
-meta <- metacommunity(partition=pop, similarity=similarity)
+meta <- metacommunity(pop, similarity)
 ```
 
 ![](./man/figures/README-example-8.png)
@@ -235,50 +235,56 @@ meta <- metacommunity(partition=pop, similarity=similarity)
 ## Phylogenetic diversity
 Phylogenetic diversity measures can be broadly split into two categories – those that look at the phylogeny as a whole, such as Faith’s (1992) phylogenetic diversity (Faith’s PD), and those that look at pairwise tip distances, such as mean pairwise distance (MPD; Webb, 2000). The framework of measures presented in this package is able to quantify phylogenetic diversity using both of these methods.
 
-Distance-based phylogenetic diversity is calculated in the following way:
-
-1. Generate a distance matrix using the `phy2dist()` function to extract pairwise tip distances from a `phylo` object;
-2. Generate a similarity matrix using the `dist2sim()` function to transform distances into similarities;
-3. Generate a metacommunity object using the `metacommunity()` function; and
-4. Calculate diversity in the usual way (as above).
 
 ```{r}
-pop <- matrix(1:100, ncol=4)
-tree <- ape::rtree(4)
-
-# Generate pairwise distance matrix
-dist <- phy2dist(tree)
-
-# Convert distances to similarities
-similarity <- dist2sim(tree, "l")
-
-# Generate metacommunity object
-meta <- metacommunity(partition=pop, similarity=similarity)
-```
-
-Likewise, tree-based phylogenetic diversity is calculated in the following way: 
-
-1. Generate a similarity object using the `phy2branch()` function;
-2. Generate a metacommunity object using the `metacommunity()` function; and
-3. Calculate diversity in the usual way (as above).
-
-```{r}
+# Example data
 tree <- ape::rtree(4)
 pop <- matrix(1:12, ncol=3)
+pop <- pop/sum(pop)
+```
 
-# Tree tips labels must match the partition matrix row names 
+### Distance-based phylogenetic diversity
+
+1. Generate a distance matrix using the `phy2dist()` function to extract pairwise tip distances from a `phylo` object
+```{r}
+# Generate pairwise distance matrix
+dist <- phy2dist(tree)
+```
+2. Generate a similarity matrix using the `dist2sim()` function to transform distances into similarities
+```{r}
+# Convert distances to similarities
+similarity <- dist2sim(dist, "l")
+```
+3. Generate a metacommunity object using the `metacommunity()` function
+```{r}
+# Generate metacommunity object
+meta <- metacommunity(pop, similarity)
+```
+4. Calculate diversity
+
+
+### Tree-based phylogenetic diversity
+1. Ensure that tip labels match the partition matrix row names 
+```{r}
+# Tree 
 colnames(pop) <- letters[1:3]
 row.names(pop) <- paste0("sp",1:4)
 tree$tip.label <- row.names(pop)
-
+```
+2. Generate a similarity object using the `phy2branch()` function
+```{r}
 # Generate similarity object
 similarity <- phy2branch(tree)
-
-# Generate metacommunity object
-meta <- metacommunity(partition=pop, similarity=similarity)
 ```
+3. Generate a metacommunity object using the `metacommunity()` function
+```{r}
+# Generate metacommunity object
+meta <- metacommunity(pop, similarity)
+```
+4. Calculate diversity
 
-*Note that*: a metcommunity that was generated using the tree-based approach will contain three additional slots:
+
+**Note that**: a metcommunity that was generated using the tree-based approach will contain three additional slots:
 
 * `@raw_abundance` : the relative abundance of terminal species (where types are then considered to be historical species),
 * `@raw_structure` : the length of evolutionary history of each historical species
