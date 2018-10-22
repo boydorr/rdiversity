@@ -2,7 +2,7 @@
 #' 
 #' Packages phylo object and depth into an object of class \code{similarity}. 
 #' 
-#' @param phylo object of class \code{phylo}.
+#' @param tree object of class \code{phylo}.
 #' @param depth proportion of total tree height to be conserved (taken as
 #' a proportion from the heighest tip). Describes how much evolutionary history 
 #' should be retained, with 0 marking the date of the most recent tip, and 1 

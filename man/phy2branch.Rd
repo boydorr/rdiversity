@@ -7,13 +7,13 @@
 phy2branch(tree, depth = 1)
 }
 \arguments{
+\item{tree}{object of class \code{phylo}.}
+
 \item{depth}{proportion of total tree height to be conserved (taken as
 a proportion from the heighest tip). Describes how much evolutionary history 
 should be retained, with 0 marking the date of the most recent tip, and 1 
 (the default) marking the most recent common ancestor. Numbers greater than 
 1 extend the root of the tree.}
-
-\item{phylo}{object of class \code{phylo}.}
 }
 \value{
 \code{phy2sim()} returns an object of class \code{similarity}.
