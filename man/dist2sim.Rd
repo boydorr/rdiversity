@@ -11,7 +11,7 @@ dist2sim(dist, transform, k = 1, normalise = TRUE, max_d = 1)
 types, columns as types, and elements containing the pairwise distance 
 between types.}
 
-\item{transform}{can be either "linear" or "exponential".}
+\item{transform}{can be either "l", "e1", or "e2".}
 
 \item{k}{scaling parameter.}
 

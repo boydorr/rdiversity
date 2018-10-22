@@ -5,7 +5,7 @@
 #' @param dist two-dimensional \code{matrix} of mode \code{numeric} with rows as 
 #' types, columns as types, and elements containing the pairwise distance 
 #' between types. 
-#' @param transform can be either "linear" or "exponential".
+#' @param transform can be either "l", "e1", or "e2".
 #' @param k scaling parameter.
 #' @param normalise normalise distances to one; can be either true of false.
 #' @param max_d object of mode \code{numeric}; 
