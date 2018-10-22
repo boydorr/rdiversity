@@ -4,10 +4,10 @@
 \alias{phy2dist}
 \title{phy2dist}
 \usage{
-phy2dist(phylo)
+phy2dist(tree)
 }
 \arguments{
-\item{phylo}{object of class \code{phylo}.}
+\item{tree}{object of class \code{phylo}.}
 }
 \value{
 \code{phy2sim(x)} returns a matrix of pairwise distances.

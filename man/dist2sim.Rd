@@ -4,10 +4,10 @@
 \alias{dist2sim}
 \title{dist2sim}
 \usage{
-dist2sim(x, transform, k = 1, normalise = TRUE, max_d = 1)
+dist2sim(dist, transform, k = 1, normalise = TRUE, max_d = 1)
 }
 \arguments{
-\item{x}{two-dimensional \code{matrix} of mode \code{numeric} with rows as 
+\item{dist}{two-dimensional \code{matrix} of mode \code{numeric} with rows as 
 types, columns as types, and elements containing the pairwise distance 
 between types.}
 

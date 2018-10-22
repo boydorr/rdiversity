@@ -8,9 +8,9 @@
 #' should be retained, with 0 marking the date of the most recent tip, and 1 
 #' (the default) marking the most recent common ancestor. Numbers greater than 
 #' 1 extend the root of the tree.
-#' @return \code{phy2sim(x)} returns an object of class \code{similarity}.
+#' @return \code{phy2sim()} returns an object of class \code{similarity}.
 #' @export
 #' 
-phy2branch <- function(phylo, depth = 1) {
-  similarity(phylo, depth)
+phy2branch <- function(tree, depth = 1) {
+  similarity(tree, depth)
 }

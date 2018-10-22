@@ -2,7 +2,7 @@
 #' 
 #' Converts any matrix of pairwise distances into pairwise similarities.
 #' 
-#' @param x two-dimensional \code{matrix} of mode \code{numeric} with rows as 
+#' @param dist two-dimensional \code{matrix} of mode \code{numeric} with rows as 
 #' types, columns as types, and elements containing the pairwise distance 
 #' between types. 
 #' @param transform can be either "linear" or "exponential".
@@ -19,7 +19,7 @@
 #' dist2sim(dist, "l")
 #' 
 #' 
-dist2sim <- function(x, transform, k = 1, normalise = TRUE, max_d = 1) {
+dist2sim <- function(dist, transform, k = 1, normalise = TRUE, max_d = 1) {
   if(normalise) dist <- dist/max(dist)
   
   if(transform == "l") return(pmax(1-(dist/(max_d*k)), 0))
