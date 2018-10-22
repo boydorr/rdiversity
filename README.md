@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/463vspjivh08o9x1?svg=true)](https://ci.appveyor.com/project/mysteryduck/rdiversity)
 [![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
-[![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=pink)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
+[![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=pink)
 
 
 `rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (e.g. ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), *How to partition diversity*. 
@@ -225,11 +225,8 @@ dist <- tax2dist(pop, lookup)
 # Calculate similarity matrix
 similarity <- dist2sim(dist, "l")
 
-# Calculate diversity
+# Generate metacommunity object
 meta <- metacommunity(partition=pop, similarity=similarity)
-div <- norm_meta_alpha(meta, qs)
-plot(div)
-
 ```
 
 ![](./man/figures/README-example-8.png)
@@ -240,6 +237,11 @@ Phylogenetic diversity measures can be broadly split into two categories – tho
 
 Distance-based phylogenetic diversity is calculated in the following way:
 
+1. Generate a distance matrix using the `phy2dist()` function to extract pairwise tip distances from a `phylo` object;
+2. Generate a similarity matrix using the `dist2sim()` function to transform distances into similarities;
+3. Generate a metacommunity object using the `metacommunity()` function; and
+4. Calculate diversity in the usual way (as above).
+
 ```{r}
 pop <- matrix(1:100, ncol=4)
 tree <- ape::rtree(4)
@@ -248,13 +250,17 @@ tree <- ape::rtree(4)
 dist <- phy2dist(tree)
 
 # Convert distances to similarities
-similarity <- dists2sim(tree, "l")
+similarity <- dist2sim(tree, "l")
 
 # Generate metacommunity object
 meta <- metacommunity(partition=pop, similarity=similarity)
 ```
 
 Likewise, tree-based phylogenetic diversity is calculated in the following way: 
+
+1. Generate a similarity object using the `phy2branch()` function;
+2. Generate a metacommunity object using the `metacommunity()` function; and
+3. Calculate diversity in the usual way (as above).
 
 ```{r}
 tree <- ape::rtree(4)
@@ -266,19 +272,15 @@ row.names(pop) <- paste0("sp",1:4)
 tree$tip.label <- row.names(pop)
 
 # Generate similarity object
-dist <- phy2branch(tree)
+similarity <- phy2branch(tree)
 
 # Generate metacommunity object
 meta <- metacommunity(partition=pop, similarity=similarity)
 ```
 
+*Note that*: a metcommunity that was generated using the tree-based approach will contain three additional slots:
 
-
-
-
-A metcommunity originating from a phylogeny will contain three additional slots:
-
-* `@raw_abundance` : the relative abundance of present-day species (where types are then considered to be historical species),
+* `@raw_abundance` : the relative abundance of terminal species (where types are then considered to be historical species),
 * `@raw_structure` : the length of evolutionary history of each historical species
 * `@parameters` : parameters associated with historical species
 
