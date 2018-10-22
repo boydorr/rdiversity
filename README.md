@@ -40,7 +40,7 @@ install.packages("rdiversity")
 
 ## Generating a metacommunity
 
-Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (``pop``) comprising three species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
+Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`pop`) comprising three species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
 
 ```{r}
 # Load the package into R
@@ -86,7 +86,7 @@ A complete list of these functions is shown below:
 * `norm_meta_beta()` : effective number of distinct subcommunities  
 * `meta_gamma()` : metacommunity similarity-sensitive diversity  
 
-Each of these functions take two arguments, `meta` (a `metacommunity` object) and `qs` (a vector of q values), and output results as a `diversity` object. For example, to calculate normalised subcommunity alpha diversity for $q=0$, $q=1$, and $q=2$:
+Each of these functions take two arguments, `meta` (a `metacommunity` object) and `qs` (a vector of q values), and output results as a `diversity` object. For example, to calculate normalised subcommunity alpha diversity for *q=0*, *q=1*, and *q=2*:
 
 ```{r}
 norm_sub_alpha(meta, 0:2)
@@ -96,7 +96,7 @@ However, if multiple measures are required and computational efficiency is an is
 
 
 ### Method 2
-This method requires that we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are a kind of average (based on $q$) of these values, which are calculated using the functions `subdiv()` and `metadiv()`. Note that, since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this is computationally more efficient.
+This method requires that we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are a kind of average (based on *q*) of these values, which are calculated using the functions `subdiv()` and `metadiv()`. Note that, since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this is computationally more efficient.
 
 ```{r}
 # First, calculate the species-level component for normalised alpha
@@ -176,7 +176,7 @@ plot(res2)
 
 ![](./man/figures/README-example-5.png)
 
-If diversity is calculated for $q=\infty$ is calculated, $q$ is transformed on a log scale. For example:
+If diversity is calculated for *q=Inf* is calculated, *q* is transformed on a log scale. For example:
 
 ```{r}
 qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
@@ -187,7 +187,7 @@ plot(res3)
 
 ![](./man/figures/README-example-6.png)
 
-Note that in the above example, $q=0$, $q=1$, $q=2$, and $q=\infty$ are highlighted as important, corresponding to Species Richness, Shannon, Simpson, and Berger Parker diversity, respecively.
+Note that in the above example, *q=0*, *q=1*, *q=2*, and *q=Inf* are highlighted as important, corresponding to Species Richness, Shannon, Simpson, and Berger Parker diversity, respecively.
 
 In some cases, it might also be useful to examine the species-level components, which is done in the following way:
 
@@ -256,13 +256,9 @@ similarity <- dist2sim(dist, "l")
 ```
 Note that this transformation can be done in three different ways, by setting the `transform` argument as `l`, `e1`, or `e2`, respectively:
 
-$$
-\begin{aligned}
-l &:\quad 1-\frac{d}{k d_{max}} \\
-e1 &:\quad e^{kd} \\
-e2 &:\quad e^{\frac{d}{k d_{max}}}
-\end{aligned}
-$$
+<img src="./man/figures/README-l.png"/>
+<img src="./man/figures/README-e1.png"/>
+<img src="./man/figures/README-e2.png"/>
 
 3. Generate a metacommunity object using the `metacommunity()` function
 ```{r}
