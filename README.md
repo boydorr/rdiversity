@@ -66,7 +66,8 @@ Each `metacommunity` object contains the following slots:
 * `@type_weights` : the relative weights of types within a population.
 
 
-## Calculating diversity - Method 1
+## Calculating diversity
+### Method 1
 This method uses a wrapper function to simplify the pipeline and is recommended if only a few measures are being calculated.
 
 A complete list of these functions is shown below:
@@ -95,8 +96,8 @@ norm_sub_alpha(meta, 0:2)
 However, if multiple measures are required and computational efficiency is an issue, then the following method is recommended (the same results are obtained).
 
 
-## Calculating diversity - Method 2
-To calculate the diversity of a population, we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are a kind of average (based on q) of these values, which are calculated using the functions `subdiv()` and `metadiv()`. Note that, since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this is computationally more efficient.
+### Method 2
+This method requires that we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are a kind of average (based on q) of these values, which are calculated using the functions `subdiv()` and `metadiv()`. Note that, since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this is computationally more efficient.
 
 ```{r}
 # First, calculate the species-level component for normalised alpha
