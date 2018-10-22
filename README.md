@@ -4,6 +4,8 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/463vspjivh08o9x1?svg=true)](https://ci.appveyor.com/project/mysteryduck/rdiversity)
 [![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
+[![Total downloads](https://img.shields.io/packagecontrol/dt/rdiversity.svg)](https://packagecontrol.io/packages/rdiversity)
+
 
 `rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (e.g. ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), *How to partition diversity*. 
 
@@ -39,7 +41,7 @@ install.packages("rdiversity")
 
 ## Generating a metacommunity
 
-Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (``pop``) comprising three species ("cows", "sheep", and "ducks"), and partitioned across three subcommunitites (a, b, and c).
+Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (``pop``) comprising three species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
 
 ```{r}
 # Load the package into R
@@ -234,33 +236,39 @@ plot(div)
 
 
 ## Phylogenetic diversity
-Phylogenetic diversity measures can be broadly split into two categories – those that look at the phylogeny as a whole, such as Faith’s (1992) phylogenetic diversity (Faith’s PD), and those that look at pairwise tip distances, such as mean pairwise distance (MPD; Webb, 2000). Our framework of measures is able to quantify phylogenetic diversity using both of these methods.
+Phylogenetic diversity measures can be broadly split into two categories – those that look at the phylogeny as a whole, such as Faith’s (1992) phylogenetic diversity (Faith’s PD), and those that look at pairwise tip distances, such as mean pairwise distance (MPD; Webb, 2000). The framework of measures presented in this package is able to quantify phylogenetic diversity using both of these methods.
 
-Distance-based phylogenetic diversity
+Distance-based phylogenetic diversity is calculated in the following way:
 
 ```{r}
 pop <- matrix(1:100, ncol=4)
 tree <- ape::rtree(4)
+
+# Generate pairwise distance matrix
 dist <- phy2dist(tree)
-```
 
-
-```{r}
+# Convert distances to similarities
 similarity <- dists2sim(tree, "l")
+
+# Generate metacommunity object
+meta <- metacommunity(partition=pop, similarity=similarity)
 ```
 
+Likewise, tree-based phylogenetic diversity is calculated in the following way: 
 
-
-
-Tree-based phylogenetic diversity
 ```{r}
+tree <- ape::rtree(4)
 pop <- matrix(1:12, ncol=3)
+
+# Tree tips labels must match the partition matrix row names 
 colnames(pop) <- letters[1:3]
 row.names(pop) <- paste0("sp",1:4)
-tree <- ape::rtree(4)
 tree$tip.label <- row.names(pop)
 
+# Generate similarity object
 dist <- phy2branch(tree)
+
+# Generate metacommunity object
 meta <- metacommunity(partition=pop, similarity=similarity)
 ```
 
