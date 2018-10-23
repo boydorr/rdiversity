@@ -2,7 +2,7 @@
 % Please edit documentation in R/phy_abundance.R
 \name{phy_abundance}
 \alias{phy_abundance}
-\title{Calculate abundance of historical species}
+\title{Relative abundance of historical species}
 \usage{
 phy_abundance(partition, structure_matrix)
 }

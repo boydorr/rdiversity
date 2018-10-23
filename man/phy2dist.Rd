@@ -2,7 +2,7 @@
 % Please edit documentation in R/phy2dist.R
 \name{phy2dist}
 \alias{phy2dist}
-\title{phy2dist}
+\title{Phylogenetic pairwise tip distance matrix}
 \usage{
 phy2dist(tree)
 }

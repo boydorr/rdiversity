@@ -27,7 +27,7 @@ diversity(res)
 \item{x}{object of class \code{diversity}}
 }
 \value{
-object of class \code{diversity}
+\code{diversity()} returns an object of class \code{diversity}.
 }
 \description{
 Functions to check if an object is a \code{diversity}

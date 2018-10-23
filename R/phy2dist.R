@@ -1,4 +1,4 @@
-#' phy2dist
+#' Phylogenetic pairwise tip distance matrix
 #' 
 #' Converts any phylo object to a matrix of pairwise tip-to-tip distances.
 #' 

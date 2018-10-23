@@ -4,7 +4,7 @@
 \name{rdiversity-package}
 \alias{rdiversity-package}
 \alias{rdiversity}
-\title{rdiversity}
+\title{rdiversity: diversity measurement in R}
 \description{
 \code{rdiversity} is an R package based around a framework for measuring and
 partitioning biodiversity using similarity-sensitive diversity measures. It
@@ -12,7 +12,7 @@ provides functionality for measuring alpha, beta and gamma diversity of
 metacommunities (\emph{e.g.} ecosystems) and their constituent subcommunities, 
 where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic,
 functional, and so on. It uses the diversity measures described in the arXiv
-paper, \emph{How to partition diversity}.
+paper, `\emph{How to partition diversity}`.
 }
 \details{
 \itemize{
@@ -28,6 +28,6 @@ Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
 S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
 }
 \author{
-Sonia Mitchell <s.mitchell.2@research.gla.ac.uk>, 
+Sonia Mitchell <sonia.mitchell@glasgow.ac.uk> (maintainer) \cr
 Richard Reeve <richard.reeve@glasgow.ac.uk>
 }

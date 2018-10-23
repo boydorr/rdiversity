@@ -1,4 +1,4 @@
-#' dist2sim
+#' Distance to similarity
 #' 
 #' Converts any matrix of pairwise distances into pairwise similarities.
 #' 

@@ -16,7 +16,7 @@ terminal taxa). If this argument is missing, all species/tips will be
 shuffled.}
 }
 \value{
-Returns an object of class \code{metacommunity}.
+\code{repartition()} returns an object of class \code{metacommunity}.
 }
 \description{
 Randomly reshuffles the relative abundance of types (\emph{e.g}. species) in 

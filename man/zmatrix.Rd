@@ -17,7 +17,7 @@ metacommunities, these are the relative abundances of terminal taxa.}
 \item{ps}{\code{phy_struct()} output.}
 }
 \value{
-Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
+\code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
 species.
 }
 \description{

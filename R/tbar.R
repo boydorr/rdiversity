@@ -9,7 +9,6 @@
 #' rows as types, columns as subcommunities, and elements containing relative
 #' abundances of types in subcommunities. In the case of phylogenetic
 #' metacommunities, these are the relative abundances of terminal taxa.
-#' @export
 #'
 tbar <- function(partition, structure_matrix) {
   sum(structure_matrix %*% partition)

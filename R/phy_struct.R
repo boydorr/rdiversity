@@ -11,7 +11,8 @@
 #' @return Returns a \code{list} containing:
 #' \tabular{ll}{
 #' \code{$structure} \tab - each row denotes historical species, columns denote
-#' terminal taxa, and elements contain 'branch lengths / tbar' \cr
+#' terminal taxa, and elements contain 'branch lengths' \cr
+#' \code{$tbar} - \cr
 #' \code{$parameters} \tab - information associated with each historical species \cr
 #' \code{$tree} \tab - object of class \code{phylo} \cr
 #' }

@@ -1,4 +1,4 @@
-#' Calculate abundance of historical species
+#' Relative abundance of historical species
 #'
 #' Calculates the relative abundance of historical species.
 #'

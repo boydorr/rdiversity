@@ -9,7 +9,7 @@
 #' @param s \code{smatrix()} output; ultrametric-similarity matrix.
 #' @param ps \code{phy_struct()} output.
 #'
-#' @return Returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
+#' @return \code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
 #' species.
 #' @export
 #'

@@ -3,7 +3,7 @@ Type: Package
 Title: Measurement and Partitioning of Similarity-Sensitive Biodiversity
 Version: 1.2.1
 Date: 2018-06-12
-Authors@R: c(person("Sonia", "Mitchell", email = "s.mitchell.2@research.gla.ac.uk",
+Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
                   role = "aut", comment = c(ORCID = "0000-0003-2589-8091")))
@@ -43,7 +43,6 @@ Collate:
     'class-relativeentropy.R'
     'class-similarity.R'
     'dist2sim.R'
-    'similarity.R'
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'
@@ -69,6 +68,7 @@ Collate:
     'rdiversity-package.R'
     'relativeentropy.R'
     'repartition.R'
+    'similarity.R'
     'simple_plot.R'
     'smatrix.R'
     'summarise.R'

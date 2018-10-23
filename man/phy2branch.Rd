@@ -2,7 +2,7 @@
 % Please edit documentation in R/phy2branch.R
 \name{phy2branch}
 \alias{phy2branch}
-\title{phy2branch}
+\title{Phylogenetic similarity}
 \usage{
 phy2branch(tree, depth = 1)
 }

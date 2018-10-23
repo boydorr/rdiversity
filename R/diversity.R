@@ -7,7 +7,7 @@
 #' @export
 #' 
 #' @param res object of class \code{diversity}
-#' @return object of class \code{diversity}
+#' @return \code{diversity()} returns an object of class \code{diversity}.
 #' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))

@@ -1,4 +1,4 @@
-#' phy2branch
+#' Phylogenetic similarity
 #' 
 #' Packages phylo object and depth into an object of class \code{similarity}. 
 #' 

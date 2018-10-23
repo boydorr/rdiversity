@@ -2,7 +2,7 @@
 % Please edit documentation in R/similarity.R
 \name{similarity}
 \alias{similarity}
-\title{Calculate similarity}
+\title{Generate similarity object}
 \usage{
 similarity(phylo, depth = 1)
 }
@@ -12,9 +12,8 @@ similarity(phylo, depth = 1)
 \item{depth}{object of class \code{numeric}}
 }
 \value{
-object of class \code{similarity}
+similarity() returns an object of class \code{similarity}
 }
 \description{
-Functions to check if an object is a \code{similarity}, or coerse an  
-object into a \code{similarity}; output of \code{phy2sim}.
+Used by \code{phy2branch} to generate a \code{similarity} object.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dist2sim.R
 \name{dist2sim}
 \alias{dist2sim}
-\title{dist2sim}
+\title{Distance to similarity}
 \usage{
 dist2sim(dist, transform, k = 1, normalise = TRUE, max_d = 1)
 }

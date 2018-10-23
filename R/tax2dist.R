@@ -1,4 +1,4 @@
-#' tax2dist
+#' Generate taxonomic distance matrix
 #' 
 #' Calculates taxonomic distances between species. By default these are based 
 #' on Shimatani's taxonomic distance parameters (see \emph{Details}).
@@ -18,8 +18,10 @@
 #' @param values \code{vector} with of values of similarity attributed to 
 #' hierarchical levels defined in \code{lookup}. Default is Shimatani's 
 #' taxonomic distance parameters.
-#' @return Returns an \eqn{SxS} \code{matrix}; pair-wise taxonomic distances
+#' 
+#' @return \code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic distances
 #' @export
+#' 
 #' @examples 
 #' # Create Lookup table
 #' Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")

@@ -58,7 +58,8 @@ diversity, see \emph{Details}.}
 containing the pairwise similarity between types.}
 }
 \value{
-Returns an object of class \code{metacommunity} (see \emph{Fields}).
+\code{metacommunity()} returns an object of class 
+\code{metacommunity} (see \emph{Fields}).
 }
 \description{
 Functions to generate a \code{metacommunity} object.
@@ -117,7 +118,7 @@ partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 
-similarity <- similarity(tree)
+similarity <- phy2branch(tree)
 a <- metacommunity(partition, similarity)
 b <- metacommunity(partition)
 

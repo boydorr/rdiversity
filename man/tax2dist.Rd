@@ -2,7 +2,7 @@
 % Please edit documentation in R/tax2dist.R
 \name{tax2dist}
 \alias{tax2dist}
-\title{tax2dist}
+\title{Generate taxonomic distance matrix}
 \usage{
 tax2dist(lookup, values = c(species = 0, genus = 1, family = 2, subclass = 3,
   other = 4))
@@ -16,7 +16,7 @@ hierarchical levels defined in \code{lookup}. Default is Shimatani's
 taxonomic distance parameters.}
 }
 \value{
-Returns an \eqn{SxS} \code{matrix}; pair-wise taxonomic distances
+\code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic distances
 }
 \description{
 Calculates taxonomic distances between species. By default these are based 

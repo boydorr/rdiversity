@@ -49,11 +49,11 @@
 #' \code{numeric}, with rows as types, columns as types, and elements 
 #' containing the pairwise similarity between types.
 #' 
-#' @return Returns an object of class \code{metacommunity} (see \emph{Fields}).
+#' @return \code{metacommunity()} returns an object of class 
+#' \code{metacommunity} (see \emph{Fields}).
 #'
 #' @seealso \code{\link{metacommunity-class}}
 #'
-#' @include similarity.R
 #' @examples
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
@@ -61,7 +61,7 @@
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' 
-#' similarity <- similarity(tree)
+#' similarity <- phy2branch(tree)
 #' a <- metacommunity(partition, similarity)
 #' b <- metacommunity(partition)
 #' 

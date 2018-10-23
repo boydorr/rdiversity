@@ -16,23 +16,28 @@
 #'
 #' @param data \code{matrix} of mode \code{numeric}; containing diversity
 #' components.
-#' @param qs \code{vector} of mode \code{numeric}; parameter of conservatism.
+#' @param qs \code{vector} of mode \code{numeric}; \emph{q} parameter.
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
+#' @return \code{subdiv()} returns a standard \code{diversity} output, 
+#' with columns:
 #' \itemize{
 #' \item\code{measure}: raw or normalised, alpha, beta, rho, or gamma
-#' \item\code{q}: parameter of conservatism
-#' \item\code{type_level}: "subcommunity"
+#' \item\code{q}: order of diversity 
+#' \item\code{type_level}: "types"
 #' \item\code{type_name}: label attributed to type
-#' \item\code{partition_level}: level of diversity, \emph{i.e.} subcommunity
+#' \item\code{partition_level}: level of diversity, \emph{i.e.} "subcommunity"
 #' \item\code{partition_name}: label attributed to partition
-#' \item\code{diversity}: calculated subcommunity diversity
+#' \item\code{diversity}: calculated subcommunity-level diversity
 #' }
+#' 
+#' @seealso \code{\link{inddiv}} for type-level diversity and 
+#' \code{\link{metadiv}} for metacommunity-level diversity.
+#' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
 #' arXiv 1404.6520v3:1–9.
-#' 
 #' @exportMethod subdiv
+#' 
 #' @examples
 #' # Define metacommunity
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
