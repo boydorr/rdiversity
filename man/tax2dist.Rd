@@ -34,7 +34,7 @@ Individuals of different subclass share a distance of 1
 # Create Lookup table
 Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
 Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
-Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae"),
+Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
 Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 
