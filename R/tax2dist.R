@@ -1,70 +1,74 @@
 #' tax2dist
 #' 
-#' Calculates taxonomic distances based on Shimatani's index of taxonomic 
-#' similarity (see \emph{Details}).
+#' Calculates taxonomic distances between species. By default these are based 
+#' on Shimatani's taxonomic distance parameters (see \emph{Details}).
 #' 
-#' Shimatani's taxonomic similarity index is defined:
-#' \tabular{ll}{
-#' \code{species.similarity} \tab 1 \cr
-#' \code{genus.similarity} \tab 0.75 \cr
-#' \code{family.similarity} \tab 0.5 \cr
-#' \code{subclass.similarity} \tab 0.25 \cr
-#' \code{other.similarity} \tab 0 \cr
-#' }
+#' By default:
+#' Individuals of the same species share a distance of 0 \cr
+#' Individuals of the same genus but different species share a distance of 0.25 \cr
+#' Individuals of the same family but different genus share a distance of 0.5 \cr
+#' Individuals of the same subclass but different family share a distance of 0.75 \cr
+#' Individuals of different subclass share a distance of 1
+#' 
 #' @references Shimatani, K. 2001. On the measurement of species diversity 
 #' incorporating species differences. Oikos 93:135–147.
 #' 
-#' @param data \eqn{S * N} \code{matrix}; population counts
-#' @param lookup \code{data.frame} with colnames = c('Species', 'Genus', 
-#' 'Family', 'Subclass')
-#' @return Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity
+#' @param lookup \code{data.frame} with colnames corresponding to nested 
+#' hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
+#' @param values \code{vector} with of values of similarity attributed to 
+#' hierarchical levels defined in \code{lookup}. Default is Shimatani's 
+#' taxonomic distance parameters.
+#' @return Returns an \eqn{SxS} \code{matrix}; pair-wise taxonomic distances
 #' @export
 #' @examples 
-#' pop <- sample(1:50, 4)
-#' lookup <- data.frame(Subclass=c("Sapindales", "Malvales", "Fabales", 
-#'                                   "Fabales"),      
-#'                      Family=c("Burseraceae", "Bombacaceae", "Fabaceae", 
-#'                               "Fabaceae"), 
-#'                      Genus=c("Protium", "Quararibea", "Swartzia", 
-#'                              "Swartzia"),       
-#'                      Species= c("tenuifolium", "asterolepis",
-#'                                     "simplex var.grandiflora",
-#'                                     "simplex var.ochnacea"))
-#' dist <- tax2dist(pop, lookup)
+#' # Create Lookup table
+#' Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
+#' Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
+#' Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae"),
+#' Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
+#' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
+#' 
+#' # Assign values for each level
+#' values <- c(species = 0, genus = 1, family = 2, subclass = 3, other = 4)
+#' 
+#' # Generate pairwise distances
+#' dist <- tax2dist(lookup, values)
+#' 
+#' # Convert distances to similarities
 #' dist2sim(dist, "l")
 #' 
-tax2dist <- function(data, lookup) 
+tax2dist <- function(lookup, 
+                     values = c(species = 0, 
+                                genus = 1, 
+                                family = 2, 
+                                subclass = 3, 
+                                other = 4)) 
 {
-  # Data and lookup table must have the same number of entries
-  stopifnot(nrow(data)==nrow(lookup))
+  if(length(values)!=(ncol(lookup)+1))
+    stop("length of `values` must equal number of columns in `lookup` plus one.")
   
-  if(is.vector(data))
-    data <- as.matrix(data)
+  entries <- row.names(lookup)
+  n <- length(entries)
+  dist <- matrix(NA, nrow = n, ncol = n)
+  colnames(dist) <- lookup[,1]
+  row.names(dist) <- lookup[,1]
   
-  # Based on Shimatani's taxonomic similarity indices
-  species.similarity <- 0
-  genus.similarity <- 1
-  family.similarity <- 2
-  subclass.similarity <- 3
-  other.similarity <- 4
-  
-  S <- nrow(data)
-  zmatrix <- diag(S)
-  for (i in 1:nrow(lookup)) {
-    for (j in 1:nrow(lookup)) {
-      
-      if (lookup$Species[i]==lookup$Species[j]) {
-        zmatrix[i,j] <- species.similarity
-      }else if(lookup$Genus[i]==lookup$Genus[j]) {
-        zmatrix[i,j] <- genus.similarity
-      }else if(lookup$Family[i]==lookup$Family[j]) {
-        zmatrix[i,j] <- family.similarity
-      }else if(lookup$Subclass[i]==lookup$Subclass[j]) {
-        zmatrix[i,j] <- subclass.similarity
-      }else zmatrix[i,j] <- other.similarity
+  for (i in seq_along(entries)) {
+    for (j in seq_along(entries)) {
+      k <- 1
+      hit <- FALSE
+      while(!hit){
+        if(as.character(lookup[i,k])==as.character(lookup[j,k]) || 
+           k==length(values)) {
+          dist[i,j] <- values[k]
+          hit <- TRUE
+        }else {
+          k <- k + 1
+          hit <- FALSE
+        }
+      }
     }
   }
-  row.names(zmatrix) <- lookup$Species
-  colnames(zmatrix) <- lookup$Species
-  zmatrix
+  
+  dist
 }

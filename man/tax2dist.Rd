@@ -4,43 +4,47 @@
 \alias{tax2dist}
 \title{tax2dist}
 \usage{
-tax2dist(data, lookup)
+tax2dist(lookup, values = c(species = 0, genus = 1, family = 2, subclass = 3,
+  other = 4))
 }
 \arguments{
-\item{data}{\eqn{S * N} \code{matrix}; population counts}
+\item{lookup}{\code{data.frame} with colnames corresponding to nested 
+hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')}
 
-\item{lookup}{\code{data.frame} with colnames = c('Species', 'Genus', 
-'Family', 'Subclass')}
+\item{values}{\code{vector} with of values of similarity attributed to 
+hierarchical levels defined in \code{lookup}. Default is Shimatani's 
+taxonomic distance parameters.}
 }
 \value{
-Returns an \eqn{S * S} \code{matrix}; pair-wise taxonomic similarity
+Returns an \eqn{SxS} \code{matrix}; pair-wise taxonomic distances
 }
 \description{
-Calculates taxonomic distances based on Shimatani's index of taxonomic 
-similarity (see \emph{Details}).
+Calculates taxonomic distances between species. By default these are based 
+on Shimatani's taxonomic distance parameters (see \emph{Details}).
 }
 \details{
-Shimatani's taxonomic similarity index is defined:
-\tabular{ll}{
-\code{species.similarity} \tab 1 \cr
-\code{genus.similarity} \tab 0.75 \cr
-\code{family.similarity} \tab 0.5 \cr
-\code{subclass.similarity} \tab 0.25 \cr
-\code{other.similarity} \tab 0 \cr
-}
+By default:
+Individuals of the same species share a distance of 0 \cr
+Individuals of the same genus but different species share a distance of 0.25 \cr
+Individuals of the same family but different genus share a distance of 0.5 \cr
+Individuals of the same subclass but different family share a distance of 0.75 \cr
+Individuals of different subclass share a distance of 1
 }
 \examples{
-pop <- sample(1:50, 4)
-lookup <- data.frame(Subclass=c("Sapindales", "Malvales", "Fabales", 
-                                  "Fabales"),      
-                     Family=c("Burseraceae", "Bombacaceae", "Fabaceae", 
-                              "Fabaceae"), 
-                     Genus=c("Protium", "Quararibea", "Swartzia", 
-                             "Swartzia"),       
-                     Species= c("tenuifolium", "asterolepis",
-                                    "simplex var.grandiflora",
-                                    "simplex var.ochnacea"))
-dist <- tax2dist(pop, lookup)
+# Create Lookup table
+Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
+Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
+Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae"),
+Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
+lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
+
+# Assign values for each level
+values <- c(species = 0, genus = 1, family = 2, subclass = 3, other = 4)
+
+# Generate pairwise distances
+dist <- tax2dist(lookup, values)
+
+# Convert distances to similarities
 dist2sim(dist, "l")
 
 }
