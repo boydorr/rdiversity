@@ -47,28 +47,22 @@ tax2dist <- function(lookup,
                                 other = 4)) 
 {
   if(length(values)!=(ncol(lookup)+1))
-    stop("length of `values` must equal number of columns in `lookup` plus one.")
+    stop("Length of `values` must equal number of columns in `lookup` + 1.")
   
   entries <- row.names(lookup)
   n <- length(entries)
   dist <- matrix(NA, nrow = n, ncol = n)
   colnames(dist) <- lookup[,1]
   row.names(dist) <- lookup[,1]
+  other <- values[length(values)]
   
   for (i in seq_along(entries)) {
     for (j in seq_along(entries)) {
-      k <- 1
-      hit <- FALSE
-      while(!hit){
-        if(as.character(lookup[i,k])==as.character(lookup[j,k]) || 
-           k==length(values)) {
-          dist[i,j] <- values[k]
-          hit <- TRUE
-        }else {
-          k <- k + 1
-          hit <- FALSE
-        }
-      }
+      row <- as.character(lookup[i,])
+      column <- as.character(lookup[j,])
+      if(any(row==column))
+        dist[i,j] <- values[min(which(row==column))] else 
+          dist[i,j] <- other
     }
   }
   
