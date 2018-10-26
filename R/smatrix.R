@@ -4,9 +4,8 @@
 #' 
 #' @param ps \code{phy_struct()} output.
 #' 
-#' @return Returns an \eqn{hS x hS} matrix; pair-wise ultrametric-similarity of  
+#' @return Returns an \eqn{hS x hS} matrix; pair-wise ultrametric-similarity of
 #' historic species.
-#' @export
 #' 
 #' @examples 
 #' tree <- ape::rtree(n = 5)

@@ -11,7 +11,6 @@
 #'
 #' @return \code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise similarity of historic 
 #' species.
-#' @export
 #'
 #' @examples
 #' tree <- ape::rtree(n = 5)
