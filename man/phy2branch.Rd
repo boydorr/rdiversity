@@ -21,3 +21,8 @@ should be retained, with 0 marking the date of the most recent tip, and 1
 \description{
 Packages phylo object and depth into an object of class \code{similarity}.
 }
+\examples{
+tree <- ape::rtree(5)
+phy2branch(tree)
+
+}

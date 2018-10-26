@@ -11,6 +11,10 @@
 #' @return \code{phy2sim()} returns an object of class \code{similarity}.
 #' @export
 #' 
+#' @examples 
+#' tree <- ape::rtree(5)
+#' phy2branch(tree)
+#' 
 phy2branch <- function(tree, depth = 1) {
   similarity(tree, depth)
 }

@@ -5,7 +5,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
 [![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
 
-`rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (e.g. ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), *How to partition diversity*. 
+`rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (*e.g.* ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), "How to partition diversity". 
 
 This package has now reached a stable release and is cross-validated against our Julia package [Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently. Please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
 
@@ -39,7 +39,7 @@ install.packages("rdiversity")
 
 ## Generating a metacommunity
 
-Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`pop`) comprising three species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
+Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`pop`) comprising two species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
 
 ```{r}
 # Load the package into R
@@ -204,9 +204,7 @@ Note that generally defined as **types** or any biologically meaningful unit)
 
 
 ## Taxonomic diversity
-
-`tax2dist()`
-
+The `tax2dist()` function is used to generate a taxonomic distance matrix from a lookup table:
 
 ```{r}
 
@@ -296,8 +294,10 @@ meta <- metacommunity(pop, similarity)
 
 
 
+
 ## Additional tools
 * `qD_single()` : the Hill number / naive-type diversity of order *q* of a single population  
 * `qD()` : the Hill number / naive-type diversity of a series of independent populations for a series of orders  
 * `qDZ_single()` : the similarity-sensitive diversity of order *q* of a single population
 * `qDZ()` : the similarity-sensitive diversity of a series of independent populations for a series of orders  
+* `repartition()`
