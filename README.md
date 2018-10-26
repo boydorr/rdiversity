@@ -217,15 +217,17 @@ qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
 
 # Calculate distance matrix
 dist <- tax2dist(lookup)
+```
 
+These can be converted to similarities, from which diversity is calculated in the usual way: 
+
+```{r}
 # Calculate similarity matrix
 similarity <- dist2sim(dist, "l")
 
 # Generate metacommunity object
 meta <- metacommunity(pop, similarity)
 ```
-
-![](./man/figures/README-example-8.png)
 
 
 ## Phylogenetic diversity
