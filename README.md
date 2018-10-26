@@ -251,13 +251,9 @@ dist <- phy2dist(tree)
 2. Generate a similarity matrix using the `dist2sim()` function to transform distances into similarities
 ```{r}
 # Convert distances to similarities
-similarity <- dist2sim(dist, "l")
+similarity <- dist2sim(dist, "linear")
 ```
-Note that this transformation can be done in three different ways, by setting the `transform` argument as `l`, `e1`, or `e2`, respectively:
-
-<img src="./man/figures/l.svg"/>
-<img src="./man/figures/e1.svg"/>
-<img src="./man/figures/e2.svg"/>
+Note that this transformation can be done in two different ways, by setting the `transform` argument as `linear` or `exponential`, respectively:
 
 3. Generate a metacommunity object using the `metacommunity()` function
 ```{r}
@@ -267,7 +263,7 @@ meta <- metacommunity(pop, similarity)
 4. Calculate diversity
 
 
-### Tree-based phylogenetic diversity
+### Branch-based phylogenetic diversity
 1. Ensure that tip labels match the partition matrix row names 
 ```{r}
 # Tree 

@@ -14,7 +14,7 @@
 #' terminal taxa). If this argument is missing, all species/tips will be
 #' shuffled.
 #'
-#' @return \code{repartition()} returns an object of class \code{metacommunity}.
+#' @return \code{repartition()} returns an object of class \code{metacommunity}
 #' @export
 #'
 #' @examples

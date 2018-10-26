@@ -4,14 +4,14 @@
 \alias{dist2sim}
 \title{Distance to similarity}
 \usage{
-dist2sim(dist, transform, k = 1, normalise = TRUE, max_d = 1)
+dist2sim(dist, transform, k = 1, normalise = TRUE, max_d = max(dist))
 }
 \arguments{
 \item{dist}{two-dimensional \code{matrix} of mode \code{numeric} with rows as 
 types, columns as types, and elements containing the pairwise distance 
 between types.}
 
-\item{transform}{can be either "l", "e1", or "e2".}
+\item{transform}{can be either "linear", "exponential".}
 
 \item{k}{scaling parameter.}
 

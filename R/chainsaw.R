@@ -14,8 +14,9 @@
 #' Returns an object of class \code{phy_struct} containing a new structural
 #' matrix ('@structure') and the original phylogenetic parameters
 #' ('@parameters').
-#'
-#' @examples
+#' 
+#' @examples 
+#' \dontrun{
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 #' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
@@ -27,6 +28,7 @@
 #' b <- chainsaw(partition, ps, depth = 2)
 #' z <- chainsaw(partition, ps, depth = 0)
 #' m <- chainsaw(partition, ps, depth = 1)
+#'}
 #'
 chainsaw <- function(partition, ps, depth) {
   if(!missing(depth)) if(length(depth) > 1)

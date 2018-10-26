@@ -16,8 +16,10 @@
 #' \code{$parameters} \tab - information associated with each historical species \cr
 #' \code{$tree} \tab - object of class \code{phylo} \cr
 #' }
-#'
+#' 
+#' @export
 #' @examples
+#' \dontrun{
 #' tree <- ape::rtree(n = 5)
 #' tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
 #' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
@@ -25,6 +27,7 @@
 #' partition <- partition / sum(partition)
 #'
 #' res <- phy_struct(tree, partition)
+#' }
 #'
 phy_struct <- function(tree, partition) {
   partition <- check_phypartition(tree$tip.label, partition)
