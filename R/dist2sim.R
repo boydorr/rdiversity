@@ -2,13 +2,17 @@
 #' 
 #' Converts any matrix of pairwise distances into pairwise similarities.
 #' 
+#' Distances are transformed either *linearly* or *exponentially*. That is 
+#' \code{1 - k * dist} for non-negative values, or \code{exp(-k * dist)}, 
+#' respectively. If \code{normalise} is true, then \code{dist = dist/max_d}.
+#' 
 #' @param dist two-dimensional \code{matrix} of mode \code{numeric} with rows as 
 #' types, columns as types, and elements containing the pairwise distance 
-#' between types. 
-#' @param transform can be either "linear", "exponential".
-#' @param k scaling parameter.
-#' @param normalise normalise distances to one; can be either true of false.
-#' @param max_d object of mode \code{numeric}; 
+#' between types
+#' @param transform can be either "linear", "exponential"
+#' @param k scaling parameter
+#' @param normalise normalise distances to one; can be either true of false
+#' @param max_d object of mode \code{numeric}
 #' 
 #' @return \code{dist2sim(x)} returns an object of class \code{matrix}.
 #' @export
