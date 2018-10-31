@@ -9,21 +9,26 @@ dist2sim(dist, transform, k = 1, normalise = TRUE, max_d = max(dist))
 \arguments{
 \item{dist}{two-dimensional \code{matrix} of mode \code{numeric} with rows as 
 types, columns as types, and elements containing the pairwise distance 
-between types.}
+between types}
 
-\item{transform}{can be either "linear", "exponential".}
+\item{transform}{can be either "linear", "exponential"}
 
-\item{k}{scaling parameter.}
+\item{k}{scaling parameter}
 
-\item{normalise}{normalise distances to one; can be either true of false.}
+\item{normalise}{normalise distances to one; can be either true of false}
 
-\item{max_d}{object of mode \code{numeric};}
+\item{max_d}{object of mode \code{numeric}}
 }
 \value{
 \code{dist2sim(x)} returns an object of class \code{matrix}.
 }
 \description{
 Converts any matrix of pairwise distances into pairwise similarities.
+}
+\details{
+Distances are transformed either *linearly* or *exponentially*. That is 
+\code{1 - k * dist} for non-negative values, or \code{exp(-k * dist)}, 
+respectively. If \code{normalise} is true, then \code{dist = dist/max_d}.
 }
 \examples{
 tree <- ape::rtree(5)
