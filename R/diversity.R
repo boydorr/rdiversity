@@ -4,7 +4,7 @@
 #'
 #' @name diversity
 #' @rdname diversity-methods
-#' @export
+#' @exportMethod diversity
 #' 
 #' @param res object of class \code{diversity}
 #' @return \code{diversity()} returns an object of class \code{diversity}.
@@ -58,7 +58,7 @@ setMethod(f = "diversity", signature = "list",
 
 
 
-#' @rdname diversity-methods
+#' @rdname diversity-class
 #' @param object object of class \code{diversity}
 #'
 setMethod(f = "show", signature = "diversity",
@@ -70,7 +70,7 @@ setMethod(f = "show", signature = "diversity",
 
 
 
-#' @rdname diversity-methods
+#' @rdname diversity-class
 #' @param x object of class \code{diversity}
 #' @export
 #'

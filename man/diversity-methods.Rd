@@ -5,8 +5,6 @@
 \alias{diversity}
 \alias{diversity,data.frame-method}
 \alias{diversity,list-method}
-\alias{show,diversity-method}
-\alias{plot,diversity-method}
 \title{Generate diversity}
 \usage{
 diversity(res)
@@ -14,17 +12,9 @@ diversity(res)
 \S4method{diversity}{data.frame}(res)
 
 \S4method{diversity}{list}(res)
-
-\S4method{show}{diversity}(object)
-
-\S4method{plot}{diversity}(x)
 }
 \arguments{
 \item{res}{object of class \code{diversity}}
-
-\item{object}{object of class \code{diversity}}
-
-\item{x}{object of class \code{diversity}}
 }
 \value{
 \code{diversity()} returns an object of class \code{diversity}.
