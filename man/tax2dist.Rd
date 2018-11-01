@@ -4,8 +4,8 @@
 \alias{tax2dist}
 \title{Generate taxonomic distance matrix}
 \usage{
-tax2dist(lookup, values = c(species = 0, genus = 1, family = 2, subclass = 3,
-  other = 4))
+tax2dist(lookup, values = c(species = 0, genus = 1, family = 2, subclass
+  = 3, other = 4))
 }
 \arguments{
 \item{lookup}{\code{data.frame} with colnames corresponding to nested 

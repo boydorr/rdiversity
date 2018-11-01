@@ -14,15 +14,11 @@
 \alias{metacommunity,numeric,matrix-method}
 \alias{metacommunity,numeric-method,matrix-method}
 \alias{metacommunity,matrix,matrix-method}
-\alias{metacommunity,matrix-method}
 \alias{metacommunity,missing,similarity-method}
 \alias{metacommunity,similarity-method}
 \alias{metacommunity,numeric,similarity-method}
-\alias{metacommunity,similarity-method}
 \alias{metacommunity,data.frame,similarity-method}
-\alias{metacommunity,similarity-method}
 \alias{metacommunity,matrix,similarity-method}
-\alias{metacommunity,similarity-method}
 \title{Metacommunity}
 \usage{
 metacommunity(partition, similarity)

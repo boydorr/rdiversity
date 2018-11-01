@@ -32,14 +32,6 @@ abundance of types, pair-wise similarity, and other associated variables.}
 Functions to check if an object is a \code{powermean}, or coerse an object 
 into a \code{powermean}; for \code{raw_alpha()}, \code{norm_alpha()}, 
 \code{raw_rho()}, \code{norm_rho()}, or  \code{raw_gamma()}.
-
-#' @rdname powermean
-#' @param x any R object
-#' @return \code{is.powermean(x)} returns TRUE if its argument is a
-#' powermean, FALSE otherwise.
-#' @export
-#'
-is.powermean <- function (x) inherits(x, "powermean")
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))

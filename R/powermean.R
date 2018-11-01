@@ -36,14 +36,6 @@ powermean <- function(results, meta, tag) {
 }
 
 
-#' #' @rdname powermean
-#' #' @param x any R object
-#' #' @return \code{is.powermean(x)} returns TRUE if its argument is a
-#' #' powermean, FALSE otherwise.
-#' #' @export
-#' #'
-#' is.powermean <- function (x) inherits(x, "powermean")
-
 
 #' @rdname powermean
 #' @param object object of class \code{powermean}

@@ -15,6 +15,7 @@ subcommunity- or metacommunity-level diversity functions.}
 Simple function to plot diversity profiles.
 }
 \examples{
+\dontrun{
 # Define metacommunity
 pop1 <- data.frame(a = c(1,3), b = c(1,1))
 row.names(pop1) <- paste0("sp", 1:2)
@@ -59,5 +60,6 @@ sc <- sub_gamma(meta2, qs)
 plot(sc)
 mc <- meta_gamma(meta2, qs)
 plot(mc)
+}
 
 }

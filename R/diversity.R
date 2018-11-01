@@ -7,6 +7,7 @@
 #' @exportMethod diversity
 #' 
 #' @param res object of class \code{diversity}
+#' @include class-diversity.R 
 #' @return \code{diversity()} returns an object of class \code{diversity}.
 #' 
 #' @examples

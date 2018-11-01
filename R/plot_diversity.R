@@ -7,6 +7,7 @@
 #' subcommunity- or metacommunity-level diversity functions.
 #' 
 #' @examples
+#' \dontrun{
 #' # Define metacommunity
 #' pop1 <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop1) <- paste0("sp", 1:2)
@@ -51,6 +52,7 @@
 #' plot(sc)
 #' mc <- meta_gamma(meta2, qs)
 #' plot(mc)
+#' }
 #' 
 plot_diversity <- function(res) {
   res <- asS3(res)

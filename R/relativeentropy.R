@@ -34,15 +34,6 @@ relativeentropy <- function(results, meta, tag) {
 }
 
 
-#' #' @rdname relativeentropy
-#' #' @param x any R object 
-#' #' @return \code{is.relativeentropy(x)} returns TRUE if its argument is a 
-#' #' relativeentropy, FALSE otherwise.
-#' #' @export 
-#' #' 
-#' is.relativeentropy <- function (x) 
-#'   inherits(x, "relativeentropy")
-
 
 #' @rdname relativeentropy
 #' @param object object of class \code{relativeentropy}
