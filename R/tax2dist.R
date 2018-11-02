@@ -31,7 +31,7 @@
 #' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 #' 
 #' # Assign values for each level
-#' values <- c(species = 0, genus = 1, family = 2, subclass = 3, other = 4)
+#' values <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 #' 
 #' # Generate pairwise distances
 #' dist <- tax2dist(lookup, values)
@@ -40,14 +40,14 @@
 #' dist2sim(dist, "l")
 #' 
 tax2dist <- function(lookup, 
-                     values = c(species = 0, 
-                                genus = 1, 
-                                family = 2, 
-                                subclass = 3, 
-                                other = 4)) 
+                     values = c(Species = 0, 
+                                Genus = 1, 
+                                Family = 2, 
+                                Subclass = 3, 
+                                Other = 4)) 
 {
-  if(length(values)!=(ncol(lookup)+1))
-    stop("Length of `values` must equal number of columns in `lookup` + 1.")
+  if(names(values)[-length(values)] != (colnames(lookup)))
+    stop("colnames(lookup) must equal names(values)[-length(values)]")
   
   entries <- row.names(lookup)
   n <- length(entries)

@@ -4,8 +4,8 @@
 \alias{tax2dist}
 \title{Generate taxonomic distance matrix}
 \usage{
-tax2dist(lookup, values = c(species = 0, genus = 1, family = 2, subclass
-  = 3, other = 4))
+tax2dist(lookup, values = c(Species = 0, Genus = 1, Family = 2, Subclass
+  = 3, Other = 4))
 }
 \arguments{
 \item{lookup}{\code{data.frame} with colnames corresponding to nested 
@@ -39,7 +39,7 @@ Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 
 # Assign values for each level
-values <- c(species = 0, genus = 1, family = 2, subclass = 3, other = 4)
+values <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 
 # Generate pairwise distances
 dist <- tax2dist(lookup, values)
