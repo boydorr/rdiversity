@@ -16,6 +16,7 @@ Description: Provides a framework for the measurement and partitioning of
     <arXiv:1404.6520v3>.
 License: GPL-3
 Imports:
+    binaryLogic,
     methods,
     ggplot2,
     ggthemes,
