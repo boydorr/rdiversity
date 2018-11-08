@@ -4,10 +4,18 @@
 \alias{distance}
 \title{Generate distance object}
 \usage{
-distance(distance, what)
+distance(distance, divID, values, taxID, taxMask)
 }
 \arguments{
-\item{depth}{object of class \code{numeric}}
+\item{distance}{lksdjf}
+
+\item{divID}{lskdj}
+
+\item{values}{lskdj}
+
+\item{taxID}{lskdj}
+
+\item{taxMask}{lskdj}
 }
 \value{
 distance() returns an object of class \code{distance}
