@@ -46,7 +46,7 @@ tax2dist <- function(lookup,
                                 Subclass = 3, 
                                 Other = 4)) 
 {
-  if(names(values)[-length(values)] != (colnames(lookup)))
+  if(any(names(values)[-length(values)] != (colnames(lookup))))
     stop("colnames(lookup) must equal names(values)[-length(values)]")
   
   entries <- row.names(lookup)
