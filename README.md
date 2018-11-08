@@ -5,6 +5,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
 [![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
 
+Note that the following documentation applies only to the development version of the package, which can be installed using: `devtools::install_github("boydorr/rdiversity")`.
+
 `rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (*e.g.* ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), "How to partition diversity". 
 
 This package has now reached a stable release and is cross-validated against our Julia package [Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently. Please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
@@ -207,16 +209,21 @@ Note that generally defined as **types** or any biologically meaningful unit)
 The `tax2dist()` function is used to generate a taxonomic distance matrix from a lookup table:
 
 ```{r}
+# Create Lookup table
+Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
+Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
+Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
+Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
+lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 
-pop <- sample(1:50, 4)
-lookup <- data.frame(Subclass=c("Sapindales", "Malvales", "Fabales", "Fabales"),      
-Family=c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae"), 
-Genus=c("Protium", "Quararibea", "Swartzia", "Swartzia"),       
-Species= c("tenuifolium", "asterolepis","simplex var.grandiflora","simplex var.ochnacea"))
-qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
+# Assign values for each level
+values <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 
-# Calculate distance matrix
-dist <- tax2dist(lookup)
+# Generate pairwise distances
+dist <- tax2dist(lookup, values)
+
+# Convert distances to similarities
+dist2sim(dist, "linear")
 ```
 
 These can be converted to similarities, from which diversity is calculated in the usual way: 
