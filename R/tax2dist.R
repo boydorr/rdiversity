@@ -36,9 +36,6 @@
 #' # Generate pairwise distances
 #' dist <- tax2dist(lookup, values)
 #' 
-#' # Convert distances to similarities
-#' dist2sim(dist, "l")
-#' 
 tax2dist <- function(lookup, 
                      values = c(Species = 0, 
                                 Genus = 1, 

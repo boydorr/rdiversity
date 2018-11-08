@@ -63,12 +63,13 @@ Functions to generate a \code{metacommunity} object.
 \details{
 When calculating phylogenetic diversity either:
 \itemize{
-\item set \code{partition} as the relative abundance of present-day species,  
-with \code{similarity} as an object of class \code{phylo}, from which the 
-relative abundance and pairwise similarity of historical species will be
-calculated; or
+\item set \code{partition} as the relative abundance of terminal taxa,  
+in which case \code{similarity} (the pairwise similarity of historical species) is calculated from \code{phy2branch()} and 
+\code{dist2sim()}; or
 \item set \code{partition} as the relative abundance of historical species,
-with \code{similarity} as the pairwise similarity of historical species.
+with \code{similarity} (the pairwise similarity of historical species) is
+calculated from \code{phy2branch()} and 
+\code{dist2sim()}.
 }
 }
 \section{Fields}{

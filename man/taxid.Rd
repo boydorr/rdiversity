@@ -7,7 +7,8 @@
 taxid(lookup)
 }
 \arguments{
-\item{lookup}{}
+\item{lookup}{\code{data.frame} with colnames corresponding to nested 
+hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')}
 }
 \description{
 Generate taxanomic codes for each species by converting species, genus, 

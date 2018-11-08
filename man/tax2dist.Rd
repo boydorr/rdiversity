@@ -44,9 +44,6 @@ values <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 # Generate pairwise distances
 dist <- tax2dist(lookup, values)
 
-# Convert distances to similarities
-dist2sim(dist, "l")
-
 }
 \references{
 Shimatani, K. 2001. On the measurement of species diversity 

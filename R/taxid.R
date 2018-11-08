@@ -3,7 +3,8 @@
 #' Generate taxanomic codes for each species by converting species, genus, 
 #' family, and subclass into factors
 #' 
-#' @param lookup
+#' @param lookup \code{data.frame} with colnames corresponding to nested 
+#' hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
 #' 
 taxid <- function(lookup) {
   N <- apply(lookup, 2, function(x) length(unique(x)))
