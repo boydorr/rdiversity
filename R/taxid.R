@@ -20,5 +20,5 @@ taxid <- function(lookup) {
     sum(2^(which(rev(unlist(strsplit(as.character(tmp), "")) == 1))-1))
   })
   names(output) <- lookup[,1]
-  output
+  unlist(output)
 }
