@@ -1,4 +1,3 @@
-setOldClass("phylo")
 #' similarity-class
 #' 
 #' Container for class \code{similarity}.
@@ -7,10 +6,18 @@ setOldClass("phylo")
 #' @rdname similarity-class
 #' @exportClass similarity
 #' 
-#' @field phylo object of class \code{phylo}.
-#' @field depth object of class \code{numeric}.
+#' @field similarity object of class \code{matrix}.
+#' @field datID object of class \code{character}.
+#' @field taxSimilarity object of class \code{numeric}.
+#' @field taxID object of class \code{numeric}.
+#' @field taxMask object of class \code{list}.
+#' @field taxBits object of class \code{numeric}.
+#' @field parameters object of class \code{list}.
 #' 
-setClass("similarity", slots = c(phylo = "phylo",
-                                 depth = "numeric"))
-
-
+setClass("similarity", slots = c(similarity = "matrix",
+                                 datID = "character",
+                                 taxSimilarity = "numeric",
+                                 taxID = "numeric", 
+                                 taxMask = "list",
+                                 taxBits = "numeric",
+                                 parameters = "list"))
