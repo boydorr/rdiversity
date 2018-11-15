@@ -16,5 +16,10 @@
 #' phy2branch(tree)
 #' 
 phy2branch <- function(tree, depth = 1) {
-  similarity(tree, depth)
+  dist <- matrix()
+  new("distance", 
+      distance = dist,
+      datID = "taxonomic",
+      phylo = tree,
+      phyDepth = depth)
 }
