@@ -4,7 +4,8 @@
 #' hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
 #' 
 taxfac <- function(lookup) {
-  for(i in 1:ncol(lookup)) 
-    lookup[,i] <- as.numeric(as.factor(lookup[,i]))
-  lookup - 1
+  output <- lookup
+  for(i in 1:ncol(output)) output[,i] <- as.numeric(as.factor(output[,i]))
+  row.names(output) <- lookup[,1]
+  output - 1
 }
