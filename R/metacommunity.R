@@ -225,6 +225,16 @@ setMethod(f = "metacommunity",
 
 
 
+#' @rdname metacommunity-methods
+#' @aliases metacommunity,similarity-method
+#'
+setMethod(f = "metacommunity",
+          signature(partition = "ANY", similarity = "phylo"),
+          definition = function(partition, similarity) {
+            stop("This function no longer accepts phylo objects within the `similarity` argument. Instead, generate an object of class `distance` using phy2branch() or phy2dist(), and convert this object to an object of class `similarity` using dist2sim().")
+          } )
+
+
 #' @rdname metacommunity-class
 #' @param object object of class \code{metacommunity}
 #'
