@@ -63,5 +63,11 @@ tax2dist <- function(lookup,
     }
   }
   
-  dist
+  new("distance", 
+      # distance = dist,
+      datID = "taxonomic",
+      taxDistance = taxDistance,
+      taxID = taxID, 
+      taxMask = taxMask,
+      taxBits = bits)
 }
