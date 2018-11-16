@@ -45,39 +45,61 @@ tax2dist <- function(lookup,
                      taxDistance,
                      precompute_dist = T) 
 {
-  
-  if(missing(taxDistance)) "try to sort the order of the number of factors in each column. if there's a tie, error and ask for taxDistance to be input. then check below instead of this one."
+  # # "try to sort the order of the number of factors in each column. if there's a tie, error and ask for taxDistance to be input. then check below instead of this one."
+  # if(missing(taxDistance)) {
+  #   # Number of factors in each column
+  #   n <- apply(lookup, 2, function(x) length(unique(x)))
+  #   if(!any(duplicated(n))) {
+  #    }else stop("Please input taxDistance argument.")
+  # }
   
   if(any(names(taxDistance)[-length(taxDistance)] != (colnames(lookup))))
     stop("colnames(lookup) must equal names(values)[-length(values)]")
-  # 
-  # entries <- row.names(lookup)
-  # n <- length(entries)
-  # dist <- matrix(NA, nrow = n, ncol = n)
-  # colnames(dist) <- lookup[,1]
-  # row.names(dist) <- lookup[,1]
-  # other <- values[length(values)]
-  # 
-  # for (i in seq_along(entries)) {
-  #   for (j in seq_along(entries)) {
-  #     row <- as.character(lookup[i,])
-  #     column <- as.character(lookup[j,])
-  #     if(any(row==column))
-  #       dist[i,j] <- values[min(which(row==column))] else
-  #         dist[i,j] <- other
-  #   }
-  # }
-  # 
-  taxFac <- taxfac(lookup)
-  bits <- apply(taxFac, 2, function(x) ceiling(log(max(x)+1, 2)))
-  taxID <- taxid(taxFac)
-  taxMask <- taxmask(lookup)
   
-  new("distance", 
-      # distance = dist,
-      datID = "taxonomic",
-      taxDistance = taxDistance,
-      taxID = taxID, 
-      taxMask = taxMask,
-      taxBits = bits)
+  if(is.numeric(precompute_dist)) {
+    n <- apply(lookup, 2, function(x) length(unique(x)))
+    S <- max(n)
+    precompute_dist <- ifelse(S > precompute_dist, FALSE, TRUE) 
+  }
+  
+  # Calculate distance matrix
+  
+  if(precompute_dist) {
+    entries <- row.names(lookup)
+    n <- length(entries)
+    dist <- matrix(NA, nrow = n, ncol = n)
+    colnames(dist) <- lookup[,1]
+    row.names(dist) <- lookup[,1]
+    other <- values[length(values)]
+    
+    for (i in seq_along(entries)) {
+      for (j in seq_along(entries)) {
+        row <- as.character(lookup[i,])
+        column <- as.character(lookup[j,])
+        if(any(row==column))
+          dist[i,j] <- values[min(which(row==column))] else
+            dist[i,j] <- other
+      }
+    }
+    
+    return(new("distance", 
+               distance = dist,
+               datID = "taxonomic",
+               taxDistance = taxDistance))
+    
+    # Don't calculate distance matrix
+    
+  }else if(!precompute_dist) {
+    taxFac <- taxfac(lookup)
+    bits <- apply(taxFac, 2, function(x) ceiling(log(max(x)+1, 2)))
+    taxID <- taxid(taxFac)
+    taxMask <- taxmask(lookup)
+    
+    return(new("distance", 
+               datID = "taxonomic",
+               taxDistance = taxDistance,
+               taxID = taxID, 
+               taxMask = taxMask,
+               taxBits = bits))
+  }
 }
