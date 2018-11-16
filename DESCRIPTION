@@ -52,7 +52,6 @@ Collate:
     'diversity-components.R'
     'diversity-measures.R'
     'diversity.R'
-    'edit_struct.R'
     'get_label.R'
     'hs_parameters.R'
     'inddiv.R'
