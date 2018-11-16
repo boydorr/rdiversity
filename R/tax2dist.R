@@ -39,7 +39,7 @@
 #' values <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 #' 
 #' # Generate pairwise distances
-#' dist <- tax2dist(lookup, values)
+#' tax2dist(lookup, values)
 #' 
 tax2dist <- function(lookup, 
                      taxDistance,
