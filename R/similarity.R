@@ -3,15 +3,5 @@
 #'
 setMethod(f = "show", signature = "similarity",
           definition = function(object) {
-            cat('Object of class similarity, containing:\n')
-            cat('@similarity: Matrix of pairwise similarities (', 
-                ncol(object@similarity), 'types\n')
-            cat('@datID:', object@datID, '\n')
-            
-            if(!isTRUE(all.equal(0, length(object@taxID))))
-              cat('@taxSimilarity: Vector of ...\n')
-            cat('@taxID: Vector of ...\n')
-            cat('@taxMask: Vector of ...\n')
-            cat('@taxBits: ListVector of ...\n')
-            cat('@parameters: ListVector of ...\n')
+            cat('Object of class `similarity`, containing either: (1) a similarity matrix; or (2) all of the data required to calculate a similarity matrix.')
           } )
