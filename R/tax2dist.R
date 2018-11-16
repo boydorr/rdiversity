@@ -1,14 +1,6 @@
 #' Generate taxonomic distance matrix
 #' 
-#' Calculates taxonomic distances between species. By default these are based 
-#' on Shimatani's taxonomic distance parameters (see \emph{Details}).
-#' 
-#' By default:
-#' Individuals of the same species share a distance of 0 \cr
-#' Individuals of the same genus but different species share a distance of 0.25 \cr
-#' Individuals of the same family but different genus share a distance of 0.5 \cr
-#' Individuals of the same subclass but different family share a distance of 0.75 \cr
-#' Individuals of different subclass share a distance of 1
+#' Calculates taxonomic distances between species. 
 #' 
 #' @references Shimatani, K. 2001. On the measurement of species diversity 
 #' incorporating species differences. Oikos 93:135–147.
@@ -19,9 +11,10 @@
 #' hierarchical levels defined in \code{lookup}. Default is Shimatani's 
 #' taxonomic distance parameters.
 #' @param precompute_dist object of class \code{logical} or \code{numeric}. 
-#' When TRUE a distance matrix is generated and stored in slot \code{distance}, 
-#' when FALSE no distance matrix is generated, and when numeric a distance 
-#' matrix is generated until the number of species exceeds the defined value. 
+#' When TRUE (by default) a distance matrix is generated and stored in slot 
+#' \code{distance}, when FALSE no distance matrix is generated, and when numeric 
+#' a distance matrix is generated until the number of species exceeds the 
+#' defined value. 
 #' 
 #' @return \code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic 
 #' distances
@@ -35,11 +28,12 @@
 #' Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 #' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 #' 
-#' # Assign values for each level
+#' # Assign values for each level (Shimatani's taxonomic distance)
 #' values <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 #' 
 #' # Generate pairwise distances
-#' tax2dist(lookup, values)
+#' dist <- tax2dist(lookup, values)
+#' similarity <- dist2sim(dist, "linear")
 #' 
 tax2dist <- function(lookup, 
                      taxDistance,
