@@ -19,6 +19,7 @@
 \alias{metacommunity,numeric,similarity-method}
 \alias{metacommunity,data.frame,similarity-method}
 \alias{metacommunity,matrix,similarity-method}
+\alias{metacommunity,ANY,phylo-method}
 \title{Metacommunity}
 \usage{
 metacommunity(partition, similarity)
@@ -42,6 +43,8 @@ metacommunity(partition, similarity)
 \S4method{metacommunity}{data.frame,similarity}(partition, similarity)
 
 \S4method{metacommunity}{matrix,similarity}(partition, similarity)
+
+\S4method{metacommunity}{ANY,phylo}(partition, similarity)
 }
 \arguments{
 \item{partition}{two-dimensional \code{matrix} of mode \code{numeric}
@@ -115,9 +118,6 @@ partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 
-similarity <- phy2branch(tree)
-a <- metacommunity(partition, similarity)
-b <- metacommunity(partition)
 
 }
 \seealso{

@@ -1,4 +1,3 @@
-setOldClass("phylo")
 #' distance-class
 #' 
 #' Container for class \code{distance}.
@@ -13,8 +12,8 @@ setOldClass("phylo")
 #' @field taxID object of class \code{numeric}.
 #' @field taxMask object of class \code{list}.
 #' @field taxBits object of class \code{numeric}.
-#' @field phylo object of class \code{phylo}.
-#' @field phyDepth object of class \code{numeric}.
+#' @field tree object of class \code{data.frame}.
+#' @field treeDepth object of class \code{numeric}.
 #' 
 setClass("distance", slots = c(distance = "matrix",
                                datID = "character",
@@ -22,7 +21,7 @@ setClass("distance", slots = c(distance = "matrix",
                                taxID = "numeric", 
                                taxMask = "list",
                                taxBits = "numeric",
-                               phylo = "phylo", 
-                               phyDepth = "numeric"))
+                               tree = "data.frame", 
+                               treeDepth = "numeric"))
 
 

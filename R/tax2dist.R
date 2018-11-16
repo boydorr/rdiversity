@@ -15,11 +15,16 @@
 #' 
 #' @param lookup \code{data.frame} with colnames corresponding to nested 
 #' hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
-#' @param values \code{vector} with of values of similarity attributed to 
+#' @param taxDistance \code{vector} with of values of similarity attributed to 
 #' hierarchical levels defined in \code{lookup}. Default is Shimatani's 
 #' taxonomic distance parameters.
+#' @param precompute_dist object of class \code{logical} or \code{numeric}. 
+#' When TRUE a distance matrix is generated and stored in slot \code{distance}, 
+#' when FALSE no distance matrix is generated, and when numeric a distance 
+#' matrix is generated until the number of species exceeds the defined value. 
 #' 
-#' @return \code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic distances
+#' @return \code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic 
+#' distances
 #' @export
 #' 
 #' @examples 
@@ -37,31 +42,36 @@
 #' dist <- tax2dist(lookup, values)
 #' 
 tax2dist <- function(lookup, 
-                     values = c(Species = 0, 
-                                Genus = 1, 
-                                Family = 2, 
-                                Subclass = 3, 
-                                Other = 4)) 
+                     taxDistance,
+                     precompute_dist = T) 
 {
-  if(any(names(values)[-length(values)] != (colnames(lookup))))
+  
+  if(missing(taxDistance)) "try to sort the order of the number of factors in each column. if there's a tie, error and ask for taxDistance to be input. then check below instead of this one."
+  
+  if(any(names(taxDistance)[-length(taxDistance)] != (colnames(lookup))))
     stop("colnames(lookup) must equal names(values)[-length(values)]")
-  
-  entries <- row.names(lookup)
-  n <- length(entries)
-  dist <- matrix(NA, nrow = n, ncol = n)
-  colnames(dist) <- lookup[,1]
-  row.names(dist) <- lookup[,1]
-  other <- values[length(values)]
-  
-  for (i in seq_along(entries)) {
-    for (j in seq_along(entries)) {
-      row <- as.character(lookup[i,])
-      column <- as.character(lookup[j,])
-      if(any(row==column))
-        dist[i,j] <- values[min(which(row==column))] else 
-          dist[i,j] <- other
-    }
-  }
+  # 
+  # entries <- row.names(lookup)
+  # n <- length(entries)
+  # dist <- matrix(NA, nrow = n, ncol = n)
+  # colnames(dist) <- lookup[,1]
+  # row.names(dist) <- lookup[,1]
+  # other <- values[length(values)]
+  # 
+  # for (i in seq_along(entries)) {
+  #   for (j in seq_along(entries)) {
+  #     row <- as.character(lookup[i,])
+  #     column <- as.character(lookup[j,])
+  #     if(any(row==column))
+  #       dist[i,j] <- values[min(which(row==column))] else
+  #         dist[i,j] <- other
+  #   }
+  # }
+  # 
+  taxFac <- taxfac(lookup)
+  bits <- apply(taxFac, 2, function(x) ceiling(log(max(x)+1, 2)))
+  taxID <- taxid(taxFac)
+  taxMask <- taxmask(lookup)
   
   new("distance", 
       # distance = dist,

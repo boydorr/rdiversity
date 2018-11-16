@@ -33,25 +33,5 @@ partition <- cbind(a = sample(5,5), b = sample(5,5))
 row.names(partition) <- tree$tip.label
 partition <- partition / sum(partition)
 similarity <- phy2branch(tree)
-meta <- metacommunity(partition, similarity)
-meta@raw_abundance
-
-a <- repartition(meta)
-a@raw_abundance
-
-# Non-phylogenetic example
-meta <- metacommunity(partition)
-meta@type_abundance
-a <- repartition(meta)
-a@type_abundance
-
-# Multiple subcommunity example
-partition <- matrix(sample(100,12), nrow = 3)
-colnames(partition) <- letters[1:4]
-row.names(partition) <- paste0("sp", 1:3)
-meta <- metacommunity(partition)
-meta@type_abundance
-a <- repartition(meta)
-a@type_abundance
 
 }

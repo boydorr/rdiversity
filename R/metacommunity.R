@@ -62,9 +62,6 @@
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' 
-#' similarity <- phy2branch(tree)
-#' a <- metacommunity(partition, similarity)
-#' b <- metacommunity(partition)
 #' 
 setGeneric(name = "metacommunity",
            def = function(partition, similarity) {
@@ -184,9 +181,9 @@ setMethod(f = "metacommunity",
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
             colnames(partition) <- "sc1"
-            ps <- phy_struct(tree = similarity@phylo, partition = partition)
-            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
-            } )
+            
+            metacommunity(partition, similarity@similarity)    
+          } )
 
 
 #' @rdname metacommunity-methods
@@ -196,8 +193,8 @@ setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "similarity"),
           definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            ps <- phy_struct(tree = similarity@phylo, partition = partition)
-            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
+            
+            metacommunity(partition, similarity@similarity)    
           } )
 
 
@@ -208,8 +205,8 @@ setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "similarity"),
           definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            ps <- phy_struct(tree = similarity@phylo, partition = partition)
-            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
+            
+            metacommunity(partition, similarity@similarity)    
           } )
 
 
@@ -219,8 +216,7 @@ setMethod(f = "metacommunity",
 setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "similarity"),
           definition = function(partition, similarity) {
-            ps <- phy_struct(tree = similarity@phylo, partition = partition)
-            chainsaw(partition = partition, ps = ps, depth = similarity@depth)
+            metacommunity(partition, similarity@similarity)    
           } )
 
 

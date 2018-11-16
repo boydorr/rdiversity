@@ -71,6 +71,8 @@ setMethod(f = "show", signature = "diversity",
 
 
 
+setGeneric("plot")
+
 #' @rdname diversity-class
 #' @param x object of class \code{diversity}
 #' @export

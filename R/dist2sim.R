@@ -15,6 +15,7 @@
 #' @param max_d object of mode \code{numeric}
 #' 
 #' @return \code{dist2sim(x)} returns an object of class \code{matrix}.
+#' @include similarity.R class-similarity.R
 #' @export
 #' 
 #' @examples 
@@ -22,13 +23,94 @@
 #' dist <- phy2dist(tree)
 #' dist2sim(dist, "l")
 #' 
-#' 
-dist2sim <- function(dist, transform, k = 1,
-                     normalise = TRUE, max_d = max(dist)) {
-  if(normalise) dist <- dist/max_d
+dist2sim <- function(dist, 
+                     transform, 
+                     k = 1,
+                     normalise = TRUE, 
+                     max_d) {
   
-  if(transform == substr("linear", 1, nchar(transform)))
-    return(pmax(1 - k * dist, 0))
-  if(transform == substr("exponential", 1, nchar(transform)))
-    return(exp(-k * dist))
+  # If a distance matrix is available, convert it into a similarity matrix
+  if(length(dist@distance) != 0) {
+    
+    similarity <- dist@distance
+    if(missing(max_d)) max_d <- max(dist@distance)
+    if(normalise) similarity <- similarity/max_d
+    if(transform == substr("linear", 1, nchar(transform))) 
+      similarity <- pmax(1 - k * similarity, 0)
+    if(transform == substr("exponential", 1, nchar(transform))) 
+      similarity <- exp(-k * similarity)
+    
+    return(new("similarity", 
+               similarity = similarity,
+               datID = dist@datID,
+               parameters = list(transform = transform,
+                                 k = k,
+                                 normalise = normalise,
+                                 max_d = max_d)))
+    
+    # Otherwise...
+  } else {
+    
+    if(dist@datID == "taxonomic") {
+      
+      values <- dist@taxDistance
+      if(missing(max_d)) max_d <- max(values)
+      if(normalise) values <- values/max_d
+      if(transform == substr("linear", 1, nchar(transform)))
+        values <- pmax(1 - k * values, 0)
+      if(transform == substr("exponential", 1, nchar(transform)))
+        values <- exp(-k * values)
+      
+      return(new("similarity", 
+                 datID = dist@datID,
+                 taxSimilarity = values,
+                 taxID = dist@taxID,
+                 taxMask = dist@taxMask,
+                 taxBits = dist@taxBits,
+                 parameters = list(transform = transform,
+                                   k = k,
+                                   normalise = normalise,
+                                   max_d = max_d)))
+      
+    }else if(dist@datID == "phylogenetic") {
+      
+      stop("Currently, phy2branch() always generates a distance matrix.")
+      
+      # return(new("similarity", 
+      #            datID = dist@datID,
+      #            tree = dist@tree,
+      #            treeDepth = dist@treeDepth,
+      #            parameters = list(transform = transform,
+      #                              k = k,
+      #                              normalise = normalise,
+      #                              max_d = max_d)))
+      
+    }else if(dist@datID == "phylodist") {
+      
+      stop("Currently, phy2dist() always generates a distance matrix.")
+      
+    }
+    
+  }
+  
+  
+  
+  
+  # if(normalise) distance <- distance/max_d
+  # 
+  # if(transform == substr("linear", 1, nchar(transform)))
+  #   Z <- pmax(1 - k * distance, 0)
+  # if(transform == substr("exponential", 1, nchar(transform)))
+  #   Z <- exp(-k * distance)
+  # 
+  
+  
+  # if(dist@datID == "phylogenetic") {
+  #   Z <- dist@distance
+  #   
+  #   return(new("similarity", 
+  #       similarity = Z,
+  #       datID = dist@datID,
+  #      ))
+  # }
 }

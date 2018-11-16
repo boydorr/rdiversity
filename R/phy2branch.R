@@ -16,10 +16,14 @@
 #' phy2branch(tree)
 #' 
 phy2branch <- function(tree, depth = 1) {
-  dist <- matrix()
+  # ps <- phy_struct(tree = similarity@phylo, partition = partition)
+  # chainsaw(partition = partition, ps = ps, depth = similarity@depth)
+  
+  tidy_tree <- tidytree::as_data_frame(tree)
+  tidy_tree <- as.data.frame(tidy_tree)
+    
   new("distance", 
-      distance = dist,
-      datID = "taxonomic",
-      phylo = tree,
-      phyDepth = depth)
+      datID = "phylogenetic",
+      tree = tidy_tree,
+      treeDepth = depth)
 }

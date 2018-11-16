@@ -4,19 +4,24 @@
 \alias{tax2dist}
 \title{Generate taxonomic distance matrix}
 \usage{
-tax2dist(lookup, values = c(Species = 0, Genus = 1, Family = 2, Subclass
-  = 3, Other = 4))
+tax2dist(lookup, taxDistance, precompute_dist = T)
 }
 \arguments{
 \item{lookup}{\code{data.frame} with colnames corresponding to nested 
 hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')}
 
-\item{values}{\code{vector} with of values of similarity attributed to 
+\item{taxDistance}{\code{vector} with of values of similarity attributed to 
 hierarchical levels defined in \code{lookup}. Default is Shimatani's 
 taxonomic distance parameters.}
+
+\item{precompute_dist}{object of class \code{logical} or \code{numeric}. 
+When TRUE a distance matrix is generated and stored in slot \code{distance}, 
+when FALSE no distance matrix is generated, and when numeric a distance 
+matrix is generated until the number of species exceeds the defined value.}
 }
 \value{
-\code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic distances
+\code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic 
+distances
 }
 \description{
 Calculates taxonomic distances between species. By default these are based 

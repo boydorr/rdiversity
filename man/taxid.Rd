@@ -4,11 +4,10 @@
 \alias{taxid}
 \title{taxid}
 \usage{
-taxid(lookup)
+taxid(taxFac)
 }
 \arguments{
-\item{lookup}{\code{data.frame} with colnames corresponding to nested 
-hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')}
+\item{taxFac}{sdf}
 }
 \description{
 Generate taxanomic codes for each species by converting species, genus, 

@@ -1,3 +1,4 @@
+setOldClass("phylo")
 #' metacommunity-class
 #' 
 #' Container for class \code{metacommunity}.

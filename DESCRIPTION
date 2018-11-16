@@ -24,6 +24,7 @@ Imports:
     phangorn,
     plyr,
     tidyr,
+    tidytree,
     tibble,
     phytools,
     reshape2,
@@ -44,12 +45,14 @@ Collate:
     'class-powermean.R'
     'class-relativeentropy.R'
     'class-similarity.R'
+    'similarity.R'
     'dist2sim.R'
     'distance.R'
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'
     'diversity.R'
+    'edit_struct.R'
     'get_label.R'
     'hs_parameters.R'
     'inddiv.R'
@@ -71,7 +74,6 @@ Collate:
     'rdiversity-package.R'
     'relativeentropy.R'
     'repartition.R'
-    'similarity.R'
     'simple_plot.R'
     'smatrix.R'
     'summarise.R'
@@ -79,6 +81,7 @@ Collate:
     'taxfac.R'
     'taxid.R'
     'taxmask.R'
+    'taxvec.R'
     'tbar.R'
     'what.R'
     'zmatrix.R'

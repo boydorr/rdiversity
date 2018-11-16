@@ -39,5 +39,6 @@
 #' @importFrom utils head
 #' @importFrom scales hue_pal
 #' @importFrom ggthemes ptol_pal
+#' @importFrom tidytree as_data_frame
 #'
 NULL

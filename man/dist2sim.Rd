@@ -4,7 +4,7 @@
 \alias{dist2sim}
 \title{Distance to similarity}
 \usage{
-dist2sim(dist, transform, k = 1, normalise = TRUE, max_d = max(dist))
+dist2sim(dist, transform, k = 1, normalise = TRUE, max_d)
 }
 \arguments{
 \item{dist}{two-dimensional \code{matrix} of mode \code{numeric} with rows as 
@@ -34,6 +34,5 @@ respectively. If \code{normalise} is true, then \code{dist = dist/max_d}.
 tree <- ape::rtree(5)
 dist <- phy2dist(tree)
 dist2sim(dist, "l")
-
 
 }
