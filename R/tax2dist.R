@@ -64,14 +64,14 @@ tax2dist <- function(lookup,
     dist <- matrix(NA, nrow = n, ncol = n)
     colnames(dist) <- unlist(lookup[,1])
     row.names(dist) <- unlist(lookup[,1])
-    other <- values[length(values)]
+    other <- taxDistance[length(taxDistance)]
     
     for (i in seq_along(entries)) {
       for (j in seq_along(entries)) {
         row <- as.character(lookup[i,])
         column <- as.character(lookup[j,])
         if(any(row==column))
-          dist[i,j] <- values[min(which(row==column))] else
+          dist[i,j] <- taxDistance[min(which(row==column))] else
             dist[i,j] <- other
       }
     }
