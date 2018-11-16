@@ -62,8 +62,8 @@ tax2dist <- function(lookup,
     entries <- row.names(lookup)
     n <- length(entries)
     dist <- matrix(NA, nrow = n, ncol = n)
-    colnames(dist) <- lookup[,1]
-    row.names(dist) <- lookup[,1]
+    colnames(dist) <- unlist(lookup[,1])
+    row.names(dist) <- unlist(lookup[,1])
     other <- values[length(values)]
     
     for (i in seq_along(entries)) {
