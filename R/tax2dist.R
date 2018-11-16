@@ -48,7 +48,7 @@ tax2dist <- function(lookup,
   # }
   
   if(any(names(taxDistance)[-length(taxDistance)] != (colnames(lookup))))
-    stop("colnames(lookup) must equal names(values)[-length(values)]")
+    stop("colnames(lookup) must equal names(taxDistance)[-length(taxDistance)]")
   
   if(is.numeric(precompute_dist)) {
     n <- apply(lookup, 2, function(x) length(unique(x)))
