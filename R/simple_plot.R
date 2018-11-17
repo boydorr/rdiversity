@@ -89,15 +89,14 @@ simple_plot <- function(res) {
   names(cols) <- partitions
   res$partition_name <- factor(res$partition_name, levels = partitions)
   
-  ylabs <- pretty(c(0, res$diversity))
-  
+  ylabs <- pretty(c(0, pmax(1, res$diversity)))
+
   g <- ggplot2::ggplot(res) + ggplot2::theme_bw() +
     ggplot2::geom_line(ggplot2::aes_string(x = "q",
                                            y = "diversity",
                                            group = "partition_name",
                                            colour = "partition_name"),
                         size = 0.5) +
-    ggplot2::scale_y_continuous(breaks = ylabs) +
     ggplot2::scale_color_manual(values = cols) +
     ggplot2::labs(x = bquote(italic("q")), y = "Diversity",
                   colour = "Partition") +
@@ -115,7 +114,9 @@ simple_plot <- function(res) {
     g <- g + ggplot2::facet_wrap(~measure, labeller = ggplot2::label_parsed) 
   if(what=="both") 
     g <- g + ggplot2::facet_wrap(~measure) 
-  
+  if(!range(res$diversity) < 1)
+    g <- g + ggplot2::scale_y_continuous(breaks = ylabs)
+
   g
 }
 
