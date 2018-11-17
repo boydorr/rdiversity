@@ -62,7 +62,6 @@
 #' row.names(partition) <- tree$tip.label
 #' partition <- partition / sum(partition)
 #' 
-#' 
 setGeneric(name = "metacommunity",
            def = function(partition, similarity) {
              standardGeneric("metacommunity")
@@ -181,7 +180,6 @@ setMethod(f = "metacommunity",
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
             colnames(partition) <- "sc1"
-            
             metacommunity(partition, similarity@similarity)    
           } )
 
@@ -193,7 +191,6 @@ setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "similarity"),
           definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            
             metacommunity(partition, similarity@similarity)    
           } )
 
@@ -205,7 +202,6 @@ setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "similarity"),
           definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            
             metacommunity(partition, similarity@similarity)    
           } )
 
@@ -236,26 +232,6 @@ setMethod(f = "metacommunity",
 #'
 setMethod(f = "show", signature = "metacommunity",
           definition = function(object) {
-            cat('Object of class metacommunity, containing:\n')
-            cat('@type_abundance: Matrix of relative abundances (', 
-                ncol(object@type_abundance), 'subcommunities,',
-                nrow(object@type_abundance), 'types )\n')
-            cat('@similarity: Similarity matrix\n')
-            cat('@ordinariness: Matrix of type ordinariness\n')
-            cat('@subcommunity_weights: Vector of subcommunity weights\n')
-            cat('@type_weights: Vector of type weights\n')
-            
-            if(!isTRUE(all.equal(0, length(object@raw_abundance))))
-              cat('@raw_abundance: Matrix of (phylo) tip relative abundances (',
-                  ncol(object@raw_abundance), 'subcommunities,',
-                  nrow(object@raw_abundance), 'terminal taxa )\n')
-            
-            if(!isTRUE(all.equal(0, length(object@raw_structure))))
-              cat('@raw_structure: Matrix of (phylo) structure (',
-                  sum(colSums(object@raw_structure) > 0), 'tips,',
-                  sum(rowSums(object@raw_structure) > 0), 'historical species )\n')
-            
-            if(!isTRUE(all.equal(0, length(object@parameters))))
-              cat('@parameters: Parameters associated with (phylo) historical species\n')
+            cat('Object of class `metacommunity`, containing all of the data required to calculate diversity.')
           } )
 
