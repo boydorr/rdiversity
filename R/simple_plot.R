@@ -114,7 +114,7 @@ simple_plot <- function(res) {
     g <- g + ggplot2::facet_wrap(~measure, labeller = ggplot2::label_parsed) 
   if(what=="both") 
     g <- g + ggplot2::facet_wrap(~measure) 
-  if(!range(res$diversity) < 1)
+  if(!diff(range(res$diversity)) < 1)
     g <- g + ggplot2::scale_y_continuous(breaks = ylabs)
 
   g
