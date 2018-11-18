@@ -4,20 +4,23 @@
 #' 
 #' @references Shimatani, K. 2001. On the measurement of species diversity 
 #' incorporating species differences. Oikos 93:135–147.
-#' 
-#' @param lookup \code{data.frame} with colnames corresponding to nested 
-#' hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
-#' @param taxDistance \code{vector} with of values of similarity attributed to 
-#' hierarchical levels defined in \code{lookup}. Default is Shimatani's 
-#' taxonomic distance parameters.
-#' @param precompute_dist object of class \code{logical} or \code{numeric}. 
-#' When TRUE (by default) a distance matrix is generated and stored in slot 
-#' \code{distance}, when FALSE no distance matrix is generated, and when numeric 
-#' a distance matrix is generated until the number of species exceeds the 
-#' defined value. 
-#' 
-#' @return \code{tax2dist()} returns a \code{matrix} of pair-wise taxonomic 
-#' distances
+#'
+#' @param lookup \code{data.frame} with colnames corresponding to nested
+#' taxonomic levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
+#' @param taxDistance \code{vector} with the distances attributed to
+#' taxonomic levels defined in \code{lookup}. The highest distance is the
+#' distance attributed to species that are not the same at any recorded
+#' taxonomic level. e.g. c(Species = 0, Genus = 1, Family = 2, Subclass = 3,
+#' Other = 4) from Shimatani.
+#'
+#' @param precompute_dist object of class \code{logical} or \code{numeric}.
+#' When TRUE (by default) a distance matrix is generated and stored in slot
+#' \code{distance}, when FALSE no distance matrix is generated, and when numeric
+#' a distance matrix is generated until the number of species exceeds the
+#' defined value.
+#'
+#' @return \code{tax2dist()} returns an object of class \code{distance}
+#' containing a \code{matrix} of pair-wise taxonomic distances
 #' @export
 #' 
 #' @examples 
@@ -46,10 +49,12 @@ tax2dist <- function(lookup,
   #   if(!any(duplicated(n))) {
   #    }else stop("Please input taxDistance argument.")
   # }
-  
-  if(any(names(taxDistance)[-length(taxDistance)] != (colnames(lookup))))
-    stop("colnames(lookup) must equal names(taxDistance)[-length(taxDistance)]")
-  
+  taxDistance <- sort(taxDistance)
+  taxCols <- names(taxDistance)[-length(taxDistance)]
+  if (length(intersect(taxCols, colnames(lookup))) != length(taxCols))
+    stop("The columns in the taxonomy have to include the columns mentioned in the distance vector")
+  lookup <- lookup[,taxCols]
+
   if(is.numeric(precompute_dist)) {
     n <- apply(lookup, 2, function(x) length(unique(x)))
     S <- max(n)
