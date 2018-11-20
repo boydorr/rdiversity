@@ -78,7 +78,7 @@ A complete list of these functions is shown below:
 * `norm_sub_rho()` : representativeness of subcommunity *j*  
 * `raw_sub_beta()` : distinctiveness of subcommunity *j*  
 * `norm_sub_beta()` : estimate of effective number of distinct subcommunities  
-* `raw_sub_gamma()` : contribution per individual toward metacommunity diversity  
+* `sub_gamma()` : contribution per individual toward metacommunity diversity  
 * `raw_meta_alpha()` : naive-community metacommunity diversity  
 * `norm_meta_alpha()` : average similarity-sensitive diversity of subcommunities  
 * `raw_meta_rho()` : average redundancy of subcommunities  
