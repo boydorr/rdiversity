@@ -96,6 +96,7 @@ tax2dist <- function(lookup,
     
     return(new("distance", 
                datID = "taxonomic",
+               ordinariness = "taxvec",
                taxDistance = taxDistance,
                taxID = taxID, 
                taxMask = taxMask,
