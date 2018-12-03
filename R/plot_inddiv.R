@@ -27,8 +27,8 @@
 plot_inddiv <- function(res) {
   res <- asS3(res)
   qs <- unique(res$q)
-  res <- res[,-2]
-  if(length(qs)>1) res <- res[-which(duplicated(res)),]
+  res <- res[,-which(colnames(res)=="q")]
+  if(length(qs)>1) res <- unique(res)
   
   type <- unique(res$type_name)
   N <- length(type)
