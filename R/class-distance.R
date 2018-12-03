@@ -8,6 +8,7 @@
 #' 
 #' @field similarity object of class \code{matrix}.
 #' @field datID object of class \code{character}.
+#' @field ordinariness object of class \code{character}.
 #' @field taxDistance object of class \code{numeric}.
 #' @field taxID object of class \code{numeric}.
 #' @field taxMask object of class \code{list}.
@@ -17,6 +18,7 @@
 #' 
 setClass("distance", slots = c(distance = "matrix",
                                datID = "character",
+                               ordinariness = "character",
                                taxDistance = "numeric",
                                taxID = "numeric", 
                                taxMask = "list",
