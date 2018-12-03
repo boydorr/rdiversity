@@ -63,6 +63,7 @@ dist2sim <- function(dist,
       
       return(new("similarity", 
                  datID = dist@datID,
+                 ordinariness = dist@ordinariness,
                  taxSimilarity = values,
                  taxID = dist@taxID,
                  taxMask = dist@taxMask,
@@ -92,8 +93,6 @@ dist2sim <- function(dist,
     }
     
   }
-  
-  
   
   
   # if(normalise) distance <- distance/max_d
