@@ -56,6 +56,31 @@
 #' meta3 <- metacommunity(pop3)
 #' sc <- sub_gamma(meta3, qs)
 #' plot(sc)
+#' 
+#' # Plot naive with similarity
+#' # Create Lookup table
+#' Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
+#' Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
+#' Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
+#' Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
+#' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
+#' 
+#' # Assign values for each level (Shimatani's taxonomic distance)
+#' taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
+#' 
+#' distance <- tax2dist(lookup, taxDistance)
+#' similarity <- dist2sim(distance, "linear")
+#' 
+#' pop <- data.frame(a = c(1,3,6,3), b = c(1,1,2,8))
+#' row.names(pop) <- lookup$Species
+#' pop <- pop/sum(pop)
+#' 
+#' alpha <- norm_meta_alpha(metacommunity(pop), 0:2)
+#' alphaZ <- norm_meta_alpha(metacommunity(pop, similarity), 0:2)
+#' alphaZ$partition_level <- paste0(alphaZ$measure, "_Z")
+#' plot_this <- diversity(list(alpha, alphaZ))
+#' plot(plot_this)
+#' 
 #' }
 #'
 simple_plot <- function(res) {

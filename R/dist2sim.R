@@ -1,8 +1,8 @@
 #' Distance to similarity
 #' 
-#' Converts any matrix of pairwise distances into pairwise similarities.
+#' Converts \code{distance} objects into \code{similarity} objects.
 #' 
-#' Distances are transformed either *linearly* or *exponentially*. That is 
+#' Distances can be transformed either *linearly* or *exponentially*. That is 
 #' \code{1 - k * dist} for non-negative values, or \code{exp(-k * dist)}, 
 #' respectively. If \code{normalise} is true, then \code{dist = dist/max_d}.
 #' 
@@ -21,7 +21,7 @@
 #' @examples 
 #' tree <- ape::rtree(5)
 #' dist <- phy2dist(tree)
-#' dist2sim(dist, "l")
+#' dist2sim(dist, "linear")
 #' 
 dist2sim <- function(dist, 
                      transform, 

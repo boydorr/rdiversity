@@ -27,7 +27,9 @@ pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate raw alpha component
-raw_alpha(meta)
+a <- raw_alpha(meta)
+subdiv(a, 1)
+metadiv(a, 1)
 
 }
 \references{

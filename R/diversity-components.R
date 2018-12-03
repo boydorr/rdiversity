@@ -9,7 +9,7 @@
 #' @param meta object of class \code{metacommunity}.
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include metacommunity.R
+#' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
@@ -22,8 +22,10 @@
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw alpha component
-#' raw_alpha(meta)
-#'
+#' a <- raw_alpha(meta)
+#' subdiv(a, 1)
+#' metadiv(a, 1)
+#' 
 raw_alpha <- function(meta) {
   results <- 1 / meta@ordinariness
   powermean(results, meta, "raw alpha")
@@ -42,7 +44,7 @@ raw_alpha <- function(meta) {
 #' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include metacommunity.R
+#' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
@@ -55,8 +57,10 @@ raw_alpha <- function(meta) {
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised alpha component
-#' norm_alpha(meta)
-#'
+#' a <- norm_alpha(meta)
+#' subdiv(a, 1)
+#' metadiv(a, 1)
+#' 
 norm_alpha <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
                              function(x) meta@ordinariness[,x] /
@@ -81,7 +85,7 @@ norm_alpha <- function(meta) {
 #' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include metacommunity.R
+#' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
@@ -94,8 +98,10 @@ norm_alpha <- function(meta) {
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw rho component
-#' raw_rho(meta)
-#'
+#' r <- raw_rho(meta)
+#' subdiv(r, 1)
+#' metadiv(r, 1)
+#' 
 raw_rho <- function(meta) {
   results <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
   powermean(results, meta, "raw rho")
@@ -114,7 +120,7 @@ raw_rho <- function(meta) {
 #' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include metacommunity.R
+#' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
@@ -127,8 +133,10 @@ raw_rho <- function(meta) {
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised rho component
-#' norm_rho(meta)
-#'
+#' r <- norm_rho(meta)
+#' subdiv(r, 1)
+#' metadiv(r, 1)
+#' 
 norm_rho <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
                              function(x) meta@ordinariness[,x] /
@@ -152,7 +160,7 @@ norm_rho <- function(meta) {
 #' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{relativeentropy}.
-#' @include metacommunity.R
+#' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
@@ -165,8 +173,10 @@ norm_rho <- function(meta) {
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw beta component
-#' raw_beta(meta)
-#'
+#' b <- raw_beta(meta)
+#' subdiv(b, 1)
+#' metadiv(b, 1)
+#' 
 raw_beta <- function(meta) {
   rho <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
   results <- 1 / rho
@@ -186,7 +196,7 @@ raw_beta <- function(meta) {
 #' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{relativeentropy}.
-#' @include metacommunity.R
+#' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
@@ -199,8 +209,10 @@ raw_beta <- function(meta) {
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised beta component
-#' norm_beta(meta)
-#'
+#' b <- norm_beta(meta)
+#' subdiv(b, 1)
+#' metadiv(b, 1)
+#' 
 norm_beta <- function(meta) {
   ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
                              function(x) meta@ordinariness[,x] /
@@ -225,7 +237,7 @@ norm_beta <- function(meta) {
 #' @inheritParams raw_alpha
 #'
 #' @return Returns an object of class \code{powermean}.
-#' @include metacommunity.R
+#' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
@@ -238,8 +250,10 @@ norm_beta <- function(meta) {
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate gamma component
-#' raw_gamma(meta)
-#'
+#' g <- raw_gamma(meta)
+#' subdiv(g, 1)
+#' metadiv(g, 1)
+#' 
 raw_gamma <- function(meta) {
   results <- rowSums(meta@ordinariness, na.rm=T)
   results[results==0] <- NaN

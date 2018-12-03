@@ -28,7 +28,9 @@ pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate normalised alpha component
-norm_alpha(meta)
+a <- norm_alpha(meta)
+subdiv(a, 1)
+metadiv(a, 1)
 
 }
 \references{

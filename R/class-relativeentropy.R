@@ -9,6 +9,14 @@
 #' @field results object of class \code{matrix} of mode \code{numeric}; contains
 #' diversity term values output from \code{raw_beta()} or \code{norm_beta()}
 #' @field measure measure
+#' An object of class \code{tibble}, with columns:
+#' \code{measure}, (raw alpha, norm alpha, raw rho, etc.),
+#' \code{q} (parameter of conservatism), 
+#' \code{type_level} (), 
+#' \code{type_name} (label attributed to type), 
+#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
+#' \code{partition_name} (label attributed to partition), and 
+#' \code{diversity}
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains proportional abundance of \emph{types} in the subcommunity 
 #' as a fraction of the metacommunity as a whole (in the phylogenetic case, 

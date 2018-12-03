@@ -3,7 +3,20 @@
 #' Generate taxanomic codes for each species by converting species, genus, 
 #' family, and subclass into factors
 #' 
-#' @param taxFac sdf
+#' @param taxFac Output of function \code{taxFac{}}.
+#' 
+#' @examples 
+#' \dontrun{
+#' # Create Lookup table
+#' Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
+#' Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
+#' Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
+#' Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
+#' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
+#' 
+#' tf <- taxfac(lookup)
+#' taxid(tf)
+#' }
 #' 
 taxid <- function(taxFac) {
   # taxFac <- taxFac + 1

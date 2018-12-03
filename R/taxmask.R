@@ -2,6 +2,18 @@
 #' 
 #' @param lookup lskj
 #' 
+#' @examples 
+#' \dontrun{
+#' # Create Lookup table
+#' Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
+#' Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
+#' Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
+#' Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
+#' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
+#' 
+#' taxmask(lookup)
+#' }
+#' 
 taxmask <- function(lookup) {
   N <- apply(lookup, 2, function(x) length(unique(x)))
   bits <- round(log(N, 2))

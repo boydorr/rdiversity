@@ -28,7 +28,9 @@ pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate normalised rho component
-norm_rho(meta)
+r <- norm_rho(meta)
+subdiv(r, 1)
+metadiv(r, 1)
 
 }
 \references{

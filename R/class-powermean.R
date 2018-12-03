@@ -6,7 +6,10 @@
 #' @rdname powermean-class
 #' @exportClass powermean
 #' 
-#' @field output object of class \code{tibble}, with columns:
+#' @field results \code{matrix} of mode \code{numeric}; contains values 
+#' calculated from diversity-term values output from \code{raw_alpha()}, 
+#' \code{norm_alpha()}, \code{raw_rho()}, \code{norm_rho()}, or 
+#' \code{raw_gamma()}. An object of class \code{tibble}, with columns:
 #' \code{measure}, (raw alpha, norm alpha, raw rho, etc.),
 #' \code{q} (parameter of conservatism), 
 #' \code{type_level} (), 
@@ -14,10 +17,6 @@
 #' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
 #' \code{partition_name} (label attributed to partition), and 
 #' \code{diversity}
-#' @field results \code{matrix} of mode \code{numeric}; contains values 
-#' calculated from diversity-term values output from \code{raw_alpha()}, 
-#' \code{norm_alpha()}, \code{raw_rho()}, \code{norm_rho()}, or 
-#' \code{raw_gamma()}
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains proportional abundance of \emph{types} in the subcommunity 
 #' as a fraction of the metacommunity as a whole (in the phylogenetic case, 

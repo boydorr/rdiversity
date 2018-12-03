@@ -4,10 +4,16 @@
 \alias{phy2dist}
 \title{Phylogenetic pairwise tip distance matrix}
 \usage{
-phy2dist(tree)
+phy2dist(tree, precompute_dist = TRUE)
 }
 \arguments{
 \item{tree}{object of class \code{phylo}.}
+
+\item{precompute_dist}{object of class \code{logical} or \code{numeric}. 
+When TRUE (by default) a distance matrix is generated and stored in slot 
+\code{distance}, when FALSE no distance matrix is generated, and when numeric 
+a distance matrix is generated until the number of species exceeds the 
+defined value.}
 }
 \value{
 \code{phy2sim(x)} returns a matrix of pairwise distances.

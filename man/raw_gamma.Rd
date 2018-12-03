@@ -27,7 +27,9 @@ pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate gamma component
-raw_gamma(meta)
+g <- raw_gamma(meta)
+subdiv(g, 1)
+metadiv(g, 1)
 
 }
 \references{

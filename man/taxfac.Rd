@@ -13,3 +13,16 @@ hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')}
 \description{
 taxfac
 }
+\examples{
+\dontrun{
+# Create Lookup table
+Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
+Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
+Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
+Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
+lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
+
+taxfac(lookup)
+}
+
+}

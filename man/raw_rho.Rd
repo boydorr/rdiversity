@@ -27,7 +27,9 @@ pop <- pop/sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate raw rho component
-raw_rho(meta)
+r <- raw_rho(meta)
+subdiv(r, 1)
+metadiv(r, 1)
 
 }
 \references{

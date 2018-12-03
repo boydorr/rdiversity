@@ -21,6 +21,8 @@ Container for class \code{distance}.
 
 \item{\code{datID}}{object of class \code{character}.}
 
+\item{\code{ordinariness}}{object of class \code{character}.}
+
 \item{\code{taxDistance}}{object of class \code{numeric}.}
 
 \item{\code{taxID}}{object of class \code{numeric}.}
