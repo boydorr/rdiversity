@@ -258,10 +258,15 @@ raw_gamma <- function(meta) {
   results <- rowSums(meta@ordinariness, na.rm=T)
   results[results==0] <- NaN
   results <- 1 / results
-  results <- matrix(rep((results), ncol(meta@type_abundance)),
-                    ncol=ncol(meta@type_abundance))
-  colnames(results) <- colnames(meta@type_abundance)
+  N <- nrow(meta@type_abundance)
+  
+  results <- apply(meta@type_abundance, 2, function(x) {
+    tmp <- rep(0, N)
+    tmp[which(x!=0)] <- results[which(x!=0)]
+    tmp
+  })
   row.names(results) <- row.names(meta@type_abundance)
+  
   powermean(results, meta, "gamma")
 }
 
