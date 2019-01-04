@@ -188,7 +188,8 @@ setMethod(f = "metacommunity",
             partition <- matrix(rep(1/length(tips), length(tips)))
             row.names(partition) <- tips
             colnames(partition) <- "sc1"
-            metacommunity(partition, similarity@similarity)    
+            
+            metacommunity(partition, similarity)    
           } )
 
 
@@ -199,7 +200,8 @@ setMethod(f = "metacommunity",
           signature(partition = "numeric", similarity = "similarity"),
           definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            metacommunity(partition, similarity@similarity)    
+            
+            metacommunity(partition, similarity)    
           } )
 
 
@@ -210,7 +212,8 @@ setMethod(f = "metacommunity",
           signature(partition = "data.frame", similarity = "similarity"),
           definition = function(partition, similarity) {
             partition <- as.matrix(partition)
-            metacommunity(partition, similarity@similarity)    
+            
+            metacommunity(partition, similarity)    
           } )
 
 
