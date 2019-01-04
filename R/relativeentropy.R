@@ -30,7 +30,10 @@ relativeentropy <- function(results, meta, tag) {
       type_abundance = meta@type_abundance,
       ordinariness = meta@ordinariness,
       subcommunity_weights = meta@subcommunity_weights,
-      type_weights = meta@type_weights)
+      type_weights = meta@type_weights,
+      datID = meta@datID,
+      similarity_components = meta@similarity_components,
+      similarity_parameters = meta@similarity_parameters)
 }
 
 

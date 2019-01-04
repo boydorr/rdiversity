@@ -37,6 +37,11 @@ subcommunity weights}
 
 \item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}; 
 contains weight of types within a subcommunity}
+
+\item{\code{datID}}{class of similarity, which can be taxonomic, phylogenetic, or 
+naive}
+
+\item{\code{parameters}}{parameters associated with calculating similarity}
 }}
 
 \references{

@@ -28,6 +28,9 @@
 #' subcommunity weights
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains weight of types within a subcommunity
+#' @field datID class of similarity, which can be taxonomic, phylogenetic, or 
+#' naive
+#' @field parameters parameters associated with calculating similarity
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
@@ -38,6 +41,10 @@ setClass("relativeentropy", slots = c(results = "matrix",
                                       type_abundance = "matrix",
                                       ordinariness = "matrix",
                                       subcommunity_weights = "vector",
-                                      type_weights = "matrix"))
+                                      type_weights = "matrix",
+                                      datID = "character",
+                                      parameters = "list",
+                                      similarity_components = "list",
+                                      similarity_parameters = "list"))
 
 
