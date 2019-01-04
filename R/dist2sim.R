@@ -29,6 +29,7 @@ dist2sim <- function(dist,
                      normalise = TRUE, 
                      max_d) {
   
+  
   # If a distance matrix is available, convert it into a similarity matrix
   if(length(dist@distance) != 0) {
     
@@ -43,53 +44,39 @@ dist2sim <- function(dist,
     return(new("similarity", 
                similarity = similarity,
                datID = dist@datID,
+               components = dist@components,
                parameters = list(transform = transform,
                                  k = k,
                                  normalise = normalise,
                                  max_d = max_d)))
     
-    # Otherwise...
   } else {
+    
+    # If there is no distance matrix...
     
     if(dist@datID == "taxonomic") {
       
-      values <- dist@taxDistance
-      if(missing(max_d)) max_d <- max(values)
-      if(normalise) values <- values/max_d
+      components <- dist@components
+      
+      taxSimilarity <- components$taxDistance
+      if(missing(max_d)) max_d <- max(taxSimilarity)
+      if(normalise) taxSimilarity <- taxSimilarity/max_d
       if(transform == substr("linear", 1, nchar(transform)))
-        values <- pmax(1 - k * values, 0)
+        taxSimilarity <- pmax(1 - k * taxSimilarity, 0)
       if(transform == substr("exponential", 1, nchar(transform)))
-        values <- exp(-k * values)
+        taxSimilarity <- exp(-k * taxSimilarity)
+      
+      new_components <- append(components, 
+                               list(taxSimilarity = taxSimilarity), 3)
       
       return(new("similarity", 
                  datID = dist@datID,
-                 ordinariness = dist@ordinariness,
-                 taxSimilarity = values,
-                 taxID = dist@taxID,
-                 taxMask = dist@taxMask,
-                 taxBits = dist@taxBits,
+                 components = new_components,
                  parameters = list(transform = transform,
                                    k = k,
                                    normalise = normalise,
                                    max_d = max_d)))
-      
-    }else if(dist@datID == "phylogenetic") {
-      
-      stop("Currently, phy2branch() always generates a distance matrix.")
-      
-      # return(new("similarity", 
-      #            datID = dist@datID,
-      #            tree = dist@tree,
-      #            treeDepth = dist@treeDepth,
-      #            parameters = list(transform = transform,
-      #                              k = k,
-      #                              normalise = normalise,
-      #                              max_d = max_d)))
-      
-    }else if(dist@datID == "phylodist") {
-      
-      stop("Currently, phy2dist() always generates a distance matrix.")
-      
+    
     }
     
   }
@@ -113,3 +100,5 @@ dist2sim <- function(dist,
   #      ))
   # }
 }
+
+
