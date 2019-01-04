@@ -32,7 +32,10 @@ powermean <- function(results, meta, tag) {
       type_abundance = meta@type_abundance,
       ordinariness = meta@ordinariness,
       subcommunity_weights = meta@subcommunity_weights,
-      type_weights = meta@type_weights)
+      type_weights = meta@type_weights,
+      datID = meta@datID,
+      similarity_components = meta@similarity_components,
+      similarity_parameters = meta@similarity_parameters)
 }
 
 
@@ -43,13 +46,5 @@ powermean <- function(results, meta, tag) {
 #'
 setMethod(f = "show", signature = "powermean",
           definition = function(object) {
-            cat('Object of class powermean, containing:\n')
-            cat('@results: inddiv() results\n')
-            cat('@measure: measure\n')
-            cat('@type_abundance: Matrix of relative abundances (', 
-                ncol(object@type_abundance), 'subcommunities,',
-                nrow(object@type_abundance), 'types )\n')
-            cat('@ordinariness: Matrix of type ordinariness\n')
-            cat('@subcommunity_weights: Vector of subcommunity weights\n')
-            cat('@type_weights: Vector of type weights\n')
+            cat('Object of class powermean.')
           } )
