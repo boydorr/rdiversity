@@ -16,8 +16,9 @@
 #' }
 #' 
 taxfac <- function(lookup) {
-  output <- lookup
-  for(i in 1:ncol(output)) output[,i] <- as.numeric(as.factor(output[,i]))
+  output <- matrix(ncol = ncol(lookup), nrow = nrow(lookup))
+  for(i in 1:ncol(lookup)) output[,i] <- as.numeric(as.factor(lookup[,i]))
   row.names(output) <- lookup[,1]
+  colnames(output) <- colnames(lookup)
   output - 1
 }
