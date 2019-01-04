@@ -17,22 +17,10 @@ Container for class \code{distance}.
 \section{Fields}{
 
 \describe{
-\item{\code{similarity}}{object of class \code{matrix}.}
+\item{\code{distance}}{object of class \code{matrix}.}
 
 \item{\code{datID}}{object of class \code{character}.}
 
-\item{\code{ordinariness}}{object of class \code{character}.}
-
-\item{\code{taxDistance}}{object of class \code{numeric}.}
-
-\item{\code{taxID}}{object of class \code{numeric}.}
-
-\item{\code{taxMask}}{object of class \code{list}.}
-
-\item{\code{taxBits}}{object of class \code{numeric}.}
-
-\item{\code{tree}}{object of class \code{data.frame}.}
-
-\item{\code{treeDepth}}{object of class \code{numeric}.}
+\item{\code{components}}{object of class \code{list}.}
 }}
 

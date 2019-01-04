@@ -24,7 +24,6 @@ Imports:
     phangorn,
     plyr,
     tidyr,
-    tidytree,
     tibble,
     phytools,
     reshape2,
@@ -33,29 +32,31 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Collate:
     'chainsaw.R'
     'check_partition.R'
     'check_phypartition.R'
     'check_similarity.R'
     'class-distance.R'
-    'class-diversity.R'
     'class-metacommunity.R'
     'class-powermean.R'
+    'class-rdiv.R'
     'class-relativeentropy.R'
     'class-similarity.R'
     'similarity.R'
     'dist2sim.R'
     'distance.R'
+    'metadiv.R'
+    'subdiv.R'
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'
-    'diversity.R'
+    'geneID.R'
+    'genevec.R'
     'get_label.R'
     'hs_parameters.R'
     'inddiv.R'
-    'metadiv.R'
     'phy2branch.R'
     'phy2dist.R'
     'phy_abundance.R'
@@ -65,11 +66,7 @@ Collate:
     'plot_single.R'
     'power_mean.R'
     'powermean.R'
-    'qD.R'
-    'subdiv.R'
-    'qDZ.R'
-    'qDZ_single.R'
-    'qD_single.R'
+    'rdiv.R'
     'rdiversity-package.R'
     'relativeentropy.R'
     'repartition.R'

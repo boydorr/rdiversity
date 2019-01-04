@@ -4,10 +4,14 @@
 \alias{phy2branch}
 \title{Phylogenetic similarity}
 \usage{
-phy2branch(tree, depth = 1)
+phy2branch(tree, partition, depth = 1)
 }
 \arguments{
 \item{tree}{object of class \code{phylo}.}
+
+\item{partition}{two-dimensional \code{matrix} of mode 
+\code{numeric} with rows as terminal taxa, columns as subcommunities, and  
+elements containing the relative abundance of terminal taxa.}
 
 \item{depth}{proportion of total tree height to be conserved (taken as
 a proportion from the heighest tip). Describes how much evolutionary history 
@@ -16,13 +20,19 @@ should be retained, with 0 marking the date of the most recent tip, and 1
 1 extend the root of the tree.}
 }
 \value{
-\code{phy2sim()} returns an object of class \code{similarity}.
+\code{phy2branch()} returns an object of class \code{distance}.
 }
 \description{
 Packages phylo object and depth into an object of class \code{similarity}.
 }
 \examples{
 tree <- ape::rtree(5)
-phy2branch(tree)
+tree$tip.label <- paste0("sp", 1:5)
+
+partition <- matrix(rep(1,10), nrow = 5)
+row.names(partition) <- paste0("sp", 1:5)
+partition <- partition / sum(partition)
+
+phy2branch(tree, partition)
 
 }

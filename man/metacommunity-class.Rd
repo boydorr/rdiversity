@@ -23,9 +23,11 @@ relative abundances of types in subcommunities.  In the phylogenetic case,
 this corresponds to the proportional abundance of historic species, which
 is calculated from the proportional abundance of present day species.}
 
-\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric} with 
-rows as types, columns as types, and elements containing pairwise 
-similarities between types}
+\item{\code{similarity}}{object}
+
+\item{\code{similarity_components}}{object}
+
+\item{\code{similarity_parameters}}{object}
 
 \item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric} 
 with rows as types, columns as subcommunities, and elements containing the

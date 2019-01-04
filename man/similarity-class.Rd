@@ -21,15 +21,7 @@ Container for class \code{similarity}.
 
 \item{\code{datID}}{object of class \code{character}.}
 
-\item{\code{ordinariness}}{object of class \code{character}.}
-
-\item{\code{taxSimilarity}}{object of class \code{numeric}.}
-
-\item{\code{taxID}}{object of class \code{numeric}.}
-
-\item{\code{taxMask}}{object of class \code{list}.}
-
-\item{\code{taxBits}}{object of class \code{numeric}.}
+\item{\code{components}}{object of class \code{list}.}
 
 \item{\code{parameters}}{object of class \code{list}.}
 }}

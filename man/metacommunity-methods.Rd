@@ -112,13 +112,14 @@ associated with each historic species in the phylogeny}
 }}
 
 \examples{
-tree <- ape::rtree(n = 5)
-tree$tip.label <- paste0("sp", seq_along(tree$tip.label))
+## Naive-type
 partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
-row.names(partition) <- tree$tip.label
+row.names(partition) <- paste0("sp", 1:5)
 partition <- partition / sum(partition)
+meta <- metacommunity(partition)
 
-# Create Lookup table
+## Taxonomic
+# Generate lookup table
 Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
 Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
 Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
@@ -131,6 +132,25 @@ taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 # Generate pairwise distances
 distance <- tax2dist(lookup, taxDistance, FALSE)
 similarity <- dist2sim(distance, "linear")
+
+partition <- matrix(sample(8), ncol=2)
+row.names(partition) <- Species
+colnames(partition) <- LETTERS[1:2]
+
+meta <- metacommunity(partition, similarity)
+
+## Distance-based phylogenetic
+tree <- ape::rtree(5)
+tree$tip.label <- paste0("sp", 1:5)
+
+partition <- matrix(rep(1,10), nrow = 5)
+row.names(partition) <- paste0("sp", 1:5)
+partition <- partition / sum(partition)
+
+distance <- phy2dist(tree)
+similarity <- dist2sim(distance, "linear")
+
+meta <- metacommunity(partition, similarity)
 
 }
 \seealso{
