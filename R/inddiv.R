@@ -62,6 +62,7 @@ setGeneric(name = "inddiv",
 setMethod(f = "inddiv", signature= "powermean",
           definition = function(data, qs) {
             output <- reshape2::melt(data@results)
+            param <- data@similarity_parameters
             output <- cbind.data.frame(measure = data@measure, 
                                        q = rep(qs, each=nrow(output)),  
                                        type_level = "type", 
@@ -69,6 +70,11 @@ setMethod(f = "inddiv", signature= "powermean",
                                        partition_level = "subcommunity",
                                        partition_name = output$Var2,
                                        diversity = output$value, 
+                                       datID = data@datID,
+                                       transformation = param$transform,
+                                       normalised = param$normalise,
+                                       k = param$k,
+                                       max_d = param$max_d,
                                        stringsAsFactors = FALSE)
             new("diversity", output)
           } )
@@ -79,6 +85,7 @@ setMethod(f = "inddiv", signature= "powermean",
 setMethod(f = "inddiv", signature= "relativeentropy",
           definition = function(data, qs) {
             output <- reshape2::melt(data@results)
+            param <- data@similarity_parameters
             output <- cbind.data.frame(measure = data@measure, 
                                        q = rep(qs, each=nrow(output)),  
                                        type_level = "type", 
@@ -86,6 +93,11 @@ setMethod(f = "inddiv", signature= "relativeentropy",
                                        partition_level = "subcommunity",
                                        partition_name = output$Var2,
                                        diversity = output$value, 
+                                       datID = data@datID,
+                                       transformation = param$transform,
+                                       normalised = param$normalise,
+                                       k = param$k,
+                                       max_d = param$max_d,
                                        stringsAsFactors = FALSE)
             new("diversity", output)
           } )
