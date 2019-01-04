@@ -40,21 +40,14 @@
 #' 
 tax2dist <- function(lookup, 
                      taxDistance,
-                     precompute_dist = T) 
+                     precompute_dist = TRUE) 
 {
-  # # "try to sort the order of the number of factors in each column. if there's a tie, error and ask for taxDistance to be input. then check below instead of this one."
-  # if(missing(taxDistance)) {
-  #   # Number of factors in each column
-  #   n <- apply(lookup, 2, function(x) length(unique(x)))
-  #   if(!any(duplicated(n))) {
-  #    }else stop("Please input taxDistance argument.")
-  # }
   taxDistance <- sort(taxDistance)
   taxCols <- names(taxDistance)[-length(taxDistance)]
   if (length(intersect(taxCols, colnames(lookup))) != length(taxCols))
     stop("The columns in the taxonomy have to include the columns mentioned in the distance vector")
   lookup <- lookup[,taxCols]
-
+  
   if(is.numeric(precompute_dist)) {
     n <- apply(lookup, 2, function(x) length(unique(x)))
     S <- max(n)
@@ -84,11 +77,12 @@ tax2dist <- function(lookup,
     return(new("distance", 
                distance = dist,
                datID = "taxonomic",
-               taxDistance = taxDistance))
+               components = list(precompute = TRUE,
+                                            taxDistance = taxDistance)))
     
     # Don't calculate distance matrix
     
-  }else if(!precompute_dist) {
+  }else {
     taxFac <- taxfac(lookup)
     bits <- apply(taxFac, 2, function(x) ceiling(log(max(x)+1, 2)))
     taxID <- taxid(taxFac)
@@ -96,10 +90,11 @@ tax2dist <- function(lookup,
     
     return(new("distance", 
                datID = "taxonomic",
-               ordinariness = "taxvec",
-               taxDistance = taxDistance,
-               taxID = taxID, 
-               taxMask = taxMask,
-               taxBits = bits))
+               components = list(precompute = FALSE,
+                                 ordinariness = "taxvec",
+                                 taxDistance = taxDistance,
+                                 taxID = taxID, 
+                                 taxMask = taxMask,
+                                 taxBits = bits)))
   }
 }
