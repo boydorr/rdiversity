@@ -35,8 +35,9 @@
 #'
 repartition <- function(meta, new_partition) {
 
+  # Non-phylogenetic metacommunity
   if(isTRUE(all.equal(0, length(meta@raw_structure)))) {
-    # Non-phylogenetic metacommunity
+    
     partition <- meta@type_abundance
     if(missing(new_partition))
       new_partition <- partition[sample(seq_along(row.names(partition))),,
@@ -50,8 +51,11 @@ repartition <- function(meta, new_partition) {
 
     new_meta <- metacommunity(new_partition, meta@similarity)
 
-  }else {
+    
+    
     # Phylogenetic metacommunity
+  }else {
+    
     raw_abundance <- meta@raw_abundance
     if(missing(new_partition))
       new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))),
@@ -65,8 +69,12 @@ repartition <- function(meta, new_partition) {
 
     hs_abundance <- phy_abundance(new_partition, meta@raw_structure)
 
-    new_meta <- metacommunity(hs_abundance/sum(hs_abundance),
-                              meta@similarity*sum(hs_abundance))
+    new_similarity <- new("similarity", 
+                          similarity = meta@similarity*sum(hs_abundance),
+                          datID = meta@datID)
+
+    new_meta <- metacommunity(partition = hs_abundance/sum(hs_abundance),
+                              similarity = new_similarity)
     new_meta@raw_abundance <- new_partition
     new_meta@raw_structure <- meta@raw_structure/sum(hs_abundance)
     new_meta@parameters <- meta@parameters
