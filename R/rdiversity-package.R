@@ -25,19 +25,19 @@
 #' @aliases rdiversity
 #' @docType package
 #'
+#' @import ape
 #' @import ggplot2
 #' @import methods
-#' @import ape
 #' @import phangorn
 #' @import plyr
 #' @importFrom binaryLogic as.binary
+#' @importFrom ggthemes ptol_pal
 #' @importFrom phytools nodeHeights
-#' @importFrom tidyr nest
-#' @importFrom tibble as_data_frame
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
-#' @importFrom utils head
 #' @importFrom scales hue_pal
-#' @importFrom ggthemes ptol_pal
+#' @importFrom tidyr nest
+#' @importFrom tibble as_data_frame
+#' @importFrom utils head
 #'
 NULL

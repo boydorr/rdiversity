@@ -16,18 +16,20 @@ Description: Provides a framework for the measurement and partitioning of
     <arXiv:1404.6520v3>.
 License: GPL-3
 Imports:
+    ape,
     binaryLogic,
-    methods,
     ggplot2,
     ggthemes,
-    ape,
+    methods,
     phangorn,
+    phytools,
     plyr,
+    reshape2,
+    stats,
+    scales,
     tidyr,
     tibble,
-    phytools,
-    reshape2,
-    scales
+    utils
 Suggests:
     testthat,
     knitr,
