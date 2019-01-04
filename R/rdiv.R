@@ -1,14 +1,14 @@
-#' Generate diversity
+#' Generate rdiv
 #'
-#' Functions to check if an object is a \code{diversity}
+#' Functions to check if an object is a \code{rdiv}
 #'
-#' @name diversity
-#' @rdname diversity-methods
-#' @exportMethod diversity
+#' @name rdiv
+#' @rdname rdiv-methods
+#' @exportMethod rdiv
 #' 
-#' @param res object of class \code{diversity}
-#' @include class-diversity.R 
-#' @return \code{diversity()} returns an object of class \code{diversity}.
+#' @param res object of class \code{rdiv}
+#' @include class-rdiv.R
+#' @return \code{rdiv()} returns an object of class \code{rdiv}.
 #' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -24,45 +24,45 @@
 #' class(mc)
 #' 
 #' res <- rbind.data.frame(sc, mc)
-#' res <- diversity(res)
+#' res <- rdiv(res)
 #' class(res)
 #' 
 #' res <- list(sc, mc)
-#' res <- diversity(res)
+#' res <- rdiv(res)
 #' class(res)
 #' 
-setGeneric(name = "diversity",
+setGeneric(name = "rdiv",
            def = function(res) {
-             standardGeneric("diversity")
+             standardGeneric("rdiv")
            } )
 
 
 
-#' @rdname diversity-methods
-#' @aliases diversity,data.frame-method
+#' @rdname rdiv-methods
+#' @aliases rdiv,data.frame-method
 #'
-setMethod(f = "diversity", signature = "data.frame",
+setMethod(f = "rdiv", signature = "data.frame",
           definition = function(res) {
-            new('diversity', res)
+            new('rdiv', res)
           } )
 
 
 
-#' @rdname diversity-methods
-#' @aliases diversity,list-method
+#' @rdname rdiv-methods
+#' @aliases rdiv,list-method
 #'
-setMethod(f = "diversity", signature = "list",
+setMethod(f = "rdiv", signature = "list",
           definition = function(res) {
             res <- do.call(rbind.data.frame, res)
-            new('diversity', res)
+            new('rdiv', res)
           } )
 
 
 
-#' @rdname diversity-class
-#' @param object object of class \code{diversity}
+#' @rdname rdiv-class
+#' @param object object of class \code{rdiv}
 #'
-setMethod(f = "show", signature = "diversity",
+setMethod(f = "show", signature = "rdiv",
           definition = function(object) {
             object <- asS3(object)
             object <- tibble::as_data_frame(object)
@@ -73,11 +73,11 @@ setMethod(f = "show", signature = "diversity",
 
 setGeneric("plot")
 
-#' @rdname diversity-class
-#' @param x object of class \code{diversity}
+#' @rdname rdiv-class
+#' @param x object of class \code{rdiv}
 #' @export
 #'
-setMethod(f = "plot", signature(x = "diversity"),
+setMethod(f = "plot", signature(x = "rdiv"),
           definition = function(x) {
             what <- what(x)
             if(what=="inddiv") return(plot_inddiv(x))
