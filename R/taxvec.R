@@ -9,8 +9,6 @@
 #' @param row \code{integer} denoting which row of the similarity matrix is to 
 #' bw calculated.
 #' 
-taxvec <- function(similarity, 
-                   row) {
 #' @examples 
 #' \dontrun{
 #' # Create Lookup table
@@ -28,8 +26,11 @@ taxvec <- function(similarity,
 #' taxvec(similarity, 1)
 #' }
 #' 
-  total <- sum(similarity@taxBits)
-  species_factors <- lapply(similarity@taxID, function(x) 
+taxvec <- function(similarity, row) {
+  components <- similarity@components
+  
+  total <- sum(components$taxBits)
+  species_factors <- lapply(components$taxID, function(x) 
     binaryLogic::as.binary(x, n = total))
   
   difference <- lapply(species_factors, function(x) {
@@ -38,13 +39,13 @@ taxvec <- function(similarity,
     binaryLogic::as.binary(tmp, logic = T)
   })
   
-  split_values <- similarity@taxSimilarity
+  split_values <- components$taxSimilarity
   split_values <- sapply(seq_along(split_values), function(x) {
     split_values[x] - split_values[x+1]
   })
   split_values <- split_values[-length(split_values)]
   
-  masks <- similarity@taxMask
+  masks <- components$taxMask
   one <- lapply(difference, function(x) {
     tmp <- lapply(seq_along(masks), function(y) 
       ((x&masks[[y]]) == masks[[y]])*split_values[y])
