@@ -101,9 +101,17 @@ setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "missing"),
           definition = function(partition) {
             # If similarity is not input, create identity matrix
-            similarity <- diag(1, nrow(partition))
-            row.names(similarity) <- row.names(partition)
-            colnames(similarity) <- row.names(partition)
+            Z <- diag(1, nrow(partition))
+            row.names(Z) <- row.names(partition)
+            colnames(Z) <- row.names(partition)
+            
+            similarity <- new("similarity", 
+                              similarity = Z,
+                              datID = "naive",
+                              parameters = list(transform = NA,
+                                                k = NA,
+                                                normalise = NA,
+                                                max_d = NA))
             
             metacommunity(partition, similarity)
           } )
