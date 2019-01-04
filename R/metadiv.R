@@ -90,7 +90,7 @@ setMethod(f = "metadiv", signature = "powermean",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("diversity", output)
+            new("rdiv", output)
             } )
 
 
@@ -124,7 +124,7 @@ setMethod(f = "metadiv", signature = "relativeentropy",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("diversity", output)
+            new("rdiv", output)
             } )
 
 
@@ -140,5 +140,5 @@ setMethod(f = "metadiv", signature = "metacommunity",
             # Calculate metacommunity diversity
             output <- lapply(div.measures, function(x) metadiv(x(data), qs))
             output <- do.call(rbind.data.frame, output)
-            new("diversity", output)
+            new("rdiv", output)
           } )
