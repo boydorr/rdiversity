@@ -258,7 +258,95 @@ setMethod(f = "metacommunity",
 setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "similarity"),
           definition = function(partition, similarity) {
-            metacommunity(partition, similarity@similarity)    
+            
+            # If a similarity matrix is available (within the similarity 
+            # object), then generate a metacommunity object in the normal way
+            if(length(similarity@similarity) != 0) {
+              
+              # Check partition and simliarity matrices
+              type_abundance <- check_partition(partition)
+              Z <- similarity@similarity
+              Z <- check_similarity(partition, Z)
+
+              # Calculate parameters
+              subcommunity_weights <- colSums(type_abundance) /
+                sum(type_abundance)
+              type_weights <- apply(type_abundance, 2, function(x) x/sum(x))
+              Zp.j <- Z %*% type_abundance
+
+              # Mark all of the species that have nothing similar as NaNs
+              # because diversity of an empty group is undefined
+              Zp.j[Zp.j==0] <- NaN
+
+              if(!is.matrix(type_weights)) {
+                type_weights<- t(as.matrix(type_weights))
+                row.names(type_weights) <- row.names(type_abundance)
+              }
+
+              return(new('metacommunity',
+                  type_abundance = type_abundance,
+                  similarity = Z,
+                  ordinariness = Zp.j,
+                  subcommunity_weights = subcommunity_weights,
+                  type_weights = type_weights,
+                  datID = similarity@datID,
+                  similarity_components = similarity@components,
+                  similarity_parameters = similarity@parameters))
+              
+              
+              
+              # .. else calculate branch-based phylogenetic similarity and
+              # generate a metacommunity object in the normal way
+            }else if(similarity@datID == "phybranch") {
+              
+              components <- similarity@components
+              ps <- phy_struct(components$tree, partition)
+              return(chainsaw(partition = partition, 
+                              ps = ps, 
+                              depth = components$treeDepth))
+              
+              
+              
+              # .. otherwise calculate ordinariness line by line and generate
+              # a metacommunity object in the normal way
+            }else {
+              
+              components <- similarity@components
+              
+              Z <- lapply(1:nrow(partition), function(x) 
+                get(components$ordinariness)(similarity, x))
+              Z <- do.call(rbind.data.frame, Z)
+              row.names(Z) <- row.names(partition)
+              colnames(Z) <- colnames(partition)
+              
+              # Check partition and simliarity matrices
+              type_abundance <- check_partition(partition)
+              Z <- check_similarity(partition, Z)
+              
+              # Calculate parameters
+              subcommunity_weights <- colSums(type_abundance) /
+                sum(type_abundance)
+              type_weights <- apply(type_abundance, 2, function(x) x/sum(x))
+              Zp.j <- Z %*% type_abundance
+              
+              # Mark all of the species that have nothing similar as NaNs
+              # because diversity of an empty group is undefined
+              Zp.j[Zp.j==0] <- NaN
+              
+              if(!is.matrix(type_weights)) {
+                type_weights<- t(as.matrix(type_weights))
+                row.names(type_weights) <- row.names(type_abundance)
+              }
+
+              return(new('metacommunity', 
+                         type_abundance = type_abundance,
+                         ordinariness = Zp.j,
+                         subcommunity_weights = subcommunity_weights,
+                         type_weights = type_weights,
+                         datID = similarity@datID,
+                         similarity_components = similarity@components,
+                         similarity_parameters = similarity@parameters))
+            }
           } )
 
 
