@@ -45,6 +45,12 @@ zmatrix <- function(partition, s, ps){
   z <- s %*% scaling_matrix
   colnames(z) <- row.names(z)
   
-  z
+  new("similarity", 
+      similarity = z,
+      datID = "phybranch",  
+      parameters = list(transform = NA,
+                        k = NA,
+                        normalise = NA,
+                        max_d = NA))
 }
 
