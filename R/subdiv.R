@@ -90,7 +90,7 @@ setMethod(f = "subdiv", signature = "powermean",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("diversity", output)
+            new("rdiv", output)
           } )
 
 
@@ -122,7 +122,7 @@ setMethod(f = "subdiv", signature = "relativeentropy",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("diversity", output)
+            new("rdiv", output)
           } )
 
 
@@ -131,13 +131,13 @@ setMethod(f = "subdiv", signature = "relativeentropy",
 setMethod(f = "subdiv", signature = "metacommunity",
           definition = function(data, qs) {
             # Calculate terms
-            div.measures <- list(raw_alpha, norm_alpha,
+            div_measures <- list(raw_alpha, norm_alpha,
                                  raw_beta, norm_beta,
                                  raw_rho, norm_rho,
                                  raw_gamma)
             # Calculate subcommunity diversity
-            output <- lapply(div.measures, function(x) subdiv(x(data), qs))
+            output <- lapply(div_measures, function(x) subdiv(x(data), qs))
             output <- do.call(rbind.data.frame, output)
-            new("diversity", output)
+            new("rdiv", output)
           } )
 
