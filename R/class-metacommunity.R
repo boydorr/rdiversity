@@ -12,9 +12,9 @@ setOldClass("phylo")
 #' relative abundances of types in subcommunities.  In the phylogenetic case, 
 #' this corresponds to the proportional abundance of historic species, which
 #' is calculated from the proportional abundance of present day species.
-#' @field similarity two-dimensional \code{matrix} of mode \code{numeric} with 
-#' rows as types, columns as types, and elements containing pairwise 
-#' similarities between types
+#' @field similarity object
+#' @field similarity_components object
+#' @field similarity_parameters object
 #' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric} 
 #' with rows as types, columns as subcommunities, and elements containing the
 #' ordinariness of types within subcommunities 
@@ -35,10 +35,13 @@ setOldClass("phylo")
 setClass("metacommunity", 
          slots = c(type_abundance = "matrix",
                    similarity = "matrix",
+                   similarity_components = "list",
+                   similarity_parameters = "list",
                    ordinariness = "matrix",
                    subcommunity_weights = "numeric", 
                    type_weights = "matrix",
                    raw_abundance = "matrix",
                    raw_structure = "matrix",
-                   parameters = "data.frame"))
+                   parameters = "data.frame",
+                   datID = "character"))
 
