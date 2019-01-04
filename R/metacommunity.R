@@ -168,6 +168,8 @@ setMethod(f = "metacommunity",
               row.names(type_weights) <- row.names(type_abundance)
             }
             
+            message('From the next update, this function will no longer accept matrix objects within the `similarity` argument. Instead, use dist2sim() to generate similarity objects.')
+            
             new('metacommunity', 
                 type_abundance = type_abundance,
                 similarity = similarity,
