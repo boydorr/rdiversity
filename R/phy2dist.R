@@ -15,12 +15,25 @@
 #' tree <- ape::rtree(5)
 #' phy2dist(tree)
 #' 
-phy2dist <- function(tree) {
+phy2dist <- function(tree, precompute_dist = TRUE) {
   
-  dist <- stats::cophenetic(tree)
+  # if(precompute_dist) {
+    dist <- stats::cophenetic(tree)
+    
+    return(new("distance", 
+               distance = dist,
+               datID = "phydist"))
+    
+  # }else {
+  #   
+  #   tidy_tree <- tidytree::as_data_frame(tree)
+  #   tidy_tree <- as.data.frame(tidy_tree)
+  #   
+  #   return(new("distance", 
+  #              datID = "phylodist",
+  #              ordinariness = "phyvec",
+  #              tree = tidy_tree))
+  # }
   
-  new("distance", 
-      distance = dist,
-      datID = "phylodist")
   
 }
