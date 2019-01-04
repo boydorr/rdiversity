@@ -8,22 +8,36 @@
 #' should be retained, with 0 marking the date of the most recent tip, and 1 
 #' (the default) marking the most recent common ancestor. Numbers greater than 
 #' 1 extend the root of the tree.
-#' @return \code{phy2sim()} returns an object of class \code{similarity}.
+#' @param partition two-dimensional \code{matrix} of mode 
+#' \code{numeric} with rows as terminal taxa, columns as subcommunities, and  
+#' elements containing the relative abundance of terminal taxa.
+#' 
+#' @return \code{phy2branch()} returns an object of class \code{distance}.
 #' @export
 #' 
 #' @examples 
 #' tree <- ape::rtree(5)
-#' phy2branch(tree)
+#' tree$tip.label <- paste0("sp", 1:5)
 #' 
-phy2branch <- function(tree, depth = 1) {
-  # ps <- phy_struct(tree = similarity@phylo, partition = partition)
-  # chainsaw(partition = partition, ps = ps, depth = similarity@depth)
+#' partition <- matrix(rep(1,10), nrow = 5)
+#' row.names(partition) <- paste0("sp", 1:5)
+#' partition <- partition / sum(partition)
+#' 
+#' phy2branch(tree, partition)
+#' 
+phy2branch <- function(tree, partition, depth = 1) {
   
-  tidy_tree <- tidytree::as_data_frame(tree)
-  tidy_tree <- as.data.frame(tidy_tree)
-    
-  new("distance", 
-      datID = "phylogenetic",
-      tree = tidy_tree,
-      treeDepth = depth)
+  # tidy_tree <- tidytree::as_tibble(tree)
+  # tidy_tree <- as.data.frame(tidy_tree)
+  
+  new("similarity", 
+      datID = "phybranch",
+      components = list(tree = tree,
+                        partition = partition,
+                        treeDepth = depth),
+      parameters = list(transform = NA,
+                        k = NA,
+                        normalise = NA,
+                        max_d = NA))
+  
 }
