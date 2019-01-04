@@ -8,18 +8,10 @@
 #' 
 #' @field similarity object of class \code{matrix}.
 #' @field datID object of class \code{character}.
-#' @field ordinariness object of class \code{character}.
-#' @field taxSimilarity object of class \code{numeric}.
-#' @field taxID object of class \code{numeric}.
-#' @field taxMask object of class \code{list}.
-#' @field taxBits object of class \code{numeric}.
+#' @field components object of class \code{list}.
 #' @field parameters object of class \code{list}.
 #' 
 setClass("similarity", slots = c(similarity = "matrix",
                                  datID = "character",
-                                 ordinariness = "character",
-                                 taxSimilarity = "numeric",
-                                 taxID = "numeric", 
-                                 taxMask = "list",
-                                 taxBits = "numeric",
+                                 components = "list",
                                  parameters = "list"))
