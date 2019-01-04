@@ -76,6 +76,7 @@ setMethod(f = "metadiv", signature = "powermean",
             colnames(output) <- qs
             output <- reshape2::melt(output)
             # Output
+            param <- data@similarity_parameters
             output <- cbind.data.frame(measure = data@measure,
                                        q = output$Var2, 
                                        type_level = "types",
@@ -83,6 +84,11 @@ setMethod(f = "metadiv", signature = "powermean",
                                        partition_level = "metacommunity",
                                        partition_name = "",
                                        diversity = output$value, 
+                                       datID = data@datID,
+                                       transformation = param$transform,
+                                       normalised = param$normalise,
+                                       k = param$k,
+                                       max_d = param$max_d,
                                        stringsAsFactors = FALSE)
             new("diversity", output)
             } )
@@ -104,6 +110,7 @@ setMethod(f = "metadiv", signature = "relativeentropy",
             colnames(output) <- qs
             output <- reshape2::melt(output)
             # Output
+            param <- data@similarity_parameters
             output <- cbind.data.frame(measure = data@measure,
                                        q = output$Var2, 
                                        type_level = "types",
@@ -111,6 +118,11 @@ setMethod(f = "metadiv", signature = "relativeentropy",
                                        partition_level = "metacommunity",
                                        partition_name = "",
                                        diversity = output$value, 
+                                       datID = data@datID,
+                                       transformation = param$transform,
+                                       normalised = param$normalise,
+                                       k = param$k,
+                                       max_d = param$max_d,
                                        stringsAsFactors = FALSE)
             new("diversity", output)
             } )
