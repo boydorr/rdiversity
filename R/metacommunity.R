@@ -151,7 +151,7 @@ setMethod(f = "metacommunity",
           definition = function(partition, similarity) {
             # Check partition and simliarity matrices
             type_abundance <- check_partition(partition)
-            similarity <- check_similarity(partition, similarity)
+            similarity <- check_similarity(similarity, partition)
             
             # Calculate parameters
             subcommunity_weights <- colSums(type_abundance) /
@@ -268,7 +268,7 @@ setMethod(f = "metacommunity",
               # Check partition and simliarity matrices
               type_abundance <- check_partition(partition)
               Z <- similarity@similarity
-              Z <- check_similarity(partition, Z)
+              Z <- check_similarity(Z, partition)
 
               # Calculate parameters
               subcommunity_weights <- colSums(type_abundance) /
@@ -323,7 +323,7 @@ setMethod(f = "metacommunity",
               
               # Check partition and simliarity matrices
               type_abundance <- check_partition(partition)
-              Z <- check_similarity(partition, Z)
+              Z <- check_similarity(Z, partition)
               
               # Calculate parameters
               subcommunity_weights <- colSums(type_abundance) /
