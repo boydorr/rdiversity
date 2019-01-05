@@ -275,7 +275,7 @@ function:
 ```{r}
 dist <- tax2dist(lookup, values)
 ```
-By default the `tax2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `dist@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly as part of the diversity calculation in step 5, below. 
+By default the `tax2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `dist@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly, in step 4. 
 
 3. Convert the distance object to similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
 ```{r}
@@ -310,7 +310,7 @@ pop <- pop/sum(pop)
 ```{r}
 dist <- phy2dist(tree)
 ```
-By default the `phy2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `dist@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly as part of the diversity calculation in step 5, below. 
+By default the `phy2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `dist@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly, in step 4. 
 
 3. Convert the distance object to similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
 ```{r}
