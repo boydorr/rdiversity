@@ -1,3 +1,36 @@
+#' Generate similarity object
+#'
+#' Container for class \code{similarity}.
+#' 
+#' @param similarity similarity matrix
+#' @param datID object of class \code{character} denoting the type of diversity 
+#' being calculated. This can be "naive", "genetic", "taxonomic", and so on
+#'
+#' @return \code{similarity()} returns an object of class \code{similarity}.
+#'
+#' @name similarity
+#' @rdname similarity-methods
+#' @exportMethod similarity
+#' 
+setGeneric(name = "similarity",
+           def = function(similarity, datID) {
+             standardGeneric("similarity")
+           } )
+
+
+#' @rdname similarity-methods
+#' @aliases similarity
+#'
+setMethod(f = "similarity",
+          signature(similarity = "matrix", datID = "character"),
+          definition = function(similarity, datID) {
+            similarity <- check_similarity(similarity)
+            new('similarity',
+                similarity = similarity,
+                datID = datID)
+          } )
+
+
 #' @rdname similarity-class
 #' @param object object of class \code{similarity}
 #'
