@@ -25,20 +25,23 @@ test_that("metacommunity() works for taxonomic diversity", {
   # Assign values for each level (Shimatani's taxonomic distance)
   taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 
-  # Generate pairwise distances
-  distance <- tax2dist(lookup, taxDistance, FALSE)
+  # Precompute pairwise distances
+  distance <- tax2dist(lookup, taxDistance, TRUE)
   similarity <- dist2sim(distance, "linear")
-
   partition <- matrix(sample(8), ncol=2)
   row.names(partition) <- Species
   colnames(partition) <- LETTERS[1:2]
-
   meta <- metacommunity(partition, similarity)
   
+  # Don't precompute pairwise distances
+  d <- tax2dist(lookup, taxDistance, FALSE)
+  s <- dist2sim(d, "linear")
+  m <- metacommunity(partition, s)
+  
+  expect_equal(meta@ordinariness, m@ordinariness)
+  expect_true(length(m@similarity) == 0)
+  expect_true(m@datID == "taxonomic")
   expect_true(meta@datID == "taxonomic")
-  expect_true(length(meta@raw_abundance) == 0)
-  expect_true(length(meta@raw_structure) == 0)
-  expect_true(length(meta@parameters) == 0)
 })
 
 
