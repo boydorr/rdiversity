@@ -6,9 +6,7 @@
 #' \code{1 - k * dist} for non-negative values, or \code{exp(-k * dist)}, 
 #' respectively. If \code{normalise} is true, then \code{dist = dist/max_d}.
 #' 
-#' @param dist two-dimensional \code{matrix} of mode \code{numeric} with rows as 
-#' types, columns as types, and elements containing the pairwise distance 
-#' between types
+#' @param dist object of class \code{distance}
 #' @param transform can be either "linear", "exponential"
 #' @param k scaling parameter
 #' @param normalise normalise distances to one; can be either true of false
@@ -28,6 +26,9 @@ dist2sim <- function(dist,
                      k = 1,
                      normalise = TRUE, 
                      max_d) {
+  
+  if(class(dist)!="distance") 
+    stop('The argument `dist` must be of class `distance`.')
   
   # If a distance matrix is available, convert it into a similarity matrix
   if(length(dist@distance) != 0) {
