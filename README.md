@@ -3,8 +3,9 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/463vspjivh08o9x1?svg=true)](https://ci.appveyor.com/project/mysteryduck/rdiversity)
 [![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
-[![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
-
+```{r}
+#[![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
+```
 
 Note that the following documentation applies only to the development version of the package, which can be installed using: `devtools::install_github("boydorr/rdiversity")`.
 
@@ -40,27 +41,57 @@ To install rdiversity from CRAN, simply run the following from an R console:
 install.packages("rdiversity")
 ```
 
-## Generating a metacommunity
+## Generating a metacommunity 
 
 Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`pop`) comprising two species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
 
-1. Load the package into R:
 ```{r}
 # Load the package into R
 library(rdiversity)
-```
 
-2. Initialise data:
-```{r}
+# Initialise data
 pop <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
 row.names(pop) <- c("cows", "sheep")
 ```
+The `metacommunity()` function takes two arguments, `partition` and `similarity`. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the `similarity` argument is missing, as below:
 
-3. Generate a metacommunity object using the `metacommunity()` function:
 ```{r}
+# Generate metacommunity object
 meta <- metacommunity(partition = pop)
 ```
-The `metacommunity()` function takes two arguments, `partition` and `similarity`. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the `similarity` argument is missing (like in the above example).
+
+When species share some similarity and a similarity matrix is available, then a similarity object (and the metacommunity object) is generated in the following way:
+
+```{r}
+# Initialise similarity matrix
+s <- matrix(c(1, 0.5, 0.5, 1), nrow = 2)
+row.names(s) <- c("cows", "sheep")
+colnames(s) <- c("cows", "sheep")
+
+# Generate similarity object 
+similarity <- similarity(similarity = s, datID = "my_taxonomic")
+
+# Generate metacommunity object
+meta <- metacommunity(partition = pop, similarity = similarity)
+```
+
+Alternatively, if a distance matrix is available, then a distance object is generated in the following way: 
+
+```{r}
+# Initialise similarity matrix
+d <- matrix(c(0, 0.8, 0.7, 0), nrow = 2)
+row.names(d) <- c("cows", "sheep")
+colnames(d) <- c("cows", "sheep")
+
+# Generate distance object
+dist <- distance(distance = d, datID = "my_taxonomic")
+
+# Convert the distance object to similarity object (by means of a linear or exponential transform)
+similarity <- dist2sim(dist = dist, transform = "linear")
+
+# Generate metacommunity object
+meta <- metacommunity(partition = pop, similarity = similarity)
+```
 
 Each `metacommunity` object contains the following slots:
 
