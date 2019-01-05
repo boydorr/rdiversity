@@ -1,6 +1,6 @@
 #' Generate distance object
 #'
-#' Container for class \code{metacommunity}.
+#' Container for class \code{distance}.
 #' 
 #' @param distance distance matrix
 #' @param datID object of class \code{character} denoting the type of diversity 
