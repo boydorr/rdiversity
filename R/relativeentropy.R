@@ -1,14 +1,42 @@
 #' Calculate relative entropy
 #' 
-#' Functions to check if an object is a \code{relativeentropy}, or coerse an  
-#' object into a \code{relativeentropy}; for \code{raw_beta()} or 
-#' \code{norm_beta()}. 
+#' Functions to coerse an object into a \code{relativeentropy} 
+#' (\code{raw_beta()} and/or \code{norm_beta()}). 
 #' 
-#' @param results \code{matrix} of mode \code{numeric}; contains values 
-#' calculated from diversity-term functions \code{raw_beta()} and 
-#' \code{norm_beta()}
-#' @param meta object of class \code{metacommunity}
-#' @param tag measure
+#' @param results \code{data.frame} containing rdiversity outputs associated 
+#' with \code{raw_beta()} and/or \code{norm_beta()}
+#' @param meta object of class \code{metacommunity} containing the proportional
+#' abundance of types, pair-wise similarity, and other associated variables
+#' @param tag object of class \code{character} naming the diversity measure
+#' being calculated
+#' 
+#' @field results \code{data.frame} containing rdiversity outputs associated 
+#' with \code{raw_beta()} and/or \code{norm_beta()}
+#' @field measure object of class \code{character} naming the diversity
+#' measure being calculated
+#' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}; 
+#' contains proportional abundance of \emph{types} in the subcommunity 
+#' as a fraction of the metacommunity as a whole (in the phylogenetic case, 
+#' this corresponds to the proportional abundance of historic species, which
+#' is calculated from the proportional abundance of present day species)
+#' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric} 
+#' with rows as types, columns as subcommunities, and elements containing the
+#' ordinariness of types within subcommunities 
+#' @field subcommunity_weights \code{vector} of mode \code{numeric} containing
+#' subcommunity weights
+#' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}, 
+#' with rows as types, columns as subcommunities, and elements containing 
+#' weights of types within a subcommunity
+#' @field datID object of class \code{character} describing the class of 
+#' distance / similarity being used, e.g. "naive", "taxonomic", and so on
+#' @field similarity_components list containining the components necessary to 
+#' calculate similarity. This list is empty when \code{precompute_dist = TRUE} 
+#' when calculating distance. When a pairwise distance matrix is too large and  
+#' \code{precompute_dist = FALSE}, this list contains all the information 
+#' required to calculate pairwise distance between types
+#' @field similarity_parameters list containining parameters associated with
+#' converting pairwise distances to similarities (the \code{dist2sim()} 
+#' arguments)
 #' 
 #' @return object of class \code{relativeentropy}
 #' @include class-relativeentropy.R 

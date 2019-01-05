@@ -19,26 +19,37 @@ Container for class \code{metacommunity}.
 \describe{
 \item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}
 with rows as types, columns as subcommunities, and elements containing  
-relative abundances of types in subcommunities.  In the phylogenetic case, 
+relative abundances of types in subcommunities. In the phylogenetic case, 
 this corresponds to the proportional abundance of historic species, which
-is calculated from the proportional abundance of present day species.}
+is calculated from the proportional abundance of present day species}
 
-\item{\code{similarity}}{object}
+\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric} 
+with rows as types, columns as types, and elements containing the pairwise
+similarity of types}
 
-\item{\code{similarity_components}}{object}
+\item{\code{similarity_components}}{list containining the components necessary to 
+calculate similarity. This list is empty when \code{precompute_dist = TRUE} 
+when calculating distance. When a pairwise distance matrix is too large and  
+\code{precompute_dist = FALSE}, this list contains all the information 
+required to calculate pairwise distance between types}
 
-\item{\code{similarity_parameters}}{object}
+\item{\code{similarity_parameters}}{list containining parameters associated with
+converting pairwise distances to similarities (the \code{dist2sim()} 
+arguments)}
 
 \item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric} 
 with rows as types, columns as subcommunities, and elements containing the
 ordinariness of types within subcommunities}
 
-\item{\code{subcommunity_weights}}{\code{vector} of mode \code{numeric}; contains
+\item{\code{subcommunity_weights}}{\code{vector} of mode \code{numeric} containing
 subcommunity weights}
 
 \item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}, 
 with rows as types, columns as subcommunities, and elements containing 
 weights of types within a subcommunity}
+
+\item{\code{datID}}{object of class \code{character} describing the class of 
+distance / similarity being used, e.g. "naive", "taxonomic", and so on}
 
 \item{\code{raw_abundance}}{[Phylogenetic] two-dimensional \code{matrix} of mode 
 \code{numeric} with rows as types, columns as subcommunities, and elements 
@@ -48,7 +59,7 @@ containing the relative abundance of present day species}
 \code{numeric} with rows as historical species, columns as present day 
 species, and elements containing historical species lengths within lineages}
 
-\item{\code{parameters}}{[Phylogenetic] \code{tibble} containing parameters 
+\item{\code{parameters}}{[Phylogenetic] \code{data.frame} containing parameters 
 associated with each historic species in the phylogeny}
 }}
 

@@ -6,31 +6,32 @@
 #' @rdname powermean-class
 #' @exportClass powermean
 #' 
-#' @field results \code{matrix} of mode \code{numeric}; contains values 
-#' calculated from diversity-term values output from \code{raw_alpha()}, 
-#' \code{norm_alpha()}, \code{raw_rho()}, \code{norm_rho()}, or 
-#' \code{raw_gamma()}. An object of class \code{tibble}, with columns:
-#' \code{measure}, (raw alpha, norm alpha, raw rho, etc.),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}
+#' @field results \code{data.frame} containing rdiversity output
+#' @field measure object of class \code{character} naming the diversity
+#' measure being calculated
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}; 
 #' contains proportional abundance of \emph{types} in the subcommunity 
 #' as a fraction of the metacommunity as a whole (in the phylogenetic case, 
 #' this corresponds to the proportional abundance of historic species, which
 #' is calculated from the proportional abundance of present day species)
-#' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric}; 
-#' contains ordinariness of types 
-#' @field subcommunity_weights \code{vector} of mode \code{numeric}; contains
+#' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric} 
+#' with rows as types, columns as subcommunities, and elements containing the
+#' ordinariness of types within subcommunities 
+#' @field subcommunity_weights \code{vector} of mode \code{numeric} containing
 #' subcommunity weights
-#' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}; 
-#' contains weight of types within a subcommunity
-#' @field datID class of similarity, which can be taxonomic, phylogenetic, or 
-#' naive
-#' @field parameters parameters associated with calculating similarity
+#' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}, 
+#' with rows as types, columns as subcommunities, and elements containing 
+#' weights of types within a subcommunity
+#' @field datID object of class \code{character} describing the class of 
+#' distance / similarity being used, e.g. "naive", "taxonomic", and so on
+#' @field similarity_components list containining the components necessary to 
+#' calculate similarity. This list is empty when \code{precompute_dist = TRUE} 
+#' when calculating distance. When a pairwise distance matrix is too large and  
+#' \code{precompute_dist = FALSE}, this list contains all the information 
+#' required to calculate pairwise distance between types
+#' @field similarity_parameters list containining parameters associated with
+#' converting pairwise distances to similarities (the \code{dist2sim()} 
+#' arguments)
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
@@ -43,7 +44,6 @@ setClass("powermean", slots = c(results = "matrix",
                                 subcommunity_weights = "vector",
                                 type_weights = "matrix",
                                 datID = "character",
-                                parameters = "list",
                                 similarity_components = "list",
                                 similarity_parameters = "list"))
 

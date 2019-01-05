@@ -1,17 +1,6 @@
 #' Metacommunity
 #'
 #' Functions to generate a \code{metacommunity} object.
-#'
-#' When calculating phylogenetic diversity either:
-#' \itemize{
-#' \item set \code{partition} as the relative abundance of terminal taxa,  
-#' in which case \code{similarity} (the pairwise similarity of historical species) is calculated from \code{phy2branch()} and 
-#' \code{dist2sim()}; or
-#' \item set \code{partition} as the relative abundance of historical species,
-#' with \code{similarity} (the pairwise similarity of historical species) is
-#' calculated from \code{phy2branch()} and 
-#' \code{dist2sim()}.
-#' }
 #' 
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}  
 #' with rows as types, columns as subcommunities, and elements containing  
@@ -24,7 +13,7 @@
 #' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric} 
 #' with rows as types, columns as subcommunities, and elements containing the
 #' ordinariness of types within subcommunities 
-#' @field subcommunity_weights \code{vector} of mode \code{numeric}; contains
+#' @field subcommunity_weights \code{vector} of mode \code{numeric} containing
 #' subcommunity weights
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric}, 
 #' with rows as types, columns as subcommunities, and elements containing 
@@ -45,10 +34,10 @@
 #' @param partition two-dimensional \code{matrix} of mode \code{numeric}  
 #' with rows as types, columns as subcommunities, and elements containing  
 #' the relative abundances of types in subcommunities. For phylogenetic 
-#' diversity, see \emph{Details}.
+#' diversity, see \emph{Details}
 #' @param similarity (optional) two-dimensional \code{matrix} of mode 
 #' \code{numeric}, with rows as types, columns as types, and elements 
-#' containing the pairwise similarity between types.
+#' containing the pairwise similarity between types
 #' 
 #' @return \code{metacommunity()} returns an object of class 
 #' \code{metacommunity} (see \emph{Fields}).

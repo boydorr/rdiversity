@@ -11,13 +11,14 @@ relativeentropy(results, meta, tag)
 \S4method{show}{relativeentropy}(object)
 }
 \arguments{
-\item{results}{\code{matrix} of mode \code{numeric}; contains values 
-calculated from diversity-term functions \code{raw_beta()} and 
-\code{norm_beta()}}
+\item{results}{\code{data.frame} containing rdiversity outputs associated 
+with \code{raw_beta()} and/or \code{norm_beta()}}
 
-\item{meta}{object of class \code{metacommunity}}
+\item{meta}{object of class \code{metacommunity} containing the proportional
+abundance of types, pair-wise similarity, and other associated variables}
 
-\item{tag}{measure}
+\item{tag}{object of class \code{character} naming the diversity measure
+being calculated}
 
 \item{object}{object of class \code{relativeentropy}}
 }
@@ -25,10 +26,49 @@ calculated from diversity-term functions \code{raw_beta()} and
 object of class \code{relativeentropy}
 }
 \description{
-Functions to check if an object is a \code{relativeentropy}, or coerse an  
-object into a \code{relativeentropy}; for \code{raw_beta()} or 
-\code{norm_beta()}.
+Functions to coerse an object into a \code{relativeentropy} 
+(\code{raw_beta()} and/or \code{norm_beta()}).
 }
+\section{Fields}{
+
+\describe{
+\item{\code{results}}{\code{data.frame} containing rdiversity outputs associated 
+with \code{raw_beta()} and/or \code{norm_beta()}}
+
+\item{\code{measure}}{object of class \code{character} naming the diversity
+measure being calculated}
+
+\item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}; 
+contains proportional abundance of \emph{types} in the subcommunity 
+as a fraction of the metacommunity as a whole (in the phylogenetic case, 
+this corresponds to the proportional abundance of historic species, which
+is calculated from the proportional abundance of present day species)}
+
+\item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric} 
+with rows as types, columns as subcommunities, and elements containing the
+ordinariness of types within subcommunities}
+
+\item{\code{subcommunity_weights}}{\code{vector} of mode \code{numeric} containing
+subcommunity weights}
+
+\item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}, 
+with rows as types, columns as subcommunities, and elements containing 
+weights of types within a subcommunity}
+
+\item{\code{datID}}{object of class \code{character} describing the class of 
+distance / similarity being used, e.g. "naive", "taxonomic", and so on}
+
+\item{\code{similarity_components}}{list containining the components necessary to 
+calculate similarity. This list is empty when \code{precompute_dist = TRUE} 
+when calculating distance. When a pairwise distance matrix is too large and  
+\code{precompute_dist = FALSE}, this list contains all the information 
+required to calculate pairwise distance between types}
+
+\item{\code{similarity_parameters}}{list containining parameters associated with
+converting pairwise distances to similarities (the \code{dist2sim()} 
+arguments)}
+}}
+
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))
 row.names(pop) <- paste0("sp", 1:2)
