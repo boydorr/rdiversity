@@ -315,31 +315,31 @@ setMethod(f = "metacommunity",
               
               components <- similarity@components
               
-              Z <- lapply(1:nrow(partition), function(x) 
-                get(components$ordinariness)(similarity, x))
-              Z <- do.call(rbind.data.frame, Z)
-              row.names(Z) <- row.names(partition)
-              colnames(Z) <- colnames(partition)
-              
-              # Check partition and simliarity matrices
-              type_abundance <- check_partition(partition)
-              Z <- check_similarity(Z, partition)
-              
               # Calculate parameters
+              type_abundance <- check_partition(partition)
               subcommunity_weights <- colSums(type_abundance) /
                 sum(type_abundance)
               type_weights <- apply(type_abundance, 2, function(x) x/sum(x))
-              Zp.j <- Z %*% type_abundance
               
+              Zp.j <- lapply(1:nrow(type_abundance), function(x) {
+                tmp <- get(components$ordinariness)(similarity, x) 
+                tmp <- matrix(tmp, nrow = 1)
+                tmp %*% type_abundance
+              })
+               
+              Zp.j <- do.call(rbind.data.frame, Zp.j)
+              row.names(Zp.j) <- row.names(partition)
+
               # Mark all of the species that have nothing similar as NaNs
               # because diversity of an empty group is undefined
               Zp.j[Zp.j==0] <- NaN
+              Zp.j <- as.matrix(Zp.j)
               
               if(!is.matrix(type_weights)) {
                 type_weights<- t(as.matrix(type_weights))
                 row.names(type_weights) <- row.names(type_abundance)
               }
-
+              
               return(new('metacommunity', 
                          type_abundance = type_abundance,
                          ordinariness = Zp.j,
