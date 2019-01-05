@@ -7,9 +7,7 @@
 dist2sim(dist, transform, k = 1, normalise = TRUE, max_d)
 }
 \arguments{
-\item{dist}{two-dimensional \code{matrix} of mode \code{numeric} with rows as 
-types, columns as types, and elements containing the pairwise distance 
-between types}
+\item{dist}{object of class \code{distance}}
 
 \item{transform}{can be either "linear", "exponential"}
 
