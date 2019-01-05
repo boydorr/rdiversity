@@ -20,5 +20,5 @@ being calculated. This can be "naive", "genetic", "taxonomic", and so on}
 \code{distance()} returns an object of class \code{distance}.
 }
 \description{
-Container for class \code{metacommunity}.
+Container for class \code{distance}.
 }
