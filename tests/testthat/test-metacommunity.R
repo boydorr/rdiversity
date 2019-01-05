@@ -49,13 +49,20 @@ test_that("metacommunity() works for phydist diversity", {
   tree <- ape::rtree(5)
   tree$tip.label <- paste0("sp", 1:5)
 
+  # Precompute pairwise distances
   partition <- matrix(rep(1,10), nrow = 5)
   row.names(partition) <- paste0("sp", 1:5)
   partition <- partition / sum(partition)
-  distance <- phy2dist(tree)
+  distance <- phy2dist(tree, precompute_dist = TRUE)
   similarity <- dist2sim(distance, "linear")
   meta <- metacommunity(partition, similarity)
   
+  # Don't precompute pairwise distances
+  d <- phy2dist(tree, FALSE)
+  s <- dist2sim(d, "linear")
+  m <- metacommunity(partition, s)
+  
+  expect_equal(meta@ordinariness, m@ordinariness)
   expect_true(meta@datID == "phydist")
   expect_true(length(meta@raw_abundance) == 0)
   expect_true(length(meta@raw_structure) == 0)
