@@ -8,6 +8,10 @@
 #'
 #' @return \code{distance()} returns an object of class \code{distance}.
 #'
+#' @name distance
+#' @rdname distance-methods
+#' @exportMethod distance
+#' 
 setGeneric(name = "distance",
            def = function(distance, datID) {
              standardGeneric("distance")

@@ -29,7 +29,6 @@ dist2sim <- function(dist,
                      normalise = TRUE, 
                      max_d) {
   
-  
   # If a distance matrix is available, convert it into a similarity matrix
   if(length(dist@distance) != 0) {
     
