@@ -15,12 +15,14 @@ abundances of types in subcommunities. In the case of phylogenetic
 metacommunities, these are the relative abundances of terminal taxa.}
 }
 \value{
-Returns a \code{list} containing:
+\code{phy_struct()} returns a \code{list} containing:
 \tabular{ll}{
-\code{$structure} \tab - each row denotes historical species, columns denote
-terminal taxa, and elements contain 'branch lengths' \cr
-\code{$tbar} - \cr
-\code{$parameters} \tab - information associated with each historical species \cr
+\code{$structure} \tab - each row denotes historical species, columns 
+denote terminal taxa, and elements contain 'branch lengths' \cr
+\code{$tbar} - the average distance from root to tip for all terminal  
+taxa \cr
+\code{$parameters} \tab - information associated with each historical 
+species \cr
 \code{$tree} \tab - object of class \code{phylo} \cr
 }
 }

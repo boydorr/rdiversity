@@ -2,10 +2,6 @@
 #' 
 #' Container for class \code{distance}.
 #' 
-#' @name distance-class
-#' @rdname distance-class
-#' @exportClass distance
-#' 
 #' @field distance two-dimensional \code{matrix} of mode \code{numeric} 
 #' with rows as types, columns as types, and elements containing the pairwise
 #' distance of types
@@ -16,6 +12,10 @@
 #' calculating distance. When a pairwise distance matrix is too large and  
 #' \code{precompute_dist = FALSE}, this list contains all the information 
 #' required to calculate pairwise distance between types
+#' 
+#' @name distance-class
+#' @rdname distance-class
+#' @exportClass distance
 #' 
 setClass("distance", 
          slots = c(distance = "matrix",

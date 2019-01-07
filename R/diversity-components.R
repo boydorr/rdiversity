@@ -4,17 +4,19 @@
 #' diversity.
 #'
 #' Values generated from \code{raw_alpha()} may be input into \code{subdiv()} and
-#' \code{metadiv()} to calculate raw subcommunity/metacommunity alpha diversity.
+#' \code{metadiv()} to calculate raw subcommunity and metacommunity alpha
+#' diversity.
 #'
-#' @param meta object of class \code{metacommunity}.
+#' @param meta object of class \code{metacommunity}
 #'
-#' @return Returns an object of class \code{powermean}.
+#' @return \code{raw_alpha} returns an object of class \code{powermean}
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
 #' arXiv 1404.6520v3:1–9.
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -38,18 +40,19 @@ raw_alpha <- function(meta) {
 #' normalised alpha diversity.
 #'
 #' Values generated from \code{norm_alpha()} may be input into \code{subdiv()}
-#' and \code{metadiv()} to calculate normalised subcommunity/metacommunity
+#' and \code{metadiv()} to calculate normalised subcommunity and metacommunity 
 #' alpha diversity.
 #'
 #' @inheritParams raw_alpha
 #'
-#' @return Returns an object of class \code{powermean}.
+#' @return \code{norm_alpha} returns an object of class \code{powermean}
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -80,17 +83,19 @@ norm_alpha <- function(meta) {
 #' diversity.
 #'
 #' Values generated from \code{raw_rho()} may be input into \code{subdiv()} and
-#' \code{metadiv()} to calculate raw subcommunity/metacommunity rho diversity.
+#' \code{metadiv()} to calculate raw subcommunity and metacommunity rho 
+#' diversity.
 #'
 #' @inheritParams raw_alpha
 #'
-#' @return Returns an object of class \code{powermean}.
+#' @return \code{raw_rho} returns an object of class \code{powermean}
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -114,18 +119,19 @@ raw_rho <- function(meta) {
 #' normalised rho diversity.
 #'
 #' Values generated from \code{norm_rho()} may be input into \code{subdiv()} and
-#' \code{metadiv()} to calculate normalised subcommunity/metacommunity rho
+#' \code{metadiv()} to calculate normalised subcommunity and metacommunity rho
 #' diversity.
 #'
 #' @inheritParams raw_alpha
 #'
-#' @return Returns an object of class \code{powermean}.
+#' @return \code{norm_rho} returns an object of class \code{powermean}
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -155,17 +161,19 @@ norm_rho <- function(meta) {
 #' diversity.
 #'
 #' Values generated from \code{raw_beta()} may be input into \code{subdiv()} and
-#' \code{metadiv()} to calculate raw subcommunity/metacommunity beta diversity.
+#' \code{metadiv()} to calculate raw subcommunity and metacommunity beta 
+#' diversity.
 #'
 #' @inheritParams raw_alpha
 #'
-#' @return Returns an object of class \code{relativeentropy}.
+#' @return \code{raw_beta} returns an object of class \code{relativeentropy}
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -190,18 +198,19 @@ raw_beta <- function(meta) {
 #' normalised beta diversity.
 #'
 #' Values generated from \code{norm_beta()} may be input into \code{subdiv()} and
-#' \code{metadiv()} to calculate normalised subcommunity/metacommunity beta
+#' \code{metadiv()} to calculate normalised subcommunity and metacommunity beta
 #' diversity.
 #'
 #' @inheritParams raw_alpha
 #'
-#' @return Returns an object of class \code{relativeentropy}.
+#' @return \code{norm_beta} returns an object of class \code{relativeentropy}
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -232,17 +241,18 @@ norm_beta <- function(meta) {
 #' diversity.
 #'
 #' Values generated from \code{raw_gamma()} may be input into \code{subdiv()} and
-#' \code{metadiv()} to calculate subcommunity/metacommunity gamma diversity.
+#' \code{metadiv()} to calculate subcommunity and metacommunity gamma diversity.
 #'
 #' @inheritParams raw_alpha
 #'
-#' @return Returns an object of class \code{powermean}.
+#' @return \code{raw_gamma} returns an object of class \code{powermean}
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)

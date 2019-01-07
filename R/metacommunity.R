@@ -27,10 +27,6 @@
 #' @field parameters [Phylogenetic] \code{tibble} containing parameters 
 #' associated with each historic species in the phylogeny
 #'
-#' @name metacommunity
-#' @rdname metacommunity-methods
-#' @exportMethod metacommunity
-#'
 #' @param partition two-dimensional \code{matrix} of mode \code{numeric}  
 #' with rows as types, columns as subcommunities, and elements containing  
 #' the relative abundances of types in subcommunities. For phylogenetic 
@@ -41,7 +37,10 @@
 #' 
 #' @return \code{metacommunity()} returns an object of class 
 #' \code{metacommunity} (see \emph{Fields}).
-#'
+#' @name metacommunity
+#' @rdname metacommunity-methods
+#' @exportMethod metacommunity
+#' 
 #' @seealso \code{\link{metacommunity-class}}
 #'
 #' @examples

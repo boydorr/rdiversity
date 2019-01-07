@@ -3,10 +3,6 @@ setOldClass("phylo")
 #' 
 #' Container for class \code{metacommunity}.
 #' 
-#' @name metacommunity-class
-#' @rdname metacommunity-class
-#' @exportClass metacommunity
-#' 
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}  
 #' with rows as types, columns as subcommunities, and elements containing  
 #' relative abundances of types in subcommunities. In the phylogenetic case, 
@@ -41,6 +37,10 @@ setOldClass("phylo")
 #' species, and elements containing historical species lengths within lineages
 #' @field parameters [Phylogenetic] \code{data.frame} containing parameters 
 #' associated with each historic species in the phylogeny
+#' 
+#' @name metacommunity-class
+#' @rdname metacommunity-class
+#' @exportClass metacommunity
 #' 
 setClass("metacommunity", 
          slots = c(type_abundance = "matrix",

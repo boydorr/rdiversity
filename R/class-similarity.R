@@ -2,10 +2,6 @@
 #' 
 #' Container for class \code{similarity}.
 #' 
-#' @name similarity-class
-#' @rdname similarity-class
-#' @exportClass similarity
-#' 
 #' @field similarity two-dimensional \code{matrix} of mode \code{numeric} 
 #' with rows as types, columns as types, and elements containing the pairwise
 #' similarity of types
@@ -19,6 +15,10 @@
 #' @field parameters list containining parameters associated with
 #' converting pairwise distances to similarities (the \code{dist2sim()} 
 #' arguments)
+#' 
+#' @name similarity-class
+#' @rdname similarity-class
+#' @exportClass similarity
 #' 
 setClass("similarity", slots = c(similarity = "matrix",
                                  datID = "character",

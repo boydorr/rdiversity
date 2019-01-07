@@ -9,17 +9,10 @@ norm_meta_beta(meta, qs)
 \arguments{
 \item{meta}{object of class \code{metacommunity}}
 
-\item{qs}{\code{vector} of \emph{q} values}
+\item{qs}{\code{vector} of mode \code{numeric} containing \emph{q} values}
 }
 \value{
-Returns a standard output of class \code{tibble}, with columns:
-\code{measure}, (norm beta),
-\code{q} (parameter of conservatism), 
-\code{type_level} (), 
-\code{type_name} (label attributed to type), 
-\code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-\code{partition_name} (label attributed to partition), and 
-\code{diversity}.
+\code{norm_meta_beta} returns a standard output of class \code{rdiv}
 }
 \description{
 Calculates similarity-sensitive normalised metacommunity beta diversity 

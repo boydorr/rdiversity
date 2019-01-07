@@ -7,10 +7,10 @@
 raw_rho(meta)
 }
 \arguments{
-\item{meta}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}}
 }
 \value{
-Returns an object of class \code{powermean}.
+\code{raw_rho} returns an object of class \code{powermean}
 }
 \description{
 Calculates the low-level diversity component necessary for calculating raw rho
@@ -18,7 +18,8 @@ diversity.
 }
 \details{
 Values generated from \code{raw_rho()} may be input into \code{subdiv()} and
-\code{metadiv()} to calculate raw subcommunity/metacommunity rho diversity.
+\code{metadiv()} to calculate raw subcommunity and metacommunity rho 
+diversity.
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))

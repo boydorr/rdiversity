@@ -7,10 +7,10 @@
 raw_gamma(meta)
 }
 \arguments{
-\item{meta}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}}
 }
 \value{
-Returns an object of class \code{powermean}.
+\code{raw_gamma} returns an object of class \code{powermean}
 }
 \description{
 Calculates the low-level diversity component necessary for calculating gamma
@@ -18,7 +18,7 @@ diversity.
 }
 \details{
 Values generated from \code{raw_gamma()} may be input into \code{subdiv()} and
-\code{metadiv()} to calculate subcommunity/metacommunity gamma diversity.
+\code{metadiv()} to calculate subcommunity and metacommunity gamma diversity.
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))

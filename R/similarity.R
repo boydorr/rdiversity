@@ -7,7 +7,6 @@
 #' being calculated. This can be "naive", "genetic", "taxonomic", and so on
 #'
 #' @return \code{similarity()} returns an object of class \code{similarity}.
-#'
 #' @name similarity
 #' @rdname similarity-methods
 #' @exportMethod similarity

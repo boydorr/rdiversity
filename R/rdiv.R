@@ -1,14 +1,14 @@
 #' Generate rdiv
 #'
 #' Functions to check if an object is a \code{rdiv}
-#'
+#' 
+#' @param res object of class \code{rdiv}
+#' 
+#' @return \code{rdiv()} returns an object of class \code{rdiv}. 
+#' @include class-rdiv.R
 #' @name rdiv
 #' @rdname rdiv-methods
 #' @exportMethod rdiv
-#' 
-#' @param res object of class \code{rdiv}
-#' @include class-rdiv.R
-#' @return \code{rdiv()} returns an object of class \code{rdiv}.
 #' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))

@@ -7,10 +7,10 @@
 raw_alpha(meta)
 }
 \arguments{
-\item{meta}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}}
 }
 \value{
-Returns an object of class \code{powermean}.
+\code{raw_alpha} returns an object of class \code{powermean}
 }
 \description{
 Calculates the low-level diversity component necessary for calculating alpha
@@ -18,7 +18,8 @@ diversity.
 }
 \details{
 Values generated from \code{raw_alpha()} may be input into \code{subdiv()} and
-\code{metadiv()} to calculate raw subcommunity/metacommunity alpha diversity.
+\code{metadiv()} to calculate raw subcommunity and metacommunity alpha
+diversity.
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))

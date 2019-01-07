@@ -7,10 +7,10 @@
 norm_rho(meta)
 }
 \arguments{
-\item{meta}{object of class \code{metacommunity}.}
+\item{meta}{object of class \code{metacommunity}}
 }
 \value{
-Returns an object of class \code{powermean}.
+\code{norm_rho} returns an object of class \code{powermean}
 }
 \description{
 Calculates the low-level diversity component necessary for calculating
@@ -18,7 +18,7 @@ normalised rho diversity.
 }
 \details{
 Values generated from \code{norm_rho()} may be input into \code{subdiv()} and
-\code{metadiv()} to calculate normalised subcommunity/metacommunity rho
+\code{metadiv()} to calculate normalised subcommunity and metacommunity rho
 diversity.
 }
 \examples{

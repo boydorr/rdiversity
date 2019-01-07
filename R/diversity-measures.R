@@ -5,21 +5,15 @@
 #' calculated for a series of orders, repesented as a vector of \code{qs}.
 #'
 #' @param meta object of class \code{metacommunity}
-#' @param qs \code{vector} of \emph{q} values
+#' @param qs \code{vector} of mode \code{numeric} containing \emph{q} values
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw alpha),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{raw_sub_alpha} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
 #' arXiv 1404.6520v3:1–9.
-#' @export
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -41,19 +35,13 @@ raw_sub_alpha <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (norm alpha),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{norm_sub_alpha} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -75,19 +63,13 @@ norm_sub_alpha <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw beta),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{raw_sub_beta} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -110,19 +92,13 @@ raw_sub_beta <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (norm beta),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{norm_sub_beta} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -144,19 +120,13 @@ norm_sub_beta <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw rho),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{raw_sub_rho} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -178,19 +148,13 @@ raw_sub_rho <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (norm rho),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{norm_sub_rho} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -213,19 +177,13 @@ norm_sub_rho <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw gamma),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} subcommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{sub_gamma} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -247,19 +205,13 @@ sub_gamma <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw alpha),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{raw_meta_alpha} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -282,19 +234,13 @@ raw_meta_alpha <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (norm alpha),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{norm_meta_alpha} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -316,19 +262,13 @@ norm_meta_alpha <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw beta),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{raw_meta_beta} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -350,19 +290,13 @@ raw_meta_beta <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (norm beta),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
-#' 
+#' @return \code{norm_meta_beta} returns a standard output of class \code{rdiv}
+#' @export
+#'  
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#' 
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -384,19 +318,13 @@ norm_meta_beta <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw rho),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{raw_meta_rho} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -418,19 +346,13 @@ raw_meta_rho <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (norm rho),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{norm_meta_rho} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -452,19 +374,13 @@ norm_meta_rho <- function(meta, qs)
 #'
 #' @inheritParams raw_sub_alpha
 #'
-#' @return Returns a standard output of class \code{tibble}, with columns:
-#' \code{measure}, (raw gamma),
-#' \code{q} (parameter of conservatism), 
-#' \code{type_level} (), 
-#' \code{type_name} (label attributed to type), 
-#' \code{partition_level} (level of diversity, \emph{i.e.} metacommunity), 
-#' \code{partition_name} (label attributed to partition), and 
-#' \code{diversity}.
+#' @return \code{meta_gamma} returns a standard output of class \code{rdiv}
+#' @export
 #' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
 #' arXiv 1404.6520:1–9.
-#' @export
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)

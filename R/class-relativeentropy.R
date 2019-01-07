@@ -2,10 +2,6 @@
 #' 
 #' Container for class \code{relativeentropy}.
 #' 
-#' @name relativeentropy-class
-#' @rdname relativeentropy-class
-#' @exportClass relativeentropy
-#' 
 #' @field results \code{data.frame} containing rdiversity output
 #' @field measure object of class \code{character} naming the diversity
 #' measure being calculated
@@ -33,9 +29,9 @@
 #' converting pairwise distances to similarities (the \code{dist2sim()} 
 #' arguments)
 #' 
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
-#' arXiv 1404.6520:1–9.
+#' @name relativeentropy-class
+#' @rdname relativeentropy-class
+#' @exportClass relativeentropy
 #' 
 setClass("relativeentropy", slots = c(results = "matrix",
                                       measure = "character",

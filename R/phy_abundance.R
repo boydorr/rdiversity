@@ -7,6 +7,7 @@
 #' abundances of types in subcommunities. In the case of phylogenetic
 #' metacommunities, these are the relative abundances of terminal taxa.
 #' @param structure_matrix \code{output$structure} of \code{phy_struct()}.
+#' 
 #' @export
 #'
 #' @examples

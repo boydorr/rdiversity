@@ -9,16 +9,18 @@ dist2sim(dist, transform, k = 1, normalise = TRUE, max_d)
 \arguments{
 \item{dist}{object of class \code{distance}}
 
-\item{transform}{can be either "linear", "exponential"}
+\item{transform}{object of class \code{character}, can be either "linear" 
+or "exponential"}
 
 \item{k}{scaling parameter}
 
-\item{normalise}{normalise distances to one; can be either true of false}
+\item{normalise}{object of class \code{logical}, which when TRUE will 
+normalise distances to one}
 
-\item{max_d}{object of mode \code{numeric}}
+\item{max_d}{object of class \code{numeric}}
 }
 \value{
-\code{dist2sim(x)} returns an object of class \code{matrix}.
+\code{dist2sim(x)} returns an object of class \code{similarity}.
 }
 \description{
 Converts \code{distance} objects into \code{similarity} objects.

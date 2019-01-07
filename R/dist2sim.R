@@ -7,12 +7,14 @@
 #' respectively. If \code{normalise} is true, then \code{dist = dist/max_d}.
 #' 
 #' @param dist object of class \code{distance}
-#' @param transform can be either "linear", "exponential"
+#' @param transform object of class \code{character}, can be either "linear" 
+#' or "exponential"
 #' @param k scaling parameter
-#' @param normalise normalise distances to one; can be either true of false
-#' @param max_d object of mode \code{numeric}
+#' @param normalise object of class \code{logical}, which when TRUE will 
+#' normalise distances to one
+#' @param max_d object of class \code{numeric}
 #' 
-#' @return \code{dist2sim(x)} returns an object of class \code{matrix}.
+#' @return \code{dist2sim(x)} returns an object of class \code{similarity}.
 #' @include similarity.R class-similarity.R
 #' @export
 #' 

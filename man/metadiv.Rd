@@ -17,22 +17,13 @@ metadiv(data, qs)
 \S4method{metadiv}{metacommunity}(data, qs)
 }
 \arguments{
-\item{data}{see \emph{Details}}
+\item{data}{\code{matrix} of mode \code{numeric}; containing diversity
+components}
 
-\item{qs}{\code{vector} of mode \code{numeric}; \emph{q} parameter.}
+\item{qs}{\code{vector} of mode \code{numeric} containing \emph{q} values}
 }
 \value{
-\code{metadiv()} returns a standard \code{diversity} output, 
-with columns:
-\itemize{
-\item\code{measure}: raw or normalised, alpha, beta, rho, or gamma
-\item\code{q}: order of diversity 
-\item\code{type_level}: "types"
-\item\code{type_name}: label attributed to type
-\item\code{partition_level}: level of diversity, \emph{i.e.} "metacommunity"
-\item\code{partition_name}: label attributed to partition
-\item\code{diversity}: calculated metacommunity-level diversity
-}
+\code{metadiv()} returns a standard output of class \code{rdiv}
 }
 \description{
 Generic function for calculating metacommunity-level diversity.

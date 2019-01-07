@@ -2,9 +2,6 @@
 #' 
 #' Calculates taxonomic distances between species. 
 #' 
-#' @references Shimatani, K. 2001. On the measurement of species diversity 
-#' incorporating species differences. Oikos 93:135–147.
-#'
 #' @param lookup \code{data.frame} with colnames corresponding to nested
 #' taxonomic levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
 #' @param taxDistance \code{vector} with the distances attributed to
@@ -12,7 +9,6 @@
 #' distance attributed to species that are not the same at any recorded
 #' taxonomic level. e.g. c(Species = 0, Genus = 1, Family = 2, Subclass = 3,
 #' Other = 4) from Shimatani.
-#'
 #' @param precompute_dist object of class \code{logical} or \code{numeric}.
 #' When TRUE (by default) a distance matrix is generated and stored in slot
 #' \code{distance}, when FALSE no distance matrix is generated, and when numeric
@@ -22,6 +18,9 @@
 #' @return \code{tax2dist()} returns an object of class \code{distance}
 #' containing a \code{matrix} of pair-wise taxonomic distances
 #' @export
+#' 
+#' @references Shimatani, K. 2001. On the measurement of species diversity 
+#' incorporating species differences. Oikos 93:135–147.
 #' 
 #' @examples 
 #' # Create Lookup table

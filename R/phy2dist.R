@@ -8,6 +8,7 @@
 #' \code{distance}, when FALSE no distance matrix is generated, and when numeric 
 #' a distance matrix is generated until the number of species exceeds the 
 #' defined value. 
+#' 
 #' @return \code{phy2sim(x)} returns a matrix of pairwise distances.
 #' @export
 #' 

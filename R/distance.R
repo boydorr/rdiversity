@@ -7,7 +7,6 @@
 #' being calculated. This can be "naive", "genetic", "taxonomic", and so on
 #'
 #' @return \code{distance()} returns an object of class \code{distance}.
-#'
 #' @name distance
 #' @rdname distance-methods
 #' @exportMethod distance

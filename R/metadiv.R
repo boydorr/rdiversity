@@ -14,28 +14,16 @@
 #' diversity}
 #' }
 #'
-#' @param data see \emph{Details}
-#' @param qs \code{vector} of mode \code{numeric}; \emph{q} parameter.
+#' @inheritParams subdiv
 #'
-#' @return \code{metadiv()} returns a standard \code{diversity} output, 
-#' with columns:
-#' \itemize{
-#' \item\code{measure}: raw or normalised, alpha, beta, rho, or gamma
-#' \item\code{q}: order of diversity 
-#' \item\code{type_level}: "types"
-#' \item\code{type_name}: label attributed to type
-#' \item\code{partition_level}: level of diversity, \emph{i.e.} "metacommunity"
-#' \item\code{partition_name}: label attributed to partition
-#' \item\code{diversity}: calculated metacommunity-level diversity
-#' }
+#' @return \code{metadiv()} returns a standard output of class \code{rdiv}
+#' @exportMethod metadiv
 #' 
 #' @seealso \code{\link{inddiv}} for type-level diversity and 
 #' \code{\link{subdiv}} for subcommunity-level diversity.
-#' 
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
 #' arXiv 1404.6520v3:1–9.
-#' @exportMethod metadiv
 #' 
 #' @examples
 #' # Define metacommunity
