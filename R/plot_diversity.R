@@ -29,7 +29,7 @@
 #' plot(ind)
 #'
 #' # Plot subcommunity and metacommunity beta diversity
-#' res <- diversity(list(sc, mc))
+#' res <- rdiv(list(sc, mc))
 #' plot(res)
 #' 
 #' # Plot all subcommunity diversity measures
@@ -41,7 +41,7 @@
 #' plot(all_mc)
 #' 
 #' # Plot all diversity measures
-#' all_res <- diversity(list(all_sc, all_mc))
+#' all_res <- rdiv(list(all_sc, all_mc))
 #' plot(all_res)
 #' 
 #' # Try a single population
