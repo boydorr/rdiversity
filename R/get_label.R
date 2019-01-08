@@ -6,49 +6,52 @@
 #' @param qs parameter of conservatism; only required for \code{plot_single()}.
 #'
 get_label <- function(res, qs = "q") {
-  type <- unique(res$type_level)
-  partition <- unique(res$partition_level)
-  measure <- unique(res$measure)
-  
+  normalised <- symbol <- bracket <- Z <- label <- NULL
+  tmp <- res 
+  type <- unique(tmp$type_level)
+  partition <- unique(tmp$partition_level)
+  measure <- unique(tmp$measure)
+  similarity <- unique(tmp$datID)
+  # qs <- unique(tmp$q)
+    
   tag <- measure
-  if(any(tag %in% 'gamma'))
-    tag[tag=='gamma'] <- 'raw gamma'
-  tag <- data.frame(do.call(rbind, strsplit(tag, split = " ")))
-  tag[,2] <- substring(tag[,2], 1, 1)
-  
+  tmp <- dplyr::mutate(tmp,
+                normalised = ifelse(grepl("normalised", measure), "bar(", ""),
+                bracket = ifelse(grepl("normalised", measure), ")", ""))
+  tmp <- dplyr:: mutate(tmp, Z = "Z")
+  if(any(similarity == "naive")) tmp$Z[tmp$datID == "naive"] <- "I"
+  if(any(similarity == "taxonomic")) tmp$Z[tmp$datID == "taxonomic"] <- "tax"
+  if(any(similarity == "phybranch")) tmp$Z[tmp$datID == "phybranch"] <- "tree"
+  if(any(similarity == "phydist" && res$transformation == "linear"))
+    tmp$Z[tmp$datID == "phydist" && res$transformation == "linear"] <- "PPD[l]"
+  if(any(similarity == "phydist" && res$transformation == "exponential"))
+    tmp$Z[tmp$datID == "phydist" && res$transformation == "exponential"] <- "PPD[e]"
+  tmp <- dplyr::mutate(tmp, symbol = substring(
+    gsub("raw ", "", gsub("normalised ", "", measure)),1,1))
+  if(type=="types" & partition=="metacommunity") 
+    
   # Subcommunity-level diversity
-  if(type=="types" & partition=="subcommunity") {
-    tag <- apply(tag, 1, function(x)
-      if(x[1] == "normalised") {
-        paste0("bar(symbol(",x[2],"))")
-      }else {
-        paste0("symbol(",x[2],")")
-      })
-    tag <- paste0("{}^italic(",qs,")*",tag,"[italic(j)]*{}^bold(Z)")
-  }
+  if(type=="types" & partition=="subcommunity") 
+    tmp <- dplyr::mutate(tmp, label = paste0(
+      "{}^italic(q)*", normalised, "symbol(", symbol, ")", bracket,
+      "[italic(j)]*{}^bold(", Z, ")"))
   
   # Individual-level diversity
-  if(type=="type") {
-    tag <- apply(tag, 1, function(x)
-      if(x[1] == "normalised") {
-        paste0("bar(italic(",x[2],"))")
-      }else {
-        paste0("italic(",x[2],")")
-      })
-    tag <- paste0("italic(",tag,"[ij])")
-  }
+  if(type=="type") 
+    tmp <- dplyr::mutate(tmp, label = paste0(
+      "italic(",normalised,"italic(",symbol,")",bracket,"[ij])"))
   
+  # Metacommunity-level diversity
   if(type=="types" & partition=="metacommunity") {
-    tag[,2] <- toupper(tag[,2])
-    tag <- apply(tag, 1, function(x)
-      if(x[1] == "normalised") {
-        paste0("{}^italic(",qs,")*bar(italic(",x[2],"))")
-      }else {
-        paste0("{}^italic(",qs,")*italic(",x[2],")")
-      })
-    tag <- paste0(tag,"^bold(Z)")
+    tmp$symbol <- toupper(tmp$symbol)
+    tmp <- dplyr::mutate(tmp, label = paste0(
+      "{}^italic(q)*", normalised, "italic(", symbol, bracket, 
+      ")^bold(", Z, ")"))
   }
   
-  res$measure <- factor(res$measure, levels = measure, labels = tag)
-  res
+  tmp$measure <- factor(tmp$measure, levels = tmp$measure, labels = tmp$label)
+  if(any(colnames(tmp)=="bracket"))
+    tmp <- dplyr::select(tmp, -normalised, -bracket, -Z, -symbol, -label) else
+      tmp <- dplyr::select(tmp, -normalised, -Z, -symbol, -label)
+  tmp
 }
