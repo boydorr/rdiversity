@@ -20,7 +20,7 @@ Getting started:
 * [Installation](#installation)
 * [Generating a metacommunity](#generating-a-metacommunity)
 * [Calculating diversity](#calculating-diversity)
-* [Plotting diversity](#plotting-diversity)
+
 
 Special cases:
 
@@ -170,88 +170,6 @@ subdiv(meta, 0:2)
 metadiv(meta, 0:2)
 ```
 
-
-## Plotting diversity
-
-All of these results are output as `rdiv` objects, which can be visualised using the `plot()` function. For example:
-
-```{r}
-component <- norm_alpha(meta)
-
-# Normalised subcommunity alpha
-sc <- subdiv(component, 0:10)
-plot(sc)
-```
-
-![](./man/figures/README-example-1.png)
-
-```{r}
-# Normalised metacommunity alpha
-mc <- metadiv(component, 0:10)
-plot(mc)
-```
-
-![](./man/figures/README-example-2.png)
-
-```{r}
-# All subcommunity measures
-all <- subdiv(meta, 0:10)
-plot(all)
-```
-
-![](./man/figures/README-example-3.png)
-
-The function `rdiv()` can be used to transform `data.frame` and `list` objects into `rdiv` objects ready for plotting. This function is useful when generating plots containing both the subcommunity- and metacommunity-level diversities, or when only certain measures are of interest. For example:
-
-```{r}
-combine <- rbind.data.frame(sc, mc)
-res1 <- rdiv(combine)
-
-# or...
-combine <- list(sc, mc)
-res1 <- rdiv(combine)
-
-plot(res1)
-```
-
-![](./man/figures/README-example-4.png)
-
-```{r}
-alpha <- norm_sub_alpha(meta, 0:10)
-rho <- norm_sub_rho(meta, 0:10)
-
-res2 <- rdiv(list(alpha, rho)) 
-
-plot(res2)
-```
-
-![](./man/figures/README-example-5.png)
-
-If diversity is calculated for *q=Inf* is calculated, *q* is transformed on a log scale. For example:
-
-```{r}
-qs <- c(seq(0,1,.1),2:10, seq(20,100,10),Inf)
-res3 <- norm_sub_alpha(meta, qs)
-
-plot(res3)
-```
-
-![](./man/figures/README-example-6.png)
-
-Note that in the above example, *q=0*, *q=1*, *q=2*, and *q=Inf* are highlighted as important, corresponding to Species Richness, Shannon, Simpson, and Berger Parker diversity, respecively.
-
-In some cases, it might also be useful to examine the species-level components, which is done in the following way:
-
-```{r}
-# Or we can look at the individual species-level components
-ind <- inddiv(component, c(seq(0,1,.1),2:10, seq(20,100,10),Inf))
-
-plot(ind)
-```
-
-![](./man/figures/README-example-7.png)
-
-Note that generally defined as **types** or any biologically meaningful unit)
 
 
 
