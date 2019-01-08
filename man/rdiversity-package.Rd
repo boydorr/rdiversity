@@ -9,7 +9,7 @@
 \code{rdiversity} is an R package based around a framework for measuring and
 partitioning biodiversity using similarity-sensitive diversity measures. It
 provides functionality for measuring alpha, beta and gamma diversity of
-metacommunities (\emph{e.g.} ecosystems) and their constituent subcommunities, 
+metacommunities (\emph{e.g.} ecosystems) and their constituent subcommunities,
 where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic,
 functional, and so on. It uses the diversity measures described in the arXiv
 paper, `\emph{How to partition diversity}`.
@@ -24,7 +24,7 @@ paper, `\emph{How to partition diversity}`.
 }
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
 S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
 }
 \author{
