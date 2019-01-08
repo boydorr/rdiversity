@@ -4,17 +4,12 @@
 \name{rdiv-class}
 \alias{rdiv-class}
 \alias{show,rdiv-method}
-\alias{plot,rdiv-method}
 \title{rdiv-class}
 \usage{
 \S4method{show}{rdiv}(object)
-
-\S4method{plot}{rdiv}(x)
 }
 \arguments{
 \item{object}{object of class \code{rdiv}}
-
-\item{x}{object of class \code{rdiv}}
 }
 \description{
 Container for class \code{rdiv}.
