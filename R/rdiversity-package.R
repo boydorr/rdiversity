@@ -26,16 +26,13 @@
 #' @docType package
 #'
 #' @import ape
-#' @import ggplot2
 #' @import methods
 #' @import phangorn
 #' @import plyr
 #' @importFrom binaryLogic as.binary
-#' @importFrom ggthemes ptol_pal
 #' @importFrom phytools nodeHeights
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
-#' @importFrom scales hue_pal
 #' @importFrom tidyr nest
 #' @importFrom tibble as_data_frame
 #' @importFrom utils head
