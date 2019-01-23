@@ -83,8 +83,9 @@ tax2dist <- function(lookup,
     # Don't calculate distance matrix
 
   }else {
+    lookup <- as.matrix(lookup)
     taxFac <- taxfac(lookup)
-    bits <- apply(taxFac, 2, function(x) ceiling(log(max(x)+1, 2)))
+    bits <- apply(taxFac, 2, function(x) pmax(ceiling(log(max(x)+1, 2)),1))
     taxID <- taxid(taxFac)
     taxMask <- taxmask(lookup)
 
