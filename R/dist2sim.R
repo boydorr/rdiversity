@@ -38,12 +38,16 @@ dist2sim <- function(dist,
     similarity <- dist@distance
     if(missing(max_d)) max_d <- max(dist@distance)
     if(normalise) similarity <- similarity/max_d
-    if(transform == substr("linear", 1, nchar(transform))) 
+    if(transform == substr("linear", 1, nchar(transform))) {
       similarity <- pmax(1 - k * similarity, 0)
-    if(transform == substr("exponential", 1, nchar(transform))) 
+      transform <- "linear"
+    }
+    if(transform == substr("exponential", 1, nchar(transform))) {
       similarity <- exp(-k * similarity)
-    
-    return(new("similarity", 
+      transform <- "exponential"
+    }
+
+    return(new("similarity",
                similarity = similarity,
                datID = dist@datID,
                components = dist@components,
