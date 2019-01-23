@@ -1,25 +1,27 @@
 #' check_phypartition
-#' 
-#' \code{check_phypartition()} is used to validate partition matrices for use 
+#'
+#' \code{check_phypartition()} is used to validate partition matrices for use
 #' with phylogenies.
-#' 
+#'
 #' @param tip_labels vector containing elements of class \code{character}.
-#' @param partition two-dimensinal \code{matrix} of mode \code{numeric} with
-#' rows as types, columns as subcommunities, and elements containing relative
-#' abundances of types in subcommunities. In the case of phylogenetic
-#' metacommunities, these are the relative abundances of terminal taxa.
-#' 
-#' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If 
+#' @param partition two-dimensional \code{matrix} of mode \code{numeric}
+#' with rows as types (species), columns as subcommunities, and each
+#' element containing the relative abundance of types in each subcommunity
+#' relative to the metacommunity as a whole. In the phylogenetic case, this
+#' corresponds to the proportional abundance of historical species, which is
+#' calculated from the proportional abundance of terminal taxa
+#'
+#' @return Returns a two-dimensions \code{matrix} of mode \code{numeric}. If
 #' the partition matrix was valid, this should be identical to that which was
-#' input as an argument. 
-#' 
+#' input as an argument.
+#'
 check_phypartition <- function(tip_labels, partition){
   partition <- check_partition(partition)
-  
+
   if(is.null(row.names(partition)))
     stop(paste("Partition object must have row names.",
                 "\nThese should match some or all of the tip labels in the phylogeny"))
-  
+
   # Remove species from the partition that aren't in the phylogeny
   if (any(!row.names(partition) %in% tip_labels)) {
     absent <- row.names(partition)[!row.names(partition) %in% tip_labels]
@@ -29,7 +31,7 @@ check_phypartition <- function(tip_labels, partition){
     partition <- partition[-which(row.names(partition) %in% absent),]
     partition <- partition / sum(partition)
   }
-  
+
   # Add species to the partition that are in the phylogeny
   if (any(!tip_labels %in% row.names(partition))) {
     absent <- tip_labels[!tip_labels %in% row.names(partition)]
@@ -43,7 +45,7 @@ check_phypartition <- function(tip_labels, partition){
     colnames(missing) <- colnames(partition)
     partition <- rbind(partition, missing)
   }
-  
+
   # Reorder partition to match phylogeny
   partition <- partition[tip_labels,]
   partition <- check_partition(partition)

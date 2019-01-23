@@ -36,7 +36,6 @@ rdiversity v1.3
 
 Changes:
 
-*  New functions added to plot diversity
 *  New functions added to calculate similarity matrices
 
 

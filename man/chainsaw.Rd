@@ -2,16 +2,18 @@
 % Please edit documentation in R/chainsaw.R
 \name{chainsaw}
 \alias{chainsaw}
-\title{Function to cut phylogeny from present day species to a specified depth.}
+\title{Function to cut the phylogeny to a specified depth from the tip with the
+greatest distance from the root.}
 \usage{
 chainsaw(partition, ps, depth)
 }
 \arguments{
 \item{partition}{two-dimensional \code{matrix} of mode \code{numeric}
-with rows as types, columns as subcommunities, and elements containing  
-relative abundances of types in subcommunities. In the phylogenetic case, 
-this corresponds to the proportional abundance of historic species, which
-is calculated from the proportional abundance of present day species.}
+with rows as types (species), columns as subcommunities, and each
+element containing the relative abundance of types in each subcommunity
+relative to the metacommunity as a whole. In the phylogenetic case, this
+corresponds to the proportional abundance of historical species, which is
+calculated from the proportional abundance of terminal taxa}
 
 \item{ps}{\code{phy_struct()} output}
 
@@ -24,7 +26,8 @@ recent common ancestor. Numbers greater than 1 extend the root of the tree}
 \code{chainsaw()} returns an object of class \code{metacommunity}
 }
 \description{
-Function to cut phylogeny from present day species to a specified depth.
+Function to cut the phylogeny to a specified depth from the tip with the
+greatest distance from the root.
 }
 \examples{
 \dontrun{

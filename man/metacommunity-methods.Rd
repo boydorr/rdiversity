@@ -48,16 +48,16 @@ metacommunity(partition, similarity)
 }
 \arguments{
 \item{partition}{two-dimensional \code{matrix} of mode \code{numeric}
-with rows as types, columns as subcommunities, and elements containing  
-the relative abundances of types in subcommunities. For phylogenetic 
+with rows as types, columns as subcommunities, and elements containing
+the relative abundances of types in subcommunities. For phylogenetic
 diversity, see \emph{Details}}
 
-\item{similarity}{(optional) two-dimensional \code{matrix} of mode 
-\code{numeric}, with rows as types, columns as types, and elements 
+\item{similarity}{(optional) two-dimensional \code{matrix} of mode
+\code{numeric}, with rows as types, columns as types, and elements
 containing the pairwise similarity between types}
 }
 \value{
-\code{metacommunity()} returns an object of class 
+\code{metacommunity()} returns an object of class
 \code{metacommunity} (see \emph{Fields}).
 }
 \description{
@@ -67,35 +67,36 @@ Functions to generate a \code{metacommunity} object.
 
 \describe{
 \item{\code{type_abundance}}{two-dimensional \code{matrix} of mode \code{numeric}
-with rows as types, columns as subcommunities, and elements containing  
-relative abundances of types in subcommunities. In the phylogenetic case, 
-this corresponds to the proportional abundance of historic species, which
-is calculated from the proportional abundance of present day species.}
+with rows as types (species), columns as subcommunities, and each
+element containing the relative abundance of types in each subcommunity
+relative to the metacommunity as a whole. In the phylogenetic case, this
+corresponds to the proportional abundance of historical species, which is
+calculated from the proportional abundance of terminal taxa}
 
-\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric} with 
-rows as types, columns as types, and elements containing pairwise 
+\item{\code{similarity}}{two-dimensional \code{matrix} of mode \code{numeric} with
+rows as types, columns as types, and elements containing pairwise
 similarities between types}
 
-\item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric} 
+\item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric}
 with rows as types, columns as subcommunities, and elements containing the
 ordinariness of types within subcommunities}
 
 \item{\code{subcommunity_weights}}{\code{vector} of mode \code{numeric} containing
 subcommunity weights}
 
-\item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric}, 
-with rows as types, columns as subcommunities, and elements containing 
+\item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric},
+with rows as types, columns as subcommunities, and elements containing
 weights of types within a subcommunity}
 
-\item{\code{raw_abundance}}{[Phylogenetic] two-dimensional \code{matrix} of mode 
-\code{numeric} with rows as types, columns as subcommunities, and elements 
+\item{\code{raw_abundance}}{[Phylogenetic] two-dimensional \code{matrix} of mode
+\code{numeric} with rows as types, columns as subcommunities, and elements
 containing the relative abundance of present day species}
 
-\item{\code{raw_structure}}{[Phylogenetic] two-dimensional \code{matrix} of mode 
-\code{numeric} with rows as historical species, columns as present day 
+\item{\code{raw_structure}}{[Phylogenetic] two-dimensional \code{matrix} of mode
+\code{numeric} with rows as historical species, columns as present day
 species, and elements containing historical species lengths within lineages}
 
-\item{\code{parameters}}{[Phylogenetic] \code{tibble} containing parameters 
+\item{\code{parameters}}{[Phylogenetic] \code{tibble} containing parameters
 associated with each historic species in the phylogeny}
 }}
 
@@ -105,40 +106,6 @@ partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- paste0("sp", 1:5)
 partition <- partition / sum(partition)
 meta <- metacommunity(partition)
-
-## Taxonomic
-# Generate lookup table
-Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
-Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
-Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
-Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
-lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
-
-# Assign values for each level (Shimatani's taxonomic distance)
-taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
-
-# Generate pairwise distances
-distance <- tax2dist(lookup, taxDistance, FALSE)
-similarity <- dist2sim(distance, "linear")
-
-partition <- matrix(sample(8), ncol=2)
-row.names(partition) <- Species
-colnames(partition) <- LETTERS[1:2]
-
-meta <- metacommunity(partition, similarity)
-
-## Distance-based phylogenetic
-tree <- ape::rtree(5)
-tree$tip.label <- paste0("sp", 1:5)
-
-partition <- matrix(rep(1,10), nrow = 5)
-row.names(partition) <- paste0("sp", 1:5)
-partition <- partition / sum(partition)
-
-distance <- phy2dist(tree)
-similarity <- dist2sim(distance, "linear")
-
-meta <- metacommunity(partition, similarity)
 
 }
 \seealso{

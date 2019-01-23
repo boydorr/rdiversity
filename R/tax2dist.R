@@ -1,7 +1,7 @@
 #' Generate taxonomic distance matrix
-#' 
-#' Calculates taxonomic distances between species. 
-#' 
+#'
+#' Calculates taxonomic distances between species.
+#'
 #' @param lookup \code{data.frame} with colnames corresponding to nested
 #' taxonomic levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
 #' @param taxDistance \code{vector} with the distances attributed to
@@ -18,43 +18,44 @@
 #' @return \code{tax2dist()} returns an object of class \code{distance}
 #' containing a \code{matrix} of pair-wise taxonomic distances
 #' @export
-#' 
-#' @references Shimatani, K. 2001. On the measurement of species diversity 
+#'
+#' @references Shimatani, K. 2001. On the measurement of species diversity
 #' incorporating species differences. Oikos 93:135–147.
-#' 
-#' @examples 
+#'
+#' @examples
 #' # Create Lookup table
 #' Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
 #' Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
 #' Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
 #' Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 #' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
-#' 
+#'
 #' # Assign values for each level (Shimatani's taxonomic distance)
 #' taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
-#' 
+#'
 #' # Generate pairwise distances
 #' distance <- tax2dist(lookup, taxDistance)
 #' similarity <- dist2sim(distance, "linear")
-#' 
-tax2dist <- function(lookup, 
+#'
+tax2dist <- function(lookup,
                      taxDistance,
-                     precompute_dist = TRUE) 
+                     precompute_dist = TRUE)
 {
   taxDistance <- sort(taxDistance)
   taxCols <- names(taxDistance)[-length(taxDistance)]
   if (length(intersect(taxCols, colnames(lookup))) != length(taxCols))
     stop("The columns in the taxonomy have to include the columns mentioned in the distance vector")
   lookup <- lookup[,taxCols]
-  
+
+
   if(is.numeric(precompute_dist)) {
     n <- apply(lookup, 2, function(x) length(unique(x)))
     S <- max(n)
-    precompute_dist <- ifelse(S > precompute_dist, FALSE, TRUE) 
+    precompute_dist <- ifelse(S > precompute_dist, FALSE, TRUE)
   }
-  
+
   # Calculate distance matrix
-  
+
   if(precompute_dist) {
     entries <- row.names(lookup)
     n <- length(entries)
@@ -62,7 +63,7 @@ tax2dist <- function(lookup,
     colnames(dist) <- unlist(lookup[,1])
     row.names(dist) <- unlist(lookup[,1])
     other <- taxDistance[length(taxDistance)]
-    
+
     for (i in seq_along(entries)) {
       for (j in seq_along(entries)) {
         row <- as.character(lookup[i,])
@@ -72,27 +73,27 @@ tax2dist <- function(lookup,
             dist[i,j] <- other
       }
     }
-    
-    return(new("distance", 
+
+    return(new("distance",
                distance = dist,
                datID = "taxonomic",
                components = list(precompute = TRUE,
                                             taxDistance = taxDistance)))
-    
+
     # Don't calculate distance matrix
-    
+
   }else {
     taxFac <- taxfac(lookup)
     bits <- apply(taxFac, 2, function(x) ceiling(log(max(x)+1, 2)))
     taxID <- taxid(taxFac)
     taxMask <- taxmask(lookup)
-    
-    return(new("distance", 
+
+    return(new("distance",
                datID = "taxonomic",
                components = list(precompute = FALSE,
                                  ordinariness = "taxvec",
                                  taxDistance = taxDistance,
-                                 taxID = taxID, 
+                                 taxID = taxID,
                                  taxMask = taxMask,
                                  taxBits = bits)))
   }

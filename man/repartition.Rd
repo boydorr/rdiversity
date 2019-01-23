@@ -9,11 +9,12 @@ repartition(meta, new_partition)
 \arguments{
 \item{meta}{object of class \code{metacommunity}.}
 
-\item{new_partition}{proportional abundance of \emph{types} in the
-subcommunity as a fraction of the metacommunity as a whole (in the
-phylogenetic case, this corresponds to the proportional abundance of
-terminal taxa). If this argument is missing, all species/tips will be
-shuffled.}
+\item{new_partition}{two-dimensional \code{matrix} of mode \code{numeric}
+with rows as types (species), columns as subcommunities, and each
+element containing the relative abundance of types in each subcommunity
+relative to the metacommunity as a whole. In the phylogenetic case, this
+corresponds to the proportional abundance of terminal taxa. If this argument
+is missing, all species / tips will be shuffled}
 }
 \value{
 \code{repartition()} returns an object of class \code{metacommunity}
