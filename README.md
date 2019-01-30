@@ -278,6 +278,39 @@ norm_meta_gamma(meta, 0:2)
 * `@parameters` : parameters associated with historical species
 
 
+### User defined distance
+```{r}
+partition <- matrix(sample(6), nrow = 3)
+rownames(partition) <- paste0("sp", 1:3)
+partition <- partition / sum(partition)
+
+distance <- matrix(c(0,.75,1,.75,0,.3,1,.3,0), nrow = 3)
+rownames(distance) <- paste0("sp", 1:3)
+colnames(distance) <- paste0("sp", 1:3)
+distance <- distance(distance, "my_taxonomy")
+similarity <- dist2sim(distance, "linear")
+
+meta <- metacommunity(partition, similarity)
+```
+
+
+## User defined similarity
+```{r}
+partition <- matrix(sample(6), nrow = 3)
+rownames(partition) <- paste0("sp", 1:3)
+partition <- partition / sum(partition)
+
+similarity <- matrix(c(1,.8,0,.8,1,.1,0,.1,1), nrow = 3)
+rownames(similarity) <- paste0("sp", 1:3)
+colnames(similarity) <- paste0("sp", 1:3)
+similarity <- similarity(similarity, "my_functional")
+
+meta <- metacommunity(partition, similarity)
+```
+
+
+
+
 
 
 ## Additional tools
