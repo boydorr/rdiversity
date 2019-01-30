@@ -26,6 +26,9 @@ Special cases:
 
 * [Taxonomic diversity](#taxonomic-diversity)
 * [Phylogenetic diversity](#phylogenetic-diversity)
+* [User defined distance](#user-defined-distance)
+* [User defined similarity](#user-defined-similarity)
+
 
 Miscellaneous:
 
@@ -294,7 +297,7 @@ meta <- metacommunity(partition, similarity)
 ```
 
 
-## User defined similarity
+### User defined similarity
 ```{r}
 partition <- matrix(sample(6), nrow = 3)
 rownames(partition) <- paste0("sp", 1:3)
