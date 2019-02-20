@@ -138,33 +138,9 @@ setMethod(f = "metacommunity",
 setMethod(f = "metacommunity",
           signature(partition = "matrix", similarity = "matrix"),
           definition = function(partition, similarity) {
-            # Check partition and simliarity matrices
-            type_abundance <- check_partition(partition)
-            similarity <- check_similarity(similarity, partition)
 
-            # Calculate parameters
-            subcommunity_weights <- colSums(type_abundance) /
-              sum(type_abundance)
-            type_weights <- apply(type_abundance, 2, function(x) x/sum(x))
-            Zp.j <- similarity %*% type_abundance
+            stop('This function no longer accepts matrix objects within the `similarity` argument. Instead, use dist2sim() to generate similarity objects.')
 
-            # Mark all of the species that have nothing similar as NaNs
-            # because diversity of an empty group is undefined
-            Zp.j[Zp.j==0] <- NaN
-
-            if(!is.matrix(type_weights)) {
-              type_weights<- t(as.matrix(type_weights))
-              row.names(type_weights) <- row.names(type_abundance)
-            }
-
-            message('From the next update, this function will no longer accept matrix objects within the `similarity` argument. Instead, use dist2sim() to generate similarity objects.')
-
-            new('metacommunity',
-                type_abundance = type_abundance,
-                similarity = similarity,
-                ordinariness = Zp.j,
-                subcommunity_weights = subcommunity_weights,
-                type_weights = type_weights)
           } )
 
 
