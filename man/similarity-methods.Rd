@@ -13,7 +13,7 @@ similarity(similarity, datID)
 \arguments{
 \item{similarity}{similarity matrix}
 
-\item{datID}{object of class \code{character} denoting the type of diversity 
+\item{datID}{object of class \code{character} denoting the type of diversity
 being calculated. This can be "naive", "genetic", "taxonomic", and so on}
 }
 \value{

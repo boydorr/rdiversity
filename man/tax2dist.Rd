@@ -46,6 +46,6 @@ similarity <- dist2sim(distance, "linear")
 
 }
 \references{
-Shimatani, K. 2001. On the measurement of species diversity 
+Shimatani, K. 2001. On the measurement of species diversity
 incorporating species differences. Oikos 93:135–147.
 }

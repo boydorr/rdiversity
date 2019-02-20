@@ -1,21 +1,21 @@
 #' Generate distance object
 #'
 #' Container for class \code{distance}.
-#' 
+#'
 #' @param distance distance matrix
-#' @param datID object of class \code{character} denoting the type of diversity 
+#' @param datID object of class \code{character} denoting the type of diversity
 #' being calculated. This can be "naive", "genetic", "taxonomic", and so on
 #'
 #' @return \code{distance()} returns an object of class \code{distance}.
 #' @name distance
 #' @rdname distance-methods
 #' @exportMethod distance
-#' 
+#'
 setGeneric(name = "distance",
            def = function(distance, datID) {
              standardGeneric("distance")
            } )
-          
+
 
 #' @rdname distance-methods
 #' @aliases distance

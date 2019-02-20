@@ -7,7 +7,7 @@
 taxfac(lookup)
 }
 \arguments{
-\item{lookup}{\code{data.frame} with colnames corresponding to nested 
+\item{lookup}{\code{data.frame} with colnames corresponding to nested
 hierarchical levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')}
 }
 \description{
