@@ -32,9 +32,7 @@
 #' with rows as types, columns as subcommunities, and elements containing
 #' the relative abundances of types in subcommunities. For phylogenetic
 #' diversity, see \emph{Details}
-#' @param similarity (optional) two-dimensional \code{matrix} of mode
-#' \code{numeric}, with rows as types, columns as types, and elements
-#' containing the pairwise similarity between types
+#' @param similarity (optional) object of class \code{similarity}
 #'
 #' @return \code{metacommunity()} returns an object of class
 #' \code{metacommunity} (see \emph{Fields}).
