@@ -75,6 +75,16 @@ calculated from the proportional abundance of terminal taxa}
 rows as types, columns as types, and elements containing pairwise
 similarities between types}
 
+\item{\code{similarity_components}}{list containining the components necessary to
+calculate similarity. This list is empty when \code{precompute_dist = TRUE}
+when calculating distance. When a pairwise distance matrix is too large and
+\code{precompute_dist = FALSE}, this list contains all the information
+required to calculate pairwise distance between types}
+
+\item{\code{similarity_parameters}}{list containining parameters associated with
+converting pairwise distances to similarities (the \code{dist2sim()}
+arguments)}
+
 \item{\code{ordinariness}}{two-dimensional \code{matrix} of mode \code{numeric}
 with rows as types, columns as subcommunities, and elements containing the
 ordinariness of types within subcommunities}
@@ -85,6 +95,9 @@ subcommunity weights}
 \item{\code{type_weights}}{two-dimensional \code{matrix} of mode \code{numeric},
 with rows as types, columns as subcommunities, and elements containing
 weights of types within a subcommunity}
+
+\item{\code{dat_ID}}{object of class \code{character} denoting the type of diversity
+being calculated. This can be "naive", "genetic", "taxonomic", and so on}
 
 \item{\code{raw_abundance}}{[Phylogenetic] two-dimensional \code{matrix} of mode
 \code{numeric} with rows as types, columns as subcommunities, and elements
