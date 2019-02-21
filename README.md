@@ -97,11 +97,11 @@ meta <- metacommunity(partition = pop, similarity = similarity)
 
 Each `metacommunity` object contains the following slots:
 
-* `@type_abundance` : the abundance of types within a population,  
-* `@similarity` : the pair-wise similarity of types within a population,  
-* `@ordinariness` : the ordinariness of types within a population,  
-* `@subcommunity_weights` :  the relative weights of subcommunities within a population, and
-* `@type_weights` : the relative weights of types within a population.
+* `@type_abundance` : the abundance of types within a metacommunity,  
+* `@similarity` : the pair-wise similarity of types within a metacommunity,  
+* `@ordinariness` : the ordinariness of types within a metacommunity,  
+* `@subcommunity_weights` :  the relative weights of subcommunities within a metacommunity, and
+* `@type_weights` : the relative weights of types within a metacommunity.
 
 
 ## Calculating diversity

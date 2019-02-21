@@ -18,20 +18,20 @@ manyweights <- t(rdirichlet(numcommunities, rep(1, numspecies)))
 pop <- data.frame(a=c(1,1,0),b=c(2,0,0),c=c(3,1,0))
 pop <- pop / sum(pop)
 
-test_that("Subcommunity diversity across multiple populations", {
-  expect_equivalent(subdiv(raw_alpha(metacommunity(pop)), 0)$diversity, 
+test_that("Subcommunity diversity across multiple communities", {
+  expect_equivalent(subdiv(raw_alpha(metacommunity(pop)), 0)$diversity,
                     c(8,4,4))
-  expect_equivalent(subdiv(norm_alpha(metacommunity(pop)), 0)$diversity, 
+  expect_equivalent(subdiv(norm_alpha(metacommunity(pop)), 0)$diversity,
                     c(2,1,2))
-  expect_equivalent(subdiv(raw_beta(metacommunity(pop)), 0)$diversity, 
+  expect_equivalent(subdiv(raw_beta(metacommunity(pop)), 0)$diversity,
                     c(1/4,1/3,1/2))
-  expect_equivalent(subdiv(norm_beta(metacommunity(pop)), 0)$diversity, 
+  expect_equivalent(subdiv(norm_beta(metacommunity(pop)), 0)$diversity,
                     c(1,4/3,1))
-  expect_equivalent(subdiv(raw_rho(metacommunity(pop)), 0)$diversity, 
+  expect_equivalent(subdiv(raw_rho(metacommunity(pop)), 0)$diversity,
                     c(4,3,2))
-  expect_equivalent(subdiv(norm_rho(metacommunity(pop)), 0)$diversity, 
+  expect_equivalent(subdiv(norm_rho(metacommunity(pop)), 0)$diversity,
                     c(1,3/4,1))
-  expect_equivalent(subdiv(raw_gamma(metacommunity(pop)), 0)$diversity, 
+  expect_equivalent(subdiv(raw_gamma(metacommunity(pop)), 0)$diversity,
                     c(8/3,4/3,2))
 })
 
@@ -59,10 +59,10 @@ colnames(partition) <- LETTERS[1:2]
 
 meta <- metacommunity(partition, similarity)
 
-# test_that("Subcommunity diversity across multiple populations", {
-#  
+# test_that("Subcommunity diversity across multiple communities", {
+#
 #   subdiv(meta, 0:2)
-#   
+#
 # })
 
 
@@ -80,7 +80,7 @@ similarity <- dist2sim(distance, "linear")
 
 meta <- metacommunity(partition, similarity)
 
-# test_that("Subcommunity diversity across multiple populations", {
-#   
+# test_that("Subcommunity diversity across multiple communities", {
+#
 # })
 
