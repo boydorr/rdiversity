@@ -16,16 +16,6 @@
 #' @return \code{phy2branch()} returns an object of class \code{distance}.
 #' @export
 #'
-#' @examples
-#' tree <- ape::rtree(5)
-#' tree$tip.label <- paste0("sp", 1:5)
-#'
-#' partition <- matrix(rep(1,10), nrow = 5)
-#' row.names(partition) <- paste0("sp", 1:5)
-#' partition <- partition / sum(partition)
-#'
-#' phy2branch(tree, partition)
-#'
 phy2branch <- function(tree, partition, depth = 1) {
 
   # tidy_tree <- tidytree::as_tibble(tree)

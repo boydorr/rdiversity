@@ -26,14 +26,3 @@ should be retained, with 0 marking the date of the most recent tip, and 1
 \description{
 Packages phylo object and depth into an object of class \code{similarity}.
 }
-\examples{
-tree <- ape::rtree(5)
-tree$tip.label <- paste0("sp", 1:5)
-
-partition <- matrix(rep(1,10), nrow = 5)
-row.names(partition) <- paste0("sp", 1:5)
-partition <- partition / sum(partition)
-
-phy2branch(tree, partition)
-
-}

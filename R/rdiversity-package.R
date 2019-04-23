@@ -25,7 +25,6 @@
 #' @aliases rdiversity
 #' @docType package
 #'
-#' @import ape
 #' @import methods
 #' @import phangorn
 #' @import plyr

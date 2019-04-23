@@ -9,10 +9,10 @@ phy2dist(tree, precompute_dist = TRUE)
 \arguments{
 \item{tree}{object of class \code{phylo}.}
 
-\item{precompute_dist}{object of class \code{logical} or \code{numeric}. 
-When TRUE (by default) a distance matrix is generated and stored in slot 
-\code{distance}, when FALSE no distance matrix is generated, and when numeric 
-a distance matrix is generated until the number of species exceeds the 
+\item{precompute_dist}{object of class \code{logical} or \code{numeric}.
+When TRUE (by default) a distance matrix is generated and stored in slot
+\code{distance}, when FALSE no distance matrix is generated, and when numeric
+a distance matrix is generated until the number of species exceeds the
 defined value.}
 }
 \value{
@@ -20,9 +20,4 @@ defined value.}
 }
 \description{
 Converts any phylo object to a matrix of pairwise tip-to-tip distances.
-}
-\examples{
-tree <- ape::rtree(5)
-phy2dist(tree)
-
 }

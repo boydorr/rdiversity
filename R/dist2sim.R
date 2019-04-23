@@ -18,11 +18,6 @@
 #' @include similarity.R class-similarity.R
 #' @export
 #'
-#' @examples
-#' tree <- ape::rtree(5)
-#' dist <- phy2dist(tree)
-#' dist2sim(dist, "linear")
-#'
 dist2sim <- function(dist,
                      transform,
                      k = 1,
