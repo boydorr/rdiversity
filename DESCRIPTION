@@ -25,6 +25,7 @@ Imports:
     utils
 Suggests:
     ape,
+    ggplot2,
     testthat,
     knitr,
     rmarkdown
