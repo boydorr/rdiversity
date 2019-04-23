@@ -29,10 +29,8 @@
 #' @import phangorn
 #' @import plyr
 #' @importFrom binaryLogic as.binary
-#' @importFrom phytools nodeHeights
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
-#' @importFrom tidyr nest
 #' @importFrom tibble as_data_frame
 #' @importFrom utils head
 #'

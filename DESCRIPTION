@@ -18,11 +18,9 @@ Imports:
     binaryLogic,
     methods,
     phangorn,
-    phytools,
     plyr,
     reshape2,
     stats,
-    tidyr,
     tibble,
     utils
 Suggests:
