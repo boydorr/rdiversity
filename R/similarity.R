@@ -35,6 +35,24 @@ setMethod(f = "similarity",
           } )
 
 
+#' @rdname similarity-methods
+#' @aliases similarity
+#'
+setMethod(f = "similarity",
+          signature(similarity = "matrix", datID = "missing"),
+          definition = function(similarity, datID) {
+            similarity <- check_similarity(similarity)
+
+            new('similarity',
+                similarity = similarity,
+                datID = "UserGenerated",
+                parameters = list(transform = NA,
+                                  k = NA,
+                                  normalise = NA,
+                                  max_d = NA))
+          } )
+
+
 #' @rdname similarity-class
 #' @param object object of class \code{similarity}
 #'
