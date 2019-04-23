@@ -2,6 +2,12 @@
 #'
 #' Functions to generate a \code{metacommunity} object.
 #'
+#' @param partition two-dimensional \code{matrix} of mode \code{numeric}
+#' with rows as types, columns as subcommunities, and elements containing
+#' the relative abundances of types in subcommunities. For phylogenetic
+#' diversity, see \emph{Details}
+#' @param similarity (optional) object of class \code{similarity}
+#'
 #' @field type_abundance two-dimensional \code{matrix} of mode \code{numeric}
 #' with rows as types (species), columns as subcommunities, and each
 #' element containing the relative abundance of types in each subcommunity
@@ -37,12 +43,6 @@
 #' species, and elements containing historical species lengths within lineages
 #' @field parameters [Phylogenetic] \code{tibble} containing parameters
 #' associated with each historic species in the phylogeny
-#'
-#' @param partition two-dimensional \code{matrix} of mode \code{numeric}
-#' with rows as types, columns as subcommunities, and elements containing
-#' the relative abundances of types in subcommunities. For phylogenetic
-#' diversity, see \emph{Details}
-#' @param similarity (optional) object of class \code{similarity}
 #'
 #' @return \code{metacommunity()} returns an object of class
 #' \code{metacommunity} (see \emph{Fields}).

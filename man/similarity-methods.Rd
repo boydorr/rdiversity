@@ -4,11 +4,14 @@
 \name{similarity}
 \alias{similarity}
 \alias{similarity,matrix,character-method}
+\alias{similarity,matrix,missing-method}
 \title{Generate similarity object}
 \usage{
 similarity(similarity, datID)
 
 \S4method{similarity}{matrix,character}(similarity, datID)
+
+\S4method{similarity}{matrix,missing}(similarity, datID)
 }
 \arguments{
 \item{similarity}{similarity matrix}

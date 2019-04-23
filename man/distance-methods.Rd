@@ -4,11 +4,14 @@
 \name{distance}
 \alias{distance}
 \alias{distance,matrix,character-method}
+\alias{distance,matrix,missing-method}
 \title{Generate distance object}
 \usage{
 distance(distance, datID)
 
 \S4method{distance}{matrix,character}(distance, datID)
+
+\S4method{distance}{matrix,missing}(distance, datID)
 }
 \arguments{
 \item{distance}{distance matrix}
