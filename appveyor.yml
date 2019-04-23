@@ -12,10 +12,10 @@ install:
 
 # Adapt as necessary starting from here
 
-environment: 
-  USE_RTOOLS: true 
-  R_VERSION: stable
-  
+environment:
+  PKGTYPE: binary
+  USE_RTOOLS: true
+
 build_script:
   - travis-tool.sh install_deps
 
