@@ -29,6 +29,18 @@ setMethod(f = "distance",
           } )
 
 
+#' @rdname distance-methods
+#' @aliases distance
+#'
+setMethod(f = "distance",
+          signature(distance = "matrix", datID = "missing"),
+          definition = function(distance, datID) {
+            new('distance',
+                distance = distance,
+                datID = "UserGenerated")
+          } )
+
+
 #' @rdname distance-class
 #' @param object object of class \code{distance}
 #'
