@@ -270,7 +270,7 @@ meta <- metacommunity(partition, similarity)
 
 4. Calculate diversity
 ```{r}
-norm_meta_gamma(meta, 0:2)
+meta_gamma(meta, 0:2)
 ```
 
 
