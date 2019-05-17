@@ -4,8 +4,7 @@ language: r
 cache: packages
 warnings_are_errors: true
 sudo: required
-before_install:
-  - R -e 'install.packages("rgdal", repos=c("http://R-Forge.R-project.org", "http://cran.rstudio.com"))'
+
 
 r_github_packages:
   - jimhester/covr
@@ -18,6 +17,9 @@ notifications:
   email:
     on_success: change
     on_failure: always
+
+install:
+	  - sudo apt-get update
 
 addons:
   apt:
