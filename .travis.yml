@@ -4,7 +4,9 @@ language: r
 cache: packages
 warnings_are_errors: true
 sudo: required
-
+repos:
+  CRAN: https://cran.rstudio.com
+  rforge: http://R-Forge.R-project.org
 
 r_github_packages:
   - jimhester/covr
@@ -12,12 +14,12 @@ r_github_packages:
 
 after_success:
   - Rscript -e 'covr::coveralls()'
-  
+
 notifications:
   email:
     on_success: change
     on_failure: always
-    
+
 addons:
   apt:
     update: true
