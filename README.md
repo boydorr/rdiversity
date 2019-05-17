@@ -260,12 +260,12 @@ tree$tip.label <- row.names(partition)
 
 2. Generate a similarity object using the `phy2branch()` function
 ```{r}
-similarity <- phy2branch(tree, pop)
+similarity <- phy2branch(tree, partition)
 ```
 
 3. Generate a metacommunity object using the `metacommunity()` function
 ```{r}
-meta <- metacommunity(pop, similarity)
+meta <- metacommunity(partition, similarity)
 ```
 
 4. Calculate diversity
@@ -317,4 +317,23 @@ meta <- metacommunity(partition, similarity)
 
 
 ## Additional tools
-* `repartition()`
+
+# `repartition()`
+
+```{r}
+tree <- ape::rtree(5)
+tree$tip.label <- paste0("sp", 1:5)
+
+partition <- matrix(rep(1,10), nrow = 5)
+row.names(partition) <- paste0("sp", 1:5)
+partition <- partition / sum(partition)
+similarity <- phy2branch(tree, partition)
+meta <- metacommunity(partition, similarity)
+
+new_partition <- matrix(sample(10), nrow = 5)
+row.names(new_partition) <- paste0("sp", 1:5)
+new_partition <- new_partition / sum(new_partition)
+
+new_meta <- repartition(meta, new_partition)
+```
+che
