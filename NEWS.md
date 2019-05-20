@@ -31,12 +31,12 @@ Changes:
 *  Update citation
 
 
-rdiversity v1.3
-================
+rdiversity v1.3.3
+=================
 
 Changes:
 
-*  New functions added to calculate similarity matrices
+*  New functions added to calculate similarity matrices; Additional minor edits.
 
 
 
