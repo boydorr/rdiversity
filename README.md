@@ -244,7 +244,7 @@ meta <- metacommunity(pop, similarity)
 
 5. Calculate diversity
 ```{r}
-norm_meta_gamma(meta, 0:2)
+meta_gamma(meta, 0:2)
 ```
 
 ### Branch-based phylogenetic diversity
