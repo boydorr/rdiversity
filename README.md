@@ -318,7 +318,7 @@ meta <- metacommunity(partition, similarity)
 
 ## Additional tools
 
-# `repartition()`
+### `repartition()`
 
 ```{r}
 tree <- ape::rtree(5)
@@ -336,4 +336,4 @@ new_partition <- new_partition / sum(new_partition)
 
 new_meta <- repartition(meta, new_partition)
 ```
-che
+
