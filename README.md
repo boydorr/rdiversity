@@ -45,22 +45,24 @@ install.packages("rdiversity")
 
 ## Generating a metacommunity 
 
-Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`pop`) comprising two species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
+Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`partition`) comprising two species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
 
 ```{r}
 # Load the package into R
 library(rdiversity)
 
 # Initialise data
-pop <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
-row.names(pop) <- c("cows", "sheep")
+partition <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
+row.names(partition) <- c("cows", "sheep")
 ```
 The `metacommunity()` function takes two arguments, `partition` and `similarity`. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the `similarity` argument is missing, as below:
 
 ```{r}
 # Generate metacommunity object
-meta <- metacommunity(partition = pop)
+meta <- metacommunity(partition = partition)
 ```
+
+Note that a warning is displayed when abundances (rather than relative abundances) are entered into the `partition` argument. 
 
 When species share some similarity and a similarity matrix is available, then a similarity object (and the metacommunity object) is generated in the following way:
 
@@ -71,28 +73,28 @@ row.names(s) <- c("cows", "sheep")
 colnames(s) <- c("cows", "sheep")
 
 # Generate similarity object 
-similarity <- similarity(similarity = s, datID = "my_taxonomic")
+s <- similarity(similarity = s, datID = "my_taxonomic")
 
 # Generate metacommunity object
-meta <- metacommunity(partition = pop, similarity = similarity)
+meta <- metacommunity(partition = partition, similarity = s)
 ```
 
 Alternatively, if a distance matrix is available, then a distance object is generated in the following way: 
 
 ```{r}
-# Initialise similarity matrix
-d <- matrix(c(0, 0.8, 0.7, 0), nrow = 2)
+# Initialise distance matrix
+d <- matrix(c(0, 0.7, 0.7, 0), nrow = 2)
 row.names(d) <- c("cows", "sheep")
 colnames(d) <- c("cows", "sheep")
 
 # Generate distance object
-dist <- distance(distance = d, datID = "my_taxonomic")
+d <- distance(distance = d, datID = "my_taxonomic")
 
 # Convert the distance object to similarity object (by means of a linear or exponential transform)
-similarity <- dist2sim(dist = dist, transform = "linear")
+s <- dist2sim(dist = d, transform = "linear")
 
 # Generate metacommunity object
-meta <- metacommunity(partition = pop, similarity = similarity)
+meta <- metacommunity(partition = partition, similarity = s)
 ```
 
 Each `metacommunity` object contains the following slots:
@@ -129,11 +131,11 @@ Each of these functions take two arguments, `meta` (a `metacommunity` object) an
 
 ```{r}
 # Initialise data
-pop <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
-row.names(pop) <- c("cows", "sheep")
+partition <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
+row.names(partition) <- c("cows", "sheep")
 
 # Generate a metacommunity object
-meta <- metacommunity(pop)
+meta <- metacommunity(partition)
 
 # Calculate diversity
 norm_sub_alpha(meta, 0:2)
@@ -147,11 +149,11 @@ This method requires that we first calculate the species-level components, by pa
 
 ```{r}
 # Initialise data
-pop <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
-row.names(pop) <- c("cows", "sheep")
+partition <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
+row.names(partition) <- c("cows", "sheep")
 
 # Generate a metacommunity object
-meta <- metacommunity(pop)
+meta <- metacommunity(partition)
 
 # Calculate the species-level component for normalised alpha
 component <- norm_alpha(meta)
@@ -177,13 +179,20 @@ metadiv(meta, 0:2)
 
 
 ## Taxonomic diversity
-1. Initialise a taxonomic lookup table:
+1. Initialise data:
 ```{r}
+# Taxonomic lookup table
 Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora", "simplex var.ochnacea")
 Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
 Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
 Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
+
+# Partition matrix
+partition <- matrix(rep(1, 8), nrow = 4)
+colnames(partition) <- LETTERS[1:2]
+rownames(partition) <- lookup$Species
+
 ```
 and assign values for each taxonomic level:
 ```{r}
@@ -193,23 +202,23 @@ values <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 2. Generate a distance object from a lookup table using the `tax2dist()` 
 function:
 ```{r}
-dist <- tax2dist(lookup, values)
+d <- tax2dist(lookup, values)
 ```
-By default the `tax2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `dist@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly, in step 4. 
+By default the `tax2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `d@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly, in step 4. 
 
 3. Convert the distance object to similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
 ```{r}
-similarity <- dist2sim(dist, "linear")
+s <- dist2sim(d, "linear")
 ```
 
 4. Generate a metacommunity object using the `metacommunity()` function:
 ```{r}
-meta <- metacommunity(pop, similarity)
+meta <- metacommunity(partition, s)
 ```
 
 5. Calculate diversity:
 ```{r}
-norm_meta_gamma(meta, 0:2)
+meta_gamma(meta, 0:2)
 ```
 
 ## Phylogenetic diversity
@@ -222,24 +231,24 @@ Phylogenetic diversity measures can be broadly split into two categories – tho
 ```{r}
 # Example data
 tree <- ape::rtree(4)
-pop <- matrix(1:12, ncol=3)
-pop <- pop/sum(pop)
+partition <- matrix(1:12, ncol=3)
+partition <- partition/sum(partition)
 ```
 
 2. Generate a distance matrix using the `phy2dist()` function: 
 ```{r}
-dist <- phy2dist(tree)
+d <- phy2dist(tree)
 ```
-By default the `phy2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `dist@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly, in step 4. 
+By default the `phy2dist()` argument `precompute_dist` is TRUE, such that a pairwise distance matrix is calculated automatically and is stored in `d@distance`. If the taxonomy is too large, `precompute_dist` can be set to FALSE, which enables pairwise taxonomic similarity to be calculated on the fly, in step 4. 
 
 3. Convert the distance object to similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
 ```{r}
-similarity <- dist2sim(dist, "linear")
+s <- dist2sim(d, "linear")
 ```
 
 4. Generate a metacommunity object using the `metacommunity()` function
 ```{r}
-meta <- metacommunity(pop, similarity)
+meta <- metacommunity(partition, s)
 ```
 
 5. Calculate diversity
@@ -260,12 +269,12 @@ tree$tip.label <- row.names(partition)
 
 2. Generate a similarity object using the `phy2branch()` function
 ```{r}
-similarity <- phy2branch(tree, partition)
+s <- phy2branch(tree, partition)
 ```
 
 3. Generate a metacommunity object using the `metacommunity()` function
 ```{r}
-meta <- metacommunity(partition, similarity)
+meta <- metacommunity(partition, s)
 ```
 
 4. Calculate diversity
@@ -290,10 +299,10 @@ partition <- partition / sum(partition)
 distance <- matrix(c(0,.75,1,.75,0,.3,1,.3,0), nrow = 3)
 rownames(distance) <- paste0("sp", 1:3)
 colnames(distance) <- paste0("sp", 1:3)
-distance <- distance(distance, "my_taxonomy")
-similarity <- dist2sim(distance, "linear")
+d <- distance(distance, "my_taxonomy")
+s <- dist2sim(d, "linear")
 
-meta <- metacommunity(partition, similarity)
+meta <- metacommunity(partition, s)
 ```
 
 
@@ -303,12 +312,12 @@ partition <- matrix(sample(6), nrow = 3)
 rownames(partition) <- paste0("sp", 1:3)
 partition <- partition / sum(partition)
 
-similarity <- matrix(c(1,.8,0,.8,1,.1,0,.1,1), nrow = 3)
-rownames(similarity) <- paste0("sp", 1:3)
-colnames(similarity) <- paste0("sp", 1:3)
-similarity <- similarity(similarity, "my_functional")
+s <- matrix(c(1,.8,0,.8,1,.1,0,.1,1), nrow = 3)
+rownames(s) <- paste0("sp", 1:3)
+colnames(s) <- paste0("sp", 1:3)
+s <- similarity(s, "my_functional")
 
-meta <- metacommunity(partition, similarity)
+meta <- metacommunity(partition, s)
 ```
 
 
@@ -327,8 +336,8 @@ tree$tip.label <- paste0("sp", 1:5)
 partition <- matrix(rep(1,10), nrow = 5)
 row.names(partition) <- paste0("sp", 1:5)
 partition <- partition / sum(partition)
-similarity <- phy2branch(tree, partition)
-meta <- metacommunity(partition, similarity)
+s <- phy2branch(tree, partition)
+meta <- metacommunity(partition, s)
 
 new_partition <- matrix(sample(10), nrow = 5)
 row.names(new_partition) <- paste0("sp", 1:5)
