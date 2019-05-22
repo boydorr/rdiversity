@@ -62,7 +62,7 @@ The `metacommunity()` function takes two arguments, `partition` and `similarity`
 meta <- metacommunity(partition = partition)
 ```
 
-Note that a warning is displayed when abundances (rather than relative abundances) are entered into the `partition` argument. 
+Note that a warning is displayed when abundances (rather than relative abundances) are entered into the `partition` argument. Both are acceptable inputs.
 
 When species share some similarity and a similarity matrix is available, then a similarity object (and the metacommunity object) is generated in the following way:
 
@@ -296,10 +296,10 @@ partition <- matrix(sample(6), nrow = 3)
 rownames(partition) <- paste0("sp", 1:3)
 partition <- partition / sum(partition)
 
-distance <- matrix(c(0,.75,1,.75,0,.3,1,.3,0), nrow = 3)
-rownames(distance) <- paste0("sp", 1:3)
-colnames(distance) <- paste0("sp", 1:3)
-d <- distance(distance, "my_taxonomy")
+d <- matrix(c(0,.75,1,.75,0,.3,1,.3,0), nrow = 3)
+rownames(d) <- paste0("sp", 1:3)
+colnames(d) <- paste0("sp", 1:3)
+d <- distance(d, "my_taxonomy")
 s <- dist2sim(d, "linear")
 
 meta <- metacommunity(partition, s)
