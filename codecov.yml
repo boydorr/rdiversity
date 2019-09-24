@@ -1,4 +1,5 @@
 codecov:
+  token: a8f483d2-d4e9-4087-9bd2-00f7ce6f7a2b
   notify:
     require_ci_to_pass: yes
 
@@ -24,3 +25,4 @@ comment:
   layout: "reach,diff,flags,tree"
   behavior: default
   require_changes: no
+
