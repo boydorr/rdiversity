@@ -4,13 +4,13 @@
 \alias{tax2dist}
 \title{Generate taxonomic distance matrix}
 \usage{
-tax2dist(lookup, taxDistance, precompute_dist = TRUE)
+tax2dist(lookup, tax_distance, precompute_dist = TRUE)
 }
 \arguments{
 \item{lookup}{\code{data.frame} with colnames corresponding to nested
 taxonomic levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')}
 
-\item{taxDistance}{\code{vector} with the distances attributed to
+\item{tax_distance}{\code{vector} with the distances attributed to
 taxonomic levels defined in \code{lookup}. The highest distance is the
 distance attributed to species that are not the same at any recorded
 taxonomic level. e.g. c(Species = 0, Genus = 1, Family = 2, Subclass = 3,
@@ -38,10 +38,10 @@ Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 
 # Assign values for each level (Shimatani's taxonomic distance)
-taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
+tax_distance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 
 # Generate pairwise distances
-distance <- tax2dist(lookup, taxDistance)
+distance <- tax2dist(lookup, tax_distance)
 similarity <- dist2sim(distance, "linear")
 
 }

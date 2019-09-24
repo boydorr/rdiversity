@@ -14,13 +14,13 @@
 #' input as an argument.
 #'
 check_partition <- function(partition) {
-  if(is.vector(partition)) partition <- as.matrix(partition)
-  if(is.data.frame(partition)) partition <- as.matrix(partition)
+  if (is.vector(partition)) partition <- as.matrix(partition)
+  if (is.data.frame(partition)) partition <- as.matrix(partition)
 
   # normalise partition if it does not sum to 1
-  if(!isTRUE(all.equal(sum(partition),1))) {
+  if (!isTRUE(all.equal(sum(partition), 1))) {
     partition <- partition / sum(partition)
-    message('Metacommunity matrix was normalised to sum to 1.')
+    message("Metacommunity matrix was normalised to sum to 1.")
   }
 
   partition

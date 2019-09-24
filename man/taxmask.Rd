@@ -7,7 +7,7 @@
 taxmask(lookup)
 }
 \arguments{
-\item{lookup}{lskj}
+\item{lookup}{Lookup table}
 }
 \description{
 taxmask

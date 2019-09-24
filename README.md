@@ -45,7 +45,7 @@ install.packages("rdiversity")
 
 ## Generating a metacommunity 
 
-Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`partition`) comprising two species ("cows" and "sheep"), and partitioned across three subcommunitites (a, b, and c).
+Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`partition`) comprising two species ("cows" and "sheep"), and partitioned across three subcommunities (a, b, and c).
 
 ```{r}
 # Load the package into R
@@ -73,7 +73,7 @@ row.names(s) <- c("cows", "sheep")
 colnames(s) <- c("cows", "sheep")
 
 # Generate similarity object 
-s <- similarity(similarity = s, datID = "my_taxonomic")
+s <- similarity(similarity = s, dat_id = "my_taxonomic")
 
 # Generate metacommunity object
 meta <- metacommunity(partition = partition, similarity = s)
@@ -88,7 +88,7 @@ row.names(d) <- c("cows", "sheep")
 colnames(d) <- c("cows", "sheep")
 
 # Generate distance object
-d <- distance(distance = d, datID = "my_taxonomic")
+d <- distance(distance = d, dat_id = "my_taxonomic")
 
 # Convert the distance object to similarity object (by means of a linear or exponential transform)
 s <- dist2sim(dist = d, transform = "linear")
@@ -319,8 +319,6 @@ s <- similarity(s, "my_functional")
 
 meta <- metacommunity(partition, s)
 ```
-
-
 
 
 

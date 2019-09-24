@@ -31,13 +31,13 @@ Generic function for calculating metacommunity-level diversity.
 \details{
 \code{data} may be input as one of three different classes:
 \itemize{
-\item{\code{powermean}: raw or normalised metacomunity alpha, rho or gamma 
-diversity components; will calculate metacommunity-level raw or normalised 
-metacomunity alpha, rho or gamma diversity}
+\item{\code{powermean}: raw or normalised metacommunity alpha, rho or gamma
+diversity components; will calculate metacommunity-level raw or normalised
+metacommunity alpha, rho or gamma diversity}
 \item{\code{relativeentropy}: raw or normalised metacommunity beta
-diversity components; will calculate metacommunity-level raw or normalised 
+diversity components; will calculate metacommunity-level raw or normalised
 metacommunity beta diversity}
-\item{\code{metacommunity}: will calculate all metacommunity measures of 
+\item{\code{metacommunity}: will calculate all metacommunity measures of
 diversity}
 }
 }
@@ -60,11 +60,11 @@ metadiv(meta, 0:2)
 
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+S. Mitchell, and L. Matthews. 2016. How to partition diversity.
 arXiv 1404.6520v3:1–9.
 }
 \seealso{
-\code{\link{inddiv}} for type-level diversity and 
+\code{\link{inddiv}} for type-level diversity and
 \code{\link{subdiv}} for subcommunity-level diversity.
 }

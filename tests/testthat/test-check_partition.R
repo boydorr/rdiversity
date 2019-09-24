@@ -1,4 +1,4 @@
-context('Testing check_partition()')
+context("Testing check_partition()")
 
 test_that("The function check_partition() is correct", {
   pop_vec <- data.frame(a = 1, b = 3)
@@ -10,7 +10,7 @@ test_that("The function check_partition() is correct", {
 })
 
 test_that("check_partition() returns the same community dimensions when only a single species is present", {
-  single_sp <- matrix(c(1,3), nrow=1)
+  single_sp <- matrix(c(1, 3), nrow = 1)
   colnames(single_sp) <- c("a", "b")
   rownames(single_sp) <- "sp1"
 
@@ -18,7 +18,7 @@ test_that("check_partition() returns the same community dimensions when only a s
 })
 
 test_that("check_partition() returns the same community dimensions when only a single subcommunity is present", {
-  single_sc <- matrix(c(1,3), ncol=1)
+  single_sc <- matrix(c(1, 3), ncol = 1)
   rownames(single_sc) <- c("sp1", "sp2")
   colnames(single_sc) <- "a"
 

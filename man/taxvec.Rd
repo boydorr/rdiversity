@@ -10,12 +10,12 @@ taxvec(similarity, row)
 \item{similarity}{An object of class \code{similarity} (not containing a
 similarity matrix).}
 
-\item{row}{\code{integer} denoting which row of the similarity matrix is to 
-bw calculated.}
+\item{row}{\code{integer} denoting which row of the similarity matrix is to
+be calculated.}
 }
 \description{
-Calculate the taxonomic similarity of a single species to all other species. 
-Used by \code{metacommunity()} to generate a similarity matrix line-by-line 
+Calculate the taxonomic similarity of a single species to all other species.
+Used by \code{metacommunity()} to generate a similarity matrix line-by-line
 when one was not precalculated by \code{tax2dist()}.
 }
 \examples{
@@ -28,9 +28,9 @@ Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 
 # Assign values for each level (Shimatani's taxonomic distance)
-taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
+tax_distance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 
-dist <- tax2dist(lookup, taxDistance, precompute_dist = FALSE)
+dist <- tax2dist(lookup, tax_distance, precompute_dist = FALSE)
 similarity <- dist2sim(dist, "linear")
 taxvec(similarity, 1)
 }

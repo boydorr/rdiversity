@@ -22,14 +22,12 @@ smatrix <-
     # Calculate pairwise similarity between historic species
     for (row_index in 1:Nhs) {
       # Historic species
-      ib <- hs[row_index]
       daughters <- phangorn::Descendants(ps$tree, parameters$d_node[row_index])
       daughters <- unlist(daughters)
 
       s_matrix_row <- vector()
       for (col_index in 1:Nhs) {
         # Historic species (to compare)
-        jc <- hs[col_index]
         jc_tip <- parameters$tip_node[col_index]
         # Similarity between historic species (i,b) and species (j,c)
         # is non-zero when species j is found within the set of species
@@ -40,8 +38,7 @@ smatrix <-
           s_matrix_row[col_index] <- 0
         }
       }
-      s_matrix[row_index,] <- s_matrix_row
+      s_matrix[row_index, ] <- s_matrix_row
     }
     s_matrix
   }
-

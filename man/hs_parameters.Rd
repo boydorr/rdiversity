@@ -13,5 +13,6 @@ hs_parameters(tree)
 Returns parameters associated with each historic species.
 }
 \description{
-Extracts various parameters associated with historical species.
+Internal function, which extracts various parameters associated with
+historical species.
 }

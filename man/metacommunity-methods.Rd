@@ -75,13 +75,13 @@ calculated from the proportional abundance of terminal taxa}
 rows as types, columns as types, and elements containing pairwise
 similarities between types}
 
-\item{\code{similarity_components}}{list containining the components necessary to
+\item{\code{similarity_components}}{list containing the components necessary to
 calculate similarity. This list is empty when \code{precompute_dist = TRUE}
 when calculating distance. When a pairwise distance matrix is too large and
 \code{precompute_dist = FALSE}, this list contains all the information
 required to calculate pairwise distance between types}
 
-\item{\code{similarity_parameters}}{list containining parameters associated with
+\item{\code{similarity_parameters}}{list containing parameters associated with
 converting pairwise distances to similarities (the \code{dist2sim()}
 arguments)}
 
@@ -112,7 +112,7 @@ associated with each historic species in the phylogeny}
 }}
 
 \examples{
-## Naive-type
+# Naive-type
 partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
 row.names(partition) <- paste0("sp", 1:5)
 partition <- partition / sum(partition)

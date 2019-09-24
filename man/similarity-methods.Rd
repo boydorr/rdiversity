@@ -7,16 +7,16 @@
 \alias{similarity,matrix,missing-method}
 \title{Generate similarity object}
 \usage{
-similarity(similarity, datID)
+similarity(similarity, dat_id)
 
-\S4method{similarity}{matrix,character}(similarity, datID)
+\S4method{similarity}{matrix,character}(similarity, dat_id)
 
-\S4method{similarity}{matrix,missing}(similarity, datID)
+\S4method{similarity}{matrix,missing}(similarity, dat_id)
 }
 \arguments{
 \item{similarity}{similarity matrix}
 
-\item{datID}{object of class \code{character} denoting the type of diversity
+\item{dat_id}{object of class \code{character} denoting the type of diversity
 being calculated. This can be "naive", "genetic", "taxonomic", and so on}
 }
 \value{

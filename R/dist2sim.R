@@ -24,27 +24,27 @@ dist2sim <- function(dist,
                      normalise = TRUE,
                      max_d) {
 
-  if(class(dist)!="distance")
-    stop('The argument `dist` must be of class `distance`.')
+  if (class(dist) != "distance")
+    stop("The argument `dist` must be of class `distance`.")
 
   # If a distance matrix is available, convert it into a similarity matrix
-  if(length(dist@distance) != 0) {
+  if (length(dist@distance) != 0) {
 
     similarity <- dist@distance
-    if(missing(max_d)) max_d <- max(dist@distance)
-    if(normalise) similarity <- similarity/max_d
-    if(transform == substr("linear", 1, nchar(transform))) {
+    if (missing(max_d)) max_d <- max(dist@distance)
+    if (normalise) similarity <- similarity / max_d
+    if (transform == substr("linear", 1, nchar(transform))) {
       similarity <- pmax(1 - k * similarity, 0)
       transform <- "linear"
     }
-    if(transform == substr("exponential", 1, nchar(transform))) {
+    if (transform == substr("exponential", 1, nchar(transform))) {
       similarity <- exp(-k * similarity)
       transform <- "exponential"
     }
 
     return(new("similarity",
                similarity = similarity,
-               datID = dist@datID,
+               dat_id = dist@dat_id,
                components = dist@components,
                parameters = list(transform = transform,
                                  k = k,
@@ -55,51 +55,28 @@ dist2sim <- function(dist,
 
     # If there is no distance matrix...
 
-    if(dist@datID == "taxonomic") {
+    if (dist@dat_id == "taxonomic") {
 
       components <- dist@components
 
-      taxSimilarity <- components$taxDistance
-      if(missing(max_d)) max_d <- max(taxSimilarity)
-      if(normalise) taxSimilarity <- taxSimilarity/max_d
-      if(transform == substr("linear", 1, nchar(transform)))
-        taxSimilarity <- pmax(1 - k * taxSimilarity, 0)
-      if(transform == substr("exponential", 1, nchar(transform)))
-        taxSimilarity <- exp(-k * taxSimilarity)
+      tax_similarity <- components$tax_distance
+      if (missing(max_d)) max_d <- max(tax_similarity)
+      if (normalise) tax_similarity <- tax_similarity / max_d
+      if (transform == substr("linear", 1, nchar(transform)))
+        tax_similarity <- pmax(1 - k * tax_similarity, 0)
+      if (transform == substr("exponential", 1, nchar(transform)))
+        tax_similarity <- exp(-k * tax_similarity)
 
       new_components <- append(components,
-                               list(taxSimilarity = taxSimilarity), 3)
+                               list(tax_similarity = tax_similarity), 3)
 
       return(new("similarity",
-                 datID = dist@datID,
+                 dat_id = dist@dat_id,
                  components = new_components,
                  parameters = list(transform = transform,
                                    k = k,
                                    normalise = normalise,
                                    max_d = max_d)))
-
     }
-
   }
-
-
-  # if(normalise) distance <- distance/max_d
-  #
-  # if(transform == substr("linear", 1, nchar(transform)))
-  #   Z <- pmax(1 - k * distance, 0)
-  # if(transform == substr("exponential", 1, nchar(transform)))
-  #   Z <- exp(-k * distance)
-  #
-
-
-  # if(dist@datID == "phylogenetic") {
-  #   Z <- dist@distance
-  #
-  #   return(new("similarity",
-  #       similarity = Z,
-  #       datID = dist@datID,
-  #      ))
-  # }
 }
-
-

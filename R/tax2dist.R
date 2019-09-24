@@ -4,7 +4,7 @@
 #'
 #' @param lookup \code{data.frame} with colnames corresponding to nested
 #' taxonomic levels, e.g. c('Species', 'Genus', 'Family', 'Subclass')
-#' @param taxDistance \code{vector} with the distances attributed to
+#' @param tax_distance \code{vector} with the distances attributed to
 #' taxonomic levels defined in \code{lookup}. The highest distance is the
 #' distance attributed to species that are not the same at any recorded
 #' taxonomic level. e.g. c(Species = 0, Genus = 1, Family = 2, Subclass = 3,
@@ -31,24 +31,23 @@
 #' lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 #'
 #' # Assign values for each level (Shimatani's taxonomic distance)
-#' taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
+#' tax_distance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 #'
 #' # Generate pairwise distances
-#' distance <- tax2dist(lookup, taxDistance)
+#' distance <- tax2dist(lookup, tax_distance)
 #' similarity <- dist2sim(distance, "linear")
 #'
 tax2dist <- function(lookup,
-                     taxDistance,
-                     precompute_dist = TRUE)
-{
-  taxDistance <- sort(taxDistance)
-  taxCols <- names(taxDistance)[-length(taxDistance)]
-  if (length(intersect(taxCols, colnames(lookup))) != length(taxCols))
+                     tax_distance,
+                     precompute_dist = TRUE) {
+  tax_distance <- sort(tax_distance)
+  tax_cols <- names(tax_distance)[-length(tax_distance)]
+  if (length(intersect(tax_cols, colnames(lookup))) != length(tax_cols))
     stop("The columns in the taxonomy have to include the columns mentioned in the distance vector")
-  lookup <- lookup[,taxCols]
+  lookup <- lookup[, tax_cols]
 
 
-  if(is.numeric(precompute_dist)) {
+  if (is.numeric(precompute_dist)) {
     n <- apply(lookup, 2, function(x) length(unique(x)))
     S <- max(n)
     precompute_dist <- ifelse(S > precompute_dist, FALSE, TRUE)
@@ -56,46 +55,46 @@ tax2dist <- function(lookup,
 
   # Calculate distance matrix
 
-  if(precompute_dist) {
+  if (precompute_dist) {
     entries <- row.names(lookup)
     n <- length(entries)
     dist <- matrix(NA, nrow = n, ncol = n)
-    colnames(dist) <- unlist(lookup[,1])
-    row.names(dist) <- unlist(lookup[,1])
-    other <- taxDistance[length(taxDistance)]
+    colnames(dist) <- unlist(lookup[, 1])
+    row.names(dist) <- unlist(lookup[, 1])
+    other <- tax_distance[length(tax_distance)]
 
     for (i in seq_along(entries)) {
       for (j in seq_along(entries)) {
-        row <- as.character(lookup[i,])
-        column <- as.character(lookup[j,])
-        if(any(row==column))
-          dist[i,j] <- taxDistance[min(which(row==column))] else
-            dist[i,j] <- other
+        row <- as.character(lookup[i, ])
+        column <- as.character(lookup[j, ])
+        if (any(row == column))
+          dist[i, j] <- tax_distance[min(which(row == column))] else
+            dist[i, j] <- other
       }
     }
 
     return(new("distance",
                distance = dist,
-               datID = "taxonomic",
+               dat_id = "taxonomic",
                components = list(precompute = TRUE,
-                                            taxDistance = taxDistance)))
+                                            tax_distance = tax_distance)))
 
     # Don't calculate distance matrix
 
   }else {
     lookup <- as.matrix(lookup)
-    taxFac <- taxfac(lookup)
-    bits <- apply(taxFac, 2, function(x) pmax(ceiling(log(max(x)+1, 2)),1))
-    taxID <- taxid(taxFac)
-    taxMask <- taxmask(lookup)
+    tax_fac <- taxfac(lookup)
+    bits <- apply(tax_fac, 2, function(x) pmax(ceiling(log(max(x) + 1, 2)), 1))
+    tax_id <- taxid(tax_fac)
+    tax_mask <- taxmask(lookup)
 
     return(new("distance",
-               datID = "taxonomic",
+               dat_id = "taxonomic",
                components = list(precompute = FALSE,
                                  ordinariness = "taxvec",
-                                 taxDistance = taxDistance,
-                                 taxID = taxID,
-                                 taxMask = taxMask,
-                                 taxBits = bits)))
+                                 tax_distance = tax_distance,
+                                 tax_id = tax_id,
+                                 tax_mask = tax_mask,
+                                 tax_bits = bits)))
   }
 }

@@ -47,5 +47,3 @@ phy_struct <- function(tree, partition) {
        parameters = parameters,
        tree = tree)
 }
-
-

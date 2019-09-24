@@ -1,6 +1,7 @@
 #' Historical species parameters
 #'
-#' Extracts various parameters associated with historical species.
+#' Internal function, which extracts various parameters associated with
+#' historical species.
 #'
 #' @param tree object of class \code{phylo}.
 #'
@@ -8,21 +9,21 @@
 #'
 hs_parameters <- function(tree) {
   # Perform checks
-  if(class(tree) != "phylo") stop("'tree' argument must be class phylo.")
+  if (class(tree) != "phylo") stop("'tree' argument must be class phylo.")
 
   # If root has a length
-  root_ancestor = 0
+  root_ancestor <- 0
   long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)
 
   # Ancestral species
   ancestral_nodes <- lapply(as.list(seq_along(tree$tip.label)), function(x) {
-    res <- c(x, phangorn::Ancestors(tree, x, 'all'))
-    if(long_root) c(res, root_ancestor) else res
+    res <- c(x, phangorn::Ancestors(tree, x, "all"))
+    if (long_root) c(res, root_ancestor) else res
   })
 
   root_node <- length(tree$tip.label) + 1
 
-  if(long_root) {
+  if (long_root) {
     tree$edge <- rbind(tree$edge, c(0, root_node))
     tree$edge.length <- c(tree$edge.length, tree$root.edge)
   }
@@ -30,13 +31,14 @@ hs_parameters <- function(tree) {
   # Historic species data for each present day species
   parameters <- lapply(seq_along(ancestral_nodes), function(x) {
     daughters <- ancestral_nodes[[x]]
-    if(long_root) daughters <- c(daughters, 0)
+    if (long_root) daughters <- c(daughters, 0)
     daughters <- daughters[-length(daughters)]
-    res <- lapply(as.list(daughters), function(y) tree$edge[tree$edge[,2] %in% y,])
+    res <- lapply(as.list(daughters), function(y)
+      tree$edge[tree$edge[, 2] %in% y, ])
     res <- do.call(rbind.data.frame, res)
     res <- cbind.data.frame(tree$tip.label[x], x, res)
     colnames(res) <- c("tip_label", "tip_node", "a_node", "d_node")
-    lengths <- sapply(res$d_node, function(x) which(tree$edge[,2] %in% x))
+    lengths <- sapply(res$d_node, function(x) which(tree$edge[, 2] %in% x))
     lengths <- tree$edge.length[lengths]
     cbind.data.frame(res, lengths)
   })
@@ -49,4 +51,3 @@ hs_parameters <- function(tree) {
   parameters <- cbind.data.frame(hs_names, parameters)
   tibble::as_data_frame(parameters)
 }
-

@@ -19,7 +19,7 @@ zmatrix <- function(partition, s, ps){
   parameters <- ps$parameters
   structure_matrix <- ps$structure
   T_bar <- ps$tbar
-  L_j <- colSums(structure_matrix*T_bar)
+  L_j <- colSums(structure_matrix * T_bar)
   L_j <- L_j[match(parameters$tip_label, colnames(structure_matrix))]
 
   # Identify which species are present
@@ -34,10 +34,9 @@ zmatrix <- function(partition, s, ps){
 
   new("similarity",
       similarity = z,
-      datID = "phybranch",
+      dat_id = "phybranch",
       parameters = list(transform = NA,
                         k = NA,
                         normalise = NA,
                         max_d = NA))
 }
-

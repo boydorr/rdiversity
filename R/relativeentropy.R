@@ -1,6 +1,6 @@
 #' Calculate relative entropy
 #'
-#' Functions to coerse an object into a \code{relativeentropy}
+#' Functions to coerce an object into a \code{relativeentropy}
 #' (\code{raw_beta()} and/or \code{norm_beta()}).
 #'
 #' @param results \code{data.frame} containing rdiversity outputs associated
@@ -28,14 +28,14 @@
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric},
 #' with rows as types, columns as subcommunities, and elements containing
 #' weights of types within a subcommunity
-#' @field datID object of class \code{character} describing the class of
+#' @field dat_id object of class \code{character} describing the class of
 #' distance / similarity being used, e.g. "naive", "taxonomic", and so on
-#' @field similarity_components list containining the components necessary to
+#' @field similarity_components list containing the components necessary to
 #' calculate similarity. This list is empty when \code{precompute_dist = TRUE}
 #' when calculating distance. When a pairwise distance matrix is too large and
 #' \code{precompute_dist = FALSE}, this list contains all the information
 #' required to calculate pairwise distance between types
-#' @field similarity_parameters list containining parameters associated with
+#' @field similarity_parameters list containing parameters associated with
 #' converting pairwise distances to similarities (the \code{dist2sim()}
 #' arguments)
 #'
@@ -53,14 +53,14 @@
 #' class(a)
 #'
 relativeentropy <- function(results, meta, tag) {
-  new('relativeentropy',
+  new("relativeentropy",
       results = results,
       measure = tag,
       type_abundance = meta@type_abundance,
       ordinariness = meta@ordinariness,
       subcommunity_weights = meta@subcommunity_weights,
       type_weights = meta@type_weights,
-      datID = meta@datID,
+      dat_id = meta@dat_id,
       similarity_components = meta@similarity_components,
       similarity_parameters = meta@similarity_parameters)
 }
@@ -72,14 +72,13 @@ relativeentropy <- function(results, meta, tag) {
 #'
 setMethod(f = "show", signature = "relativeentropy",
           definition = function(object) {
-            cat('Object of class relativeentropy, containing:\n')
-            cat('@results: inddiv() results\n')
-            cat('@measure: measure\n')
-            cat('@type_abundance: Matrix of relative abundances (',
-                ncol(object@type_abundance), 'subcommunities,',
-                nrow(object@type_abundance), 'types )\n')
-            cat('@ordinariness: Matrix of type ordinariness\n')
-            cat('@subcommunity_weights: Vector of subcommunity weights\n')
-            cat('@type_weights: Vector of type weights\n')
+            cat("Object of class relativeentropy, containing:\n")
+            cat("@results: inddiv() results\n")
+            cat("@measure: measure\n")
+            cat("@type_abundance: Matrix of relative abundances (",
+                ncol(object@type_abundance), "subcommunities,",
+                nrow(object@type_abundance), "types )\n")
+            cat("@ordinariness: Matrix of type ordinariness\n")
+            cat("@subcommunity_weights: Vector of subcommunity weights\n")
+            cat("@type_weights: Vector of type weights\n")
           } )
-

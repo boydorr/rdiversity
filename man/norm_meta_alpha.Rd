@@ -15,9 +15,9 @@ norm_meta_alpha(meta, qs)
 \code{norm_meta_alpha} returns a standard output of class \code{rdiv}
 }
 \description{
-Calculates similarity-sensitive normalised metacommunity alpha diversity 
-(the average similarity-sensitive diversity of subcommunities). This 
-measure may be calculated for a series of orders, repesented as a vector
+Calculates similarity-sensitive normalised metacommunity alpha diversity
+(the average similarity-sensitive diversity of subcommunities). This
+measure may be calculated for a series of orders, represented as a vector
 of \code{qs}.
 }
 \examples{
@@ -31,7 +31,7 @@ norm_meta_alpha(meta, 0:2)
 
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+S. Mitchell, and L. Matthews. 2014. How to partition diversity.
 arXiv 1404.6520:1–9.
 }

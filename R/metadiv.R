@@ -4,13 +4,13 @@
 #'
 #' \code{data} may be input as one of three different classes:
 #' \itemize{
-#' \item{\code{powermean}: raw or normalised metacomunity alpha, rho or gamma 
-#' diversity components; will calculate metacommunity-level raw or normalised 
-#' metacomunity alpha, rho or gamma diversity}
+#' \item{\code{powermean}: raw or normalised metacommunity alpha, rho or gamma
+#' diversity components; will calculate metacommunity-level raw or normalised
+#' metacommunity alpha, rho or gamma diversity}
 #' \item{\code{relativeentropy}: raw or normalised metacommunity beta
-#' diversity components; will calculate metacommunity-level raw or normalised 
+#' diversity components; will calculate metacommunity-level raw or normalised
 #' metacommunity beta diversity}
-#' \item{\code{metacommunity}: will calculate all metacommunity measures of 
+#' \item{\code{metacommunity}: will calculate all metacommunity measures of
 #' diversity}
 #' }
 #'
@@ -18,13 +18,13 @@
 #'
 #' @return \code{metadiv()} returns a standard output of class \code{rdiv}
 #' @exportMethod metadiv
-#' 
-#' @seealso \code{\link{inddiv}} for type-level diversity and 
+#'
+#' @seealso \code{\link{inddiv}} for type-level diversity and
 #' \code{\link{subdiv}} for subcommunity-level diversity.
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-#' S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
+#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
 #' arXiv 1404.6520v3:1–9.
-#' 
+#'
 #' @examples
 #' # Define metacommunity
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -55,24 +55,24 @@ setMethod(f = "metadiv", signature = "powermean",
             # Calculate
             results <- lapply(seq_along(qs), function(x) {
               subdiv <- sapply(1:ncol(data@results), function(y)
-                power_mean(data@results[,y], 1-qs[x], data@type_weights[,y]))
-              power_mean(subdiv, 1-qs[x], data@subcommunity_weights)
+                power_mean(data@results[, y], 1 - qs[x], data@type_weights[, y]))
+              power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
             })
             # Tidy up
-            output <- do.call(cbind,results)
+            output <- do.call(cbind, results)
             row.names(output) <- "metacommunity"
             colnames(output) <- qs
             output <- reshape2::melt(output)
             # Output
             param <- data@similarity_parameters
             output <- cbind.data.frame(measure = data@measure,
-                                       q = output$Var2, 
+                                       q = output$Var2,
                                        type_level = "types",
                                        type_name = "",
                                        partition_level = "metacommunity",
                                        partition_name = "",
-                                       diversity = output$value, 
-                                       datID = data@datID,
+                                       diversity = output$value,
+                                       dat_id = data@dat_id,
                                        transformation = param$transform,
                                        normalised = param$normalise,
                                        k = param$k,
@@ -89,24 +89,24 @@ setMethod(f = "metadiv", signature = "relativeentropy",
             # Calculate
             results <- lapply(seq_along(qs), function(x) {
               subdiv <- sapply(1:ncol(data@results), function(y)
-                power_mean(data@results[,y], qs[x]-1, data@type_weights[,y]))
-              power_mean(subdiv, 1-qs[x], data@subcommunity_weights)
+                power_mean(data@results[, y], qs[x] - 1, data@type_weights[, y]))
+              power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
             })
             # Tidy up
-            output <- do.call(cbind,results)
+            output <- do.call(cbind, results)
             row.names(output) <- "metacommunity"
             colnames(output) <- qs
             output <- reshape2::melt(output)
             # Output
             param <- data@similarity_parameters
             output <- cbind.data.frame(measure = data@measure,
-                                       q = output$Var2, 
+                                       q = output$Var2,
                                        type_level = "types",
                                        type_name = "",
                                        partition_level = "metacommunity",
                                        partition_name = "",
-                                       diversity = output$value, 
-                                       datID = data@datID,
+                                       diversity = output$value,
+                                       dat_id = data@dat_id,
                                        transformation = param$transform,
                                        normalised = param$normalise,
                                        k = param$k,

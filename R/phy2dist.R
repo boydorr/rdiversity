@@ -19,7 +19,7 @@ phy2dist <- function(tree, precompute_dist = TRUE) {
 
     return(new("distance",
                distance = dist,
-               datID = "phydist"))
+               dat_id = "phydist"))
 
   # }else {
   #
@@ -27,7 +27,7 @@ phy2dist <- function(tree, precompute_dist = TRUE) {
   #   tidy_tree <- as.data.frame(tidy_tree)
   #
   #   return(new("distance",
-  #              datID = "phylodist",
+  #              dat_id = "phylodist",
   #              ordinariness = "phyvec",
   #              tree = tidy_tree))
   # }

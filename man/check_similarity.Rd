@@ -7,7 +7,7 @@
 check_similarity(similarity, partition)
 }
 \arguments{
-\item{similarity}{two-dimensinal \code{matrix} of mode \code{numeric};
+\item{similarity}{two-dimensional \code{matrix} of mode \code{numeric};
 contains pair-wise similarity between types.}
 
 \item{partition}{two-dimensional \code{matrix} of mode \code{numeric}

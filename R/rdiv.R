@@ -43,7 +43,7 @@ setGeneric(name = "rdiv",
 #'
 setMethod(f = "rdiv", signature = "data.frame",
           definition = function(res) {
-            new('rdiv', res)
+            new("rdiv", res)
           } )
 
 
@@ -54,7 +54,7 @@ setMethod(f = "rdiv", signature = "data.frame",
 setMethod(f = "rdiv", signature = "list",
           definition = function(res) {
             res <- do.call(rbind.data.frame, res)
-            new('rdiv', res)
+            new("rdiv", res)
           } )
 
 
@@ -68,6 +68,3 @@ setMethod(f = "show", signature = "rdiv",
             object <- tibble::as_data_frame(object)
             print(object)
           } )
-
-
-

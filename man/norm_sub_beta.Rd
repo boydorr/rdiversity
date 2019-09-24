@@ -15,9 +15,9 @@ norm_sub_beta(meta, qs)
 \code{norm_sub_beta} returns a standard output of class \code{rdiv}
 }
 \description{
-Calculates similarity-sensitive normalised subcommunity beta diversity (an 
-estimate of the effective number of distinct subcommunities). This 
-measure may be calculated for a series of orders, repesented as a vector
+Calculates similarity-sensitive normalised subcommunity beta diversity (an
+estimate of the effective number of distinct subcommunities). This
+measure may be calculated for a series of orders, represented as a vector
 of \code{qs}.
 }
 \examples{
@@ -31,7 +31,7 @@ norm_sub_beta(meta, 0:2)
 
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+S. Mitchell, and L. Matthews. 2014. How to partition diversity.
 arXiv 1404.6520:1–9.
 }

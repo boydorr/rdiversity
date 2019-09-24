@@ -21,7 +21,7 @@ Values generated from \code{raw_gamma()} may be input into \code{subdiv()} and
 \code{metadiv()} to calculate subcommunity and metacommunity gamma diversity.
 }
 \examples{
-pop <- data.frame(a = c(1,3), b = c(1,1))
+pop <- cbind.data.frame(A = c(1,1), B = c(2,0), C = c(3,1))
 row.names(pop) <- paste0("sp", 1:2)
 pop <- pop/sum(pop)
 meta <- metacommunity(pop)
@@ -33,7 +33,7 @@ metadiv(g, 1)
 
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+S. Mitchell, and L. Matthews. 2014. How to partition diversity.
 arXiv 1404.6520:1–9.
 }

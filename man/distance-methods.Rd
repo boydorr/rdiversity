@@ -7,16 +7,16 @@
 \alias{distance,matrix,missing-method}
 \title{Generate distance object}
 \usage{
-distance(distance, datID)
+distance(distance, dat_id)
 
-\S4method{distance}{matrix,character}(distance, datID)
+\S4method{distance}{matrix,character}(distance, dat_id)
 
-\S4method{distance}{matrix,missing}(distance, datID)
+\S4method{distance}{matrix,missing}(distance, dat_id)
 }
 \arguments{
 \item{distance}{distance matrix}
 
-\item{datID}{object of class \code{character} denoting the type of diversity
+\item{dat_id}{object of class \code{character} denoting the type of diversity
 being calculated. This can be "naive", "genetic", "taxonomic", and so on}
 }
 \value{

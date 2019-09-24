@@ -2,7 +2,7 @@
 #'
 #' \code{check_similarity()} is used to validate similarity matrices.
 #'
-#' @param similarity two-dimensinal \code{matrix} of mode \code{numeric};
+#' @param similarity two-dimensional \code{matrix} of mode \code{numeric};
 #' contains pair-wise similarity between types.
 #' @param partition two-dimensional \code{matrix} of mode \code{numeric}
 #' with rows as types (species), columns as subcommunities, and each
@@ -16,19 +16,19 @@
 #' input as an argument.
 #'
 check_similarity <- function(similarity, partition) {
-  if(is.data.frame(similarity)) similarity <- as.matrix(similarity)
+  if (is.data.frame(similarity)) similarity <- as.matrix(similarity)
 
-  if(any(similarity[!is.na(similarity)]<0))
-    stop('similarity matrix elements must take positive values.')
+  if (any(similarity[!is.na(similarity)] < 0))
+    stop("similarity matrix elements must take positive values.")
 
-  if(ncol(similarity)!=nrow(similarity))
-    stop('similarity matrix must be square.')
+  if (ncol(similarity) != nrow(similarity))
+    stop("similarity matrix must be square.")
 
-  if(!missing(partition)) {
-    if(nrow(similarity)!=nrow(partition))
-      stop('similarity and partition matrices must have equal types.')
+  if (!missing(partition)) {
+    if (nrow(similarity) != nrow(partition))
+      stop("similarity and partition matrices must have equal types.")
 
-    if(is.null(row.names(similarity))){
+    if (is.null(row.names(similarity))){
       row.names(similarity) <- row.names(partition)
       colnames(similarity) <- row.names(partition)
     }
@@ -36,4 +36,3 @@ check_similarity <- function(similarity, partition) {
 
   similarity
 }
-

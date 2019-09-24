@@ -22,7 +22,7 @@ set.seed(1014)
 In the na&iuml;ve-type case, we consider all species to be completely distinct. 
 ```{r}
 # Populate partition matrix
-partition <- matrix(sample(8), ncol=2)
+partition <- matrix(sample(8), ncol = 2)
 rownames(partition) <- paste0("sp", 1:4)
 colnames(partition) <- LETTERS[1:2]
 partition <- partition / sum(partition)
@@ -51,16 +51,16 @@ Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
 lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 
 # Assign values for each level (Shimatani's taxonomic distance)
-taxDistance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
+tax_distance <- c(Species = 0, Genus = 1, Family = 2, Subclass = 3, Other = 4)
 
 # Populate partition matrix
-partition <- matrix(sample(8), ncol=2)
+partition <- matrix(sample(8), ncol = 2)
 rownames(partition) <- Species
 colnames(partition) <- LETTERS[1:2]
 partition <- partition / sum(partition)
 
 # Generate pairwise distances and similarities
-distance <- tax2dist(lookup, taxDistance, FALSE)
+distance <- tax2dist(lookup, tax_distance, FALSE)
 similarity <- dist2sim(distance, "linear")
 
 # Generate metacommunity object
@@ -119,7 +119,7 @@ partition <- matrix(sample(6), nrow = 3)
 rownames(partition) <- paste0("sp", 1:3)
 partition <- partition / sum(partition)
 
-similarity <- matrix(c(1,.8,0,.8,1,.1,0,.1,1), nrow = 3)
+similarity <- matrix(c(1, 0.8, 0, 0.8, 1, 0.1, 0, 0.1, 1), nrow = 3)
 rownames(similarity) <- paste0("sp", 1:3)
 colnames(similarity) <- paste0("sp", 1:3)
 similarity <- similarity(similarity, "my_functional")

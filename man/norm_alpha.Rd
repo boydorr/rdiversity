@@ -18,7 +18,7 @@ normalised alpha diversity.
 }
 \details{
 Values generated from \code{norm_alpha()} may be input into \code{subdiv()}
-and \code{metadiv()} to calculate normalised subcommunity and metacommunity 
+and \code{metadiv()} to calculate normalised subcommunity and metacommunity
 alpha diversity.
 }
 \examples{
@@ -34,7 +34,7 @@ metadiv(a, 1)
 
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+S. Mitchell, and L. Matthews. 2014. How to partition diversity.
 arXiv 1404.6520:1–9.
 }

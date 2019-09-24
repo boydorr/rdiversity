@@ -12,12 +12,12 @@ setOldClass("phylo")
 #' @field similarity two-dimensional \code{matrix} of mode \code{numeric}
 #' with rows as types, columns as types, and elements containing the pairwise
 #' similarity of types
-#' @field similarity_components list containining the components necessary to
+#' @field similarity_components list containing the components necessary to
 #' calculate similarity. This list is empty when \code{precompute_dist = TRUE}
 #' when calculating distance. When a pairwise distance matrix is too large and
 #' \code{precompute_dist = FALSE}, this list contains all the information
 #' required to calculate pairwise distance between types
-#' @field similarity_parameters list containining parameters associated with
+#' @field similarity_parameters list containing parameters associated with
 #' converting pairwise distances to similarities (the \code{dist2sim()}
 #' arguments)
 #' @field ordinariness two-dimensional \code{matrix} of mode \code{numeric}
@@ -28,7 +28,7 @@ setOldClass("phylo")
 #' @field type_weights two-dimensional \code{matrix} of mode \code{numeric},
 #' with rows as types, columns as subcommunities, and elements containing
 #' weights of types within a subcommunity
-#' @field datID object of class \code{character} describing the class of
+#' @field dat_id object of class \code{character} describing the class of
 #' distance / similarity being used, e.g. "naive", "taxonomic", and so on
 #' @field raw_abundance [Phylogenetic] two-dimensional \code{matrix} of mode
 #' \code{numeric} with rows as types, columns as subcommunities, and elements
@@ -51,8 +51,7 @@ setClass("metacommunity",
                    ordinariness = "matrix",
                    subcommunity_weights = "numeric",
                    type_weights = "matrix",
-                   datID = "character",
+                   dat_id = "character",
                    raw_abundance = "matrix",
                    raw_structure = "matrix",
                    parameters = "data.frame"))
-

@@ -18,7 +18,7 @@ diversity.
 }
 \details{
 Values generated from \code{raw_rho()} may be input into \code{subdiv()} and
-\code{metadiv()} to calculate raw subcommunity and metacommunity rho 
+\code{metadiv()} to calculate raw subcommunity and metacommunity rho
 diversity.
 }
 \examples{
@@ -34,7 +34,7 @@ metadiv(r, 1)
 
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-S. Mitchell, and L. Matthews. 2014. How to partition diversity. 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+S. Mitchell, and L. Matthews. 2014. How to partition diversity.
 arXiv 1404.6520:1–9.
 }

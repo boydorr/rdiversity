@@ -20,10 +20,10 @@ Weighted power mean
 \code{power_mean()} calculates the power mean of a set of values.
 }
 \details{
-Calculates the order-th power mean of a single 
-set of non-negative values, weighted by weights; by default, weights are 
-equal and order is 1, so this is just the arithmetic mean. Equal weights 
-and a order of 0 gives the geometric mean, and an order of -1 gives the 
+Calculates the order-th power mean of a single
+set of non-negative values, weighted by weights; by default, weights are
+equal and order is 1, so this is just the arithmetic mean. Equal weights
+and a order of 0 gives the geometric mean, and an order of -1 gives the
 harmonic mean.
 }
 \examples{

@@ -15,9 +15,9 @@ raw_sub_alpha(meta, qs)
 \code{raw_sub_alpha} returns a standard output of class \code{rdiv}
 }
 \description{
-Calculates similarity sensitive raw subcommunity alpha diversity (an 
+Calculates similarity sensitive raw subcommunity alpha diversity (an
 estimate of naive-community metacommunity diversity). This measure may be
-calculated for a series of orders, repesented as a vector of \code{qs}.
+calculated for a series of orders, represented as a vector of \code{qs}.
 }
 \examples{
 pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -30,7 +30,7 @@ raw_sub_alpha(meta, 0:2)
 
 }
 \references{
-Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt, 
-S. Mitchell, and L. Matthews. 2016. How to partition diversity. 
+Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+S. Mitchell, and L. Matthews. 2016. How to partition diversity.
 arXiv 1404.6520v3:1–9.
 }

@@ -4,13 +4,13 @@
 \alias{taxid}
 \title{taxid}
 \usage{
-taxid(taxFac)
+taxid(tax_fac)
 }
 \arguments{
-\item{taxFac}{Output of function \code{taxFac{}}.}
+\item{tax_fac}{Output of function \code{tax_fac{}}.}
 }
 \description{
-Generate taxanomic codes for each species by converting species, genus, 
+Generate taxanomic codes for each species by converting species, genus,
 family, and subclass into factors
 }
 \examples{

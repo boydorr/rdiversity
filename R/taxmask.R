@@ -1,6 +1,6 @@
 #' taxmask
 #'
-#' @param lookup lskj
+#' @param lookup Lookup table
 #'
 #' @examples
 #' \dontrun{
@@ -22,7 +22,7 @@ taxmask <- function(lookup) {
   output <- lapply(seq_along(bits), function(x) {
     n <- sum(bits[x:length(bits)])
     ones <- rep(TRUE, n)
-    zeroes <- rep(FALSE, total-n)
+    zeroes <- rep(FALSE, total - n)
     tmp <- c(zeroes, ones)
     tmp <- binaryLogic::as.binary(tmp, logic = T)
   })

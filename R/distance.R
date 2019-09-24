@@ -3,7 +3,7 @@
 #' Container for class \code{distance}.
 #'
 #' @param distance distance matrix
-#' @param datID object of class \code{character} denoting the type of diversity
+#' @param dat_id object of class \code{character} denoting the type of diversity
 #' being calculated. This can be "naive", "genetic", "taxonomic", and so on
 #'
 #' @return \code{distance()} returns an object of class \code{distance}.
@@ -12,7 +12,7 @@
 #' @exportMethod distance
 #'
 setGeneric(name = "distance",
-           def = function(distance, datID) {
+           def = function(distance, dat_id) {
              standardGeneric("distance")
            } )
 
@@ -21,11 +21,11 @@ setGeneric(name = "distance",
 #' @aliases distance
 #'
 setMethod(f = "distance",
-          signature(distance = "matrix", datID = "character"),
-          definition = function(distance, datID) {
-            new('distance',
+          signature(distance = "matrix", dat_id = "character"),
+          definition = function(distance, dat_id) {
+            new("distance",
                 distance = distance,
-                datID = datID)
+                dat_id = dat_id)
           } )
 
 
@@ -33,11 +33,11 @@ setMethod(f = "distance",
 #' @aliases distance
 #'
 setMethod(f = "distance",
-          signature(distance = "matrix", datID = "missing"),
-          definition = function(distance, datID) {
-            new('distance',
+          signature(distance = "matrix", dat_id = "missing"),
+          definition = function(distance, dat_id) {
+            new("distance",
                 distance = distance,
-                datID = "UserGenerated")
+                dat_id = "UserGenerated")
           } )
 
 
@@ -46,6 +46,5 @@ setMethod(f = "distance",
 #'
 setMethod(f = "show", signature = "distance",
           definition = function(object) {
-            cat('Object of class `distance`, containing either:\n (1) a distance matrix; or\n (2) all of the data required to calculate a distance matrix.')
+            cat("Object of class `distance`, containing either:\n (1) a distance matrix; or\n (2) all of the data required to calculate a distance matrix.")
           } )
-
