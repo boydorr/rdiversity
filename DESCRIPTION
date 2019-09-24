@@ -28,7 +28,8 @@ Suggests:
     ggplot2,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 RoxygenNote: 6.1.1
 Collate:
     'chainsaw.R'
