@@ -26,8 +26,6 @@
 #' @docType package
 #'
 #' @import methods
-#' @import phangorn
-#' @import plyr
 #' @importFrom binaryLogic as.binary
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
