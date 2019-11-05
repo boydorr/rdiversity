@@ -17,7 +17,7 @@ hs_parameters <- function(tree) {
 
   # Ancestral species
   ancestral_nodes <- lapply(as.list(seq_along(tree$tip.label)), function(x) {
-    res <- c(x, Ancestors(tree, x, "all"))
+    res <- c(x, ancestral_nodes(tree, x))
     if (long_root) c(res, root_ancestor) else res
   })
 
@@ -52,3 +52,19 @@ hs_parameters <- function(tree) {
   parameters <- cbind.data.frame(hs_names, parameters)
   tibble::as_data_frame(parameters)
 }
+
+
+#' ancestral_nodes
+#'
+ancestral_nodes <- function(tree, node) {
+  x <- node
+  store <- vector()
+  continue <- TRUE
+  while(continue) {
+    x <- tree$edge[tree$edge[,2] == x][1]
+    store <- c(store, x)
+    continue <- any(tree$edge[,2] == x)
+  }
+  store
+}
+

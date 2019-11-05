@@ -27,11 +27,10 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    covr
+    covr,
+    phangorn
 RoxygenNote: 6.1.1
 Collate:
-    'Ancestors.R'
-    'Descendants.R'
     'chainsaw.R'
     'check_partition.R'
     'check_phypartition.R'

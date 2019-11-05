@@ -7,6 +7,14 @@
 #' @return Returns an \eqn{hS x hS} matrix; pair-wise ultrametric-similarity of
 #' historic species.
 #'
+#' @examples
+#' tree <- ape::rtree(10)
+#' partition <- matrix(rep(1, 500), nrow = 10)
+#' partition <- as.data.frame(partition / sum(partition))
+#' rownames(partition) <- tree$tip.label
+#' colnames(partition) <- LETTERS[seq_len(ncol(partition))]
+#' ps <- phy_struct(tree, partition)
+#'
 smatrix <-
   function(ps) {
     parameters <- ps$parameters
@@ -22,7 +30,7 @@ smatrix <-
     # Calculate pairwise similarity between historic species
     for (row_index in 1:Nhs) {
       # Historic species
-      daughters <- Descendants(ps$tree, parameters$d_node[row_index])
+      daughters <- phangorn::Descendants(ps$tree, parameters$d_node[row_index])
       daughters <- unlist(daughters)
 
       s_matrix_row <- vector()
@@ -42,3 +50,20 @@ smatrix <-
     }
     s_matrix
   }
+
+
+# descendant_tips <- function(tree, node) {
+#   x <- node
+#
+#   store <- vector()
+#   continue <- TRUE
+#   while(continue) {
+#     y <- tree$edge[which(tree$edge[, 1] == x), 2]
+#     sapply(y, function(i) tree$edge[which(tree$edge[, 1] == i), 2])
+#
+#     store <- c(store, x)
+#     continue <- any(tree$edge[,2] == x)
+#   }
+#   store
+# }
+
