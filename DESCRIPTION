@@ -17,8 +17,6 @@ License: GPL-3
 Imports:
     binaryLogic,
     methods,
-    phangorn,
-    plyr,
     reshape2,
     stats,
     tibble,
@@ -32,6 +30,8 @@ Suggests:
     covr
 RoxygenNote: 6.1.1
 Collate:
+    'Ancestors.R'
+    'Descendants.R'
     'chainsaw.R'
     'check_partition.R'
     'check_phypartition.R'
@@ -39,7 +39,6 @@ Collate:
     'class-distance.R'
     'class-metacommunity.R'
     'class-powermean.R'
-    'class-rdiv.R'
     'class-relativeentropy.R'
     'class-similarity.R'
     'similarity.R'
@@ -60,7 +59,6 @@ Collate:
     'phy_struct.R'
     'power_mean.R'
     'powermean.R'
-    'rdiv.R'
     'rdiversity-package.R'
     'relativeentropy.R'
     'repartition.R'

@@ -6,3 +6,5 @@
 ^\.travis\.yml$
 ^README\.html$
 ^cran-comments\.md$
+^Dockerfile$
+^codecov\.yml$
