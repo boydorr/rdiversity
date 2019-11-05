@@ -1,6 +1,6 @@
 #' Descendants
 #'
-#' Function taken from the phangorn package
+#' Function taken from the Phangorn package
 #'
 Descendants <- function (x, node, type = c("tips", "children", "all")) {
   type <- match.arg(type)

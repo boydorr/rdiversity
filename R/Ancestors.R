@@ -1,6 +1,6 @@
 #' Ancestors
 #'
-#' Function taken from the phangorn package
+#' Function taken from the Phangorn package
 #'
 Ancestors <- function (x, node, type = c("all", "parent")) {
   parents <- x$edge[, 1]
