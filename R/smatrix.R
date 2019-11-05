@@ -22,7 +22,7 @@ smatrix <-
     # Calculate pairwise similarity between historic species
     for (row_index in 1:Nhs) {
       # Historic species
-      daughters <- phangorn::Descendants(ps$tree, parameters$d_node[row_index])
+      daughters <- Descendants(ps$tree, parameters$d_node[row_index])
       daughters <- unlist(daughters)
 
       s_matrix_row <- vector()

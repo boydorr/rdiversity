@@ -17,7 +17,7 @@ hs_parameters <- function(tree) {
 
   # Ancestral species
   ancestral_nodes <- lapply(as.list(seq_along(tree$tip.label)), function(x) {
-    res <- c(x, phangorn::Ancestors(tree, x, "all"))
+    res <- c(x, Ancestors(tree, x, "all"))
     if (long_root) c(res, root_ancestor) else res
   })
 
@@ -38,7 +38,8 @@ hs_parameters <- function(tree) {
     res <- do.call(rbind.data.frame, res)
     res <- cbind.data.frame(tree$tip.label[x], x, res)
     colnames(res) <- c("tip_label", "tip_node", "a_node", "d_node")
-    lengths <- sapply(res$d_node, function(x) which(tree$edge[, 2] %in% x))
+    lengths <- vapply(res$d_node, function(x) which(tree$edge[, 2] %in% x),
+                      numeric(1))
     lengths <- tree$edge.length[lengths]
     cbind.data.frame(res, lengths)
   })
