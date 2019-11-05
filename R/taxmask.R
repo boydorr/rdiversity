@@ -24,7 +24,7 @@ taxmask <- function(lookup) {
     ones <- rep(TRUE, n)
     zeroes <- rep(FALSE, total - n)
     tmp <- c(zeroes, ones)
-    tmp <- binaryLogic::as.binary(tmp, logic = T)
+    tmp <- binaryLogic::as.binary(tmp, logic = TRUE)
   })
   names(output) <- colnames(lookup)
   output

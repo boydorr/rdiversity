@@ -54,8 +54,9 @@ setMethod(f = "metadiv", signature = "powermean",
           definition = function(data, qs) {
             # Calculate
             results <- lapply(seq_along(qs), function(x) {
-              subdiv <- sapply(1:ncol(data@results), function(y)
-                power_mean(data@results[, y], 1 - qs[x], data@type_weights[, y]))
+              subdiv <- vapply(seq_len(ncol(data@results)), function(y)
+                power_mean(data@results[, y], 1 - qs[x], data@type_weights[, y]),
+                numeric(1))
               power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
             })
             # Tidy up
@@ -78,7 +79,6 @@ setMethod(f = "metadiv", signature = "powermean",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("rdiv", output)
             } )
 
 
@@ -88,8 +88,9 @@ setMethod(f = "metadiv", signature = "relativeentropy",
           definition = function(data, qs) {
             # Calculate
             results <- lapply(seq_along(qs), function(x) {
-              subdiv <- sapply(1:ncol(data@results), function(y)
-                power_mean(data@results[, y], qs[x] - 1, data@type_weights[, y]))
+              subdiv <- vapply(seq_len(ncol(data@results)), function(y)
+                power_mean(data@results[, y], qs[x] - 1, data@type_weights[, y]),
+                numeric(1))
               power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
             })
             # Tidy up
@@ -112,7 +113,6 @@ setMethod(f = "metadiv", signature = "relativeentropy",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("rdiv", output)
             } )
 
 
@@ -128,5 +128,4 @@ setMethod(f = "metadiv", signature = "metacommunity",
             # Calculate metacommunity diversity
             output <- lapply(div.measures, function(x) metadiv(x(data), qs))
             output <- do.call(rbind.data.frame, output)
-            new("rdiv", output)
           } )

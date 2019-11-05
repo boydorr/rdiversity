@@ -73,7 +73,7 @@ chainsaw <- function(partition, ps, depth) {
 
     # Edit $structure matrix
     structure_matrix <- old_struct
-    for (i in 1:nrow(index)) {
+    for (i in seq_len(nrow(index))) {
       lineage <- structure_matrix[index$last_branch[i]:index$first_branch[i],
                                   i, drop = FALSE]
       cut_here <- cut_depth

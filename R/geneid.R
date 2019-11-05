@@ -9,7 +9,7 @@ geneid <- function(seq, kmer = 16) {
   dat <- as.numeric(as.factor(seq)) - 1
   ind <- data.frame(start = seq(1, length(dat) - kmer + 1, 1),
                     end = seq(kmer, length(dat), 1))
-  output <- sapply(1:nrow(ind), function(x) {
+  output <- sapply(seq_len(nrow(ind)), function(x) {
     tmp <- dat[ind$start[x]:ind$end[x]]
     tmp <- lapply(seq_along(tmp), function(y)
       binaryLogic::as.binary(tmp[y], n = 2))

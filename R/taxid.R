@@ -28,7 +28,7 @@ taxid <- function(tax_fac) {
       binaryLogic::as.binary(tmp[y], n = bits[y])) # intToBits(x)
     tmp <- unlist(tmp)
     tmp <- binaryLogic::as.binary(tmp, logic = TRUE)
-    sum(2^(which(rev(unlist(strsplit(as.character(tmp), "")) == 1)) - 1))
+    sum(2 ^ (which(rev(unlist(strsplit(as.character(tmp), "")) == 1)) - 1))
   })
   names(output) <- row.names(tax_fac)
   unlist(output)

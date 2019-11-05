@@ -57,8 +57,9 @@ setMethod(f = "subdiv", signature = "powermean",
           definition = function(data, qs) {
             # Calculate
             results <- lapply(seq_along(qs), function(x)
-              sapply(1:ncol(data@results), function(y)
-                power_mean(data@results[, y], 1 - qs[x], data@type_weights[, y])))
+              vapply(seq_len(ncol(data@results)), function(y)
+                power_mean(data@results[, y], 1 - qs[x], data@type_weights[, y]),
+              numeric(1)))
             # Tidy up
             output <- do.call(cbind, results)
             row.names(output) <- colnames(data@results)
@@ -79,7 +80,6 @@ setMethod(f = "subdiv", signature = "powermean",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("rdiv", output)
           } )
 
 
@@ -89,8 +89,9 @@ setMethod(f = "subdiv", signature = "relativeentropy",
           definition = function(data, qs) {
             # Calculate
             results <- lapply(seq_along(qs), function(x)
-              sapply(1:ncol(data@results), function(y)
-                power_mean(data@results[, y], qs[x] - 1, data@type_weights[, y])))
+              vapply(seq_len(ncol(data@results)), function(y)
+                power_mean(data@results[, y], qs[x] - 1, data@type_weights[, y]),
+              numeric(1)))
             # Tidy up
             output <- do.call(cbind, results)
             row.names(output) <- colnames(data@results)
@@ -111,7 +112,6 @@ setMethod(f = "subdiv", signature = "relativeentropy",
                                        k = param$k,
                                        max_d = param$max_d,
                                        stringsAsFactors = FALSE)
-            new("rdiv", output)
           } )
 
 
@@ -127,5 +127,4 @@ setMethod(f = "subdiv", signature = "metacommunity",
             # Calculate subcommunity diversity
             output <- lapply(div_measures, function(x) subdiv(x(data), qs))
             output <- do.call(rbind.data.frame, output)
-            new("rdiv", output)
           } )

@@ -255,7 +255,7 @@ setMethod(f = "metacommunity",
                 sum(type_abundance)
               type_weights <- apply(type_abundance, 2, function(x) x / sum(x))
 
-              Zp.j <- lapply(1:nrow(type_abundance), function(x) {
+              Zp.j <- lapply(seq_len(nrow(type_abundance)), function(x) {
                 tmp <- get(components$ordinariness)(similarity, x)
                 tmp <- matrix(tmp, nrow = 1)
                 tmp %*% type_abundance

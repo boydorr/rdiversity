@@ -33,9 +33,9 @@ phy_struct <- function(tree, partition) {
                      nrow = nrow(parameters))
   row.names(s_matrix) <- parameters$hs_names
   colnames(s_matrix) <- tree$tip.label
-  index <- sapply(parameters$tip_label, function(x)
-    which(colnames(s_matrix) %in% x))
-  index <- cbind(row = 1:nrow(parameters), col = index)
+  index <- vapply(parameters$tip_label, function(x)
+    which(colnames(s_matrix) %in% x), numeric(1))
+  index <- cbind(row = seq_len(nrow(parameters)), col = index)
   s_matrix[index] <- parameters$lengths
   T_bar <-  sum(s_matrix %*% partition)
 
