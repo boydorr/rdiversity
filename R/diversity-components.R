@@ -13,7 +13,7 @@
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
 #' arXiv 1404.6520v3:1–9.
 #'
@@ -49,9 +49,9 @@ raw_alpha <- function(meta) {
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -92,9 +92,9 @@ norm_alpha <- function(meta) {
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -108,7 +108,7 @@ norm_alpha <- function(meta) {
 #' metadiv(r, 1)
 #'
 raw_rho <- function(meta) {
-  results <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
+  results <- rowSums(meta@ordinariness, na.rm = TRUE) / meta@ordinariness
   powermean(results, meta, "raw rho")
 }
 
@@ -128,9 +128,9 @@ raw_rho <- function(meta) {
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -150,7 +150,7 @@ norm_rho <- function(meta) {
   if (!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)
-  results <- rowSums(meta@ordinariness, na.rm = T) / ordinariness.bar
+  results <- rowSums(meta@ordinariness, na.rm = TRUE) / ordinariness.bar
   powermean(results, meta, "normalised rho")
 }
 
@@ -170,9 +170,9 @@ norm_rho <- function(meta) {
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -186,7 +186,7 @@ norm_rho <- function(meta) {
 #' metadiv(b, 1)
 #'
 raw_beta <- function(meta) {
-  rho <- rowSums(meta@ordinariness, na.rm = T) / meta@ordinariness
+  rho <- rowSums(meta@ordinariness, na.rm = TRUE) / meta@ordinariness
   results <- 1 / rho
   relativeentropy(results, meta, "raw beta")
 }
@@ -207,9 +207,9 @@ raw_beta <- function(meta) {
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -229,7 +229,7 @@ norm_beta <- function(meta) {
   if (!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)
-  normalised.rho <- rowSums(meta@ordinariness, na.rm = T) / ordinariness.bar
+  normalised.rho <- rowSums(meta@ordinariness, na.rm = TRUE) / ordinariness.bar
   results <- 1 / normalised.rho
   relativeentropy(results, meta, "normalised beta")
 }
@@ -249,9 +249,9 @@ norm_beta <- function(meta) {
 #' @include metacommunity.R subdiv.R metadiv.R
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- cbind.data.frame(A = c(1,1), B = c(2,0), C = c(3,1))
@@ -265,7 +265,7 @@ norm_beta <- function(meta) {
 #' metadiv(g, 1)
 #'
 raw_gamma <- function(meta) {
-  results <- rowSums(meta@ordinariness, na.rm = T)
+  results <- rowSums(meta@ordinariness, na.rm = TRUE)
   results[results == 0] <- NaN
   results <- 1 / results
   N <- nrow(meta@type_abundance)

@@ -10,7 +10,7 @@
 #' @return \code{raw_sub_alpha} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
 #' arXiv 1404.6520v3:1–9.
 #'
@@ -38,9 +38,9 @@ raw_sub_alpha <- function(meta, qs)
 #' @return \code{norm_sub_alpha} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -66,9 +66,9 @@ norm_sub_alpha <- function(meta, qs)
 #' @return \code{raw_sub_beta} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -95,9 +95,9 @@ raw_sub_beta <- function(meta, qs)
 #' @return \code{norm_sub_beta} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -123,9 +123,9 @@ norm_sub_beta <- function(meta, qs)
 #' @return \code{raw_sub_rho} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -151,9 +151,9 @@ raw_sub_rho <- function(meta, qs)
 #' @return \code{norm_sub_rho} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -180,9 +180,9 @@ norm_sub_rho <- function(meta, qs)
 #' @return \code{sub_gamma} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -208,9 +208,9 @@ sub_gamma <- function(meta, qs)
 #' @return \code{raw_meta_alpha} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -237,9 +237,9 @@ raw_meta_alpha <- function(meta, qs)
 #' @return \code{norm_meta_alpha} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -265,9 +265,9 @@ norm_meta_alpha <- function(meta, qs)
 #' @return \code{raw_meta_beta} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -293,9 +293,9 @@ raw_meta_beta <- function(meta, qs)
 #' @return \code{norm_meta_beta} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -321,9 +321,9 @@ norm_meta_beta <- function(meta, qs)
 #' @return \code{raw_meta_rho} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -349,9 +349,9 @@ raw_meta_rho <- function(meta, qs)
 #' @return \code{norm_meta_rho} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
@@ -377,9 +377,9 @@ norm_meta_rho <- function(meta, qs)
 #' @return \code{meta_gamma} returns a standard output of class \code{rdiv}
 #' @export
 #'
-#' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2014. How to partition diversity.
-#' arXiv 1404.6520:1–9.
+#' @references R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
