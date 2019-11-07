@@ -7,14 +7,6 @@
 #' @return Returns an \eqn{hS x hS} matrix; pair-wise ultrametric-similarity of
 #' historic species.
 #'
-#' @examples
-#' tree <- ape::rtree(10)
-#' partition <- matrix(rep(1, 500), nrow = 10)
-#' partition <- as.data.frame(partition / sum(partition))
-#' rownames(partition) <- tree$tip.label
-#' colnames(partition) <- LETTERS[seq_len(ncol(partition))]
-#' ps <- phy_struct(tree, partition)
-#'
 smatrix <-
   function(ps) {
     parameters <- ps$parameters
