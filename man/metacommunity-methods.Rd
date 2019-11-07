@@ -107,7 +107,7 @@ containing the relative abundance of present day species}
 \code{numeric} with rows as historical species, columns as present day
 species, and elements containing historical species lengths within lineages}
 
-\item{\code{parameters}}{[Phylogenetic] \code{tibble} containing parameters
+\item{\code{parameters}}{[Phylogenetic] \code{data.frame} containing parameters
 associated with each historic species in the phylogeny}
 }}
 

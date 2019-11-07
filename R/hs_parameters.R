@@ -50,8 +50,7 @@ hs_parameters <- function(tree) {
   hs_names <- paste(parameters$tip_node,
                     paste(parameters$a_node,
                           parameters$d_node, sep = "-"), sep = ",")
-  parameters <- cbind.data.frame(hs_names, parameters)
-  tibble::as_tibble(parameters)
+  cbind.data.frame(hs_names, parameters)
 }
 
 

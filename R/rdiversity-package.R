@@ -29,7 +29,6 @@
 #' @importFrom binaryLogic as.binary
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
-#' @importFrom tibble as_data_frame
 #' @importFrom utils head
 #'
 NULL

@@ -19,7 +19,6 @@ Imports:
     methods,
     reshape2,
     stats,
-    tibble,
     utils
 Suggests:
     ape,
@@ -27,6 +26,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
+    tibble,
     covr
 RoxygenNote: 6.1.1
 Collate:

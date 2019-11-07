@@ -41,7 +41,7 @@
 #' @field raw_structure [Phylogenetic] two-dimensional \code{matrix} of mode
 #' \code{numeric} with rows as historical species, columns as present day
 #' species, and elements containing historical species lengths within lineages
-#' @field parameters [Phylogenetic] \code{tibble} containing parameters
+#' @field parameters [Phylogenetic] \code{data.frame} containing parameters
 #' associated with each historic species in the phylogeny
 #'
 #' @return \code{metacommunity()} returns an object of class
