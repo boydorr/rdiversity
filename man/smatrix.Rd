@@ -16,12 +16,3 @@ historic species.
 \description{
 Function to calculate an ultrametric-similarity matrix.
 }
-\examples{
-tree <- ape::rtree(10)
-partition <- matrix(rep(1, 500), nrow = 10)
-partition <- as.data.frame(partition / sum(partition))
-rownames(partition) <- tree$tip.label
-colnames(partition) <- LETTERS[seq_len(ncol(partition))]
-ps <- phy_struct(tree, partition)
-
-}
