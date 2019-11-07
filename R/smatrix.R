@@ -23,7 +23,6 @@ smatrix <-
     for (row_index in 1:Nhs) {
       # Historic species
       daughters <- descendant_tips(ps$tree, parameters$d_node[row_index])
-      # daughters <- unlist(phangorn::Descendants(ps$tree, parameters$d_node[row_index]))
 
       s_matrix_row <- vector()
       for (col_index in 1:Nhs) {

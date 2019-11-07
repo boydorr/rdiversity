@@ -22,11 +22,9 @@ Imports:
     utils
 Suggests:
     ape,
-    ggplot2,
     testthat,
     knitr,
     rmarkdown,
-    tibble,
     covr
 RoxygenNote: 6.1.1
 Collate:

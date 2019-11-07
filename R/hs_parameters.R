@@ -17,8 +17,7 @@ hs_parameters <- function(tree) {
 
   # Ancestral species
   anc_nodes <- lapply(seq_along(tree$tip.label), function(x) {
-    # res <- c(x, ancestral_nodes(tree, x))
-    res <- c(x, phangorn::Ancestors(tree, x))
+    res <- c(x, ancestral_nodes(tree, x))
     if (long_root) c(res, root_ancestor) else res
   })
 
