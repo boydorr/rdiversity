@@ -30,8 +30,8 @@ smatrix <-
     # Calculate pairwise similarity between historic species
     for (row_index in 1:Nhs) {
       # Historic species
-      daughters <- phangorn::Descendants(ps$tree, parameters$d_node[row_index])
-      daughters <- unlist(daughters)
+      daughters <- descendant_tips(ps$tree, parameters$d_node[row_index])
+      # daughters <- unlist(phangorn::Descendants(ps$tree, parameters$d_node[row_index]))
 
       s_matrix_row <- vector()
       for (col_index in 1:Nhs) {
@@ -52,18 +52,31 @@ smatrix <-
   }
 
 
-# descendant_tips <- function(tree, node) {
-#   x <- node
-#
-#   store <- vector()
-#   continue <- TRUE
-#   while(continue) {
-#     y <- tree$edge[which(tree$edge[, 1] == x), 2]
-#     sapply(y, function(i) tree$edge[which(tree$edge[, 1] == i), 2])
-#
-#     store <- c(store, x)
-#     continue <- any(tree$edge[,2] == x)
-#   }
-#   store
-# }
+#' descendant_tips
+#'
+#' @param tree object of class \code{phylo}.
+#' @param node object of class \code{numeric}.
+#'
+descendant_tips <- function(tree, node) {
+  x <- node
+  tips <- seq_len(length(tree$tip.label))
+
+  if(node %in% tips) return(node) else {
+    keep <- vector()
+    continue <- TRUE
+
+    while(continue) {
+      check <- tree$edge[which(tree$edge[, 1] %in% x), 2]
+      check
+      daughters <- tips[tips %in% check]
+      daughters
+      keep <- c(keep, daughters)
+      keep
+      x <- check[!check %in% tips]
+      x
+      continue <- ifelse(length(x) != 0, T, F)
+    }
+    return(sort(keep))
+  }
+}
 

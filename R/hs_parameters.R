@@ -16,8 +16,9 @@ hs_parameters <- function(tree) {
   long_root <- ifelse(!is.null(tree$root.edge), TRUE, FALSE)
 
   # Ancestral species
-  ancestral_nodes <- lapply(as.list(seq_along(tree$tip.label)), function(x) {
-    res <- c(x, ancestral_nodes(tree, x))
+  anc_nodes <- lapply(seq_along(tree$tip.label), function(x) {
+    # res <- c(x, ancestral_nodes(tree, x))
+    res <- c(x, phangorn::Ancestors(tree, x))
     if (long_root) c(res, root_ancestor) else res
   })
 
@@ -29,8 +30,8 @@ hs_parameters <- function(tree) {
   }
 
   # Historic species data for each present day species
-  parameters <- lapply(seq_along(ancestral_nodes), function(x) {
-    daughters <- ancestral_nodes[[x]]
+  parameters <- lapply(seq_along(anc_nodes), function(x) {
+    daughters <- anc_nodes[[x]]
     if (long_root) daughters <- c(daughters, 0)
     daughters <- daughters[-length(daughters)]
     res <- lapply(as.list(daughters), function(y)
@@ -50,11 +51,14 @@ hs_parameters <- function(tree) {
                     paste(parameters$a_node,
                           parameters$d_node, sep = "-"), sep = ",")
   parameters <- cbind.data.frame(hs_names, parameters)
-  tibble::as_data_frame(parameters)
+  tibble::as_tibble(parameters)
 }
 
 
 #' ancestral_nodes
+#'
+#' @param tree object of class \code{phylo}.
+#' @param node object of class \code{numeric}.
 #'
 ancestral_nodes <- function(tree, node) {
   x <- node
