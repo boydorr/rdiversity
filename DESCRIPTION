@@ -27,8 +27,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    covr,
-    phangorn
+    covr
 RoxygenNote: 6.1.1
 Collate:
     'chainsaw.R'
