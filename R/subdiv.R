@@ -67,7 +67,7 @@ setMethod(f = "subdiv", signature = "powermean",
             output <- reshape2::melt(output)
             # Output
             param <- data@similarity_parameters
-            output <- cbind.data.frame(measure = data@measure,
+            cbind.data.frame(measure = data@measure,
                                        q = output$Var2,
                                        type_level = "types",
                                        type_name = "",
@@ -99,7 +99,7 @@ setMethod(f = "subdiv", signature = "relativeentropy",
             output <- reshape2::melt(output)
             # Output
             param <- data@similarity_parameters
-            output <- cbind.data.frame(measure = data@measure,
+            cbind.data.frame(measure = data@measure,
                                        q = output$Var2,
                                        type_level = "types",
                                        type_name = "",
@@ -126,5 +126,5 @@ setMethod(f = "subdiv", signature = "metacommunity",
                                  raw_gamma)
             # Calculate subcommunity diversity
             output <- lapply(div_measures, function(x) subdiv(x(data), qs))
-            output <- do.call(rbind.data.frame, output)
+            do.call(rbind.data.frame, output)
           } )
