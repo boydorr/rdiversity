@@ -273,7 +273,7 @@ raw_gamma <- function(meta) {
   results <- apply(meta@type_abundance, 2, function(x) {
     tmp <- rep(0, N)
     tmp[which(x != 0)] <- results[which(x != 0)]
-    tmp
+    as.matrix(tmp)
   })
   row.names(results) <- row.names(meta@type_abundance)
 
