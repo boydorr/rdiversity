@@ -28,5 +28,5 @@ gen2dist <- function(vcf) {
   #return distance object
   return(new("distance",
              distance = dist,
-             dat_id = "gendist"))
+             dat_id = "genetic"))
 }
