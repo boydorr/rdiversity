@@ -21,8 +21,8 @@ should be retained, with 0 marking the date of the most recent tip, and 1
 1 extend the root of the tree.}
 }
 \value{
-\code{phy2branch()} returns an object of class \code{distance}.
+\code{phy2branch()} returns an object of class \code{similarity}.
 }
 \description{
-Packages phylo object and depth into an object of class \code{similarity}.
+Packages all inputs into an object of class \code{similarity}.
 }

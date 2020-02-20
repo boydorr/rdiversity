@@ -4,7 +4,8 @@
 #'
 #' @param vcf object of class \code{vcfR}.
 #'
-#' @return \code{gen2dist(x)} returns a matrix of pairwise distances.
+#' @return \code{gen2dist(x)} returns an object of class \code{distance}
+#' containing a \code{matrix} of pairwise genetic distances.
 #' @export
 #'
 gen2dist <- function(vcf) {

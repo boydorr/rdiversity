@@ -1,6 +1,6 @@
 #' Phylogenetic similarity
 #'
-#' Packages phylo object and depth into an object of class \code{similarity}.
+#' Packages all inputs into an object of class \code{similarity}.
 #'
 #' @param tree object of class \code{phylo}.
 #' @param depth proportion of total tree height to be conserved (taken as
@@ -13,7 +13,7 @@
 #' element containing the relative abundance of types in each subcommunity
 #' relative to the metacommunity as a whole.
 #'
-#' @return \code{phy2branch()} returns an object of class \code{distance}.
+#' @return \code{phy2branch()} returns an object of class \code{similarity}.
 #' @export
 #'
 phy2branch <- function(tree, partition, depth = 1) {

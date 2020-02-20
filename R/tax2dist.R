@@ -16,7 +16,7 @@
 #' defined value.
 #'
 #' @return \code{tax2dist()} returns an object of class \code{distance}
-#' containing a \code{matrix} of pair-wise taxonomic distances
+#' containing a \code{matrix} of pairwise taxonomic distances
 #' @export
 #'
 #' @references Shimatani, K. 2001. On the measurement of species diversity

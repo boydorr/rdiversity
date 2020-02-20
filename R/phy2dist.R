@@ -1,6 +1,6 @@
 #' Phylogenetic pairwise tip distance matrix
 #'
-#' Converts any phylo object to a matrix of pairwise tip-to-tip distances.
+#' Converts any \code{phylo} object to a matrix of pairwise tip-to-tip distances.
 #'
 #' @param tree object of class \code{phylo}.
 #' @param precompute_dist object of class \code{logical} or \code{numeric}.
@@ -9,28 +9,14 @@
 #' a distance matrix is generated until the number of species exceeds the
 #' defined value.
 #'
-#' @return \code{phy2sim(x)} returns a matrix of pairwise distances.
+#' @return \code{phy2sim(x)} returns an object of class \code{distance}
+#' containing a \code{matrix} of pairwise tip-to-tip distances.
 #' @export
 #'
 phy2dist <- function(tree, precompute_dist = TRUE) {
-
-  # if(precompute_dist) {
     dist <- stats::cophenetic(tree)
 
     return(new("distance",
                distance = dist,
-               dat_id = "phydist"))
-
-  # }else {
-  #
-  #   tidy_tree <- tidytree::as_data_frame(tree)
-  #   tidy_tree <- as.data.frame(tidy_tree)
-  #
-  #   return(new("distance",
-  #              dat_id = "phylodist",
-  #              ordinariness = "phyvec",
-  #              tree = tidy_tree))
-  # }
-
-
+               dat_id = "phylogenetic"))
 }

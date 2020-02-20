@@ -16,8 +16,9 @@ a distance matrix is generated until the number of species exceeds the
 defined value.}
 }
 \value{
-\code{phy2sim(x)} returns a matrix of pairwise distances.
+\code{phy2sim(x)} returns an object of class \code{distance}
+containing a \code{matrix} of pairwise tip-to-tip distances.
 }
 \description{
-Converts any phylo object to a matrix of pairwise tip-to-tip distances.
+Converts any \code{phylo} object to a matrix of pairwise tip-to-tip distances.
 }

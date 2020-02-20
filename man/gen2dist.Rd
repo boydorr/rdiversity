@@ -10,7 +10,8 @@ gen2dist(vcf)
 \item{vcf}{object of class \code{vcfR}.}
 }
 \value{
-\code{gen2dist(x)} returns a matrix of pairwise distances.
+\code{gen2dist(x)} returns an object of class \code{distance}
+containing a \code{matrix} of pairwise genetic distances.
 }
 \description{
 Converts a vcfR object to a matrix of pairwise genetic distances.

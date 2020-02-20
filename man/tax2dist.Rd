@@ -24,7 +24,7 @@ defined value.}
 }
 \value{
 \code{tax2dist()} returns an object of class \code{distance}
-containing a \code{matrix} of pair-wise taxonomic distances
+containing a \code{matrix} of pairwise taxonomic distances
 }
 \description{
 Calculates taxonomic distances between species.
