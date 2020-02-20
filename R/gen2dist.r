@@ -8,7 +8,9 @@
 #' @export
 #'
 gen2dist <- function(vcf) {
-  
+
+  if("vcfR" %in% rownames(installed.packages()) == FALSE){
+    stop("gen2dist() requires the package vcfR")}
   if (class(vcf)!='vcfR'){
     stop("vcf must be of class 'vcfR'")
   }
@@ -16,8 +18,13 @@ gen2dist <- function(vcf) {
   gendat <- vcfR::extract.gt(vcf)
   #recode missing data as no mutation
   gendat[is.na(gendat)] <- '0|0'
+  #recode strings as digits
+  gendat[gendat == "0|0"] <- 0
+  gendat[gendat == "1|0"] <- 1
+  gendat[gendat == "0|1"] <- 1
+  gendat[gendat == "1|1"] <- 2
   #calculate distance matrix
-  dist <- as.matrix(ape::dist.gene(t(gendat)))
+  dist <- as.matrix(stats::dist(t(gendat), method = 'manhattan'))
   #return distance object
   return(new("distance",
              distance = dist,

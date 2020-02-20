@@ -25,8 +25,9 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    covr
-RoxygenNote: 6.1.1
+    covr,
+	vcfR
+RoxygenNote: 7.0.2
 Collate:
     'chainsaw.R'
     'check_partition.R'
@@ -45,6 +46,7 @@ Collate:
     'metacommunity.R'
     'diversity-components.R'
     'diversity-measures.R'
+	'gen2dist.r'
     'geneid.R'
     'genevec.R'
     'hs_parameters.R'

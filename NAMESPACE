@@ -2,6 +2,7 @@
 
 export(chainsaw)
 export(dist2sim)
+export(gen2dist)
 export(meta_gamma)
 export(norm_alpha)
 export(norm_beta)
