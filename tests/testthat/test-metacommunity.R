@@ -75,7 +75,7 @@ test_that("metacommunity() works for phydist diversity", {
   m <- metacommunity(partition, s)
 
   expect_equal(meta@ordinariness, m@ordinariness)
-  expect_true(meta@dat_id == "phydist")
+  expect_true(meta@dat_id == "phylogenetic")
   expect_true(length(meta@raw_abundance) == 0)
   expect_true(length(meta@raw_structure) == 0)
   expect_true(length(meta@parameters) == 0)
