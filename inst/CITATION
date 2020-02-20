@@ -16,13 +16,29 @@ bibentry(bibtype = "Article",
                                  family = "Matthews")),
          journal      = "arXiv",
          year         = "2016",
-         volume       = "1404.6520v3 [q-bio.QM]",
-         pages        = "1--9",
-         
-         header       = "To cite rdiversity in publications use:",
+         volume       = "1404.6520 [q-bio.QM]",
+
+         header       = "To cite the rdiversity framework in publications use:",
          textVersion  =
-           paste("Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,",
-                 "S. Mitchell, and L. Matthews. 2016. How to partition diversity.",
-                 "arXiv 1404.6520v3 [q-bio.QM]:1–9.")
+           paste("R. Reeve, T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,",
+                 "S. Mitchell and L. Matthews. 2016. How to partition diversity.",
+                 "arXiv:1404.6520 [q-bio.QM].")
 )
 
+bibentry(bibtype = "Manual",
+         title        = "rdiversity",
+         author       = c(person(given = "Sonia",
+                                 family = "Mitchell"),
+                          person(given = "Richard",
+                                 family = "Reeve"),
+                          person(given = "Tom",
+                                 family = "White")),
+         year         = "2020",
+         note         = "R package version 2.0",
+         url          = "https://github.com/boydorr/rdiversity",
+
+         header       = "To cite the rdiversity package directly use:",
+         textVersion  =
+           paste("Sonia Mitchell, Richard Reeve and Tom White (2020). rdiversity.",
+                 "R package version 2.0. https://github.com/boydorr/rdiversity")
+)
