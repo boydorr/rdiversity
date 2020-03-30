@@ -27,6 +27,7 @@ Special cases:
 
 * [Taxonomic diversity](#taxonomic-diversity)
 * [Phylogenetic diversity](#phylogenetic-diversity)
+* [Genetic diversity](#genetic-diversity)
 * [User defined distance](#user-defined-distance)
 * [User defined similarity](#user-defined-similarity)
 
@@ -289,6 +290,36 @@ meta_gamma(meta, 0:2)
 * `@raw_abundance` : the relative abundance of terminal species (where types are then considered to be historical species),
 * `@raw_structure` : the length of evolutionary history of each historical species
 * `@parameters` : parameters associated with historical species
+
+
+## Genetic diversity
+1. Initialise data:
+```{r}
+data(vcfR_dat)
+partition <- matrix(c(1,1,1,0,0,0,0,0,0,1,1,1), ncol = 2)
+partition <- partition/sum(partition)
+```
+
+2. Generate a distance matrix using the `gen2dist()` function, data must be of class `vcfR`:
+```{r}
+d <- gen2dist(vcfR_dat)
+```
+
+3. Convert the distance object to a similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
+```{r}
+s <- dist2sim(d, transform = 'l')
+```
+Note: the `dist2sim()` function contains an optional argument, `max_d`, which defines the distance at which pairs of individuals have similarity zero. If not supplied this is set to the maximum distance observed in the distance matrix. If comparing different windows on a genome, for example, it is necessary to ensure `max_d` is the same for each analysis.
+
+4. Generate a metacommunity object using the `metacommunity()` function:
+```{r}
+meta <- metacommunity(partition, s)
+```
+
+5. Calculate diversity, for example beta diversity measures are used to identify trends such as differentiation:
+```{r}
+norm_meta_beta(meta, 0:2)
+```
 
 
 ### User defined distance
