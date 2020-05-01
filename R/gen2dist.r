@@ -10,7 +10,7 @@
 #'
 gen2dist <- function(vcf) {
 
-  if("vcfR" %in% rownames(installed.packages()) == FALSE){
+  if("vcfR" %in% rownames(utils::installed.packages()) == FALSE){
     stop("gen2dist() requires the package vcfR")}
   if (class(vcf)!='vcfR'){
     stop("vcf must be of class 'vcfR'")
