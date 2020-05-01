@@ -16,6 +16,7 @@ Description: Provides a framework for the measurement and partitioning of
     constituent subcommunities. Richard Reeve, et al. (2016) 
     <arXiv:1404.6520v3>.
 License: GPL-3
+Depends: R (>= 2.10)
 Imports:
     binaryLogic,
     methods,
@@ -29,6 +30,7 @@ Suggests:
     rmarkdown,
     covr,
 	vcfR
+LazyData: true
 RoxygenNote: 7.0.2
 Collate:
     'chainsaw.R'
