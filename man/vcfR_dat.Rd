@@ -4,7 +4,9 @@
 \name{vcfR_dat}
 \alias{vcfR_dat}
 \title{Example vcfR object}
-\format{An object of class \code{vcfR} of dimension 5 x 8 x 7.}
+\format{
+An object of class \code{vcfR} of dimension 5 x 8 x 7.
+}
 \usage{
 vcfR_dat
 }

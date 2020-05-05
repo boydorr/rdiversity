@@ -2,7 +2,7 @@ Package: rdiversity
 Type: Package
 Title: Measurement and Partitioning of Similarity-Sensitive Biodiversity
 Version: 2.0
-Date: Sys.Date()
+Date: 2020-05-05
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
@@ -31,7 +31,7 @@ Suggests:
     covr,
 	vcfR
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Collate:
     'chainsaw.R'
     'check_partition.R'
@@ -75,4 +75,3 @@ Collate:
     'tbar.R'
     'zmatrix.R'
 Encoding: UTF-8
-VignetteBuilder: knitr
