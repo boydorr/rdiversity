@@ -42,7 +42,6 @@ Collate:
     'class-powermean.R'
     'class-relativeentropy.R'
     'class-similarity.R'
-    'data.R'
     'similarity.R'
     'dist2sim.R'
     'distance.R'
