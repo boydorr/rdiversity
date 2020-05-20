@@ -178,8 +178,6 @@ metadiv(meta, 0:2)
 ```
 
 
-
-
 ## Taxonomic diversity
 1. Initialise data:
 ```{r}
@@ -295,14 +293,16 @@ meta_gamma(meta, 0:2)
 ## Genetic diversity
 1. Initialise data:
 ```{r}
-data(vcfR_dat)
-partition <- matrix(c(1,1,1,0,0,0,0,0,0,1,1,1), ncol = 2)
+library()
+vcf_file <- system.file("extdata", "pinf_sc50.vcf.gz", package = "pinfsc50")
+vcf <- read.vcfR(vcf_file, verbose = FALSE)
+partition <- cbind.data.frame(A = c(rep(1, 9), rep(0, 9)), B = c(rep(0, 9), rep(1, 9)))
 partition <- partition/sum(partition)
 ```
 
 2. Generate a distance matrix using the `gen2dist()` function, data must be of class `vcfR`:
 ```{r}
-d <- gen2dist(vcfR_dat)
+d <- gen2dist(vcf)
 ```
 
 3. Convert the distance object to a similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
@@ -313,6 +313,7 @@ Note: the `dist2sim()` function contains an optional argument, `max_d`, which de
 
 4. Generate a metacommunity object using the `metacommunity()` function:
 ```{r}
+rownames(partition) <- rownames(s@similarity)
 meta <- metacommunity(partition, s)
 ```
 
