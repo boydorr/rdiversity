@@ -4,10 +4,12 @@
 \alias{gen2dist}
 \title{Genetic distance matrix}
 \usage{
-gen2dist(vcf)
+gen2dist(vcf, biallelic = FALSE)
 }
 \arguments{
 \item{vcf}{object of class \code{vcfR}.}
+
+\item{biallelic}{logical describing whether the data is biallelic or not (default).}
 }
 \value{
 \code{gen2dist(x)} returns an object of class \code{distance}

@@ -30,5 +30,6 @@
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
 #' @importFrom utils head installed.packages
+#' @import stringdist
 #'
 NULL
