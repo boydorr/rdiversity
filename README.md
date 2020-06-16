@@ -291,6 +291,7 @@ meta_gamma(meta, 0:2)
 
 
 ## Genetic diversity
+Multiallelic data can currently only be dealt with by the GitHub version of rdiversity.
 1. Initialise data:
 ```{r}
 library()
@@ -302,7 +303,7 @@ partition <- partition/sum(partition)
 
 2. Generate a distance matrix using the `gen2dist()` function, data must be of class `vcfR`:
 ```{r}
-d <- gen2dist(vcf)
+d <- gen2dist(vcf, biallelic = FALSE)
 ```
 
 3. Convert the distance object to a similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
