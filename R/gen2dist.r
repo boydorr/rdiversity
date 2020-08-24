@@ -18,8 +18,11 @@ gen2dist <- function(vcf, biallelic = FALSE) {
 
   #swap slashes for pipes
   gendat <- sub('/','|',gendat)
-  #recode NAs
-  gendat[is.na(gendat)] <- "0|0"
+  #recode missing data as no mutation
+  if (sum(is.na(gendat))!=0){
+    warning("Missing data recoded as no mutation.")
+    gendat[is.na(gendat)] <- "0|0"
+  }
   gendat <- gsub('\\.','0',gendat)
   if (biallelic == TRUE){
     #recode strings as digits
