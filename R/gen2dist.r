@@ -2,7 +2,7 @@
 #'
 #' Converts a vcfR object to a matrix of pairwise genetic distances.
 #'
-#' @param vcf object of class \code{vcfR}.
+#' @param vcf object of class \code{data.frame}.
 #' @param biallelic logical describing whether the data is biallelic or not (default).
 #'
 #' @return \code{gen2dist(x)} returns an object of class \code{distance}
@@ -11,17 +11,19 @@
 #'
 gen2dist <- function(vcf, biallelic = FALSE) {
 
-  if("vcfR" %in% rownames(utils::installed.packages()) == FALSE){
-    stop("gen2dist() requires the package vcfR")}
-  if (class(vcf)!='vcfR'){
-    stop("vcf must be of class 'vcfR'")
-  }
   #extract genotype information
-  gendat <- vcfR::extract.gt(vcf)
+  vcf_names <- names(vcf)
+  gendat <- vcf[(which(vcf_names=='FORMAT')+1):length(vcf_names)]
+  gendat <- sapply(gendat, substring, 1, 3)
+
   #swap slashes for pipes
   gendat <- sub('/','|',gendat)
   #recode missing data as no mutation
-  gendat[is.na(gendat)] <- '0|0'
+  if (sum(is.na(gendat))!=0){
+    warning("Missing data recoded as no mutation.")
+    gendat[is.na(gendat)] <- "0|0"
+  }
+  gendat <- gsub('\\.','0',gendat)
   if (biallelic == TRUE){
     #recode strings as digits
     gendat[gendat == "0|0"] <- 0
