@@ -292,21 +292,21 @@ meta_gamma(meta, 0:2)
 
 ## Genetic diversity
 1. Initialise data:
+Note: the package `pinfsc50` must be installed for this example to work.
 ```{r}
-library()
+library(rdiversity)
 vcf_file <- system.file("extdata", "pinf_sc50.vcf.gz", package = "pinfsc50")
 #read in twice: first for the column names then for the data
 tmp_vcf <- readLines(vcf_file)
 vcf_data <- read.table(vcf_file, stringsAsFactors = FALSE)
 # filter for the columns names
-tmp_vcf <- tmp_vcf[-(grep("#CHROM",tmp_vcf)+1):-(length(tmp_vcf))]
-vcf_names <- unlist(strsplit(tmp_vcf[length(tmp_vcf)],"\t"))
+vcf_names <- unlist(strsplit(tmp_vcf[grep("#CHROM",tmp_vcf)],"\t"))
 names(vcf_data) <- vcf_names
 partition <- cbind.data.frame(A = c(rep(1, 9), rep(0, 9)), B = c(rep(0, 9), rep(1, 9)))
 partition <- partition/sum(partition)
 ```
 
-2. Generate a distance matrix using the `gen2dist()` function, data must be of class `vcfR`:
+2. Generate a distance matrix using the `gen2dist()` function:
 ```{r}
 d <- gen2dist(vcf)
 ```
