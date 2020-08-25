@@ -1,8 +1,5 @@
 # rdiversity: diversity measurement in R 
-[![Build Status](https://travis-ci.org/boydorr/rdiversity.svg?branch=master)](https://travis-ci.org/boydorr/rdiversity)
-[![Build status](https://ci.appveyor.com/api/projects/status/463vspjivh08o9x1?svg=true)](https://ci.appveyor.com/project/mysteryduck/rdiversity)
-[![Coverage Status](https://coveralls.io/repos/github/boydorr/rdiversity/badge.svg?branch=master)](https://coveralls.io/github/boydorr/rdiversity?branch=master)
-[![codecov](https://codecov.io/gh/boydorr/rdiversity/branch/master/graph/badge.svg)](https://codecov.io/gh/boydorr/rdiversity)
+[![test-build](https://github.com/boydorr/rdiversity/workflows/build/badge.svg)](https://github.com/boydorr/rdiversity/actions)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
 [![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
 
