@@ -1,5 +1,6 @@
 # rdiversity: diversity measurement in R 
 [![test-build](https://github.com/boydorr/rdiversity/workflows/build/badge.svg)](https://github.com/boydorr/rdiversity/actions)
+[![codecov](https://codecov.io/gh/boydorr/rdiversity/branch/master/graph/badge.svg)](https://codecov.io/gh/boydorr/rdiversity)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
 [![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
 
@@ -288,24 +289,19 @@ meta_gamma(meta, 0:2)
 
 
 ## Genetic diversity
+Multiallelic data can currently only be dealt with by the GitHub version of rdiversity.
 1. Initialise data:
-Note: the package `pinfsc50` must be installed for this example to work.
 ```{r}
-library(rdiversity)
+library()
 vcf_file <- system.file("extdata", "pinf_sc50.vcf.gz", package = "pinfsc50")
-#read in twice: first for the column names then for the data
-tmp_vcf <- readLines(vcf_file)
-vcf_data <- read.table(vcf_file, stringsAsFactors = FALSE)
-# filter for the columns names
-vcf_names <- unlist(strsplit(tmp_vcf[grep("#CHROM",tmp_vcf)],"\t"))
-names(vcf_data) <- vcf_names
+vcf <- read.vcfR(vcf_file, verbose = FALSE)
 partition <- cbind.data.frame(A = c(rep(1, 9), rep(0, 9)), B = c(rep(0, 9), rep(1, 9)))
 partition <- partition/sum(partition)
 ```
 
-2. Generate a distance matrix using the `gen2dist()` function:
+2. Generate a distance matrix using the `gen2dist()` function, data must be of class `vcfR`:
 ```{r}
-d <- gen2dist(vcf)
+d <- gen2dist(vcf, biallelic = FALSE)
 ```
 
 3. Convert the distance object to a similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
