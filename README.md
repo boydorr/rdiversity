@@ -1,4 +1,5 @@
 # rdiversity: diversity measurement in R 
+[![](https://img.shields.io/badge/docs-rdiversity-blue)](https://boydorr.github.io/rdiversity/)
 [![test-build](https://github.com/boydorr/rdiversity/workflows/build/badge.svg)](https://github.com/boydorr/rdiversity/actions)
 [![codecov](https://codecov.io/gh/boydorr/rdiversity/branch/master/graph/badge.svg)](https://codecov.io/gh/boydorr/rdiversity)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cdf85e8a0cb046529f72786af0888515)](https://app.codacy.com/gh/boydorr/rdiversity?utm_source=github.com&utm_medium=referral&utm_content=boydorr/rdiversity&utm_campaign=Badge_Grade_Dashboard)
