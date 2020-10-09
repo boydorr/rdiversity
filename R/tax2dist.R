@@ -77,7 +77,7 @@ tax2dist <- function(lookup,
                distance = dist,
                dat_id = "taxonomic",
                components = list(precompute = TRUE,
-                                            tax_distance = tax_distance)))
+                                 tax_distance = tax_distance)))
 
     # Don't calculate distance matrix
 
