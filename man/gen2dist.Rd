@@ -7,7 +7,7 @@
 gen2dist(vcf, biallelic = FALSE)
 }
 \arguments{
-\item{vcf}{object of class \code{vcfR}.}
+\item{vcf}{object of class \code{data.frame}.}
 
 \item{biallelic}{logical describing whether the data is biallelic or not (default).}
 }

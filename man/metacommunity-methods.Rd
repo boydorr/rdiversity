@@ -18,7 +18,6 @@
 \alias{metacommunity,numeric,similarity-method}
 \alias{metacommunity,data.frame,similarity-method}
 \alias{metacommunity,matrix,similarity-method}
-\alias{metacommunity,ANY,phylo-method}
 \title{Metacommunity}
 \usage{
 metacommunity(partition, similarity)
@@ -42,8 +41,6 @@ metacommunity(partition, similarity)
 \S4method{metacommunity}{data.frame,similarity}(partition, similarity)
 
 \S4method{metacommunity}{matrix,similarity}(partition, similarity)
-
-\S4method{metacommunity}{ANY,phylo}(partition, similarity)
 }
 \arguments{
 \item{partition}{two-dimensional \code{matrix} of mode \code{numeric}
