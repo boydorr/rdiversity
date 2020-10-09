@@ -2,7 +2,7 @@
 [![](https://img.shields.io/badge/docs-rdiversity-blue)](https://boydorr.github.io/rdiversity/)
 [![test-build](https://github.com/boydorr/rdiversity/workflows/build/badge.svg)](https://github.com/boydorr/rdiversity/actions)
 [![codecov](https://codecov.io/gh/boydorr/rdiversity/branch/master/graph/badge.svg)](https://codecov.io/gh/boydorr/rdiversity)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cdf85e8a0cb046529f72786af0888515)](https://app.codacy.com/gh/boydorr/rdiversity?utm_source=github.com&utm_medium=referral&utm_content=boydorr/rdiversity&utm_campaign=Badge_Grade_Dashboard)
+[![CodeFactor](https://www.codefactor.io/repository/github/boydorr/rdiversity/badge)](https://www.codefactor.io/repository/github/boydorr/rdiversity)
 [![License: GPL-3.0](https://img.shields.io/badge/licence-GPL--3-yellow)](https://opensource.org/licenses/GPL-3.0)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)
 [![Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow)](http://cranlogs.r-pkg.org/badges/grand-total/rdiversity)
