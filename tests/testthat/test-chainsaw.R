@@ -22,7 +22,6 @@ test_that("Setting depth to 2 returns a long root for ultrametric trees", {
 })
 
 
-
 test_that("Setting depth to 0.5 cuts off root", {
 
   tree <- ape::read.tree(text = "(A:1,B:2);")
@@ -40,7 +39,6 @@ test_that("Setting depth to 0.5 cuts off root", {
   testthat::expect_equivalent(norm_meta_alpha(meta, 0:2)$diversity,
                               norm_meta_alpha(meta2, 0:2)$diversity)
 })
-
 
 
 test_that("Setting depth to 0.5 cuts the phylogeny in half", {
@@ -109,7 +107,7 @@ test_that("Setting depth to < 1 returns correct results", {
 
   c_partition <- partition[which(row.names(partition) %in%
                                    colnames(structure_matrix)), ]
-  c_hs <- phy_abundance(c_partition, structure_matrix)
+  expect_message(c_hs <- phy_abundance(c_partition, structure_matrix))
 
   ps_ans <- cbind(A = c(0, 0, 0.6, 0.1, 0.4) / 3.7,
                  B = c(0.4, 0.1, 1.8, 0.3, 0) / 3.7)
@@ -182,10 +180,12 @@ test_that("chainsaw works when species are missing from the partition", {
   partition <- partition / sum(partition)
 
   # Calculate phy_struct
-  ps <- testthat::expect_warning(phy_struct(tree, partition))
+  testthat::expect_warning( ps <- phy_struct(tree, partition))
 
   # Generate metacommunity
-  meta <- chainsaw(partition = partition, ps = ps, depth = 1)
+  testthat::expect_warning(
+    exmeta <- chainsaw(partition = partition, ps = ps, depth = 1)
+  )
 })
 
 
@@ -207,3 +207,4 @@ test_that("chainsaw works when species are missing from the phylogeny", {
   structure_matrix <- ps$structure
   pa <- testthat::expect_warning(phy_abundance(partition, structure_matrix))
 })
+
