@@ -81,8 +81,6 @@ jobs:
         # Use the default GITHUB_TOKEN as an enviromental version for all steps
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Test coverage
         run: |
           remotes::install_cran("covr")
           covr::codecov()
