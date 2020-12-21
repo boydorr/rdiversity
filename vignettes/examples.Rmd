@@ -12,31 +12,6 @@ output:
     %\VignetteEncoding{UTF-8}
 ---
 
-# rdiversity: diversity measurement in R 
-
-`rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (*e.g.* ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), "How to partition diversity". 
-
-This package has now reached a stable release and is cross-validated against our Julia package [Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently. Please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
-
-## Contents
-
-Getting started:
-
-* [Generating a metacommunity](#generating-a-metacommunity)
-* [Calculating diversity](#calculating-diversity)
-
-Special cases:
-
-* [Taxonomic diversity](#taxonomic-diversity)
-* [Phylogenetic diversity](#phylogenetic-diversity)
-* [Genetic diversity](#genetic-diversity)
-* [User defined distance](#user-defined-distance)
-* [User defined similarity](#user-defined-similarity)
-
-Miscellaneous:
-
-* [Additional tools](#additional-tools)
-
 ## Generating a metacommunity 
 
 Before calculating diversity a `metacommunity` object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (`partition`) comprising two species ("cows" and "sheep"), and partitioned across three subcommunities (a, b, and c).
