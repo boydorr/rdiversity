@@ -115,44 +115,6 @@ setMethod(f = "metacommunity",
 
 
 #' @rdname metacommunity-methods
-#' @aliases metacommunity,data.frame-method,matrix-method
-#'
-setMethod(f = "metacommunity",
-          signature(partition = "data.frame", similarity = "matrix"),
-          definition = function(partition, similarity) {
-            # If similarity is data.frame, convert to matrix
-            partition <- as.matrix(partition)
-
-            metacommunity(partition, similarity)
-          } )
-
-
-#' @rdname metacommunity-methods
-#' @aliases metacommunity,numeric-method,matrix-method
-#'
-setMethod(f = "metacommunity",
-          signature(partition = "numeric", similarity = "matrix"),
-          definition = function(partition, similarity) {
-            # If similarity is numeric/vector, convert to matrix
-            partition <- as.matrix(partition)
-
-            metacommunity(partition, similarity)
-          } )
-
-
-#' @rdname metacommunity-methods
-#' @aliases metacommunity,matrix-method
-#'
-setMethod(f = "metacommunity",
-          signature(partition = "matrix", similarity = "matrix"),
-          definition = function(partition, similarity) {
-
-            stop("This function no longer accepts matrix objects within the `similarity` argument. Instead, use dist2sim() to generate similarity objects.")
-
-          } )
-
-
-#' @rdname metacommunity-methods
 #' @aliases metacommunity,similarity-method
 #'
 setMethod(f = "metacommunity",
