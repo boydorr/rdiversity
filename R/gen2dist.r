@@ -52,7 +52,7 @@ gen2dist <- function(vcf, biallelic = FALSE) {
     dist <- as.matrix(stringdist::stringdistmatrix(as.character(genlist), method = 'hamming'))
   }
   #return distance object
-  return(new("distance",
-             distance = dist,
-             dat_id = "genetic"))
+  new("distance",
+      distance = dist,
+      dat_id = "genetic")
 }

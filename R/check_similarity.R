@@ -15,6 +15,8 @@
 #' the similarity matrix was valid, this should be identical to that which was
 #' input as an argument.
 #'
+#' @noRd
+#'
 check_similarity <- function(similarity, partition) {
   if (is.data.frame(similarity)) similarity <- as.matrix(similarity)
 

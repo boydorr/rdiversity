@@ -15,6 +15,8 @@
 #' the partition matrix was valid, this should be identical to that which was
 #' input as an argument.
 #'
+#' @noRd
+#'
 check_phypartition <- function(tip_labels, partition){
   partition <- check_partition(partition)
 

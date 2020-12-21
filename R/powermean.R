@@ -45,6 +45,8 @@
 #' @return \code{powermean(x)} returns an object of class \code{powermean}.
 #' @include class-powermean.R
 #'
+#' @noRd
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -73,6 +75,8 @@ powermean <- function(results, meta, tag) {
 #' @rdname powermean
 #' @param object object of class \code{powermean}
 #' @return \code{print(x)} prints an object object of class \code{powermean}
+#'
+#' @noRd
 #'
 setMethod(f = "show", signature = "powermean",
           definition = function(object) {

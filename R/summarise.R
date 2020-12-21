@@ -9,6 +9,8 @@
 #'
 #' @return Returns an array whose columns are proportions.
 #'
+#' @noRd
+#'
 summarise <-
   function(populations, normalise = TRUE) {
     totals <- array(rowSums(populations), dim = c(dim(populations)[1], 1))

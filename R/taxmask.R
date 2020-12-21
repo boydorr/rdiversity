@@ -2,6 +2,8 @@
 #'
 #' @param lookup Lookup table
 #'
+#' @noRd
+#'
 #' @examples
 #' \dontrun{
 #' # Create Lookup table

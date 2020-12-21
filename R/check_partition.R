@@ -13,6 +13,8 @@
 #' the partition matrix was valid, this should be identical to that which was
 #' input as an argument.
 #'
+#' @noRd
+#'
 check_partition <- function(partition) {
   if (is.vector(partition)) partition <- as.matrix(partition)
   if (is.data.frame(partition)) partition <- as.matrix(partition)

@@ -3,6 +3,8 @@
 #' @param one Sequence one
 #' @param two Sequence two
 #'
+#' @noRd
+#'
 genevec <- function(one, two) {
   Nx <- length(one)
   Ny <- length(two)

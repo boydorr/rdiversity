@@ -9,6 +9,8 @@
 #' @param row \code{integer} denoting which row of the similarity matrix is to
 #' be calculated.
 #'
+#' @noRd
+#'
 #' @examples
 #' \dontrun{
 #' # Create Lookup table

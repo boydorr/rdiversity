@@ -1,7 +1,7 @@
 Package: rdiversity
 Type: Package
 Title: Measurement and Partitioning of Similarity-Sensitive Biodiversity
-Version: 2.1.0
+Version: 2.1.1
 Date: 2020-05-05
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
@@ -33,6 +33,7 @@ Suggests:
 LazyData: true
 RoxygenNote: 7.1.1
 Collate:
+    'ancestral_nodes.R'
     'chainsaw.R'
     'check_partition.R'
     'check_phypartition.R'
@@ -42,6 +43,7 @@ Collate:
     'class-powermean.R'
     'class-relativeentropy.R'
     'class-similarity.R'
+    'descendant_tips.R'
     'similarity.R'
     'dist2sim.R'
     'distance.R'

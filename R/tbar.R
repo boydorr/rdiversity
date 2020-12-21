@@ -12,6 +12,8 @@
 #' corresponds to the proportional abundance of historical species, which is
 #' calculated from the proportional abundance of terminal taxa
 #'
+#' @noRd
+#'
 tbar <- function(partition, structure_matrix) {
   sum(structure_matrix %*% partition)
 }

@@ -42,6 +42,8 @@
 #' @return object of class \code{relativeentropy}
 #' @include class-relativeentropy.R
 #'
+#' @noRd
+#'
 #' @examples
 #' pop <- data.frame(a = c(1,3), b = c(1,1))
 #' row.names(pop) <- paste0("sp", 1:2)
@@ -69,6 +71,8 @@ relativeentropy <- function(results, meta, tag) {
 
 #' @rdname relativeentropy
 #' @param object object of class \code{relativeentropy}
+#'
+#' @noRd
 #'
 setMethod(f = "show", signature = "relativeentropy",
           definition = function(object) {

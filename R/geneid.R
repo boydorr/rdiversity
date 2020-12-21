@@ -5,6 +5,8 @@
 #' @param seq a single read
 #' @param kmer is a 16-mer by default
 #'
+#' @noRd
+#'
 geneid <- function(seq, kmer = 16) {
   dat <- as.numeric(as.factor(seq)) - 1
   ind <- data.frame(start = seq(1, length(dat) - kmer + 1, 1),
@@ -17,5 +19,5 @@ geneid <- function(seq, kmer = 16) {
     tmp <- binaryLogic::as.binary(tmp, logic = TRUE)
     sum(2 ^ (which(rev(unlist(strsplit(as.character(tmp), "")) == 1)) - 1))
   })
-  output <- sort(output)
+  sort(output)
 }

@@ -5,6 +5,8 @@
 #'
 #' @param tax_fac Output of function \code{tax_fac{}}.
 #'
+#' @noRd
+#'
 #' @examples
 #' \dontrun{
 #' # Create Lookup table
