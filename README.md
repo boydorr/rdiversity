@@ -16,3 +16,15 @@ To install rdiversity from CRAN, simply run the following from an R console:
 ```{r}
 install.packages("rdiversity")
 ```
+
+The latest development version can be installed from GitHub
+```{r]
+# install.packages(install_github('boydorr/rdiversity')
+```
+
+Examples of how to use the package are given in a vignette and on the package [website](http://boydorr.github.io/rdiversity/articles/examples.html)
+
+```{r}
+vignette("examples", "rdiversity")
+```
+
