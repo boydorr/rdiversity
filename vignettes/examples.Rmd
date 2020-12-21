@@ -14,12 +14,9 @@ output:
 
 # rdiversity: diversity measurement in R 
 
-Note that the following documentation applies only to the development version of the package, which can be installed using: `devtools::install_github("boydorr/rdiversity")`.
-
 `rdiversity` is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (*e.g.* ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper [arXiv:1404.6520 (q-bio.QM)](https://arxiv.org/abs/1404.6520), "How to partition diversity". 
 
 This package has now reached a stable release and is cross-validated against our Julia package [Diversity.jl](https://github.com/richardreeve/Diversity.jl), which is developed independently. Please [raise an issue](https://github.com/boydorr/rdiversity/issues) if you find any problems.
-
 
 ## Contents
 
@@ -28,7 +25,6 @@ Getting started:
 * [Generating a metacommunity](#generating-a-metacommunity)
 * [Calculating diversity](#calculating-diversity)
 
-
 Special cases:
 
 * [Taxonomic diversity](#taxonomic-diversity)
@@ -36,7 +32,6 @@ Special cases:
 * [Genetic diversity](#genetic-diversity)
 * [User defined distance](#user-defined-distance)
 * [User defined similarity](#user-defined-similarity)
-
 
 Miscellaneous:
 
@@ -104,7 +99,6 @@ Each `metacommunity` object contains the following slots:
 * `@subcommunity_weights` :  the relative weights of subcommunities within a metacommunity, and
 * `@type_weights` : the relative weights of types within a metacommunity.
 
-
 ## Calculating diversity
 ### Method 1
 This method uses a wrapper function to simplify the pipeline and is recommended if only a few measures are being calculated.
@@ -142,7 +136,6 @@ norm_sub_alpha(meta, 0:2)
 
 However, if multiple measures are required and computational efficiency is an issue, then the following method is recommended (the same results are obtained).
 
-
 ### Method 2
 This method requires that we first calculate the species-level components, by passing a `metacommunity` object to the appropriate function; `raw_alpha()`, `norm_alpha()`, `raw_beta()`, `norm_beta()`, `raw_rho()`, `norm_rho()`, or `raw_gamma()`. Subcommunity- and metacommunity-level diversities are calculated using the functions `subdiv()` and `metadiv()`. Since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this method is computationally more efficient.
 
@@ -173,7 +166,6 @@ subdiv(meta, 0:2)
 # Calculate all metacommunity diversity measures
 metadiv(meta, 0:2)
 ```
-
 
 ## Taxonomic diversity
 1. Initialise data:
@@ -220,7 +212,6 @@ meta_gamma(meta, 0:2)
 
 ## Phylogenetic diversity
 Phylogenetic diversity measures can be broadly split into two categories – those that look at the phylogeny as a whole, such as Faith’s (1992) phylogenetic diversity (Faith’s PD), and those that look at pairwise tip distances, such as mean pairwise distance (MPD; Webb, 2000). The framework of measures presented in this package is able to quantify phylogenetic diversity using both of these methods.
-
 
 ### Distance-based phylogenetic diversity
 
@@ -286,7 +277,6 @@ meta_gamma(meta, 0:2)
 * `@raw_structure` : the length of evolutionary history of each historical species
 * `@parameters` : parameters associated with historical species
 
-
 ## Genetic diversity
 1. Initialise data:
 Note: the package `pinfsc50` must be installed for this example to work.
@@ -325,7 +315,6 @@ meta <- metacommunity(partition, s)
 norm_meta_beta(meta, 0:2)
 ```
 
-
 ### User defined distance
 ```{r}
 partition <- matrix(sample(6), nrow = 3)
@@ -341,7 +330,6 @@ s <- dist2sim(d, "linear")
 meta <- metacommunity(partition, s)
 ```
 
-
 ### User defined similarity
 ```{r}
 partition <- matrix(sample(6), nrow = 3)
@@ -355,9 +343,6 @@ s <- similarity(s, "my_functional")
 
 meta <- metacommunity(partition, s)
 ```
-
-
-
 
 ## Additional tools
 
