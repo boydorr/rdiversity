@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rdiversity</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.1</span>
       </span>
     </div>
 
@@ -94,32 +94,6 @@
 
     
     
-<div id="rdiversity-diversity-measurement-in-r" class="section level1">
-<h1 class="hasAnchor">
-<a href="#rdiversity-diversity-measurement-in-r" class="anchor"></a>rdiversity: diversity measurement in R</h1>
-<p><code>rdiversity</code> is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (<em>e.g.</em> ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper <a href="https://arxiv.org/abs/1404.6520">arXiv:1404.6520 (q-bio.QM)</a>, “How to partition diversity”.</p>
-<p>This package has now reached a stable release and is cross-validated against our Julia package <a href="https://github.com/richardreeve/Diversity.jl">Diversity.jl</a>, which is developed independently. Please <a href="https://github.com/boydorr/rdiversity/issues">raise an issue</a> if you find any problems.</p>
-<div id="contents" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contents" class="anchor"></a>Contents</h2>
-<p>Getting started:</p>
-<ul>
-<li><a href="#generating-a-metacommunity">Generating a metacommunity</a></li>
-<li><a href="#calculating-diversity">Calculating diversity</a></li>
-</ul>
-<p>Special cases:</p>
-<ul>
-<li><a href="#taxonomic-diversity">Taxonomic diversity</a></li>
-<li><a href="#phylogenetic-diversity">Phylogenetic diversity</a></li>
-<li><a href="#genetic-diversity">Genetic diversity</a></li>
-<li><a href="#user-defined-distance">User defined distance</a></li>
-<li><a href="#user-defined-similarity">User defined similarity</a></li>
-</ul>
-<p>Miscellaneous:</p>
-<ul>
-<li><a href="#additional-tools">Additional tools</a></li>
-</ul>
-</div>
 <div id="generating-a-metacommunity" class="section level2">
 <h2 class="hasAnchor">
 <a href="#generating-a-metacommunity" class="anchor"></a>Generating a metacommunity</h2>
@@ -587,13 +561,13 @@
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/meta_gamma.html">meta_gamma</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>##   measure q type_level type_name partition_level partition_name diversity
-## 1   gamma 0      types             metacommunity                 2.145846
-## 2   gamma 1      types             metacommunity                 2.132974
-## 3   gamma 2      types             metacommunity                 2.119466
+## 1   gamma 0      types             metacommunity                 1.906458
+## 2   gamma 1      types             metacommunity                 1.885137
+## 3   gamma 2      types             metacommunity                 1.865276
 ##         dat_id transformation normalised k    max_d
-## 1 phylogenetic         linear       TRUE 1 2.400805
-## 2 phylogenetic         linear       TRUE 1 2.400805
-## 3 phylogenetic         linear       TRUE 1 2.400805</code></pre>
+## 1 phylogenetic         linear       TRUE 1 2.112507
+## 2 phylogenetic         linear       TRUE 1 2.112507
+## 3 phylogenetic         linear       TRUE 1 2.112507</code></pre>
 </div>
 <div id="branch-based-phylogenetic-diversity" class="section level3">
 <h3 class="hasAnchor">
@@ -624,9 +598,9 @@
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/meta_gamma.html">meta_gamma</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>##   measure q type_level type_name partition_level partition_name diversity
-## 1   gamma 0      types             metacommunity                 2.854806
-## 2   gamma 1      types             metacommunity                 2.511814
-## 3   gamma 2      types             metacommunity                 2.194608
+## 1   gamma 0      types             metacommunity                 2.583802
+## 2   gamma 1      types             metacommunity                 2.439324
+## 3   gamma 2      types             metacommunity                 2.312335
 ##      dat_id transformation normalised  k max_d
 ## 1 phybranch             NA         NA NA    NA
 ## 2 phybranch             NA         NA NA    NA
@@ -735,7 +709,6 @@
 <span class="va">new_partition</span> <span class="op">&lt;-</span> <span class="va">new_partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">new_partition</span><span class="op">)</span>
 
 <span class="va">new_meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/repartition.html">repartition</a></span><span class="op">(</span><span class="va">meta</span>, <span class="va">new_partition</span><span class="op">)</span></code></pre></div>
-</div>
 </div>
 </div>
   </div>
