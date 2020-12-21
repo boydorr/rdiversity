@@ -65,7 +65,7 @@ descendant_tips <- function(tree, node) {
       keep
       x <- check[!check %in% tips]
       x
-      continue <- ifelse(length(x) != 0, T, F)
+      continue <- ifelse(length(x) != 0, TRUE, FALSE)
     }
     return(sort(keep))
   }

@@ -10,7 +10,8 @@
 #' @param s \code{smatrix()} output; ultrametric-similarity matrix.
 #' @param ps \code{phy_struct()} output.
 #'
-#' @return \code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise similarity of historic species.
+#' @return \code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise
+#' similarity of historic species.
 #'
 zmatrix <- function(partition, s, ps){
   partition <- check_phypartition(tip_labels = colnames(ps$structure),

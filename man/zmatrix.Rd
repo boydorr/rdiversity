@@ -18,7 +18,8 @@ corresponds to the proportional abundance of terminal taxa}
 \item{ps}{\code{phy_struct()} output.}
 }
 \value{
-\code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise similarity of historic species.
+\code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise
+similarity of historic species.
 }
 \description{
 Function to calculate a phylogenetic similarity matrix.
