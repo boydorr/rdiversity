@@ -1,4 +1,4 @@
-context("Testing the metacommunity() function")
+context("Testing metacommunity()")
 
 test_that("metacommunity() works for a single community", {
   pop <- c(1:5)

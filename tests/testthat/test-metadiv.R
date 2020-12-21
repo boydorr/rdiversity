@@ -1,9 +1,9 @@
-context("Testing the metadiv() function")
+context("Testing metadiv() across multiple communities")
 
 pop <- data.frame(a = c(1, 1, 0), b = c(2, 0, 0), c = c(3, 1, 0))
 pop <- pop / sum(pop)
 
-test_that("metacommunity diversity across multiple populations", {
+test_that("metadiv() returns expected values", {
   expect_equivalent(as.matrix(metadiv(raw_alpha(metacommunity(pop)),
                                       0)$diversity), t(5))
   expect_equivalent(as.matrix(metadiv(norm_alpha(metacommunity(pop)),
