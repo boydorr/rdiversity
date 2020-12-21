@@ -74,3 +74,4 @@ Collate:
     'tbar.R'
     'zmatrix.R'
 Encoding: UTF-8
+VignetteBuilder: knitr
