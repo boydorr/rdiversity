@@ -95,8 +95,9 @@
 <p>The latest development version can be installed from GitHub</p>
 <pre class="{r]"><code># install.packages("devtools")
 devtools::install_github("boydorr/rdiversity")</code></pre>
-<p>Examples of how to use the package are included in a vignette (currently only in the development version of the package) and in the Articles section of this <a href="http://boydorr.github.io/rdiversity/articles/examples.html">website</a></p>
-<pre class="{r}"><code><a href="articles/examples.html">vignette("examples", "rdiversity")</a></code></pre>
+<p>Examples of how to use the package are included in the Articles section of this <a href="http://boydorr.github.io/rdiversity/articles/examples.html">website</a>, as well as in a vignette currently only available in the development version of the package:</p>
+<pre class="{r}"><code>install_github("boydorr/rdiversity", build_vignettes = TRUE)
+vignette("examples", "rdiversity")</code></pre>
 </div>
   </div>
 
