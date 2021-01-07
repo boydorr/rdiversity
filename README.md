@@ -23,7 +23,8 @@ The latest development version can be installed from GitHub
 devtools::install_github("boydorr/rdiversity")
 ```
 
-Examples of how to use the package are given in a vignette and on the package [website](http://boydorr.github.io/rdiversity/articles/examples.html)
+Examples of how to use the package are included in a vignette (currently only in
+the development version of the package) and in the Articles section of this  [website](http://boydorr.github.io/rdiversity/articles/examples.html)
 
 ```{r}
 vignette("examples", "rdiversity")
