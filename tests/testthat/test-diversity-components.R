@@ -6,8 +6,8 @@ rdirichlet <- function(n, alpha) {
   for (i in 1:k) {
     r[, i] <- rgamma(n, alpha[i], 1)
   }
-  r <- matrix(mapply(function(r, s) return (r / s), r, rowSums(r)), ncol = k)
-  return (r)
+  r <- matrix(mapply(function(r, s) return(r / s), r, rowSums(r)), ncol = k)
+  return(r)
 }
 
 numspecies <- 100
