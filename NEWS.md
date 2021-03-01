@@ -1,4 +1,4 @@
-# rdiversity (development version)
+# rdiversity 2.1.2
 
 * Add vignette
 * Remove deprecated functionality - `metacommunity()` no longer allows matrices as a similarity argument
