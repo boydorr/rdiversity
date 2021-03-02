@@ -1,3 +1,7 @@
+# rdiversity 2.1.3
+
+* Add dependency on markdown to fix win-builder warning
+
 # rdiversity 2.1.2
 
 * Add vignette
