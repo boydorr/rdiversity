@@ -92,16 +92,12 @@ jobs:
           install.packages("pkgdown")
         shell: Rscript {0}
 
-      - name: pkgdown documentation
+      - name: Install package and deploy documentation
         # Only when master is pushed and only on mac OS
         if: github.event_name == 'push' && github.ref == 'refs/heads/master' && runner.os == 'macOS'
         # Use the default GITHUB_TOKEN as an enviromental version for all steps
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install package
-        run: R CMD INSTALL .
-
-      - name: Deploy package
         run: |
+          R CMD INSTALL .
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
