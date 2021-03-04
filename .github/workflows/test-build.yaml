@@ -75,7 +75,7 @@ jobs:
 # Coverage ------------------------------------------------------------------
 
       - name: Test coverage
-        # Only when master is pushed
+        # Only when master is pushed and only on mac OS
         if: github.event_name == 'push' && github.ref == 'refs/heads/master' && runner.os == 'macOS'
         # Use the default GITHUB_TOKEN as an enviromental version for all steps
         env:
@@ -84,3 +84,24 @@ jobs:
           remotes::install_cran("covr")
           covr::codecov()
         shell: Rscript {0}
+
+ # Documentation ------------------------------------------------------------
+
+      - name: Install dependencies
+        run: |
+          install.packages("pkgdown")
+        shell: Rscript {0}
+
+      - name: pkgdown documentation
+        # Only when master is pushed and only on mac OS
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && runner.os == 'macOS'
+        # Use the default GITHUB_TOKEN as an enviromental version for all steps
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install package
+        run: R CMD INSTALL .
+
+      - name: Deploy package
+        run: |
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
