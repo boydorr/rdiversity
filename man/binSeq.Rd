@@ -18,7 +18,7 @@ a sequence list of binary digits.
 Binary sequence.
 }
 \examples{
-binSeq(0:4)
+rdiversity:::binSeq(0:4)
 }
 \seealso{
 \link{binary}

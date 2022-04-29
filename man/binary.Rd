@@ -38,11 +38,11 @@ e.g. b <-binary(8).
 No floating-point support.
 }
 \examples{
-b <- binary(8)
+b <- rdiversity:::binary(8)
 summary(b)
-b <- binary(16, signed=TRUE)
+b <- rdiversity:::binary(16, signed=TRUE)
 summary(b)
-b <- binary(32, littleEndian=TRUE)
+b <- rdiversity:::binary(32, littleEndian=TRUE)
 summary(b)
 }
 \seealso{

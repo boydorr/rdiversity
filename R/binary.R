@@ -23,11 +23,11 @@
 #' @param littleEndian if TRUE. Big Endian if FALSE.
 #' @return a vector of class binary of length n. By default filled with zeros(0).
 #' @examples
-#' b <- binary(8)
+#' b <- rdiversity:::binary(8)
 #' summary(b)
-#' b <- binary(16, signed=TRUE)
+#' b <- rdiversity:::binary(16, signed=TRUE)
 #' summary(b)
-#' b <- binary(32, littleEndian=TRUE)
+#' b <- rdiversity:::binary(32, littleEndian=TRUE)
 #' summary(b)
 #' @seealso \link{as.binary} and \link{is.binary}.
 binary <- function(n, signed=FALSE, littleEndian=FALSE) {
@@ -61,6 +61,7 @@ binary <- function(n, signed=FALSE, littleEndian=FALSE) {
 #' @param n in Bit. Can be set if \bold{unsigned} is set to TRUE. (by default 0 Bit = auto)
 #' @param logic If set to TRUE, x is expected as logical vector.
 #' @return a vector of class binary.
+#' @export
 #' @examples
 #' as.binary(0xAF)
 #' as.binary(42)
@@ -126,6 +127,7 @@ is.binary <- function(x) {
 #' @return Output in ones and zeros (binary vector).
 #' @seealso \link{summary.binary} provides some additional information.
 #' @method print binary
+#' @export
 print.binary <- function(x, ...) {
   x <- ifelse(x, as.integer(1), as.integer(0))
   attributes(x) <- NULL
@@ -147,6 +149,7 @@ print.binary <- function(x, ...) {
 #' }
 #' @seealso \link{print.binary}
 #' @method summary binary
+#' @export
 summary.binary <- function(object, ...) {
   #I'm not sure if this is the way to do it. just printing a dataframe.
   l <- saveAttributes(object)
@@ -213,9 +216,9 @@ saveAttributes <- function(x) {
 #' @param size in Byte. 0 = auto (smallest possible Byte).
 #' @return binary number. A binary vector with the desired size.
 #' @examples
-#' fillUpToByte(as.binary(c(1,1), logic=TRUE), size=2)
-#' fillUpToByte(as.binary(c(1,0,1), logic=TRUE), size=2, value=FALSE)
-#' @seealso \link{fillUpToBit} or \link{bytesNeeded}, \link{negate}, \link{switchEndianess}.
+#' rdiversity:::fillUpToByte(as.binary(c(1,1), logic=TRUE), size=2)
+#' rdiversity:::fillUpToByte(as.binary(c(1,0,1), logic=TRUE), size=2, value=FALSE)
+#' @seealso \link{fillUpToBit}.
 fillUpToByte <- function(x, size=0, value=FALSE) {
   stopifnot(is.binary(x))
   l <- saveAttributes(x)
@@ -248,8 +251,8 @@ fillUpToByte <- function(x, size=0, value=FALSE) {
 #' @param n size in bit.
 #' @return binary number. A binary vector with the desired size.
 #' @examples
-#' fillUpToBit(as.binary(c(1,1), logic=TRUE), n=4)
-#' fillUpToBit(as.binary(c(1,0,1), logic=TRUE), n=4, value=FALSE)
+#' rdiversity:::fillUpToBit(as.binary(c(1,1), logic=TRUE), n=4)
+#' rdiversity:::fillUpToBit(as.binary(c(1,0,1), logic=TRUE), n=4, value=FALSE)
 #' @seealso \link{fillUpToByte}.
 fillUpToBit <- function(x, n, value=FALSE) {
   stopifnot(is.binary(x))
@@ -348,7 +351,7 @@ dec2bin <- function(num, signed=FALSE, littleEndian=FALSE, size=2, n=0) {
 #' @param ... used for dec2bin().
 #' @return a sequence list of binary digits.
 #' @examples
-#' binSeq(0:4)
+#' rdiversity:::binSeq(0:4)
 #' @seealso \link{binary}
 binSeq <- function(x, ...) {
   l <- vector("list", length(x))
@@ -357,5 +360,135 @@ binSeq <- function(x, ...) {
     return(l[[1]])
   } else {
     return(l)
+  }
+}
+
+#' Binary Addition (+)
+#'
+#' @description Adds two binary numbers. (x + y)
+#' @details Little-Endian and unsigned is not supported at the moment. No floating point supported.
+#' if x or y is signed the return value will also be signed.
+#' @usage binAdd(x, y)
+#' @param x summand 1 (binary vector)
+#' @param y summand 2 (binary vector)
+#' @return The sum of x and y. Returns a binary vector.
+#' @examples
+#' five <- as.binary(5); ten <- as.binary(10);
+#' as.numeric(rdiversity:::binAdd(ten, five))
+#' rdiversity:::binAdd(as.binary(c(0,1), logic=TRUE), as.binary(c(1,0), logic=TRUE))
+#' @seealso base::as.logical , base::is.logical, base::raw
+binAdd <- function(x, y) {
+  #Should be implemented in C (internal generic). Very slow.
+  if (missing(x)) stop("x is missing.")
+  if (missing(y)) stop("y is missing.")
+  stopifnot(is.binary(x))
+  stopifnot(is.binary(y))
+
+  x_signed <- attributes(x)$signed
+  x_littleEndian <- attributes(x)$littleEndian
+  y_signed <- attributes(y)$signed
+  y_littleEndian <- attributes(y)$littleEndian
+
+  l <- list(class=c("binary","logical"),
+            signed=FALSE,
+            littleEndian=x_littleEndian)
+
+  if (x_signed || y_signed) l$signed <- TRUE
+  if (x_littleEndian) y <- switchEndianess(y)
+  if (y_littleEndian) x <- switchEndianess(x)
+
+  if (length(x) >= length(y))
+  {
+    MAX <- length(x)
+    a <- rep(FALSE,length(x)-length(y))
+    y <- c(a,y)
+  } else {
+    MAX <- length(y)
+    a <- rep(FALSE,length(y)-length(x))
+    x <- c(a,x)
+  }
+
+  ret = binary(MAX)
+  temp = binary(MAX+1)
+  ret[MAX] <- xor(x[MAX],y[MAX])
+  if ((isTRUE(as.logical(x[MAX])) && isTRUE(as.logical(y[MAX])))) temp[MAX+1] <- TRUE
+
+  if (MAX > 2)
+  {
+    for(i in (MAX-1):1)
+    {
+      ret[i] <- xor(x[i],y[i])
+      ret[i] <- xor(ret[i],temp[i+2])
+      if(((isTRUE(as.logical(x[i])) && isTRUE(as.logical(y[i]))) ||
+          (isTRUE(as.logical(x[i])) && isTRUE(as.logical(temp[i+2]))) ||
+          (isTRUE(as.logical(y[i])) && isTRUE(as.logical(temp[i+2]))))) temp[i+1] <- TRUE
+    }
+  }
+  if (temp[2] && !l$signed) {
+    ret <- c(T,ret)
+    #l$signed <- TRUE
+    #l$littleEndian <- FALSE
+  }
+  # reverse big endian.
+  return(loadAttributes(ret, l))
+}
+
+bin2dec <- function(bin) {
+  #could be implemented in C. But it is not that slow.
+  signed <- attributes(bin)$signed
+  littleEndian <- attributes(bin)$littleEndian
+
+  if(!littleEndian) { bin <- rev(bin) }
+
+  bin <- as.integer(as.logical(bin))
+  i = length(bin)-1
+  numeric = 0
+  first <- TRUE
+
+  for(d in rev(bin))
+  {
+    if ((signed) & (first)) {
+      numeric <- (-1 * d * (2^i))
+      i <- i - 1
+      first <- FALSE
+    } else {
+      numeric = (numeric + d * (2^i))
+      i <- i - 1
+    }
+  }
+  return(numeric)
+}
+
+#' A simple helper function to return the size of one byte
+#'
+#' @description Used to increase readabilaty
+#' @usage byte()
+#' @return The size of one byte (8)
+#' @seealso \link{fillUpToByte}
+byte <- function() {
+  return(8)
+}
+
+#' Switch Endianess.
+#'
+#' @description Switch little-endian to big-endian and vice versa.
+#' @usage switchEndianess(x, stickyBits=FALSE)
+#' @param x binary number. Any binary number.
+#' @param stickyBits Bits wont change if set TRUE. Only the attribute will be switched.
+#' @return switch little-endian to big-endian and vice versa.
+#' @examples
+#' x <- as.binary(c(1,1,0,0), logic=TRUE); print(x); summary(x);
+#' y <- rdiversity:::switchEndianess(x); print(y); summary(y);
+#' y <- rdiversity:::switchEndianess(x, stickyBits=TRUE); print(y); summary(y);
+#' @seealso \link{fillUpToByte}.
+switchEndianess <- function(x, stickyBits=FALSE) {
+  stopifnot(is.binary(x))
+  l <- saveAttributes(x)
+  l$littleEndian <- !l$littleEndian
+  if (stickyBits == TRUE)
+  {
+    return(loadAttributes(x,l))
+  } else {
+    return(loadAttributes(rev(x),l))
   }
 }

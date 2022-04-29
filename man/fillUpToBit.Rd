@@ -23,8 +23,8 @@ Fills up the binary number with zeros(0) or ones(1), to the size n in bit.
 No floating point supported.
 }
 \examples{
-fillUpToBit(as.binary(c(1,1), logic=TRUE), n=4)
-fillUpToBit(as.binary(c(1,0,1), logic=TRUE), n=4, value=FALSE)
+rdiversity:::fillUpToBit(as.binary(c(1,1), logic=TRUE), n=4)
+rdiversity:::fillUpToBit(as.binary(c(1,0,1), logic=TRUE), n=4, value=FALSE)
 }
 \seealso{
 \link{fillUpToByte}.

@@ -23,9 +23,9 @@ Fills up the binary number with zeros(0) or ones(1), to the size in Byte.
 No floating point supported.
 }
 \examples{
-fillUpToByte(as.binary(c(1,1), logic=TRUE), size=2)
-fillUpToByte(as.binary(c(1,0,1), logic=TRUE), size=2, value=FALSE)
+rdiversity:::fillUpToByte(as.binary(c(1,1), logic=TRUE), size=2)
+rdiversity:::fillUpToByte(as.binary(c(1,0,1), logic=TRUE), size=2, value=FALSE)
 }
 \seealso{
-\link{fillUpToBit} or \link{bytesNeeded}, \link{negate}, \link{switchEndianess}.
+\link{fillUpToBit}.
 }
