@@ -26,7 +26,6 @@
 #' @docType package
 #'
 #' @import methods
-#' @importFrom binaryLogic as.binary
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
 #' @importFrom utils head installed.packages
