@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -34,23 +36,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rdiversity</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/boydorr/rdiversity/">
+  <a href="https://github.com/boydorr/rdiversity/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -84,78 +80,82 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rdiversity-diversity-measurement-in-r" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rdiversity-diversity-measurement-in-r" class="anchor"></a>rdiversity: diversity measurement in R</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="rdiversity-diversity-measurement-in-r">rdiversity: diversity measurement in R<a class="anchor" aria-label="anchor" href="#rdiversity-diversity-measurement-in-r"></a>
+</h1></div>
 
-<p><code>rdiversity</code> is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (<em>e.g.</em> ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper <a href="https://arxiv.org/abs/1404.6520">arXiv:1404.6520 (q-bio.QM)</a>, “How to partition diversity”.</p>
-<p>This package has now reached a stable release and is cross-validated against our Julia package <a href="https://github.com/richardreeve/Diversity.jl">Diversity.jl</a>, which is developed independently. Please <a href="https://github.com/boydorr/rdiversity/issues">raise an issue</a> if you find any problems.</p>
+<p><code>rdiversity</code> is a package for R based around a framework for measuring biodiversity using similarity-sensitive diversity measures. It provides functionality for measuring alpha, beta and gamma diversity of metacommunities (<em>e.g.</em> ecosystems) and their constituent subcommunities, where similarity may be defined as taxonomic, phenotypic, genetic, phylogenetic, functional, and so on. It uses the diversity framework described in the arXiv paper <a href="https://arxiv.org/abs/1404.6520" class="external-link">arXiv:1404.6520 (q-bio.QM)</a>, “How to partition diversity”.</p>
+<p>This package has now reached a stable release and is cross-validated against our Julia package <a href="https://github.com/richardreeve/Diversity.jl" class="external-link">Diversity.jl</a>, which is developed independently. Please <a href="https://github.com/boydorr/rdiversity/issues" class="external-link">raise an issue</a> if you find any problems.</p>
 <p>To install rdiversity from CRAN, simply run the following from an R console:</p>
-<pre class="{r}"><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("rdiversity")</a></code></pre>
+<pre class="{r}"><code><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rdiversity"</span><span class="op">)</span></code></pre>
 <p>The latest development version can be installed from GitHub:</p>
-<pre class="{r]"><code># install.packages("devtools")
-devtools::install_github("boydorr/rdiversity")</code></pre>
-<p>Examples of how to use the package are included in our <a href="http://boydorr.github.io/rdiversity/articles/examples.html">docs</a>, as well as in a vignette currently only available in the development version of this package:</p>
-<pre class="{r}"><code>install_github("boydorr/rdiversity", build_vignettes = TRUE)
-vignette("examples", "rdiversity")</code></pre>
+<pre class="{r]"><code><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"boydorr/rdiversity"</span><span class="op">)</span></code></pre>
+<p>Examples of how to use the package are included in our <a href="http://boydorr.github.io/rdiversity/articles/examples.html" class="external-link">docs</a>, as well as in a vignette currently only available in the development version of this package:</p>
+<pre class="{r}"><code><span class="fu">install_github</span><span class="op">(</span><span class="st">"boydorr/rdiversity"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"examples"</span>, <span class="st">"rdiversity"</span><span class="op">)</span></code></pre>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=rdiversity">https://​cloud.r-project.org/​package=rdiversity</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/boydorr/rdiversity/">https://​github.com/​boydorr/​rdiversity/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/boydorr/rdiversity/issues">https://​github.com/​boydorr/​rdiversity/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing rdiversity</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Sonia Mitchell <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0003-1536-2066" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Richard Reeve <br><small class="roles"> Author, thesis advisor </small> <a href="https://orcid.org/0000-0003-2589-8091" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="https://cloud.r-project.org/package=rdiversity" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/boydorr/rdiversity/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/boydorr/rdiversity/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://boydorr.github.io/rdiversity/"><img src="https://img.shields.io/badge/docs-rdiversity-blue"></a></li>
-<li><a href="https://github.com/boydorr/rdiversity/actions"><img src="https://github.com/boydorr/rdiversity/workflows/build/badge.svg" alt="test-build"></a></li>
-<li><a href="https://codecov.io/gh/boydorr/rdiversity"><img src="https://codecov.io/gh/boydorr/rdiversity/branch/master/graph/badge.svg" alt="codecov"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/boydorr/rdiversity"><img src="https://www.codefactor.io/repository/github/boydorr/rdiversity/badge" alt="CodeFactor"></a></li>
-<li><a href="https://opensource.org/licenses/GPL-3.0"><img src="https://img.shields.io/badge/licence-GPL--3-green" alt="License: GPL-3.0"></a></li>
-<li><a href="https://doi.org/10.5281/zenodo.597470"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg" alt="DOI"></a></li>
-<li><a href="http://cranlogs.r-pkg.org/badges/grand-total/rdiversity"><img src="http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow" alt="Total downloads"></a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing rdiversity</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Sonia Mitchell <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0003-1536-2066" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Richard Reeve <br><small class="roles"> Author, thesis advisor </small> <a href="https://orcid.org/0000-0003-2589-8091" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://boydorr.github.io/rdiversity/" class="external-link"><img src="https://img.shields.io/badge/docs-rdiversity-blue"></a></li>
+<li><a href="https://github.com/boydorr/rdiversity/actions" class="external-link"><img src="https://github.com/boydorr/rdiversity/workflows/build/badge.svg" alt="test-build"></a></li>
+<li><a href="https://codecov.io/gh/boydorr/rdiversity" class="external-link"><img src="https://codecov.io/gh/boydorr/rdiversity/branch/master/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/boydorr/rdiversity" class="external-link"><img src="https://www.codefactor.io/repository/github/boydorr/rdiversity/badge" alt="CodeFactor"></a></li>
+<li><a href="https://opensource.org/licenses/GPL-3.0" class="external-link"><img src="https://img.shields.io/badge/licence-GPL--3-green" alt="License: GPL-3.0"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.597470" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg" alt="DOI"></a></li>
+<li><a href="http://cranlogs.r-pkg.org/badges/grand-total/rdiversity" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/rdiversity?color=yellow" alt="Total downloads"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -163,6 +163,8 @@ vignette("examples", "rdiversity")</code></pre>
 
   
 
+
+  
 
   </body>
 </html>

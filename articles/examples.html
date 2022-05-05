@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rdiversity</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/boydorr/rdiversity/">
+  <a href="https://github.com/boydorr/rdiversity/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -83,63 +79,63 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>rdiversity examples</h1>
-                        <h4 class="author">Sonia Mitchell</h4>
+                        <h4 data-toc-skip class="author">Sonia Mitchell</h4>
             
-            <h4 class="date">March 04 2021</h4>
+            <h4 data-toc-skip class="date">May 05 2022</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/boydorr/rdiversity/blob/master/vignettes/examples.Rmd"><code>vignettes/examples.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/boydorr/rdiversity/blob/HEAD/vignettes/examples.Rmd" class="external-link"><code>vignettes/examples.Rmd</code></a></small>
       <div class="hidden name"><code>examples.Rmd</code></div>
 
     </div>
 
     
     
-<div id="generating-a-metacommunity" class="section level2">
-<h2 class="hasAnchor">
-<a href="#generating-a-metacommunity" class="anchor"></a>Generating a metacommunity</h2>
+<div class="section level2">
+<h2 id="generating-a-metacommunity">Generating a metacommunity<a class="anchor" aria-label="anchor" href="#generating-a-metacommunity"></a>
+</h2>
 <p>Before calculating diversity a <code>metacommunity</code> object must be created. This object contains all the information needed to calculate diversity. In the following example, we generate a metacommunity (<code>partition</code>) comprising two species (“cows” and “sheep”), and partitioned across three subcommunities (a, b, and c).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load the package into R</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boydorr/rdiversity">rdiversity</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boydorr/rdiversity" class="external-link">rdiversity</a></span><span class="op">)</span>
 
 <span class="co"># Initialise data</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>,c<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span></code></pre></div>
-<p>The <code><a href="../reference/metacommunity.html">metacommunity()</a></code> function takes two arguments, <code>partition</code> and <code>similarity</code>. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the <code>similarity</code> argument is missing, as below:</p>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>,c<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span></code></pre></div>
+<p>The <code><a href="../reference/metacommunity-methods.html">metacommunity()</a></code> function takes two arguments, <code>partition</code> and <code>similarity</code>. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the <code>similarity</code> argument is missing, as below:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Generate metacommunity object</span>
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span>partition <span class="op">=</span> <span class="va">partition</span><span class="op">)</span></code></pre></div>
-<pre><code>## Metacommunity matrix was normalised to sum to 1.</code></pre>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span>partition <span class="op">=</span> <span class="va">partition</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Metacommunity matrix was normalised to sum to 1.</span></code></pre>
 <p>Note that a warning is displayed when abundances (rather than relative abundances) are entered into the <code>partition</code> argument. Both are acceptable inputs.</p>
 <p>When species share some similarity and a similarity matrix is available, then a similarity object (and the metacommunity object) is generated in the following way:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Initialise similarity matrix</span>
-<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
+<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
 
 <span class="co"># Generate similarity object </span>
-<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/similarity.html">similarity</a></span><span class="op">(</span>similarity <span class="op">=</span> <span class="va">s</span>, dat_id <span class="op">=</span> <span class="st">"my_taxonomic"</span><span class="op">)</span>
+<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/similarity-methods.html">similarity</a></span><span class="op">(</span>similarity <span class="op">=</span> <span class="va">s</span>, dat_id <span class="op">=</span> <span class="st">"my_taxonomic"</span><span class="op">)</span>
 
 <span class="co"># Generate metacommunity object</span>
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span>partition <span class="op">=</span> <span class="va">partition</span>, similarity <span class="op">=</span> <span class="va">s</span><span class="op">)</span></code></pre></div>
-<pre><code>## Metacommunity matrix was normalised to sum to 1.</code></pre>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span>partition <span class="op">=</span> <span class="va">partition</span>, similarity <span class="op">=</span> <span class="va">s</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Metacommunity matrix was normalised to sum to 1.</span></code></pre>
 <p>Alternatively, if a distance matrix is available, then a distance object is generated in the following way:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Initialise distance matrix</span>
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.7</span>, <span class="fl">0.7</span>, <span class="fl">0</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.7</span>, <span class="fl">0.7</span>, <span class="fl">0</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
 
 <span class="co"># Generate distance object</span>
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/distance.html">distance</a></span><span class="op">(</span>distance <span class="op">=</span> <span class="va">d</span>, dat_id <span class="op">=</span> <span class="st">"my_taxonomic"</span><span class="op">)</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/distance-methods.html">distance</a></span><span class="op">(</span>distance <span class="op">=</span> <span class="va">d</span>, dat_id <span class="op">=</span> <span class="st">"my_taxonomic"</span><span class="op">)</span>
 
 <span class="co"># Convert the distance object to similarity object (by means of a linear or exponential transform)</span>
 <span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dist2sim.html">dist2sim</a></span><span class="op">(</span>dist <span class="op">=</span> <span class="va">d</span>, transform <span class="op">=</span> <span class="st">"linear"</span><span class="op">)</span>
 
 <span class="co"># Generate metacommunity object</span>
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span>partition <span class="op">=</span> <span class="va">partition</span>, similarity <span class="op">=</span> <span class="va">s</span><span class="op">)</span></code></pre></div>
-<pre><code>## Metacommunity matrix was normalised to sum to 1.</code></pre>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span>partition <span class="op">=</span> <span class="va">partition</span>, similarity <span class="op">=</span> <span class="va">s</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Metacommunity matrix was normalised to sum to 1.</span></code></pre>
 <p>Each <code>metacommunity</code> object contains the following slots:</p>
 <ul>
 <li>
@@ -157,12 +153,12 @@
 <code>@type_weights</code> : the relative weights of types within a metacommunity.</li>
 </ul>
 </div>
-<div id="calculating-diversity" class="section level2">
-<h2 class="hasAnchor">
-<a href="#calculating-diversity" class="anchor"></a>Calculating diversity</h2>
-<div id="method-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#method-1" class="anchor"></a>Method 1</h3>
+<div class="section level2">
+<h2 id="calculating-diversity">Calculating diversity<a class="anchor" aria-label="anchor" href="#calculating-diversity"></a>
+</h2>
+<div class="section level3">
+<h3 id="method-1">Method 1<a class="anchor" aria-label="anchor" href="#method-1"></a>
+</h3>
 <p>This method uses a wrapper function to simplify the pipeline and is recommended if only a few measures are being calculated.</p>
 <p>A complete list of these functions is shown below:</p>
 <ul>
@@ -211,288 +207,288 @@
 <p>Each of these functions take two arguments, <code>meta</code> (a <code>metacommunity</code> object) and <code>qs</code> (a vector of q values), and output results as a <code>rdiv</code> object. For example, to calculate normalised subcommunity alpha diversity for <em>q=0</em>, <em>q=1</em>, and <em>q=2</em>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Initialise data</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>,c<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>,c<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
 
 <span class="co"># Generate a metacommunity object</span>
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
-<pre><code>## Metacommunity matrix was normalised to sum to 1.</code></pre>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Metacommunity matrix was normalised to sum to 1.</span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate diversity</span>
 <span class="fu"><a href="../reference/norm_sub_alpha.html">norm_sub_alpha</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##            measure q type_level type_name partition_level partition_name
-## 1 normalised alpha 0      types              subcommunity              a
-## 2 normalised alpha 0      types              subcommunity              b
-## 3 normalised alpha 0      types              subcommunity              c
-## 4 normalised alpha 1      types              subcommunity              a
-## 5 normalised alpha 1      types              subcommunity              b
-## 6 normalised alpha 1      types              subcommunity              c
-## 7 normalised alpha 2      types              subcommunity              a
-## 8 normalised alpha 2      types              subcommunity              b
-## 9 normalised alpha 2      types              subcommunity              c
-##   diversity dat_id transformation normalised  k max_d
-## 1  2.000000  naive             NA         NA NA    NA
-## 2  1.000000  naive             NA         NA NA    NA
-## 3  2.000000  naive             NA         NA NA    NA
-## 4  2.000000  naive             NA         NA NA    NA
-## 5  1.000000  naive             NA         NA NA    NA
-## 6  1.754765  naive             NA         NA NA    NA
-## 7  2.000000  naive             NA         NA NA    NA
-## 8  1.000000  naive             NA         NA NA    NA
-## 9  1.600000  naive             NA         NA NA    NA</code></pre>
+<pre><code><span class="co">##            measure q type_level type_name partition_level partition_name</span>
+<span class="co">## 1 normalised alpha 0      types              subcommunity              a</span>
+<span class="co">## 2 normalised alpha 0      types              subcommunity              b</span>
+<span class="co">## 3 normalised alpha 0      types              subcommunity              c</span>
+<span class="co">## 4 normalised alpha 1      types              subcommunity              a</span>
+<span class="co">## 5 normalised alpha 1      types              subcommunity              b</span>
+<span class="co">## 6 normalised alpha 1      types              subcommunity              c</span>
+<span class="co">## 7 normalised alpha 2      types              subcommunity              a</span>
+<span class="co">## 8 normalised alpha 2      types              subcommunity              b</span>
+<span class="co">## 9 normalised alpha 2      types              subcommunity              c</span>
+<span class="co">##   diversity dat_id transformation normalised  k max_d</span>
+<span class="co">## 1  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 2  1.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 3  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 4  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 5  1.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 6  1.754765  naive             NA         NA NA    NA</span>
+<span class="co">## 7  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 8  1.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 9  1.600000  naive             NA         NA NA    NA</span></code></pre>
 <p>However, if multiple measures are required and computational efficiency is an issue, then the following method is recommended (the same results are obtained).</p>
 </div>
-<div id="method-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#method-2" class="anchor"></a>Method 2</h3>
+<div class="section level3">
+<h3 id="method-2">Method 2<a class="anchor" aria-label="anchor" href="#method-2"></a>
+</h3>
 <p>This method requires that we first calculate the species-level components, by passing a <code>metacommunity</code> object to the appropriate function; <code><a href="../reference/raw_alpha.html">raw_alpha()</a></code>, <code><a href="../reference/norm_alpha.html">norm_alpha()</a></code>, <code><a href="../reference/raw_beta.html">raw_beta()</a></code>, <code><a href="../reference/norm_beta.html">norm_beta()</a></code>, <code><a href="../reference/raw_rho.html">raw_rho()</a></code>, <code><a href="../reference/norm_rho.html">norm_rho()</a></code>, or <code><a href="../reference/raw_gamma.html">raw_gamma()</a></code>. Subcommunity- and metacommunity-level diversities are calculated using the functions <code><a href="../reference/subdiv.html">subdiv()</a></code> and <code><a href="../reference/metadiv.html">metadiv()</a></code>. Since both subcommunity and metacommunity diversity measures are transformations of the same species-level component, this method is computationally more efficient.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Initialise data</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>,c<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,b<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">0</span><span class="op">)</span>,c<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cows"</span>, <span class="st">"sheep"</span><span class="op">)</span>
 
 <span class="co"># Generate a metacommunity object</span>
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
-<pre><code>## Metacommunity matrix was normalised to sum to 1.</code></pre>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Metacommunity matrix was normalised to sum to 1.</span></code></pre>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate the species-level component for normalised alpha</span>
 <span class="va">component</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/norm_alpha.html">norm_alpha</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span>
 
 <span class="co"># Calculate normalised alpha at the subcommunity-level </span>
 <span class="fu"><a href="../reference/subdiv.html">subdiv</a></span><span class="op">(</span><span class="va">component</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##            measure q type_level type_name partition_level partition_name
-## 1 normalised alpha 0      types              subcommunity              a
-## 2 normalised alpha 0      types              subcommunity              b
-## 3 normalised alpha 0      types              subcommunity              c
-## 4 normalised alpha 1      types              subcommunity              a
-## 5 normalised alpha 1      types              subcommunity              b
-## 6 normalised alpha 1      types              subcommunity              c
-## 7 normalised alpha 2      types              subcommunity              a
-## 8 normalised alpha 2      types              subcommunity              b
-## 9 normalised alpha 2      types              subcommunity              c
-##   diversity dat_id transformation normalised  k max_d
-## 1  2.000000  naive             NA         NA NA    NA
-## 2  1.000000  naive             NA         NA NA    NA
-## 3  2.000000  naive             NA         NA NA    NA
-## 4  2.000000  naive             NA         NA NA    NA
-## 5  1.000000  naive             NA         NA NA    NA
-## 6  1.754765  naive             NA         NA NA    NA
-## 7  2.000000  naive             NA         NA NA    NA
-## 8  1.000000  naive             NA         NA NA    NA
-## 9  1.600000  naive             NA         NA NA    NA</code></pre>
+<pre><code><span class="co">##            measure q type_level type_name partition_level partition_name</span>
+<span class="co">## 1 normalised alpha 0      types              subcommunity              a</span>
+<span class="co">## 2 normalised alpha 0      types              subcommunity              b</span>
+<span class="co">## 3 normalised alpha 0      types              subcommunity              c</span>
+<span class="co">## 4 normalised alpha 1      types              subcommunity              a</span>
+<span class="co">## 5 normalised alpha 1      types              subcommunity              b</span>
+<span class="co">## 6 normalised alpha 1      types              subcommunity              c</span>
+<span class="co">## 7 normalised alpha 2      types              subcommunity              a</span>
+<span class="co">## 8 normalised alpha 2      types              subcommunity              b</span>
+<span class="co">## 9 normalised alpha 2      types              subcommunity              c</span>
+<span class="co">##   diversity dat_id transformation normalised  k max_d</span>
+<span class="co">## 1  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 2  1.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 3  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 4  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 5  1.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 6  1.754765  naive             NA         NA NA    NA</span>
+<span class="co">## 7  2.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 8  1.000000  naive             NA         NA NA    NA</span>
+<span class="co">## 9  1.600000  naive             NA         NA NA    NA</span></code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Likewise, calculate normalised alpha at the metacommunity-level </span>
 <span class="fu"><a href="../reference/metadiv.html">metadiv</a></span><span class="op">(</span><span class="va">component</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##            measure q type_level type_name partition_level partition_name
-## 1 normalised alpha 0      types             metacommunity               
-## 2 normalised alpha 1      types             metacommunity               
-## 3 normalised alpha 2      types             metacommunity               
-##   diversity dat_id transformation normalised  k max_d
-## 1  1.750000  naive             NA         NA NA    NA
-## 2  1.575314  naive             NA         NA NA    NA
-## 3  1.454545  naive             NA         NA NA    NA</code></pre>
+<pre><code><span class="co">##            measure q type_level type_name partition_level partition_name</span>
+<span class="co">## 1 normalised alpha 0      types             metacommunity               </span>
+<span class="co">## 2 normalised alpha 1      types             metacommunity               </span>
+<span class="co">## 3 normalised alpha 2      types             metacommunity               </span>
+<span class="co">##   diversity dat_id transformation normalised  k max_d</span>
+<span class="co">## 1  1.750000  naive             NA         NA NA    NA</span>
+<span class="co">## 2  1.575314  naive             NA         NA NA    NA</span>
+<span class="co">## 3  1.454545  naive             NA         NA NA    NA</span></code></pre>
 <p>In some instances, it may be useful to calculate <strong>all</strong> subcommunity (or metacommunity) measures. In which case, a <code>metacommunity</code> object may be passed directly to <code><a href="../reference/subdiv.html">subdiv()</a></code> or <code><a href="../reference/metadiv.html">metadiv()</a></code>:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate all subcommunity diversity measures</span>
 <span class="fu"><a href="../reference/subdiv.html">subdiv</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##             measure q type_level type_name partition_level partition_name
-## 1         raw alpha 0      types              subcommunity              a
-## 2         raw alpha 0      types              subcommunity              b
-## 3         raw alpha 0      types              subcommunity              c
-## 4         raw alpha 1      types              subcommunity              a
-## 5         raw alpha 1      types              subcommunity              b
-## 6         raw alpha 1      types              subcommunity              c
-## 7         raw alpha 2      types              subcommunity              a
-## 8         raw alpha 2      types              subcommunity              b
-## 9         raw alpha 2      types              subcommunity              c
-## 10 normalised alpha 0      types              subcommunity              a
-## 11 normalised alpha 0      types              subcommunity              b
-## 12 normalised alpha 0      types              subcommunity              c
-## 13 normalised alpha 1      types              subcommunity              a
-## 14 normalised alpha 1      types              subcommunity              b
-## 15 normalised alpha 1      types              subcommunity              c
-## 16 normalised alpha 2      types              subcommunity              a
-## 17 normalised alpha 2      types              subcommunity              b
-## 18 normalised alpha 2      types              subcommunity              c
-## 19         raw beta 0      types              subcommunity              a
-## 20         raw beta 0      types              subcommunity              b
-## 21         raw beta 0      types              subcommunity              c
-## 22         raw beta 1      types              subcommunity              a
-## 23         raw beta 1      types              subcommunity              b
-## 24         raw beta 1      types              subcommunity              c
-## 25         raw beta 2      types              subcommunity              a
-## 26         raw beta 2      types              subcommunity              b
-## 27         raw beta 2      types              subcommunity              c
-## 28  normalised beta 0      types              subcommunity              a
-## 29  normalised beta 0      types              subcommunity              b
-## 30  normalised beta 0      types              subcommunity              c
-## 31  normalised beta 1      types              subcommunity              a
-## 32  normalised beta 1      types              subcommunity              b
-## 33  normalised beta 1      types              subcommunity              c
-## 34  normalised beta 2      types              subcommunity              a
-## 35  normalised beta 2      types              subcommunity              b
-## 36  normalised beta 2      types              subcommunity              c
-## 37          raw rho 0      types              subcommunity              a
-## 38          raw rho 0      types              subcommunity              b
-## 39          raw rho 0      types              subcommunity              c
-## 40          raw rho 1      types              subcommunity              a
-## 41          raw rho 1      types              subcommunity              b
-## 42          raw rho 1      types              subcommunity              c
-## 43          raw rho 2      types              subcommunity              a
-## 44          raw rho 2      types              subcommunity              b
-## 45          raw rho 2      types              subcommunity              c
-## 46   normalised rho 0      types              subcommunity              a
-## 47   normalised rho 0      types              subcommunity              b
-## 48   normalised rho 0      types              subcommunity              c
-## 49   normalised rho 1      types              subcommunity              a
-## 50   normalised rho 1      types              subcommunity              b
-## 51   normalised rho 1      types              subcommunity              c
-## 52   normalised rho 2      types              subcommunity              a
-## 53   normalised rho 2      types              subcommunity              b
-## 54   normalised rho 2      types              subcommunity              c
-## 55            gamma 0      types              subcommunity              a
-## 56            gamma 0      types              subcommunity              b
-## 57            gamma 0      types              subcommunity              c
-## 58            gamma 1      types              subcommunity              a
-## 59            gamma 1      types              subcommunity              b
-## 60            gamma 1      types              subcommunity              c
-## 61            gamma 2      types              subcommunity              a
-## 62            gamma 2      types              subcommunity              b
-## 63            gamma 2      types              subcommunity              c
-##    diversity dat_id transformation normalised  k max_d
-## 1  8.0000000  naive             NA         NA NA    NA
-## 2  4.0000000  naive             NA         NA NA    NA
-## 3  4.0000000  naive             NA         NA NA    NA
-## 4  8.0000000  naive             NA         NA NA    NA
-## 5  4.0000000  naive             NA         NA NA    NA
-## 6  3.5095307  naive             NA         NA NA    NA
-## 7  8.0000000  naive             NA         NA NA    NA
-## 8  4.0000000  naive             NA         NA NA    NA
-## 9  3.2000000  naive             NA         NA NA    NA
-## 10 2.0000000  naive             NA         NA NA    NA
-## 11 1.0000000  naive             NA         NA NA    NA
-## 12 2.0000000  naive             NA         NA NA    NA
-## 13 2.0000000  naive             NA         NA NA    NA
-## 14 1.0000000  naive             NA         NA NA    NA
-## 15 1.7547654  naive             NA         NA NA    NA
-## 16 2.0000000  naive             NA         NA NA    NA
-## 17 1.0000000  naive             NA         NA NA    NA
-## 18 1.6000000  naive             NA         NA NA    NA
-## 19 0.2500000  naive             NA         NA NA    NA
-## 20 0.3333333  naive             NA         NA NA    NA
-## 21 0.5000000  naive             NA         NA NA    NA
-## 22 0.2886751  naive             NA         NA NA    NA
-## 23 0.3333333  naive             NA         NA NA    NA
-## 24 0.5000000  naive             NA         NA NA    NA
-## 25 0.3333333  naive             NA         NA NA    NA
-## 26 0.3333333  naive             NA         NA NA    NA
-## 27 0.5000000  naive             NA         NA NA    NA
-## 28 1.0000000  naive             NA         NA NA    NA
-## 29 1.3333333  naive             NA         NA NA    NA
-## 30 1.0000000  naive             NA         NA NA    NA
-## 31 1.1547005  naive             NA         NA NA    NA
-## 32 1.3333333  naive             NA         NA NA    NA
-## 33 1.0000000  naive             NA         NA NA    NA
-## 34 1.3333333  naive             NA         NA NA    NA
-## 35 1.3333333  naive             NA         NA NA    NA
-## 36 1.0000000  naive             NA         NA NA    NA
-## 37 4.0000000  naive             NA         NA NA    NA
-## 38 3.0000000  naive             NA         NA NA    NA
-## 39 2.0000000  naive             NA         NA NA    NA
-## 40 3.4641016  naive             NA         NA NA    NA
-## 41 3.0000000  naive             NA         NA NA    NA
-## 42 2.0000000  naive             NA         NA NA    NA
-## 43 3.0000000  naive             NA         NA NA    NA
-## 44 3.0000000  naive             NA         NA NA    NA
-## 45 2.0000000  naive             NA         NA NA    NA
-## 46 1.0000000  naive             NA         NA NA    NA
-## 47 0.7500000  naive             NA         NA NA    NA
-## 48 1.0000000  naive             NA         NA NA    NA
-## 49 0.8660254  naive             NA         NA NA    NA
-## 50 0.7500000  naive             NA         NA NA    NA
-## 51 1.0000000  naive             NA         NA NA    NA
-## 52 0.7500000  naive             NA         NA NA    NA
-## 53 0.7500000  naive             NA         NA NA    NA
-## 54 1.0000000  naive             NA         NA NA    NA
-## 55 2.6666667  naive             NA         NA NA    NA
-## 56 1.3333333  naive             NA         NA NA    NA
-## 57 2.0000000  naive             NA         NA NA    NA
-## 58 2.3094011  naive             NA         NA NA    NA
-## 59 1.3333333  naive             NA         NA NA    NA
-## 60 1.7547654  naive             NA         NA NA    NA
-## 61 2.0000000  naive             NA         NA NA    NA
-## 62 1.3333333  naive             NA         NA NA    NA
-## 63 1.6000000  naive             NA         NA NA    NA</code></pre>
+<pre><code><span class="co">##             measure q type_level type_name partition_level partition_name</span>
+<span class="co">## 1         raw alpha 0      types              subcommunity              a</span>
+<span class="co">## 2         raw alpha 0      types              subcommunity              b</span>
+<span class="co">## 3         raw alpha 0      types              subcommunity              c</span>
+<span class="co">## 4         raw alpha 1      types              subcommunity              a</span>
+<span class="co">## 5         raw alpha 1      types              subcommunity              b</span>
+<span class="co">## 6         raw alpha 1      types              subcommunity              c</span>
+<span class="co">## 7         raw alpha 2      types              subcommunity              a</span>
+<span class="co">## 8         raw alpha 2      types              subcommunity              b</span>
+<span class="co">## 9         raw alpha 2      types              subcommunity              c</span>
+<span class="co">## 10 normalised alpha 0      types              subcommunity              a</span>
+<span class="co">## 11 normalised alpha 0      types              subcommunity              b</span>
+<span class="co">## 12 normalised alpha 0      types              subcommunity              c</span>
+<span class="co">## 13 normalised alpha 1      types              subcommunity              a</span>
+<span class="co">## 14 normalised alpha 1      types              subcommunity              b</span>
+<span class="co">## 15 normalised alpha 1      types              subcommunity              c</span>
+<span class="co">## 16 normalised alpha 2      types              subcommunity              a</span>
+<span class="co">## 17 normalised alpha 2      types              subcommunity              b</span>
+<span class="co">## 18 normalised alpha 2      types              subcommunity              c</span>
+<span class="co">## 19         raw beta 0      types              subcommunity              a</span>
+<span class="co">## 20         raw beta 0      types              subcommunity              b</span>
+<span class="co">## 21         raw beta 0      types              subcommunity              c</span>
+<span class="co">## 22         raw beta 1      types              subcommunity              a</span>
+<span class="co">## 23         raw beta 1      types              subcommunity              b</span>
+<span class="co">## 24         raw beta 1      types              subcommunity              c</span>
+<span class="co">## 25         raw beta 2      types              subcommunity              a</span>
+<span class="co">## 26         raw beta 2      types              subcommunity              b</span>
+<span class="co">## 27         raw beta 2      types              subcommunity              c</span>
+<span class="co">## 28  normalised beta 0      types              subcommunity              a</span>
+<span class="co">## 29  normalised beta 0      types              subcommunity              b</span>
+<span class="co">## 30  normalised beta 0      types              subcommunity              c</span>
+<span class="co">## 31  normalised beta 1      types              subcommunity              a</span>
+<span class="co">## 32  normalised beta 1      types              subcommunity              b</span>
+<span class="co">## 33  normalised beta 1      types              subcommunity              c</span>
+<span class="co">## 34  normalised beta 2      types              subcommunity              a</span>
+<span class="co">## 35  normalised beta 2      types              subcommunity              b</span>
+<span class="co">## 36  normalised beta 2      types              subcommunity              c</span>
+<span class="co">## 37          raw rho 0      types              subcommunity              a</span>
+<span class="co">## 38          raw rho 0      types              subcommunity              b</span>
+<span class="co">## 39          raw rho 0      types              subcommunity              c</span>
+<span class="co">## 40          raw rho 1      types              subcommunity              a</span>
+<span class="co">## 41          raw rho 1      types              subcommunity              b</span>
+<span class="co">## 42          raw rho 1      types              subcommunity              c</span>
+<span class="co">## 43          raw rho 2      types              subcommunity              a</span>
+<span class="co">## 44          raw rho 2      types              subcommunity              b</span>
+<span class="co">## 45          raw rho 2      types              subcommunity              c</span>
+<span class="co">## 46   normalised rho 0      types              subcommunity              a</span>
+<span class="co">## 47   normalised rho 0      types              subcommunity              b</span>
+<span class="co">## 48   normalised rho 0      types              subcommunity              c</span>
+<span class="co">## 49   normalised rho 1      types              subcommunity              a</span>
+<span class="co">## 50   normalised rho 1      types              subcommunity              b</span>
+<span class="co">## 51   normalised rho 1      types              subcommunity              c</span>
+<span class="co">## 52   normalised rho 2      types              subcommunity              a</span>
+<span class="co">## 53   normalised rho 2      types              subcommunity              b</span>
+<span class="co">## 54   normalised rho 2      types              subcommunity              c</span>
+<span class="co">## 55            gamma 0      types              subcommunity              a</span>
+<span class="co">## 56            gamma 0      types              subcommunity              b</span>
+<span class="co">## 57            gamma 0      types              subcommunity              c</span>
+<span class="co">## 58            gamma 1      types              subcommunity              a</span>
+<span class="co">## 59            gamma 1      types              subcommunity              b</span>
+<span class="co">## 60            gamma 1      types              subcommunity              c</span>
+<span class="co">## 61            gamma 2      types              subcommunity              a</span>
+<span class="co">## 62            gamma 2      types              subcommunity              b</span>
+<span class="co">## 63            gamma 2      types              subcommunity              c</span>
+<span class="co">##    diversity dat_id transformation normalised  k max_d</span>
+<span class="co">## 1  8.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 2  4.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 3  4.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 4  8.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 5  4.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 6  3.5095307  naive             NA         NA NA    NA</span>
+<span class="co">## 7  8.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 8  4.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 9  3.2000000  naive             NA         NA NA    NA</span>
+<span class="co">## 10 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 11 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 12 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 13 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 14 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 15 1.7547654  naive             NA         NA NA    NA</span>
+<span class="co">## 16 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 17 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 18 1.6000000  naive             NA         NA NA    NA</span>
+<span class="co">## 19 0.2500000  naive             NA         NA NA    NA</span>
+<span class="co">## 20 0.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 21 0.5000000  naive             NA         NA NA    NA</span>
+<span class="co">## 22 0.2886751  naive             NA         NA NA    NA</span>
+<span class="co">## 23 0.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 24 0.5000000  naive             NA         NA NA    NA</span>
+<span class="co">## 25 0.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 26 0.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 27 0.5000000  naive             NA         NA NA    NA</span>
+<span class="co">## 28 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 29 1.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 30 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 31 1.1547005  naive             NA         NA NA    NA</span>
+<span class="co">## 32 1.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 33 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 34 1.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 35 1.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 36 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 37 4.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 38 3.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 39 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 40 3.4641016  naive             NA         NA NA    NA</span>
+<span class="co">## 41 3.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 42 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 43 3.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 44 3.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 45 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 46 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 47 0.7500000  naive             NA         NA NA    NA</span>
+<span class="co">## 48 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 49 0.8660254  naive             NA         NA NA    NA</span>
+<span class="co">## 50 0.7500000  naive             NA         NA NA    NA</span>
+<span class="co">## 51 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 52 0.7500000  naive             NA         NA NA    NA</span>
+<span class="co">## 53 0.7500000  naive             NA         NA NA    NA</span>
+<span class="co">## 54 1.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 55 2.6666667  naive             NA         NA NA    NA</span>
+<span class="co">## 56 1.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 57 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 58 2.3094011  naive             NA         NA NA    NA</span>
+<span class="co">## 59 1.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 60 1.7547654  naive             NA         NA NA    NA</span>
+<span class="co">## 61 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 62 1.3333333  naive             NA         NA NA    NA</span>
+<span class="co">## 63 1.6000000  naive             NA         NA NA    NA</span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate all metacommunity diversity measures</span>
 <span class="fu"><a href="../reference/metadiv.html">metadiv</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##             measure q type_level type_name partition_level partition_name
-## 1         raw alpha 0      types             metacommunity               
-## 2         raw alpha 1      types             metacommunity               
-## 3         raw alpha 2      types             metacommunity               
-## 4  normalised alpha 0      types             metacommunity               
-## 5  normalised alpha 1      types             metacommunity               
-## 6  normalised alpha 2      types             metacommunity               
-## 7          raw beta 0      types             metacommunity               
-## 8          raw beta 1      types             metacommunity               
-## 9          raw beta 2      types             metacommunity               
-## 10  normalised beta 0      types             metacommunity               
-## 11  normalised beta 1      types             metacommunity               
-## 12  normalised beta 2      types             metacommunity               
-## 13          raw rho 0      types             metacommunity               
-## 14          raw rho 1      types             metacommunity               
-## 15          raw rho 2      types             metacommunity               
-## 16   normalised rho 0      types             metacommunity               
-## 17   normalised rho 1      types             metacommunity               
-## 18   normalised rho 2      types             metacommunity               
-## 19            gamma 0      types             metacommunity               
-## 20            gamma 1      types             metacommunity               
-## 21            gamma 2      types             metacommunity               
-##    diversity dat_id transformation normalised  k max_d
-## 1  5.0000000  naive             NA         NA NA    NA
-## 2  4.4556597  naive             NA         NA NA    NA
-## 3  4.0000000  naive             NA         NA NA    NA
-## 4  1.7500000  naive             NA         NA NA    NA
-## 5  1.5753136  naive             NA         NA NA    NA
-## 6  1.4545455  naive             NA         NA NA    NA
-## 7  0.3958333  naive             NA         NA NA    NA
-## 8  0.3938284  naive             NA         NA NA    NA
-## 9  0.4000000  naive             NA         NA NA    NA
-## 10 1.0833333  naive             NA         NA NA    NA
-## 11 1.1139149  naive             NA         NA NA    NA
-## 12 1.1428571  naive             NA         NA NA    NA
-## 13 2.7500000  naive             NA         NA NA    NA
-## 14 2.5391770  naive             NA         NA NA    NA
-## 15 2.4000000  naive             NA         NA NA    NA
-## 16 0.9375000  naive             NA         NA NA    NA
-## 17 0.8977346  naive             NA         NA NA    NA
-## 18 0.8571429  naive             NA         NA NA    NA
-## 19 2.0000000  naive             NA         NA NA    NA
-## 20 1.7547654  naive             NA         NA NA    NA
-## 21 1.6000000  naive             NA         NA NA    NA</code></pre>
+<pre><code><span class="co">##             measure q type_level type_name partition_level partition_name</span>
+<span class="co">## 1         raw alpha 0      types             metacommunity               </span>
+<span class="co">## 2         raw alpha 1      types             metacommunity               </span>
+<span class="co">## 3         raw alpha 2      types             metacommunity               </span>
+<span class="co">## 4  normalised alpha 0      types             metacommunity               </span>
+<span class="co">## 5  normalised alpha 1      types             metacommunity               </span>
+<span class="co">## 6  normalised alpha 2      types             metacommunity               </span>
+<span class="co">## 7          raw beta 0      types             metacommunity               </span>
+<span class="co">## 8          raw beta 1      types             metacommunity               </span>
+<span class="co">## 9          raw beta 2      types             metacommunity               </span>
+<span class="co">## 10  normalised beta 0      types             metacommunity               </span>
+<span class="co">## 11  normalised beta 1      types             metacommunity               </span>
+<span class="co">## 12  normalised beta 2      types             metacommunity               </span>
+<span class="co">## 13          raw rho 0      types             metacommunity               </span>
+<span class="co">## 14          raw rho 1      types             metacommunity               </span>
+<span class="co">## 15          raw rho 2      types             metacommunity               </span>
+<span class="co">## 16   normalised rho 0      types             metacommunity               </span>
+<span class="co">## 17   normalised rho 1      types             metacommunity               </span>
+<span class="co">## 18   normalised rho 2      types             metacommunity               </span>
+<span class="co">## 19            gamma 0      types             metacommunity               </span>
+<span class="co">## 20            gamma 1      types             metacommunity               </span>
+<span class="co">## 21            gamma 2      types             metacommunity               </span>
+<span class="co">##    diversity dat_id transformation normalised  k max_d</span>
+<span class="co">## 1  5.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 2  4.4556597  naive             NA         NA NA    NA</span>
+<span class="co">## 3  4.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 4  1.7500000  naive             NA         NA NA    NA</span>
+<span class="co">## 5  1.5753136  naive             NA         NA NA    NA</span>
+<span class="co">## 6  1.4545455  naive             NA         NA NA    NA</span>
+<span class="co">## 7  0.3958333  naive             NA         NA NA    NA</span>
+<span class="co">## 8  0.3938284  naive             NA         NA NA    NA</span>
+<span class="co">## 9  0.4000000  naive             NA         NA NA    NA</span>
+<span class="co">## 10 1.0833333  naive             NA         NA NA    NA</span>
+<span class="co">## 11 1.1139149  naive             NA         NA NA    NA</span>
+<span class="co">## 12 1.1428571  naive             NA         NA NA    NA</span>
+<span class="co">## 13 2.7500000  naive             NA         NA NA    NA</span>
+<span class="co">## 14 2.5391770  naive             NA         NA NA    NA</span>
+<span class="co">## 15 2.4000000  naive             NA         NA NA    NA</span>
+<span class="co">## 16 0.9375000  naive             NA         NA NA    NA</span>
+<span class="co">## 17 0.8977346  naive             NA         NA NA    NA</span>
+<span class="co">## 18 0.8571429  naive             NA         NA NA    NA</span>
+<span class="co">## 19 2.0000000  naive             NA         NA NA    NA</span>
+<span class="co">## 20 1.7547654  naive             NA         NA NA    NA</span>
+<span class="co">## 21 1.6000000  naive             NA         NA NA    NA</span></code></pre>
 </div>
 </div>
-<div id="taxonomic-diversity" class="section level2">
-<h2 class="hasAnchor">
-<a href="#taxonomic-diversity" class="anchor"></a>Taxonomic diversity</h2>
+<div class="section level2">
+<h2 id="taxonomic-diversity">Taxonomic diversity<a class="anchor" aria-label="anchor" href="#taxonomic-diversity"></a>
+</h2>
 <ol style="list-style-type: decimal">
 <li>Initialise data:</li>
 </ol>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Taxonomic lookup table</span>
-<span class="va">Species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tenuifolium"</span>, <span class="st">"asterolepis"</span>, <span class="st">"simplex var.grandiflora"</span>, <span class="st">"simplex var.ochnacea"</span><span class="op">)</span>
-<span class="va">Genus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Protium"</span>, <span class="st">"Quararibea"</span>, <span class="st">"Swartzia"</span>, <span class="st">"Swartzia"</span><span class="op">)</span>
-<span class="va">Family</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Burseraceae"</span>, <span class="st">"Bombacaceae"</span>, <span class="st">"Fabaceae"</span>, <span class="st">"Fabaceae"</span><span class="op">)</span>
-<span class="va">Subclass</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sapindales"</span>, <span class="st">"Malvales"</span>, <span class="st">"Fabales"</span>, <span class="st">"Fabales"</span><span class="op">)</span>
-<span class="va">lookup</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span><span class="op">(</span><span class="va">Species</span>, <span class="va">Genus</span>, <span class="va">Family</span>, <span class="va">Subclass</span><span class="op">)</span>
+<span class="va">Species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tenuifolium"</span>, <span class="st">"asterolepis"</span>, <span class="st">"simplex var.grandiflora"</span>, <span class="st">"simplex var.ochnacea"</span><span class="op">)</span>
+<span class="va">Genus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Protium"</span>, <span class="st">"Quararibea"</span>, <span class="st">"Swartzia"</span>, <span class="st">"Swartzia"</span><span class="op">)</span>
+<span class="va">Family</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Burseraceae"</span>, <span class="st">"Bombacaceae"</span>, <span class="st">"Fabaceae"</span>, <span class="st">"Fabaceae"</span><span class="op">)</span>
+<span class="va">Subclass</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sapindales"</span>, <span class="st">"Malvales"</span>, <span class="st">"Fabales"</span>, <span class="st">"Fabales"</span><span class="op">)</span>
+<span class="va">lookup</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind.data.frame</a></span><span class="op">(</span><span class="va">Species</span>, <span class="va">Genus</span>, <span class="va">Family</span>, <span class="va">Subclass</span><span class="op">)</span>
 
 <span class="co"># Partition matrix</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">8</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">lookup</span><span class="op">$</span><span class="va">Species</span></code></pre></div>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">8</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">lookup</span><span class="op">$</span><span class="va">Species</span></code></pre></div>
 <p>and assign values for each taxonomic level:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>Species <span class="op">=</span> <span class="fl">0</span>, Genus <span class="op">=</span> <span class="fl">1</span>, Family <span class="op">=</span> <span class="fl">2</span>, Subclass <span class="op">=</span> <span class="fl">3</span>, Other <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Species <span class="op">=</span> <span class="fl">0</span>, Genus <span class="op">=</span> <span class="fl">1</span>, Family <span class="op">=</span> <span class="fl">2</span>, Subclass <span class="op">=</span> <span class="fl">3</span>, Other <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Generate a distance object from a lookup table using the <code><a href="../reference/tax2dist.html">tax2dist()</a></code> function:</li>
 </ol>
@@ -505,40 +501,40 @@
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dist2sim.html">dist2sim</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"linear"</span><span class="op">)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
-<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity.html">metacommunity()</a></code> function:</li>
+<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity-methods.html">metacommunity()</a></code> function:</li>
 </ol>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
-<pre><code>## Metacommunity matrix was normalised to sum to 1.</code></pre>
+<code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Metacommunity matrix was normalised to sum to 1.</span></code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Calculate diversity:</li>
 </ol>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/meta_gamma.html">meta_gamma</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##   measure q type_level type_name partition_level partition_name diversity
-## 1   gamma 0      types             metacommunity                 3.142857
-## 2   gamma 1      types             metacommunity                 3.023716
-## 3   gamma 2      types             metacommunity                 2.909091
-##      dat_id transformation normalised k max_d
-## 1 taxonomic         linear       TRUE 1     4
-## 2 taxonomic         linear       TRUE 1     4
-## 3 taxonomic         linear       TRUE 1     4</code></pre>
+<pre><code><span class="co">##   measure q type_level type_name partition_level partition_name diversity</span>
+<span class="co">## 1   gamma 0      types             metacommunity                 3.142857</span>
+<span class="co">## 2   gamma 1      types             metacommunity                 3.023716</span>
+<span class="co">## 3   gamma 2      types             metacommunity                 2.909091</span>
+<span class="co">##      dat_id transformation normalised k max_d</span>
+<span class="co">## 1 taxonomic         linear       TRUE 1     4</span>
+<span class="co">## 2 taxonomic         linear       TRUE 1     4</span>
+<span class="co">## 3 taxonomic         linear       TRUE 1     4</span></code></pre>
 </div>
-<div id="phylogenetic-diversity" class="section level2">
-<h2 class="hasAnchor">
-<a href="#phylogenetic-diversity" class="anchor"></a>Phylogenetic diversity</h2>
+<div class="section level2">
+<h2 id="phylogenetic-diversity">Phylogenetic diversity<a class="anchor" aria-label="anchor" href="#phylogenetic-diversity"></a>
+</h2>
 <p>Phylogenetic diversity measures can be broadly split into two categories – those that look at the phylogeny as a whole, such as Faith’s (1992) phylogenetic diversity (Faith’s PD), and those that look at pairwise tip distances, such as mean pairwise distance (MPD; Webb, 2000). The framework of measures presented in this package is able to quantify phylogenetic diversity using both of these methods.</p>
-<div id="distance-based-phylogenetic-diversity" class="section level3">
-<h3 class="hasAnchor">
-<a href="#distance-based-phylogenetic-diversity" class="anchor"></a>Distance-based phylogenetic diversity</h3>
+<div class="section level3">
+<h3 id="distance-based-phylogenetic-diversity">Distance-based phylogenetic diversity<a class="anchor" aria-label="anchor" href="#distance-based-phylogenetic-diversity"></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Initialise data:</li>
 </ol>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Example data</span>
-<span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html">rtree</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
+<span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html" class="external-link">rtree</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Generate a distance matrix using the <code><a href="../reference/phy2dist.html">phy2dist()</a></code> function:</li>
 </ol>
@@ -551,60 +547,60 @@
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dist2sim.html">dist2sim</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"linear"</span><span class="op">)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
-<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity.html">metacommunity()</a></code> function</li>
+<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity-methods.html">metacommunity()</a></code> function</li>
 </ol>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Calculate diversity</li>
 </ol>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/meta_gamma.html">meta_gamma</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##   measure q type_level type_name partition_level partition_name diversity
-## 1   gamma 0      types             metacommunity                 1.839280
-## 2   gamma 1      types             metacommunity                 1.806596
-## 3   gamma 2      types             metacommunity                 1.775997
-##         dat_id transformation normalised k    max_d
-## 1 phylogenetic         linear       TRUE 1 1.807148
-## 2 phylogenetic         linear       TRUE 1 1.807148
-## 3 phylogenetic         linear       TRUE 1 1.807148</code></pre>
+<pre><code><span class="co">##   measure q type_level type_name partition_level partition_name diversity</span>
+<span class="co">## 1   gamma 0      types             metacommunity                 2.696640</span>
+<span class="co">## 2   gamma 1      types             metacommunity                 2.669684</span>
+<span class="co">## 3   gamma 2      types             metacommunity                 2.646326</span>
+<span class="co">##         dat_id transformation normalised k    max_d</span>
+<span class="co">## 1 phylogenetic         linear       TRUE 1 2.887034</span>
+<span class="co">## 2 phylogenetic         linear       TRUE 1 2.887034</span>
+<span class="co">## 3 phylogenetic         linear       TRUE 1 2.887034</span></code></pre>
 </div>
-<div id="branch-based-phylogenetic-diversity" class="section level3">
-<h3 class="hasAnchor">
-<a href="#branch-based-phylogenetic-diversity" class="anchor"></a>Branch-based phylogenetic diversity</h3>
+<div class="section level3">
+<h3 id="branch-based-phylogenetic-diversity">Branch-based phylogenetic diversity<a class="anchor" aria-label="anchor" href="#branch-based-phylogenetic-diversity"></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Initialise data:</li>
 </ol>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html">rtree</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>
-<span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html" class="external-link">rtree</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>
+<span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Generate a similarity object using the <code><a href="../reference/phy2branch.html">phy2branch()</a></code> function</li>
 </ol>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/phy2branch.html">phy2branch</a></span><span class="op">(</span><span class="va">tree</span>, <span class="va">partition</span><span class="op">)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
-<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity.html">metacommunity()</a></code> function</li>
+<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity-methods.html">metacommunity()</a></code> function</li>
 </ol>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Calculate diversity</li>
 </ol>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/meta_gamma.html">meta_gamma</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code>##   measure q type_level type_name partition_level partition_name diversity
-## 1   gamma 0      types             metacommunity                 2.190217
-## 2   gamma 1      types             metacommunity                 1.826276
-## 3   gamma 2      types             metacommunity                 1.608856
-##      dat_id transformation normalised  k max_d
-## 1 phybranch             NA         NA NA    NA
-## 2 phybranch             NA         NA NA    NA
-## 3 phybranch             NA         NA NA    NA</code></pre>
+<pre><code><span class="co">##   measure q type_level type_name partition_level partition_name diversity</span>
+<span class="co">## 1   gamma 0      types             metacommunity                 2.643141</span>
+<span class="co">## 2   gamma 1      types             metacommunity                 2.374988</span>
+<span class="co">## 3   gamma 2      types             metacommunity                 2.139123</span>
+<span class="co">##      dat_id transformation normalised  k max_d</span>
+<span class="co">## 1 phybranch             NA         NA NA    NA</span>
+<span class="co">## 2 phybranch             NA         NA NA    NA</span>
+<span class="co">## 3 phybranch             NA         NA NA    NA</span></code></pre>
 <p><strong>Note that</strong>: a metacommunity that was generated using this approach will contain three additional slots:</p>
 <ul>
 <li>
@@ -616,23 +612,23 @@
 </ul>
 </div>
 </div>
-<div id="genetic-diversity" class="section level2">
-<h2 class="hasAnchor">
-<a href="#genetic-diversity" class="anchor"></a>Genetic diversity</h2>
+<div class="section level2">
+<h2 id="genetic-diversity">Genetic diversity<a class="anchor" aria-label="anchor" href="#genetic-diversity"></a>
+</h2>
 <ol style="list-style-type: decimal">
 <li>Initialise data: Note: the package <code>pinfsc50</code> must be installed for this example to work.</li>
 </ol>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boydorr/rdiversity">rdiversity</a></span><span class="op">)</span>
-<span class="va">vcf_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pinf_sc50.vcf.gz"</span>, package <span class="op">=</span> <span class="st">"pinfsc50"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boydorr/rdiversity" class="external-link">rdiversity</a></span><span class="op">)</span>
+<span class="va">vcf_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pinf_sc50.vcf.gz"</span>, package <span class="op">=</span> <span class="st">"pinfsc50"</span><span class="op">)</span>
 <span class="co">#read in twice: first for the column names then for the data</span>
-<span class="va">tmp_vcf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html">readLines</a></span><span class="op">(</span><span class="va">vcf_file</span><span class="op">)</span>
-<span class="va">vcf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.table</a></span><span class="op">(</span><span class="va">vcf_file</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">tmp_vcf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">vcf_file</span><span class="op">)</span>
+<span class="va">vcf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table</a></span><span class="op">(</span><span class="va">vcf_file</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co"># filter for the columns names</span>
-<span class="va">vcf_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">tmp_vcf</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"#CHROM"</span>,<span class="va">tmp_vcf</span><span class="op">)</span><span class="op">]</span>,<span class="st">"\t"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">vcf_data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">vcf_names</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind.data.frame</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
+<span class="va">vcf_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit</a></span><span class="op">(</span><span class="va">tmp_vcf</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"#CHROM"</span>,<span class="va">tmp_vcf</span><span class="op">)</span><span class="op">]</span>,<span class="st">"\t"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">vcf_data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">vcf_names</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind.data.frame</a></span><span class="op">(</span>A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">9</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Generate a distance matrix using the <code><a href="../reference/gen2dist.html">gen2dist()</a></code> function:</li>
 </ol>
@@ -645,68 +641,68 @@
 <code class="sourceCode R"><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dist2sim.html">dist2sim</a></span><span class="op">(</span><span class="va">d</span>, transform <span class="op">=</span> <span class="st">'l'</span><span class="op">)</span></code></pre></div>
 <p>Note: the <code><a href="../reference/dist2sim.html">dist2sim()</a></code> function contains an optional argument, <code>max_d</code>, which defines the distance at which pairs of individuals have similarity zero. If not supplied this is set to the maximum distance observed in the distance matrix. If comparing different windows on a genome, for example, it is necessary to ensure <code>max_d</code> is the same for each analysis.</p>
 <ol start="4" style="list-style-type: decimal">
-<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity.html">metacommunity()</a></code> function:</li>
+<li>Generate a metacommunity object using the <code><a href="../reference/metacommunity-methods.html">metacommunity()</a></code> function:</li>
 </ol>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">s</span><span class="op">@</span><span class="va">similarity</span><span class="op">)</span>
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">s</span><span class="op">@</span><span class="va">similarity</span><span class="op">)</span>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Calculate diversity, for example beta diversity measures are used to identify trends such as differentiation:</li>
 </ol>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/norm_meta_beta.html">norm_meta_beta</a></span><span class="op">(</span><span class="va">meta</span>, <span class="fl">0</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<div id="user-defined-distance" class="section level3">
-<h3 class="hasAnchor">
-<a href="#user-defined-distance" class="anchor"></a>User defined distance</h3>
+<div class="section level3">
+<h3 id="user-defined-distance">User defined distance<a class="anchor" aria-label="anchor" href="#user-defined-distance"></a>
+</h3>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
 
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.75</span>,<span class="fl">1</span>,<span class="fl">.75</span>,<span class="fl">0</span>,<span class="fl">.3</span>,<span class="fl">1</span>,<span class="fl">.3</span>,<span class="fl">0</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/distance.html">distance</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"my_taxonomy"</span><span class="op">)</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.75</span>,<span class="fl">1</span>,<span class="fl">.75</span>,<span class="fl">0</span>,<span class="fl">.3</span>,<span class="fl">1</span>,<span class="fl">.3</span>,<span class="fl">0</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/distance-methods.html">distance</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"my_taxonomy"</span><span class="op">)</span>
 <span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dist2sim.html">dist2sim</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"linear"</span><span class="op">)</span>
 
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="user-defined-similarity" class="section level3">
-<h3 class="hasAnchor">
-<a href="#user-defined-similarity" class="anchor"></a>User defined similarity</h3>
+<div class="section level3">
+<h3 id="user-defined-similarity">User defined similarity<a class="anchor" aria-label="anchor" href="#user-defined-similarity"></a>
+</h3>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
 
-<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">.8</span>,<span class="fl">0</span>,<span class="fl">.8</span>,<span class="fl">1</span>,<span class="fl">.1</span>,<span class="fl">0</span>,<span class="fl">.1</span>,<span class="fl">1</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
-<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/similarity.html">similarity</a></span><span class="op">(</span><span class="va">s</span>, <span class="st">"my_functional"</span><span class="op">)</span>
+<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">.8</span>,<span class="fl">0</span>,<span class="fl">.8</span>,<span class="fl">1</span>,<span class="fl">.1</span>,<span class="fl">0</span>,<span class="fl">.1</span>,<span class="fl">1</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span>
+<span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/similarity-methods.html">similarity</a></span><span class="op">(</span><span class="va">s</span>, <span class="st">"my_functional"</span><span class="op">)</span>
 
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="additional-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additional-tools" class="anchor"></a>Additional tools</h2>
-<div id="repartition" class="section level3">
-<h3 class="hasAnchor">
-<a href="#repartition" class="anchor"></a><code>repartition()</code>
+<div class="section level2">
+<h2 id="additional-tools">Additional tools<a class="anchor" aria-label="anchor" href="#additional-tools"></a>
+</h2>
+<div class="section level3">
+<h3 id="repartition">
+<code>repartition()</code><a class="anchor" aria-label="anchor" href="#repartition"></a>
 </h3>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html">rtree</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>
-<span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu">ape</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html" class="external-link">rtree</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span>
+<span class="va">tree</span><span class="op">$</span><span class="va">tip.label</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
 
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">10</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
-<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">10</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
+<span class="va">partition</span> <span class="op">&lt;-</span> <span class="va">partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">partition</span><span class="op">)</span>
 <span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/phy2branch.html">phy2branch</a></span><span class="op">(</span><span class="va">tree</span>, <span class="va">partition</span><span class="op">)</span>
-<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span>
+<span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/metacommunity-methods.html">metacommunity</a></span><span class="op">(</span><span class="va">partition</span>, <span class="va">s</span><span class="op">)</span>
 
-<span class="va">new_partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">new_partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
-<span class="va">new_partition</span> <span class="op">&lt;-</span> <span class="va">new_partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">new_partition</span><span class="op">)</span>
+<span class="va">new_partition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">new_partition</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"sp"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
+<span class="va">new_partition</span> <span class="op">&lt;-</span> <span class="va">new_partition</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">new_partition</span><span class="op">)</span>
 
 <span class="va">new_meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/repartition.html">repartition</a></span><span class="op">(</span><span class="va">meta</span>, <span class="va">new_partition</span><span class="op">)</span></code></pre></div>
 </div>
@@ -724,11 +720,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -736,6 +734,8 @@
 
   
 
+
+  
 
   </body>
 </html>
