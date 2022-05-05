@@ -33,12 +33,12 @@ taxvec <- function(similarity, row) {
 
   total <- sum(components$tax_bits)
   species_factors <- lapply(components$tax_id, function(x)
-    binaryLogic::as.binary(x, n = total))
+    as.binary(x, n = total))
 
   difference <- lapply(species_factors, function(x) {
     tmp <- xor(species_factors[[row]], x)
     tmp <- 1 - as.numeric(as.character(tmp))
-    binaryLogic::as.binary(tmp, logic = TRUE)
+    as.binary(tmp, logic = TRUE)
   })
 
   split_values <- components$tax_similarity
