@@ -4,9 +4,9 @@ Title: Measurement and Partitioning of Similarity-Sensitive Biodiversity
 Version: 2.2.0
 Date: 2022-04-29
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
-                  role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
+                  role = c("aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
-                  role = c("aut", "ths"), comment = c(ORCID = "0000-0003-2589-8091")),
+                  role = c("cre", "aut", "ths"), comment = c(ORCID = "0000-0003-2589-8091")),
              person("Tom", "White", email = "whitetomjames@gmail.com",
                   role = "ctb", comment = c(ORCID = "0000-0002-9639-3800")),
              person("Daniel", "Dörrhöfer", email = "ddo@openmailbox.org", role = "ctb"),
