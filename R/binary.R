@@ -178,6 +178,189 @@ summary.binary <- function(object, ...) {
   print(df)
 }
 
+#' @export
+as.raw.binary <- function(x) {
+  #b <- as.binary(rawToBits(r)) from raw to binary
+  l <- saveAttributes(x)
+  x <- fillUpToByte(x, size=bytesNeeded(length(x)))
+  xx <- logical(0)
+
+  if (!l$littleEndian) x <- rev(x)
+  if (l$littleEndian) {
+    x <- as.logical(x)
+    dim(x) <- c(4, (2 * bytesNeeded(length(x))))
+    for(i in seq(1, (2*bytesNeeded(length(x)) - 1), by = 2)) xx <- c(xx, c(x[,i+1], x[,i]))
+    x <- xx
+  }
+  x <- packBits(x)
+  if(!l$littleEndian) x <- rev(x)
+  NextMethod(.Generic)
+} #rseq = function(x,to=1) NROW(x):to
+
+##' @export
+#as.hexmode.binary <- function(x) {
+#    x <- bin2dec(x)
+#    NextMethod(.Generic)
+#}
+
+##' @export
+#as.octmode.binary <- function(x) {
+#    x <- bin2dec(x)
+#    NextMethod(.Generic)
+#}
+
+#' @export
+as.character.binary <- function(x, ...) {
+  x <- as.integer(as.logical(x))
+  NextMethod(.Generic, ...)
+}
+
+#' @export
+as.integer.binary <- function(x, ...) {
+  #test for .Machine$integer.max
+  x <- bin2dec(x)
+  NextMethod(.Generic, ...)
+}
+
+#' @export
+as.double.binary <- function(x, ...) {
+  x <- bin2dec(x)
+  NextMethod(.Generic, ...)
+}
+
+#' Group Generic Ops
+#'
+#' Group generic Ops operators
+#' @param e1 e1
+#' @param e2 e2
+#' @method Ops binary
+#' @export
+Ops.binary <- function(e1, e2) {
+  # Group Generic "Ops"
+  boolean <- switch(.Generic,  '/' = TRUE, FALSE)
+  if (boolean) {
+    stop("Division is not supported. For the time being")
+  }
+  boolean <- switch(.Generic,  '+' =, '-' = TRUE, FALSE)
+  if (boolean) {
+    l1 <- saveAttributes(e1)
+    ret <- NextMethod(.Generic)
+    x <- loadAttributes(ret,l1)
+    return(x)
+  }
+  boolean <- switch(.Generic,  '*' =, '^' =, '%%' =, '%/%' = TRUE, FALSE)
+  if (boolean) {
+    l1 <- saveAttributes(e1)
+    l2 <- saveAttributes(e2)
+    le1 <- length(e1)
+    le2 <- length(e2)
+    e1 <- as.numeric(e1)
+    e2 <- as.numeric(e2)
+    if (l1$signed || l2$signed)
+    {
+      ret <- NextMethod(.Generic)
+      ret <- as.binary(ret, signed=TRUE, size=(greater(le1, le2)/byte()))
+      x <- loadAttributes(ret, l1)
+    } else {
+      ret <- NextMethod(.Generic)
+      ret <- as.binary(ret)
+      x <- loadAttributes(ret, l1)
+    }
+    return(x)
+  }
+  boolean <- switch(.Generic,  '&' =, '|' =, 'xor' = TRUE, FALSE)
+  if (boolean) {
+    l1 <- saveAttributes(e1)
+    if (length(e1) < length(e2))
+    {
+      e1 <- fillUpToBit(e1, value=FALSE, n=length(e2))
+    } else if (length(e2) < length(e1)) {
+      e2 <- fillUpToBit(e2, value=FALSE, n=length(e1))
+    }
+    ret <- NextMethod(.Generic)
+    x <- loadAttributes(ret, l1)
+    return(x)
+  }
+  boolean <- switch(.Generic,  '!' = TRUE, FALSE)
+  if (boolean) {
+    l1 <- saveAttributes(e1)
+    ret <- NextMethod(.Generic)
+    x <- loadAttributes(ret, l1)
+    return(x)
+  }
+  boolean <- switch(.Generic,  '<' =, '<=' =, '>' =, '>=' = TRUE, FALSE)
+  if (boolean) {
+    e1 <- as.numeric(e1)
+    e2 <- as.numeric(e2)
+    ret <- NextMethod(.Generic)
+    return(ret)
+  }
+}
+
+#' @export
+'+.binary' <- function(x, y) {
+  binAdd(x, y)
+}
+
+#' @export
+'-.binary' <- function(x, y) {
+  binAdd(x, negate(y))
+}
+
+#' @export
+'==.binary' <- function(x, y) {
+  # attributes are saved @ group generic Ops.
+  if (attributes(x)$littleEndian) x <- switchEndianess(x)
+  if (attributes(y)$littleEndian) y <- switchEndianess(y)
+
+  if (length(x) > length(y)) {
+    delta <- bytesNeeded(length(x))
+    if (attributes(y)$signed) {
+      y <- fillUpToByte(y, value=TRUE, size=delta)
+    } else {
+      y <- fillUpToByte(y, value=FALSE, size=delta)
+    }
+  } else if (length(x) < length(y)) {
+    delta <- bytesNeeded(length(y))
+    if (attributes(x)$signed) {
+      x <- fillUpToByte(x, value=TRUE, size=delta)
+    } else {
+      x <- fillUpToByte(x, value=FALSE, size=delta)
+    }
+  }
+  return(all(!xor(x, y)))
+}
+
+#' @export
+'!=.binary' <- function(x, y) {
+  # attributes are saved @ group generic Ops.
+  !(x == y)
+}
+
+#' @export
+'[.binary' <- function(x, i, j, drop=TRUE) {
+  # this should not become a group generic. This function is an internal generic.
+  l <- saveAttributes(x)
+
+  ret <- NextMethod(.Generic, drop=drop)
+
+  x <- loadAttributes(ret,l)
+  return(x)
+}
+
+#' @export
+rev.binary <- function(x) {
+  # this should not become a group generic. This function is an internal generic.
+  l <- saveAttributes(x)
+  #x = x[rseq(x)] rseq = function(x,to=1) NROW(x):to
+  x <- x[length(x):1]
+  #ret <- NextMethod(.Generic)
+
+  x <- loadAttributes(x,l)
+  return(x)
+}
+
+
 # Helper functions
 
 #' loadAttributes
@@ -490,5 +673,71 @@ switchEndianess <- function(x, stickyBits=FALSE) {
     return(loadAttributes(x,l))
   } else {
     return(loadAttributes(rev(x),l))
+  }
+}
+
+#' Minimum number of "byte" needed to hold n "bit"
+#'
+#' @description A simple helper function
+#' that returns the minimum number of byte needed to hold the amount of n bit.
+#' @usage bytesNeeded(n)
+#' @param n The number of bit.
+#' @return The number of minimum byte needed to hold n bit.
+#' @examples
+#' ten <- as.binary(10)
+#' rdiversity:::bytesNeeded(length(ten))
+#' @seealso \link{fillUpToByte} or \link{byte}
+bytesNeeded <- function(n) {
+  stopifnot(all(is.numeric(n) || is.na(n)))
+  stopifnot(all(n >= 0 || is.na(n)))
+
+  ifelse(n %% byte() == 0, n %/% byte(), n %/% byte() + 1)
+}
+
+#' Binary Negation (!)
+#'
+#' @description Negates the binary number x. Negation x -> -x or -x -> x
+#' @details An »unsigned« number will be returned as »signed« regardless of whether the value is negative.
+#' No floating point supported.
+#' @usage negate(x)
+#' @param x The number to be negated. A binary vector is expected.
+#' @return The negated number of x. Returns a binary vector with signed=TRUE
+#' @examples
+#' summary(rdiversity:::negate(as.binary(5, signed=TRUE)))
+#' summary(rdiversity:::negate(as.binary(-5, signed=TRUE)))
+#' summary(rdiversity:::negate(as.binary(5, signed=FALSE)))
+#' @seealso \link{switchEndianess} or \link{fillUpToByte}.
+negate <- function(x) {
+  stopifnot(is.binary(x))
+  signed <- attributes(x)$signed
+  if (all(!x)) return(binary(length(x)))
+  #if (!signed) warning("Trying to negate an unsigned digit. treated as signed value. Returns a signed value")
+  littleEndian <- attributes(x)$littleEndian
+
+  if (littleEndian) x <- rev(x)
+
+  if (length(x) %% byte() != 0) {
+    MAX <- (trunc((length(x)/byte())) +1) * byte()
+    a <- rep(FALSE, MAX - length(x))
+    a <- as.binary(a, littleEndian=littleEndian, logic=TRUE)
+    # 'c.binary'(x,y) needs to be implemented
+    x <- as.binary(c(a,x), logic=TRUE)
+  }
+  x <- !x
+  x <- binAdd(as.binary(x, logic=TRUE),as.binary(TRUE, logic=TRUE))
+
+  if (littleEndian) x <- rev(x)
+  attr(x,"signed") <- TRUE
+  attr(x,"littleEndian") <- littleEndian
+  class(x) <- c("binary", "logical")
+  return(x)
+}
+
+greater <- function(e1, e2) {
+  if (e1 > e2)
+  {
+    return(e1)
+  } else {
+    return(e2)
   }
 }

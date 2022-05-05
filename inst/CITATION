@@ -33,12 +33,12 @@ bibentry(bibtype = "Manual",
                                  family = "Reeve"),
                           person(given = "Tom",
                                  family = "White")),
-         year         = "2020",
-         note         = "R package version 2.0",
+         year         = "2022",
+         note         = "R package version 2.2",
          url          = "https://github.com/boydorr/rdiversity",
 
          header       = "To cite the rdiversity package directly use:",
          textVersion  =
-           paste("Sonia Mitchell, Richard Reeve and Tom White (2020). rdiversity.",
-                 "R package version 2.0. https://github.com/boydorr/rdiversity")
+           paste("Sonia Mitchell, Richard Reeve and Tom White (2022). rdiversity.",
+                 "R package version 2.2. https://github.com/boydorr/rdiversity")
 )
