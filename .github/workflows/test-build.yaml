@@ -2,11 +2,7 @@ on:
   push:
     branches:
       - main
-      - master
   pull_request:
-    branches:
-      - main
-      - master
 
 jobs:
   R-CMD-check:
@@ -20,14 +16,14 @@ jobs:
         config:
           - {os: windows-latest, r: 'release'}
           - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-22.04, r: 'release'}
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@master
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
-      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-pandoc@v2
 
       - name: Query dependencies
         run: |
@@ -38,7 +34,7 @@ jobs:
 
       - name: Cache R packages
         if: runner.os != 'Windows'
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
@@ -50,7 +46,7 @@ jobs:
           while read -r cmd
           do
             eval sudo $cmd
-          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "20.04"), sep = "\n")')
+          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "22.04"), sep = "\n")')
         shell: bash
 
       - name: Install dependencies
@@ -67,7 +63,7 @@ jobs:
 
       - name: Upload check results
         if: failure()
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
@@ -77,7 +73,7 @@ jobs:
       - name: Test coverage
         # Only when master is pushed and only on mac OS
         if: github.event_name == 'push' && github.ref == 'refs/heads/master' && runner.os == 'macOS'
-        # Use the default GITHUB_TOKEN as an enviromental version
+        # Use the default GITHUB_TOKEN as an environmental version
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -95,7 +91,7 @@ jobs:
       - name: Install package and deploy documentation
         # Only when master is pushed and only on mac OS
         if: github.event_name == 'push' && github.ref == 'refs/heads/master' && runner.os == 'macOS'
-        # Use the default GITHUB_TOKEN as an enviromental version
+        # Use the default GITHUB_TOKEN as an environmental version
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
