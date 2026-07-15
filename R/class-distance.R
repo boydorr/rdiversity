@@ -18,6 +18,9 @@
 #' @exportClass distance
 #'
 setClass("distance",
-         slots = c(distance = "matrix",
-                   dat_id = "character",
-                   components = "list"))
+  slots = c(
+    distance = "matrix",
+    dat_id = "character",
+    components = "list"
+  )
+)

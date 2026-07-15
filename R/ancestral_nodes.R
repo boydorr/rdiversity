@@ -9,10 +9,10 @@ ancestral_nodes <- function(tree, node) {
   x <- node
   store <- vector()
   continue <- TRUE
-  while(continue) {
-    x <- tree$edge[tree$edge[,2] == x][1]
+  while (continue) {
+    x <- tree$edge[tree$edge[, 2] == x][1]
     store <- c(store, x)
-    continue <- any(tree$edge[,2] == x)
+    continue <- any(tree$edge[, 2] == x)
   }
   store
 }

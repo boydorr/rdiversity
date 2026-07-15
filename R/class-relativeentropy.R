@@ -34,12 +34,14 @@
 #' @rdname relativeentropy-class
 #' @exportClass relativeentropy
 #'
-setClass("relativeentropy", slots = c(results = "matrix",
-                                      measure = "character",
-                                      type_abundance = "matrix",
-                                      ordinariness = "matrix",
-                                      subcommunity_weights = "vector",
-                                      type_weights = "matrix",
-                                      dat_id = "character",
-                                      similarity_components = "list",
-                                      similarity_parameters = "list"))
+setClass("relativeentropy", slots = c(
+  results = "matrix",
+  measure = "character",
+  type_abundance = "matrix",
+  ordinariness = "matrix",
+  subcommunity_weights = "vector",
+  type_weights = "matrix",
+  dat_id = "character",
+  similarity_components = "list",
+  similarity_parameters = "list"
+))

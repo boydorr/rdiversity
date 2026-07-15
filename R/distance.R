@@ -11,40 +11,54 @@
 #' @rdname distance-methods
 #' @exportMethod distance
 #'
-setGeneric(name = "distance",
-           def = function(distance, dat_id) {
-             standardGeneric("distance")
-           } )
+setGeneric(
+  name = "distance",
+  def = function(distance, dat_id) {
+    standardGeneric("distance")
+  }
+)
 
 
 #' @rdname distance-methods
 #' @aliases distance
 #'
-setMethod(f = "distance",
-          signature(distance = "matrix", dat_id = "character"),
-          definition = function(distance, dat_id) {
-            new("distance",
-                distance = distance,
-                dat_id = dat_id)
-          } )
+setMethod(
+  f = "distance",
+  signature(distance = "matrix", dat_id = "character"),
+  definition = function(distance, dat_id) {
+    new("distance",
+      distance = distance,
+      dat_id = dat_id
+    )
+  }
+)
 
 
 #' @rdname distance-methods
 #' @aliases distance
 #'
-setMethod(f = "distance",
-          signature(distance = "matrix", dat_id = "missing"),
-          definition = function(distance, dat_id) {
-            new("distance",
-                distance = distance,
-                dat_id = "UserGenerated")
-          } )
+setMethod(
+  f = "distance",
+  signature(distance = "matrix", dat_id = "missing"),
+  definition = function(distance, dat_id) {
+    new("distance",
+      distance = distance,
+      dat_id = "UserGenerated"
+    )
+  }
+)
 
 
 #' @rdname distance-class
 #' @param object object of class \code{distance}
 #'
-setMethod(f = "show", signature = "distance",
-          definition = function(object) {
-            cat("Object of class `distance`, containing either:\n (1) a distance matrix; or\n (2) all of the data required to calculate a distance matrix.")
-          } )
+setMethod(
+  f = "show", signature = "distance",
+  definition = function(object) {
+    cat(paste0(
+      "Object of class `distance`, containing either:\n",
+      " (1) a distance matrix; or\n",
+      " (2) all of the data required to calculate a distance matrix."
+    ))
+  }
+)

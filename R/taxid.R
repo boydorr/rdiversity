@@ -26,11 +26,10 @@ taxid <- function(tax_fac) {
 
   output <- lapply(seq_along(species), function(x) {
     tmp <- tax_fac[x, ]
-    tmp <- lapply(seq_along(tmp), function(y)
-      as.binary(tmp[y], n = bits[y])) # intToBits(x)
-    tmp <- unlist(tmp)
-    tmp <- as.binary(tmp, logic = TRUE)
-    sum(2 ^ (which(rev(unlist(strsplit(as.character(tmp), "")) == 1)) - 1))
+    tmp <- unlist(lapply(seq_along(tmp), function(y) {
+      int_to_bits(tmp[y], bits[y])
+    }))
+    bits_to_int(tmp)
   })
   names(output) <- row.names(tax_fac)
   unlist(output)

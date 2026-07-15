@@ -54,204 +54,228 @@
 #'
 #' @examples
 #' # Naive-type
-#' partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+#' partition <- cbind(a = c(1, 1, 1, 0, 0), b = c(0, 1, 0, 1, 1))
 #' row.names(partition) <- paste0("sp", 1:5)
 #' partition <- partition / sum(partition)
 #' meta <- metacommunity(partition)
 #'
-setGeneric(name = "metacommunity",
-           def = function(partition, similarity) {
-             standardGeneric("metacommunity")
-           } )
+setGeneric(
+  name = "metacommunity",
+  def = function(partition, similarity) {
+    standardGeneric("metacommunity")
+  }
+)
 
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,data.frame-method
 #'
-setMethod(f = "metacommunity",
-          signature(partition = "data.frame", similarity = "missing"),
-          definition = function(partition) {
-            # If similarity is data.frame, convert to matrix
-            partition <- as.matrix(partition)
+setMethod(
+  f = "metacommunity",
+  signature(partition = "data.frame", similarity = "missing"),
+  definition = function(partition) {
+    # If similarity is data.frame, convert to matrix
+    partition <- as.matrix(partition)
 
-            metacommunity(partition)
-          } )
+    metacommunity(partition)
+  }
+)
 
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,numeric-method
 #'
-setMethod(f = "metacommunity",
-          signature(partition = "numeric", similarity = "missing"),
-          definition = function(partition) {
-            # If similarity is numeric/vector, convert to matrix
-            partition <- as.matrix(partition)
+setMethod(
+  f = "metacommunity",
+  signature(partition = "numeric", similarity = "missing"),
+  definition = function(partition) {
+    # If similarity is numeric/vector, convert to matrix
+    partition <- as.matrix(partition)
 
-            metacommunity(partition)
-          } )
+    metacommunity(partition)
+  }
+)
 
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,matrix-method
 #'
-setMethod(f = "metacommunity",
-          signature(partition = "matrix", similarity = "missing"),
-          definition = function(partition) {
-            # If similarity is not input, create identity matrix
-            Z <- diag(1, nrow(partition))
-            row.names(Z) <- row.names(partition)
-            colnames(Z) <- row.names(partition)
+setMethod(
+  f = "metacommunity",
+  signature(partition = "matrix", similarity = "missing"),
+  definition = function(partition) {
+    # If similarity is not input, create identity matrix
+    Z <- diag(1, nrow(partition))
+    row.names(Z) <- row.names(partition)
+    colnames(Z) <- row.names(partition)
 
-            similarity <- new("similarity",
-                              similarity = Z,
-                              dat_id = "naive",
-                              parameters = list(transform = NA,
-                                                k = NA,
-                                                normalise = NA,
-                                                max_d = NA))
+    similarity <- new("similarity",
+      similarity = Z,
+      dat_id = "naive",
+      parameters = list(
+        transform = NA,
+        k = NA,
+        normalise = NA,
+        max_d = NA
+      )
+    )
 
-            metacommunity(partition, similarity)
-          } )
-
-
-#' @rdname metacommunity-methods
-#' @aliases metacommunity,similarity-method
-#'
-setMethod(f = "metacommunity",
-          signature(partition = "missing", similarity = "similarity"),
-          definition = function(partition, similarity) {
-            # If partition is missing, assume an even distribution
-            tips <- similarity$tip.label
-            partition <- matrix(rep(1 / length(tips), length(tips)))
-            row.names(partition) <- tips
-            colnames(partition) <- "sc1"
-
-            metacommunity(partition, similarity)
-          } )
+    metacommunity(partition, similarity)
+  }
+)
 
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,similarity-method
 #'
-setMethod(f = "metacommunity",
-          signature(partition = "numeric", similarity = "similarity"),
-          definition = function(partition, similarity) {
-            partition <- as.matrix(partition)
+setMethod(
+  f = "metacommunity",
+  signature(partition = "missing", similarity = "similarity"),
+  definition = function(partition, similarity) {
+    # If partition is missing, assume an even distribution
+    tips <- similarity$tip.label
+    partition <- matrix(rep(1 / length(tips), length(tips)))
+    row.names(partition) <- tips
+    colnames(partition) <- "sc1"
 
-            metacommunity(partition, similarity)
-          } )
-
-
-#' @rdname metacommunity-methods
-#' @aliases metacommunity,similarity-method
-#'
-setMethod(f = "metacommunity",
-          signature(partition = "data.frame", similarity = "similarity"),
-          definition = function(partition, similarity) {
-            partition <- as.matrix(partition)
-
-            metacommunity(partition, similarity)
-          } )
+    metacommunity(partition, similarity)
+  }
+)
 
 
 #' @rdname metacommunity-methods
 #' @aliases metacommunity,similarity-method
 #'
-setMethod(f = "metacommunity",
-          signature(partition = "matrix", similarity = "similarity"),
-          definition = function(partition, similarity) {
+setMethod(
+  f = "metacommunity",
+  signature(partition = "numeric", similarity = "similarity"),
+  definition = function(partition, similarity) {
+    partition <- as.matrix(partition)
 
-            # If a similarity matrix is available (within the similarity
-            # object), then generate a metacommunity object in the normal way
-            if (length(similarity@similarity) != 0) {
+    metacommunity(partition, similarity)
+  }
+)
 
-              # Check partition and simliarity matrices
-              type_abundance <- check_partition(partition)
-              Z <- similarity@similarity
-              Z <- check_similarity(Z, partition)
 
-              # Calculate parameters
-              subcommunity_weights <- colSums(type_abundance) /
-                sum(type_abundance)
-              type_weights <- apply(type_abundance, 2, function(x) x / sum(x))
-              Zp.j <- Z %*% type_abundance
+#' @rdname metacommunity-methods
+#' @aliases metacommunity,similarity-method
+#'
+setMethod(
+  f = "metacommunity",
+  signature(partition = "data.frame", similarity = "similarity"),
+  definition = function(partition, similarity) {
+    partition <- as.matrix(partition)
 
-              # Mark all of the species that have nothing similar as NaNs
-              # because diversity of an empty group is undefined
-              Zp.j[Zp.j == 0] <- NaN
+    metacommunity(partition, similarity)
+  }
+)
 
-              if (!is.matrix(type_weights)) {
-                type_weights <- t(as.matrix(type_weights))
-                row.names(type_weights) <- row.names(type_abundance)
-              }
 
-              return(new("metacommunity",
-                  type_abundance = type_abundance,
-                  similarity = Z,
-                  ordinariness = Zp.j,
-                  subcommunity_weights = subcommunity_weights,
-                  type_weights = type_weights,
-                  dat_id = similarity@dat_id,
-                  similarity_components = similarity@components,
-                  similarity_parameters = similarity@parameters))
+#' @rdname metacommunity-methods
+#' @aliases metacommunity,similarity-method
+#'
+setMethod(
+  f = "metacommunity",
+  signature(partition = "matrix", similarity = "similarity"),
+  definition = function(partition, similarity) {
+    # If a similarity matrix is available (within the similarity
+    # object), then generate a metacommunity object in the normal way
+    if (length(similarity@similarity) != 0) {
+      # Check partition and simliarity matrices
+      type_abundance <- check_partition(partition)
+      Z <- similarity@similarity
+      Z <- check_similarity(Z, partition)
 
-              # .. else calculate branch-based phylogenetic similarity and
-              # generate a metacommunity object in the normal way
-            }else if (similarity@dat_id == "phybranch") {
+      # Calculate parameters
+      subcommunity_weights <- colSums(type_abundance) /
+        sum(type_abundance)
+      type_weights <- apply(type_abundance, 2, function(x) x / sum(x))
+      Zp.j <- Z %*% type_abundance
 
-              components <- similarity@components
-              ps <- phy_struct(components$tree, partition)
-              return(chainsaw(partition = partition,
-                              ps = ps,
-                              depth = components$tree_depth))
+      # Mark all of the species that have nothing similar as NaNs
+      # because diversity of an empty group is undefined
+      Zp.j[Zp.j == 0] <- NaN
 
-              # .. otherwise calculate ordinariness line by line and generate
-              # a metacommunity object in the normal way
-            }else {
+      if (!is.matrix(type_weights)) {
+        type_weights <- t(as.matrix(type_weights))
+        row.names(type_weights) <- row.names(type_abundance)
+      }
 
-              components <- similarity@components
+      return(new("metacommunity",
+        type_abundance = type_abundance,
+        similarity = Z,
+        ordinariness = Zp.j,
+        subcommunity_weights = subcommunity_weights,
+        type_weights = type_weights,
+        dat_id = similarity@dat_id,
+        similarity_components = similarity@components,
+        similarity_parameters = similarity@parameters
+      ))
 
-              # Calculate parameters
-              type_abundance <- check_partition(partition)
-              subcommunity_weights <- colSums(type_abundance) /
-                sum(type_abundance)
-              type_weights <- apply(type_abundance, 2, function(x) x / sum(x))
+      # .. else calculate branch-based phylogenetic similarity and
+      # generate a metacommunity object in the normal way
+    } else if (similarity@dat_id == "phybranch") {
+      components <- similarity@components
+      ps <- phy_struct(components$tree, partition)
+      return(chainsaw(
+        partition = partition,
+        ps = ps,
+        depth = components$tree_depth
+      ))
 
-              Zp.j <- lapply(seq_len(nrow(type_abundance)), function(x) {
-                tmp <- get(components$ordinariness)(similarity, x)
-                tmp <- matrix(tmp, nrow = 1)
-                tmp %*% type_abundance
-              })
+      # .. otherwise calculate ordinariness line by line and generate
+      # a metacommunity object in the normal way
+    } else {
+      components <- similarity@components
 
-              Zp.j <- do.call(rbind.data.frame, Zp.j)
-              row.names(Zp.j) <- row.names(partition)
+      # Calculate parameters
+      type_abundance <- check_partition(partition)
+      subcommunity_weights <- colSums(type_abundance) /
+        sum(type_abundance)
+      type_weights <- apply(type_abundance, 2, function(x) x / sum(x))
 
-              # Mark all of the species that have nothing similar as NaNs
-              # because diversity of an empty group is undefined
-              Zp.j[Zp.j == 0] <- NaN
-              Zp.j <- as.matrix(Zp.j)
+      Zp.j <- lapply(seq_len(nrow(type_abundance)), function(x) {
+        tmp <- get(components$ordinariness)(similarity, x)
+        tmp <- matrix(tmp, nrow = 1)
+        tmp %*% type_abundance
+      })
 
-              if (!is.matrix(type_weights)) {
-                type_weights <- t(as.matrix(type_weights))
-                row.names(type_weights) <- row.names(type_abundance)
-              }
+      Zp.j <- do.call(rbind.data.frame, Zp.j)
+      row.names(Zp.j) <- row.names(partition)
 
-              return(new("metacommunity",
-                         type_abundance = type_abundance,
-                         ordinariness = Zp.j,
-                         subcommunity_weights = subcommunity_weights,
-                         type_weights = type_weights,
-                         dat_id = similarity@dat_id,
-                         similarity_components = similarity@components,
-                         similarity_parameters = similarity@parameters))
-            }
-          } )
+      # Mark all of the species that have nothing similar as NaNs
+      # because diversity of an empty group is undefined
+      Zp.j[Zp.j == 0] <- NaN
+      Zp.j <- as.matrix(Zp.j)
+
+      if (!is.matrix(type_weights)) {
+        type_weights <- t(as.matrix(type_weights))
+        row.names(type_weights) <- row.names(type_abundance)
+      }
+
+      return(new("metacommunity",
+        type_abundance = type_abundance,
+        ordinariness = Zp.j,
+        subcommunity_weights = subcommunity_weights,
+        type_weights = type_weights,
+        dat_id = similarity@dat_id,
+        similarity_components = similarity@components,
+        similarity_parameters = similarity@parameters
+      ))
+    }
+  }
+)
 
 
 #' @rdname metacommunity-class
 #' @param object object of class \code{metacommunity}
 #'
-setMethod(f = "show", signature = "metacommunity",
-          definition = function(object) {
-            cat("Object of class `metacommunity`, containing all of the data required to calculate diversity.")
-          } )
+setMethod(
+  f = "show", signature = "metacommunity",
+  definition = function(object) {
+    cat(paste0(
+      "Object of class `metacommunity`, containing all of the data ",
+      "required to calculate diversity."
+    ))
+  }
+)

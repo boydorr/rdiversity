@@ -1,75 +1,96 @@
 context("Testing chainsaw() function:")
 
 test_that("Setting depth to 2 returns a long root for ultrametric trees", {
-
   tree <- ape::read.tree(text = "(A:2,B:2);")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  similarity <- phy2branch(tree = tree,
-                         partition = partition,
-                         depth = 2)
-  meta <- metacommunity(partition = partition,
-                        similarity = similarity)
+  similarity <- phy2branch(
+    tree = tree,
+    partition = partition,
+    depth = 2
+  )
+  meta <- metacommunity(
+    partition = partition,
+    similarity = similarity
+  )
 
   tree2 <- ape::read.tree(text = "(A:2,B:2)R:2;")
-  similarity2 <- phy2branch(tree = tree2,
-                          partition = partition)
-  meta2 <- metacommunity(partition = partition,
-                         similarity = similarity2)
+  similarity2 <- phy2branch(
+    tree = tree2,
+    partition = partition
+  )
+  meta2 <- metacommunity(
+    partition = partition,
+    similarity = similarity2
+  )
 
-  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2)$diversity,
-                              norm_meta_alpha(meta2, 0:2)$diversity)
-
+  testthat::expect_equivalent(
+    norm_meta_alpha(meta, 0:2)$diversity,
+    norm_meta_alpha(meta2, 0:2)$diversity
+  )
 })
 
 
 test_that("Setting depth to 0.5 cuts off root", {
-
   tree <- ape::read.tree(text = "(A:1,B:2);")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  similarity <- phy2branch(tree = tree,
-                         partition = partition)
+  similarity <- phy2branch(
+    tree = tree,
+    partition = partition
+  )
   meta <- metacommunity(partition, similarity)
 
   tree2 <- ape::read.tree(text = "(A:1,B:2)R:2;")
-  similarity2 <- phy2branch(tree = tree2,
-                          partition = partition,
-                          depth = 0.5)
+  similarity2 <- phy2branch(
+    tree = tree2,
+    partition = partition,
+    depth = 0.5
+  )
   meta2 <- metacommunity(partition, similarity2)
 
-  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2)$diversity,
-                              norm_meta_alpha(meta2, 0:2)$diversity)
+  testthat::expect_equivalent(
+    norm_meta_alpha(meta, 0:2)$diversity,
+    norm_meta_alpha(meta2, 0:2)$diversity
+  )
 })
 
 
 test_that("Setting depth to 0.5 cuts the phylogeny in half", {
   tree <- ape::read.tree(text = "(A:4,B:3);")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  similarity <- phy2branch(tree = tree,
-                         partition = partition,
-                         depth = 0.5)
+  similarity <- phy2branch(
+    tree = tree,
+    partition = partition,
+    depth = 0.5
+  )
   meta <- metacommunity(partition, similarity)
   ps <- phy_struct(tree, partition)
   structure_matrix <- ps$structure
   pa <- phy_abundance(partition, structure_matrix)
 
   tree2 <- ape::read.tree(text = "(A:2,B:1);")
-  similarity2 <- phy2branch(tree = tree2,
-                          partition = partition)
+  similarity2 <- phy2branch(
+    tree = tree2,
+    partition = partition
+  )
   meta2 <- metacommunity(partition, similarity2)
   ps2 <- phy_struct(tree2, partition)
   structure_matrix2 <- ps2$structure
   pa2 <- phy_abundance(partition, structure_matrix2)
 
-  testthat::expect_equivalent(norm_meta_alpha(meta, 0:2)$diversity,
-                              norm_meta_alpha(meta2, 0:2)$diversity)
+  testthat::expect_equivalent(
+    norm_meta_alpha(meta, 0:2)$diversity,
+    norm_meta_alpha(meta2, 0:2)$diversity
+  )
 })
 
 
 test_that("Setting depth to 1 returns the phylogeny intact", {
   tree <- ape::read.tree(text = "(A:1,B:2)R:2;")
   partition <- setNames(c(0.6, 0.4), tree$tip.label)
-  similarity <- phy2branch(tree = tree,
-                         partition = partition)
+  similarity <- phy2branch(
+    tree = tree,
+    partition = partition
+  )
   meta <- metacommunity(partition, similarity)
 
   testthat::expect_equal(meta, metacommunity(partition, similarity))
@@ -91,10 +112,12 @@ test_that("Setting depth to < 1 returns correct results", {
   s <- smatrix(ps)
   z <- zmatrix(partition, s, ps)
 
-  ps_ans <- cbind(A = c(0.4, 0.2, 0.3, 0.1, 0, 0, 0, 0.6, 0.2, 0.3, 0.5, 0.3) /
-                    7.4,
-                 B = c(0.2, 0.1, 0, 0, 0.4, 0.2, 0.3, 1.8, 0.6, 0.9, 0, 0) /
-                   7.4)
+  ps_ans <- cbind(
+    A = c(0.4, 0.2, 0.3, 0.1, 0, 0, 0, 0.6, 0.2, 0.3, 0.5, 0.3) /
+      7.4,
+    B = c(0.2, 0.1, 0, 0, 0.4, 0.2, 0.3, 1.8, 0.6, 0.9, 0, 0) /
+      7.4
+  )
   row.names(ps_ans) <- row.names(pa)
 
   testthat::expect_equal(T_bar, 7.4)
@@ -106,11 +129,13 @@ test_that("Setting depth to < 1 returns correct results", {
   structure_matrix <- c_meta@raw_structure
 
   c_partition <- partition[which(row.names(partition) %in%
-                                   colnames(structure_matrix)), ]
+    colnames(structure_matrix)), ]
   expect_message(c_hs <- phy_abundance(c_partition, structure_matrix))
 
-  ps_ans <- cbind(A = c(0, 0, 0.6, 0.1, 0.4) / 3.7,
-                 B = c(0.4, 0.1, 1.8, 0.3, 0) / 3.7)
+  ps_ans <- cbind(
+    A = c(0, 0, 0.6, 0.1, 0.4) / 3.7,
+    B = c(0.4, 0.1, 1.8, 0.3, 0) / 3.7
+  )
   row.names(ps_ans) <- row.names(c_hs)
 
   testthat::expect_equal(c_hs, ps_ans)
@@ -126,15 +151,19 @@ test_that("Metacommunity G increases when trees are cut", {
   partition <- partition / sum(partition)
 
   # Calculate diversity
-  similarity <- phy2branch(tree = tree,
-                         partition = partition)
+  similarity <- phy2branch(
+    tree = tree,
+    partition = partition
+  )
   meta <- metacommunity(partition, similarity)
   div <- meta_gamma(meta, 0)$diversity
 
   # Calculate cut diversity
-  cut_similarity <- phy2branch(tree = tree,
-                           partition = partition,
-                           depth = 0.4)
+  cut_similarity <- phy2branch(
+    tree = tree,
+    partition = partition,
+    depth = 0.4
+  )
   cut_meta <- metacommunity(partition, cut_similarity)
   cut_div <- meta_gamma(cut_meta, 0)$diversity
 
@@ -152,15 +181,19 @@ test_that("Metacommunity G is smaller for trees with extended roots", {
   partition <- partition / sum(partition)
 
   # Calculate diversity
-  similarity <- phy2branch(tree = tree,
-                         partition = partition)
+  similarity <- phy2branch(
+    tree = tree,
+    partition = partition
+  )
   meta <- metacommunity(partition, similarity)
   div <- meta_gamma(meta, 0)$diversity
 
   # Calculate extended diversity
-  r_similarity <- phy2branch(tree = tree,
-                           partition = partition,
-                           depth = 2)
+  r_similarity <- phy2branch(
+    tree = tree,
+    partition = partition,
+    depth = 2
+  )
   r_meta <- metacommunity(partition, r_similarity)
   r_div <- meta_gamma(r_meta, 0)$diversity
 
@@ -180,7 +213,7 @@ test_that("chainsaw works when species are missing from the partition", {
   partition <- partition / sum(partition)
 
   # Calculate phy_struct
-  testthat::expect_warning( ps <- phy_struct(tree, partition))
+  testthat::expect_warning(ps <- phy_struct(tree, partition))
 
   # Generate metacommunity
   testthat::expect_warning(
@@ -207,4 +240,3 @@ test_that("chainsaw works when species are missing from the phylogeny", {
   structure_matrix <- ps$structure
   pa <- testthat::expect_warning(phy_abundance(partition, structure_matrix))
 })
-

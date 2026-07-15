@@ -5,14 +5,16 @@ test_that("metacommunity() works for a single community", {
   names(pop) <- paste0("sp", 1:5)
   expect_message(meta <- metacommunity(pop))
 
-  ans <- matrix(c(1/15, 2/15, 1/5, 4/15, 1/3))
+  ans <- matrix(c(1 / 15, 2 / 15, 1 / 5, 4 / 15, 1 / 3))
   rownames(ans) <- names(pop)
 
   expect_equal(meta@type_abundance, ans)
   expect_equivalent(meta@similarity, diag(1, 5))
   expect_equal(meta@similarity_components, list())
-  expect_equal(meta@similarity_parameters,
-               list(transform = NA, k = NA, normalise = NA, max_d = NA))
+  expect_equal(
+    meta@similarity_parameters,
+    list(transform = NA, k = NA, normalise = NA, max_d = NA)
+  )
   expect_equivalent(meta@ordinariness, ans)
   expect_equal(meta@subcommunity_weights, 1)
   expect_equivalent(meta@type_weights, ans)
@@ -29,23 +31,27 @@ test_that("metacommunity() works in the naive-type case", {
   colnames(pop) <- c("A", "B")
   expect_message(meta <- metacommunity(pop))
 
-  ans <- matrix(c(1/55, 2/55, 3/55, 4/55, 1/11, 6/55, 7/55, 8/55, 9/55, 2/11),
-                ncol = 2)
+  ans <- matrix(c(1 / 55, 2 / 55, 3 / 55, 4 / 55, 1 / 11, 6 / 55, 7 / 55, 8 / 55, 9 / 55, 2 / 11),
+    ncol = 2
+  )
   rownames(ans) <- row.names(pop)
   colnames(ans) <- colnames(pop)
 
-  ans2 <- matrix(c(1/15, 2/15, 1/5, 4/15, 1/3, 3/20, 7/40, 1/5, 9/40, 1/4),
-                 ncol = 2)
+  ans2 <- matrix(c(1 / 15, 2 / 15, 1 / 5, 4 / 15, 1 / 3, 3 / 20, 7 / 40, 1 / 5, 9 / 40, 1 / 4),
+    ncol = 2
+  )
   rownames(ans2) <- row.names(pop)
   colnames(ans2) <- colnames(pop)
 
   expect_equal(meta@type_abundance, ans)
   expect_equivalent(meta@similarity, diag(1, 5))
   expect_equal(meta@similarity_components, list())
-  expect_equal(meta@similarity_parameters,
-               list(transform = NA, k = NA, normalise = NA, max_d = NA))
+  expect_equal(
+    meta@similarity_parameters,
+    list(transform = NA, k = NA, normalise = NA, max_d = NA)
+  )
   expect_equivalent(meta@ordinariness, ans)
-  expect_equal(meta@subcommunity_weights, colSums(pop)/sum(pop))
+  expect_equal(meta@subcommunity_weights, colSums(pop) / sum(pop))
   expect_equivalent(meta@type_weights, ans2)
   expect_true(length(meta@raw_abundance) == 0)
   expect_true(length(meta@raw_structure) == 0)
@@ -55,8 +61,10 @@ test_that("metacommunity() works in the naive-type case", {
 
 test_that("metacommunity() works for taxonomic diversity", {
   # Generate lookup table
-  Species <- c("tenuifolium", "asterolepis", "simplex var.grandiflora",
-               "simplex var.ochnacea")
+  Species <- c(
+    "tenuifolium", "asterolepis", "simplex var.grandiflora",
+    "simplex var.ochnacea"
+  )
   Genus <- c("Protium", "Quararibea", "Swartzia", "Swartzia")
   Family <- c("Burseraceae", "Bombacaceae", "Fabaceae", "Fabaceae")
   Subclass <- c("Sapindales", "Malvales", "Fabales", "Fabales")
@@ -85,24 +93,35 @@ test_that("metacommunity() works for taxonomic diversity", {
   expect_equal(dc_meta@similarity_components$precompute, FALSE)
   expect_equal(dc_meta@similarity_components$ordinariness, "taxvec")
   expect_equal(dc_meta@similarity_components$tax_distance, tax_distance)
-  expect_equivalent(dc_meta@similarity_components$tax_similarity,
-                    c(1, 0.75, 0.5, 0.25, 0))
+  expect_equivalent(
+    dc_meta@similarity_components$tax_similarity,
+    c(1, 0.75, 0.5, 0.25, 0)
+  )
   expect_equivalent(dc_meta@similarity_components$tax_id, c(198, 17, 104, 168))
-  expect_equivalent(lapply(dc_meta@similarity_components$tax_mask, as.numeric),
-                    list(Species = 255, Genus = 63, Family = 15, Subclass = 3))
+  expect_equivalent(
+    lapply(
+      dc_meta@similarity_components$tax_mask,
+      rdiversity:::bits_to_int
+    ),
+    list(Species = 255, Genus = 63, Family = 15, Subclass = 3)
+  )
   expect_equivalent(dc_meta@similarity_components$tax_bits, c(2, 2, 2, 2))
-  expect_equal(dc_meta@similarity_parameters, list(transform = "linear",
-                                                   k = 1,
-                                                   normalise = TRUE,
-                                                   max_d = 4))
-  tmp <- matrix(c(1/6, 1/18, 25/144, 31/144, 5/36, 2/9, 1/6, 25/144),
-                ncol = 2)
+  expect_equal(dc_meta@similarity_parameters, list(
+    transform = "linear",
+    k = 1,
+    normalise = TRUE,
+    max_d = 4
+  ))
+  tmp <- matrix(c(1 / 6, 1 / 18, 25 / 144, 31 / 144, 5 / 36, 2 / 9, 1 / 6, 25 / 144),
+    ncol = 2
+  )
   rownames(tmp) <- Species
   colnames(tmp) <- LETTERS[1:2]
   expect_equal(dc_meta@ordinariness, tmp)
-  expect_equivalent(dc_meta@subcommunity_weights, c(4/9, 5/9))
-  tmp <- matrix(c(3/8, 1/8, 1/16, 7/16, 1/4, 2/5, 3/20, 1/5),
-                ncol = 2)
+  expect_equivalent(dc_meta@subcommunity_weights, c(4 / 9, 5 / 9))
+  tmp <- matrix(c(3 / 8, 1 / 8, 1 / 16, 7 / 16, 1 / 4, 2 / 5, 3 / 20, 1 / 5),
+    ncol = 2
+  )
   rownames(tmp) <- Species
   colnames(tmp) <- LETTERS[1:2]
   expect_equal(dc_meta@type_weights, tmp)
@@ -117,12 +136,15 @@ test_that("metacommunity() works for taxonomic diversity", {
   # Test slots in pc_meta
   expect_equal(pc_meta@type_abundance, dc_meta@type_abundance)
   tmp <- matrix(c(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0.75, 0, 0, 0.75, 1),
-                ncol = 4)
+    ncol = 4
+  )
   rownames(tmp) <- Species
   colnames(tmp) <- Species
   expect_equal(pc_meta@similarity, tmp)
-  expect_equal(pc_meta@similarity_components,
-               list(precompute = TRUE, tax_distance = tax_distance))
+  expect_equal(
+    pc_meta@similarity_components,
+    list(precompute = TRUE, tax_distance = tax_distance)
+  )
   expect_equal(pc_meta@similarity_parameters, dc_meta@similarity_parameters)
   expect_equal(pc_meta@ordinariness, dc_meta@ordinariness)
   expect_equal(pc_meta@subcommunity_weights, dc_meta@subcommunity_weights)
@@ -155,12 +177,16 @@ test_that("metacommunity() works for phydist diversity", {
   tmp <- matrix(rep(0.1, 10), ncol = 2)
   rownames(tmp) <- row.names(partition)
   expect_equal(meta@type_abundance, tmp)
-  tmp <- matrix(c(1.0000000, 0.4474568, 0.5890454, 0.2424060, 0.3744924,
-                  0.4474568, 1.0000000, 0.6034479, 0.0000000, 0.1320864,
-                  0.5890454, 0.6034479, 1.0000000, 0.1415886, 0.2736750,
-                  0.2424060, 0.0000000, 0.1415886, 1.0000000, 0.8100268,
-                  0.3744924, 0.1320864, 0.2736750, 0.8100268, 1.0000000),
-                ncol = 5, byrow = TRUE)
+  tmp <- matrix(
+    c(
+      1.0000000, 0.4474568, 0.5890454, 0.2424060, 0.3744924,
+      0.4474568, 1.0000000, 0.6034479, 0.0000000, 0.1320864,
+      0.5890454, 0.6034479, 1.0000000, 0.1415886, 0.2736750,
+      0.2424060, 0.0000000, 0.1415886, 1.0000000, 0.8100268,
+      0.3744924, 0.1320864, 0.2736750, 0.8100268, 1.0000000
+    ),
+    ncol = 5, byrow = TRUE
+  )
   rownames(tmp) <- row.names(partition)
   colnames(tmp) <- row.names(partition)
   expect_equal(meta@similarity, tmp, tolerance = 1e-05)
@@ -194,10 +220,12 @@ test_that("metacommunity() works for phybranch diversity", {
 
   expect_true(is.list(meta@similarity_components))
   expect_true(length(meta@similarity_components) == 0)
-  expect_equal(meta@similarity_parameters, list(transform = NA,
-                                                k = NA,
-                                                normalise = NA,
-                                                max_d = NA))
+  expect_equal(meta@similarity_parameters, list(
+    transform = NA,
+    k = NA,
+    normalise = NA,
+    max_d = NA
+  ))
   expect_true(meta@dat_id == "phybranch")
   expect_true(length(meta@raw_abundance) != 0)
   expect_true(length(meta@raw_structure) != 0)

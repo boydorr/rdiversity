@@ -22,9 +22,9 @@ Values generated from \code{raw_beta()} may be input into \code{subdiv()} and
 diversity.
 }
 \examples{
-pop <- data.frame(a = c(1,3), b = c(1,1))
+pop <- data.frame(a = c(1, 3), b = c(1, 1))
 row.names(pop) <- paste0("sp", 1:2)
-pop <- pop/sum(pop)
+pop <- pop / sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate raw beta component

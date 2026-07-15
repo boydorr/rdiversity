@@ -45,9 +45,9 @@
 #' @noRd
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw subcommunity beta diversity
@@ -56,17 +56,17 @@
 #'
 relativeentropy <- function(results, meta, tag) {
   new("relativeentropy",
-      results = results,
-      measure = tag,
-      type_abundance = meta@type_abundance,
-      ordinariness = meta@ordinariness,
-      subcommunity_weights = meta@subcommunity_weights,
-      type_weights = meta@type_weights,
-      dat_id = meta@dat_id,
-      similarity_components = meta@similarity_components,
-      similarity_parameters = meta@similarity_parameters)
+    results = results,
+    measure = tag,
+    type_abundance = meta@type_abundance,
+    ordinariness = meta@ordinariness,
+    subcommunity_weights = meta@subcommunity_weights,
+    type_weights = meta@type_weights,
+    dat_id = meta@dat_id,
+    similarity_components = meta@similarity_components,
+    similarity_parameters = meta@similarity_parameters
+  )
 }
-
 
 
 #' @rdname relativeentropy
@@ -74,15 +74,19 @@ relativeentropy <- function(results, meta, tag) {
 #'
 #' @noRd
 #'
-setMethod(f = "show", signature = "relativeentropy",
-          definition = function(object) {
-            cat("Object of class relativeentropy, containing:\n")
-            cat("@results: inddiv() results\n")
-            cat("@measure: measure\n")
-            cat("@type_abundance: Matrix of relative abundances (",
-                ncol(object@type_abundance), "subcommunities,",
-                nrow(object@type_abundance), "types )\n")
-            cat("@ordinariness: Matrix of type ordinariness\n")
-            cat("@subcommunity_weights: Vector of subcommunity weights\n")
-            cat("@type_weights: Vector of type weights\n")
-          } )
+setMethod(
+  f = "show", signature = "relativeentropy",
+  definition = function(object) {
+    cat("Object of class relativeentropy, containing:\n")
+    cat("@results: inddiv() results\n")
+    cat("@measure: measure\n")
+    cat(
+      "@type_abundance: Matrix of relative abundances (",
+      ncol(object@type_abundance), "subcommunities,",
+      nrow(object@type_abundance), "types )\n"
+    )
+    cat("@ordinariness: Matrix of type ordinariness\n")
+    cat("@subcommunity_weights: Vector of subcommunity weights\n")
+    cat("@type_weights: Vector of type weights\n")
+  }
+)

@@ -18,12 +18,17 @@
 #'
 phy2branch <- function(tree, partition, depth = 1) {
   new("similarity",
-      dat_id = "phybranch",
-      components = list(tree = tree,
-                        partition = partition,
-                        tree_depth = depth),
-      parameters = list(transform = NA,
-                        k = NA,
-                        normalise = NA,
-                        max_d = NA))
+    dat_id = "phybranch",
+    components = list(
+      tree = tree,
+      partition = partition,
+      tree_depth = depth
+    ),
+    parameters = list(
+      transform = NA,
+      k = NA,
+      normalise = NA,
+      max_d = NA
+    )
+  )
 }

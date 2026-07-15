@@ -44,14 +44,17 @@ setOldClass("phylo")
 #' @exportClass metacommunity
 #'
 setClass("metacommunity",
-         slots = c(type_abundance = "matrix",
-                   similarity = "matrix",
-                   similarity_components = "list",
-                   similarity_parameters = "list",
-                   ordinariness = "matrix",
-                   subcommunity_weights = "numeric",
-                   type_weights = "matrix",
-                   dat_id = "character",
-                   raw_abundance = "matrix",
-                   raw_structure = "matrix",
-                   parameters = "data.frame"))
+  slots = c(
+    type_abundance = "matrix",
+    similarity = "matrix",
+    similarity_components = "list",
+    similarity_parameters = "list",
+    ordinariness = "matrix",
+    subcommunity_weights = "numeric",
+    type_weights = "matrix",
+    dat_id = "character",
+    raw_abundance = "matrix",
+    raw_structure = "matrix",
+    parameters = "data.frame"
+  )
+)

@@ -7,13 +7,15 @@
 #'
 descendant_tips <- function(tree, node) {
   x <- node
-  tips <- seq_len(length(tree$tip.label))
+  tips <- seq_along(tree$tip.label)
 
-  if(node %in% tips) return(node) else {
+  if (node %in% tips) {
+    return(node)
+  } else {
     keep <- vector()
     continue <- TRUE
 
-    while(continue) {
+    while (continue) {
       check <- tree$edge[which(tree$edge[, 1] %in% x), 2]
       check
       daughters <- tips[tips %in% check]

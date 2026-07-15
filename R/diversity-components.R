@@ -18,9 +18,9 @@
 #' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw alpha component
@@ -54,9 +54,9 @@ raw_alpha <- function(meta) {
 #' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised alpha component
@@ -65,11 +65,17 @@ raw_alpha <- function(meta) {
 #' metadiv(a, 1)
 #'
 norm_alpha <- function(meta) {
-  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
-                             function(x) meta@ordinariness[, x] /
-                               meta@subcommunity_weights[x])
-  if (!is.matrix(ordinariness.bar))
+  ordinariness.bar <- vapply(
+    seq_along(meta@subcommunity_weights),
+    function(x) {
+      meta@ordinariness[, x] /
+        meta@subcommunity_weights[x]
+    },
+    numeric(nrow(meta@ordinariness))
+  )
+  if (!is.matrix(ordinariness.bar)) {
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
+  }
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)
   results <- 1 / ordinariness.bar
 
@@ -97,9 +103,9 @@ norm_alpha <- function(meta) {
 #' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw rho component
@@ -133,9 +139,9 @@ raw_rho <- function(meta) {
 #' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised rho component
@@ -144,11 +150,17 @@ raw_rho <- function(meta) {
 #' metadiv(r, 1)
 #'
 norm_rho <- function(meta) {
-  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
-                             function(x) meta@ordinariness[, x] /
-                               meta@subcommunity_weights[x])
-  if (!is.matrix(ordinariness.bar))
+  ordinariness.bar <- vapply(
+    seq_along(meta@subcommunity_weights),
+    function(x) {
+      meta@ordinariness[, x] /
+        meta@subcommunity_weights[x]
+    },
+    numeric(nrow(meta@ordinariness))
+  )
+  if (!is.matrix(ordinariness.bar)) {
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
+  }
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)
   results <- rowSums(meta@ordinariness, na.rm = TRUE) / ordinariness.bar
   powermean(results, meta, "normalised rho")
@@ -175,9 +187,9 @@ norm_rho <- function(meta) {
 #' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate raw beta component
@@ -212,9 +224,9 @@ raw_beta <- function(meta) {
 #' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate normalised beta component
@@ -223,11 +235,17 @@ raw_beta <- function(meta) {
 #' metadiv(b, 1)
 #'
 norm_beta <- function(meta) {
-  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
-                             function(x) meta@ordinariness[, x] /
-                               meta@subcommunity_weights[x])
-  if (!is.matrix(ordinariness.bar))
+  ordinariness.bar <- vapply(
+    seq_along(meta@subcommunity_weights),
+    function(x) {
+      meta@ordinariness[, x] /
+        meta@subcommunity_weights[x]
+    },
+    numeric(nrow(meta@ordinariness))
+  )
+  if (!is.matrix(ordinariness.bar)) {
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
+  }
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)
   normalised.rho <- rowSums(meta@ordinariness, na.rm = TRUE) / ordinariness.bar
   results <- 1 / normalised.rho
@@ -254,9 +272,9 @@ norm_beta <- function(meta) {
 #' arXiv 1404.6520v3:1–9.
 #'
 #' @examples
-#' pop <- cbind.data.frame(A = c(1,1), B = c(2,0), C = c(3,1))
+#' pop <- cbind.data.frame(A = c(1, 1), B = c(2, 0), C = c(3, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate gamma component

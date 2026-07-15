@@ -32,24 +32,25 @@ taxvec <- function(similarity, row) {
   components <- similarity@components
 
   total <- sum(components$tax_bits)
-  species_factors <- lapply(components$tax_id, function(x)
-    as.binary(x, n = total))
+  species_factors <- lapply(components$tax_id, function(x) {
+    int_to_bits(x, total)
+  })
 
   difference <- lapply(species_factors, function(x) {
-    tmp <- xor(species_factors[[row]], x)
-    tmp <- 1 - as.numeric(as.character(tmp))
-    as.binary(tmp, logic = TRUE)
+    !xor(species_factors[[row]], x)
   })
 
   split_values <- components$tax_similarity
-  split_values <- vapply(seq_along(split_values), function(x)
-    split_values[x] - split_values[x + 1], numeric(1))
+  split_values <- vapply(seq_along(split_values), function(x) {
+    split_values[x] - split_values[x + 1]
+  }, numeric(1))
   split_values <- split_values[-length(split_values)]
 
   masks <- components$tax_mask
   one <- lapply(difference, function(x) {
-    tmp <- lapply(seq_along(masks), function(y)
-      ( (x & masks[[y]]) == masks[[y]]) * split_values[y])
+    tmp <- lapply(seq_along(masks), function(y) {
+      all((x & masks[[y]]) == masks[[y]]) * split_values[y]
+    })
     sum(unlist(tmp))
   })
   unlist(one)

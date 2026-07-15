@@ -19,47 +19,61 @@
 #' @export
 #'
 repartition <- function(meta, new_partition) {
-
   # Non-phylogenetic metacommunity
   if (isTRUE(all.equal(0, length(meta@raw_structure)))) {
-
     partition <- meta@type_abundance
-    if (missing(new_partition))
+    if (missing(new_partition)) {
       new_partition <- partition[sample(seq_along(row.names(partition))), ,
-                                 drop = FALSE]
+        drop = FALSE
+      ]
+    }
     new_partition <- check_partition(new_partition)
     # Check
-    if (any(dim(partition) != dim(new_partition)))
+    if (any(dim(partition) != dim(new_partition))) {
       stop("Dimensionality has changed during repartition()ing")
+    }
 
     row.names(new_partition) <- row.names(partition)
 
-    new_meta <- metacommunity(new_partition, meta@similarity)
+    # Rebuild a `similarity` object from the metacommunity's stored slots;
+    # `metacommunity()` no longer accepts a bare similarity matrix.
+    new_similarity <- new("similarity",
+      similarity = meta@similarity,
+      dat_id = meta@dat_id,
+      components = meta@similarity_components,
+      parameters = meta@similarity_parameters
+    )
 
+    new_meta <- metacommunity(new_partition, new_similarity)
 
 
     # Phylogenetic metacommunity
-  }else {
-
+  } else {
     raw_abundance <- meta@raw_abundance
-    if (missing(new_partition))
-      new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))),
-                                     , drop = FALSE]
+    if (missing(new_partition)) {
+      new_partition <- raw_abundance[sample(seq_along(row.names(raw_abundance))), ,
+        drop = FALSE
+      ]
+    }
     new_partition <- check_partition(new_partition)
     # Check
-    if (any(dim(raw_abundance) != dim(new_partition)))
+    if (any(dim(raw_abundance) != dim(new_partition))) {
       stop("Dimensionality has changed during repartition()ing")
+    }
 
     row.names(new_partition) <- row.names(raw_abundance)
 
     hs_abundance <- phy_abundance(new_partition, meta@raw_structure)
 
     new_similarity <- new("similarity",
-                          similarity = meta@similarity * sum(hs_abundance),
-                          dat_id = meta@dat_id)
+      similarity = meta@similarity * sum(hs_abundance),
+      dat_id = meta@dat_id
+    )
 
-    new_meta <- metacommunity(partition = hs_abundance / sum(hs_abundance),
-                              similarity = new_similarity)
+    new_meta <- metacommunity(
+      partition = hs_abundance / sum(hs_abundance),
+      similarity = new_similarity
+    )
     new_meta@raw_abundance <- new_partition
     new_meta@raw_structure <- meta@raw_structure / sum(hs_abundance)
     new_meta@parameters <- meta@parameters

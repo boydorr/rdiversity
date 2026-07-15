@@ -23,13 +23,12 @@ dist2sim <- function(dist,
                      k = 1,
                      normalise = TRUE,
                      max_d) {
-
-  if (class(dist) != "distance")
+  if (!inherits(dist, "distance")) {
     stop("The argument `dist` must be of class `distance`.")
+  }
 
   # If a distance matrix is available, convert it into a similarity matrix
   if (length(dist@distance) != 0) {
-
     similarity <- dist@distance
     if (missing(max_d)) max_d <- max(dist@distance)
     if (normalise) similarity <- similarity / max_d
@@ -43,40 +42,47 @@ dist2sim <- function(dist,
     }
 
     return(new("similarity",
-               similarity = similarity,
-               dat_id = dist@dat_id,
-               components = dist@components,
-               parameters = list(transform = transform,
-                                 k = k,
-                                 normalise = normalise,
-                                 max_d = max_d)))
-
+      similarity = similarity,
+      dat_id = dist@dat_id,
+      components = dist@components,
+      parameters = list(
+        transform = transform,
+        k = k,
+        normalise = normalise,
+        max_d = max_d
+      )
+    ))
   } else {
-
     # If there is no distance matrix...
 
     if (dist@dat_id == "taxonomic") {
-
       components <- dist@components
 
       tax_similarity <- components$tax_distance
       if (missing(max_d)) max_d <- max(tax_similarity)
       if (normalise) tax_similarity <- tax_similarity / max_d
-      if (transform == substr("linear", 1, nchar(transform)))
+      if (transform == substr("linear", 1, nchar(transform))) {
         tax_similarity <- pmax(1 - k * tax_similarity, 0)
-      if (transform == substr("exponential", 1, nchar(transform)))
+      }
+      if (transform == substr("exponential", 1, nchar(transform))) {
         tax_similarity <- exp(-k * tax_similarity)
+      }
 
-      new_components <- append(components,
-                               list(tax_similarity = tax_similarity), 3)
+      new_components <- append(
+        components,
+        list(tax_similarity = tax_similarity), 3
+      )
 
       return(new("similarity",
-                 dat_id = dist@dat_id,
-                 components = new_components,
-                 parameters = list(transform = transform,
-                                   k = k,
-                                   normalise = normalise,
-                                   max_d = max_d)))
+        dat_id = dist@dat_id,
+        components = new_components,
+        parameters = list(
+          transform = transform,
+          k = k,
+          normalise = normalise,
+          max_d = max_d
+        )
+      ))
     }
   }
 }

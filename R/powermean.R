@@ -48,9 +48,9 @@
 #' @noRd
 #'
 #' @examples
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' row.names(pop) <- paste0("sp", 1:2)
-#' pop <- pop/sum(pop)
+#' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
 #' # Calculate subcommunity raw alpha diversity (takes the powermean)
@@ -59,17 +59,17 @@
 #'
 powermean <- function(results, meta, tag) {
   new("powermean",
-      results = results,
-      measure = tag,
-      type_abundance = meta@type_abundance,
-      ordinariness = meta@ordinariness,
-      subcommunity_weights = meta@subcommunity_weights,
-      type_weights = meta@type_weights,
-      dat_id = meta@dat_id,
-      similarity_components = meta@similarity_components,
-      similarity_parameters = meta@similarity_parameters)
+    results = results,
+    measure = tag,
+    type_abundance = meta@type_abundance,
+    ordinariness = meta@ordinariness,
+    subcommunity_weights = meta@subcommunity_weights,
+    type_weights = meta@type_weights,
+    dat_id = meta@dat_id,
+    similarity_components = meta@similarity_components,
+    similarity_parameters = meta@similarity_parameters
+  )
 }
-
 
 
 #' @rdname powermean
@@ -78,7 +78,9 @@ powermean <- function(results, meta, tag) {
 #'
 #' @noRd
 #'
-setMethod(f = "show", signature = "powermean",
-          definition = function(object) {
-            cat("Object of class powermean.")
-          } )
+setMethod(
+  f = "show", signature = "powermean",
+  definition = function(object) {
+    cat("Object of class powermean.")
+  }
+)

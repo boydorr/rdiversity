@@ -27,7 +27,7 @@
 #'
 #' @examples
 #' # Define metacommunity
-#' pop <- data.frame(a = c(1,3), b = c(1,1))
+#' pop <- data.frame(a = c(1, 3), b = c(1, 1))
 #' pop <- pop / sum(pop)
 #' meta <- metacommunity(pop)
 #'
@@ -42,90 +42,110 @@
 #' # Calculate all measures of metacommunity diversity
 #' metadiv(meta, 0:2)
 #'
-setGeneric(name = "metadiv",
-           def = function(data, qs) {
-             standardGeneric("metadiv")
-           } )
+setGeneric(
+  name = "metadiv",
+  def = function(data, qs) {
+    standardGeneric("metadiv")
+  }
+)
 
 
 #' @rdname metadiv
 #'
-setMethod(f = "metadiv", signature = "powermean",
-          definition = function(data, qs) {
-            # Calculate
-            results <- lapply(seq_along(qs), function(x) {
-              subdiv <- vapply(seq_len(ncol(data@results)), function(y)
-                power_mean(data@results[, y], 1 - qs[x], data@type_weights[, y]),
-                numeric(1))
-              power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
-            })
-            # Tidy up
-            output <- do.call(cbind, results)
-            row.names(output) <- "metacommunity"
-            colnames(output) <- qs
-            output <- reshape2::melt(output)
-            # Output
-            param <- data@similarity_parameters
-            cbind.data.frame(measure = data@measure,
-                                       q = output$Var2,
-                                       type_level = "types",
-                                       type_name = "",
-                                       partition_level = "metacommunity",
-                                       partition_name = "",
-                                       diversity = output$value,
-                                       dat_id = data@dat_id,
-                                       transformation = param$transform,
-                                       normalised = param$normalise,
-                                       k = param$k,
-                                       max_d = param$max_d,
-                                       stringsAsFactors = FALSE)
-            } )
+setMethod(
+  f = "metadiv", signature = "powermean",
+  definition = function(data, qs) {
+    # Calculate
+    results <- lapply(seq_along(qs), function(x) {
+      subdiv <- vapply(
+        seq_len(ncol(data@results)), function(y) {
+          power_mean(data@results[, y], 1 - qs[x], data@type_weights[, y])
+        },
+        numeric(1)
+      )
+      power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
+    })
+    # Tidy up
+    output <- do.call(cbind, results)
+    row.names(output) <- "metacommunity"
+    colnames(output) <- qs
+    output <- melt_matrix(output)
+    # Output
+    param <- data@similarity_parameters
+    cbind.data.frame(
+      measure = data@measure,
+      q = output$Var2,
+      type_level = "types",
+      type_name = "",
+      partition_level = "metacommunity",
+      partition_name = "",
+      diversity = output$value,
+      dat_id = data@dat_id,
+      transformation = param$transform,
+      normalised = param$normalise,
+      k = param$k,
+      max_d = param$max_d,
+      stringsAsFactors = FALSE
+    )
+  }
+)
 
 
 #' @rdname metadiv
 #'
-setMethod(f = "metadiv", signature = "relativeentropy",
-          definition = function(data, qs) {
-            # Calculate
-            results <- lapply(seq_along(qs), function(x) {
-              subdiv <- vapply(seq_len(ncol(data@results)), function(y)
-                power_mean(data@results[, y], qs[x] - 1, data@type_weights[, y]),
-                numeric(1))
-              power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
-            })
-            # Tidy up
-            output <- do.call(cbind, results)
-            row.names(output) <- "metacommunity"
-            colnames(output) <- qs
-            output <- reshape2::melt(output)
-            # Output
-            param <- data@similarity_parameters
-            cbind.data.frame(measure = data@measure,
-                                       q = output$Var2,
-                                       type_level = "types",
-                                       type_name = "",
-                                       partition_level = "metacommunity",
-                                       partition_name = "",
-                                       diversity = output$value,
-                                       dat_id = data@dat_id,
-                                       transformation = param$transform,
-                                       normalised = param$normalise,
-                                       k = param$k,
-                                       max_d = param$max_d,
-                                       stringsAsFactors = FALSE)
-            } )
+setMethod(
+  f = "metadiv", signature = "relativeentropy",
+  definition = function(data, qs) {
+    # Calculate
+    results <- lapply(seq_along(qs), function(x) {
+      subdiv <- vapply(
+        seq_len(ncol(data@results)), function(y) {
+          power_mean(data@results[, y], qs[x] - 1, data@type_weights[, y])
+        },
+        numeric(1)
+      )
+      power_mean(subdiv, 1 - qs[x], data@subcommunity_weights)
+    })
+    # Tidy up
+    output <- do.call(cbind, results)
+    row.names(output) <- "metacommunity"
+    colnames(output) <- qs
+    output <- melt_matrix(output)
+    # Output
+    param <- data@similarity_parameters
+    cbind.data.frame(
+      measure = data@measure,
+      q = output$Var2,
+      type_level = "types",
+      type_name = "",
+      partition_level = "metacommunity",
+      partition_name = "",
+      diversity = output$value,
+      dat_id = data@dat_id,
+      transformation = param$transform,
+      normalised = param$normalise,
+      k = param$k,
+      max_d = param$max_d,
+      stringsAsFactors = FALSE
+    )
+  }
+)
 
 
 #' @rdname metadiv
 #'
-setMethod(f = "metadiv", signature = "metacommunity",
-          definition = function(data, qs) {
-            # Calculate terms
-            div.measures <- list(raw_alpha, norm_alpha,
-                                 raw_beta, norm_beta,
-                                 raw_rho, norm_rho,
-                                 raw_gamma)
-            # Calculate metacommunity diversity
-            output <- lapply(div.measures, function(x) metadiv(x(data), qs))
-            do.call(rbind.data.frame, output)
-          } )
+setMethod(
+  f = "metadiv", signature = "metacommunity",
+  definition = function(data, qs) {
+    # Calculate terms
+    div.measures <- list(
+      raw_alpha, norm_alpha,
+      raw_beta, norm_beta,
+      raw_rho, norm_rho,
+      raw_gamma
+    )
+    # Calculate metacommunity diversity
+    output <- lapply(div.measures, function(x) metadiv(x(data), qs))
+    do.call(rbind.data.frame, output)
+  }
+)

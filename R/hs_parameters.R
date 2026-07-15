@@ -11,7 +11,7 @@
 #'
 hs_parameters <- function(tree) {
   # Perform checks
-  if (class(tree) != "phylo") stop("'tree' argument must be class phylo.")
+  if (!inherits(tree, "phylo")) stop("'tree' argument must be class phylo.")
 
   # If root has a length
   root_ancestor <- 0
@@ -35,13 +35,16 @@ hs_parameters <- function(tree) {
     daughters <- anc_nodes[[x]]
     if (long_root) daughters <- c(daughters, 0)
     daughters <- daughters[-length(daughters)]
-    res <- lapply(as.list(daughters), function(y)
-      tree$edge[tree$edge[, 2] %in% y, ])
+    res <- lapply(as.list(daughters), function(y) {
+      tree$edge[tree$edge[, 2] %in% y, ]
+    })
     res <- do.call(rbind.data.frame, res)
     res <- cbind.data.frame(tree$tip.label[x], x, res)
     colnames(res) <- c("tip_label", "tip_node", "a_node", "d_node")
-    lengths <- vapply(res$d_node, function(x) which(tree$edge[, 2] %in% x),
-                      numeric(1))
+    lengths <- vapply(
+      res$d_node, function(x) which(tree$edge[, 2] %in% x),
+      numeric(1)
+    )
     lengths <- tree$edge.length[lengths]
     cbind.data.frame(res, lengths)
   })
@@ -49,7 +52,11 @@ hs_parameters <- function(tree) {
 
   # Historic species names
   hs_names <- paste(parameters$tip_node,
-                    paste(parameters$a_node,
-                          parameters$d_node, sep = "-"), sep = ",")
+    paste(parameters$a_node,
+      parameters$d_node,
+      sep = "-"
+    ),
+    sep = ","
+  )
   cbind.data.frame(hs_names, parameters)
 }

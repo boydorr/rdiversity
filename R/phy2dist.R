@@ -17,6 +17,7 @@ phy2dist <- function(tree, precompute_dist = TRUE) {
   dist <- stats::cophenetic(tree)
 
   new("distance",
-      distance = dist,
-      dat_id = "phylogenetic")
+    distance = dist,
+    dat_id = "phylogenetic"
+  )
 }

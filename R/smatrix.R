@@ -22,12 +22,12 @@ smatrix <-
     row.names(s_matrix) <- hs
 
     # Calculate pairwise similarity between historic species
-    for (row_index in 1:Nhs) {
+    for (row_index in seq_len(Nhs)) {
       # Historic species
       daughters <- descendant_tips(ps$tree, parameters$d_node[row_index])
 
       s_matrix_row <- vector()
-      for (col_index in 1:Nhs) {
+      for (col_index in seq_len(Nhs)) {
         # Historic species (to compare)
         jc_tip <- parameters$tip_node[col_index]
         # Similarity between historic species (i,b) and species (j,c)

@@ -42,7 +42,7 @@ diversity}
 }
 \examples{
 # Define metacommunity
-pop <- data.frame(a = c(1,3), b = c(1,1))
+pop <- data.frame(a = c(1, 3), b = c(1, 1))
 pop <- pop / sum(pop)
 meta <- metacommunity(pop)
 

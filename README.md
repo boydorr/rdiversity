@@ -1,7 +1,7 @@
 # rdiversity: diversity measurement in R 
 [![](https://img.shields.io/badge/docs-rdiversity-blue)](https://boydorr.github.io/rdiversity/)
-[![test-build](https://github.com/boydorr/rdiversity/workflows/build/badge.svg)](https://github.com/boydorr/rdiversity/actions)
-[![codecov](https://codecov.io/gh/boydorr/rdiversity/branch/master/graph/badge.svg)](https://app.codecov.io/gh/boydorr/rdiversity)
+[![R-CMD-check](https://github.com/boydorr/rdiversity/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/boydorr/rdiversity/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/boydorr/rdiversity/branch/main/graph/badge.svg)](https://app.codecov.io/gh/boydorr/rdiversity)
 [![CodeFactor](https://www.codefactor.io/repository/github/boydorr/rdiversity/badge)](https://www.codefactor.io/repository/github/boydorr/rdiversity)
 [![License: GPL-3.0](https://img.shields.io/badge/licence-GPL--3-green)](https://opensource.org/licenses/GPL-3.0)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.597470.svg)](https://doi.org/10.5281/zenodo.597470)

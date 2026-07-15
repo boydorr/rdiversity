@@ -34,12 +34,14 @@
 #' @rdname powermean-class
 #' @exportClass powermean
 #'
-setClass("powermean", slots = c(results = "matrix",
-                                measure = "character",
-                                type_abundance = "matrix",
-                                ordinariness = "matrix",
-                                subcommunity_weights = "vector",
-                                type_weights = "matrix",
-                                dat_id = "character",
-                                similarity_components = "list",
-                                similarity_parameters = "list"))
+setClass("powermean", slots = c(
+  results = "matrix",
+  measure = "character",
+  type_abundance = "matrix",
+  ordinariness = "matrix",
+  subcommunity_weights = "vector",
+  type_weights = "matrix",
+  dat_id = "character",
+  similarity_components = "list",
+  similarity_parameters = "list"
+))

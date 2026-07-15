@@ -1,9 +1,7 @@
 ^CRAN-RELEASE$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^appveyor\.yml$
 ^\.gitignore$
-^\.travis\.yml$
 ^README\.html$
 ^cran-comments\.md$
 ^Dockerfile$
@@ -15,3 +13,11 @@
 ^Meta$
 ^\.github$
 ^.zenodo.json$
+^\.positai$
+^\.claude$
+^\.lintr$
+^\.DS_Store$
+^\.Rhistory$
+^\.vscode$
+^check$
+^.*\.Rcheck$

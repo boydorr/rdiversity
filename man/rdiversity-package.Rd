@@ -2,8 +2,8 @@
 % Please edit documentation in R/rdiversity-package.R
 \docType{package}
 \name{rdiversity-package}
-\alias{rdiversity-package}
 \alias{rdiversity}
+\alias{rdiversity-package}
 \title{rdiversity: diversity measurement in R}
 \description{
 \code{rdiversity} is an R package based around a framework for measuring and
@@ -20,12 +20,22 @@ paper, `\emph{How to partition diversity}`.
 \url{https://github.com/boydorr/rdiversity}
 \item Please raise an issue if you find any problems;
 \url{https://github.com/boydorr/rdiversity/issues}
-\item This package is cross-validated against our Julia package; \url{https://github.com/EcoJulia/Diversity.jl}
+\item This package is cross-validated against our Julia package;
+\url{https://github.com/EcoJulia/Diversity.jl}
 }
 }
 \references{
 Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
+S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+(\url{https://arxiv.org/abs/1404.6520})
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/boydorr/rdiversity}
+  \item Report bugs at \url{https://github.com/boydorr/rdiversity/issues}
+}
+
 }
 \author{
 Sonia Mitchell \cr

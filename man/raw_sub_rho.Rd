@@ -20,9 +20,9 @@ redundancy of subcommunity \emph{j}. This measure may be calculated for
 a series of orders, represented as a vector of \code{qs}.
 }
 \examples{
-pop <- data.frame(a = c(1,3), b = c(1,1))
+pop <- data.frame(a = c(1, 3), b = c(1, 1))
 row.names(pop) <- paste0("sp", 1:2)
-pop <- pop/sum(pop)
+pop <- pop / sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate raw subcommunity rho diversity

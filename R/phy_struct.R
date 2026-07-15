@@ -29,21 +29,26 @@ phy_struct <- function(tree, partition) {
   parameters <- hs_parameters(tree)
 
   # Generate structural matrix for entire phylogeny
-  s_matrix <- matrix(0, ncol = length(seq_along(tree$tip.label)),
-                     nrow = nrow(parameters))
+  s_matrix <- matrix(0,
+    ncol = length(seq_along(tree$tip.label)),
+    nrow = nrow(parameters)
+  )
   row.names(s_matrix) <- parameters$hs_names
   colnames(s_matrix) <- tree$tip.label
-  index <- vapply(parameters$tip_label, function(x)
-    which(colnames(s_matrix) %in% x), numeric(1))
+  index <- vapply(parameters$tip_label, function(x) {
+    which(colnames(s_matrix) %in% x)
+  }, numeric(1))
   index <- cbind(row = seq_len(nrow(parameters)), col = index)
   s_matrix[index] <- parameters$lengths
-  T_bar <-  sum(s_matrix %*% partition)
+  T_bar <- sum(s_matrix %*% partition)
 
   s_matrix <- s_matrix / T_bar
 
   # Output
-  list(structure = s_matrix,
-       tbar = T_bar,
-       parameters = parameters,
-       tree = tree)
+  list(
+    structure = s_matrix,
+    tbar = T_bar,
+    parameters = parameters,
+    tree = tree
+  )
 }

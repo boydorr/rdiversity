@@ -7,7 +7,12 @@
 gen2dist(vcf, biallelic = FALSE)
 }
 \arguments{
-\item{vcf}{object of class \code{data.frame}.}
+\item{vcf}{object of class \code{data.frame} laid out like the body of a VCF
+file: a column named \code{FORMAT} followed by one column per sample, whose
+entries begin with the genotype (\emph{e.g.} \code{"0|0"}, \code{"0|1"},
+\code{"1|1"}). Such a \code{data.frame} can be obtained, for example, from
+the \code{gt} element of a \code{vcfR} object read in with
+\code{vcfR::read.vcfR()}.}
 
 \item{biallelic}{logical describing whether the data is biallelic or not (default).}
 }
@@ -16,5 +21,6 @@ gen2dist(vcf, biallelic = FALSE)
 containing a \code{matrix} of pairwise genetic distances.
 }
 \description{
-Converts a vcfR object to a matrix of pairwise genetic distances.
+Converts variant-call (VCF) genotype data into a matrix of pairwise genetic
+distances between samples.
 }

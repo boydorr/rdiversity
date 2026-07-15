@@ -13,22 +13,18 @@
 #' \url{https://github.com/boydorr/rdiversity}
 #' \item Please raise an issue if you find any problems;
 #' \url{https://github.com/boydorr/rdiversity/issues}
-#' \item This package is cross-validated against our Julia package; \url{https://github.com/EcoJulia/Diversity.jl}
+#' \item This package is cross-validated against our Julia package;
+#' \url{https://github.com/EcoJulia/Diversity.jl}
 #' }
 #'
 #' @author
 #' Sonia Mitchell \cr
 #' Richard Reeve <richard.reeve@glasgow.ac.uk> (maintainer)
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-#' S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
-#' @name rdiversity-package
-#' @aliases rdiversity
-#' @docType package
-#'
+#' S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+#' (\url{https://arxiv.org/abs/1404.6520})
 #' @import methods
-#' @importFrom reshape2 melt
-#' @importFrom stats na.omit
-#' @importFrom utils head installed.packages
 #' @import stringdist
+#' @importFrom utils type.convert
 #'
-NULL
+"_PACKAGE"
