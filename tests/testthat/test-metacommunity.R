@@ -88,7 +88,8 @@ test_that("metacommunity() works for taxonomic diversity", {
   expect_equivalent(dc_meta@similarity_components$tax_similarity,
                     c(1, 0.75, 0.5, 0.25, 0))
   expect_equivalent(dc_meta@similarity_components$tax_id, c(198, 17, 104, 168))
-  expect_equivalent(lapply(dc_meta@similarity_components$tax_mask, as.numeric),
+  expect_equivalent(lapply(dc_meta@similarity_components$tax_mask,
+                           rdiversity:::bits_to_int),
                     list(Species = 255, Genus = 63, Family = 15, Subclass = 3))
   expect_equivalent(dc_meta@similarity_components$tax_bits, c(2, 2, 2, 2))
   expect_equal(dc_meta@similarity_parameters, list(transform = "linear",

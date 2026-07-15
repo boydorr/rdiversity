@@ -25,8 +25,7 @@ taxmask <- function(lookup) {
     n <- sum(bits[x:length(bits)])
     ones <- rep(TRUE, n)
     zeroes <- rep(FALSE, total - n)
-    tmp <- c(zeroes, ones)
-    tmp <- as.binary(tmp, logic = TRUE)
+    c(zeroes, ones)
   })
   names(output) <- colnames(lookup)
   output

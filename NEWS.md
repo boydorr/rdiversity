@@ -1,5 +1,12 @@
-# rdiversity (development version)
+# rdiversity 2.3.0
 
+* Removed the vendored `binary.R` library; the taxonomic and genetic bit handling
+  is now implemented directly in base R.
+* **Breaking:** `as.binary()` (and its associated S3 methods) is no longer
+  exported, as it was only ever an internal implementation detail.
+* Removed unused `stats`/`utils` imports.
+* `reshape2` is now superseded upstream; a future release should migrate the
+  `reshape2::melt()` calls in `inddiv()`/`subdiv()`/`metadiv()` to `tidyr`.
 * Migrated continuous integration from Travis CI and AppVeyor to GitHub Actions
 * Added `lint`, `pr-commands` and R-hub v2 (`rhub`) workflows.
 * Regenerated documentation with roxygen2 8.
