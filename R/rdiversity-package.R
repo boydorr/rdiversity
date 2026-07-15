@@ -21,14 +21,10 @@
 #' Richard Reeve <richard.reeve@glasgow.ac.uk> (maintainer)
 #' @references Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
-#' @name rdiversity-package
-#' @aliases rdiversity
-#' @docType package
-#'
 #' @import methods
 #' @importFrom reshape2 melt
 #' @importFrom stats na.omit
 #' @importFrom utils head installed.packages
 #' @import stringdist
 #'
-NULL
+"_PACKAGE"

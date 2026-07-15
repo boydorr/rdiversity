@@ -11,7 +11,7 @@
 #'
 hs_parameters <- function(tree) {
   # Perform checks
-  if (class(tree) != "phylo") stop("'tree' argument must be class phylo.")
+  if (!inherits(tree, "phylo")) stop("'tree' argument must be class phylo.")
 
   # If root has a length
   root_ancestor <- 0

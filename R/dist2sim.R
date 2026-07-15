@@ -24,7 +24,7 @@ dist2sim <- function(dist,
                      normalise = TRUE,
                      max_d) {
 
-  if (class(dist) != "distance")
+  if (!inherits(dist, "distance"))
     stop("The argument `dist` must be of class `distance`.")
 
   # If a distance matrix is available, convert it into a similarity matrix
