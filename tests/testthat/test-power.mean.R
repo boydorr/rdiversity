@@ -21,8 +21,10 @@ rdirichlet <- function(n, alpha) {
   for (i in 1:k) {
     r[, i] <- rgamma(n, alpha[i], 1)
   }
-  r <- matrix(mapply(function(r, s) return (r / s), r, rowSums(r)), ncol = k)
-  return (r)
+  r <- matrix(mapply(function(r, s) {
+    return(r / s)
+  }, r, rowSums(r)), ncol = k)
+  return(r)
 }
 
 
@@ -31,9 +33,9 @@ test_that("power.mean with some random numbers", {
   fragments <- t(rdirichlet(1, rep(1, numspecies)))
   weights <- t(rdirichlet(1, rep(1, numspecies)))
 
-  expect_equal(power_mean(fragments, 0), prod(fragments ^ (1. / numspecies)))
+  expect_equal(power_mean(fragments, 0), prod(fragments^(1. / numspecies)))
   expect_equal(power_mean(fragments, 1), mean(fragments))
   expect_equal(power_mean(fragments, Inf), max(fragments))
-  expect_equal(power_mean(fragments, 0, weights), prod(fragments ^ weights))
+  expect_equal(power_mean(fragments, 0, weights), prod(fragments^weights))
   expect_equal(power_mean(fragments, 1, weights), sum(fragments * weights))
 })

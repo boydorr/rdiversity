@@ -19,8 +19,9 @@
 #'
 taxfac <- function(lookup) {
   output <- matrix(ncol = ncol(lookup), nrow = nrow(lookup))
-  for (i in seq_len(ncol(lookup)))
+  for (i in seq_len(ncol(lookup))) {
     output[, i] <- as.numeric(as.factor(as.character(lookup[, i])))
+  }
   row.names(output) <- lookup[, 1]
   colnames(output) <- colnames(lookup)
   output - 1

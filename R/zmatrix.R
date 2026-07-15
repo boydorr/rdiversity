@@ -15,9 +15,11 @@
 #' @return \code{zmatrix()} returns an \eqn{hS x hS} matrix; pair-wise
 #' similarity of historic species.
 #'
-zmatrix <- function(partition, s, ps){
-  partition <- check_phypartition(tip_labels = colnames(ps$structure),
-                                  partition = partition)
+zmatrix <- function(partition, s, ps) {
+  partition <- check_phypartition(
+    tip_labels = colnames(ps$structure),
+    partition = partition
+  )
 
   parameters <- ps$parameters
   structure_matrix <- ps$structure
@@ -26,8 +28,9 @@ zmatrix <- function(partition, s, ps){
   L_j <- L_j[match(parameters$tip_label, colnames(structure_matrix))]
 
   # Identify which species are present
-  if (any(row.names(partition) != colnames(structure_matrix)))
+  if (any(row.names(partition) != colnames(structure_matrix))) {
     stop("Partition does not match phylogeny.")
+  }
 
   scaling_factor <- T_bar / L_j
 
@@ -36,10 +39,13 @@ zmatrix <- function(partition, s, ps){
   colnames(z) <- row.names(z)
 
   new("similarity",
-      similarity = z,
-      dat_id = "phybranch",
-      parameters = list(transform = NA,
-                        k = NA,
-                        normalise = NA,
-                        max_d = NA))
+    similarity = z,
+    dat_id = "phybranch",
+    parameters = list(
+      transform = NA,
+      k = NA,
+      normalise = NA,
+      max_d = NA
+    )
+  )
 }

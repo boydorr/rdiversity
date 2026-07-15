@@ -9,8 +9,9 @@ test_that("int_to_bits produces big-endian, fixed-width logical vectors", {
 })
 
 test_that("bits_to_int inverts int_to_bits", {
-  for (x in 0:64)
+  for (x in 0:64) {
     expect_equal(rdiversity:::bits_to_int(rdiversity:::int_to_bits(x, 8)), x)
+  }
 })
 
 test_that("bits_to_int reads big-endian order", {

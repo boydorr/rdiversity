@@ -20,7 +20,9 @@
 #' @rdname similarity-class
 #' @exportClass similarity
 #'
-setClass("similarity", slots = c(similarity = "matrix",
-                                 dat_id = "character",
-                                 components = "list",
-                                 parameters = "list"))
+setClass("similarity", slots = c(
+  similarity = "matrix",
+  dat_id = "character",
+  components = "list",
+  parameters = "list"
+))

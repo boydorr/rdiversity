@@ -42,8 +42,9 @@ tax2dist <- function(lookup,
                      precompute_dist = TRUE) {
   tax_distance <- sort(tax_distance)
   tax_cols <- names(tax_distance)[-length(tax_distance)]
-  if (length(intersect(tax_cols, colnames(lookup))) != length(tax_cols))
+  if (length(intersect(tax_cols, colnames(lookup))) != length(tax_cols)) {
     stop("The columns in the taxonomy have to include the columns mentioned in the distance vector")
+  }
   lookup <- lookup[, tax_cols]
 
 
@@ -67,21 +68,25 @@ tax2dist <- function(lookup,
       for (j in seq_along(entries)) {
         row <- as.character(lookup[i, ])
         column <- as.character(lookup[j, ])
-        if (any(row == column))
-          dist[i, j] <- tax_distance[min(which(row == column))] else
-            dist[i, j] <- other
+        if (any(row == column)) {
+          dist[i, j] <- tax_distance[min(which(row == column))]
+        } else {
+          dist[i, j] <- other
+        }
       }
     }
 
     return(new("distance",
-               distance = dist,
-               dat_id = "taxonomic",
-               components = list(precompute = TRUE,
-                                 tax_distance = tax_distance)))
+      distance = dist,
+      dat_id = "taxonomic",
+      components = list(
+        precompute = TRUE,
+        tax_distance = tax_distance
+      )
+    ))
 
     # Don't calculate distance matrix
-
-  }else {
+  } else {
     lookup <- as.matrix(lookup)
     tax_fac <- taxfac(lookup)
     bits <- apply(tax_fac, 2, function(x) pmax(ceiling(log(max(x) + 1, 2)), 1))
@@ -89,12 +94,15 @@ tax2dist <- function(lookup,
     tax_mask <- taxmask(lookup)
 
     return(new("distance",
-               dat_id = "taxonomic",
-               components = list(precompute = FALSE,
-                                 ordinariness = "taxvec",
-                                 tax_distance = tax_distance,
-                                 tax_id = tax_id,
-                                 tax_mask = tax_mask,
-                                 tax_bits = bits)))
+      dat_id = "taxonomic",
+      components = list(
+        precompute = FALSE,
+        ordinariness = "taxvec",
+        tax_distance = tax_distance,
+        tax_id = tax_id,
+        tax_mask = tax_mask,
+        tax_bits = bits
+      )
+    ))
   }
 }

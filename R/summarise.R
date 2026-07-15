@@ -27,6 +27,8 @@ summarise <-
     }
     num <- length(weights)
 
-    list(proportions = proportions, totals = totals,
-         weights = array(weights, dim = c(1, num)), num = num)
+    list(
+      proportions = proportions, totals = totals,
+      weights = array(weights, dim = c(1, num)), num = num
+    )
   }

@@ -21,7 +21,7 @@ Before calculating diversity a `metacommunity` object must be created. This obje
 library(rdiversity)
 
 # Initialise data
-partition <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
+partition <- data.frame(a = c(1, 1), b = c(2, 0), c = c(3, 1))
 row.names(partition) <- c("cows", "sheep")
 ```
 The `metacommunity()` function takes two arguments, `partition` and `similarity`. When species are considered completely distinct, an identity matrix is required, which is generated automatically if the `similarity` argument is missing, as below:
@@ -41,7 +41,7 @@ s <- matrix(c(1, 0.5, 0.5, 1), nrow = 2)
 row.names(s) <- c("cows", "sheep")
 colnames(s) <- c("cows", "sheep")
 
-# Generate similarity object 
+# Generate similarity object
 s <- similarity(similarity = s, dat_id = "my_taxonomic")
 
 # Generate metacommunity object
@@ -99,7 +99,7 @@ Each of these functions take two arguments, `meta` (a `metacommunity` object) an
 
 ```{r}
 # Initialise data
-partition <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
+partition <- data.frame(a = c(1, 1), b = c(2, 0), c = c(3, 1))
 row.names(partition) <- c("cows", "sheep")
 
 # Generate a metacommunity object
@@ -116,7 +116,7 @@ This method requires that we first calculate the species-level components, by pa
 
 ```{r}
 # Initialise data
-partition <- data.frame(a=c(1,1),b=c(2,0),c=c(3,1))
+partition <- data.frame(a = c(1, 1), b = c(2, 0), c = c(3, 1))
 row.names(partition) <- c("cows", "sheep")
 
 # Generate a metacommunity object
@@ -125,10 +125,10 @@ meta <- metacommunity(partition)
 # Calculate the species-level component for normalised alpha
 component <- norm_alpha(meta)
 
-# Calculate normalised alpha at the subcommunity-level 
+# Calculate normalised alpha at the subcommunity-level
 subdiv(component, 0:2)
 
-# Likewise, calculate normalised alpha at the metacommunity-level 
+# Likewise, calculate normalised alpha at the metacommunity-level
 metadiv(component, 0:2)
 ```
 
@@ -156,7 +156,6 @@ lookup <- cbind.data.frame(Species, Genus, Family, Subclass)
 partition <- matrix(rep(1, 8), nrow = 4)
 colnames(partition) <- LETTERS[1:2]
 rownames(partition) <- lookup$Species
-
 ```
 and assign values for each taxonomic level:
 ```{r}
@@ -194,8 +193,8 @@ Phylogenetic diversity measures can be broadly split into two categories – tho
 ```{r}
 # Example data
 tree <- ape::rtree(4)
-partition <- matrix(1:12, ncol=3)
-partition <- partition/sum(partition)
+partition <- matrix(1:12, ncol = 3)
+partition <- partition / sum(partition)
 ```
 
 2. Generate a distance matrix using the `phy2dist()` function: 
@@ -223,10 +222,10 @@ meta_gamma(meta, 0:2)
 1. Initialise data:
 ```{r}
 tree <- ape::rtree(4)
-partition <- matrix(1:12, ncol=3)
-partition <- partition/sum(partition)
+partition <- matrix(1:12, ncol = 3)
+partition <- partition / sum(partition)
 colnames(partition) <- letters[1:3]
-row.names(partition) <- paste0("sp",1:4)
+row.names(partition) <- paste0("sp", 1:4)
 tree$tip.label <- row.names(partition)
 ```
 
@@ -258,14 +257,14 @@ Note: the package `pinfsc50` must be installed for this example to work.
 ```{r, eval = FALSE}
 library(rdiversity)
 vcf_file <- system.file("extdata", "pinf_sc50.vcf.gz", package = "pinfsc50")
-#read in twice: first for the column names then for the data
+# read in twice: first for the column names then for the data
 tmp_vcf <- readLines(vcf_file)
 vcf_data <- read.table(vcf_file, stringsAsFactors = FALSE)
 # filter for the columns names
-vcf_names <- unlist(strsplit(tmp_vcf[grep("#CHROM",tmp_vcf)],"\t"))
+vcf_names <- unlist(strsplit(tmp_vcf[grep("#CHROM", tmp_vcf)], "\t"))
 names(vcf_data) <- vcf_names
 partition <- cbind.data.frame(A = c(rep(1, 9), rep(0, 9)), B = c(rep(0, 9), rep(1, 9)))
-partition <- partition/sum(partition)
+partition <- partition / sum(partition)
 ```
 
 2. Generate a distance matrix using the `gen2dist()` function:
@@ -275,7 +274,7 @@ d <- gen2dist(vcf)
 
 3. Convert the distance object to a similarity object (by means of a linear or exponential transform) using the `dist2sim()` function:
 ```{r, eval = FALSE}
-s <- dist2sim(d, transform = 'l')
+s <- dist2sim(d, transform = "l")
 ```
 Note: the `dist2sim()` function contains an optional argument, `max_d`, which defines the distance at which pairs of individuals have similarity zero. If not supplied this is set to the maximum distance observed in the distance matrix. If comparing different windows on a genome, for example, it is necessary to ensure `max_d` is the same for each analysis.
 
@@ -296,7 +295,7 @@ partition <- matrix(sample(6), nrow = 3)
 rownames(partition) <- paste0("sp", 1:3)
 partition <- partition / sum(partition)
 
-d <- matrix(c(0,.75,1,.75,0,.3,1,.3,0), nrow = 3)
+d <- matrix(c(0, .75, 1, .75, 0, .3, 1, .3, 0), nrow = 3)
 rownames(d) <- paste0("sp", 1:3)
 colnames(d) <- paste0("sp", 1:3)
 d <- distance(d, "my_taxonomy")
@@ -311,7 +310,7 @@ partition <- matrix(sample(6), nrow = 3)
 rownames(partition) <- paste0("sp", 1:3)
 partition <- partition / sum(partition)
 
-s <- matrix(c(1,.8,0,.8,1,.1,0,.1,1), nrow = 3)
+s <- matrix(c(1, .8, 0, .8, 1, .1, 0, .1, 1), nrow = 3)
 rownames(s) <- paste0("sp", 1:3)
 colnames(s) <- paste0("sp", 1:3)
 s <- similarity(s, "my_functional")
@@ -327,7 +326,7 @@ meta <- metacommunity(partition, s)
 tree <- ape::rtree(5)
 tree$tip.label <- paste0("sp", 1:5)
 
-partition <- matrix(rep(1,10), nrow = 5)
+partition <- matrix(rep(1, 10), nrow = 5)
 row.names(partition) <- paste0("sp", 1:5)
 partition <- partition / sum(partition)
 s <- phy2branch(tree, partition)

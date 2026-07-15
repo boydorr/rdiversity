@@ -10,8 +10,9 @@
 #'
 #' @noRd
 #'
-int_to_bits <- function(x, n)
+int_to_bits <- function(x, n) {
   rev(as.logical(intToBits(as.integer(x)))[seq_len(n)])
+}
 
 #' Big-endian bit vector to integer
 #'
@@ -24,5 +25,6 @@ int_to_bits <- function(x, n)
 #'
 #' @noRd
 #'
-bits_to_int <- function(b)
-  sum(b * 2 ^ (rev(seq_along(b)) - 1))
+bits_to_int <- function(b) {
+  sum(b * 2^(rev(seq_along(b)) - 1))
+}
