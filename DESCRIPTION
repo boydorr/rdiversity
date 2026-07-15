@@ -17,7 +17,7 @@ Description: Provides a framework for the measurement and partitioning of
     constituent subcommunities. Richard Reeve, et al. (2016)
     <doi:10.48550/arXiv.1404.6520>.
 License: GPL-3
-Depends: R (>= 2.10)
+Depends: R (>= 3.5.0)
 Imports:
     methods,
     stats,
