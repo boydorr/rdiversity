@@ -273,6 +273,9 @@ setMethod(
 setMethod(
   f = "show", signature = "metacommunity",
   definition = function(object) {
-    cat("Object of class `metacommunity`, containing all of the data required to calculate diversity.")
+    cat(paste0(
+      "Object of class `metacommunity`, containing all of the data ",
+      "required to calculate diversity."
+    ))
   }
 )

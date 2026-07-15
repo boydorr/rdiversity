@@ -71,6 +71,10 @@ setMethod(
 setMethod(
   f = "show", signature = "similarity",
   definition = function(object) {
-    cat("Object of class `similarity`, containing either:\n (1) a similarity matrix; or\n (2) all of the data required to calculate a similarity matrix.")
+    cat(paste0(
+      "Object of class `similarity`, containing either:\n",
+      " (1) a similarity matrix; or\n",
+      " (2) all of the data required to calculate a similarity matrix."
+    ))
   }
 )

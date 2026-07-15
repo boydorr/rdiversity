@@ -15,6 +15,7 @@
 ^.zenodo.json$
 ^\.positai$
 ^\.claude$
+^\.lintr$
 ^\.DS_Store$
 ^\.Rhistory$
 ^\.vscode$

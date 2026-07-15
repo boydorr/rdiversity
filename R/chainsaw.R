@@ -58,7 +58,7 @@ chainsaw <- function(partition, ps, depth) {
     structure_matrix <- ps$structure
     T_bar <- ps$tbar
     parameters <- ps$parameters
-  } else if (depth > 0 & depth < 1) {
+  } else if (depth > 0 && depth < 1) {
     # if depth is between 0 and 1
     old_struct <- ps$structure * ps$tbar
     tree_height <- max(colSums(old_struct))

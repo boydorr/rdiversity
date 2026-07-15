@@ -7,7 +7,7 @@
 #'
 descendant_tips <- function(tree, node) {
   x <- node
-  tips <- seq_len(length(tree$tip.label))
+  tips <- seq_along(tree$tip.label)
 
   if (node %in% tips) {
     return(node)

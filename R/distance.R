@@ -55,6 +55,10 @@ setMethod(
 setMethod(
   f = "show", signature = "distance",
   definition = function(object) {
-    cat("Object of class `distance`, containing either:\n (1) a distance matrix; or\n (2) all of the data required to calculate a distance matrix.")
+    cat(paste0(
+      "Object of class `distance`, containing either:\n",
+      " (1) a distance matrix; or\n",
+      " (2) all of the data required to calculate a distance matrix."
+    ))
   }
 )

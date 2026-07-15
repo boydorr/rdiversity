@@ -9,6 +9,8 @@
   `reshape2::melt()` calls in `inddiv()`/`subdiv()`/`metadiv()` to `tidyr`.
 * Migrated continuous integration from Travis CI and AppVeyor to GitHub Actions
 * Added `lint`, `pr-commands` and R-hub v2 (`rhub`) workflows.
+* Formatted the codebase with `styler` and added a `.lintr` configuration so the
+  package passes `lintr::lint_package()` cleanly.
 * Regenerated documentation with roxygen2 8.
 * Added a `cran-comments.md` template and tidied the repository (ignore rules,
   build artefacts).
