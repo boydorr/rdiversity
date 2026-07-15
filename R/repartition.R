@@ -35,7 +35,16 @@ repartition <- function(meta, new_partition) {
 
     row.names(new_partition) <- row.names(partition)
 
-    new_meta <- metacommunity(new_partition, meta@similarity)
+    # Rebuild a `similarity` object from the metacommunity's stored slots;
+    # `metacommunity()` no longer accepts a bare similarity matrix.
+    new_similarity <- new("similarity",
+      similarity = meta@similarity,
+      dat_id = meta@dat_id,
+      components = meta@similarity_components,
+      parameters = meta@similarity_parameters
+    )
+
+    new_meta <- metacommunity(new_partition, new_similarity)
 
 
     # Phylogenetic metacommunity
