@@ -53,7 +53,7 @@ setGeneric(
 setMethod(
   f = "inddiv", signature = "powermean",
   definition = function(data, qs) {
-    output <- reshape2::melt(data@results)
+    output <- melt_matrix(data@results)
     param <- data@similarity_parameters
     cbind.data.frame(
       measure = data@measure,
@@ -79,7 +79,7 @@ setMethod(
 setMethod(
   f = "inddiv", signature = "relativeentropy",
   definition = function(data, qs) {
-    output <- reshape2::melt(data@results)
+    output <- melt_matrix(data@results)
     param <- data@similarity_parameters
     cbind.data.frame(
       measure = data@measure,

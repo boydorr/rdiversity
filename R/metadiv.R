@@ -69,7 +69,7 @@ setMethod(
     output <- do.call(cbind, results)
     row.names(output) <- "metacommunity"
     colnames(output) <- qs
-    output <- reshape2::melt(output)
+    output <- melt_matrix(output)
     # Output
     param <- data@similarity_parameters
     cbind.data.frame(
@@ -110,7 +110,7 @@ setMethod(
     output <- do.call(cbind, results)
     row.names(output) <- "metacommunity"
     colnames(output) <- qs
-    output <- reshape2::melt(output)
+    output <- melt_matrix(output)
     # Output
     param <- data@similarity_parameters
     cbind.data.frame(

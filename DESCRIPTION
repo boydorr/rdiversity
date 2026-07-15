@@ -20,9 +20,9 @@ License: GPL-3
 Depends: R (>= 2.10)
 Imports:
     methods,
-    reshape2,
     stats,
-    stringdist
+    stringdist,
+    utils
 Suggests:
     ape,
     testthat,
@@ -58,6 +58,7 @@ Collate:
     'genevec.R'
     'hs_parameters.R'
     'inddiv.R'
+    'melt_matrix.R'
     'phy2branch.R'
     'phy2dist.R'
     'phy_abundance.R'
