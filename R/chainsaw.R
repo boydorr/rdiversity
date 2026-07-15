@@ -35,8 +35,8 @@ chainsaw <- function(partition, ps, depth) {
     old_struct <- ps$structure * ps$tbar
     lineage_heights <- colSums(old_struct)
     tree_height <- max(lineage_heights)
-    present_day_species <- sapply(lineage_heights, function(x)
-      isTRUE(all.equal(tree_height, x)))
+    present_day_species <- vapply(lineage_heights, function(x)
+      isTRUE(all.equal(tree_height, x)), logical(1))
     partition <- partition[present_day_species, ]
     cut_meta <- metacommunity(partition)
     return(cut_meta)
@@ -91,14 +91,16 @@ chainsaw <- function(partition, ps, depth) {
     }
 
     # Remove species that are no longer present
-    missing_species <- which(sapply(colSums(structure_matrix),
-                                    function(x) isTRUE(all.equal(x, 0))))
+    missing_species <- which(vapply(colSums(structure_matrix),
+                                    function(x) isTRUE(all.equal(x, 0)),
+                                    logical(1)))
     if (!isTRUE(all.equal(length(missing_species), 0)))
       structure_matrix <- structure_matrix[, -missing_species, drop = FALSE]
 
     # Remove historic species that are no longer present
-    missing_hs <- which(sapply(rowSums(structure_matrix),
-                               function(x) isTRUE(all.equal(x, 0))))
+    missing_hs <- which(vapply(rowSums(structure_matrix),
+                               function(x) isTRUE(all.equal(x, 0)),
+                               logical(1)))
     if (!isTRUE(all.equal(length(missing_hs), 0)))
       structure_matrix <- structure_matrix[-missing_hs, , drop = FALSE]
 

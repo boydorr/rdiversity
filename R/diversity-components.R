@@ -65,9 +65,10 @@ raw_alpha <- function(meta) {
 #' metadiv(a, 1)
 #'
 norm_alpha <- function(meta) {
-  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
+  ordinariness.bar <- vapply(seq_along(meta@subcommunity_weights),
                              function(x) meta@ordinariness[, x] /
-                               meta@subcommunity_weights[x])
+                               meta@subcommunity_weights[x],
+                             numeric(nrow(meta@ordinariness)))
   if (!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)
@@ -144,9 +145,10 @@ raw_rho <- function(meta) {
 #' metadiv(r, 1)
 #'
 norm_rho <- function(meta) {
-  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
+  ordinariness.bar <- vapply(seq_along(meta@subcommunity_weights),
                              function(x) meta@ordinariness[, x] /
-                               meta@subcommunity_weights[x])
+                               meta@subcommunity_weights[x],
+                             numeric(nrow(meta@ordinariness)))
   if (!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)
@@ -223,9 +225,10 @@ raw_beta <- function(meta) {
 #' metadiv(b, 1)
 #'
 norm_beta <- function(meta) {
-  ordinariness.bar <- sapply(seq_along(meta@subcommunity_weights),
+  ordinariness.bar <- vapply(seq_along(meta@subcommunity_weights),
                              function(x) meta@ordinariness[, x] /
-                               meta@subcommunity_weights[x])
+                               meta@subcommunity_weights[x],
+                             numeric(nrow(meta@ordinariness)))
   if (!is.matrix(ordinariness.bar))
     ordinariness.bar <- as.matrix(t(ordinariness.bar))
   colnames(ordinariness.bar) <- colnames(meta@type_abundance)

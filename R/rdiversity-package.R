@@ -23,8 +23,6 @@
 #' S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
 #' @import methods
 #' @importFrom reshape2 melt
-#' @importFrom stats na.omit
-#' @importFrom utils head installed.packages
 #' @import stringdist
 #'
 "_PACKAGE"
