@@ -16,3 +16,7 @@ vignettes/*.pdf
 inst/doc
 doc
 Meta
+/check
+.DS_Store
+.vscode/
+*.Rcheck/

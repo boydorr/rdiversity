@@ -1,3 +1,11 @@
+# rdiversity (development version)
+
+* Migrated continuous integration from Travis CI and AppVeyor to GitHub Actions
+* Added `lint`, `pr-commands` and R-hub v2 (`rhub`) workflows.
+* Regenerated documentation with roxygen2 8.
+* Added a `cran-comments.md` template and tidied the repository (ignore rules,
+  build artefacts).
+
 # rdiversity 2.1.3
 
 * Add dependency on markdown to fix win-builder warning
