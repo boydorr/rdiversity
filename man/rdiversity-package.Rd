@@ -20,12 +20,14 @@ paper, `\emph{How to partition diversity}`.
 \url{https://github.com/boydorr/rdiversity}
 \item Please raise an issue if you find any problems;
 \url{https://github.com/boydorr/rdiversity/issues}
-\item This package is cross-validated against our Julia package; \url{https://github.com/EcoJulia/Diversity.jl}
+\item This package is cross-validated against our Julia package;
+\url{https://github.com/EcoJulia/Diversity.jl}
 }
 }
 \references{
 Reeve, R., T. Leinster, C. Cobbold, J. Thompson, N. Brummitt,
-S. Mitchell, and L. Matthews. 2016. How to partition diversity. (\url{https://arxiv.org/abs/1404.6520})
+S. Mitchell, and L. Matthews. 2016. How to partition diversity.
+(\url{https://arxiv.org/abs/1404.6520})
 }
 \seealso{
 Useful links:

@@ -39,9 +39,9 @@ diversity by taking the relative entropy of diversity components}
 }
 \examples{
 # Define metacommunity
-pop <- cbind.data.frame(A = c(1,1), B = c(2,0), C = c(3,1))
+pop <- cbind.data.frame(A = c(1, 1), B = c(2, 0), C = c(3, 1))
 row.names(pop) <- paste0("sp", 1:2)
-pop <- pop/sum(pop)
+pop <- pop / sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate subcommunity gamma diversity (takes the power mean)

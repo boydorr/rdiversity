@@ -21,9 +21,9 @@ Values generated from \code{raw_gamma()} may be input into \code{subdiv()} and
 \code{metadiv()} to calculate subcommunity and metacommunity gamma diversity.
 }
 \examples{
-pop <- cbind.data.frame(A = c(1,1), B = c(2,0), C = c(3,1))
+pop <- cbind.data.frame(A = c(1, 1), B = c(2, 0), C = c(3, 1))
 row.names(pop) <- paste0("sp", 1:2)
-pop <- pop/sum(pop)
+pop <- pop / sum(pop)
 meta <- metacommunity(pop)
 
 # Calculate gamma component

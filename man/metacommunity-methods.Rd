@@ -98,7 +98,7 @@ associated with each historic species in the phylogeny}
 
 \examples{
 # Naive-type
-partition <- cbind(a = c(1,1,1,0,0), b = c(0,1,0,1,1))
+partition <- cbind(a = c(1, 1, 1, 0, 0), b = c(0, 1, 0, 1, 1))
 row.names(partition) <- paste0("sp", 1:5)
 partition <- partition / sum(partition)
 meta <- metacommunity(partition)
