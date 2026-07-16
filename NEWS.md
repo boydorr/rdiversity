@@ -10,7 +10,6 @@
   is now implemented directly in base R
 * **Breaking:** `as.binary()` (and its associated S3 methods) is no longer
   exported, as it was only ever an internal implementation detail
-* Removed unused `stats`/`utils` imports
 * Dropped the `reshape2` dependency (superseded upstream); the `melt()` calls in
   `inddiv()`/`subdiv()`/`metadiv()` are replaced by a small internal base-R helper
 * Migrated continuous integration from Travis CI and AppVeyor to GitHub Actions
