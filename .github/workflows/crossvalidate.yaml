@@ -21,7 +21,7 @@ permissions: read-all
 
 jobs:
   crossvalidate:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Check out rdiversity (working tree)
@@ -48,8 +48,6 @@ jobs:
         env:
           JULIA_MUST_CROSSVALIDATE: '1'
         run: |
-          # Point RCall at this runner's R (the one holding the dev rdiversity build).
-          export R_HOME="$(R RHOME)"
           # Add the latest registered Diversity.jl into a throwaway env and run its
           # bundled test suite (which includes the RCall cross-validation).
           julia -e '
