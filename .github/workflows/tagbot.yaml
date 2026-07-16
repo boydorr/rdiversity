@@ -4,6 +4,7 @@ on:
   schedule:
     # every six hour
     - cron: 0 */6 * * *
+  workflow_dispatch:
 
 jobs:
   publish-github-release:
@@ -19,4 +20,4 @@ jobs:
           tagbot::publish_release()
         shell: Rscript {0}
         env:
-          GITHUB_PAT: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_PAT: ${{ secrets.TAGBOT_PAT }}
