@@ -1,0 +1,59 @@
+# Cross-validate the working-tree rdiversity against EcoJulia/Diversity.jl.
+# We install the latest *released* Diversity.jl from the General registry and run its
+# bundled test suite (test/run_rcall.jl, gated by test/pkg_RCall.jl), which drives
+# rdiversity via RCall and checks metadiv()/subdiv() for the seven diversity components
+# agree. We pre-install the dev package into R's default library so require(rdiversity)
+# succeeds and Diversity.jl validates *these* sources rather than reinstalling the CRAN
+# build. Using the registry (not a GitHub checkout) means we always test a released
+# Diversity.jl and never an unreleased dev state, with no version pin to maintain.
+#
+# Note: this is a pass/fail validation gate, not a coverage contributor -- the R code runs
+# inside the R instance embedded by RCall in the Julia process, which covr does not
+# instrument. test-coverage.yaml is deliberately left untouched.
+on:
+  push:
+    branches: main
+  pull_request:
+
+name: Diversity.jl cross-validation
+
+permissions: read-all
+
+jobs:
+  crossvalidate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out rdiversity (working tree)
+        uses: actions/checkout@v7
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          # local::. installs the working-tree rdiversity (+ its deps); ape and vegan are
+          # required by Diversity.jl's run_rcall.jl. Installing here means run_rcall.jl
+          # finds them and never reinstalls rdiversity from CRAN.
+          extra-packages: any::ape, any::vegan, local::.
+
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1'
+
+      - uses: julia-actions/cache@v2
+
+      - name: Cross-validate against the latest released Diversity.jl
+        env:
+          JULIA_MUST_CROSSVALIDATE: '1'
+        run: |
+          # Point RCall at this runner's R (the one holding the dev rdiversity build).
+          export R_HOME="$(R RHOME)"
+          # Add the latest registered Diversity.jl into a throwaway env and run its
+          # bundled test suite (which includes the RCall cross-validation).
+          julia -e '
+            using Pkg
+            Pkg.activate(; temp = true)
+            Pkg.add("Diversity")
+            Pkg.test("Diversity")'
