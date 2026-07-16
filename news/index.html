@@ -65,7 +65,6 @@
 <li>Removed the vendored <code>binary.R</code> library; the taxonomic and genetic bit handling is now implemented directly in base R</li>
 <li>
 <strong>Breaking:</strong> <code>as.binary()</code> (and its associated S3 methods) is no longer exported, as it was only ever an internal implementation detail</li>
-<li>Removed unused <code>stats</code>/<code>utils</code> imports</li>
 <li>Dropped the <code>reshape2</code> dependency (superseded upstream); the <code>melt()</code> calls in <code><a href="../reference/inddiv.html">inddiv()</a></code>/<code><a href="../reference/subdiv.html">subdiv()</a></code>/<code><a href="../reference/metadiv.html">metadiv()</a></code> are replaced by a small internal base-R helper</li>
 <li>Migrated continuous integration from Travis CI and AppVeyor to GitHub Actions</li>
 <li>Added <code>lint</code>, <code>pr-commands</code> and R-hub v2 (<code>rhub</code>) workflows</li>
